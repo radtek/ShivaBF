@@ -1,0 +1,340 @@
+﻿<style type="text/css">
+    fieldset {
+        padding: .35em .625em .75em;
+        margin: 0 0 15px 0;
+        border: 1px solid #c0c0c0 !important;
+    }
+
+    legend {
+        display: block;
+        width: inherit !important;
+        padding: 0;
+        margin-bottom: 5px !important;
+        font-size: 20px;
+        line-height: inherit;
+        color: #333;
+        border: 0;
+        border-bottom: 0px solid #e5e5e5 !important;
+    }
+
+    /*.box-body {
+        padding: 10px 10px 0 10px !important;
+    }*/
+</style>
+
+
+@functions{
+    public string AntiForgeryToken()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return cookieToken + ":" + formToken;
+    }
+}
+
+
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <form name="myForm" ng-submit="myForm.$valid && createOreditAsyncForm()" novalidate>
+            <!--myForm.$valid && -->
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="ShowConfirm('modal-createOredit')" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Tenant Details</h4>
+            </div>
+            <div class="modal-body">
+                <!-- general form elements -->
+                <div id="errorMessages" class="text-danger" ng-if="ValidationSummary" ng-repeat="vs in ValidationSummary">{{vs}}</div>
+                <div class="box box-primary">
+
+                    <div class="box-body">
+                        <div class="form-group" ng-class="{'has-error': (myForm.Name.$touched || myForm.Name.$dirty) && myForm.Name.$invalid}">
+                            <input id="antiForgeryToken" data-ng-model="antiForgeryToken" type="hidden" data-ng-init="antiForgeryToken='@AntiForgeryToken()'" />
+                            <label>Tenant Name</label>
+                            <input type="text" class="form-control" name="Name" ng-model="TenantCreateOrEditViewModel.Name" ng-disabled="Processing" autocomplete="off" placeholder="Enter Tenant Name" tooltip-placement="top" uib-tooltip="Enter Tenant Name" pattern="[A-za-z ]*$" required />
+                            <div class="help-block" ng-messages="myForm.Name.$error" ng-if="myForm.Name.$touched || myForm.Name.$dirty && myForm.Name.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.Name" ng-bind="errors.formErrors.Name"></span>
+                        </div>
+                        @*<div class="form-group" ng-class="{'has-error': (myForm.Address.$touched || myForm.Address.$dirty) && myForm.Address.$invalid}">
+                                <label>Address</label>
+                                <textarea class="form-control" name="Address" ng-model="TenantCreateOrEditViewModel.Address" ng-disabled="Processing" autocomplete="off" placeholder="Enter Address" tooltip-placement="top" uib-tooltip="Enter Address" required></textarea>
+                                <div class="help-block" ng-messages="myForm.Address.$error" ng-if="myForm.Address.$touched || myForm.Address.$dirty && myForm.Address.$invalid">
+                                    <div ng-messages-include="~/ValidationMessages.html"></div>
+                                </div>
+                                <span class="text-danger" ng-if="errors.formErrors.Address" ng-bind="errors.formErrors.Address"></span>
+                            </div>*@
+                        <div class="row">
+                            <div class="col-md-6">
+                                <fieldset>
+                                    <legend>Billing Address</legend>
+                                    <div class="form-group" ng-class="{'has-error': (myForm.BillingAddressAttention.$touched || myForm.BillingAddressAttention.$dirty)  && myForm.BillingAddressAttention.$invalid}">
+                                        <label>Attention</label>
+                                        <input type="text" class="form-control" name="BillingAddressAttention" ng-model="TenantCreateOrEditViewModel.BillingAddressAttention" ng-disabled="Processing" autocomplete="off" placeholder="Enter Attention Billing Address" tooltip-placement="top" uib-tooltip="Enter Billing Address Attention" />
+                                        <div class="help-block" ng-messages="myForm.BillingAddressAttention.$error" ng-if="myForm.BillingAddressAttention.$touched || myForm.BillingAddressAttention.$dirty && myForm.BillingAddressAttention.$invalid">
+                                            <div ng-messages-include="~/ValidationMessages.html"></div>
+                                        </div>
+                                        <span class="text-danger" ng-show="errors.formErrors.Attention" ng-bind="errors.formErrors.Attention"></span>
+                                    </div>
+                                    <div class="form-group pourchaseOrder-form-group" ng-class="{'has-error': (myForm.BillingAddressCountryValue.$touched || myForm.BillingAddressCountryValue.$dirty)  && myForm.BillingAddressCountryValue.$invalid}">
+                                        <label>Country</label>
+                                        <input data-ng-model="TenantCreateOrEditViewModel.BillingAddressCountry_ID" type="hidden" data-ng-init="TenantCreateOrEditViewModel.BillingAddressCountry_ID='1009'" />
+                                        <select name="BillingAddressCountryValue" ng-model="TenantCreateOrEditViewModel.BillingAddressCountryValue" class="form-control" style="width: 100%;" ng-options="x.Value as x.Description for x in AllBillingCountry" ng-change="LoadBillingStates()" required>
+                                            <option value="" ng-selected="TenantCreateOrEditViewModel.SelectedBillingAddressCountryValue_ID < 0">-- Select --</option>
+                                        </select>
+                                        <div class="help-block pourchaseOrder-help-block" ng-messages="myForm.BillingAddressCountryValue.$error" ng-if="myForm.BillingAddressCountryValue.$touched || myForm.BillingAddressCountryValue.$dirty && myForm.BillingAddressCountryValue.$invalid">
+                                            <div ng-messages-include="~/ValidationMessages.html"></div>
+                                        </div>
+                                        <span class="text-danger" ng-show="errors.formErrors.TenantCreateOrEditViewModel.BillingAddressCountryValue" ng-bind="errors.formErrors.TenantCreateOrEditViewModel.BillingAddressCountryValue"></span>
+                                    </div>
+                                    <div class="form-group" ng-class="{'has-error': (myForm.BillingAddressStreet1.$touched || myForm.BillingAddressStreet1.$dirty)  && myForm.BillingAddressStreet1.$invalid}">
+                                        <label>Street 1</label>
+                                        <input type="text" class="form-control" name="BillingAddressStreet1" ng-model="TenantCreateOrEditViewModel.BillingAddressStreet1" ng-disabled="Processing" autocomplete="off" placeholder="Enter Billing Address Street 1" tooltip-placement="top" uib-tooltip="Enter Billing Address Street 1" required />
+                                        <div class="help-block" ng-messages="myForm.BillingAddressStreet1.$error" ng-if="myForm.BillingAddressStreet1.$touched || myForm.BillingAddressStreet1.$dirty && myForm.BillingAddressStreet1.$invalid">
+                                            <div ng-messages-include="~/ValidationMessages.html"></div>
+                                        </div>
+                                        <span class="text-danger" ng-show="errors.formErrors.BillingAddressStreet1" ng-bind="errors.formErrors.BillingAddressStreet1"></span>
+                                    </div>
+                                    <div class="form-group" ng-class="{'has-error': (myForm.BillingAddressStreet2.$touched || myForm.BillingAddressStreet2.$dirty)  && myForm.BillingAddressStreet2.$invalid}">
+                                        <label>Street 2</label>
+                                        <input type="text" class="form-control" name="BillingAddressStreet2" ng-model="TenantCreateOrEditViewModel.BillingAddressStreet2" ng-disabled="Processing" autocomplete="off" placeholder="Enter Billing Address Street 2" tooltip-placement="top" uib-tooltip="Enter Billing Address Street 2" required />
+                                        <div class="help-block" ng-messages="myForm.BillingAddressStreet2.$error" ng-if="myForm.BillingAddressStreet2.$touched || myForm.BillingAddressStreet2.$dirty && myForm.BillingAddressStreet2.$invalid">
+                                            <div ng-messages-include="~/ValidationMessages.html"></div>
+                                        </div>
+                                        <span class="text-danger" ng-show="errors.formErrors.BillingAddressStreet2" ng-bind="errors.formErrors.BillingAddressStreet2"></span>
+                                    </div>
+                                    <div class="form-group pourchaseOrder-form-group" ng-class="{'has-error': (myForm.BillingAddressStateValue.$touched || myForm.BillingAddressStateValue.$dirty)  && myForm.BillingAddressStateValue.$invalid}">
+                                        <label>State</label>
+                                        <input data-ng-model="TenantCreateOrEditViewModel.BillingAddressState_ID" type="hidden" data-ng-init="TenantCreateOrEditViewModel.BillingAddressState_ID='1010'" />
+                                        <select name="BillingAddressStateValue" ng-model="TenantCreateOrEditViewModel.BillingAddressStateValue" class="form-control" style="width: 100%;" ng-options="x.Value as x.Description for x in AllBillingState" ng-change="LoadCityOrDistrictBilling()" required>
+                                            <option value="" ng-selected="TenantCreateOrEditViewModel.SelectedBillingAddressStateValue_ID < 0">-- Select --</option>
+                                        </select>
+                                        <div class="help-block pourchaseOrder-help-block" ng-messages="myForm.BillingAddressStateValue.$error" ng-if="myForm.BillingAddressStateValue.$touched || myForm.BillingAddressStateValue.$dirty && myForm.BillingAddressStateValue.$invalid">
+                                            <div ng-messages-include="~/ValidationMessages.html"></div>
+                                        </div>
+                                        <span class="text-danger" ng-show="errors.formErrors.TenantCreateOrEditViewModel.BillingAddressStateValue" ng-bind="errors.formErrors.TenantCreateOrEditViewModel.BillingAddressStateValue"></span>
+                                    </div>
+                                    <div class="form-group pourchaseOrder-form-group" ng-class="{'has-error': (myForm.BillingAddressCityOrDistrictValue.$touched || myForm.BillingAddressCityOrDistrictValue.$dirty)  && myForm.BillingAddressCityOrDistrictValue.$invalid}">
+                                        <label>City</label>
+                                        <input data-ng-model="TenantCreateOrEditViewModel.BillingAddressCityOrDistrict_ID" type="hidden" data-ng-init="TenantCreateOrEditViewModel.BillingAddressCityOrDistrict_ID='1011'" />
+                                        <select name="BillingAddressCityOrDistrictValue" ng-model="TenantCreateOrEditViewModel.BillingAddressCityOrDistrictValue" class="form-control" style="width: 100%;" ng-options="x.Value as x.Description for x in AllBillingCity" required>
+                                            <option value="" ng-selected="TenantCreateOrEditViewModel.SelectedBillingAddressCityOrDistrictValue_ID < 0">-- Select --</option>
+                                        </select>
+                                        <div class="help-block pourchaseOrder-help-block" ng-messages="myForm.BillingAddressCityOrDistrictValue.$error" ng-if="myForm.BillingAddressCityOrDistrictValue.$touched || myForm.BillingAddressCityOrDistrictValue.$dirty && myForm.BillingAddressCityOrDistrictValue.$invalid">
+                                            <div ng-messages-include="~/ValidationMessages.html"></div>
+                                        </div>
+                                        <span class="text-danger" ng-show="errors.formErrors.TenantCreateOrEditViewModel.CityOrDistrictValue" ng-bind="errors.formErrors.TenantCreateOrEditViewModel.CityOrDistrictValue"></span>
+                                    </div>
+                                    <div class="form-group" ng-class="{'has-error': (myForm.BillingAddressZipCode.$touched || myForm.BillingAddressZipCode.$dirty)  && myForm.BillingAddressZipCode.$invalid}">
+                                        <label>Zip Code</label>
+                                        <input type="text" class="form-control" name="BillingAddressZipCode" ng-model="TenantCreateOrEditViewModel.BillingAddressZipCode" ng-disabled="Processing" autocomplete="off" placeholder="Enter Billing Address Zip Code" tooltip-placement="top" uib-tooltip="Enter Billing Address Zip Code" pattern="^[1-9][0-9]{5}$" required />
+                                        <div class="help-block" ng-messages="myForm.BillingAddressZipCode.$error" ng-if="myForm.BillingAddressZipCode.$touched || myForm.BillingAddressZipCode.$dirty && myForm.BillingAddressZipCode.$invalid">
+                                            <div ng-messages-include="~/ValidationMessages.html"></div>
+                                        </div>
+                                        <span class="text-danger" ng-show="errors.formErrors.BillingAddressZipCode" ng-bind="errors.formErrors.BillingAddressZipCode"></span>
+                                    </div>
+                                    <div class="form-group" ng-class="{'has-error': (myForm.BillingAddressPhone.$touched || myForm.BillingAddressPhone.$dirty)  && myForm.BillingAddressPhone.$invalid}">
+                                        <label>Phone&nbsp;Number</label>
+                                        <input type="text" class="form-control" name="BillingAddressPhone" ng-model="TenantCreateOrEditViewModel.BillingAddressPhone" ng-disabled="Processing" autocomplete="off" placeholder="Enter Billing Phone" tooltip-placement="top" uib-tooltip="Enter Billing Phone" pattern="[0-9]{8}" />
+                                        <div class="help-block" ng-messages="myForm.BillingAddressPhone.$error" ng-if="myForm.BillingAddressPhone.$touched || myForm.BillingAddressPhone.$dirty && myForm.BillingAddressPhone.$invalid">
+                                            <div ng-messages-include="~/ValidationMessages.html"></div>
+                                        </div>
+                                        <span class="text-danger" ng-show="errors.formErrors.BillingAddressPhone" ng-bind="errors.formErrors.BillingAddressPhone"></span>
+                                    </div>
+                                    <div class="form-group" ng-class="{'has-error': (myForm.BillingAddressFax.$touched || myForm.BillingAddressFax.$dirty) && myForm.BillingAddressFax.$invalid}">
+                                        <label>Fax</label>
+                                        <input type="text" class="form-control" name="BillingAddressFax" ng-model="TenantCreateOrEditViewModel.BillingAddressFax" ng-disabled="Processing" autocomplete="off" placeholder="Enter Billing FAX" tooltip-placement="top" uib-tooltip="Enter Billing FAX" required />
+                                        <div class="help-block" ng-messages="myForm.BillingAddressFax.$error" ng-if="myForm.BillingAddressFax.$touched || myForm.BillingAddressFax.$dirty && myForm.BillingAddressFax.$invalid">
+                                            <div ng-messages-include="~/ValidationMessages.html"></div>
+                                        </div>
+                                        <span class="text-danger" ng-show="errors.formErrors.BillingAddressFax" ng-bind="errors.formErrors.BillingAddressFax"></span>
+                                    </div>
+                                </fieldset>
+
+                            </div>
+                            <div class="col-md-6">
+                                <fieldset>
+                                    <legend>Shipping Address&nbsp;<input type="checkbox" name="IsSameAsBilling" id="myCheck" ng-model="IsSameAsBilling" ng-click="CopyBillingDetails()" /><span style="font-size : 10px;">Same as Billing</span></legend>
+                                    <div class="form-group" ng-class="{'has-error': (myForm.ShippingAddressAttention.$touched || myForm.ShippingAddressAttention.$dirty)  && myForm.ShippingAddressAttention.$invalid}">
+                                        <label>Attention</label>
+                                        <input type="text" class="form-control" name="ShippingAddressAttention" ng-model="TenantCreateOrEditViewModel.ShippingAddressAttention" ng-disabled="Processing" autocomplete="off" placeholder="Enter Shipping Address Attention" tooltip-placement="top" uib-tooltip="Enter Shipping Address Attention" />
+                                        <div class="help-block" ng-messages="myForm.ShippingAddressAttention.$error" ng-if="myForm.ShippingAddressAttention.$touched || myForm.ShippingAddressAttention.$dirty && myForm.ShippingAddressAttention.$invalid">
+                                            <div ng-messages-include="~/ValidationMessages.html"></div>
+                                        </div>
+                                        <span class="text-danger" ng-show="errors.formErrors.ShippingAddressAttention" ng-bind="errors.formErrors.ShippingAddressAttention"></span>
+                                    </div>
+                                    <div class="form-group pourchaseOrder-form-group" ng-class="{'has-error': (myForm.ShippingAddressCountryValue.$touched || myForm.ShippingAddressCountryValue.$dirty)  && myForm.ShippingAddressCountryValue.$invalid}">
+                                        <label>Country</label>
+                                        <input data-ng-model="TenantCreateOrEditViewModel.ShippingAddressCountry_ID" type="hidden" id="ShippingAddressCountry_ID" data-ng-init="ShippingAddressCountry_ID='1009'" />
+                                        <select name="ShippingAddressCountryValue" ng-model="TenantCreateOrEditViewModel.ShippingAddressCountryValue" class="form-control" style="width: 100%;" ng-options="x.Value as x.Description for x in AllShippingCountry" ng-change="LoadShippingStates()" required>
+                                            <option value="" ng-selected="TenantCreateOrEditViewModel.SelectedShippingAddressCountryValue_ID < 0">-- Select --</option>
+                                        </select>
+                                        <div class="help-block pourchaseOrder-help-block" ng-messages="myForm.ShippingAddressCountryValue.$error" ng-if="myForm.ShippingAddressCountryValue.$touched || myForm.ShippingAddressCountryValue.$dirty && myForm.ShippingAddressCountryValue.$invalid">
+                                            <div ng-messages-include="~/ValidationMessages.html"></div>
+                                        </div>
+                                        <span class="text-danger" ng-show="errors.formErrors.TenantCreateOrEditViewModel.ShippingAddressCountryValue" ng-bind="errors.formErrors.TenantCreateOrEditViewModel.ShippingAddressCountryValue"></span>
+                                    </div>
+                                    <div class="form-group" ng-class="{'has-error': (myForm.ShippingAddressStreet1.$touched || myForm.ShippingAddressStreet1.$dirty)  && myForm.ShippingAddressStreet1.$invalid}">
+                                        <label>Street 1</label>
+                                        <input type="text" class="form-control" name="ShippingAddressStreet1" ng-model="TenantCreateOrEditViewModel.ShippingAddressStreet1" ng-disabled="Processing" autocomplete="off" placeholder="Enter Shipping Address Street 1" tooltip-placement="top" uib-tooltip="Enter Shipping Address Street 1" required />
+                                        <div class="help-block" ng-messages="myForm.ShippingAddressStreet1.$error" ng-if="myForm.ShippingAddressStreet1.$touched || myForm.ShippingAddressStreet1.$dirty && myForm.ShippingAddressStreet1.$invalid">
+                                            <div ng-messages-include="~/ValidationMessages.html"></div>
+                                        </div>
+                                        <span class="text-danger" ng-show="errors.formErrors.ShippingAddressStreet1" ng-bind="errors.formErrors.ShippingAddressStreet1"></span>
+                                    </div>
+                                    <div class="form-group" ng-class="{'has-error': (myForm.ShippingAddressStreet2.$touched || myForm.ShippingAddressStreet1.$dirty)  && myForm.ShippingAddressStreet1.$invalid}">
+                                        <label>Street 2</label>
+                                        <input type="text" class="form-control" name="ShippingAddressStreet2" ng-model="TenantCreateOrEditViewModel.ShippingAddressStreet2" ng-disabled="Processing" autocomplete="off" placeholder="Enter Shipping Address Street 2" tooltip-placement="top" uib-tooltip="Enter Shipping Address Street 2" required />
+                                        <div class="help-block" ng-messages="myForm.ShippingAddressStreet2.$error" ng-if="myForm.ShippingAddressStreet2.$touched || myForm.ShippingAddressStreet2.$dirty && myForm.ShippingAddressStreet2.$invalid">
+                                            <div ng-messages-include="~/ValidationMessages.html"></div>
+                                        </div>
+                                        <span class="text-danger" ng-show="errors.formErrors.ShippingAddressStreet2" ng-bind="errors.formErrors.ShippingAddressStreet2"></span>
+                                    </div>
+                                    <div class="form-group pourchaseOrder-form-group" ng-class="{'has-error': (myForm.ShippingAddressStateValue.$touched || myForm.ShippingAddressStateValue.$dirty)  && myForm.ShippingAddressStateValue.$invalid}">
+                                        <label>State</label>
+                                        <input data-ng-model="TenantCreateOrEditViewModel.ShippingAddressState_ID" type="hidden" data-ng-init="TenantCreateOrEditViewModel.ShippingAddressState_ID='1010'" />
+                                        <select name="ShippingAddressStateValue" ng-model="TenantCreateOrEditViewModel.ShippingAddressStateValue" class="form-control" style="width: 100%;" ng-options="x.Value as x.Description for x in AllShippingState" ng-change="LoadCityOrDistrictShipping()" required>
+                                            <option value="" ng-selected="TenantCreateOrEditViewModel.SelectedShippingAddressStateValue_ID < 0">-- Select --</option>
+                                        </select>
+                                        <div class="help-block pourchaseOrder-help-block" ng-messages="myForm.ShippingAddressStateValue.$error" ng-if="myForm.ShippingAddressStateValue.$touched || myForm.ShippingAddressStateValue.$dirty && myForm.ShippingAddressStateValue.$invalid">
+                                            <div ng-messages-include="~/ValidationMessages.html"></div>
+                                        </div>
+                                        <span class="text-danger" ng-show="errors.formErrors.TenantCreateOrEditViewModel.ShippingAddressStateValue" ng-bind="errors.formErrors.TenantCreateOrEditViewModel.ShippingAddressStateValue"></span>
+                                    </div>
+                                    <div class="form-group pourchaseOrder-form-group" ng-class="{'has-error': (myForm.ShippingAddressCityOrDistrictValue.$touched || myForm.ShippingAddressCityOrDistrictValue.$dirty)  && myForm.ShippingAddressCityOrDistrictValue.$invalid}">
+                                        <label>City</label>
+                                        <input data-ng-model="TenantCreateOrEditViewModel.ShippingAddressCityOrDistrict_ID" type="hidden" data-ng-init="TenantCreateOrEditViewModel.ShippingAddressCityOrDistrict_ID='1011'" />
+                                        <select name="ShippingAddressCityOrDistrictValue" ng-model="TenantCreateOrEditViewModel.ShippingAddressCityOrDistrictValue" class="form-control" style="width: 100%;" ng-options="x.Value as x.Description for x in AllShippingCity" required>
+                                            <option value="" ng-selected="TenantCreateOrEditViewModel.SelectedShippingAddressCityOrDistrictValue_ID < 0">-- Select --</option>
+                                        </select>
+                                        <div class="help-block pourchaseOrder-help-block" ng-messages="myForm.ShippingAddressCityOrDistrictValue.$error" ng-if="myForm.ShippingAddressCityOrDistrictValue.$touched || myForm.ShippingAddressCityOrDistrictValue.$dirty && myForm.ShippingAddressCityOrDistrictValue.$invalid">
+                                            <div ng-messages-include="~/ValidationMessages.html"></div>
+                                        </div>
+                                        <span class="text-danger" ng-show="errors.formErrors.TenantCreateOrEditViewModel.ShippingAddressCityOrDistrictValue" ng-bind="errors.formErrors.TenantCreateOrEditViewModel.ShippingAddressCityOrDistrictValue"></span>
+                                    </div>
+                                    <div class="form-group" ng-class="{'has-error': (myForm.ShippingAddressZipCode.$touched || myForm.ShippingAddressZipCode.$dirty)  && myForm.ShippingAddressZipCode.$invalid}">
+                                        <label>Zip Code</label>
+                                        <input type="text" class="form-control" name="ShippingAddressZipCode" ng-model="TenantCreateOrEditViewModel.ShippingAddressZipCode" ng-disabled="Processing" autocomplete="off" placeholder="Enter Shipping Address Zip Code" tooltip-placement="top" uib-tooltip="Enter Shipping Address Zip Code" pattern="^[1-9][0-9]{5}$" required />
+                                        <div class="help-block" ng-messages="myForm.ShippingAddressZipCode.$error" ng-if="myForm.ShippingAddressZipCode.$touched || myForm.ShippingAddressZipCode.$dirty && myForm.ShippingAddressZipCode.$invalid">
+                                            <div ng-messages-include="~/ValidationMessages.html"></div>
+                                        </div>
+                                        <span class="text-danger" ng-show="errors.formErrors.ShippingAddressZipCode" ng-bind="errors.formErrors.ShippingAddressZipCode"></span>
+                                    </div>
+                                    <div class="form-group" ng-class="{'has-error': (myForm.ShippingAddressPhone.$touched || myForm.ShippingAddressPhone.$dirty)  && myForm.ShippingAddressPhone.$invalid}">
+                                        <label>Phone&nbsp;Number</label>
+                                        <input type="text" class="form-control" name="ShippingAddressPhone" ng-model="TenantCreateOrEditViewModel.ShippingAddressPhone" ng-disabled="Processing" autocomplete="off" placeholder="Enter Shipping Phone" tooltip-placement="top" uib-tooltip="Enter Shipping Phone" pattern="[0-9]{8}" />
+                                        <div class="help-block" ng-messages="myForm.ShippingAddressPhone.$error" ng-if="myForm.ShippingAddressPhone.$touched || myForm.ShippingAddressPhone.$dirty && myForm.ShippingAddressPhone.$invalid">
+                                            <div ng-messages-include="~/ValidationMessages.html"></div>
+                                        </div>
+                                        <span class="text-danger" ng-show="errors.formErrors.ShippingAddressPhone" ng-bind="errors.formErrors.ShippingAddressPhone"></span>
+                                    </div>
+                                    <div class="form-group" ng-class="{'has-error': (myForm.ShippingAddressFax.$touched || myForm.ShippingAddressFax.$dirty) && myForm.ShippingAddressFax.$invalid}">
+                                        <label>Fax</label>
+                                        <input type="text" class="form-control" name="ShippingAddressFax" ng-model="TenantCreateOrEditViewModel.ShippingAddressFax" ng-disabled="Processing" autocomplete="off" placeholder="Enter Shipping FAX" tooltip-placement="top" uib-tooltip="Enter Shipping FAX" required />
+                                        <div class="help-block" ng-messages="myForm.ShippingAddressFax.$error" ng-if="myForm.ShippingAddressFax.$touched || myForm.ShippingAddressFax.$dirty && myForm.ShippingAddressFax.$invalid">
+                                            <div ng-messages-include="~/ValidationMessages.html"></div>
+                                        </div>
+                                        <span class="text-danger" ng-show="errors.formErrors.ShippingAddressFax" ng-bind="errors.formErrors.ShippingAddressFax"></span>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error': (myForm.ContactPerson.$touched || myForm.ContactPerson.$dirty) && myForm.ContactPerson.$invalid}">
+                            <label>Contact Person</label>
+                            <input type="text" class="form-control" name="ContactPerson" ng-model="TenantCreateOrEditViewModel.ContactPerson" ng-disabled="Processing" autocomplete="off" placeholder="Enter Contact Person Name" tooltip-placement="top" uib-tooltip="Enter Contact Person Name" pattern="[A-za-z ]*$" required />
+                            <div class="help-block" ng-messages="myForm.ContactPerson.$error" ng-if="myForm.ContactPerson.$touched || myForm.ContactPerson.$dirty && myForm.ContactPerson.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-if="errors.formErrors.ContactPerson" ng-bind="errors.formErrors.ContactPerson"></span>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': (myForm.ContactNumber.$touched || myForm.ContactNumber.$dirty) && myForm.ContactNumber.$invalid}">
+                            <label>Contact Number</label>
+                            <input type="text" class="form-control" name="ContactNumber" ng-model="TenantCreateOrEditViewModel.ContactNumber" ng-disabled="Processing" autocomplete="off" placeholder="Enter Contact Number" tooltip-placement="top" uib-tooltip="Enter Contact Number" pattern="[0-9]{10}" required />
+                            <div class="help-block" ng-messages="myForm.ContactNumber.$error" ng-if="myForm.ContactNumber.$touched || myForm.ContactNumber.$dirty && myForm.ContactNumber.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-if="errors.formErrors.ContactNumber" ng-bind="errors.formErrors.ContactNumber"></span>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': (myForm.Email.$touched || myForm.Email.$dirty) && myForm.Email.$invalid}">
+                            <label>Email</label>
+                            <input type="email" class="form-control" name="Email" ng-model="TenantCreateOrEditViewModel.Email" ng-disabled="Processing" autocomplete="off" placeholder="Enter Email" tooltip-placement="top" uib-tooltip="Enter Email" required />
+                            <div class="help-block" ng-messages="myForm.Email.$error" ng-if="myForm.Email.$touched || myForm.Email.$dirty && myForm.Email.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-if="errors.formErrors.Email" ng-bind="errors.formErrors.Email"></span>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': (myForm.GST.$touched || myForm.GST.$dirty) && myForm.GST.$invalid}">
+                            <label>GST Number</label>
+                            <input type="text" class="form-control" name="GST" ng-model="TenantCreateOrEditViewModel.GST" ng-disabled="Processing" autocomplete="off" placeholder="Enter GST Number" tooltip-placement="top" uib-tooltip="Enter GST Number" pattern="[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9]{1}[Z]{1}[0-9A-Z]{1}" required />
+                            <div class="help-block" ng-messages="myForm.GST.$error" ng-if="myForm.GST.$touched || myForm.GST.$dirty && myForm.GST.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-if="errors.formErrors.GST" ng-bind="errors.formErrors.GST"></span>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': (myForm.NoOfLocations.$touched || myForm.NoOfLocations.$dirty) && myForm.NoOfLocations.$invalid}">
+                            <label>No Of Locations</label>
+                            <input type="number" min="0" class="form-control" name="NoOfLocations" ng-model="TenantCreateOrEditViewModel.NoOfLocations" ng-disabled="Processing" autocomplete="off" placeholder="Enter No Of Locations" tooltip-placement="top" uib-tooltip="Enter No Of Locations" required />
+                            <div class="help-block" ng-messages="myForm.NoOfLocations.$error" ng-if="myForm.NoOfLocations.$touched || myForm.NoOfLocations.$dirty && myForm.NoOfLocations.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-if="errors.formErrors.NoOfLocations" ng-bind="errors.formErrors.NoOfLocations"></span>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': (myForm.NoOfSHFItems.$touched || myForm.NoOfSHFItems.$dirty) && myForm.NoOfSHFItems.$invalid}">
+                            <label>No Of SHF Items</label>
+                            <input type="number" min="0" class="form-control" name="NoOfSHFItems" ng-model="TenantCreateOrEditViewModel.NoOfSHFItems" ng-disabled="Processing" autocomplete="off" placeholder="Enter No Of SHF Items" tooltip-placement="top" uib-tooltip="Enter No Of SHF Items" required />
+                            <div class="help-block" ng-messages="myForm.NoOfSHFItems.$error" ng-if="myForm.NoOfSHFItems.$touched || myForm.NoOfSHFItems.$dirty && myForm.NoOfSHFItems.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-if="errors.formErrors.NoOfSHFItems" ng-bind="errors.formErrors.NoOfSHFItems"></span>
+                        </div>
+
+                        <div ng-if="TenantCreateOrEditViewModel.ID == 'undefined' || TenantCreateOrEditViewModel.ID == null || TenantCreateOrEditViewModel.ID == 0">
+                            <div class="form-group" ng-class="{'has-error': (myForm.Username.$touched || myForm.Username.$dirty) && myForm.Username.$invalid}">
+                                <label>Login Username</label>
+                                <input type="text" class="form-control" name="Username" ng-model="TenantCreateOrEditViewModel.Username" ng-disabled="Processing" autocomplete="off" placeholder="Enter Username" tooltip-placement="top" uib-tooltip="Enter Username" required />
+                                <div class="help-block" ng-messages="myForm.Username.$error" ng-if="myForm.Username.$touched || myForm.Username.$dirty && myForm.Username.$invalid">
+                                    <div ng-messages-include="~/ValidationMessages.html"></div>
+                                </div>
+                                <span class="text-danger" ng-if="errors.formErrors.Username" ng-bind="errors.formErrors.Username"></span>
+                            </div>
+
+                            <div class="form-group" ng-class="{'has-error': (myForm.Password.$touched || myForm.Password.$dirty) && myForm.Password.$invalid}">
+                                <label>Password</label>
+                                <input type="password" class="form-control" name="Password" ng-model="TenantCreateOrEditViewModel.Password" ng-disabled="Processing" autocomplete="off" placeholder="Enter Password" tooltip-placement="top" uib-tooltip="Enter Password" required />
+                                <div class="help-block" ng-messages="myForm.Password.$error" ng-if="myForm.Password.$touched || myForm.Password.$dirty && myForm.Password.$invalid">
+                                    <div ng-messages-include="~/ValidationMessages.html"></div>
+                                </div>
+                                <span class="text-danger" ng-if="errors.formErrors.Password" ng-bind="errors.formErrors.Password"></span>
+                            </div>
+
+                            <div class="form-group" ng-class="{'has-error': (myForm.ConfirmPassword.$touched || myForm.ConfirmPassword.$dirty) && myForm.ConfirmPassword.$invalid}">
+                                <label>Confirm Password</label>
+                                <input type="password" class="form-control" name="ConfirmPassword" ng-model="TenantCreateOrEditViewModel.ConfirmPassword" ng-disabled="Processing" autocomplete="off" ng-pattern="TenantCreateOrEditViewModel.Password" placeholder="Enter Confirm Password" tooltip-placement="top" uib-tooltip="Enter Confirm Password" required />
+                                <div class="help-block" ng-messages="myForm.ConfirmPassword.$error" ng-if="myForm.ConfirmPassword.$touched || myForm.ConfirmPassword.$dirty && myForm.ConfirmPassword.$invalid">
+                                    <div ng-if="myForm.ConfirmPassword.$error.required">Password must match.</div>
+                                    <div ng-if="myForm.ConfirmPassword.$error.pattern">Password must match.</div>
+                                </div>
+                                <span class="text-danger" ng-if="errors.formErrors.ConfirmPassword" ng-bind="errors.formErrors.ConfirmPassword"></span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" ng-if="!Processing" class="btn btn-sm btn-success pull-left" ng-disabled="myForm.$invalid">Save</button>
+                <span ng-if="Processing" class="btn btn-sm btn-success pull-left">Processing...</span>
+                <button type="reset" class="btn btn-sm btn-default pull-left">Clear</button>
+                <span class="btn btn-sm btn-danger" ng-click="ShowConfirm('modal-createOredit')">Close</span>
+            </div>
+        </form>
+    </div>
+    <!-- /.modal-content -->
+</div>

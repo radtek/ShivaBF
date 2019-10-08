@@ -1,0 +1,39 @@
+﻿
+@model IEnumerable<SHF.ViewModel.BarCodeIndexViewModel>
+
+
+@foreach (var item in Model)
+{
+    <div class="box box-white">
+        <div class="box-body text-center" style="padding-top:10px !important;">
+            <img type="image" src="@item.Path" alt="" style="margin-top: 15px !important;" /> <br />
+            <label>@item.BarCodeValue</label>
+        </div>
+    </div>
+}
+
+@*@foreach (var item in Model)
+    {
+        <div class="box box-white" style="margin-bottom: 2px !important;">
+            <div class="box-body">
+                <svg class="barcode"
+                     jsbarcode-format="@item.Format"
+                     jsbarcode-value="@item.BarCodeValue"
+                     jsbarcode-height="80"
+                     jsbarcode-marginTop="10"
+                     jsbarcode-displayValue="true">
+                </svg>
+            </div>
+        </div>
+    }*@
+
+
+
+
+@*
+    http://jeromeetienne.github.io/jquery-qrcode/
+    https://github.com/jeromeetienne/jquery-qrcode
+
+*@
+
+

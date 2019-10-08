@@ -1,0 +1,201 @@
+﻿<!-- Main content -->
+<section class="invoice">
+    <div style="margin:10px !important;">
+        <div class="row">
+            <div class="col-xs-6">
+                From
+                <address>
+                    <strong><span ng-bind="SalesOrderPrintViewModel.Tenant.Name"></span></strong><br>
+                    <strong>GST No: <span ng-bind="SalesOrderPrintViewModel.Tenant.GST"></span></strong><br>
+                    Phone: {{SalesOrderPrintViewModel.Tenant.ContactNumber}}<br>
+                    Email: {{SalesOrderPrintViewModel.Tenant.Email}}<br>
+                    Fax: {{SalesOrderPrintViewModel.Tenant.ShippingAddressFax}}
+                </address>
+            </div>
+
+            <div class="col-xs-6">
+                <h2 class="pull-right">
+                    <i class="fa fa-globe"></i> Sales Order<br />
+                    @*Date: {{ SalesOrderPrintViewModel.SalesOrderHeader.SalesOrderDate.replace('/Date(','').replace(')/','') | date:'medium'}}*@
+                    <small class="pull-right"> <b> # SO-{{SalesOrderPrintViewModel.SalesOrderHeader.ID}}</b><br /></small>
+                </h2>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- info row -->
+        <div class="row invoice-info">
+            <!-- /.col -->
+            <div class="col-sm-4 invoice-col">
+
+                <strong>
+                    Billing Address
+                </strong>
+                <address>
+                    @*<b>{{PurchaseOrderPrintViewModel.Vendor_Name}}</b><br>*@
+
+                    {{SalesOrderPrintViewModel.SalesOrderHeader.BillingAddressStreet1}},
+                    {{SalesOrderPrintViewModel.SalesOrderHeader.BillingAddressStreet2}},<br />
+                    @*{{SalesOrderPrintViewModel.SalesOrderHeader.BillingAddressCityOrDistrictValue}},<br />*@
+                    {{SalesOrderPrintViewModel.SalesOrderHeader.BillingAddressStateValue}},{{SalesOrderPrintViewModel.SalesOrderHeader.BillingAddressZipCode}}<br />
+                    {{SalesOrderPrintViewModel.SalesOrderHeader.BillingAddressCountryValue}},<br />
+                    Phone : {{SalesOrderPrintViewModel.SalesOrderHeader.BillingAddressPhone}}<br />
+                    Fax : {{SalesOrderPrintViewModel.SalesOrderHeader.BillingAddressFax}}<br />
+                    GST : {{SalesOrderPrintViewModel.Customer.GSTNo}}
+
+                </address>
+            </div>
+
+            <div class="col-sm-4 invoice-col">
+                <strong>
+                    Shipping Address
+                </strong>
+                <address>
+
+                    @*<b>{{PurchaseOrderPrintViewModel.Vendor_Name}}</b><br>*@
+
+                    {{SalesOrderPrintViewModel.SalesOrderHeader.ShippingAddressStreet1}},
+                    {{SalesOrderPrintViewModel.SalesOrderHeader.ShippingAddressStreet2}},<br />
+                    @*{{SalesOrderPrintViewModel.SalesOrderHeader.ShippingAddressCityOrDistrictValue}},<br />*@
+                    {{SalesOrderPrintViewModel.SalesOrderHeader.ShippingAddressStateValue}},{{SalesOrderPrintViewModel.SalesOrderHeader.ShippingAddressZipCode}}<br />
+                    {{SalesOrderPrintViewModel.SalesOrderHeader.ShippingAddressCountryValue}},<br />
+                    Phone : {{SalesOrderPrintViewModel.SalesOrderHeader.ShippingAddressPhone}}<br />
+                    Fax : {{SalesOrderPrintViewModel.SalesOrderHeader.ShippingAddressFax}}<br />
+                    GST : {{SalesOrderPrintViewModel.Customer.GSTNo}}
+                </address>
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-4 invoice-col">
+
+                <span>
+                    <span style="display: flex;justify-content: flex-start;padding-left:61px!important" class="pull-left"> SO Date : </span>
+                    <span style="display: flex;justify-content: flex-end;" ng-if="SalesOrderPrintViewModel.SalesOrderHeader.SalesOrderDate.replace('/Date(','').replace(')/','') | date:'medium'"> {{SalesOrderPrintViewModel.SalesOrderHeader.SalesOrderDate.replace('/Date(','').replace(')/','') | date:'medium'}} </span>
+                </span>
+                <span>
+                    <span style="display: flex;justify-content: flex-start;padding-left:21px!important" class="pull-left"> Shipment Date : </span>
+                    <span style="display: flex;justify-content: flex-end;" ng-if="SalesOrderPrintViewModel.SalesOrderHeader.ShipmentDate.replace('/Date(','').replace(')/','') | date:'medium'"> {{SalesOrderPrintViewModel.SalesOrderHeader.ShipmentDate.replace('/Date(','').replace(')/','') | date:'medium'}} </span>
+                </span>
+                <span>
+                    <span style="display: flex;justify-content: flex-start;padding-left:8px!important" class="pull-left">Purchase Order # :</span>
+                    <span style="display: flex;justify-content: flex-end;" ng-if="SalesOrderPrintViewModel.SalesOrderHeader.PurchaseOrder">{{SalesOrderPrintViewModel.SalesOrderHeader.PurchaseOrder}}</span>
+                </span>
+
+                <span>
+                    <span style="display: flex;justify-content: flex-start;padding-left:80px!important" class="pull-left">  Ref # : </span>
+                    <span style="display: flex;justify-content: flex-end;" ng-if="SalesOrderPrintViewModel.SalesOrderHeader.ReferenceValue"> {{SalesOrderPrintViewModel.SalesOrderHeader.ReferenceValue}} </span>
+
+                </span>
+                <span>
+                    <span style="display: flex;justify-content: flex-start;padding-left:4px!important" class="pull-left"> Delivery Method # : </span>
+                    <span style="display: flex;justify-content: flex-end;" ng-if="SalesOrderPrintViewModel.SalesOrderHeader.DeliveryMethodValue"> {{SalesOrderPrintViewModel.SalesOrderHeader.DeliveryMethodValue}} </span>
+
+                </span>
+
+                <span>
+                    <span style="display: flex;justify-content: flex-start;padding-left:81px!important" class="pull-left"> Note : </span>
+                    <span style="display: flex;justify-content: flex-end;" ng-if="SalesOrderPrintViewModel.SalesOrderHeader.CustomerNote"> {{SalesOrderPrintViewModel.SalesOrderHeader.CustomerNote}} </span>
+                </span>
+
+                <span>
+                    <span style="display: flex;justify-content: flex-start;padding-left:63px!important" class="pull-left">  Account : </span>
+                    <span style="display: flex;justify-content: flex-end;"> N/A </span>
+                </span>
+
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+        <!-- Table row -->
+        <div class="row">
+            <div class="col-xs-12 table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Item & Description</th>
+                            <th>HSN/SAC</th>
+                            <th>Qty</th>
+                            @*<th>Uom</th>*@
+                            <th>Rate</th>
+                            @*<th>Tax</th>*@
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in SalesOrderPrintViewModel.SalesOrderBody">
+                            <td>{{$index+1}}</td>
+                            <td>
+                                {{item.Product_Name}}<br />
+                                @*<label ng-if="item.Product_SKU"><strong>SKU:</strong> [{{item.Product_SKU}}]</label>*@
+                                @*<label ng-if="item.Product_HSN"><strong>HSN:</strong> [{{item.Product_HSN}}]</label>*@
+                                {{item.Product_Description}}
+                            </td>
+                            <td>
+                                {{item.Product_HSN}}<br />
+                                {{item.Product_SKU}}
+                            </td>
+
+                            <td>
+                                {{item.Quantity | currency :"" : 2}}<br />
+                                {{item.UnitOfMeasurement_DisplayName}}
+                            </td>
+                            @*<td>{{item.UnitOfMeasurement_DisplayName}}</td>*@
+                            <td>{{item.PricePerUnit | currency :"" : 2}}</td>
+                            @*<td>0.00 %</td>*@
+                            <td>{{item.TotalAmount | currency :"" : 2}}</td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <!-- accepted payments column -->
+            <div class="col-xs-6">
+                <p class="lead">Terms and Conditions:</p>
+                @* <img src="../../dist/img/credit/visa.png" alt="Visa">
+                    <img src="../../dist/img/credit/mastercard.png" alt="Mastercard">
+                    <img src="../../dist/img/credit/american-express.png" alt="American Express">
+                    <img src="../../dist/img/credit/paypal2.png" alt="Paypal">*@
+                <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;" ng-if="SalesOrderPrintViewModel.SalesOrderHeader.TermsAndConditions" ng-bind="SalesOrderPrintViewModel.SalesOrderHeader.TermsAndConditions">
+                    @*@Html.Raw(Model.TermsAndConditions)*@
+                </p>
+            </div>
+            <!-- /.col -->
+            <div class="col-xs-6">
+                <p class="lead"> </p>
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <th style="width:50%">Subtotal:</th>
+                            <td><i class="fa fa-inr"></i>{{SalesOrderPrintViewModel.FinalOrderTotal | currency :"" : 2}}</td>
+                        </tr>
+                        <tr>
+                            <th>Tax</th>
+                            <td><i class="fa fa-inr"></i>{{SalesOrderPrintViewModel.TaxTotal | currency :"" : 2}}</td>
+                        </tr>
+                        <tr>
+                            <th>Shipping:</th>
+                            <td><i class="fa fa-inr"></i>0.00</td>
+                        </tr>
+                        <tr>
+                            <th>Total:</th>
+                            <td><i class="fa fa-inr"></i>{{SalesOrderPrintViewModel.FinalOrderTotal | currency :"" : 2}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+        <!-- this row will not appear when printing -->
+        <div class="modal-footer">
+            <span class="btn btn-default pull-left" ng-click="printDiv('modal-viewPrintSalesOrderDetails');"><i class="fa fa-print"></i> Print</span>
+            <span class="btn btn-primary pull-left" ng-click="downloadPDF('modal-viewPrintSalesOrderDetails');"><i class="fa fa-download"></i>Download PDF</span>
+            <span class="btn btn-sm btn-danger" ng-click="ShowConfirm('modal-viewPrintSalesOrderDetails')">Close</span>
+        </div>
+    </div>
+</section>
+<!-- /.content -->

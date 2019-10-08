@@ -1,0 +1,113 @@
+﻿@functions{
+
+    public string AntiForgeryToken()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return cookieToken + ":" + formToken;
+    }
+}
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <form name="myForm" ng-submit="myForm.$valid && createOreditAsyncForm()" novalidate>
+            <!--myForm.$valid && -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Vendor Details</h4>
+            </div>
+            <div class="modal-body">
+                <!-- general form elements -->
+                <div id="errorMessages" class="text-danger" ng-if="ValidationSummary" ng-repeat="vs in ValidationSummary">{{vs}}</div>
+                <div class="box box-primary">
+                    <div class="box-body">
+                        <input id="antiForgeryToken" data-ng-model="antiForgeryToken" type="hidden" data-ng-init="antiForgeryToken='@AntiForgeryToken()'" />
+                        <div class="form-group" ng-class="{'has-error': (myForm.TenantName.$touched || myForm.TenantName.$dirty)  && myForm.TenantName.$invalid}">
+                            <label>Tenant Name</label>
+                            <select name="TenantName" ng-model="VendorCreateOrEditViewModel.Tenant_ID" class="form-control" style="width: 100%;" ng-options="x.ID as x.Name for x in AllTenants" required>
+                                <option value="" ng-selected="VendorCreateOrEditViewModel.SelectedTenant_ID < 0">-- Select --</option>
+                            </select>
+                            <div class="help-block" ng-messages="myForm.TenantName.$error" ng-if="myForm.TenantName.$touched || myForm.TenantName.$dirty && myForm.TenantName.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.Tenant_ID" ng-bind="errors.formErrors.Tenant_ID"></span>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': (myForm.Name.$touched || myForm.Name.$dirty)  && myForm.Name.$invalid}">
+                            <label>Name</label>
+                            <input type="text" class="form-control" name="Name" ng-model="VendorCreateOrEditViewModel.Name" ng-disabled="Processing" autocomplete="off" placeholder="Enter Vendor Name" tooltip-placement="top" uib-tooltip="Enter First Name" pattern="[A-Za-z ]*$" required />
+                            <div class="help-block" ng-messages="myForm.Name.$error" ng-if="myForm.Name.$touched || myForm.Name.$dirty && myForm.Name.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.Name" ng-bind="errors.formErrors.Name"></span>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': (myForm.Code.$touched || myForm.Code.$dirty)  && myForm.Code.$invalid}">
+                            <label>Code</label>
+                            <input type="text" class="form-control" name="Code" ng-model="VendorCreateOrEditViewModel.Code" ng-disabled="Processing" autocomplete="off" placeholder="Enter Vendor Code" tooltip-placement="top" uib-tooltip="Enter Vendor Code" pattern="[0-9]*$" required />
+                            <div class="help-block" ng-messages="myForm.Code.$error" ng-if="myForm.Code.$touched || myForm.Code.$dirty && myForm.Code.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.Code" ng-bind="errors.formErrors.Code"></span>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': (myForm.Address.$touched || myForm.Address.$dirty)  && myForm.Address.$invalid}">
+                            <label>Address</label>
+                            <textarea class="form-control" name="Address" ng-model="VendorCreateOrEditViewModel.Address" ng-disabled="Processing" autocomplete="off" placeholder="Enter Vendor Address" tooltip-placement="top" uib-tooltip="Enter Vendor Address" required></textarea>
+                            <div class="help-block" ng-messages="myForm.Address.$error" ng-if="myForm.Address.$touched || myForm.Address.$dirty && myForm.Address.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.Address" ng-bind="errors.formErrors.Address"></span>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': (myForm.ContactPerson.$touched || myForm.ContactPerson.$dirty)  && myForm.ContactPerson.$invalid}">
+                            <label>Contact&nbsp;Person</label>
+                            <input type="text" class="form-control" name="ContactPerson" ng-model="VendorCreateOrEditViewModel.ContactPerson" ng-disabled="Processing" autocomplete="off" placeholder="Enter Contact Person's Name" tooltip-placement="top" uib-tooltip="Enter Contact Person's Name" pattern="[A-Za-z ]*$" required />
+                            <div class="help-block" ng-messages="myForm.ContactPerson.$error" ng-if="myForm.ContactPerson.$touched || myForm.ContactPerson.$dirty && myForm.ContactPerson.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.ContactPerson" ng-bind="errors.formErrors.ContactPerson"></span>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': (myForm.ContactNumber.$touched || myForm.ContactNumber.$dirty)  && myForm.ContactNumber.$invalid}">
+                            <label>Contact&nbsp;Number</label>
+                            <input type="text" class="form-control" name="ContactNumber" ng-model="VendorCreateOrEditViewModel.ContactNumber" ng-disabled="Processing" autocomplete="off" placeholder="Enter Contact Number" tooltip-placement="top" uib-tooltip="Enter Contact Number" pattern="[0-9]{10}" required />
+                            <div class="help-block" ng-messages="myForm.ContactNumber.$error" ng-if="myForm.ContactNumber.$touched || myForm.ContactNumber.$dirty && myForm.ContactNumber.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.ContactNumber" ng-bind="errors.formErrors.ContactNumber"></span>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': (myForm.Email.$touched || myForm.Email.$dirty) && myForm.Email.$invalid}">
+                            <label>Email</label>
+                            <input type="email" class="form-control" name="Email" ng-model="VendorCreateOrEditViewModel.Email" ng-disabled="Processing" autocomplete="off" placeholder="Enter Email" tooltip-placement="top" uib-tooltip="Enter Email" required />
+                            <div class="help-block" ng-messages="myForm.Email.$error" ng-if="myForm.Email.$touched || myForm.Email.$dirty && myForm.Email.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.Email" ng-bind="errors.formErrors.Email"></span>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': (myForm.GSTNo.$touched || myForm.GSTNo.$dirty)  && myForm.GSTNo.$invalid}">
+                            <label>GST Number</label>
+                            <input type="text" class="form-control" name="GSTNo" ng-model="VendorCreateOrEditViewModel.GSTNo" ng-disabled="Processing" autocomplete="off" placeholder="Enter GST Number" tooltip-placement="top" uib-tooltip="Enter GST Number" pattern="[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9]{1}[Z]{1}[0-9A-Z]{1}" required />
+                            <div class="help-block" ng-messages="myForm.GSTNo.$error" ng-if="myForm.GSTNo.$touched || myForm.GSTNo.$dirty && myForm.GSTNo.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.GSTNo" ng-bind="errors.formErrors.GSTNo"></span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" ng-if="!Processing" class="btn btn-sm btn-success pull-left" ng-disabled="myForm.$invalid">Save</button>
+                <span ng-if="Processing" class="btn btn-sm btn-success pull-left">Processing...</span>
+                <button type="reset" class="btn btn-sm btn-default pull-left" ng-click="Reset()">Clear</button>
+                <span class="btn btn-sm btn-default" data-dismiss="modal">Close</span>
+            </div>
+        </form>
+    </div>
+    <!-- /.modal-content -->
+</div>
