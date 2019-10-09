@@ -17,6 +17,12 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SHF.DB", "SHF.DB\SHF.DB.sql
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SHF", "SHF\SHF.csproj", "{2597F47F-7520-462B-830C-00187BFCD1D3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{01430F54-56D8-4363-9B28-996F0A6A338F}"
+	ProjectSection(SolutionItems) = preProject
+		C:\Users\Developer\Downloads\SERVICESWISE PAGE FORMAT REQUIRED.pdf = C:\Users\Developer\Downloads\SERVICESWISE PAGE FORMAT REQUIRED.pdf
+		C:\Users\Developer\Downloads\shiva.xlsx = C:\Users\Developer\Downloads\shiva.xlsx
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
