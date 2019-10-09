@@ -1,0 +1,82 @@
+﻿@functions{
+
+    public string AntiForgeryToken()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return cookieToken + ":" + formToken;
+    }
+}
+
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <form name="myForm" ng-submit="myForm.$valid && createOreditAsyncForm()" novalidate>
+            <!--myForm.$valid && -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">UOM Product Mapping Details</h4>
+            </div>
+            <div class="modal-body">
+                <!-- general form elements -->
+                <div id="errorMessages" class="text-danger" ng-if="ValidationSummary" ng-repeat="vs in ValidationSummary">{{vs}}</div>
+                <div class="box box-primary">
+                    <div class="box-body">
+                        <input id="antiForgeryToken" data-ng-model="antiForgeryToken" type="hidden" data-ng-init="antiForgeryToken='@AntiForgeryToken()'" />
+                        <div class="form-group" ng-class="{'has-error': (myForm.TenantName.$touched || myForm.TenantName.$dirty)  && myForm.TenantName.$invalid}">
+                            <label>Tenant Name</label>
+                            <select name="TenantName" ng-model="ProductUnitOfMeasurementCreateOrEditViewModel.Tenant_ID" class="form-control" style="width: 100%;" ng-options="x.ID as x.Name for x in AllTenants" ng-change="LoadUnitOfMeasurementProducts()" required>
+                                <option value="" ng-selected="ProductUnitOfMeasurementCreateOrEditViewModel.SelectedTenant_ID < 0">-- Select --</option>
+                            </select>
+                            <div class="help-block" ng-messages="myForm.TenantName.$error" ng-if="myForm.TenantName.$touched || myForm.TenantName.$dirty && myForm.TenantName.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.Tenant_ID" ng-bind="errors.formErrors.Tenant_ID"></span>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': (myForm.UnitOfMeasurementName.$touched || myForm.UnitOfMeasurementName.$dirty)  && myForm.UnitOfMeasurementName.$invalid}">
+                            <label>UOM Name</label>
+                            <select name="UnitOfMeasurementName" ng-model="ProductUnitOfMeasurementCreateOrEditViewModel.UnitOfMeasurement_ID" class="form-control" style="width: 100%;" ng-options="x.ID as x.Name for x in AllUnitOfMeasurements" required>
+                                <option value="" ng-selected="ProductUnitOfMeasurementCreateOrEditViewModel.SelectedUnitOfMeasurement_ID < 0">-- Select --</option>
+                            </select>
+                            <div class="help-block" ng-messages="myForm.UnitOfMeasurementName.$error" ng-if="myForm.UnitOfMeasurementName.$touched || myForm.UnitOfMeasurementName.$dirty && myForm.UnitOfMeasurementName.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.UnitOfMeasurement_ID" ng-bind="errors.formErrors.UnitOfMeasurement_ID"></span>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': (myForm.ProductName.$touched || myForm.ProductName.$dirty)  && myForm.ProductName.$invalid}">
+                            <label>Product Name</label>
+                            <select name="ProductName" ng-model="ProductUnitOfMeasurementCreateOrEditViewModel.Product_ID" class="form-control" style="width: 100%;" ng-options="x.ID as x.Name for x in AllProducts" required>
+                                <option value="" ng-selected="ProductUnitOfMeasurementCreateOrEditViewModel.SelectedProduct_ID < 0">-- Select --</option>
+                            </select>
+                            <div class="help-block" ng-messages="myForm.ProductName.$error" ng-if="myForm.ProductName.$touched || myForm.ProductName.$dirty && myForm.ProductName.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.Product_ID" ng-bind="errors.formErrors.Product_ID"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Is Mapped</label><br />
+                            <label>
+                                <!--https://codepen.io/mosluce/pen/yYmXGz-->
+                                <input icheck type="checkbox" class="form-control" ng-model="ProductUnitOfMeasurementCreateOrEditViewModel.IsActive" ng-checked="ProductUnitOfMeasurementCreateOrEditViewModel.IsActive"><span style="margin-left: 10px;">{{ProductUnitOfMeasurementCreateOrEditViewModel.IsActive ? 'Yes' : 'No'}} </span>
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" ng-if="!Processing" class="btn btn-sm btn-success pull-left" ng-disabled="myForm.$invalid">Save</button>
+                <span ng-if="Processing" class="btn btn-sm btn-success pull-left">Processing...</span>
+                <button type="button" ng-click="Reset()" class="btn btn-sm btn-default pull-left">Clear</button>
+                <span class="btn btn-sm btn-default" ng-click="Close()" data-dismiss="modal">Close</span>
+            </div>
+        </form>
+    </div>
+    <!-- /.modal-content -->
+</div>
+

@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "LoggedOut";
+    Layout = "~/Views/Shared/_LoginRegister.cshtml";
+}
+
+
+<div class="login-box">
+    <div class="login-logo">
+        <a href="#">You are successfully<br /><b>Logged Out.</b></a>
+    </div>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        function continue_to_root() {
+            window.history = null;
+            let url = '/Home/Index';
+            window.setTimeout(function () {
+                window.open(url, "_self", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=yes,copyhistory=no", true);
+            }, 100);
+        }
+
+        $(document).ready(function () {         
+            sessionStorage = null;
+            localStorage = null;
+            continue_to_root();
+        });
+    </script>
+}

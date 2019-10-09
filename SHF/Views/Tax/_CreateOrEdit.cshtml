@@ -1,0 +1,97 @@
+﻿@functions{
+
+    public string AntiForgeryToken()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return cookieToken + ":" + formToken;
+    }
+}
+
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <form name="myForm" ng-submit="myForm.$valid && createOreditAsyncForm()" novalidate>
+            <!--myForm.$valid && -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Tax Details</h4>
+            </div>
+            <div class="modal-body">
+                <!-- general form elements -->
+                <div id="errorMessages" class="text-danger" ng-if="ValidationSummary" ng-repeat="vs in ValidationSummary">{{vs}}</div>
+                <div class="box box-primary">
+                    <div class="box-body">
+                        <input id="antiForgeryToken" data-ng-model="antiForgeryToken" type="hidden" data-ng-init="antiForgeryToken='@AntiForgeryToken()'" />
+                        <div class="form-group" ng-class="{'has-error': (myForm.TenantName.$touched || myForm.TenantName.$dirty)  && myForm.TenantName.$invalid}">
+                            <label>Tenant Name</label>
+                            <select name="TenantName" ng-model="TaxCreateOrEditViewModel.Tenant_ID" class="form-control" style="width: 100%;" ng-options="x.ID as x.Name for x in AllTenants" required>
+                                <option value="" ng-selected="TaxCreateOrEditViewModel.SelectedTenant_ID < 0">-- Select --</option>
+                            </select>
+                            <div class="help-block" ng-messages="myForm.TenantName.$error" ng-if="myForm.TenantName.$touched || myForm.TenantName.$dirty && myForm.TenantName.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.Tenant_ID" ng-bind="errors.formErrors.Tenant_ID"></span>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': (myForm.DisplayName.$touched || myForm.DisplayName.$dirty)  && myForm.DisplayName.$invalid}">
+                            <label>Tax Name</label>
+                            <input type="text" class="form-control" name="DisplayName" ng-model="TaxCreateOrEditViewModel.DisplayName" ng-disabled="Processing" ng-remote-validate="/account/isExistsUsername" ng-remote-method="GET" autocomplete="off" placeholder="Enter Tax Name" tooltip-placement="top" uib-tooltip="Enter Tax Name" pattern="[A-Za-z ]*$" required />
+                            <div class="help-block" ng-messages="myForm.DisplayName.$error" ng-if="myForm.DisplayName.$touched || myForm.DisplayName.$dirty && myForm.DisplayName.$invalid || myForm.DisplayName.$error.ngRemoteValidate">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                                <span ng-show="myForm.DisplayName.$error.ngRemoteValidate">
+                                    Tax name already exist. Please enter another Tax name.
+                                </span>
+                            </div>
+
+
+                            <span class="text-danger" ng-show="errors.formErrors.DisplayName" ng-bind="errors.formErrors.DisplayName"></span>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': (myForm.DocumentNumber.$touched || myForm.DocumentNumber.$dirty)  && myForm.DocumentNumber.$invalid}">
+                            <label>Document Number</label>
+                            <input type="text" class="form-control" name="DocumentNumber" ng-model="TaxCreateOrEditViewModel.DocumentNumber" ng-disabled="Processing" autocomplete="off" placeholder="Enter Document Number" tooltip-placement="top" uib-tooltip="Enter Document Number" pattern="[A-Za-z0-9]*$" required />
+                            <div class="help-block" ng-messages="myForm.DocumentNumber.$error" ng-if="myForm.DocumentNumber.$touched || myForm.DocumentNumber.$dirty && myForm.DocumentNumber.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.DocumentNumber" ng-bind="errors.formErrors.DocumentNumber"></span>
+                        </div>
+                        @*<div class="form-group" ng-class="{'has-error': (myForm.StartDate.$touched || myForm.StartDate.$dirty)  && myForm.StartDate.$invalid}">
+                                <label>Start Date</label>
+                                <div class="input-group date">
+                                    <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                    <input type="text" class="form-control pull-right" name="StartDate" ng-Date="" dpFormat="dd/mm/yyyy" ng-model="TaxCreateOrEditViewModel.StartDate" ng-disabled="Processing" placeholder="Enter Start Date" tooltip-placement="top" uib-tooltip="Enter Start Date" required />
+                                </div>
+                                <div class="help-block" ng-messages="myForm.StartDate.$error" ng-if="myForm.StartDate.$touched || myForm.StartDate.$dirty && myForm.StartDate.$invalid">
+                                    <div ng-messages-include="~/ValidationMessages.html"></div>
+                                </div>
+                                <span class="text-danger" ng-show="errors.formErrors.StartDate" ng-bind="errors.formErrors.StartDate"></span>
+                            </div>
+                            <div class="form-group" ng-class="{'has-error': (myForm.EndDate.$touched || myForm.EndDate.$dirty)  && myForm.EndDate.$invalid}">
+                                <label>End Date</label>
+                                <div class="input-group date">
+                                    <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                    <input type="text" class="form-control pull-right" name="EndDate" ng-Date="" dpFormat="dd/mm/yyyy" ng-model="TaxCreateOrEditViewModel.EndDate" ng-disabled="Processing" placeholder="Enter End Date" tooltip-placement="top" uib-tooltip="Enter End Date" required />
+                                </div>
+                                <div class="help-block" ng-messages="myForm.EndDate.$error" ng-if="myForm.EndDate.$touched || myForm.EndDate.$dirty && myForm.EndDate.$invalid">
+                                    <div ng-messages-include="~/ValidationMessages.html"></div>
+                                </div>
+                                <span class="text-danger" ng-show="errors.formErrors.EndDate" ng-bind="errors.formErrors.EndDate"></span>
+                            </div>*@
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" ng-if="!Processing" class="btn btn-sm btn-success pull-left" ng-disabled="myForm.$invalid">Save</button>
+                <span ng-if="Processing" class="btn btn-sm btn-success pull-left">Processing...</span>
+                <button type="button" ng-click="Reset()" class="btn btn-sm btn-default pull-left">Clear</button>
+                <span class="btn btn-sm btn-default" data-dismiss="modal">Close</span>
+            </div>
+        </form>
+    </div>
+    <!-- /.modal-content -->
+</div>
+

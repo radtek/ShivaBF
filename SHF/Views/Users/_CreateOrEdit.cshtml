@@ -1,0 +1,147 @@
+﻿@functions{
+    public string AntiForgeryToken()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return cookieToken + ":" + formToken;
+    }
+}
+
+
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <form name="myForm" ng-submit="myForm.$valid && createOreditAsyncForm()" novalidate>
+            <!--myForm.$valid && -->
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="ShowConfirm('modal-createOredit')" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Users Details</h4>
+            </div>
+            <div class="modal-body">
+                <!-- general form elements -->
+                <div id="errorMessages" class="text-danger" ng-if="ValidationSummary" ng-repeat="vs in ValidationSummary">{{vs}}</div>
+                <div class="box box-primary">
+                    <div class="box-body">
+                        <input id="antiForgeryToken" data-ng-model="antiForgeryToken" type="hidden" data-ng-init="antiForgeryToken='@AntiForgeryToken()'" />
+
+
+                        <div class="form-group" ng-if="RegisterOrEditViewModel.ID == undefined || RegisterOrEditViewModel.ID==null">
+                            <label>Tenant</label>
+                            <select class="form-control" ng-model="RegisterOrEditViewModel.Tenant_ID" ng-options="allTenants.ID as allTenants.Name for allTenants in AllTenants" ng-change="BindRolesDropdownList()" data-placeholder="Select Tennant" style="width: 100%;">
+                                <option value="" ng-selected="RegisterOrEditViewModel.SelectedTenant_ID < 0">-- Select --</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': (myForm.FirstName.$touched || myForm.FirstName.$dirty)  && myForm.FirstName.$invalid}">
+                            <label>First&nbsp;</label>
+                            <input type="text" class="form-control" name="FirstName" ng-model="RegisterOrEditViewModel.FirstName" ng-disabled="Processing" autocomplete="off" placeholder="Enter First Name" tooltip-placement="top" uib-tooltip="Enter First Name" pattern="[A-Za-z]*$" required />
+                            <div class="help-block" ng-messages="myForm.FirstName.$error" ng-if="myForm.FirstName.$touched || myForm.FirstName.$dirty && myForm.FirstName.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.FirstName" ng-bind="errors.formErrors.FirstName"></span>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': (myForm.LastName.$touched || myForm.LastName.$dirty)  && myForm.LastName.$invalid}">
+                            <label>Last&nbsp;Name</label>
+                            <input type="text" class="form-control" name="LastName" ng-model="RegisterOrEditViewModel.LastName" ng-disabled="Processing" autocomplete="off" placeholder="Enter Last Name" tooltip-placement="top" uib-tooltip="Enter Last Name" pattern="[A-Za-z]*$" required />
+                            <div class="help-block" ng-messages="myForm.LastName.$error" ng-if="myForm.LastName.$touched || myForm.LastName.$dirty && myForm.LastName.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.LastName" ng-bind="errors.formErrors.LastName"></span>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': (myForm.Email.$touched || myForm.Email.$dirty) && myForm.Email.$invalid}">
+                            <label>Email</label>
+                            <input type="email" class="form-control" name="Email" ng-model="RegisterOrEditViewModel.Email" ng-disabled="Processing" ng-remote-validate="/account/isExistsEmail" ng-remote-method="GET" autocomplete="off" placeholder="Enter Email" tooltip-placement="top" uib-tooltip="Enter Email" required />
+                            <div class="help-block" ng-messages="myForm.Email.$error" ng-if="myForm.Email.$touched || myForm.Email.$dirty && myForm.Email.$invalid || myForm.Email.$error.ngRemoteValidate">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                                <span ng-show="myForm.Email.$error.ngRemoteValidate">
+                                    Email already exist. Please enter another Email.
+                                </span>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.Email" ng-bind="errors.formErrors.Email"></span>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': (myForm.PhoneNumber.$touched || myForm.PhoneNumber.$dirty) && myForm.PhoneNumber.$invalid}">
+                            <label>Phone&nbsp;Number</label>
+                            <input type="text" class="form-control" name="PhoneNumber" ng-model="RegisterOrEditViewModel.PhoneNumber" ng-disabled="Processing" autocomplete="off" placeholder="Enter Phone Number" tooltip-placement="top" uib-tooltip="Enter Phone Number" pattern="[0-9]{10}" required />
+                            <div class="help-block" ng-messages="myForm.PhoneNumber.$error" ng-if="myForm.PhoneNumber.$touched || myForm.PhoneNumber.$dirty && myForm.PhoneNumber.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.MobileNo" ng-bind="errors.formErrors.MobileNo"></span>
+                        </div>
+
+
+                        <div ng-if="RegisterOrEditViewModel.ID == undefined || RegisterOrEditViewModel.ID==null">
+                            <div class="form-group" ng-class="{'has-error': (myForm.Username.$touched || myForm.Username.$dirty)  && myForm.Username.$invalid}">
+                                <label>User&nbsp;Name</label>
+                                <input type="text" class="form-control" name="Username" ng-model="RegisterOrEditViewModel.Username" ng-disabled="Processing" ng-remote-validate="/account/isExistsUsername" ng-remote-method="GET" autocomplete="off" placeholder="Enter User Name" tooltip-placement="top" uib-tooltip="Enter User Name" pattern="[A-Za-z0-9]*$" required />
+                                <div class="help-block" ng-messages="myForm.Username.$error" ng-if="myForm.Username.$touched || myForm.Username.$dirty && myForm.Username.$invalid || myForm.Username.$error.ngRemoteValidate">
+                                    <div ng-messages-include="~/ValidationMessages.html"></div>
+                                    <span ng-show="myForm.Username.$error.ngRemoteValidate">
+                                        Username already exist. Please enter another Username.
+                                    </span>
+                                </div>
+                                <span class="text-danger" ng-show="errors.formErrors.Username" ng-bind="errors.formErrors.Username"></span>
+                            </div>
+
+                            <div class="form-group" ng-class="{'has-error': (myForm.Password.$touched || myForm.Password.$dirty) && myForm.Password.$invalid}">
+                                <label>Password</label>
+                                <input type="password" class="form-control" name="Password" ng-model="RegisterOrEditViewModel.Password" ng-disabled="Processing" autocomplete="off" placeholder="Enter Password" tooltip-placement="top" uib-tooltip="Enter Password" required />
+                                <div class="help-block" ng-messages="myForm.Password.$error" ng-if="myForm.Password.$touched || myForm.Password.$dirty && myForm.Password.$invalid">
+                                    <div ng-messages-include="~/ValidationMessages.html"></div>
+                                </div>
+                                <span class="text-danger" ng-show="errors.formErrors.Password" ng-bind="errors.formErrors.Password"></span>
+                            </div>
+
+                            <div class="form-group" ng-class="{'has-error': (myForm.ConfirmPassword.$touched || myForm.ConfirmPassword.$dirty) && myForm.ConfirmPassword.$invalid}">
+                                <label>Confirm Password</label>
+                                <input type="password" class="form-control" name="ConfirmPassword" ng-model="RegisterOrEditViewModel.ConfirmPassword" ng-disabled="Processing" autocomplete="off" placeholder="Enter Confirm Password" ng-pattern="RegisterOrEditViewModel.Password" tooltip-placement="top" uib-tooltip="Enter Confirm Password" required />
+                                <div class="help-block" ng-messages="myForm.ConfirmPassword.$error" ng-if="myForm.ConfirmPassword.$touched || myForm.ConfirmPassword.$dirty && myForm.ConfirmPassword.$invalid">
+                                    <div ng-if="myForm.ConfirmPassword.$error.required">Password must match.</div>
+                                    <div ng-if="myForm.ConfirmPassword.$error.pattern">Password must match.</div>
+                                </div>
+                                <span class="text-danger" ng-if="errors.formErrors.ConfirmPassword" ng-bind="errors.formErrors.ConfirmPassword"></span>
+                            </div>
+
+                        </div>
+
+                        @*<div class="form-group">
+                        <label>Roles</label>
+                        <select class="form-control multiselect" ng-model="RegisterOrEditViewModel.AspNetRolesViewModel" ng-options="myRole.ID as myRole.Name for myRole in MyRoles" multiple="multiple" data-placeholder="Select Roles" style="width: 100%;">
+                        </select>
+                    </div>*@
+
+                        <div class="form-group">
+                            <label>Roles</label>
+                            <div style="width: 100% !important;" ng-dropdown-multiselect="" extra-settings="dropdownSetting" options="MyRoles" selected-model="MySelectedRoles" checkboxes="true"></div>
+                        </div>
+
+                        @*<div class="form-group">
+                        <label>Multiple</label>
+                        <div class="col-sm-6">
+                            <ui-select ng-model="MySelectedRoles" multiple theme="selectize" title="Choose a person">
+                                <ui-select-match placeholder="Select or search a person in the list...">{{$item.Name}}</ui-select-match>
+                                <ui-select-choices repeat="item in MyRoles | filter: $select.search">
+                                    <div ng-bind-html="item.Name | highlight: $select.search"></div>
+                                    <small ng-bind-html="item.Name | highlight: $select.search"></small>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>*@
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" ng-if="!Processing" class="btn btn-sm btn-success pull-left" ng-disabled="myForm.$invalid">Save</button>
+                <span ng-if="Processing" class="btn btn-sm btn-success pull-left">Processing...</span>
+                <button ng-click="Clear()" class="btn btn-sm btn-default pull-left">Clear</button>
+                <span class="btn btn-sm btn-danger" ng-click="ShowConfirm('modal-createOredit')">Close</span>
+            </div>
+        </form>
+    </div>
+    <!-- /.modal-content -->
+</div>

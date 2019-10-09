@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>
+        SHIVA
+        <small>B F Solutions</small>
+    </h1>
+</div>
+
+@section scripts {
+
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">  
+        function GetMenuAccessPolicy() {
+            $.ajax({
+                type: 'GET',
+                url: '/Get/MenuAccessPolicy/GetMenuAccessPolicyAsync',
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                async: false,
+                processData: true,
+                cache: true,
+                beforeSend: function (xhr) {
+                    $.blockUI({ message: '<h1><img src="../../../Content/Images/loader.gif" /> Loading...</h1>' });
+                },
+                success: function (result, status, xhr) {
+                    if (result.Entity) {
+                        if (typeof (Storage) !== "undefined") {
+                            sessionStorage.setItem("MENU_ACCESS_POLICY", JSON.stringify(result.Entity));
+                        } else {
+                            alert('Sorry! No Web Storage support..');
+                        }
+                    }
+                    console.clear();
+                },
+                error: function (xhr, status, error) {
+                    alert("Whooaaa! Something went wrong...");
+                },
+                complete: function (xhr, status) {
+                    $.unblockUI();                   
+                },
+            });
+        }
+
+
+        $(document).ready(function () {
+            if (window.sessionStorage) {
+                if (sessionStorage.getItem("MENU_ACCESS_POLICY") === null) {
+                   // GetMenuAccessPolicy();
+                }
+            }           
+        });
+
+    </script>
+}

@@ -1,0 +1,26 @@
+﻿
+
+@{
+    ViewBag.Title = "Logging Out";
+    Layout = "~/Views/Shared/_LoginRegister.cshtml";
+}
+
+
+<div class="login-box">
+    <div class="login-logo">
+        <a href="#">You are logging out...</a>
+    </div>
+</div>
+
+@section scripts {
+
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            window.history = null;
+            window.setTimeout(function () {
+                window.location = "/Security/Account/Home/LoggedOut";
+            }, 1000);
+        });
+    </script>
+}

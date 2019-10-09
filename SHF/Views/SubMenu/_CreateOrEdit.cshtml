@@ -1,0 +1,84 @@
+﻿@functions{
+    public string AntiForgeryToken()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return cookieToken + ":" + formToken;
+    }
+}
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <form name="myForm" ng-submit="myForm.$valid && createOreditAsyncForm()" novalidate>
+            <!--myForm.$valid && -->
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="ShowConfirm('modal-createOredit')" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Customer Details</h4>
+            </div>
+            <div class="modal-body">
+                <!-- general form elements -->
+                <div id="errorMessages" class="text-danger" ng-if="ValidationSummary" ng-repeat="vs in ValidationSummary">{{vs}}</div>
+                <div class="box box-primary">
+
+                    <div class="box-body">
+                        <div class="form-group" ng-class="{'has-error': (myForm.Name.$touched || myForm.Name.$dirty) && myForm.Name.$invalid}">
+                            <input id="antiForgeryToken" data-ng-model="antiForgeryToken" type="hidden" data-ng-init="antiForgeryToken='@AntiForgeryToken()'" />
+                            <label>Menu Name</label>
+                            <input type="text" class="form-control" name="Name" ng-model="SubMenuCreateOrEditViewModel.Name" ng-disabled="Processing" autocomplete="off" placeholder="Enter Menu Name" tooltip-placement="top" uib-tooltip="Enter Menu Name" pattern="[A-za-z ]*$" required />
+                            <div class="help-block" ng-messages="myForm.Name.$error" ng-if="myForm.Name.$touched || myForm.Name.$dirty && myForm.Name.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.Name" ng-bind="errors.formErrors.Name"></span>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': (myForm.Url.$touched || myForm.Url.$dirty) && myForm.Url.$invalid}">
+                            <label>Url</label>
+                            <input type="text" class="form-control" name="Url" ng-model="SubMenuCreateOrEditViewModel.Url" ng-disabled="Processing" autocomplete="off" placeholder="Enter Url" tooltip-placement="top" uib-tooltip="Enter Url" required />
+                            <div class="help-block" ng-messages="myForm.Url.$error" ng-if="myForm.Url.$touched || myForm.Url.$dirty && myForm.Url.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-if="errors.formErrors.Url" ng-bind="errors.formErrors.Url"></span>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': (myForm.IconClass.$touched || myForm.IconClass.$dirty) && myForm.IconClass.$invalid}">
+                            <label>Icon</label>
+                            <input type="text" class="form-control" name="IconClass" ng-model="SubMenuCreateOrEditViewModel.IconClass" ng-disabled="Processing" autocomplete="off" placeholder="Enter Icon Class" tooltip-placement="top" uib-tooltip="Enter Icon Class" required />
+                            <div class="help-block" ng-messages="myForm.IconClass.$error" ng-if="myForm.IconClass.$touched || myForm.IconClass.$dirty && myForm.IconClass.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-if="errors.formErrors.IconClass" ng-bind="errors.formErrors.IconClass"></span>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': (myForm.OrderBy.$touched || myForm.OrderBy.$dirty) && myForm.OrderBy.$invalid}">
+                            <label>Order</label>
+                            <input type="number" min="1" class="form-control" name="OrderBy" ng-model="SubMenuCreateOrEditViewModel.OrderBy" ng-disabled="Processing" autocomplete="off" placeholder="Enter Sequence No." tooltip-placement="top" uib-tooltip="Enter Sequence No." required />
+                            <div class="help-block" ng-messages="myForm.OrderBy.$error" ng-if="myForm.OrderBy.$touched || myForm.OrderBy.$dirty && myForm.OrderBy.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-if="errors.formErrors.OrderBy" ng-bind="errors.formErrors.OrderBy"></span>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': (myForm.ParrentMenu_ID.$touched || myForm.ParrentMenu_ID.$dirty) && myForm.ParrentMenu_ID.$invalid}">
+                            <label>Parrent Menu</label>
+                            <select class="form-control" ng-model="SubMenuCreateOrEditViewModel.ParrentMenu_ID" ng-options="parrentMenus.ID as parrentMenus.Name for parrentMenus in ParrentMenuDropDownListViewModel" data-placeholder="Select Parrent Menu" style="width: 100%;">
+                                <option value="" ng-selected="SubMenuCreateOrEditViewModel.SelectedParrentMenu_ID < 0">-- Select --</option>
+                            </select>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" ng-if="!Processing" class="btn btn-sm btn-success pull-left" ng-disabled="myForm.$invalid">Save</button>
+                <span ng-if="Processing" class="btn btn-sm btn-success pull-left">Processing...</span>
+                <button type="reset" class="btn btn-sm btn-default pull-left">Clear</button>
+                <span class="btn btn-sm btn-danger" ng-click="ShowConfirm('modal-createOredit')">Close</span>
+            </div>
+        </form>
+    </div>
+    <!-- /.modal-content -->
+</div>
