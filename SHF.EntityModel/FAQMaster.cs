@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace SHF.EntityModel
 {
+    [Table("Tbl_FAQMaster", Schema = "dbo")]
     public class FAQMaster : BaseEntity
     {
         [Key]

@@ -43,6 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActiveMenuViewModel.cs" />
+    <Compile Include="SubSubCategoriesMasterViewModel.cs" />
+    <Compile Include="SubCategoriesMasterViewModel.cs" />
+    <Compile Include="CategoriesMasterViewModel.cs" />
     <Compile Include="BankMasterViewModel.cs" />
     <Compile Include="CodeValueIndexViewModel.cs" />
     <Compile Include="FAQMasterViewModel.cs" />

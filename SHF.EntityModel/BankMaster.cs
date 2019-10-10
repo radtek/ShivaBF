@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace SHF.EntityModel
 {
-   public class BankMaster : BaseEntity
+    [Table("Tbl_BankMaster", Schema = "dbo")]
+    public class BankMaster : BaseEntity
     {
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]

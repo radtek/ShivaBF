@@ -47,5 +47,8 @@ namespace SHF.DataAccess
         public DbSet<EntityModel.PriceFeaturesMaster> PriceFeaturesMaster { get; set; }
         public DbSet<EntityModel.FAQMaster> FAQMaster { get; set; }
         public DbSet<EntityModel.CategoriesMaster> CategoriesMaster { get; set; }
+        public DbSet<EntityModel.SubCategoriesMaster> SubCategoriesMaster { get; set; }
+        public DbSet<EntityModel.SubSubCategoriesMaster> SubSubCategoriesMaster { get; set; }
+        public DbSet<EntityModel.Services1Master> Services1Master { get; set; }
     }
 }

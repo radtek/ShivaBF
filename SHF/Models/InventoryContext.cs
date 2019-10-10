@@ -62,6 +62,10 @@ namespace SHF.Models
         public DbSet<SHF.EntityModel.PriceFeaturesMaster> PriceFeaturesMaster { get; set; }
         public DbSet<SHF.EntityModel.FAQMaster> FAQMaster { get; set; }
         public DbSet<SHF.EntityModel.CategoriesMaster> CategoriesMaster { get; set; }
+        public DbSet<SHF.EntityModel.SubCategoriesMaster> SubCategoriesMaster { get; set; }
+        public DbSet<SHF.EntityModel.SubSubCategoriesMaster> SubSubCategoriesMaster { get; set; }
+        public DbSet<SHF.EntityModel.Services1Master> Services1Master { get; set; }
+        
 
     }
 }

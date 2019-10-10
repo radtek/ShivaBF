@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace SHF.EntityModel
 {
-   public class StateMaster : BaseEntity
+    [Table("Tbl_StateMaster", Schema = "dbo")]
+    public class StateMaster : BaseEntity
     {
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]

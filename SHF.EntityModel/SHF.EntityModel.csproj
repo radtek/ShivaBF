@@ -54,6 +54,9 @@
     <Compile Include="AspNetUserRole.cs" />
     <Compile Include="BankMaster.cs" />
     <Compile Include="BaseEntity.cs" />
+    <Compile Include="Services1Master.cs" />
+    <Compile Include="SubSubCategoriesMaster.cs" />
+    <Compile Include="SubCategoriesMaster.cs" />
     <Compile Include="CategoriesMaster.cs" />
     <Compile Include="Code.cs" />
     <Compile Include="CodeValue.cs" />

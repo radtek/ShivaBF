@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace SHF.EntityModel
 {
+    [Table("Tbl_PriceFeaturesMaster", Schema = "dbo")]
     public class PriceFeaturesMaster : BaseEntity
     {
         [Key]
