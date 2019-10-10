@@ -43,6 +43,9 @@ namespace SHF.DataAccess
         public DbSet<EntityModel.SubMenu> SubMenu { get; set; }
         public DbSet<EntityModel.AspNetRoleSubMenu> AspNetRoleSubMenu { get; set; }
         public DbSet<EntityModel.Message> Messages { get; set; }
-       
+        public DbSet<EntityModel.BankMaster> BankMaster { get; set; }
+        public DbSet<EntityModel.PriceFeaturesMaster> PriceFeaturesMaster { get; set; }
+        public DbSet<EntityModel.FAQMaster> FAQMaster { get; set; }
+        public DbSet<EntityModel.CategoriesMaster> CategoriesMaster { get; set; }
     }
 }

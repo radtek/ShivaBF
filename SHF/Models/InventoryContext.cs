@@ -58,6 +58,10 @@ namespace SHF.Models
         public DbSet<SHF.EntityModel.SubMenu> SubMenu { get; set; }
         public DbSet<SHF.EntityModel.AspNetRoleSubMenu> AspNetRoleSubMenu { get; set; }
         public DbSet<SHF.EntityModel.Message> Messages { get; set; }
-       
+        public DbSet<SHF.EntityModel.BankMaster> BankMaster { get; set; }
+        public DbSet<SHF.EntityModel.PriceFeaturesMaster> PriceFeaturesMaster { get; set; }
+        public DbSet<SHF.EntityModel.FAQMaster> FAQMaster { get; set; }
+        public DbSet<SHF.EntityModel.CategoriesMaster> CategoriesMaster { get; set; }
+
     }
 }

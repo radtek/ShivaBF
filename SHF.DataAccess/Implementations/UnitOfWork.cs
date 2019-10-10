@@ -31,7 +31,10 @@ namespace SHF.DataAccess.Implementations
         private GenericRepository<EntityModel.SubMenu> _SubMenuRepository;
         private GenericRepository<EntityModel.AspNetRoleSubMenu> _AspNetRoleSubMenuRepository;
         private GenericRepository<EntityModel.Message> _MessageRepository;
-       
+        private GenericRepository<EntityModel.BankMaster> _BankMasterRepository;
+        private GenericRepository<EntityModel.PriceFeaturesMaster> _PriceFeaturesMasterRepository;
+        private GenericRepository<EntityModel.FAQMaster> _FAQMasterRepository;
+
         #endregion
 
 
@@ -163,7 +166,41 @@ namespace SHF.DataAccess.Implementations
             }
         }
 
-      
+        public GenericRepository<EntityModel.BankMaster> BankMasterRepository
+        {
+            get
+            {
+                if (this._BankMasterRepository == null)
+                {
+                    this._BankMasterRepository = new GenericRepository<EntityModel.BankMaster>(context);
+                }
+                return _BankMasterRepository;
+            }
+        }
+        public GenericRepository<EntityModel.PriceFeaturesMaster> PriceFeaturesMasterRepository
+        {
+            get
+            {
+                if (this._PriceFeaturesMasterRepository == null)
+                {
+                    this._PriceFeaturesMasterRepository = new GenericRepository<EntityModel.PriceFeaturesMaster>(context);
+                }
+                return _PriceFeaturesMasterRepository;
+            }
+        }
+        public GenericRepository<EntityModel.FAQMaster> FAQMasterRepository
+        {
+            get
+            {
+                if (this._FAQMasterRepository == null)
+                {
+                    this._FAQMasterRepository = new GenericRepository<EntityModel.FAQMaster>(context);
+                }
+                return _FAQMasterRepository;
+            }
+        }
+
+
         #endregion
 
         #region [Constructors]

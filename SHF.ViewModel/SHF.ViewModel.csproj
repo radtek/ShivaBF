@@ -43,7 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActiveMenuViewModel.cs" />
+    <Compile Include="BankMasterViewModel.cs" />
     <Compile Include="CodeValueIndexViewModel.cs" />
+    <Compile Include="FAQMasterViewModel.cs" />
     <Compile Include="MessageIndexViewModel.cs" />
     <Compile Include="AspNetRoleIndexViewModel.cs" />
     <Compile Include="AspNetRoleSubMenuIndexViewModel.cs" />
@@ -51,6 +53,7 @@
     <Compile Include="AspNetUserRoleIndexViewModel.cs" />
     <Compile Include="BaseViewModel.cs" />
     <Compile Include="BusinessResultViewModel.cs" />
+    <Compile Include="PriceFeaturesMasterViewModel.cs" />
     <Compile Include="TenantCreateOrEditViewModel.cs" />
     <Compile Include="TenantDeleteViewModel.cs" />
     <Compile Include="TenantDropdownListViewModel.cs" />

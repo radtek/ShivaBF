@@ -8,19 +8,17 @@ using System.Threading.Tasks;
 
 namespace SHF.EntityModel
 {
-    [Table("Tbl_Application_Menu", Schema = "dbo")]
-    public class ApplicationMenu : BaseEntity
+    public class PriceFeaturesMaster : BaseEntity
     {
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        [Column("Id", Order = 1)]
+        [Column(Order = 1)]
         public virtual long ID { get; set; }
-
-        [Column("Name_Or_Title")]
-        public System.String NameOrTitle { get; set; }
-
-       public System.String MyProperty { get; set; }
-
+        [Column("Description")]
+        public System.String Description { get; set; }
+        [Column("IsActive")]
+        public System.Boolean? IsActive { get; set; }
 
     }
 }
+
