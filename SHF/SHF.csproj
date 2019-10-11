@@ -409,6 +409,10 @@
     <Compile Include="Migrations\201910100616243_bankmaster.Designer.cs">
       <DependentUpon>201910100616243_bankmaster.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910110745052_setup.cs" />
+    <Compile Include="Migrations\201910110745052_setup.Designer.cs">
+      <DependentUpon>201910110745052_setup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Error\CustomHandleErrorInfo.cs" />
@@ -9122,6 +9126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910100616243_bankmaster.resx">
       <DependentUpon>201910100616243_bankmaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910110745052_setup.resx">
+      <DependentUpon>201910110745052_setup.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

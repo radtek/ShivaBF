@@ -52,6 +52,12 @@
     <Compile Include="AspNetRoleSubMenu.cs" />
     <Compile Include="AspNetUser.cs" />
     <Compile Include="AspNetUserRole.cs" />
+    <Compile Include="Services1Section10BankMapping.cs" />
+    <Compile Include="PriceFeaturesMapping.cs" />
+    <Compile Include="Services1Section6PriceMaster.cs" />
+    <Compile Include="Services1Section5Master.cs" />
+    <Compile Include="Services1Section4Master.cs" />
+    <Compile Include="Services1Section1Master.cs" />
     <Compile Include="BankMaster.cs" />
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Services1Master.cs" />

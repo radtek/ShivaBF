@@ -29,6 +29,8 @@ namespace SHF.EntityModel
         public System.Boolean? DisplayOnHome { get; set; }
         [Column("IsActive")]
         public System.Boolean? IsActive { get; set; }
+        [Column("ServiceType")]
+        public System.String ServiceType { get; set; }
         [Column("TotalViews")]
         public System.Int32 TotalViews { get; set; }
 

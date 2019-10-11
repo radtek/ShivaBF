@@ -15,11 +15,9 @@ namespace SHF.ViewModel
         public System.Int64 SubCat_Id { get; set; }
         public System.String SubCategoryName { get; set; }
         public System.Int32 DisplayIndex { get; set; }
-       
         public System.Boolean? DisplayOnHome { get; set; }
-       
         public System.Boolean? IsActive { get; set; }
-       
+        public System.String ServiceType { get; set; }
         public System.Int32 TotalViews { get; set; }
         
     }

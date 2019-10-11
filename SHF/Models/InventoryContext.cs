@@ -65,7 +65,14 @@ namespace SHF.Models
         public DbSet<SHF.EntityModel.SubCategoriesMaster> SubCategoriesMaster { get; set; }
         public DbSet<SHF.EntityModel.SubSubCategoriesMaster> SubSubCategoriesMaster { get; set; }
         public DbSet<SHF.EntityModel.Services1Master> Services1Master { get; set; }
-        
+        public DbSet<SHF.EntityModel.Services1Section10BankMapping> Services1Section10BankMapping { get; set; }
+        public DbSet<SHF.EntityModel.Services1Section1Master> Services1Section1Master { get; set; }
+        public DbSet<SHF.EntityModel.Services1Section4Master> Services1Section4Master { get; set; }
+        public DbSet<SHF.EntityModel.Services1Section5Master> Services1Section5Master { get; set; }
+        public DbSet<SHF.EntityModel.Services1Section6PriceMaster> Services1Section6PriceMaster { get; set; }
+        public DbSet<SHF.EntityModel.StateMaster> StateMaster { get; set; }
+        public DbSet<SHF.EntityModel.PriceFeaturesMapping> PriceFeaturesMapping { get; set; }
+       
 
     }
 }
