@@ -52,6 +52,8 @@
   <ItemGroup>
     <Compile Include="BaseBusiness.cs" />
     <Compile Include="busCache.cs" />
+    <Compile Include="BusinessLogic\SubCategoriesMaster.cs" />
+    <Compile Include="BusinessLogic\CategoriesMaster.cs" />
     <Compile Include="BusinessLogic\CodeValue.cs" />
     <Compile Include="BusinessLogic\Message.cs" />
     <Compile Include="BusinessLogic\AspNetRole.cs" />
@@ -61,6 +63,8 @@
     <Compile Include="BusinessLogic\BankMaster.cs" />
     <Compile Include="BusinessLogic\SubMenu.cs" />
     <Compile Include="BusinessLogic\Tenant.cs" />
+    <Compile Include="Interface\ISubCategoriesMaster.cs" />
+    <Compile Include="Interface\ICategoriesMaster.cs" />
     <Compile Include="Interface\ICode.cs" />
     <Compile Include="Interface\ICodeValue.cs" />
     <Compile Include="Interface\IMessage.cs" />

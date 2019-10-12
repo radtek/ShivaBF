@@ -44,7 +44,9 @@ namespace SHF.EntityModel
 
         [Column("MetaDescription")]
         public string MetaDescription { get; set; }
-
+        [ForeignKey("Tenant_ID")]
+        public virtual Tenant Tenant { get; set; }
+        public System.Int64? Tenant_ID { get; set; }
         public virtual IEnumerable<SubSubCategoriesMaster> SubSubCategoriesMasters { get; set; }
     }
 }

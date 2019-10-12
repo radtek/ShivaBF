@@ -379,6 +379,8 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\SubCategoriesMasterController.cs" />
+    <Compile Include="Controllers\CategoriesMasterController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CodeValueController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
@@ -406,6 +408,10 @@
     <Compile Include="Migrations\201910120601483_DBsetup.Designer.cs">
       <DependentUpon>201910120601483_DBsetup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910121655271_setup1.cs" />
+    <Compile Include="Migrations\201910121655271_setup1.Designer.cs">
+      <DependentUpon>201910121655271_setup1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Error\CustomHandleErrorInfo.cs" />
@@ -429,6 +435,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AngularControllers\AspNetUserController.js" />
+    <Content Include="AngularControllers\CategoriesMasterController.js" />
     <Content Include="AngularControllers\MenuAccessPolicyController.js" />
     <Content Include="AngularControllers\MessageController.js" />
     <Content Include="AngularControllers\BankMasterController.js" />
@@ -8930,6 +8937,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Services\AspNetRole.js" />
     <Content Include="Scripts\Services\AspNetUser.js" />
+    <Content Include="Scripts\Services\CategoriesMaster.js" />
     <Content Include="Scripts\Services\CodeValue.js" />
     <Content Include="Scripts\Services\MenuAccessPolicy.js" />
     <Content Include="Scripts\Services\Message.js" />
@@ -9031,6 +9039,12 @@
     <Content Include="Views\BankMaster\_CreateOrEdit.cshtml" />
     <Content Include="Views\BankMaster\_CreateOrEditTenant.cshtml" />
     <Content Include="Views\BankMaster\Index.cshtml" />
+    <Content Include="Views\CategoriesMaster\_CreateOrEdit.cshtml" />
+    <Content Include="Views\CategoriesMaster\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\CategoriesMaster\Index.cshtml" />
+    <Content Include="Views\SubCategoriesMaster\_CreateOrEdit.cshtml" />
+    <Content Include="Views\SubCategoriesMaster\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\SubCategoriesMaster\Index.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
@@ -9121,6 +9135,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201910120601483_DBsetup.resx">
       <DependentUpon>201910120601483_DBsetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910121655271_setup1.resx">
+      <DependentUpon>201910121655271_setup1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

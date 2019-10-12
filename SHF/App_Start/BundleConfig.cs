@@ -135,13 +135,17 @@ namespace SHF
                  "~/Scripts/Services/CodeValue.js",
                  "~/Scripts/Services/Message.js",
                  "~/Scripts/Services/BankMaster.js",
+                  "~/Scripts/Services/CategoriesMaster.js",
+                   "~/Scripts/Services/SubCategoriesMaster.js",
                  "~/AngularControllers/AspNetUserController.js",
                  "~/AngularControllers/RoleController.js",
                  "~/AngularControllers/TenantController.js",
                  "~/AngularControllers/SubMenuController.js",
                  "~/AngularControllers/MenuAccessPolicyController.js",
                  "~/AngularControllers/MessageController.js",
-                  "~/AngularControllers/BankMasterController.js"
+                  "~/AngularControllers/BankMasterController.js",
+                  "~/AngularControllers/CategoriesMasterController.js"
+                  "~/AngularControllers/SubCategoriesMasterController.js"
                 ));
 
 
