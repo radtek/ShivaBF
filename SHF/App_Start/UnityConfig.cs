@@ -30,7 +30,8 @@ namespace SHF
             container.RegisterType<Business.Interface.ICodeValue, Business.BusinessLogic.CodeValue>();
             
             container.RegisterType<Business.Interface.IMessage, Business.BusinessLogic.Message>();
-           
+            container.RegisterType<Business.Interface.IBankMaster, Business.BusinessLogic.BankMaster>();
+
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

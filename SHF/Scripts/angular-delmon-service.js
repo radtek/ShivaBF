@@ -1,6 +1,6 @@
 ﻿
 
-var app = angular.module('SHFApp');
+var app = angular.module('InventoryApp');
 
 app.service('CustomService', function () {
 

@@ -34,7 +34,17 @@ namespace SHF.DataAccess.Implementations
         private GenericRepository<EntityModel.BankMaster> _BankMasterRepository;
         private GenericRepository<EntityModel.PriceFeaturesMaster> _PriceFeaturesMasterRepository;
         private GenericRepository<EntityModel.FAQMaster> _FAQMasterRepository;
-
+        private GenericRepository<EntityModel.CategoriesMaster> _CategoriesMasterRepository;
+        private GenericRepository<EntityModel.SubCategoriesMaster> _SubCategoriesMasterRepository;
+        private GenericRepository<EntityModel.SubSubCategoriesMaster> _SubSubCategoriesMasterRepository;
+        private GenericRepository<EntityModel.Services1Master> _Services1MasterRepository;
+        private GenericRepository<EntityModel.Services1Section10BankMapping> _Services1Section10BankMappingRepository;
+        private GenericRepository<EntityModel.Services1Section1Master> _Services1Section1MasterRepository;
+        private GenericRepository<EntityModel.Services1Section4Master> _Services1Section4MasterRepository;
+        private GenericRepository<EntityModel.Services1Section5Master> _Services1Section5MasterRepository;
+        private GenericRepository<EntityModel.Services1Section6PriceMaster> _Services1Section6PriceMasterRepository;
+        private GenericRepository<EntityModel.StateMaster> _StateMasterRepository;
+        private GenericRepository<EntityModel.PriceFeaturesMapping> _PriceFeaturesMappingRepository;
         #endregion
 
 
@@ -199,8 +209,128 @@ namespace SHF.DataAccess.Implementations
                 return _FAQMasterRepository;
             }
         }
-
-
+        public GenericRepository<EntityModel.CategoriesMaster> CategoriesMasterRepository
+        {
+            get
+            {
+                if (this._CategoriesMasterRepository == null)
+                {
+                    this._CategoriesMasterRepository = new GenericRepository<EntityModel.CategoriesMaster>(context);
+                }
+                return _CategoriesMasterRepository;
+            }
+        }
+        public GenericRepository<EntityModel.SubCategoriesMaster> SubCategoriesMasterRepository
+        {
+            get
+            {
+                if (this._SubCategoriesMasterRepository == null)
+                {
+                    this._SubCategoriesMasterRepository = new GenericRepository<EntityModel.SubCategoriesMaster>(context);
+                }
+                return _SubCategoriesMasterRepository;
+            }
+        }
+        public GenericRepository<EntityModel.SubSubCategoriesMaster> SubSubCategoriesMasterRepository
+        {
+            get
+            {
+                if (this._SubSubCategoriesMasterRepository == null)
+                {
+                    this._SubSubCategoriesMasterRepository = new GenericRepository<EntityModel.SubSubCategoriesMaster>(context);
+                }
+                return _SubSubCategoriesMasterRepository;
+            }
+        }
+        public GenericRepository<EntityModel.Services1Master> Services1MasterRepository
+        {
+            get
+            {
+                if (this._Services1MasterRepository == null)
+                {
+                    this._Services1MasterRepository = new GenericRepository<EntityModel.Services1Master>(context);
+                }
+                return _Services1MasterRepository;
+            }
+        }
+        public GenericRepository<EntityModel.Services1Section10BankMapping> Services1Section10BankMappingRepository
+        {
+            get
+            {
+                if (this._Services1Section10BankMappingRepository == null)
+                {
+                    this._Services1Section10BankMappingRepository = new GenericRepository<EntityModel.Services1Section10BankMapping>(context);
+                }
+                return _Services1Section10BankMappingRepository;
+            }
+        }
+        public GenericRepository<EntityModel.Services1Section1Master> Services1Section1MasterRepository
+        {
+            get
+            {
+                if (this._Services1Section1MasterRepository == null)
+                {
+                    this._Services1Section1MasterRepository = new GenericRepository<EntityModel.Services1Section1Master>(context);
+                }
+                return _Services1Section1MasterRepository;
+            }
+        }
+        public GenericRepository<EntityModel.Services1Section4Master> Services1Section4MasterRepository
+        {
+            get
+            {
+                if (this._Services1Section4MasterRepository == null)
+                {
+                    this._Services1Section4MasterRepository = new GenericRepository<EntityModel.Services1Section4Master>(context);
+                }
+                return _Services1Section4MasterRepository;
+            }
+        }
+        public GenericRepository<EntityModel.Services1Section5Master> Services1Section5MasterRepository
+        {
+            get
+            {
+                if (this._Services1Section5MasterRepository == null)
+                {
+                    this._Services1Section5MasterRepository = new GenericRepository<EntityModel.Services1Section5Master>(context);
+                }
+                return _Services1Section5MasterRepository;
+            }
+        }
+        public GenericRepository<EntityModel.Services1Section6PriceMaster> Services1Section6PriceMasterRepository
+        {
+            get
+            {
+                if (this._Services1Section6PriceMasterRepository == null)
+                {
+                    this._Services1Section6PriceMasterRepository = new GenericRepository<EntityModel.Services1Section6PriceMaster>(context);
+                }
+                return _Services1Section6PriceMasterRepository;
+            }
+        }
+        public GenericRepository<EntityModel.StateMaster> StateMasterRepository
+        {
+            get
+            {
+                if (this._StateMasterRepository == null)
+                {
+                    this._StateMasterRepository = new GenericRepository<EntityModel.StateMaster>(context);
+                }
+                return _StateMasterRepository;
+            }
+        }
+        public GenericRepository<EntityModel.PriceFeaturesMapping> PriceFeaturesMappingRepository
+        {
+            get
+            {
+                if (this._PriceFeaturesMappingRepository == null)
+                {
+                    this._PriceFeaturesMappingRepository = new GenericRepository<EntityModel.PriceFeaturesMapping>(context);
+                }
+                return _PriceFeaturesMappingRepository;
+            }
+        }
+       
         #endregion
 
         #region [Constructors]

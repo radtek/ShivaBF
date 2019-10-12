@@ -14,17 +14,6 @@ namespace SHF.EntityModel
         #region [Fields]
         private readonly System.DateTime _dateTime = System.DateTime.Now;
         #endregion
-        [Column("Url")]
-        public string Url { get; set; }
-
-        [Column("Metadata")]
-        public string Metadata { get; set; }
-
-        [Column("Keyword")]
-        public string Keyword { get; set; }
-
-        [Column("MetaDescription")]
-        public string MetaDescription { get; set; }
         [Column("Created_By")]
         public string CreatedBy { get; set; }
 

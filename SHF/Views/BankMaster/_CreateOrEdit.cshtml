@@ -1,0 +1,83 @@
+﻿@functions{
+    public string AntiForgeryToken()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return cookieToken + ":" + formToken;
+    }
+}
+<script src="~/Scripts/ng-file-upload-5.0.9.js"></script>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <form name="myForm" ng-submit="myForm.$valid && createOreditAsyncForm()" novalidate>
+            <!--myForm.$valid && -->
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="ShowConfirm('modal-createOredit')" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Bank Master Details</h4>
+            </div>
+            <div class="modal-body">
+                <!-- general form elements -->
+                <div id="errorMessages" class="text-danger" ng-if="ValidationSummary" ng-repeat="vs in ValidationSummary">{{vs}}</div>
+                <div class="box box-primary">
+                    <div class="box-body">
+                        <input id="antiForgeryToken" data-ng-model="antiForgeryToken" type="hidden" data-ng-init="antiForgeryToken='@AntiForgeryToken()'" />
+
+                        <div class="form-group" ng-class="{'has-error': (myForm.TenantName.$touched || myForm.TenantName.$dirty)  && myForm.TenantName.$invalid}">
+                            <label>Tenant Name</label>
+                            <select name="TenantName" ng-model="BankMasterCreateOrEditViewModel.Tenant_ID" class="form-control" style="width: 100%;" ng-options="x.ID as x.Name for x in AllTenants"  required>
+                                <option value="" ng-selected="BankMasterCreateOrEditViewModel.SelectedTenant_ID < 0">-- Select --</option>
+                            </select>
+                            <div class="help-block" ng-messages="myForm.TenantName.$error" ng-if="myForm.TenantName.$touched || myForm.TenantName.$dirty && myForm.TenantName.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.Tenant_ID" ng-bind="errors.formErrors.Tenant_ID"></span>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': ((myForm.IconPath.$touched && myForm.IconPath.$invalid) || (!myForm.IconPath.$pristine && myForm.IconPath.$invalid))}">
+                            <input id="antiForgeryToken" data-ng-model="antiForgeryToken" type="hidden" data-ng-init="antiForgeryToken='@AntiForgeryToken()'" />
+                            <label>Icon Path</label>
+                            <div class="button" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
+                                 ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"
+                                 ngf-resize="{width: 100, height: 100}">Select</div>
+                            <div class="button" ngf-select="upload($file)">Upload on file select</div>
+                            <img ngf-thumbnail="file || '/thumb.jpg'">
+
+                            <input type="file" class="form-control" name="IconPath" ng-model="BankMasterCreateOrEditViewModel.IconPath" ng-disabled="Processing" autocomplete="off" placeholder="Enter Icon Path" tooltip-placement="top" uib-tooltip="Select Icon Path" />
+                            <div class="help-block" ng-messages="myForm.IconPath.$error" ng-if="myForm.IconPath.$touched || myForm.IconPath.$dirty && myForm.IconPath.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.IconPath" ng-bind="errors.formErrors.IconPath"></span>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': (myForm.Description.$touched || myForm.Description.$dirty)  && myForm.Description.$invalid}">
+                            <label>Description</label>
+                            <textarea type="text" class="form-control" name="Description" ng-model="BankMasterCreateOrEditViewModel.Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter Description" tooltip-placement="top" uib-tooltip="Enter Description" required></textarea>
+                            <div class="help-block" ng-messages="myForm.Description.$error" ng-if="myForm.Description.$touched || myForm.Description.$dirty && myForm.Description.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.Description" ng-bind="errors.formErrors.Description"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Is Active</label><br />
+                            <label>
+                                <!--https://codepen.io/mosluce/pen/yYmXGz-->
+                                <input icheck type="checkbox" class="form-control" ng-model="BankMasterCreateOrEditViewModel.IsActive" ng-checked="BankMasterCreateOrEditViewModel.IsActive"><span style="margin-left: 10px;">{{BankMasterCreateOrEditViewModel.IsActive ? 'Yes' : 'No'}} </span>
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" ng-if="!Processing" class="btn btn-sm btn-success pull-left" ng-disabled="myForm.$invalid">Save</button>
+                <span ng-if="Processing" class="btn btn-sm btn-success pull-left">Processing...</span>
+                <button ng-click="Clear()" class="btn btn-sm btn-default pull-left">Clear</button>
+                <span class="btn btn-sm btn-danger" ng-click="ShowConfirm('modal-createOredit')">Close</span>
+            </div>
+        </form>
+    </div>
+    <!-- /.modal-content -->
+</div>

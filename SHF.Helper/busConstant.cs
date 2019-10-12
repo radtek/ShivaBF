@@ -434,6 +434,11 @@ namespace SHF.Helper
                 public const string UPDATED_ON = "UpdatedOn";
                 public const string IS_DELETED = "IsDeleted";
                 public const string IS_ACTIVE = "IsActive";
+                public const string URL = "Url";
+                public const string METADATA = "Metadata";
+                public const string KEYWORD = "Keyword";
+                public const string METADESCRIPTION = "MetaDescription";
+                
             }
 
             public abstract class Tables

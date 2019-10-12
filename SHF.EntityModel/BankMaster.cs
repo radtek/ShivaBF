@@ -24,6 +24,20 @@ namespace SHF.EntityModel
 
         [Column("IsActive")]
         public System.Boolean? IsActive { get; set; }
+        [Column("Url")]
+        public string Url { get; set; }
+
+        [Column("Metadata")]
+        public string Metadata { get; set; }
+
+        [Column("Keyword")]
+        public string Keyword { get; set; }
+
+        [Column("MetaDescription")]
+        public string MetaDescription { get; set; }
+        [ForeignKey("Tenant_ID")]
+        public virtual Tenant Tenant { get; set; }
+        public System.Int64? Tenant_ID { get; set; }
 
     }
 }

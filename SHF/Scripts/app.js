@@ -1,6 +1,6 @@
 ﻿//https://github.com/dotansimha/angularjs-dropdown-multiselect
 var config = {
-    app: "SHFApp"
+    app: "InventoryApp"
 }
 
 angular.module(config.app, ['ngMessages', 'ui.bootstrap', 'ngSanitize', 'remoteValidation', 'angularjs-dropdown-multiselect', 'ui.select2']);

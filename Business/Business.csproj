@@ -58,6 +58,7 @@
     <Compile Include="BusinessLogic\AspNetRoleSubMenu.cs" />
     <Compile Include="BusinessLogic\AspNetUser.cs" />
     <Compile Include="BusinessLogic\AspNetUserRole.cs" />
+    <Compile Include="BusinessLogic\BankMaster.cs" />
     <Compile Include="BusinessLogic\SubMenu.cs" />
     <Compile Include="BusinessLogic\Tenant.cs" />
     <Compile Include="Interface\ICode.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Interface\IAspNetRoleSubMenu.cs" />
     <Compile Include="Interface\IAspNetUser.cs" />
     <Compile Include="Interface\IAspNetUserRole.cs" />
+    <Compile Include="Interface\IBankMaster.cs" />
     <Compile Include="Interface\ISubMenu.cs" />
     <Compile Include="Interface\ITenant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

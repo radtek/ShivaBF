@@ -1,4 +1,4 @@
-﻿var app = angular.module('SHFApp');
+﻿var app = angular.module('InventoryApp');
 app.directive('ngDate', function () {
     return {
         restrict: 'A',

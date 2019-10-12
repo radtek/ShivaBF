@@ -382,6 +382,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CodeValueController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
+    <Compile Include="Controllers\BankMasterController.cs" />
     <Compile Include="Controllers\TenantController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -401,17 +402,9 @@
     <Compile Include="Helpers\CustomHelpers.cs" />
     <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Helpers\RequiredField.cs" />
-    <Compile Include="Migrations\201910081917429_DBSetup.cs" />
-    <Compile Include="Migrations\201910081917429_DBSetup.Designer.cs">
-      <DependentUpon>201910081917429_DBSetup.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910100616243_bankmaster.cs" />
-    <Compile Include="Migrations\201910100616243_bankmaster.Designer.cs">
-      <DependentUpon>201910100616243_bankmaster.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910110745052_setup.cs" />
-    <Compile Include="Migrations\201910110745052_setup.Designer.cs">
-      <DependentUpon>201910110745052_setup.cs</DependentUpon>
+    <Compile Include="Migrations\201910120601483_DBsetup.cs" />
+    <Compile Include="Migrations\201910120601483_DBsetup.Designer.cs">
+      <DependentUpon>201910120601483_DBsetup.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -438,6 +431,7 @@
     <Content Include="AngularControllers\AspNetUserController.js" />
     <Content Include="AngularControllers\MenuAccessPolicyController.js" />
     <Content Include="AngularControllers\MessageController.js" />
+    <Content Include="AngularControllers\BankMasterController.js" />
     <Content Include="AngularControllers\SubMenuController.js" />
     <Content Include="AngularControllers\TenantController.js" />
     <Content Include="AngularControllers\RoleController.js" />
@@ -8939,6 +8933,7 @@
     <Content Include="Scripts\Services\CodeValue.js" />
     <Content Include="Scripts\Services\MenuAccessPolicy.js" />
     <Content Include="Scripts\Services\Message.js" />
+    <Content Include="Scripts\Services\BankMaster.js" />
     <Content Include="Scripts\Services\SubMenu.js" />
     <Content Include="Scripts\Services\Tenant.js" />
     <Content Include="Scripts\sitemap.xml" />
@@ -9033,6 +9028,9 @@
     <Content Include="Views\Barcode\_GenerateQRCode.cshtml" />
     <Content Include="Views\Shared\_CreateOrEditAddress.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\BankMaster\_CreateOrEdit.cshtml" />
+    <Content Include="Views\BankMaster\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\BankMaster\Index.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
@@ -9121,14 +9119,8 @@
     <TypeScriptCompile Include="bower_components\sweetalert2\sweetalert2.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910081917429_DBSetup.resx">
-      <DependentUpon>201910081917429_DBSetup.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910100616243_bankmaster.resx">
-      <DependentUpon>201910100616243_bankmaster.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910110745052_setup.resx">
-      <DependentUpon>201910110745052_setup.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910120601483_DBsetup.resx">
+      <DependentUpon>201910120601483_DBsetup.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

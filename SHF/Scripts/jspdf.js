@@ -842,7 +842,7 @@ PubSub implementation
             /**
             Returns a document-specific font key - a label assigned to a
             font name + font type combination at the time the font was added
-            to the font SHF.
+            to the font inventory.
 
             Font key is used as label for the desired font for a block of text
             to be added to the PDF document stream.

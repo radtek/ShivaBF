@@ -26,6 +26,17 @@ namespace SHF.EntityModel
         public System.Boolean? IsActive { get; set; }
         [Column("TotalViews")]
         public System.Int32 TotalViews { get; set; }
+        [Column("Url")]
+        public string Url { get; set; }
+
+        [Column("Metadata")]
+        public string Metadata { get; set; }
+
+        [Column("Keyword")]
+        public string Keyword { get; set; }
+
+        [Column("MetaDescription")]
+        public string MetaDescription { get; set; }
 
         public virtual IEnumerable<CategoriesMaster> CategoriesMasters { get; set; }
     }
