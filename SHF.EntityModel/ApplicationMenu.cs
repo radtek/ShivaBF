@@ -19,7 +19,10 @@ namespace SHF.EntityModel
         [Column("Name_Or_Title")]
         public System.String NameOrTitle { get; set; }
 
-       public System.String MyProperty { get; set; }
+        [Column("Url")]
+        public System.String Url { get; set; }
+
+        public System.String MyProperty { get; set; }
 
 
     }

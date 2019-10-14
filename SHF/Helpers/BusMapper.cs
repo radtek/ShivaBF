@@ -22,8 +22,11 @@ namespace SHF
             CreateMap<EntityModel.AspNetRoleSubMenu, ViewModel.AspNetRoleSubMenuCreateOrEditViewModel>().ReverseMap();
            
             CreateMap<EntityModel.Message, ViewModel.MessageCreateOrEditViewModel>().ReverseMap();
-           
-        }
+            CreateMap<EntityModel.BankMaster, ViewModel.BankMasterCreateOrEditViewModel>().ReverseMap();
+            CreateMap<EntityModel.CategoriesMaster, ViewModel.CategoriesMasterCreateOrEditViewModel>().ReverseMap();
+            CreateMap<EntityModel.SubCategoriesMaster, ViewModel.SubCategoriesMasterCreateOrEditViewModel>().ReverseMap();
+          
+    }
 
         public static void RegisterMapper()
         {

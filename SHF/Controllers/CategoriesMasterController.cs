@@ -17,10 +17,13 @@ using SHF.Helper;
 using SHF.Web.Filters;
 using SHF.Models;
 using SHF.ViewModel;
+using System.Reflection;
+using System.ComponentModel;
 
 
 namespace SHF.Controllers
 {
+    [AllowAnonymous]
     public class CategoriesMasterController : BaseController
     {
         #region [Field & Contructor]
@@ -120,9 +123,9 @@ namespace SHF.Controllers
 
 
         [HttpPost]
-        [Audit]
+        [AuditAttribute]
         [ValidateAntiForgeryTokens]
-        [Route("Post/Categories/CreateAsync")]
+        [Route("Post/CategoriesMaster/CreateAsync")]
         public async Task<ActionResult> CreateAsync(ViewModel.CategoriesMasterCreateOrEditViewModel model)
         {
             try
@@ -137,9 +140,9 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var productId = businessCategoriesMaster.FindBy(Categories => Categories.Tenant_ID == model.Tenant_ID).FirstOrDefault();
+                            var catId = businessCategoriesMaster.FindBy(Categories => Categories.Tenant_ID == model.Tenant_ID).FirstOrDefault();
 
-                            if (productId.IsNotNull())
+                            if (catId.IsNotNull())
                             {
                                 transaction.Complete();
                                 var response = new JsonResponse<dynamic>()
@@ -192,7 +195,7 @@ namespace SHF.Controllers
 
 
         [HttpGet]
-        [Route("Get/Categories/EditAsync")]
+        [Route("Get/CategoriesMaster/EditAsync")]
         public async Task<ActionResult> EditAsync(long Id)
         {
             try
@@ -264,9 +267,9 @@ namespace SHF.Controllers
 
 
         [HttpPost]
-        [Audit]
+        [AuditAttribute]
         [ValidateAntiForgeryTokens]
-        [Route("Post/Categories/EditAsync")]
+        [Route("Post/CategoriesMaster/EditAsync")]
         public async Task<ActionResult> EditAsync(ViewModel.CategoriesMasterCreateOrEditViewModel model)
         {
             try
@@ -339,8 +342,66 @@ namespace SHF.Controllers
             }
         }
 
+        [HttpPost]
+        [AuditAttribute]
+        [ValidateAntiForgeryTokens]
+        [Route("Post/CategoriesMaster/Delete")]
+        public async Task<ActionResult> DeleteAsync(string Id)
+        {
+            try
+            {
+                    using (var transaction = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadUncommitted }))
+                    {
+                        try
+                        {
+                            if (Convert.ToInt64(Id) == 0)
+                            {
+                                transaction.Complete();
+                                var response = new JsonResponse<dynamic>()
+                                {
+                                    Type = busConstant.Messages.Type.EXCEPTION,
+                                    Message = busConstant.Messages.Type.Exceptions.BAD_REQUEST,
+                                };
 
-        
+                                Response.StatusCode = Convert.ToInt32(HttpStatusCode.BadRequest);
+                                return Json(response, JsonRequestBehavior.AllowGet);
+                            }
+                            else
+                            {
+                                this.businessCategoriesMaster.Delete(Convert.ToInt64(Id));
+
+
+                                var response = new JsonResponse<dynamic>()
+                                {
+                                    Type = busConstant.Messages.Type.RESPONSE,
+                                    Message = busConstant.Messages.Icon.SUCCESS,
+                                };
+
+                                transaction.Complete();
+                                return Json(response, JsonRequestBehavior.AllowGet);
+
+                            }
+                        }
+                        catch
+                        {
+                            transaction.Dispose();
+                            throw;
+                        }
+                    }
+               
+            }
+            catch (Exception ex)
+            {
+                return ExceptionResponse(ex);
+            }
+            finally
+            {
+                //unitOfWork.Dispose();
+            }
+        }
+
+
+
         #endregion
 
     }

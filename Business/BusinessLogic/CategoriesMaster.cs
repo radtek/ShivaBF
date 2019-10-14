@@ -104,7 +104,7 @@ namespace SHF.Business.BusinessLogic
                     }).ToList();
 
 
-                var businessResultViewModel = new ViewModel.BusinessResultViewModel<ViewModel.SubCategoriesMasterIndexViewModel>
+                var businessResultViewModel = new ViewModel.BusinessResultViewModel<ViewModel.CategoriesMasterIndexViewModel>
                 {
                     Draw = draw,
                     RecordsFiltered = totalRecords,
@@ -129,11 +129,11 @@ namespace SHF.Business.BusinessLogic
 
 
 
-        public EntityModel.SubCategoriesMaster Create(EntityModel.SubCategoriesMaster entity)
+        public EntityModel.CategoriesMaster Create(EntityModel.CategoriesMaster entity)
         {
             try
             {
-                return unitOfWork.SubCategoriesMasterRepository.Insert(entity);
+                return unitOfWork.CategoriesMasterRepository.Insert(entity);
             }
             catch (Exception ex)
             {
@@ -145,17 +145,17 @@ namespace SHF.Business.BusinessLogic
 
 
 
-        public EntityModel.SubCategoriesMaster GetById(long Id)
+        public EntityModel.CategoriesMaster GetById(long Id)
         {
             try
             {
-                EntityModel.SubCategoriesMaster entity;
+                EntityModel.CategoriesMaster entity;
                 if (Id == default(long))
                 {
                     throw new Exception(busConstant.Messages.Type.Exceptions.BAD_REQUEST);
                 }
 
-                entity = unitOfWork.SubCategoriesMasterRepository.GetByID(Id);
+                entity = unitOfWork.CategoriesMasterRepository.GetByID(Id);
 
                 return entity;
             }
@@ -167,11 +167,11 @@ namespace SHF.Business.BusinessLogic
 
 
 
-        public EntityModel.SubCategoriesMaster Update(EntityModel.SubCategoriesMaster entity)
+        public EntityModel.CategoriesMaster Update(EntityModel.CategoriesMaster entity)
         {
             try
             {
-                return unitOfWork.SubCategoriesMasterRepository.Update(entity);
+                return unitOfWork.CategoriesMasterRepository.Update(entity);
             }
             catch (Exception ex)
             {
@@ -185,7 +185,7 @@ namespace SHF.Business.BusinessLogic
         {
             try
             {
-                unitOfWork.SubCategoriesMasterRepository.Delete(Id);
+                unitOfWork.CategoriesMasterRepository.Delete(Id);
             }
             catch (Exception ex)
             {
@@ -195,11 +195,11 @@ namespace SHF.Business.BusinessLogic
 
 
 
-        public IEnumerable<EntityModel.SubCategoriesMaster> GetAll()
+        public IEnumerable<EntityModel.CategoriesMaster> GetAll()
         {
             try
             {
-                return unitOfWork.SubCategoriesMasterRepository.Get();
+                return unitOfWork.CategoriesMasterRepository.Get();
             }
             catch (Exception ex)
             {
@@ -208,18 +208,18 @@ namespace SHF.Business.BusinessLogic
         }
 
 
-        public IEnumerable<EntityModel.SubCategoriesMaster> FindBy(Expression<Func<EntityModel.SubCategoriesMaster, bool>> filter = null)
+        public IEnumerable<EntityModel.CategoriesMaster> FindBy(Expression<Func<EntityModel.CategoriesMaster, bool>> filter = null)
         {
             try
             {
-                IEnumerable<EntityModel.SubCategoriesMaster> entities;
+                IEnumerable<EntityModel.CategoriesMaster> entities;
                 if (filter.IsNotNull())
                 {
-                    entities = unitOfWork.SubCategoriesMasterRepository.Get(filter);
+                    entities = unitOfWork.CategoriesMasterRepository.Get(filter);
                 }
                 else
                 {
-                    entities = unitOfWork.SubCategoriesMasterRepository.Get();
+                    entities = unitOfWork.CategoriesMasterRepository.Get();
                 }
 
                 return entities;
@@ -232,11 +232,11 @@ namespace SHF.Business.BusinessLogic
 
 
 
-        public void DeleteWhere(Expression<Func<EntityModel.SubCategoriesMaster, bool>> filter = null)
+        public void DeleteWhere(Expression<Func<EntityModel.CategoriesMaster, bool>> filter = null)
         {
             try
             {
-                unitOfWork.SubCategoriesMasterRepository.DeleteWhere(filter);
+                unitOfWork.CategoriesMasterRepository.DeleteWhere(filter);
             }
             catch (Exception ex)
             {
@@ -264,11 +264,11 @@ namespace SHF.Business.BusinessLogic
         //    }
         //}
 
-        public Int32 Count(Expression<Func<EntityModel.SubCategoriesMaster, bool>> filter = null)
+        public Int32 Count(Expression<Func<EntityModel.CategoriesMaster, bool>> filter = null)
         {
             try
             {
-                return unitOfWork.SubCategoriesMasterRepository.Count(filter);
+                return unitOfWork.CategoriesMasterRepository.Count(filter);
             }
             catch (Exception ex)
             {

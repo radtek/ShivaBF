@@ -16,17 +16,17 @@ namespace SHF.ViewModel
     {
         [Display(Name = "Id")]
         public virtual long? ID { get; set; }
-        [Display(Name = "Url")]
-        public string Url { get; set; }
+        //[Display(Name = "Url")]
+        //public string Url { get; set; }
 
-        [Display(Name = "Metadata")]
-        public string Metadata { get; set; }
+        //[Display(Name = "Metadata")]
+        //public string Metadata { get; set; }
 
-        [Display(Name = "Keyword")]
-        public string Keyword { get; set; }
+        //[Display(Name = "Keyword")]
+        //public string Keyword { get; set; }
 
-        [Display(Name = "MetaDescription")]
-        public string MetaDescription { get; set; }
+        //[Display(Name = "MetaDescription")]
+        //public string MetaDescription { get; set; }
 
         [Display(Name = "Created By")]
         public virtual string CreatedBy { get; set; }

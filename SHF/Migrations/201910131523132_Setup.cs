@@ -3,7 +3,7 @@ namespace SHF.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class DBsetup : DbMigration
+    public partial class Setup : DbMigration
     {
         public override void Up()
         {
@@ -224,13 +224,16 @@ namespace SHF.Migrations
                         Metadata = c.String(),
                         Keyword = c.String(),
                         MetaDescription = c.String(),
+                        Tenant_ID = c.Long(),
                         Created_By = c.String(),
                         Created_On = c.DateTime(),
                         Modified_By = c.String(),
                         Modified_On = c.DateTime(),
                         Is_Deleted = c.Boolean(nullable: false),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.Tbl_Tenant", t => t.Tenant_ID)
+                .Index(t => t.Tenant_ID);
             
             CreateTable(
                 "dbo.Tbl_FAQMaster",
@@ -244,13 +247,16 @@ namespace SHF.Migrations
                         Metadata = c.String(),
                         Keyword = c.String(),
                         MetaDescription = c.String(),
+                        Tenant_ID = c.Long(),
                         Created_By = c.String(),
                         Created_On = c.DateTime(),
                         Modified_By = c.String(),
                         Modified_On = c.DateTime(),
                         Is_Deleted = c.Boolean(nullable: false),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.Tbl_Tenant", t => t.Tenant_ID)
+                .Index(t => t.Tenant_ID);
             
             CreateTable(
                 "dbo.Tbl_Message",
@@ -288,6 +294,7 @@ namespace SHF.Migrations
                         Metadata = c.String(),
                         Keyword = c.String(),
                         MetaDescription = c.String(),
+                        Tenant_ID = c.Long(),
                         Created_By = c.String(),
                         Created_On = c.DateTime(),
                         Modified_By = c.String(),
@@ -298,9 +305,11 @@ namespace SHF.Migrations
                 .ForeignKey("dbo.Tbl_PriceFeaturesMaster", t => t.PriceFeaturesMaster_Id)
                 .ForeignKey("dbo.Tbl_Services1Master", t => t.Service_Id)
                 .ForeignKey("dbo.Tbl_Services1Section6PriceMaster", t => t.S1S6PM_Id)
+                .ForeignKey("dbo.Tbl_Tenant", t => t.Tenant_ID)
                 .Index(t => t.Service_Id)
                 .Index(t => t.S1S6PM_Id)
-                .Index(t => t.PriceFeaturesMaster_Id);
+                .Index(t => t.PriceFeaturesMaster_Id)
+                .Index(t => t.Tenant_ID);
             
             CreateTable(
                 "dbo.Tbl_PriceFeaturesMaster",
@@ -313,13 +322,16 @@ namespace SHF.Migrations
                         Metadata = c.String(),
                         Keyword = c.String(),
                         MetaDescription = c.String(),
+                        Tenant_ID = c.Long(),
                         Created_By = c.String(),
                         Created_On = c.DateTime(),
                         Modified_By = c.String(),
                         Modified_On = c.DateTime(),
                         Is_Deleted = c.Boolean(nullable: false),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.Tbl_Tenant", t => t.Tenant_ID)
+                .Index(t => t.Tenant_ID);
             
             CreateTable(
                 "dbo.Tbl_Services1Master",
@@ -361,6 +373,7 @@ namespace SHF.Migrations
                         Metadata = c.String(),
                         Keyword = c.String(),
                         MetaDescription = c.String(),
+                        Tenant_ID = c.Long(),
                         Created_By = c.String(),
                         Created_On = c.DateTime(),
                         Modified_By = c.String(),
@@ -371,9 +384,11 @@ namespace SHF.Migrations
                 .ForeignKey("dbo.Tbl_CategoriesMaster", t => t.Cat_Id)
                 .ForeignKey("dbo.Tbl_SubCategoriesMaster", t => t.SubCat_Id)
                 .ForeignKey("dbo.Tbl_SubSubCategoriesMaster", t => t.SubSubCat_Id)
+                .ForeignKey("dbo.Tbl_Tenant", t => t.Tenant_ID)
                 .Index(t => t.Cat_Id)
                 .Index(t => t.SubCat_Id)
-                .Index(t => t.SubSubCat_Id);
+                .Index(t => t.SubSubCat_Id)
+                .Index(t => t.Tenant_ID);
             
             CreateTable(
                 "dbo.Tbl_SubCategoriesMaster",
@@ -390,6 +405,7 @@ namespace SHF.Migrations
                         Metadata = c.String(),
                         Keyword = c.String(),
                         MetaDescription = c.String(),
+                        Tenant_ID = c.Long(),
                         Created_By = c.String(),
                         Created_On = c.DateTime(),
                         Modified_By = c.String(),
@@ -398,7 +414,9 @@ namespace SHF.Migrations
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Tbl_CategoriesMaster", t => t.Cat_Id)
-                .Index(t => t.Cat_Id);
+                .ForeignKey("dbo.Tbl_Tenant", t => t.Tenant_ID)
+                .Index(t => t.Cat_Id)
+                .Index(t => t.Tenant_ID);
             
             CreateTable(
                 "dbo.Tbl_SubSubCategoriesMaster",
@@ -417,6 +435,7 @@ namespace SHF.Migrations
                         Metadata = c.String(),
                         Keyword = c.String(),
                         MetaDescription = c.String(),
+                        Tenant_ID = c.Long(),
                         Created_By = c.String(),
                         Created_On = c.DateTime(),
                         Modified_By = c.String(),
@@ -426,8 +445,10 @@ namespace SHF.Migrations
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Tbl_CategoriesMaster", t => t.Cat_Id)
                 .ForeignKey("dbo.Tbl_SubCategoriesMaster", t => t.SubCat_Id)
+                .ForeignKey("dbo.Tbl_Tenant", t => t.Tenant_ID)
                 .Index(t => t.Cat_Id)
-                .Index(t => t.SubCat_Id);
+                .Index(t => t.SubCat_Id)
+                .Index(t => t.Tenant_ID);
             
             CreateTable(
                 "dbo.Tbl_Services1Section6PriceMaster",
@@ -447,6 +468,7 @@ namespace SHF.Migrations
                         Metadata = c.String(),
                         Keyword = c.String(),
                         MetaDescription = c.String(),
+                        Tenant_ID = c.Long(),
                         Created_By = c.String(),
                         Created_On = c.DateTime(),
                         Modified_By = c.String(),
@@ -456,8 +478,10 @@ namespace SHF.Migrations
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Tbl_Services1Master", t => t.Service_Id)
                 .ForeignKey("dbo.Tbl_StateMaster", t => t.State_Id)
+                .ForeignKey("dbo.Tbl_Tenant", t => t.Tenant_ID)
                 .Index(t => t.Service_Id)
-                .Index(t => t.State_Id);
+                .Index(t => t.State_Id)
+                .Index(t => t.Tenant_ID);
             
             CreateTable(
                 "dbo.Tbl_StateMaster",
@@ -471,13 +495,16 @@ namespace SHF.Migrations
                         Metadata = c.String(),
                         Keyword = c.String(),
                         MetaDescription = c.String(),
+                        Tenant_ID = c.Long(),
                         Created_By = c.String(),
                         Created_On = c.DateTime(),
                         Modified_By = c.String(),
                         Modified_On = c.DateTime(),
                         Is_Deleted = c.Boolean(nullable: false),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.Tbl_Tenant", t => t.Tenant_ID)
+                .Index(t => t.Tenant_ID);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -537,6 +564,7 @@ namespace SHF.Migrations
                         Metadata = c.String(),
                         Keyword = c.String(),
                         MetaDescription = c.String(),
+                        Tenant_ID = c.Long(),
                         Created_By = c.String(),
                         Created_On = c.DateTime(),
                         Modified_By = c.String(),
@@ -546,8 +574,10 @@ namespace SHF.Migrations
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Tbl_BankMaster", t => t.BankMaster_Id)
                 .ForeignKey("dbo.Tbl_Services1Master", t => t.Service_Id)
+                .ForeignKey("dbo.Tbl_Tenant", t => t.Tenant_ID)
                 .Index(t => t.Service_Id)
-                .Index(t => t.BankMaster_Id);
+                .Index(t => t.BankMaster_Id)
+                .Index(t => t.Tenant_ID);
             
             CreateTable(
                 "dbo.Tbl_Services1Section1Master",
@@ -564,6 +594,7 @@ namespace SHF.Migrations
                         Metadata = c.String(),
                         Keyword = c.String(),
                         MetaDescription = c.String(),
+                        Tenant_ID = c.Long(),
                         Created_By = c.String(),
                         Created_On = c.DateTime(),
                         Modified_By = c.String(),
@@ -572,7 +603,9 @@ namespace SHF.Migrations
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Tbl_Services1Master", t => t.Service_Id)
-                .Index(t => t.Service_Id);
+                .ForeignKey("dbo.Tbl_Tenant", t => t.Tenant_ID)
+                .Index(t => t.Service_Id)
+                .Index(t => t.Tenant_ID);
             
             CreateTable(
                 "dbo.Tbl_Services1Section4Master",
@@ -591,6 +624,7 @@ namespace SHF.Migrations
                         Metadata = c.String(),
                         Keyword = c.String(),
                         MetaDescription = c.String(),
+                        Tenant_ID = c.Long(),
                         Created_By = c.String(),
                         Created_On = c.DateTime(),
                         Modified_By = c.String(),
@@ -599,7 +633,9 @@ namespace SHF.Migrations
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Tbl_Services1Master", t => t.Service_Id)
-                .Index(t => t.Service_Id);
+                .ForeignKey("dbo.Tbl_Tenant", t => t.Tenant_ID)
+                .Index(t => t.Service_Id)
+                .Index(t => t.Tenant_ID);
             
             CreateTable(
                 "dbo.Tbl_Services1Section5Master",
@@ -618,6 +654,7 @@ namespace SHF.Migrations
                         Metadata = c.String(),
                         Keyword = c.String(),
                         MetaDescription = c.String(),
+                        Tenant_ID = c.Long(),
                         Created_By = c.String(),
                         Created_On = c.DateTime(),
                         Modified_By = c.String(),
@@ -626,7 +663,9 @@ namespace SHF.Migrations
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Tbl_Services1Master", t => t.Service_Id)
-                .Index(t => t.Service_Id);
+                .ForeignKey("dbo.Tbl_Tenant", t => t.Tenant_ID)
+                .Index(t => t.Service_Id)
+                .Index(t => t.Tenant_ID);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -716,25 +755,38 @@ namespace SHF.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "Tenant_ID", "dbo.Tbl_Tenant");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "Tenant_ID", "dbo.Tbl_Tenant");
+            DropForeignKey("dbo.Tbl_Services1Section5Master", "Tenant_ID", "dbo.Tbl_Tenant");
             DropForeignKey("dbo.Tbl_Services1Section5Master", "Service_Id", "dbo.Tbl_Services1Master");
+            DropForeignKey("dbo.Tbl_Services1Section4Master", "Tenant_ID", "dbo.Tbl_Tenant");
             DropForeignKey("dbo.Tbl_Services1Section4Master", "Service_Id", "dbo.Tbl_Services1Master");
+            DropForeignKey("dbo.Tbl_Services1Section1Master", "Tenant_ID", "dbo.Tbl_Tenant");
             DropForeignKey("dbo.Tbl_Services1Section1Master", "Service_Id", "dbo.Tbl_Services1Master");
+            DropForeignKey("dbo.Tbl_Services1Section10BankMapping", "Tenant_ID", "dbo.Tbl_Tenant");
             DropForeignKey("dbo.Tbl_Services1Section10BankMapping", "Service_Id", "dbo.Tbl_Services1Master");
             DropForeignKey("dbo.Tbl_Services1Section10BankMapping", "BankMaster_Id", "dbo.Tbl_BankMaster");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.AspNetUserRoles", "Tenant_ID", "dbo.Tbl_Tenant");
             DropForeignKey("dbo.AspNetRoles", "Tenant_ID", "dbo.Tbl_Tenant");
+            DropForeignKey("dbo.Tbl_PriceFeaturesMapping", "Tenant_ID", "dbo.Tbl_Tenant");
             DropForeignKey("dbo.Tbl_PriceFeaturesMapping", "S1S6PM_Id", "dbo.Tbl_Services1Section6PriceMaster");
+            DropForeignKey("dbo.Tbl_Services1Section6PriceMaster", "Tenant_ID", "dbo.Tbl_Tenant");
             DropForeignKey("dbo.Tbl_Services1Section6PriceMaster", "State_Id", "dbo.Tbl_StateMaster");
+            DropForeignKey("dbo.Tbl_StateMaster", "Tenant_ID", "dbo.Tbl_Tenant");
             DropForeignKey("dbo.Tbl_Services1Section6PriceMaster", "Service_Id", "dbo.Tbl_Services1Master");
             DropForeignKey("dbo.Tbl_PriceFeaturesMapping", "Service_Id", "dbo.Tbl_Services1Master");
+            DropForeignKey("dbo.Tbl_Services1Master", "Tenant_ID", "dbo.Tbl_Tenant");
             DropForeignKey("dbo.Tbl_Services1Master", "SubSubCat_Id", "dbo.Tbl_SubSubCategoriesMaster");
+            DropForeignKey("dbo.Tbl_SubSubCategoriesMaster", "Tenant_ID", "dbo.Tbl_Tenant");
             DropForeignKey("dbo.Tbl_SubSubCategoriesMaster", "SubCat_Id", "dbo.Tbl_SubCategoriesMaster");
             DropForeignKey("dbo.Tbl_SubSubCategoriesMaster", "Cat_Id", "dbo.Tbl_CategoriesMaster");
             DropForeignKey("dbo.Tbl_Services1Master", "SubCat_Id", "dbo.Tbl_SubCategoriesMaster");
+            DropForeignKey("dbo.Tbl_SubCategoriesMaster", "Tenant_ID", "dbo.Tbl_Tenant");
             DropForeignKey("dbo.Tbl_SubCategoriesMaster", "Cat_Id", "dbo.Tbl_CategoriesMaster");
             DropForeignKey("dbo.Tbl_Services1Master", "Cat_Id", "dbo.Tbl_CategoriesMaster");
             DropForeignKey("dbo.Tbl_PriceFeaturesMapping", "PriceFeaturesMaster_Id", "dbo.Tbl_PriceFeaturesMaster");
+            DropForeignKey("dbo.Tbl_PriceFeaturesMaster", "Tenant_ID", "dbo.Tbl_Tenant");
+            DropForeignKey("dbo.Tbl_FAQMaster", "Tenant_ID", "dbo.Tbl_Tenant");
+            DropForeignKey("dbo.Tbl_CategoriesMaster", "Tenant_ID", "dbo.Tbl_Tenant");
             DropForeignKey("dbo.Tbl_BankMaster", "Tenant_ID", "dbo.Tbl_Tenant");
             DropForeignKey("dbo.Tbl_AspNetRoles_SubMenu", "Tenant_ID", "dbo.Tbl_Tenant");
             DropForeignKey("dbo.Tbl_Tenant", "ShippingAddressState_ID", "dbo.Tbl_Code");
@@ -753,9 +805,13 @@ namespace SHF.Migrations
             DropIndex("dbo.AspNetUserClaims", new[] { "Tenant_ID" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUsers", new[] { "Tenant_ID" });
+            DropIndex("dbo.Tbl_Services1Section5Master", new[] { "Tenant_ID" });
             DropIndex("dbo.Tbl_Services1Section5Master", new[] { "Service_Id" });
+            DropIndex("dbo.Tbl_Services1Section4Master", new[] { "Tenant_ID" });
             DropIndex("dbo.Tbl_Services1Section4Master", new[] { "Service_Id" });
+            DropIndex("dbo.Tbl_Services1Section1Master", new[] { "Tenant_ID" });
             DropIndex("dbo.Tbl_Services1Section1Master", new[] { "Service_Id" });
+            DropIndex("dbo.Tbl_Services1Section10BankMapping", new[] { "Tenant_ID" });
             DropIndex("dbo.Tbl_Services1Section10BankMapping", new[] { "BankMaster_Id" });
             DropIndex("dbo.Tbl_Services1Section10BankMapping", new[] { "Service_Id" });
             DropIndex("dbo.AspNetUserRoles", new[] { "Tenant_ID" });
@@ -763,18 +819,27 @@ namespace SHF.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.AspNetRoles", new[] { "Tenant_ID" });
+            DropIndex("dbo.Tbl_StateMaster", new[] { "Tenant_ID" });
+            DropIndex("dbo.Tbl_Services1Section6PriceMaster", new[] { "Tenant_ID" });
             DropIndex("dbo.Tbl_Services1Section6PriceMaster", new[] { "State_Id" });
             DropIndex("dbo.Tbl_Services1Section6PriceMaster", new[] { "Service_Id" });
+            DropIndex("dbo.Tbl_SubSubCategoriesMaster", new[] { "Tenant_ID" });
             DropIndex("dbo.Tbl_SubSubCategoriesMaster", new[] { "SubCat_Id" });
             DropIndex("dbo.Tbl_SubSubCategoriesMaster", new[] { "Cat_Id" });
+            DropIndex("dbo.Tbl_SubCategoriesMaster", new[] { "Tenant_ID" });
             DropIndex("dbo.Tbl_SubCategoriesMaster", new[] { "Cat_Id" });
+            DropIndex("dbo.Tbl_Services1Master", new[] { "Tenant_ID" });
             DropIndex("dbo.Tbl_Services1Master", new[] { "SubSubCat_Id" });
             DropIndex("dbo.Tbl_Services1Master", new[] { "SubCat_Id" });
             DropIndex("dbo.Tbl_Services1Master", new[] { "Cat_Id" });
+            DropIndex("dbo.Tbl_PriceFeaturesMaster", new[] { "Tenant_ID" });
+            DropIndex("dbo.Tbl_PriceFeaturesMapping", new[] { "Tenant_ID" });
             DropIndex("dbo.Tbl_PriceFeaturesMapping", new[] { "PriceFeaturesMaster_Id" });
             DropIndex("dbo.Tbl_PriceFeaturesMapping", new[] { "S1S6PM_Id" });
             DropIndex("dbo.Tbl_PriceFeaturesMapping", new[] { "Service_Id" });
             DropIndex("dbo.Tbl_Message", new[] { "Message_Code" });
+            DropIndex("dbo.Tbl_FAQMaster", new[] { "Tenant_ID" });
+            DropIndex("dbo.Tbl_CategoriesMaster", new[] { "Tenant_ID" });
             DropIndex("dbo.Tbl_BankMaster", new[] { "Tenant_ID" });
             DropIndex("dbo.ExceptionLog", new[] { "Tenant_ID" });
             DropIndex("dbo.Tbl_CodeValue", "IX_CodeVale_CodeIDAndValue");

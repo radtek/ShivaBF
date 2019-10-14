@@ -1,17 +1,17 @@
 ﻿//let app = angular.module('InventoryApp');
 
-angular.module(config.app).service('CategoriesMasterCRUD', function ($http) {
+angular.module(config.app).service('SubCategoriesMasterCRUD', function ($http) {
 
     this.GetTableObject = function TableData() {
-        let scope = angular.element(document.getElementById('CategoriesMasterControllerScope')).scope();
-        let tenantId = scope.CategoriesMasterCreateOrEditViewModel.Tenant_ID == null ? 0 : scope.CategoriesMasterCreateOrEditViewModel.Tenant_ID;
+        let scope = angular.element(document.getElementById('SubCategoriesMasterControllerScope')).scope();
+        let tenantId = scope.SubCategoriesMasterCreateOrEditViewModel.Tenant_ID == null ? 0 : scope.SubCategoriesMasterCreateOrEditViewModel.Tenant_ID;
         let viewBagTenantID = $('#ViewBag_TenantID').val();
         let antiForgeryToken = $('#antiForgeryToken').val();
         var src = '../../../Content/Images/';
         let oTable = $('#grdTable').DataTable({
             serverSide: true,
             ajax: {
-                url: '/Post/Categories/IndexAsync',
+                url: '/Post/SubCategories/IndexAsync',
                 type: 'POST',
                 dataSrc: 'data',
                 data: { 'tenantId': tenantId },
@@ -53,7 +53,7 @@ angular.module(config.app).service('CategoriesMasterCRUD', function ($http) {
                 },
                 {
                     name: "categories.CategoryName",
-                    data: "CategoryName",
+                    data: "Category&nbsp;Name",
                     title: "Category&nbsp;Name",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
@@ -61,7 +61,7 @@ angular.module(config.app).service('CategoriesMasterCRUD', function ($http) {
                 },
                 {
                     name: "categories.DisplayIndex",
-                    data: "DisplayIndex",
+                    data: "Display&nbsp;Index",
                     title: "Display&nbsp;Index",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
@@ -69,7 +69,7 @@ angular.module(config.app).service('CategoriesMasterCRUD', function ($http) {
                 },
  {
                     name: "categories.DisplayOnHome",
-                    data: "DisplayOnHome",
+                    data: "Display&nbsp;On&nbsp;Home",
                     title: "Display&nbsp;On&nbsp;Home",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
@@ -207,13 +207,13 @@ angular.module(config.app).service('CategoriesMasterCRUD', function ($http) {
         $('#grdTable tbody').off('click');
         $('#grdTable tbody').on('click', '.btn-edit', function () {
             let rowData = oTable.row($(this).parents('tr')).data();
-            let scope = angular.element(document.getElementById('CategoriesMasterControllerScope')).scope();
+            let scope = angular.element(document.getElementById('BankMasterControllerScope')).scope();
             scope.EditAsync(rowData.ID);
         });
 
         $('#grdTable tbody').on('click', '.btn-delete', function () {
             let rowData = oTable.row($(this).parents('tr')).data();
-            let scope = angular.element(document.getElementById('CategoriesMasterControllerScope')).scope();
+            let scope = angular.element(document.getElementById('BankMasterControllerScope')).scope();
             scope.DeleteAsync(rowData.ID);
         });
     }
@@ -233,7 +233,7 @@ angular.module(config.app).service('CategoriesMasterCRUD', function ($http) {
     this.LoadProductDropdown = function ProductDropdown(tenantId) {
         let request = $http({
             method: "get",
-            url: "/Get/CategoriesMaster/DropdownListbyTenantAsync?Id=" + tenantId
+            url: "/Get/Product/DropdownListbyTenantAsync?Id=" + tenantId
         });
         return request;
     }
@@ -241,7 +241,7 @@ angular.module(config.app).service('CategoriesMasterCRUD', function ($http) {
     this.LoadPurchaseProductDropdown = function PurchaseProductDropdown(tenantId) {
         let request = $http({
             method: "get",
-            url: "/Get/CategoriesMaster/PurchaseDropdownListbyTenantAsync?Id=" + tenantId
+            url: "/Get/Product/PurchaseDropdownListbyTenantAsync?Id=" + tenantId
         });
         return request;
     }
@@ -249,7 +249,7 @@ angular.module(config.app).service('CategoriesMasterCRUD', function ($http) {
     this.LoadPurchaseProductDropdownByVendor = function PurchaseProductDropdownByVendor(vendorId) {
         let request = $http({
             method: "get",
-            url: "/Get/CategoriesMaster/PurchaseDropdownListbyVendorAsync?Id=" + vendorId
+            url: "/Get/Product/PurchaseDropdownListbyVendorAsync?Id=" + vendorId
         });
         return request;
     }
@@ -257,7 +257,7 @@ angular.module(config.app).service('CategoriesMasterCRUD', function ($http) {
     this.LoadSaleableProductDropdownByTenant = function SaleableProductDropdownByTenantId(tenantId) {
         let request = $http({
             method: "get",
-            url: "/Get/CategoriesMaster/SaleableProductDropdownListbyTenantAsync?Id=" + tenantId
+            url: "/Get/Sales/SaleableProductDropdownListbyTenantAsync?Id=" + tenantId
         });
         return request;
     }
@@ -265,7 +265,7 @@ angular.module(config.app).service('CategoriesMasterCRUD', function ($http) {
     this.LoadAllProductDropdownByVendorId = function AllProductDropdownByVendorId(vendorId) {
         let request = $http({
             method: "get",
-            url: "/Get/CategoriesMaster/AllProductDropdownListByVendorAsync?Id=" + vendorId
+            url: "/Get/Purchase/AllProductDropdownListByVendorAsync?Id=" + vendorId
         });
         return request;
     }

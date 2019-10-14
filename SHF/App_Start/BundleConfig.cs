@@ -101,8 +101,8 @@ namespace SHF
                        //"~/Scripts/sweetalert.min.js",
                        "~/Scripts/jspdf.js",
                         "~/Scripts/html2canvas.js",
-                         "~/Scripts/pdfmake.js",
-                         "~/Scripts/ng-file-upload-5.0.9.js"
+                         "~/Scripts/pdfmake.js"//,
+                        // "~/Scripts/ng-file-upload-5.0.9.js"
                       ));
 
             bundles.Add(new ScriptBundle("~/bundles/angular-scripts").Include(
@@ -144,7 +144,7 @@ namespace SHF
                  "~/AngularControllers/MenuAccessPolicyController.js",
                  "~/AngularControllers/MessageController.js",
                   "~/AngularControllers/BankMasterController.js",
-                  "~/AngularControllers/CategoriesMasterController.js"
+                  "~/AngularControllers/CategoriesMasterController.js",
                   "~/AngularControllers/SubCategoriesMasterController.js"
                 ));
 

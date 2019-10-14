@@ -20,14 +20,14 @@ namespace SHF.DataAccess.Implementations
     {
         #region [Fields]
 
-        internal InventoryDBContext context;
+        internal SHFDBContext context;
         internal DbSet<TEntity> dbSet;
 
         #endregion
 
         #region [Contructors]      
 
-        public GenericRepository(InventoryDBContext context)
+        public GenericRepository(SHFDBContext context)
         {
             this.context = context;
             this.dbSet = context.Set<TEntity>();

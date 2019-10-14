@@ -1,5 +1,5 @@
-﻿angular.module(config.app,['ngFileUpload']).controller('BankMasterCtrl', ['$scope', '$http', '$window', 'BankMasterCRUD', 'TenantCRUD','CustomService','Upload'
-    function ($scope, $http, $window, BankMasterCRUD, TenantCRUD,CustomService,Upload) {      
+﻿angular.module(config.app).controller('BankMasterCtrl', ['$scope', '$http', '$window', 'BankMasterCRUD', 'TenantCRUD','CustomService',
+    function ($scope, $http, $window, BankMasterCRUD, TenantCRUD,CustomService) {      
         $scope.path = "";
         $scope.errors = {};
         $scope.errors.pageError = {};

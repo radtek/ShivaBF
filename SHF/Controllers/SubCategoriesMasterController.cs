@@ -66,8 +66,8 @@ namespace SHF.Controllers
         [HttpGet]
         [Access]
         [OutputCache(Duration = busConstant.Settings.Cache.OutputCache.TimeOut.S300)]
-        [Route("Configurations/Master/Categories/Index")]
-        [Route("Settings/Master/Categories/Index")]
+        [Route("Configurations/Master/SubCategories/Index")]
+        [Route("Settings/Master/SubCategories/Index")]
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId<long>();
@@ -75,7 +75,7 @@ namespace SHF.Controllers
             return View();
         }
         [HttpPost]
-        [Route("Post/Categories/IndexAsync")]
+        [Route("Post/SubCategories/IndexAsync")]
         [ValidateAntiForgeryTokens]
         public async Task<ActionResult> IndexAsync()
         {
@@ -122,7 +122,7 @@ namespace SHF.Controllers
         [HttpPost]
         [Audit]
         [ValidateAntiForgeryTokens]
-        [Route("Post/Categories/CreateAsync")]
+        [Route("Post/SubCategories/CreateAsync")]
         public async Task<ActionResult> CreateAsync(ViewModel.SubCategoriesMasterCreateOrEditViewModel model)
         {
             try
@@ -192,7 +192,7 @@ namespace SHF.Controllers
 
 
         [HttpGet]
-        [Route("Get/Categories/EditAsync")]
+        [Route("Get/SubCategories/EditAsync")]
         public async Task<ActionResult> EditAsync(long Id)
         {
             try
@@ -266,7 +266,7 @@ namespace SHF.Controllers
         [HttpPost]
         [Audit]
         [ValidateAntiForgeryTokens]
-        [Route("Post/Categories/EditAsync")]
+        [Route("Post/SubCategories/EditAsync")]
         public async Task<ActionResult> EditAsync(ViewModel.SubCategoriesMasterCreateOrEditViewModel model)
         {
             try
@@ -283,9 +283,9 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var CategoriesData = businessSubCategoriesMaster.FindBy(Categories => Categories.Tenant_ID == model.Tenant_ID && Categories.ID != model.ID).FirstOrDefault();
+                            var SubCategoriesData = businessSubCategoriesMaster.FindBy(SubCategories => SubCategories.Tenant_ID == model.Tenant_ID && SubCategories.ID != model.ID).FirstOrDefault();
 
-                            if (CategoriesData.IsNotNull())
+                            if (SubCategoriesData.IsNotNull())
                             {
                                 transaction.Complete();
                                 var response = new JsonResponse<dynamic>()

@@ -14,21 +14,24 @@ namespace SHF.EntityModel
         #region [Fields]
         private readonly System.DateTime _dateTime = System.DateTime.Now;
         #endregion
-        [Column("Created_By")]
+
+       
+
+        [Column("Created_By")]        
         public string CreatedBy { get; set; }
 
-        [Column("Created_On")]
+        [Column("Created_On")]  
         public DateTime? CreatedOn { get; set; }
 
-        [Column("Modified_By")]
+        [Column("Modified_By")]        
         public string UpdatedBy { get; set; }
 
-        [Column("Modified_On")]
+        [Column("Modified_On")]                
         public DateTime? UpdatedOn { get; set; }
 
-        [Column("Is_Deleted")]
+        [Column("Is_Deleted")]        
         public bool IsDeleted { get; set; }
-
+              
 
     }
 }

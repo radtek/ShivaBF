@@ -60,7 +60,7 @@
     <Compile Include="GetCollection.cs" />
     <Compile Include="Implementations\GenericRepository.cs" />
     <Compile Include="Implementations\UnitOfWork.cs" />
-    <Compile Include="InventoryDBContext.cs" />
+    <Compile Include="SHFDBContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

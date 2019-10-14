@@ -17,7 +17,7 @@ namespace SHF.DataAccess.Implementations
         private bool disposed = false;
         private TransactionScope transaction;
 
-        private InventoryDBContext context = new InventoryDBContext();
+        private SHFDBContext context = new SHFDBContext();
 
         private GenericRepository<EntityModel.Code> _CodeRepository;
         private GenericRepository<EntityModel.CodeValue> _CodeValueRepository;

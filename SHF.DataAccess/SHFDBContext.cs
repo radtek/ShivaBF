@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-//using SHF.EntityModel;
+//using Inventory.EntityModel;
 using SHF.Helper;
 using System.Data.Entity.Infrastructure;
 
 namespace SHF.DataAccess
 {
-    public class InventoryDBContext : DbContext
+    public class SHFDBContext : DbContext
     {
-        public InventoryDBContext() : base(busConstant.Settings.DataBase.SqlServer.Connections.ConnectionString.DEFAULT)
+        public SHFDBContext() : base(busConstant.Settings.DataBase.SqlServer.Connections.ConnectionString.DEFAULT)
         {
-            //Database.SetInitializer<SHFContexts>(new DropCreateDatabaseAlways<SHFContexts>());
-            ///Database.SetInitializer(new MigrateDatabaseToLatestVersion<SHFContexts, Migrations.Configuration>());
+            //Database.SetInitializer<InventoryContexts>(new DropCreateDatabaseAlways<InventoryContexts>());
+            ///Database.SetInitializer(new MigrateDatabaseToLatestVersion<InventoryContexts, Migrations.Configuration>());
 
             this.Configuration.AutoDetectChangesEnabled = busConstant.Misc.TRUE;
             this.Configuration.EnsureTransactionsForFunctionsAndCommands = busConstant.Misc.TRUE;
@@ -42,21 +42,24 @@ namespace SHF.DataAccess
         public DbSet<EntityModel.AspNetUserRole> AspNetUserRole { get; set; }
         public DbSet<EntityModel.SubMenu> SubMenu { get; set; }
         public DbSet<EntityModel.AspNetRoleSubMenu> AspNetRoleSubMenu { get; set; }
+       
         public DbSet<EntityModel.Message> Messages { get; set; }
-        public DbSet<EntityModel.BankMaster> BankMaster { get; set; }
-        public DbSet<EntityModel.PriceFeaturesMaster> PriceFeaturesMaster { get; set; }
-        public DbSet<EntityModel.FAQMaster> FAQMaster { get; set; }
-        public DbSet<EntityModel.CategoriesMaster> CategoriesMaster { get; set; }
-        public DbSet<EntityModel.SubCategoriesMaster> SubCategoriesMaster { get; set; }
-        public DbSet<EntityModel.SubSubCategoriesMaster> SubSubCategoriesMaster { get; set; }
-        public DbSet<EntityModel.Services1Master> Services1Master { get; set; }
-        public DbSet<EntityModel.Services1Section10BankMapping> Services1Section10BankMapping { get; set; }
-        public DbSet<EntityModel.Services1Section1Master> Services1Section1Master { get; set; }
-        public DbSet<EntityModel.Services1Section4Master> Services1Section4Master { get; set; }
-        public DbSet<EntityModel.Services1Section5Master> Services1Section5Master { get; set; }
-        public DbSet<EntityModel.Services1Section6PriceMaster> Services1Section6PriceMaster { get; set; }
-        public DbSet<EntityModel.StateMaster> StateMaster { get; set; }
-        public DbSet<EntityModel.PriceFeaturesMapping> PriceFeaturesMapping { get; set; }
+        public DbSet<SHF.EntityModel.BankMaster> BankMaster { get; set; }
+        public DbSet<SHF.EntityModel.PriceFeaturesMaster> PriceFeaturesMaster { get; set; }
+        public DbSet<SHF.EntityModel.FAQMaster> FAQMaster { get; set; }
+        public DbSet<SHF.EntityModel.CategoriesMaster> CategoriesMaster { get; set; }
+        public DbSet<SHF.EntityModel.SubCategoriesMaster> SubCategoriesMaster { get; set; }
+        public DbSet<SHF.EntityModel.SubSubCategoriesMaster> SubSubCategoriesMaster { get; set; }
+        public DbSet<SHF.EntityModel.Services1Master> Services1Master { get; set; }
+        public DbSet<SHF.EntityModel.Services1Section10BankMapping> Services1Section10BankMapping { get; set; }
+        public DbSet<SHF.EntityModel.Services1Section1Master> Services1Section1Master { get; set; }
+        public DbSet<SHF.EntityModel.Services1Section4Master> Services1Section4Master { get; set; }
+        public DbSet<SHF.EntityModel.Services1Section5Master> Services1Section5Master { get; set; }
+        public DbSet<SHF.EntityModel.Services1Section6PriceMaster> Services1Section6PriceMaster { get; set; }
+        public DbSet<SHF.EntityModel.StateMaster> StateMaster { get; set; }
+        public DbSet<SHF.EntityModel.PriceFeaturesMapping> PriceFeaturesMapping { get; set; }
+
+
 
     }
 }
