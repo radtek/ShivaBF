@@ -400,6 +400,73 @@ namespace SHF.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("Get/CategoriesMaster/DropdownListbyTenantAsync")]
+        public async Task<ActionResult> GetCategoriesMasterByTenantIdAsync(long Id)
+        {
+            try
+            {
+                using (var transaction = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadUncommitted }))
+                {
+                    try
+                    {
+                        if (Id == default(long))
+                        {
+                            transaction.Complete();
+                            var response = new JsonResponse<dynamic>()
+                            {
+                                Type = busConstant.Messages.Type.EXCEPTION,
+                                Message = busConstant.Messages.Type.Exceptions.BAD_REQUEST,
+                                StatusCode = Convert.ToInt32(HttpStatusCode.BadRequest)
+                            };
+
+                            return Json(response, JsonRequestBehavior.AllowGet);
+                        }
+                        else
+                        {
+                            var entities = this.businessCategoriesMaster.FindBy(product => product.Tenant_ID == Id).Select(x => new ViewModel.CategoriesDropdownListViewModel
+                            {
+                                ID = x.ID,
+                                CategoryName = x.CategoryName
+                            });
+
+                            if (entities.IsNotNull())
+                            {
+                                var response = new JsonResponse<IEnumerable<ViewModel.CategoriesDropdownListViewModel>>()
+                                {
+                                    Type = busConstant.Messages.Type.RESPONSE,
+                                    Entity = entities
+                                };
+
+                                transaction.Complete();
+                                return Json(response, JsonRequestBehavior.AllowGet);
+                            }
+                            else
+                            {
+                                var response = new JsonResponse<dynamic>()
+                                {
+                                    Type = busConstant.Messages.Type.EXCEPTION,
+                                    Message = busConstant.Messages.Type.Exceptions.NOT_FOUND,
+                                    StatusCode = Convert.ToInt32(HttpStatusCode.NotFound)
+                                };
+                                transaction.Complete();
+
+                                return Json(response, JsonRequestBehavior.AllowGet);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Dispose();
+                        throw;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return ExceptionResponse(ex);
+            }
+        }
 
 
         #endregion

@@ -1,5 +1,5 @@
-﻿angular.module(config.app).controller('SubCategoriesMasterCtrl', ['$scope', '$http', '$window', 'SubCategoriesMasterCRUD', 'TenantCRUD','CustomService',
-    function ($scope, $http, $window, SubCategoriesMasterCRUD, TenantCRUD,CustomService) {      
+﻿angular.module(config.app).controller('SubCategoriesMasterCtrl', ['$scope', '$http', '$window','CategoriesMasterCRUD', 'SubCategoriesMasterCRUD', 'TenantCRUD','CustomService',
+    function ($scope, $http, $window,CategoriesMasterCRUD, SubCategoriesMasterCRUD, TenantCRUD,CustomService) {      
         $scope.path = "";
         $scope.errors = {};
         $scope.errors.pageError = {};
@@ -10,9 +10,10 @@
         $scope.Entity = {};
         $scope.SubCategoriesMasterCreateOrEditViewModel = {};
         $scope.AllTenants = [];
-       
+$scope.AllCategories = [];
+
         $scope.SubCategoriesMasterCreateOrEditViewModel.SelectedTenant_ID = -1;
-        $scope.SubCategoriesMasterCreateOrEditViewModel.SelectedUnitOfMesurment = -1;
+       
         $scope.Cookie_Tenant_ID = parseInt(CustomService.GetTenantID());
         $scope.SubCategoriesMasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;     
 
@@ -51,10 +52,10 @@
             if ($scope.Cookie_Tenant_ID <= 0) {
                 $scope.BindTenantDropDownList();
                 $scope.SubCategoriesMasterCreateOrEditViewModel.SelectedTenant_ID = -1;
-                $scope.SubCategoriesMasterCreateOrEditViewModel.SelectedUnitOfMesurment = -1;
+               // $scope.SubCategoriesMasterCreateOrEditViewModel.SelectedUnitOfMesurment = -1;
             } else {
                 $scope.SubCategoriesMasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
-                $scope.BindUnitOfMeasurementDropDownList($scope.SubCategoriesMasterCreateOrEditViewModel.Tenant_ID);
+               // $scope.BindUnitOfMeasurementDropDownList($scope.SubCategoriesMasterCreateOrEditViewModel.Tenant_ID);
             }
             $('#modal-createOredit').modal('show');
         }
@@ -96,63 +97,13 @@
                     });
             }
         }
-
- $scope.upload = function (file) {
-        Upload.upload({
-            url: 'upload/url',
-            data: {file: file, 'username': $scope.username}
-        }).then(function (resp) {
-            console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
-        }, function (resp) {
-            console.log('Error status: ' + resp.status);
-        }, function (evt) {
-            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
-        });
-    };
-        $scope.BindUnitOfMeasurementDropDownList = function (tenantId) {
-            let promise = UnitOfMeasurementCRUD.LoadUnitOfMeasurementDropdown(tenantId)
-            promise.then(
-                function success(response) {
-                    switch (response.data.Type) {
-                        case 'Exception':
-                            CustomService.Notify(response.data.Message);
-                            console.log(response);
-                            break;
-                        case 'Response':
-                            $scope.AllUnitOfMeasurements = response.data.Entity;
-                            console.clear();
-                            break;
-                        default:
-                            CustomService.Notify(response.data.Message);
-                            console.log(response);
-                            break;
-                    }
-                }, function errors(response) {
-                    switch (response.data.Type) {
-                        case 'Exception':
-                            CustomService.Notify(response.data.Message);
-                            console.log(response);
-                            break;
-                        case 'Validation':
-                            CustomService.Notify(response.data.Message);
-                            console.log(response);
-                            break;
-                        default:
-                            CustomService.Notify(response.data.Message);
-                            console.log(response);
-                            break;
-                    }
-
-                });
-        }       
-
+/********************************************************************************/
         $scope.EditAsync = function (Id) {
             $scope.Clear();
             if ($scope.Cookie_Tenant_ID <= 0) {
                 $scope.BindTenantDropDownList();
-            }
-            $http.get("/Get/Bank/EditAsync?Id=" + Id
+           }
+            $http.get("/Get/SubCategoriesMaster/EditAsync?Id=" + Id
             ).then(
                 function success(response) {
                     switch (response.data.Type) {
@@ -162,6 +113,8 @@
                             break;
                         case 'Response':
                             $scope.SubCategoriesMasterCreateOrEditViewModel = response.data.Entity;
+                            $scope.LoadAllCategory();
+                            $scope.SubCategoriesMasterCreateOrEditViewModel.Category_ID=$scope.SubCategoriesMasterCreateOrEditViewModel.Category_ID;
                             $('#modal-createOredit').modal('show');
                             console.clear();
                             break;
@@ -195,9 +148,10 @@
         $scope.createOreditAsyncForm = function () {
             $scope.Processing = true;
             $scope.path = "";
-            if ($scope.myForm.$valid) {
-                $scope.path = ($scope.SubCategoriesMasterCreateOrEditViewModel.ID == undefined || $scope.SubCategoriesMasterCreateOrEditViewModel.ID == null || $scope.SubCategoriesMasterCreateOrEditViewModel.ID == 0) ? "/Post/Bank/CreateAsync" : "/Post/Bank/EditAsync";
-                $http.post($scope.path, $scope.SubCategoriesMasterCreateOrEditViewModel,
+           if ($scope.myForm.$valid) {
+                $scope.path = ($scope.SubCategoriesMasterCreateOrEditViewModel.ID == undefined || $scope.SubCategoriesMasterCreateOrEditViewModel.ID == null || 
+          $scope.SubCategoriesMasterCreateOrEditViewModel.ID == 0) ? "/Post/SubCategoriesMaster/CreateAsync" : "/Post/SubCategoriesMaster/EditAsync";
+               $http.post($scope.path, $scope.SubCategoriesMasterCreateOrEditViewModel,
                     {
                         headers: { 'RequestVerificationToken': $scope.antiForgeryToken }
                     }
@@ -281,6 +235,93 @@
 
         $scope.PageLoad();
               
+ $scope.DeleteAsync = function (Id) {
 
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this record!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        var obj = {};
+                        obj.Id = Id;
+                  $http.post("/Post/SubCategoriesMaster/Delete/", obj,
+                    {
+                        headers: { 'RequestVerificationToken': $scope.antiForgeryToken }
+                    }
+                ).then(function (response) {
+                            switch (response.data.Type) {
+                            case 'Response':
+                                $('#modal-createOredit').modal('hide');
+                                CustomService.Alert(response);
+                                $scope.PageLoad();
+                                console.clear();
+                                break;
+                            case 'Exception':
+                                CustomService.Notify(response.data.Message);
+                                console.log(response);
+                                break;
+                            case 'Validation':
+                                CustomService.Notify(response.data.Message);
+                                console.log(response);
+                                break;
+                            default:
+                                CustomService.Notify(response.data.Message);
+                                console.log(response);
+                                break;
+                        }
+                        })
+                    }
+                    else {
+                        CustomService.Notify("Your record is safe!");
+                    }
+                });
+        }
+
+$scope.LoadAllCategory = function () {
+            let tenantId = $scope.SubCategoriesMasterCreateOrEditViewModel.Tenant_ID;
+            $scope.BindCategoryDropDownList(tenantId);
+        }
+
+        $scope.BindCategoryDropDownList = function (tenantId) {
+            let promise = CategoriesMasterCRUD.LoadCategoriesDropdown(tenantId)
+            promise.then(
+                function success(response) {
+                    switch (response.data.Type) {
+                        case 'Exception':
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                        case 'Response':
+                            $scope.AllCategories = response.data.Entity;
+                            console.clear();
+                            break;
+                        default:
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                    }
+                }, function errors(response) {
+                    switch (response.data.Type) {
+                        case 'Exception':
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                        case 'Validation':
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                        default:
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                    }
+
+                });
+        }       
     }]);
+
 

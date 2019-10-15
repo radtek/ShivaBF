@@ -9,8 +9,9 @@ namespace SHF.ViewModel
 {
     public sealed class SubCategoriesMasterIndexViewModel : BaseViewModel
     {
-        public System.Int64 Id { get; set; }
+       
         public System.String SubCategoryName { get; set; }
+        public System.Int64 Category_ID { get; set; }
         public System.String CategoryName { get; set; }
 
         public System.Int32 DisplayIndex { get; set; }
@@ -37,8 +38,9 @@ namespace SHF.ViewModel
     }
     public sealed class SubCategoriesMasterCreateOrEditViewModel : BaseViewModel
     {
-        public System.Int64 Id { get; set; }
+    
         public System.String SubCategoryName { get; set; }
+        public System.Int64 Category_ID { get; set; }
         public System.String CategoryName { get; set; }
 
         public System.Int32 DisplayIndex { get; set; }
@@ -64,7 +66,7 @@ namespace SHF.ViewModel
     public class SubCategoriesMasterViewModel : BaseViewModel
     {
         public System.String SubCategoryName { get; set; }
-        public System.Int64 Cat_Id { get; set; }
+        public System.Int64 Category_ID { get; set; }
         public System.String CategoryName { get; set; }
         public System.Int32 DisplayIndex { get; set; }
        
@@ -74,5 +76,11 @@ namespace SHF.ViewModel
        
         public System.Int32 TotalViews { get; set; }
         
+    }
+    public class SubCategoriesDropdownListViewModel
+    {
+        public System.String SubCategoryName { get; set; }
+        public System.Int64 ID { get; set; }
+
     }
 }

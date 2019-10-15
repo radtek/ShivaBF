@@ -43,64 +43,69 @@ namespace SHF.Business.BusinessLogic
 
 
                 //Count total Records meeting criteria
-                totalRecords = unitOfWork.SubCategoriesMasterRepository.Get().Join(unitOfWork.TenantRepository.Get(), Categories => Categories.Tenant_ID, tenant => tenant.ID, (Categories, tenant) => new { Categories, tenant })
-                    .Count(x => (tenant_Id == null || x.Categories.Tenant_ID == tenant_Id)
-                            && (x.Categories.ID.ToString().Contains(searchValue)
-                        || x.Categories.SubCategoryName.CaseInsensitiveContains(searchValue)
-                        || x.Categories.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
-                        || x.Categories.DisplayOnHome.ToString().CaseInsensitiveContains(searchValue)
-                         || x.Categories.Url.ToString().CaseInsensitiveContains(searchValue)
-                          || x.Categories.Metadata.ToString().CaseInsensitiveContains(searchValue)
-                           || x.Categories.MetaDescription.ToString().CaseInsensitiveContains(searchValue)
-                            || x.Categories.Keyword.ToString().CaseInsensitiveContains(searchValue)
-                            || x.Categories.TotalViews.ToString().CaseInsensitiveContains(searchValue)
-                        || x.tenant.Name.CaseInsensitiveContains(searchValue)
-                        || x.Categories.CreatedBy.CaseInsensitiveContains(searchValue)
-                        || x.Categories.UpdatedBy.CaseInsensitiveContains(searchValue)
-                        || x.Categories.CreatedOn.ToString().Contains(searchValue.IsMatchingTo("{0:dd/MM/yyyy HH:mm:ss tt}") ? Convert.ToDateTime(searchValue).ToString("dd/MM/yyyy HH:mm:ss tt") : searchValue)
-                        || x.Categories.UpdatedOn.ToString().Contains(searchValue.IsMatchingTo("{0:dd/MM/yyyy HH:mm:ss tt}") ? Convert.ToDateTime(searchValue).ToString("dd/MM/yyyy HH:mm:ss tt") : searchValue)
+                totalRecords = unitOfWork.SubCategoriesMasterRepository.Get().Join(unitOfWork.TenantRepository.Get(), Sub_Categories => Sub_Categories.Tenant_ID, tenant => tenant.ID, (Sub_Categories, tenant) => new { Sub_Categories, tenant })
+                    .Join(unitOfWork.CategoriesMasterRepository.Get(), Sub_Categories_tenant => Sub_Categories_tenant.Sub_Categories.Cat_Id, Categories => Categories.ID, (Sub_Categories_tenant, Categories) => new { Sub_Categories_tenant,Categories})
+                    .Count(x => (tenant_Id == null || x.Sub_Categories_tenant.Sub_Categories.Tenant_ID == tenant_Id)
+                            && (x.Sub_Categories_tenant.Sub_Categories.ID.ToString().Contains(searchValue)
+                        || x.Sub_Categories_tenant.Sub_Categories.SubCategoryName.CaseInsensitiveContains(searchValue)
+                         || x.Categories.CategoryName.CaseInsensitiveContains(searchValue)
+                        || x.Sub_Categories_tenant.Sub_Categories.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
+                        || x.Sub_Categories_tenant.Sub_Categories.DisplayOnHome.ToString().CaseInsensitiveContains(searchValue)
+                         ||x.Sub_Categories_tenant.Sub_Categories.Url.ToString().CaseInsensitiveContains(searchValue)
+                          ||x.Sub_Categories_tenant.Sub_Categories.Metadata.ToString().CaseInsensitiveContains(searchValue)
+                           ||x.Sub_Categories_tenant.Sub_Categories.MetaDescription.ToString().CaseInsensitiveContains(searchValue)
+                            ||x.Sub_Categories_tenant.Sub_Categories.Keyword.ToString().CaseInsensitiveContains(searchValue)
+                            ||x.Sub_Categories_tenant.Sub_Categories.TotalViews.ToString().CaseInsensitiveContains(searchValue)
+                        ||x.Sub_Categories_tenant.Sub_Categories.Tenant.Name.CaseInsensitiveContains(searchValue)
+                        ||x.Sub_Categories_tenant.Sub_Categories.CreatedBy.CaseInsensitiveContains(searchValue)
+                        ||x.Sub_Categories_tenant.Sub_Categories.UpdatedBy.CaseInsensitiveContains(searchValue)
+                        ||x.Sub_Categories_tenant.Sub_Categories.CreatedOn.ToString().Contains(searchValue.IsMatchingTo("{0:dd/MM/yyyy HH:mm:ss tt}") ? Convert.ToDateTime(searchValue).ToString("dd/MM/yyyy HH:mm:ss tt") : searchValue)
+                        ||x.Sub_Categories_tenant.Sub_Categories.UpdatedOn.ToString().Contains(searchValue.IsMatchingTo("{0:dd/MM/yyyy HH:mm:ss tt}") ? Convert.ToDateTime(searchValue).ToString("dd/MM/yyyy HH:mm:ss tt") : searchValue)
                         ));
 
                 pageSize = pageSize < busConstant.Numbers.Integer.ZERO ? totalRecords : pageSize;
 
                 //Database query
-                collection = unitOfWork.SubCategoriesMasterRepository.Get().Join(unitOfWork.TenantRepository.Get(), Categories => Categories.Tenant_ID, tenant => tenant.ID, (Categories, tenant) => new { Categories, tenant })
-                    .Where(x => (tenant_Id == null || x.Categories.Tenant_ID == tenant_Id)
-                            && (x.Categories.ID.ToString().Contains(searchValue)
-                        || x.Categories.SubCategoryName.CaseInsensitiveContains(searchValue)
-                        || x.Categories.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
-                        || x.Categories.DisplayOnHome.ToString().CaseInsensitiveContains(searchValue)
-                         || x.Categories.Url.ToString().CaseInsensitiveContains(searchValue)
-                          || x.Categories.Metadata.ToString().CaseInsensitiveContains(searchValue)
-                           || x.Categories.MetaDescription.ToString().CaseInsensitiveContains(searchValue)
-                            || x.Categories.Keyword.ToString().CaseInsensitiveContains(searchValue)
-                            || x.Categories.TotalViews.ToString().CaseInsensitiveContains(searchValue)
-                        || x.tenant.Name.CaseInsensitiveContains(searchValue)
-                        || x.Categories.CreatedBy.CaseInsensitiveContains(searchValue)
-                        || x.Categories.UpdatedBy.CaseInsensitiveContains(searchValue)
-                        || x.Categories.CreatedOn.ToString().Contains(searchValue.IsMatchingTo("{0:dd/MM/yyyy HH:mm:ss tt}") ? Convert.ToDateTime(searchValue).ToString("dd/MM/yyyy HH:mm:ss tt") : searchValue)
-                        || x.Categories.UpdatedOn.ToString().Contains(searchValue.IsMatchingTo("{0:dd/MM/yyyy HH:mm:ss tt}") ? Convert.ToDateTime(searchValue).ToString("dd/MM/yyyy HH:mm:ss tt") : searchValue)
+                collection = unitOfWork.SubCategoriesMasterRepository.Get().Join(unitOfWork.TenantRepository.Get(), Sub_Categories => Sub_Categories.Tenant_ID, tenant => tenant.ID, (Sub_Categories, tenant) => new { Sub_Categories, tenant })
+                    .Join(unitOfWork.CategoriesMasterRepository.Get(), Sub_Categories_tenant => Sub_Categories_tenant.Sub_Categories.Cat_Id, Categories => Categories.ID, (Sub_Categories_tenant, Categories) => new { Sub_Categories_tenant, Categories })
+                    .Where(x => (tenant_Id == null || x.Sub_Categories_tenant.Sub_Categories.Tenant_ID == tenant_Id)
+                            && (x.Sub_Categories_tenant.Sub_Categories.ID.ToString().Contains(searchValue)
+                        || x.Sub_Categories_tenant.Sub_Categories.SubCategoryName.CaseInsensitiveContains(searchValue)
+                         || x.Categories.CategoryName.CaseInsensitiveContains(searchValue)
+                        || x.Sub_Categories_tenant.Sub_Categories.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
+                        || x.Sub_Categories_tenant.Sub_Categories.DisplayOnHome.ToString().CaseInsensitiveContains(searchValue)
+                         || x.Sub_Categories_tenant.Sub_Categories.Url.ToString().CaseInsensitiveContains(searchValue)
+                          || x.Sub_Categories_tenant.Sub_Categories.Metadata.ToString().CaseInsensitiveContains(searchValue)
+                           || x.Sub_Categories_tenant.Sub_Categories.MetaDescription.ToString().CaseInsensitiveContains(searchValue)
+                            || x.Sub_Categories_tenant.Sub_Categories.Keyword.ToString().CaseInsensitiveContains(searchValue)
+                            || x.Sub_Categories_tenant.Sub_Categories.TotalViews.ToString().CaseInsensitiveContains(searchValue)
+                        || x.Sub_Categories_tenant.Sub_Categories.Tenant.Name.CaseInsensitiveContains(searchValue)
+                        || x.Sub_Categories_tenant.Sub_Categories.CreatedBy.CaseInsensitiveContains(searchValue)
+                        || x.Sub_Categories_tenant.Sub_Categories.UpdatedBy.CaseInsensitiveContains(searchValue)
+                        || x.Sub_Categories_tenant.Sub_Categories.CreatedOn.ToString().Contains(searchValue.IsMatchingTo("{0:dd/MM/yyyy HH:mm:ss tt}") ? Convert.ToDateTime(searchValue).ToString("dd/MM/yyyy HH:mm:ss tt") : searchValue)
+                        || x.Sub_Categories_tenant.Sub_Categories.UpdatedOn.ToString().Contains(searchValue.IsMatchingTo("{0:dd/MM/yyyy HH:mm:ss tt}") ? Convert.ToDateTime(searchValue).ToString("dd/MM/yyyy HH:mm:ss tt") : searchValue)
                         ))
                     .OrderBy(sortColumn + " " + sortColumnDir)
                     .Skip(skip).Take(pageSize).ToList()
                     .Select(x => new ViewModel.SubCategoriesMasterIndexViewModel
                     {
-                        ID = x.Categories.ID,
-                        SubCategoryName = x.Categories.SubCategoryName,
-                        DisplayIndex = x.Categories.DisplayIndex,
-                        DisplayOnHome = x.Categories.DisplayOnHome,
-                        Url = x.Categories.Url,
-                        Metadata = x.Categories.Metadata,
-                        MetaDescription = x.Categories.MetaDescription,
-                        Keyword = x.Categories.Keyword,
-                        TotalViews = x.Categories.TotalViews,
-                        IsActive = x.Categories.IsActive,
-                        TenantName = x.tenant.Name,
-                        Tenant_ID = x.tenant.ID,
-                        CreatedBy = x.Categories.CreatedBy,
-                        CreatedOn = x.Categories.CreatedOn,
-                        UpdatedBy = x.Categories.UpdatedBy,
-                        UpdatedOn = x.Categories.UpdatedOn
+                        ID = x.Sub_Categories_tenant.Sub_Categories.ID,
+                        SubCategoryName = x.Sub_Categories_tenant.Sub_Categories.SubCategoryName,
+                        CategoryName = x.Categories.CategoryName,
+                        DisplayIndex = x.Sub_Categories_tenant.Sub_Categories.DisplayIndex,
+                        DisplayOnHome = x.Sub_Categories_tenant.Sub_Categories.DisplayOnHome,
+                        Url = x.Sub_Categories_tenant.Sub_Categories.Url,
+                        Metadata = x.Sub_Categories_tenant.Sub_Categories.Metadata,
+                        MetaDescription = x.Sub_Categories_tenant.Sub_Categories.MetaDescription,
+                        Keyword = x.Sub_Categories_tenant.Sub_Categories.Keyword,
+                        TotalViews = x.Sub_Categories_tenant.Sub_Categories.TotalViews,
+                        IsActive = x.Sub_Categories_tenant.Sub_Categories.IsActive,
+                        TenantName = x.Sub_Categories_tenant.Sub_Categories.Tenant.Name,
+                        Tenant_ID = x.Sub_Categories_tenant.Sub_Categories.Tenant.ID,
+                        CreatedBy = x.Sub_Categories_tenant.Sub_Categories.CreatedBy,
+                        CreatedOn = x.Sub_Categories_tenant.Sub_Categories.CreatedOn,
+                        UpdatedBy = x.Sub_Categories_tenant.Sub_Categories.UpdatedBy,
+                        UpdatedOn = x.Sub_Categories_tenant.Sub_Categories.UpdatedOn
                     }).ToList();
 
 

@@ -44,7 +44,7 @@ angular.module(config.app).service('SubCategoriesMasterCRUD', function ($http) {
                     targets: 0
                 },
                 {
-                    name: "categories.ID",
+                    name: "Sub_Categories_tenant.Sub_Categories.ID",
                     data: "ID",
                     title: "ID",
                     render: $.fn.dataTable.render.text(),
@@ -52,77 +52,85 @@ angular.module(config.app).service('SubCategoriesMasterCRUD', function ($http) {
                     targets: 1
                 },
                 {
-                    name: "categories.CategoryName",
-                    data: "Category&nbsp;Name",
-                    title: "Category&nbsp;Name",
+                    name: "Sub_Categories_tenant.Sub_Categories.SubCategoryName",
+                    data: "SubCategoryName",
+                    title: "SubCategory&nbsp;Name",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
                     targets: 2
                 },
-                {
-                    name: "categories.DisplayIndex",
-                    data: "Display&nbsp;Index",
-                    title: "Display&nbsp;Index",
+{
+                    name: "categories.CategoryName",
+                    data: "CategoryName",
+                    title: "Category&nbsp;Name",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
                     targets: 3
                 },
- {
-                    name: "categories.DisplayOnHome",
-                    data: "Display&nbsp;On&nbsp;Home",
-                    title: "Display&nbsp;On&nbsp;Home",
+                {
+                    name: "Sub_Categories_tenant.Sub_Categories.DisplayIndex",
+                    data: "DisplayIndex",
+                    title: "Display&nbsp;Index",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
                     targets: 4
                 },
  {
-                    name: "categories.Url",
-                    data: "Url",
-                    title: "Url",
+                    name: "Sub_Categories_tenant.Sub_Categories.DisplayOnHome",
+                    data: "DisplayOnHome",
+                    title: "Display&nbsp;On&nbsp;Home",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
                     targets: 5
                 },
  {
-                    name: "categories.Metadata",
-                    data: "Metadata",
-                    title: "Metadata",
+                    name: "Sub_Categories_tenant.Sub_Categories.Url",
+                    data: "Url",
+                    title: "Url",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
                     targets: 6
                 },
-{
-                    name: "categories.MetaDescription",
-                    data: "MetaDescription",
-                    title: "MetaDescription",
+ {
+                    name: "Sub_Categories_tenant.Sub_Categories.Metadata",
+                    data: "Metadata",
+                    title: "Metadata",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
                     targets: 7
                 },
 {
-                    name: "categories.Keyword",
-                    data: "Keyword",
-                    title: "Keyword",
+                    name: "Sub_Categories_tenant.Sub_Categories.MetaDescription",
+                    data: "MetaDescription",
+                    title: "MetaDescription",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
                     targets: 8
                 },
-
 {
-                    name: "categories.TotalViews",
-                    data: "TotalViews",
-                    title: "TotalViews",
+                    name: "Sub_Categories_tenant.Sub_Categories.Keyword",
+                    data: "Keyword",
+                    title: "Keyword",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
                     targets: 9
                 },
-              {
-                    name: "categories.IsActive",
-                    data: "IsActive",
-                    title: "IsActive",
+
+{
+                    name: "Sub_Categories_tenant.Sub_Categories.TotalViews",
+                    data: "TotalViews",
+                    title: "TotalViews",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
                     targets: 10
+                },
+              {
+                    name: "Sub_Categories_tenant.Sub_Categories.IsActive",
+                    data: "IsActive",
+                    title: "Is&nbsp;Active",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 11
                 },
                 {
                     name: "tenant.Name",
@@ -131,18 +139,18 @@ angular.module(config.app).service('SubCategoriesMasterCRUD', function ($http) {
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
                     visible: viewBagTenantID <= 0 ? true : false,
-                    targets:11
+                    targets:12
                 },
                 {
-                    name: "categories.CreatedBy",
+                    name: "Sub_Categories_tenant.Sub_Categories.CreatedBy",
                     data: "CreatedBy",
                     title: "Created&nbsp;By",
                     render: $.fn.dataTable.render.text(),
                     width: "6%",
-                    targets: 12
+                    targets: 13
                 },
                 {
-                    name: "categories.CreatedOn",
+                    name: "Sub_Categories_tenant.Sub_Categories.CreatedOn",
                     data: "CreatedOn",
                     title: "Created&nbsp;On",
                     render: function (data, type, row, meta) {
@@ -151,18 +159,18 @@ angular.module(config.app).service('SubCategoriesMasterCRUD', function ($http) {
 
                     },
                     width: "11%",
-                    targets: 13
+                    targets: 14
                 },
                 {
-                    name: "categories.UpdatedBy",
+                    name: "Sub_Categories_tenant.Sub_Categories.UpdatedBy",
                     data: "UpdatedBy",
                     title: "Modified&nbsp;By",
                     render: $.fn.dataTable.render.text(),
                     width: "6%",
-                    targets: 14
+                    targets: 15
                 },
                 {
-                    name: "categories.UpdatedOn",
+                    name: "Sub_Categories_tenant.Sub_Categories.UpdatedOn",
                     data: "UpdatedOn",
                     title: "Modified&nbsp;On",
                     render: function (data, type, row, meta) {
@@ -170,7 +178,7 @@ angular.module(config.app).service('SubCategoriesMasterCRUD', function ($http) {
                         return moment(date).format('DD-MM-YYYY hh:mm:ss a');
                     },
                     width: "11%",
-                    targets: 15
+                    targets: 16
                 },
                 {
                     name: null,
@@ -181,7 +189,7 @@ angular.module(config.app).service('SubCategoriesMasterCRUD', function ($http) {
                         return '<button type="button" class="btn btn-xs text-success btn-edit"><i title="Edit" class="fa fa-edit"></i></button>';
                     },
                     width: "2%",
-                    targets: 16
+                    targets: 17
                 },
                 {
                     name: null,
@@ -192,7 +200,7 @@ angular.module(config.app).service('SubCategoriesMasterCRUD', function ($http) {
                         return '<button type="button" class="btn btn-xs text-danger btn-delete"><i title="Delete" class="fa fa-trash"></i></button>';
                     },
                     width: "2%",
-                    targets: 17
+                    targets: 18
                 }
             ],
 
@@ -207,13 +215,13 @@ angular.module(config.app).service('SubCategoriesMasterCRUD', function ($http) {
         $('#grdTable tbody').off('click');
         $('#grdTable tbody').on('click', '.btn-edit', function () {
             let rowData = oTable.row($(this).parents('tr')).data();
-            let scope = angular.element(document.getElementById('BankMasterControllerScope')).scope();
+            let scope = angular.element(document.getElementById('SubCategoriesMasterControllerScope')).scope();
             scope.EditAsync(rowData.ID);
         });
 
         $('#grdTable tbody').on('click', '.btn-delete', function () {
             let rowData = oTable.row($(this).parents('tr')).data();
-            let scope = angular.element(document.getElementById('BankMasterControllerScope')).scope();
+            let scope = angular.element(document.getElementById('SubCategoriesMasterControllerScope')).scope();
             scope.DeleteAsync(rowData.ID);
         });
     }

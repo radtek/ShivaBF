@@ -230,7 +230,7 @@ angular.module(config.app).service('CategoriesMasterCRUD', function ($http) {
     }
 
 
-    this.LoadProductDropdown = function ProductDropdown(tenantId) {
+    this.LoadCategoriesDropdown = function CategoriesDropdown(tenantId) {
         let request = $http({
             method: "get",
             url: "/Get/CategoriesMaster/DropdownListbyTenantAsync?Id=" + tenantId

@@ -71,7 +71,6 @@
     <Compile Include="ExceptionLogCreateViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StatusDropDownViewModel.cs" />
-    <Compile Include="SubCategoryDropDownViewModel.cs" />
     <Compile Include="SubMenuIndexViewModel.cs" />
     <Compile Include="TransactionStatusDropDownViewModel.cs" />
     <Compile Include="TransactionTypeDropDownViewModel.cs" />

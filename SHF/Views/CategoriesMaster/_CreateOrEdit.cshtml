@@ -46,7 +46,7 @@
 
                         <div class="form-group" ng-class="{'has-error': (myForm.DisplayIndex.$touched || myForm.DisplayIndex.$dirty)  && myForm.DisplayIndex.$invalid}">
                             <label>Display Index</label>
-                            <input type="text" class="form-control" name="DisplayIndex" ng-model="CategoriesMasterCreateOrEditViewModel.DisplayIndex" ng-disabled="Processing" autocomplete="off" placeholder="Enter Display Index" tooltip-placement="top" uib-tooltip="Enter Display Index" required />
+                            <input type="number" min="0" class="form-control" name="DisplayIndex" ng-model="CategoriesMasterCreateOrEditViewModel.DisplayIndex" ng-disabled="Processing" autocomplete="off" placeholder="Enter Display Index" tooltip-placement="top" uib-tooltip="Enter Display Index" required />
                             <div class="help-block" ng-messages="myForm.DisplayIndex.$error" ng-if="myForm.DisplayIndex.$touched || myForm.Description.$dirty && myForm.DisplayIndex.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
@@ -70,7 +70,7 @@
 
                         <div class="form-group" ng-class="{'has-error': (myForm.TotalViews.$touched || myForm.TotalViews.$dirty)  && myForm.TotalViews.$invalid}">
                             <label>Total Views</label>
-                            <input type="text" class="form-control" name="TotalViews" ng-model="CategoriesMasterCreateOrEditViewModel.TotalViews" ng-disabled="Processing" autocomplete="off" placeholder="Enter Total Views" tooltip-placement="top" uib-tooltip="Enter Total Views" required />
+                            <input type="number" min="0" class="form-control" name="TotalViews" ng-model="CategoriesMasterCreateOrEditViewModel.TotalViews" ng-disabled="Processing" autocomplete="off" placeholder="Enter Total Views" tooltip-placement="top" uib-tooltip="Enter Total Views" required />
                             <div class="help-block" ng-messages="myForm.TotalViews.$error" ng-if="myForm.TotalViews.$touched || myForm.TotalViews.$dirty && myForm.TotalViews.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>

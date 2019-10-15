@@ -17,10 +17,13 @@ using SHF.Helper;
 using SHF.Web.Filters;
 using SHF.Models;
 using SHF.ViewModel;
+using System.Reflection;
+using System.ComponentModel;
 
 
 namespace SHF.Controllers
 {
+    [AllowAnonymous]
     public class SubCategoriesMasterController : BaseController
     {
         #region [Field & Contructor]
@@ -118,11 +121,11 @@ namespace SHF.Controllers
 
         }
 
-
+       
         [HttpPost]
-        [Audit]
+        [AuditAttribute]
         [ValidateAntiForgeryTokens]
-        [Route("Post/SubCategories/CreateAsync")]
+        [Route("Post/SubCategoriesMaster/CreateAsync")]
         public async Task<ActionResult> CreateAsync(ViewModel.SubCategoriesMasterCreateOrEditViewModel model)
         {
             try
@@ -137,7 +140,7 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var productId = businessSubCategoriesMaster.FindBy(Categories => Categories.Tenant_ID == model.Tenant_ID).FirstOrDefault();
+                            var productId = businessSubCategoriesMaster.FindBy(subCategories => subCategories.Tenant_ID == model.Tenant_ID && subCategories.ID==model.ID).FirstOrDefault();
 
                             if (productId.IsNotNull())
                             {
@@ -157,6 +160,8 @@ namespace SHF.Controllers
                                 var entity = new EntityModel.SubCategoriesMaster();
                                 Mapper.Map(model, entity);
                                 entity.Tenant = null;
+                                entity.Cat_Id = model.Category_ID;
+                                entity.SubCategoryName = model.SubCategoryName;
                                 this.businessSubCategoriesMaster.Create(entity);
                                 transaction.Complete();
 
@@ -192,7 +197,7 @@ namespace SHF.Controllers
 
 
         [HttpGet]
-        [Route("Get/SubCategories/EditAsync")]
+        [Route("Get/SubCategoriesMaster/EditAsync")]
         public async Task<ActionResult> EditAsync(long Id)
         {
             try
@@ -264,9 +269,9 @@ namespace SHF.Controllers
 
 
         [HttpPost]
-        [Audit]
+        [AuditAttribute]
         [ValidateAntiForgeryTokens]
-        [Route("Post/SubCategories/EditAsync")]
+        [Route("Post/SubCategoriesMaster/EditAsync")]
         public async Task<ActionResult> EditAsync(ViewModel.SubCategoriesMasterCreateOrEditViewModel model)
         {
             try
@@ -283,9 +288,9 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var SubCategoriesData = businessSubCategoriesMaster.FindBy(SubCategories => SubCategories.Tenant_ID == model.Tenant_ID && SubCategories.ID != model.ID).FirstOrDefault();
+                            var SubCategoriesData = businessSubCategoriesMaster.FindBy(SubCategories => SubCategories.Tenant_ID == model.Tenant_ID && SubCategories.ID == model.ID).FirstOrDefault();
 
-                            if (SubCategoriesData.IsNotNull())
+                            if (SubCategoriesData.IsNull())
                             {
                                 transaction.Complete();
                                 var response = new JsonResponse<dynamic>()
@@ -304,6 +309,7 @@ namespace SHF.Controllers
 
                                 Mapper.Map(model, entity);
                                 entity.Tenant = null;
+                                entity.Cat_Id = model.Category_ID;
 
                                 this.businessSubCategoriesMaster.Update(entity);
 
@@ -339,8 +345,133 @@ namespace SHF.Controllers
             }
         }
 
+        [HttpPost]
+        [AuditAttribute]
+        [ValidateAntiForgeryTokens]
+        [Route("Post/SubCategoriesMaster/Delete")]
+        public async Task<ActionResult> DeleteAsync(string Id)
+        {
+            try
+            {
+                using (var transaction = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadUncommitted }))
+                {
+                    try
+                    {
+                        if (Convert.ToInt64(Id) == 0)
+                        {
+                            transaction.Complete();
+                            var response = new JsonResponse<dynamic>()
+                            {
+                                Type = busConstant.Messages.Type.EXCEPTION,
+                                Message = busConstant.Messages.Type.Exceptions.BAD_REQUEST,
+                            };
 
-        
+                            Response.StatusCode = Convert.ToInt32(HttpStatusCode.BadRequest);
+                            return Json(response, JsonRequestBehavior.AllowGet);
+                        }
+                        else
+                        {
+                            this.businessSubCategoriesMaster.Delete(Convert.ToInt64(Id));
+
+
+                            var response = new JsonResponse<dynamic>()
+                            {
+                                Type = busConstant.Messages.Type.RESPONSE,
+                                Message = busConstant.Messages.Icon.SUCCESS,
+                            };
+
+                            transaction.Complete();
+                            return Json(response, JsonRequestBehavior.AllowGet);
+
+                        }
+                    }
+                    catch
+                    {
+                        transaction.Dispose();
+                        throw;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return ExceptionResponse(ex);
+            }
+            finally
+            {
+                //unitOfWork.Dispose();
+            }
+        }
+
+        [HttpGet]
+        [Route("Get/SubCategoriesMaster/DropdownListbyTenantAsync")]
+        public async Task<ActionResult> GetSubCategoriesMasterByTenantIdAsync(long Id)
+        {
+            try
+            {
+                using (var transaction = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadUncommitted }))
+                {
+                    try
+                    {
+                        if (Id == default(long))
+                        {
+                            transaction.Complete();
+                            var response = new JsonResponse<dynamic>()
+                            {
+                                Type = busConstant.Messages.Type.EXCEPTION,
+                                Message = busConstant.Messages.Type.Exceptions.BAD_REQUEST,
+                                StatusCode = Convert.ToInt32(HttpStatusCode.BadRequest)
+                            };
+
+                            return Json(response, JsonRequestBehavior.AllowGet);
+                        }
+                        else
+                        {
+                            var entities = this.businessSubCategoriesMaster.FindBy(product => product.Tenant_ID == Id).Select(x => new ViewModel.SubCategoriesDropdownListViewModel
+                            {
+                                ID = x.ID,
+                                SubCategoryName = x.SubCategoryName
+                            });
+
+                            if (entities.IsNotNull())
+                            {
+                                var response = new JsonResponse<IEnumerable<ViewModel.SubCategoriesDropdownListViewModel>>()
+                                {
+                                    Type = busConstant.Messages.Type.RESPONSE,
+                                    Entity = entities
+                                };
+
+                                transaction.Complete();
+                                return Json(response, JsonRequestBehavior.AllowGet);
+                            }
+                            else
+                            {
+                                var response = new JsonResponse<dynamic>()
+                                {
+                                    Type = busConstant.Messages.Type.EXCEPTION,
+                                    Message = busConstant.Messages.Type.Exceptions.NOT_FOUND,
+                                    StatusCode = Convert.ToInt32(HttpStatusCode.NotFound)
+                                };
+                                transaction.Complete();
+
+                                return Json(response, JsonRequestBehavior.AllowGet);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Dispose();
+                        throw;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return ExceptionResponse(ex);
+            }
+        }
+
+
         #endregion
 
     }
