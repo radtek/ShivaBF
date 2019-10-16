@@ -137,6 +137,7 @@ namespace SHF
                  "~/Scripts/Services/BankMaster.js",
                   "~/Scripts/Services/CategoriesMaster.js",
                    "~/Scripts/Services/SubCategoriesMaster.js",
+                   "~/Scripts/Services/SubSubCategoriesMaster.js",
                  "~/AngularControllers/AspNetUserController.js",
                  "~/AngularControllers/RoleController.js",
                  "~/AngularControllers/TenantController.js",
@@ -145,7 +146,8 @@ namespace SHF
                  "~/AngularControllers/MessageController.js",
                   "~/AngularControllers/BankMasterController.js",
                   "~/AngularControllers/CategoriesMasterController.js",
-                  "~/AngularControllers/SubCategoriesMasterController.js"
+                  "~/AngularControllers/SubCategoriesMasterController.js",
+                  "~/AngularControllers/SubSubCategoriesMasterController.js"
                 ));
 
 

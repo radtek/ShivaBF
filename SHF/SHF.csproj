@@ -385,6 +385,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\SubSubCategoriesMasterController.cs" />
     <Compile Include="Controllers\SubCategoriesMasterController.cs" />
     <Compile Include="Controllers\CategoriesMasterController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -414,6 +415,10 @@
     <Compile Include="Migrations\201910131523132_Setup.Designer.cs">
       <DependentUpon>201910131523132_Setup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910151938586_updateDB.cs" />
+    <Compile Include="Migrations\201910151938586_updateDB.Designer.cs">
+      <DependentUpon>201910151938586_updateDB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Error\CustomHandleErrorInfo.cs" />
@@ -437,6 +442,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AngularControllers\AspNetUserController.js" />
+    <Content Include="AngularControllers\SubSubCategoriesMasterController.js" />
     <Content Include="AngularControllers\SubCategoriesMasterController.js" />
     <Content Include="AngularControllers\CategoriesMasterController.js" />
     <Content Include="AngularControllers\MenuAccessPolicyController.js" />
@@ -8940,6 +8946,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Services\AspNetRole.js" />
     <Content Include="Scripts\Services\AspNetUser.js" />
+    <Content Include="Scripts\Services\SubSubCategoriesMaster.js" />
     <Content Include="Scripts\Services\SubCategoriesMaster.js" />
     <Content Include="Scripts\Services\CategoriesMaster.js" />
     <Content Include="Scripts\Services\CodeValue.js" />
@@ -9080,6 +9087,9 @@
     <Content Include="Views\TaxRate\Index.cshtml" />
     <Content Include="Views\TaxRate\_CreateOrEdit.cshtml" />
     <Content Include="Views\TaxRate\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\SubSubCategoriesMaster\_CreateOrEdit.cshtml" />
+    <Content Include="Views\SubSubCategoriesMaster\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\SubSubCategoriesMaster\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -9139,6 +9149,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201910131523132_Setup.resx">
       <DependentUpon>201910131523132_Setup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910151938586_updateDB.resx">
+      <DependentUpon>201910151938586_updateDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

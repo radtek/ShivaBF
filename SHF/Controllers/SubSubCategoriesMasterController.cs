@@ -24,19 +24,19 @@ using System.ComponentModel;
 namespace SHF.Controllers
 {
     [AllowAnonymous]
-    public class SubCategoriesMasterController : BaseController
+    public class SubSubCategoriesMasterController : BaseController
     {
         #region [Field & Contructor]
 
         private Business.Interface.IMessage businessMessage;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private Business.Interface.ISubCategoriesMaster businessSubCategoriesMaster;
+        private Business.Interface.ISubSubCategoriesMaster businessSubSubCategoriesMaster;
 
-        public SubCategoriesMasterController(Business.Interface.IMessage Imessage, Business.Interface.ISubCategoriesMaster ISubCategoriesMaster)
+        public SubSubCategoriesMasterController(Business.Interface.IMessage Imessage, Business.Interface.ISubSubCategoriesMaster ISubSubCategoriesMaster)
         {
             this.businessMessage = Imessage;
-            this.businessSubCategoriesMaster = ISubCategoriesMaster;
+            this.businessSubSubCategoriesMaster = ISubSubCategoriesMaster;
 
         }
         public ApplicationSignInManager SignInManager
@@ -69,8 +69,8 @@ namespace SHF.Controllers
         [HttpGet]
         [Access]
         [OutputCache(Duration = busConstant.Settings.Cache.OutputCache.TimeOut.S300)]
-        [Route("Configurations/Master/SubCategories/Index")]
-        [Route("Settings/Master/SubCategories/Index")]
+        [Route("Configurations/Master/SubSubCategories/Index")]
+        [Route("Settings/Master/SubSubCategories/Index")]
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId<long>();
@@ -78,11 +78,11 @@ namespace SHF.Controllers
             return View();
         }
         [HttpPost]
-        [Route("Post/SubCategories/IndexAsync")]
+        [Route("Post/SubSubCategories/IndexAsync")]
         [ValidateAntiForgeryTokens]
         public async Task<ActionResult> IndexAsync()
         {
-            BusinessResultViewModel<ViewModel.SubCategoriesMasterIndexViewModel> businessResult;
+            BusinessResultViewModel<ViewModel.SubSubCategoriesMasterIndexViewModel> businessResult;
             try
             {
                 using (var transaction = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadUncommitted }))
@@ -92,7 +92,7 @@ namespace SHF.Controllers
                         long? tenantId = Request.Form.AllKeys.Contains("tenantId") ? Convert.ToInt64(Request.Form.GetValues("tenantId").FirstOrDefault()) : busConstant.Numbers.Integer.ZERO;
                         tenantId = tenantId > busConstant.Numbers.Integer.ZERO ? tenantId : null;
 
-                        businessResult = this.businessSubCategoriesMaster.Index(Request, tenantId);
+                        businessResult = this.businessSubSubCategoriesMaster.Index(Request, tenantId);
                         transaction.Complete();
                     }
                     catch
@@ -125,8 +125,8 @@ namespace SHF.Controllers
         [HttpPost]
         [AuditAttribute]
         [ValidateAntiForgeryTokens]
-        [Route("Post/SubCategoriesMaster/CreateAsync")]
-        public async Task<ActionResult> CreateAsync(ViewModel.SubCategoriesMasterCreateOrEditViewModel model)
+        [Route("Post/SubSubCategoriesMaster/CreateAsync")]
+        public async Task<ActionResult> CreateAsync(ViewModel.SubSubCategoriesMasterCreateOrEditViewModel model)
         {
             try
             {
@@ -140,7 +140,7 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var productId = businessSubCategoriesMaster.FindBy(subCategories => subCategories.Tenant_ID == model.Tenant_ID && subCategories.ID==model.ID).FirstOrDefault();
+                            var productId = businessSubSubCategoriesMaster.FindBy(SubSubCategories => SubSubCategories.Tenant_ID == model.Tenant_ID && SubSubCategories.ID==model.ID).FirstOrDefault();
 
                             if (productId.IsNotNull())
                             {
@@ -157,12 +157,16 @@ namespace SHF.Controllers
                             }
                             else
                             {
-                                var entity = new EntityModel.SubCategoriesMaster();
-                                Mapper.Map(model, entity);
+                                var entity = new EntityModel.SubSubCategoriesMaster();
                                 entity.Tenant = null;
+                                entity.CategoriesMaster = null;
+                                entity.SubCategoriesMaster = null;
                                 entity.Cat_Id = model.Category_ID;
-                                entity.SubCategoryName = model.SubCategoryName;
-                                this.businessSubCategoriesMaster.Create(entity);
+                                entity.SubCat_Id = model.SubCategory_ID;
+                                //entity.SubSubCategoryName = model.SubSubCategoryName;
+                                Mapper.Map(model, entity);
+                                // entity.SubSubCategoryName = model.SubSubCategoryName;
+                                this.businessSubSubCategoriesMaster.Create(entity);
                                 transaction.Complete();
 
                                 var response = new JsonResponse<dynamic>()
@@ -197,7 +201,7 @@ namespace SHF.Controllers
 
 
         [HttpGet]
-        [Route("Get/SubCategoriesMaster/EditAsync")]
+        [Route("Get/SubSubCategoriesMaster/EditAsync")]
         public async Task<ActionResult> EditAsync(long Id)
         {
             try
@@ -220,16 +224,15 @@ namespace SHF.Controllers
                         }
                         else
                         {
-                            var entity = this.businessSubCategoriesMaster.GetById(Id);
+                            var entity = this.businessSubSubCategoriesMaster.GetById(Id);
 
                             if (entity.IsNotNull())
                             {
-                                var model = new ViewModel.SubCategoriesMasterCreateOrEditViewModel();
+                                var model = new ViewModel.SubSubCategoriesMasterCreateOrEditViewModel();
 
                                 Mapper.Map(entity, model);
-                                model.Category_ID = Convert.ToInt64(entity.Cat_Id);
 
-                                var response = new JsonResponse<SubCategoriesMasterCreateOrEditViewModel>()
+                                var response = new JsonResponse<SubSubCategoriesMasterCreateOrEditViewModel>()
                                 {
                                     Type = busConstant.Messages.Type.RESPONSE,
                                     Entity = model
@@ -272,8 +275,8 @@ namespace SHF.Controllers
         [HttpPost]
         [AuditAttribute]
         [ValidateAntiForgeryTokens]
-        [Route("Post/SubCategoriesMaster/EditAsync")]
-        public async Task<ActionResult> EditAsync(ViewModel.SubCategoriesMasterCreateOrEditViewModel model)
+        [Route("Post/SubSubCategoriesMaster/EditAsync")]
+        public async Task<ActionResult> EditAsync(ViewModel.SubSubCategoriesMasterCreateOrEditViewModel model)
         {
             try
             {
@@ -289,9 +292,9 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var SubCategoriesData = businessSubCategoriesMaster.FindBy(SubCategories => SubCategories.Tenant_ID == model.Tenant_ID && SubCategories.ID == model.ID).FirstOrDefault();
+                            var SubSubCategoriesData = businessSubSubCategoriesMaster.FindBy(SubSubCategories => SubSubCategories.Tenant_ID == model.Tenant_ID && SubSubCategories.ID == model.ID).FirstOrDefault();
 
-                            if (SubCategoriesData.IsNull())
+                            if (SubSubCategoriesData.IsNull())
                             {
                                 transaction.Complete();
                                 var response = new JsonResponse<dynamic>()
@@ -306,13 +309,13 @@ namespace SHF.Controllers
                             }
                             else
                             {
-                                var entity = new EntityModel.SubCategoriesMaster();
+                                var entity = new EntityModel.SubSubCategoriesMaster();
 
                                 Mapper.Map(model, entity);
                                 entity.Tenant = null;
                                 entity.Cat_Id = model.Category_ID;
 
-                                this.businessSubCategoriesMaster.Update(entity);
+                                this.businessSubSubCategoriesMaster.Update(entity);
 
                                 transaction.Complete();
 
@@ -349,7 +352,7 @@ namespace SHF.Controllers
         [HttpPost]
         [AuditAttribute]
         [ValidateAntiForgeryTokens]
-        [Route("Post/SubCategoriesMaster/Delete")]
+        [Route("Post/SubSubCategoriesMaster/Delete")]
         public async Task<ActionResult> DeleteAsync(string Id)
         {
             try
@@ -372,7 +375,7 @@ namespace SHF.Controllers
                         }
                         else
                         {
-                            this.businessSubCategoriesMaster.Delete(Convert.ToInt64(Id));
+                            this.businessSubSubCategoriesMaster.Delete(Convert.ToInt64(Id));
 
 
                             var response = new JsonResponse<dynamic>()
@@ -405,8 +408,8 @@ namespace SHF.Controllers
         }
 
         [HttpGet]
-        [Route("Get/SubCategoriesMaster/DropdownListbyTenantAsync")]
-        public async Task<ActionResult> GetSubCategoriesMasterByTenantIdAsync(long Id)
+        [Route("Get/SubSubCategoriesMaster/DropdownListbyTenantAsync")]
+        public async Task<ActionResult> GetSubSubCategoriesMasterByTenantIdAsync(long Id)
         {
             try
             {
@@ -428,15 +431,15 @@ namespace SHF.Controllers
                         }
                         else
                         {
-                            var entities = this.businessSubCategoriesMaster.FindBy(category => category.Cat_Id == Id).Select(x => new ViewModel.SubCategoriesDropdownListViewModel
+                            var entities = this.businessSubSubCategoriesMaster.FindBy(product => product.Tenant_ID == Id).Select(x => new ViewModel.SubSubCategoriesDropdownListViewModel
                             {
                                 ID = x.ID,
-                                SubCategoryName = x.SubCategoryName
+                                SubSubCategoryName = x.SubSubCategoryName
                             });
 
                             if (entities.IsNotNull())
                             {
-                                var response = new JsonResponse<IEnumerable<ViewModel.SubCategoriesDropdownListViewModel>>()
+                                var response = new JsonResponse<IEnumerable<ViewModel.SubSubCategoriesDropdownListViewModel>>()
                                 {
                                     Type = busConstant.Messages.Type.RESPONSE,
                                     Entity = entities

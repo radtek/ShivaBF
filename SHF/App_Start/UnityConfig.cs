@@ -33,6 +33,7 @@ namespace SHF
             container.RegisterType<Business.Interface.IBankMaster, Business.BusinessLogic.BankMaster>();
             container.RegisterType<Business.Interface.ICategoriesMaster, Business.BusinessLogic.CategoriesMaster>();
             container.RegisterType<Business.Interface.ISubCategoriesMaster, Business.BusinessLogic.SubCategoriesMaster>();
+            container.RegisterType<Business.Interface.ISubSubCategoriesMaster, Business.BusinessLogic.SubSubCategoriesMaster>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }

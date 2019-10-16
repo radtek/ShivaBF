@@ -1,17 +1,17 @@
 ﻿//let app = angular.module('InventoryApp');
 
-angular.module(config.app).service('SubCategoriesMasterCRUD', function ($http) {
+angular.module(config.app).service('SubSubCategoriesMasterCRUD', function ($http) {
 
     this.GetTableObject = function TableData() {
-        let scope = angular.element(document.getElementById('SubCategoriesMasterControllerScope')).scope();
-        let tenantId = scope.SubCategoriesMasterCreateOrEditViewModel.Tenant_ID == null ? 0 : scope.SubCategoriesMasterCreateOrEditViewModel.Tenant_ID;
+        let scope = angular.element(document.getElementById('SubSubCategoriesMasterControllerScope')).scope();
+        let tenantId = scope.SubSubCategoriesMasterCreateOrEditViewModel.Tenant_ID == null ? 0 : scope.SubSubCategoriesMasterCreateOrEditViewModel.Tenant_ID;
         let viewBagTenantID = $('#ViewBag_TenantID').val();
         let antiForgeryToken = $('#antiForgeryToken').val();
         var src = '../../../Content/Images/';
         let oTable = $('#grdTable').DataTable({
             serverSide: true,
             ajax: {
-                url: '/Post/SubCategories/IndexAsync',
+                url: '/Post/SubSubCategories/IndexAsync',
                 type: 'POST',
                 dataSrc: 'data',
                 data: { 'tenantId': tenantId },
@@ -215,13 +215,13 @@ angular.module(config.app).service('SubCategoriesMasterCRUD', function ($http) {
         $('#grdTable tbody').off('click');
         $('#grdTable tbody').on('click', '.btn-edit', function () {
             let rowData = oTable.row($(this).parents('tr')).data();
-            let scope = angular.element(document.getElementById('SubCategoriesMasterControllerScope')).scope();
+            let scope = angular.element(document.getElementById('SubSubCategoriesMasterControllerScope')).scope();
             scope.EditAsync(rowData.ID);
         });
 
         $('#grdTable tbody').on('click', '.btn-delete', function () {
             let rowData = oTable.row($(this).parents('tr')).data();
-            let scope = angular.element(document.getElementById('SubCategoriesMasterControllerScope')).scope();
+            let scope = angular.element(document.getElementById('SubSubCategoriesMasterControllerScope')).scope();
             scope.DeleteAsync(rowData.ID);
         });
     }
@@ -238,10 +238,10 @@ angular.module(config.app).service('SubCategoriesMasterCRUD', function ($http) {
     }
 
 
-   this.LoadSubCategoriesDropdown = function SubCategoriesDropdown(cat_Id) {
+    this.LoadProductDropdown = function ProductDropdown(tenantId) {
         let request = $http({
             method: "get",
-            url: "/Get/SubCategoriesMaster/DropdownListbyTenantAsync?Id=" + cat_Id
+            url: "/Get/Product/DropdownListbyTenantAsync?Id=" + tenantId
         });
         return request;
     }

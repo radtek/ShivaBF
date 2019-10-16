@@ -1,5 +1,5 @@
-﻿angular.module(config.app).controller('SubCategoriesMasterCtrl', ['$scope', '$http', '$window','CategoriesMasterCRUD', 'SubCategoriesMasterCRUD', 'TenantCRUD','CustomService',
-    function ($scope, $http, $window,CategoriesMasterCRUD, SubCategoriesMasterCRUD, TenantCRUD,CustomService) {      
+﻿angular.module(config.app).controller('SubSubCategoriesMasterCtrl', ['$scope', '$http', '$window','CategoriesMasterCRUD','SubCategoriesMasterCRUD', 'SubSubCategoriesMasterCRUD', 'TenantCRUD','CustomService',
+    function ($scope, $http, $window,CategoriesMasterCRUD,SubCategoriesMasterCRUD, SubSubCategoriesMasterCRUD, TenantCRUD,CustomService) {      
         $scope.path = "";
         $scope.errors = {};
         $scope.errors.pageError = {};
@@ -8,21 +8,24 @@
         $scope.errors.formErrors = null;
         $scope.Processing = false;
         $scope.Entity = {};
-        $scope.SubCategoriesMasterCreateOrEditViewModel = {};
+        $scope.SubSubCategoriesMasterCreateOrEditViewModel = {};
         $scope.AllTenants = [];
         $scope.AllCategories = [];
-        $scope.SubCategoriesMasterCreateOrEditViewModel.SelectedTenant_ID = -1;
-        $scope.SubCategoriesMasterCreateOrEditViewModel.SelectedCategory_ID= -1;
+        $scope.AllSubCategories = [];
+        $scope.SubSubCategoriesMasterCreateOrEditViewModel.SelectedTenant_ID = -1;
+        $scope.SubSubCategoriesMasterCreateOrEditViewModel.SelectedSubCategory_ID = -1;
+        $scope.SubSubCategoriesMasterCreateOrEditViewModel.SelectedCategory_ID = -1;
+
        
         $scope.Cookie_Tenant_ID = parseInt(CustomService.GetTenantID());
-        $scope.SubCategoriesMasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;     
+        $scope.SubSubCategoriesMasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;     
 
         $scope.BindGrid = function () {
-            SubCategoriesMasterCRUD.LoadTable();
+            SubSubCategoriesMasterCRUD.LoadTable();
         }      
 
         $scope.PageLoad = function () {
-            $scope.SubCategoriesMasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
+            $scope.SubSubCategoriesMasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
             $scope.BindGrid();
         }
 
@@ -33,7 +36,7 @@
 
 
         $scope.Clear = function () {
-            $scope.SubCategoriesMasterCreateOrEditViewModel = {};
+            $scope.SubSubCategoriesMasterCreateOrEditViewModel = {};
             $scope.Reset();
         }            
       
@@ -51,11 +54,11 @@
             $scope.Clear();
             if ($scope.Cookie_Tenant_ID <= 0) {
                 $scope.BindTenantDropDownList();
-                $scope.SubCategoriesMasterCreateOrEditViewModel.SelectedTenant_ID = -1;
-               $scope.SubCategoriesMasterCreateOrEditViewModel.SelectedCategory_ID= -1;
+                $scope.SubSubCategoriesMasterCreateOrEditViewModel.SelectedTenant_ID = -1;
+               // $scope.SubSubCategoriesMasterCreateOrEditViewModel.SelectedUnitOfMesurment = -1;
             } else {
-                $scope.SubCategoriesMasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
-                $scope.LoadAllCategory();
+                $scope.SubSubCategoriesMasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
+               // $scope.BindUnitOfMeasurementDropDownList($scope.SubSubCategoriesMasterCreateOrEditViewModel.Tenant_ID);
             }
             $('#modal-createOredit').modal('show');
         }
@@ -103,8 +106,7 @@
             if ($scope.Cookie_Tenant_ID <= 0) {
                 $scope.BindTenantDropDownList();
            }
-
-            $http.get("/Get/SubCategoriesMaster/EditAsync?Id=" + Id
+            $http.get("/Get/SubSubCategoriesMaster/EditAsync?Id=" + Id
             ).then(
                 function success(response) {
                     switch (response.data.Type) {
@@ -113,11 +115,9 @@
                             console.log(response);
                             break;
                         case 'Response':
-debugger;
-                           // $scope.LoadAllCategory();
-                            $scope.SubCategoriesMasterCreateOrEditViewModel = response.data.Entity;
-                            $scope.BindCategoryDropDownList($scope.SubCategoriesMasterCreateOrEditViewModel.Tenant_ID);
-                            $scope.SubCategoriesMasterCreateOrEditViewModel.SelectedCategory_ID=$scope.SubCategoriesMasterCreateOrEditViewModel.Category_ID;
+                            $scope.SubSubCategoriesMasterCreateOrEditViewModel = response.data.Entity;
+                            $scope.LoadAllCategory();
+                            $scope.SubSubCategoriesMasterCreateOrEditViewModel.Category_ID=$scope.SubSubCategoriesMasterCreateOrEditViewModel.Category_ID;
                             $('#modal-createOredit').modal('show');
                             console.clear();
                             break;
@@ -152,9 +152,9 @@ debugger;
             $scope.Processing = true;
             $scope.path = "";
            if ($scope.myForm.$valid) {
-                $scope.path = ($scope.SubCategoriesMasterCreateOrEditViewModel.ID == undefined || $scope.SubCategoriesMasterCreateOrEditViewModel.ID == null || 
-          $scope.SubCategoriesMasterCreateOrEditViewModel.ID == 0) ? "/Post/SubCategoriesMaster/CreateAsync" : "/Post/SubCategoriesMaster/EditAsync";
-               $http.post($scope.path, $scope.SubCategoriesMasterCreateOrEditViewModel,
+                $scope.path = ($scope.SubSubCategoriesMasterCreateOrEditViewModel.ID == undefined || $scope.SubSubCategoriesMasterCreateOrEditViewModel.ID == null || 
+          $scope.SubSubCategoriesMasterCreateOrEditViewModel.ID == 0) ? "/Post/SubSubCategoriesMaster/CreateAsync" : "/Post/SubSubCategoriesMaster/EditAsync";
+               $http.post($scope.path, $scope.SubSubCategoriesMasterCreateOrEditViewModel,
                     {
                         headers: { 'RequestVerificationToken': $scope.antiForgeryToken }
                     }
@@ -251,7 +251,7 @@ debugger;
                     if (willDelete) {
                         var obj = {};
                         obj.Id = Id;
-                  $http.post("/Post/SubCategoriesMaster/Delete/", obj,
+                  $http.post("/Post/SubSubCategoriesMaster/Delete/", obj,
                     {
                         headers: { 'RequestVerificationToken': $scope.antiForgeryToken }
                     }
@@ -283,9 +283,51 @@ debugger;
                     }
                 });
         }
+/************load Sub Category**************************************************************************************************/
+$scope.LoadAllSubCategory = function () {
+            let catId = $scope.SubSubCategoriesMasterCreateOrEditViewModel.Category_ID;
+            $scope.BindSubCategoryDropDownList(catId);
+        }
 
+        $scope.BindSubCategoryDropDownList = function (catId) {
+            let promise = SubCategoriesMasterCRUD.LoadSubCategoriesDropdown(catId)
+            promise.then(
+                function success(response) {
+                    switch (response.data.Type) {
+                        case 'Exception':
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                        case 'Response':
+                            $scope.AllSubCategories = response.data.Entity;
+                            console.clear();
+                            break;
+                        default:
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                    }
+                }, function errors(response) {
+                    switch (response.data.Type) {
+                        case 'Exception':
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                        case 'Validation':
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                        default:
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                    }
+
+                });
+        }  
+/****************************************************************************Load Category*************************************************************************************/
 $scope.LoadAllCategory = function () {
-            let tenantId = $scope.SubCategoriesMasterCreateOrEditViewModel.Tenant_ID;
+            let tenantId = $scope.SubSubCategoriesMasterCreateOrEditViewModel.Tenant_ID;
             $scope.BindCategoryDropDownList(tenantId);
         }
 
@@ -324,7 +366,7 @@ $scope.LoadAllCategory = function () {
                     }
 
                 });
-        }       
+        }            
     }]);
 
 
