@@ -163,10 +163,24 @@ namespace SHF.Controllers
                                 entity.SubCategoriesMaster = null;
                                 entity.Cat_Id = model.Category_ID;
                                 entity.SubCat_Id = model.SubCategory_ID;
-                                //entity.SubSubCategoryName = model.SubSubCategoryName;
-                                Mapper.Map(model, entity);
-                                // entity.SubSubCategoryName = model.SubSubCategoryName;
-                                this.businessSubSubCategoriesMaster.Create(entity);
+                                entity.SubSubCategoryName = model.SubSubCategoryName;
+                                entity.DisplayIndex = model.DisplayIndex;
+                                entity.DisplayOnHome = model.DisplayOnHome;
+                                entity.IsActive = model.IsActive;
+                                entity.ServiceType = model.ServiceType;
+                                entity.TotalViews = model.TotalViews;
+                                entity.Url = model.Url;
+                                entity.Metadata = model.Metadata;
+                                entity.Keyword = model.Keyword;
+                                entity.MetaDescription = model.MetaDescription;
+                                entity.Tenant_ID = model.Tenant_ID;
+                                entity.CreatedBy = model.CreatedBy;
+                                entity.CreatedOn = model.CreatedOn;
+                                entity.UpdatedBy = model.UpdatedBy;
+                                entity.UpdatedOn = model.UpdatedOn;
+                                entity.IsDeleted = model.IsDeleted;
+                                //Mapper.Map(model, entity);
+                                 this.businessSubSubCategoriesMaster.Create(entity);
                                 transaction.Complete();
 
                                 var response = new JsonResponse<dynamic>()
@@ -311,9 +325,31 @@ namespace SHF.Controllers
                             {
                                 var entity = new EntityModel.SubSubCategoriesMaster();
 
-                                Mapper.Map(model, entity);
+                               // Mapper.Map(model, entity);
                                 entity.Tenant = null;
+                                entity.ID = model.ID;
                                 entity.Cat_Id = model.Category_ID;
+                                entity.Tenant = null;
+                                entity.CategoriesMaster = null;
+                                entity.SubCategoriesMaster = null;
+                                entity.Cat_Id = model.Category_ID;
+                                entity.SubCat_Id = model.SubCategory_ID;
+                                entity.SubSubCategoryName = model.SubSubCategoryName;
+                                entity.DisplayIndex = model.DisplayIndex;
+                                entity.DisplayOnHome = model.DisplayOnHome;
+                                entity.IsActive = model.IsActive;
+                                entity.ServiceType = model.ServiceType;
+                                entity.TotalViews = model.TotalViews;
+                                entity.Url = model.Url;
+                                entity.Metadata = model.Metadata;
+                                entity.Keyword = model.Keyword;
+                                entity.MetaDescription = model.MetaDescription;
+                                entity.Tenant_ID = model.Tenant_ID;
+                                entity.CreatedBy = model.CreatedBy;
+                                entity.CreatedOn = model.CreatedOn;
+                                entity.UpdatedBy = model.UpdatedBy;
+                                entity.UpdatedOn = model.UpdatedOn;
+                                entity.IsDeleted = model.IsDeleted;
 
                                 this.businessSubSubCategoriesMaster.Update(entity);
 
