@@ -25,8 +25,9 @@ namespace SHF
             CreateMap<EntityModel.BankMaster, ViewModel.BankMasterCreateOrEditViewModel>().ReverseMap();
             CreateMap<EntityModel.CategoriesMaster, ViewModel.CategoriesMasterCreateOrEditViewModel>().ReverseMap();
             CreateMap<EntityModel.SubCategoriesMaster, ViewModel.SubCategoriesMasterCreateOrEditViewModel>().ReverseMap();
-          
-    }
+            CreateMap<EntityModel.FAQMaster, ViewModel.FAQMasterCreateOrEditViewModel>().ReverseMap();
+
+        }
 
         public static void RegisterMapper()
         {
