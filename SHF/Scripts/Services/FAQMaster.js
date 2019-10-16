@@ -59,14 +59,14 @@ angular.module(config.app).service('FAQMasterCRUD', function ($http) {
                     width: "25%",
                     targets: 2
                 },
-                {
-                    name: "FAQ.DisplayIndex",
-                    data: "DisplayIndex",
-                    title: "Display&nbsp;Index",
-                    render: $.fn.dataTable.render.text(),
-                    width: "25%",
-                    targets: 3
-                },
+               // {
+               //     name: "FAQ.DisplayIndex",
+               //     data: "DisplayIndex",
+               //     title: "Display&nbsp;Index",
+               //     render: $.fn.dataTable.render.text(),
+               //     width: "25%",
+               //     targets: 3
+               // },
  {
                     name: "FAQ.Description",
                     data: "Description",

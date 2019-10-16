@@ -29,8 +29,14 @@ namespace SHF.EntityModel
         public System.Boolean? DisplayOnHome { get; set; }
         [Column("IsActive")]
         public System.Boolean? IsActive { get; set; }
+        [ForeignKey("ServiceType_ID")]
+        public virtual Code ServiceType { get; set; }
+
+        [System.ComponentModel.DefaultValue(SHF.Helper.busConstant.Code.SERVICE_TYPE)]
+        public System.Int64 ServiceType_ID { get; set; }
         [Column("ServiceType")]
-        public System.String ServiceType { get; set; }
+        public System.String ServiceTypeValue { get; set; }
+       
         [Column("TotalViews")]
         public System.Int32 TotalViews { get; set; }
         [Column("Url")]

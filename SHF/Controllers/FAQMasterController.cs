@@ -427,7 +427,7 @@ namespace SHF.Controllers
                             var entities = this.businessFAQMaster.FindBy(product => product.Tenant_ID == Id).Select(x => new ViewModel.FAQDropdownListViewModel
                             {
                                 ID = x.ID,
-                                CategoryName = x.CategoryName
+                                Title = x.Title
                             });
 
                             if (entities.IsNotNull())

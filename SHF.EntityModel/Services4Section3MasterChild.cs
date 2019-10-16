@@ -20,7 +20,7 @@ namespace SHF.EntityModel
         public System.Int64? Service_Id { get; set; }
         [ForeignKey("S4S3M_id")]
         public virtual Services4Section3Master Services4Section3Master { get; set; }
-        public System.Int64? S4S2M_id { get; set; }
+        public System.Int64? S4S3M_id { get; set; }
         [Column("FeatureDescription")]
         public System.String FeatureDescription { get; set; }
         [Column("Price")]

@@ -1,5 +1,5 @@
-﻿angular.module(config.app).controller('SubSubCategoriesMasterCtrl', ['$scope', '$http', '$window','CategoriesMasterCRUD','SubCategoriesMasterCRUD', 'SubSubCategoriesMasterCRUD', 'TenantCRUD','CustomService',
-    function ($scope, $http, $window,CategoriesMasterCRUD,SubCategoriesMasterCRUD, SubSubCategoriesMasterCRUD, TenantCRUD,CustomService) {      
+﻿angular.module(config.app).controller('SubSubCategoriesMasterCtrl', ['$scope', '$http', '$window','CategoriesMasterCRUD','SubCategoriesMasterCRUD', 'SubSubCategoriesMasterCRUD', 'TenantCRUD','CustomService','CodeValueCRUD',
+    function ($scope, $http, $window,CategoriesMasterCRUD,SubCategoriesMasterCRUD, SubSubCategoriesMasterCRUD, TenantCRUD,CustomService,CodeValueCRUD) {      
         $scope.path = "";
         $scope.errors = {};
         $scope.errors.pageError = {};
@@ -12,9 +12,11 @@
         $scope.AllTenants = [];
         $scope.AllCategories = [];
         $scope.AllSubCategories = [];
+        $scope.AllServiceType = [];
         $scope.SubSubCategoriesMasterCreateOrEditViewModel.SelectedTenant_ID = -1;
         $scope.SubSubCategoriesMasterCreateOrEditViewModel.SelectedSubCategory_ID = -1;
         $scope.SubSubCategoriesMasterCreateOrEditViewModel.SelectedCategory_ID = -1;
+        $scope.SubSubCategoriesMasterCreateOrEditViewModel.SelectedServiceType_ID = -1;
 
        
         $scope.Cookie_Tenant_ID = parseInt(CustomService.GetTenantID());
@@ -52,6 +54,7 @@
             $scope.errors.formErrors = null;
             $scope.Processing = false;
             $scope.Clear();
+            $scope.BindServiceTypeDropDownList(1020);
             if ($scope.Cookie_Tenant_ID <= 0) {
                 $scope.BindTenantDropDownList();
                 $scope.SubSubCategoriesMasterCreateOrEditViewModel.SelectedTenant_ID = -1;
@@ -103,6 +106,7 @@
 /********************************************************************************/
         $scope.EditAsync = function (Id) {
             $scope.Clear();
+            $scope.BindServiceTypeDropDownList(1020);
             if ($scope.Cookie_Tenant_ID <= 0) {
                 $scope.BindTenantDropDownList();
            }
@@ -117,7 +121,8 @@
                         case 'Response':
                             $scope.SubSubCategoriesMasterCreateOrEditViewModel = response.data.Entity;
                             $scope.LoadAllCategory();
-                            $scope.SubSubCategoriesMasterCreateOrEditViewModel.Category_ID=$scope.SubSubCategoriesMasterCreateOrEditViewModel.Category_ID;
+                            $scope.LoadAllSubCategory();
+                            //$scope.SubSubCategoriesMasterCreateOrEditViewModel.Category_ID=$scope.SubSubCategoriesMasterCreateOrEditViewModel.Category_ID;
                             $('#modal-createOredit').modal('show');
                             console.clear();
                             break;
@@ -366,7 +371,11 @@ $scope.LoadAllCategory = function () {
                     }
 
                 });
-        }            
+        }   
+ $scope.BindServiceTypeDropDownList = function (Id) {
+            $scope.AllServiceType = [];
+            $scope.AllServiceType = CodeValueCRUD.LoadCodeValueByCodeId(Id);
+        }         
     }]);
 
 

@@ -267,9 +267,22 @@ namespace SHF.Helper
             public const int CONTACT_TYPE = 1014;
             public const int BARCODE_CATEGORY = 1015;
             public const int BARCODE_SUB_CATEGORY = 1016;
+            public const int SERVICE_TYPE = 1020;
 
             public abstract class CodeValue
             {
+                public abstract class ServiceType
+                {
+                    public const string SERVICE_1 = "SER1";
+                    public const string SERVICE_2 = "SER2";
+                    public const string SERVICE_3 = "SER3";
+                    public const string SERVICE_4 = "SER4";
+                    public const string SERVICE_5 = "SER5";
+                    public const string SERVICE_6 = "SER6";
+                    public const string SERVICE_7 = "SER7";
+                    public const string SERVICE_8 = "SER8";
+
+                }
                 public abstract class BarcodeType
                 {
                     public const string CODE_128_AUTO = "CODE128";

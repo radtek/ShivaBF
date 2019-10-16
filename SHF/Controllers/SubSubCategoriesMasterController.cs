@@ -167,7 +167,8 @@ namespace SHF.Controllers
                                 entity.DisplayIndex = model.DisplayIndex;
                                 entity.DisplayOnHome = model.DisplayOnHome;
                                 entity.IsActive = model.IsActive;
-                                entity.ServiceType = model.ServiceType;
+                                entity.ServiceType_ID = busConstant.Code.SERVICE_TYPE;
+                                entity.ServiceTypeValue = model.ServiceTypeValue;
                                 entity.TotalViews = model.TotalViews;
                                 entity.Url = model.Url;
                                 entity.Metadata = model.Metadata;
@@ -244,7 +245,28 @@ namespace SHF.Controllers
                             {
                                 var model = new ViewModel.SubSubCategoriesMasterCreateOrEditViewModel();
 
-                                Mapper.Map(entity, model);
+                                // Mapper.Map(entity, model);
+
+                                   model.ID=entity.ID;
+                                   model.Category_ID=Convert.ToInt64(entity.Cat_Id);
+                                   model.SubCategory_ID= Convert.ToInt64(entity.SubCat_Id);
+                                   model.SubSubCategoryName=entity.SubSubCategoryName;
+                                   model.DisplayIndex=entity.DisplayIndex;
+                                   model.DisplayOnHome=entity.DisplayOnHome;
+                                   model.IsActive=entity.IsActive;
+                                   model.ServiceType_ID = entity.ServiceType_ID;
+                                   model.ServiceTypeValue=entity.ServiceTypeValue;
+                                   model.TotalViews=entity.TotalViews;
+                                   model.Url=entity.Url;
+                                   model.Metadata=entity.Metadata;
+                                   model.Keyword=entity.Keyword;
+                                   model.MetaDescription=entity.MetaDescription;
+                                   model.Tenant_ID= Convert.ToInt64(entity.Tenant_ID);
+                                   model.CreatedBy=entity.CreatedBy;
+                                   model.CreatedOn=entity.CreatedOn;
+                                   model.UpdatedBy=entity.UpdatedBy;
+                                   model.UpdatedOn=entity.UpdatedOn;
+                                   model.IsDeleted=entity.IsDeleted;
 
                                 var response = new JsonResponse<SubSubCategoriesMasterCreateOrEditViewModel>()
                                 {
@@ -327,28 +349,30 @@ namespace SHF.Controllers
 
                                // Mapper.Map(model, entity);
                                 entity.Tenant = null;
-                                entity.ID = model.ID;
+                                entity.ID = Convert.ToInt64(model.ID);
                                 entity.Cat_Id = model.Category_ID;
                                 entity.Tenant = null;
                                 entity.CategoriesMaster = null;
                                 entity.SubCategoriesMaster = null;
+                                entity.ServiceType = null;
                                 entity.Cat_Id = model.Category_ID;
                                 entity.SubCat_Id = model.SubCategory_ID;
                                 entity.SubSubCategoryName = model.SubSubCategoryName;
                                 entity.DisplayIndex = model.DisplayIndex;
                                 entity.DisplayOnHome = model.DisplayOnHome;
                                 entity.IsActive = model.IsActive;
-                                entity.ServiceType = model.ServiceType;
+                                entity.ServiceType_ID = busConstant.Code.SERVICE_TYPE;
+                                entity.ServiceTypeValue = model.ServiceTypeValue;
                                 entity.TotalViews = model.TotalViews;
                                 entity.Url = model.Url;
                                 entity.Metadata = model.Metadata;
                                 entity.Keyword = model.Keyword;
                                 entity.MetaDescription = model.MetaDescription;
                                 entity.Tenant_ID = model.Tenant_ID;
-                                entity.CreatedBy = model.CreatedBy;
-                                entity.CreatedOn = model.CreatedOn;
-                                entity.UpdatedBy = model.UpdatedBy;
-                                entity.UpdatedOn = model.UpdatedOn;
+                                //entity.CreatedBy = model.CreatedBy;
+                                //entity.CreatedOn = model.CreatedOn;
+                                //entity.UpdatedBy = model.UpdatedBy;
+                                //entity.UpdatedOn = model.UpdatedOn;
                                 entity.IsDeleted = model.IsDeleted;
 
                                 this.businessSubSubCategoriesMaster.Update(entity);

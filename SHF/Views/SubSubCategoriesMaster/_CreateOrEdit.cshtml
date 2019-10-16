@@ -54,6 +54,16 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.SubCategory_ID" ng-bind="errors.formErrors.SubCategory_ID"></span>
                         </div>
+                        <div class="form-group" ng-class="{'has-error': (myForm.ServiceTypeValue.$toucherd || myForm.ServiceTypeValue.$dirty)  && myForm.ServiceTypeValue.$invalid}">
+                            <label>Service Page Type</label>
+                            <select name="ServiceTypeValue" ng-model="SubSubCategoriesMasterCreateOrEditViewModel.ServiceTypeValue" class="form-control" style="width: 100%;" ng-options="x.Value as x.Description for x in AllServiceType" required>
+                                <option value="" ng-selected="SubSubCategoriesMasterCreateOrEditViewModel.SelectedServiceType_ID < 0">-- Select --</option>
+                            </select>
+                            <div class="help-block" ng-messages="myForm.ServiceTypeValue.$error" ng-if="myForm.ServiceTypeValue.$touched || myForm.ServiceTypeValue.$dirty && myForm.ServiceTypeValue.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.ServiceTypeValue" ng-bind="errors.formErrors.ServiceTypeValue"></span>
+                        </div>
                         <div class="form-group" ng-class="{'has-error': ((myForm.SubSubCategoryName.$touched && myForm.SubSubCategoryName.$invalid) || (!myForm.SubSubCategoryName.$pristine && myForm.SubSubCategoryName.$invalid))}">
                             <label>Sub Sub Category Name</label>
                             <input type="text" class="form-control" name="SubSubCategoryName" ng-model="SubSubCategoriesMasterCreateOrEditViewModel.SubSubCategoryName" ng-disabled="Processing" autocomplete="off" placeholder="Enter Sub Sub Category Name" tooltip-placement="top" uib-tooltip="Enter Sub Sub Category Name" />

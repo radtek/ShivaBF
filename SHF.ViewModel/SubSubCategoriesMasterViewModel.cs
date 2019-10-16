@@ -14,12 +14,13 @@ namespace SHF.ViewModel
         public System.String SubSubCategoryName { get; set; }
         public System.Int64 Cat_Id { get; set; }
         public System.String CategoryName { get; set; }
+        public System.String ServiceTypeValue { get; set; }
         public System.Int64 SubCat_Id { get; set; }
         public System.String SubCategoryName { get; set; }
         public System.Int32 DisplayIndex { get; set; }
         public System.Boolean? DisplayOnHome { get; set; }
         public System.Boolean? IsActive { get; set; }
-        public System.String ServiceType { get; set; }
+        
         public System.Int32 TotalViews { get; set; }
 
         public string Url { get; set; }
@@ -43,7 +44,10 @@ namespace SHF.ViewModel
         public System.String SubCategoryName { get; set; }
         public System.Int64 Category_ID { get; set; }
         public System.String CategoryName { get; set; }
-
+        public System.Int64 ServiceType_ID { get; set; }
+        
+        public System.String ServiceTypeValue { get; set; }
+        
         public System.Int32 DisplayIndex { get; set; }
 
         public System.Boolean? DisplayOnHome { get; set; }

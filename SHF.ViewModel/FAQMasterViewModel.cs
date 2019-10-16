@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SHF.ViewModel
 {
-    public class FAQMasterViewModel : BaseViewModel
+    public class FAQMasterIndexViewModel : BaseViewModel
     {
         public System.String Title { get; set; }
         public System.String Description { get; set; }

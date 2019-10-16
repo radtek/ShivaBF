@@ -45,7 +45,7 @@ namespace SHF.DataAccess
        
         public DbSet<EntityModel.Message> Messages { get; set; }
         public DbSet<SHF.EntityModel.BankMaster> BankMaster { get; set; }
-        public DbSet<SHF.EntityModel.PriceFeaturesMaster> PriceFeaturesMaster { get; set; }
+       
         public DbSet<SHF.EntityModel.FAQMaster> FAQMaster { get; set; }
         public DbSet<SHF.EntityModel.CategoriesMaster> CategoriesMaster { get; set; }
         public DbSet<SHF.EntityModel.SubCategoriesMaster> SubCategoriesMaster { get; set; }

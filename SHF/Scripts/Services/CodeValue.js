@@ -16,11 +16,21 @@
         ContactPersonType: 1013,
         ContactType: 1014,
         BarcodeCategory: 1015,
-        BarcodeSubCategory: 1016
+        BarcodeSubCategory: 1016,
+ServiceType: 1020
     }
 
     this.CODE_VALUE = {
-
+ServiceType: {
+SERVICE_1:"SER1",
+SERVICE_2:"SER2",
+SERVICE_3:"SER3",
+SERVICE_4:"SER4",
+SERVICE_5:"SER5",
+SERVICE_6:"SER6",
+SERVICE_7:"SER7",
+SERVICE_8:"SER8",
+},
         BarcodeType: {
             Code128auto: "A128",
             Code128A: "128A",
