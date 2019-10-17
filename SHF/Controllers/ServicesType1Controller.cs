@@ -69,8 +69,8 @@ namespace SHF.Controllers
         [HttpGet]
         [Access]
         [OutputCache(Duration = busConstant.Settings.Cache.OutputCache.TimeOut.S300)]
-        [Route("Configurations/Master/Categories/Index")]
-        [Route("Settings/Master/Categories/Index")]
+        [Route("Configurations/Master/ServiceType1/Index")]
+        [Route("Settings/Master/ServiceType1/Index")]
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId<long>();
@@ -78,7 +78,7 @@ namespace SHF.Controllers
             return View();
         }
         [HttpPost]
-        [Route("Post/Categories/IndexAsync")]
+        [Route("Post/ServiceType1/IndexAsync")]
         [ValidateAntiForgeryTokens]
         public async Task<ActionResult> IndexAsync()
         {

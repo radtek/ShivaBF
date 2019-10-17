@@ -69,8 +69,8 @@ namespace SHF.Controllers
         [HttpGet]
         [Access]
         [OutputCache(Duration = busConstant.Settings.Cache.OutputCache.TimeOut.S300)]
-        [Route("Configurations/Master/Services1Section6Price/Index")]
-        [Route("Settings/Master/Services1Section6Price/Index")]
+        [Route("Configurations/Master/ServiceType1/Section6")]
+        [Route("Settings/Master/ServiceType1/Section6")]
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId<long>();
@@ -159,16 +159,16 @@ namespace SHF.Controllers
                             {
                                 var entity = new EntityModel.Services1Section6PriceMaster();
                                 entity.Tenant = null;
-                                entity.CategoriesMaster = null;
-                                entity.SubCategoriesMaster = null;
-                                entity.Cat_Id = model.Category_ID;
-                                entity.SubCat_Id = model.SubCategory_ID;
-                                entity.SubSubCategoryName = model.SubSubCategoryName;
-                                entity.DisplayIndex = model.DisplayIndex;
-                                entity.DisplayOnHome = model.DisplayOnHome;
-                                entity.IsActive = model.IsActive;
-                                entity.ServiceType_ID = busConstant.Code.SERVICE_TYPE;
-                                entity.ServiceTypeValue = model.ServiceTypeValue;
+                                //entity.CategoriesMaster = null;
+                                //entity.SubCategoriesMaster = null;
+                                //entity.Cat_Id = model.Category_ID;
+                                //entity.SubCat_Id = model.SubCategory_ID;
+                                //entity.SubSubCategoryName = model.SubSubCategoryName;
+                                //entity.DisplayIndex = model.DisplayIndex;
+                                //entity.DisplayOnHome = model.DisplayOnHome;
+                                //entity.IsActive = model.IsActive;
+                                //entity.ServiceType_ID = busConstant.Code.SERVICE_TYPE;
+                                //entity.ServiceTypeValue = model.ServiceTypeValue;
                                 entity.TotalViews = model.TotalViews;
                                 entity.Url = model.Url;
                                 entity.Metadata = model.Metadata;
@@ -248,14 +248,14 @@ namespace SHF.Controllers
                                 // Mapper.Map(entity, model);
 
                                    model.ID=entity.ID;
-                                   model.Category_ID=Convert.ToInt64(entity.Cat_Id);
-                                   model.SubCategory_ID= Convert.ToInt64(entity.SubCat_Id);
-                                   model.SubSubCategoryName=entity.SubSubCategoryName;
-                                   model.DisplayIndex=entity.DisplayIndex;
-                                   model.DisplayOnHome=entity.DisplayOnHome;
-                                   model.IsActive=entity.IsActive;
-                                   model.ServiceType_ID = entity.ServiceType_ID;
-                                   model.ServiceTypeValue=entity.ServiceTypeValue;
+                                   //model.Category_ID=Convert.ToInt64(entity.Cat_Id);
+                                   //model.SubCategory_ID= Convert.ToInt64(entity.SubCat_Id);
+                                   //model.SubSubCategoryName=entity.SubSubCategoryName;
+                                   //model.DisplayIndex=entity.DisplayIndex;
+                                   //model.DisplayOnHome=entity.DisplayOnHome;
+                                   //model.IsActive=entity.IsActive;
+                                   //model.ServiceType_ID = entity.ServiceType_ID;
+                                   //model.ServiceTypeValue=entity.ServiceTypeValue;
                                    model.TotalViews=entity.TotalViews;
                                    model.Url=entity.Url;
                                    model.Metadata=entity.Metadata;
@@ -350,19 +350,19 @@ namespace SHF.Controllers
                                // Mapper.Map(model, entity);
                                 entity.Tenant = null;
                                 entity.ID = Convert.ToInt64(model.ID);
-                                entity.Cat_Id = model.Category_ID;
-                                entity.Tenant = null;
-                                entity.CategoriesMaster = null;
-                                entity.SubCategoriesMaster = null;
-                                entity.ServiceType = null;
-                                entity.Cat_Id = model.Category_ID;
-                                entity.SubCat_Id = model.SubCategory_ID;
-                                entity.SubSubCategoryName = model.SubSubCategoryName;
-                                entity.DisplayIndex = model.DisplayIndex;
-                                entity.DisplayOnHome = model.DisplayOnHome;
-                                entity.IsActive = model.IsActive;
-                                entity.ServiceType_ID = busConstant.Code.SERVICE_TYPE;
-                                entity.ServiceTypeValue = model.ServiceTypeValue;
+                                //entity.Cat_Id = model.Category_ID;
+                                //entity.Tenant = null;
+                                //entity.CategoriesMaster = null;
+                                //entity.SubCategoriesMaster = null;
+                                //entity.ServiceType = null;
+                                //entity.Cat_Id = model.Category_ID;
+                                //entity.SubCat_Id = model.SubCategory_ID;
+                                //entity.SubSubCategoryName = model.SubSubCategoryName;
+                                //entity.DisplayIndex = model.DisplayIndex;
+                                //entity.DisplayOnHome = model.DisplayOnHome;
+                                //entity.IsActive = model.IsActive;
+                                //entity.ServiceType_ID = busConstant.Code.SERVICE_TYPE;
+                                //entity.ServiceTypeValue = model.ServiceTypeValue;
                                 entity.TotalViews = model.TotalViews;
                                 entity.Url = model.Url;
                                 entity.Metadata = model.Metadata;
@@ -491,15 +491,15 @@ namespace SHF.Controllers
                         }
                         else
                         {
-                            var entities = this.businessServices1Section6PriceMaster.FindBy(product => product.Tenant_ID == Id).Select(x => new ViewModel.Services1Section6PriceDropdownListViewModel
+                            var entities = this.businessServices1Section6PriceMaster.FindBy(product => product.Tenant_ID == Id).Select(x => new ViewModel.Services1Section6PriceMasterDropdownListViewModel
                             {
                                 ID = x.ID,
-                                SubSubCategoryName = x.SubSubCategoryName
+                                 AncharTagTitle= x.AncharTagTitle
                             });
 
                             if (entities.IsNotNull())
                             {
-                                var response = new JsonResponse<IEnumerable<ViewModel.Services1Section6PriceDropdownListViewModel>>()
+                                var response = new JsonResponse<IEnumerable<ViewModel.Services1Section6PriceMasterDropdownListViewModel>>()
                                 {
                                     Type = busConstant.Messages.Type.RESPONSE,
                                     Entity = entities
