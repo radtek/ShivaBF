@@ -385,6 +385,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Services1Section4MasterController.cs" />
     <Compile Include="Controllers\ServicesType1Controller.cs" />
     <Compile Include="Controllers\FAQMasterController.cs" />
     <Compile Include="Controllers\Services1Section1MasterController.cs" />
@@ -438,6 +439,7 @@
   <ItemGroup>
     <Content Include="AngularControllers\AspNetUserController.js" />
     <Content Include="AngularControllers\FAQMasterController.js" />
+    <Content Include="AngularControllers\Services1Section4MasterController.js" />
     <Content Include="AngularControllers\Services1Section1MasterController.js" />
     <Content Include="AngularControllers\SubSubCategoriesMasterController.js" />
     <Content Include="AngularControllers\SubCategoriesMasterController.js" />
@@ -8942,6 +8944,7 @@
     <Content Include="Scripts\Services\AspNetRole.js" />
     <Content Include="Scripts\Services\AspNetUser.js" />
     <Content Include="Scripts\Services\FAQMaster.js" />
+    <Content Include="Scripts\Services\Services1Section4Master.js" />
     <Content Include="Scripts\Services\Services1Section1Master.js" />
     <Content Include="Scripts\Services\SubSubCategoriesMaster.js" />
     <Content Include="Scripts\Services\SubCategoriesMaster.js" />
