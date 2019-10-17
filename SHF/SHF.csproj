@@ -412,10 +412,6 @@
     <Compile Include="Helpers\CustomHelpers.cs" />
     <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Helpers\RequiredField.cs" />
-    <Compile Include="Migrations\201910170602538_DBsetup.cs" />
-    <Compile Include="Migrations\201910170602538_DBsetup.Designer.cs">
-      <DependentUpon>201910170602538_DBsetup.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Error\CustomHandleErrorInfo.cs" />
@@ -6961,7 +6957,7 @@
     <Content Include="dist\img\avatar04.png" />
     <Content Include="dist\img\avatar2.png" />
     <Content Include="dist\img\avatar3.png" />
-    <Content Include="dist\img\avatar5.png" />
+    <Content Include="dist\img\avatar56.png" />
     <Content Include="dist\img\boxed-bg.jpg" />
     <Content Include="dist\img\boxed-bg.png" />
     <Content Include="dist\img\credit\american-express.png" />
@@ -6974,9 +6970,7 @@
     <Content Include="dist\img\DeBeersLogo.png" />
     <Content Include="dist\img\default-50x50.gif" />
     <Content Include="dist\img\icons.png" />
-    <Content Include="dist\img\logo.jpg" />
-    <Content Include="dist\img\logopsytech.jpg" />
-    <Content Include="dist\img\new-aakash-logo.png" />
+    <Content Include="dist\img\logo.png" />
     <Content Include="dist\img\photo1.png" />
     <Content Include="dist\img\photo2.png" />
     <Content Include="dist\img\photo3.jpg" />
@@ -9147,11 +9141,6 @@
     <TypeScriptCompile Include="bower_components\JsBarcode\jsbarcode.d.ts" />
     <TypeScriptCompile Include="bower_components\moment\moment.d.ts" />
     <TypeScriptCompile Include="bower_components\sweetalert2\sweetalert2.d.ts" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910170602538_DBsetup.resx">
-      <DependentUpon>201910170602538_DBsetup.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
