@@ -385,7 +385,9 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ServicesType1Controller.cs" />
     <Compile Include="Controllers\FAQMasterController.cs" />
+    <Compile Include="Controllers\Services1Section1MasterController.cs" />
     <Compile Include="Controllers\SubSubCategoriesMasterController.cs" />
     <Compile Include="Controllers\SubCategoriesMasterController.cs" />
     <Compile Include="Controllers\CategoriesMasterController.cs" />
@@ -436,6 +438,7 @@
   <ItemGroup>
     <Content Include="AngularControllers\AspNetUserController.js" />
     <Content Include="AngularControllers\FAQMasterController.js" />
+    <Content Include="AngularControllers\Services1Section1MasterController.js" />
     <Content Include="AngularControllers\SubSubCategoriesMasterController.js" />
     <Content Include="AngularControllers\SubCategoriesMasterController.js" />
     <Content Include="AngularControllers\CategoriesMasterController.js" />
@@ -8939,6 +8942,7 @@
     <Content Include="Scripts\Services\AspNetRole.js" />
     <Content Include="Scripts\Services\AspNetUser.js" />
     <Content Include="Scripts\Services\FAQMaster.js" />
+    <Content Include="Scripts\Services\Services1Section1Master.js" />
     <Content Include="Scripts\Services\SubSubCategoriesMaster.js" />
     <Content Include="Scripts\Services\SubCategoriesMaster.js" />
     <Content Include="Scripts\Services\CategoriesMaster.js" />
@@ -9086,6 +9090,9 @@
     <Content Include="Views\SubSubCategoriesMaster\_CreateOrEdit.cshtml" />
     <Content Include="Views\SubSubCategoriesMaster\_CreateOrEditTenant.cshtml" />
     <Content Include="Views\SubSubCategoriesMaster\Index.cshtml" />
+    <Content Include="Views\Services1Section1Master\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Services1Section1Master\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\Services1Section1Master\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
