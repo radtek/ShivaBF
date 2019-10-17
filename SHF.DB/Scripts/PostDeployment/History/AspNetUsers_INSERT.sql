@@ -59,3 +59,14 @@ BEGIN
     VALUES('dbo',GetDate(),'dbo',GetDate(),1,0,0,@Email,1,@PasswordHash,@SecurityStamp,@PhoneNumber,1,0,0,@UserName,@FirstName,@LastName,0)
 END
 GO
+
+DECLARE @Email NVARCHAR(256)='user.user@shivabusinessfilings.com', @UserName NVARCHAR(256)='shivabf', @PhoneNumber NVARCHAR(MAX)='9112884369', @FirstName NVARCHAR(MAX)='User', @LastName NVARCHAR(MAX)='User',
+		@PasswordHash NVARCHAR(MAX)='ADBLPNujMcaLOnRl5vtnXvyUToHYnWJskmrJU5XKIDxs0KIgzfFTyd9ucNXkASjKdw==',@SecurityStamp NVARCHAR(MAX)='bb9b5bee-5196-4654-b57b-1710e8aa9366'
+		--Sai@123
+IF NOT EXISTS(SELECT 1 FROM dbo.AspNetUsers WITH(NOLOCK) WHERE UserName=@UserName)
+BEGIN
+	INSERT INTO [dbo].[AspNetUsers]
+           ([Created_By],[Created_On],[Modified_By],[Modified_On],[Is_Active],[Is_Deleted],[Update_Seq],[Email],[EmailConfirmed],[PasswordHash],[SecurityStamp],[PhoneNumber],[PhoneNumberConfirmed],[TwoFactorEnabled],[LockoutEnabled],[UserName],[First_Name],[Last_Name],[AccessFailedCount])
+    VALUES('dbo',GetDate(),'dbo',GetDate(),1,0,0,@Email,1,@PasswordHash,@SecurityStamp,@PhoneNumber,1,0,0,@UserName,@FirstName,@LastName,0)
+END
+GO

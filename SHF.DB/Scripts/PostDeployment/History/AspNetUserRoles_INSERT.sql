@@ -22,7 +22,7 @@ GO
 
 
 DECLARE @UserID INT, @RoleID INT
-SELECT @UserID=Id FROM [dbo].[AspNetUsers] WITH(NOLOCK) WHERE UserName='delmon'
+SELECT @UserID=Id FROM [dbo].[AspNetUsers] WITH(NOLOCK) WHERE UserName='shivabf'
 SELECT @RoleID=Id FROM [dbo].[AspNetRoles] WITH(NOLOCK) WHERE [Name]='DEVLOPMENT'
 IF NOT EXISTS(SELECT 1 FROM [dbo].[AspNetUserRoles] WITH(NOLOCK) WHERE [UserId]=@UserID AND [RoleId]=@RoleID)
 BEGIN

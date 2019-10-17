@@ -19,7 +19,7 @@ END
 GO
 
 DECLARE    @Message_Code int=2,
-		   @Description nvarchar(max)='SKU already exists.', 
+		   @Description nvarchar(max)='Service already exists.', 
            @Title nvarchar(max)='Error', 
            @Type nvarchar(max)='Validation', 
            @Icon nvarchar(max)='error', 
@@ -60,7 +60,7 @@ GO
 
 
 DECLARE    @Message_Code int=4,
-		   @Description nvarchar(max)='UOM already exists.', 
+		   @Description nvarchar(max)='URL already exists.', 
            @Title nvarchar(max)='Error', 
            @Type nvarchar(max)='Validation', 
            @Icon nvarchar(max)='error', 

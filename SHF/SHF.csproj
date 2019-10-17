@@ -412,9 +412,9 @@
     <Compile Include="Helpers\CustomHelpers.cs" />
     <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Helpers\RequiredField.cs" />
-    <Compile Include="Migrations\201910161952206_DBsetup.cs" />
-    <Compile Include="Migrations\201910161952206_DBsetup.Designer.cs">
-      <DependentUpon>201910161952206_DBsetup.cs</DependentUpon>
+    <Compile Include="Migrations\201910170602538_DBsetup.cs" />
+    <Compile Include="Migrations\201910170602538_DBsetup.Designer.cs">
+      <DependentUpon>201910170602538_DBsetup.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -9149,8 +9149,8 @@
     <TypeScriptCompile Include="bower_components\sweetalert2\sweetalert2.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910161952206_DBsetup.resx">
-      <DependentUpon>201910161952206_DBsetup.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910170602538_DBsetup.resx">
+      <DependentUpon>201910170602538_DBsetup.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

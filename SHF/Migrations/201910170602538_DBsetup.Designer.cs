@@ -13,7 +13,7 @@ namespace SHF.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201910161952206_DBsetup"; }
+            get { return "201910170602538_DBsetup"; }
         }
         
         string IMigrationMetadata.Source
