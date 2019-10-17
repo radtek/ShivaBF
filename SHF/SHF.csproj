@@ -385,6 +385,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Services1Section6PriceMasterController.cs" />
     <Compile Include="Controllers\Services1Section5MasterController.cs" />
     <Compile Include="Controllers\Services1Section4MasterController.cs" />
     <Compile Include="Controllers\ServicesType1Controller.cs" />
@@ -440,6 +441,7 @@
   <ItemGroup>
     <Content Include="AngularControllers\AspNetUserController.js" />
     <Content Include="AngularControllers\FAQMasterController.js" />
+    <Content Include="AngularControllers\Services1Section6PriceMasterController.js" />
     <Content Include="AngularControllers\Services1Section5MasterController.js" />
     <Content Include="AngularControllers\Services1Section4MasterController.js" />
     <Content Include="AngularControllers\Services1Section1MasterController.js" />
@@ -8946,6 +8948,7 @@
     <Content Include="Scripts\Services\AspNetRole.js" />
     <Content Include="Scripts\Services\AspNetUser.js" />
     <Content Include="Scripts\Services\FAQMaster.js" />
+    <Content Include="Scripts\Services\Services1Section6PriceMaster.js" />
     <Content Include="Scripts\Services\Services1Section5Master.js" />
     <Content Include="Scripts\Services\Services1Section4Master.js" />
     <Content Include="Scripts\Services\Services1Section1Master.js" />
@@ -9068,6 +9071,9 @@
     <Content Include="Views\Services1Section5Master\_CreateOrEdit.cshtml" />
     <Content Include="Views\Services1Section5Master\_CreateOrEditTenant.cshtml" />
     <Content Include="Views\Services1Section5Master\Index.cshtml" />
+    <Content Include="Views\Services1Section6PriceMaster\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Services1Section6PriceMaster\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\Services1Section6PriceMaster\Index.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
