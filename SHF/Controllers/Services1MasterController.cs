@@ -24,7 +24,7 @@ using System.ComponentModel;
 namespace SHF.Controllers
 {
     [AllowAnonymous]
-    public class ServicesType1Controller : BaseController
+    public class Services1MasterController : BaseController
     {
         #region [Field & Contructor]
 
@@ -33,7 +33,7 @@ namespace SHF.Controllers
         private ApplicationUserManager _userManager;
         private Business.Interface.ICategoriesMaster businessCategoriesMaster;
 
-        public ServicesType1Controller(Business.Interface.IMessage Imessage, Business.Interface.ICategoriesMaster IcategoriesMaster)
+        public Services1MasterController(Business.Interface.IMessage Imessage, Business.Interface.ICategoriesMaster IcategoriesMaster)
         {
             this.businessMessage = Imessage;
             this.businessCategoriesMaster = IcategoriesMaster;
