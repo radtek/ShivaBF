@@ -60,6 +60,7 @@
     <Compile Include="BusinessLogic\Services1Section5Master.cs" />
     <Compile Include="BusinessLogic\Services1Section4Master.cs" />
     <Compile Include="BusinessLogic\Services1Section1Master.cs" />
+    <Compile Include="BusinessLogic\PriceFeaturesMapping.cs" />
     <Compile Include="BusinessLogic\SubSubCategoriesMaster.cs" />
     <Compile Include="BusinessLogic\SubCategoriesMaster.cs" />
     <Compile Include="BusinessLogic\CategoriesMaster.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Interface\IServices1Section5Master.cs" />
     <Compile Include="Interface\IServices1Section4Master.cs" />
     <Compile Include="Interface\IServices1Section1Master.cs" />
+    <Compile Include="Interface\IPriceFeaturesMapping.cs" />
     <Compile Include="Interface\ISubSubCategoriesMaster.cs" />
     <Compile Include="Interface\ISubCategoriesMaster.cs" />
     <Compile Include="Interface\ICategoriesMaster.cs" />

@@ -145,6 +145,7 @@ namespace SHF
                    "~/Scripts/Services/Services1Section5Master.js",
                    "~/Scripts/Services/Services1Section6PriceMaster.js",
                    "~/Scripts/Services/PriceFeaturesMaster.js",
+                    "~/Scripts/Services/PriceFeaturesMapping.js",
                  "~/AngularControllers/AspNetUserController.js",
                  "~/AngularControllers/RoleController.js",
                  "~/AngularControllers/TenantController.js",
@@ -161,7 +162,8 @@ namespace SHF
                    "~/AngularControllers/Services1Section4MasterController.js",
                     "~/AngularControllers/Services1Section6PriceMasterController.js",
                    "~/AngularControllers/Services1Section5MasterController.js",
-                   "~/AngularControllers/PriceFeaturesMasterController.js"
+                   "~/AngularControllers/PriceFeaturesMasterController.js",
+                    "~/AngularControllers/PriceFeaturesMappingController.js"
 
                 ));
 

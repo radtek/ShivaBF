@@ -55,7 +55,7 @@ namespace SHF.ViewModel
 
     public class Services1Section6PriceMasterDropdownListViewModel
     {
-        public System.String AncharTagTitle { get; set; }
+        public System.String Price { get; set; }
         public System.Int64 ID { get; set; }
 
     }

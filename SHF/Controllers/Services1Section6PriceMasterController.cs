@@ -461,7 +461,7 @@ namespace SHF.Controllers
 
         [HttpGet]
         [Route("Get/Services1Section6PriceMaster/DropdownListbyTenantAsync")]
-        public async Task<ActionResult> GetServices1Section6PriceMasterByTenantIdAsync(long Id)
+        public async Task<ActionResult> GetServices1Section6PriceMasterByTenantIdAsync(long Id,long subsubcat_id)
         {
             try
             {
@@ -483,10 +483,10 @@ namespace SHF.Controllers
                         }
                         else
                         {
-                            var entities = this.businessServices1Section6PriceMaster.FindBy(product => product.Tenant_ID == Id).Select(x => new ViewModel.Services1Section6PriceMasterDropdownListViewModel
+                            var entities = this.businessServices1Section6PriceMaster.FindBy(S1S6M => S1S6M.Tenant_ID == Id && S1S6M.SubSubCat_Id== subsubcat_id).Select(x => new ViewModel.Services1Section6PriceMasterDropdownListViewModel
                             {
                                 ID = x.ID,
-                                 AncharTagTitle= x.AncharTagTitle
+                                Price = x.Price.ToString()
                             });
 
                             if (entities.IsNotNull())
