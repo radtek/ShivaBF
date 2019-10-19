@@ -162,6 +162,7 @@ namespace SHF.Business.BusinessLogic
                         MetaDescription= x.Services1Master_tenant.Services1Master.MetaDescription.ToString(),
                         Keyword= x.Services1Master_tenant.Services1Master.Keyword.ToString(),
                         TotalViews= x.Services1Master_tenant.Services1Master.TotalViews,
+                        IsActive = x.Services1Master_tenant.Services1Master.IsActive,
                         TenantName = x.Services1Master_tenant.Services1Master.Tenant.Name,
                         CreatedBy = x.Services1Master_tenant.Services1Master.CreatedBy,
                         UpdatedBy = x.Services1Master_tenant.Services1Master.UpdatedBy,

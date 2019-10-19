@@ -140,7 +140,7 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var catId = businessFAQMaster.FindBy(FAQ => FAQ.Tenant_ID == model.Tenant_ID).FirstOrDefault();
+                            var catId = businessFAQMaster.FindBy(FAQ => FAQ.Title == model.Title && FAQ.Tenant_ID==model.Tenant_ID).FirstOrDefault();
 
                             if (catId.IsNotNull())
                             {
@@ -286,9 +286,9 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var FAQData = businessFAQMaster.FindBy(FAQ => FAQ.Tenant_ID == model.Tenant_ID && FAQ.ID != model.ID).FirstOrDefault();
+                            var FAQData = businessFAQMaster.FindBy(FAQ => FAQ.Tenant_ID == model.Tenant_ID && FAQ.ID == model.ID).FirstOrDefault();
 
-                            if (FAQData.IsNotNull())
+                            if (FAQData.IsNull())
                             {
                                 transaction.Complete();
                                 var response = new JsonResponse<dynamic>()

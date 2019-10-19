@@ -210,6 +210,31 @@ BEGIN
 END
 GO
 
+DECLARE @RoleID BIGINT=NULL , 
+		@SubMenuID BIGINT=NULL, 
+		@SubMenuName VARCHAR(100)='Price Features Master',			
+		@RoleName VARCHAR(100)='DEVLOPMENT',
+		@Has_Access BIT=1,
+		@Is_Active BIT=1,
+		@Update_Seq INT=0,
+		@Created_By VARCHAR(10)='dbo',
+		@Created_On DATETIME=GETDATE(),
+		@Modified_By VARCHAR(10)='dbo',
+		@Modified_On DATETIME=GETDATE(),
+		@Is_Deleted BIT=0,
+		@UseOnlyFor VARCHAR(10)='DEVLOPMENT'
+
+SELECT @RoleID=R.Id FROM dbo.AspNetRoles R WITH(NOLOCK) WHERE R.[Name]=@RoleName;
+SELECT @SubMenuID=SM.ID FROM dbo.Tbl_SubMenu SM WITH(NOLOCK) WHERE SM.[Name]=@SubMenuName AND SM.[UseOnlyFor]=@UseOnlyFor AND SM.ParrentMenu_ID IS NOT NULL;
+IF NOT EXISTS (SELECT 1 FROM dbo.Tbl_AspNetRoles_SubMenu RM WITH(NOLOCK) WHERE RM.AspNetRole_ID=@RoleID AND RM.SubMenu_ID=@SubMenuID)
+BEGIN
+	
+	INSERT INTO [dbo].[Tbl_AspNetRoles_SubMenu]
+	           ([SubMenu_ID],[AspNetRole_ID],[HasAccess],[IsActive],[UpdateSeq],[Created_By],[Created_On],[Modified_By],[Modified_On],[Is_Deleted])
+	VALUES (@SubMenuID,@RoleID,@Has_Access,@Is_Active,@Update_Seq,@Created_By,@Created_On,@Modified_By,@Modified_On,@Is_Deleted) 
+
+END
+GO
 
 /***************** Start Services 1 Menus*************************/
 
@@ -344,7 +369,31 @@ BEGIN
 
 END
 GO
+DECLARE @RoleID BIGINT=NULL , 
+		@SubMenuID BIGINT=NULL, 
+		@SubMenuName VARCHAR(100)='Price Mapping',			
+		@RoleName VARCHAR(100)='DEVLOPMENT',
+		@Has_Access BIT=1,
+		@Is_Active BIT=1,
+		@Update_Seq INT=0,
+		@Created_By VARCHAR(10)='dbo',
+		@Created_On DATETIME=GETDATE(),
+		@Modified_By VARCHAR(10)='dbo',
+		@Modified_On DATETIME=GETDATE(),
+		@Is_Deleted BIT=0,
+		@UseOnlyFor VARCHAR(10)='DEVLOPMENT'
 
+SELECT @RoleID=R.Id FROM dbo.AspNetRoles R WITH(NOLOCK) WHERE R.[Name]=@RoleName;
+SELECT @SubMenuID=SM.ID FROM dbo.Tbl_SubMenu SM WITH(NOLOCK) WHERE SM.[Name]=@SubMenuName AND SM.[UseOnlyFor]=@UseOnlyFor AND SM.ParrentMenu_ID IS NOT NULL;
+IF NOT EXISTS (SELECT 1 FROM dbo.Tbl_AspNetRoles_SubMenu RM WITH(NOLOCK) WHERE RM.AspNetRole_ID=@RoleID AND RM.SubMenu_ID=@SubMenuID)
+BEGIN
+	
+	INSERT INTO [dbo].[Tbl_AspNetRoles_SubMenu]
+	           ([SubMenu_ID],[AspNetRole_ID],[HasAccess],[IsActive],[UpdateSeq],[Created_By],[Created_On],[Modified_By],[Modified_On],[Is_Deleted])
+	VALUES (@SubMenuID,@RoleID,@Has_Access,@Is_Active,@Update_Seq,@Created_By,@Created_On,@Modified_By,@Modified_On,@Is_Deleted) 
+
+END
+GO
 
 
 DECLARE @RoleID BIGINT=NULL , 

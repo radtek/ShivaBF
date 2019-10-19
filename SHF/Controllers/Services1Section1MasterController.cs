@@ -32,11 +32,13 @@ namespace SHF.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private Business.Interface.IServices1Section1Master businessServices1Section1Master;
+        private Business.Interface.IServices1Master businessServices1Master;
 
-        public Services1Section1MasterController(Business.Interface.IMessage Imessage, Business.Interface.IServices1Section1Master IServices1Section1Master)
+        public Services1Section1MasterController(Business.Interface.IMessage Imessage, Business.Interface.IServices1Section1Master IServices1Section1Master, Business.Interface.IServices1Master IServices1Master)
         {
             this.businessMessage = Imessage;
             this.businessServices1Section1Master = IServices1Section1Master;
+            this.businessServices1Master = IServices1Master;
 
         }
         public ApplicationSignInManager SignInManager
@@ -157,29 +159,24 @@ namespace SHF.Controllers
                             }
                             else
                             {
+                                var entityServices = this.businessServices1Master.FindBy(services1master => services1master.SubSubCat_Id == model.SubSubCat_Id).FirstOrDefault();
                                 var entity = new EntityModel.Services1Section1Master();
                                 entity.Tenant = null;
-                                //entity.CategoriesMaster = null;
-                                //entity.SubCategoriesMaster = null;
-                                //entity.Cat_Id = model.Category_ID;
-                                //entity.SubCat_Id = model.SubCategory_ID;
-                                //entity.SubSubCategoryName = model.SubSubCategoryName;
-                                //entity.DisplayIndex = model.DisplayIndex;
-                                //entity.DisplayOnHome = model.DisplayOnHome;
-                                //entity.IsActive = model.IsActive;
-                                //entity.ServiceType_ID = busConstant.Code.SERVICE_TYPE;
-                                //entity.ServiceTypeValue = model.ServiceTypeValue;
+                                //entity.Services1Section1Masters = null;
+                                entity.SubSubCategoriesMaster = null;
+                                entity.Services1Master = null;
+                                entity.Service_Id = entityServices.ID;
+                                entity.SubSubCat_Id = model.SubSubCat_Id;
+                                entity.AncharTagTitle = model.AncharTagTitle;
+                                entity.AncharTagUrl = model.AncharTagUrl;
+                                entity.DisplayIndex = model.DisplayIndex;
+                                entity.IsActive = model.IsActive;
                                 entity.TotalViews = model.TotalViews;
                                 entity.Url = model.Url;
                                 entity.Metadata = model.Metadata;
                                 entity.Keyword = model.Keyword;
                                 entity.MetaDescription = model.MetaDescription;
                                 entity.Tenant_ID = model.Tenant_ID;
-                                entity.CreatedBy = model.CreatedBy;
-                                entity.CreatedOn = model.CreatedOn;
-                                entity.UpdatedBy = model.UpdatedBy;
-                                entity.UpdatedOn = model.UpdatedOn;
-                                entity.IsDeleted = model.IsDeleted;
                                 //Mapper.Map(model, entity);
                                  this.businessServices1Section1Master.Create(entity);
                                 transaction.Complete();
@@ -243,20 +240,19 @@ namespace SHF.Controllers
 
                             if (entity.IsNotNull())
                             {
+                                var entityServices = this.businessServices1Master.FindBy(services1master => services1master.SubSubCat_Id == entity.SubSubCat_Id).FirstOrDefault();
                                 var model = new ViewModel.Services1Section1MasterCreateOrEditViewModel();
 
                                 // Mapper.Map(entity, model);
 
                                    model.ID=entity.ID;
-                                   //model.Category_ID=Convert.ToInt64(entity.Cat_Id);
-                                   //model.SubCategory_ID= Convert.ToInt64(entity.SubCat_Id);
-                                   //model.SubSubCategoryName=entity.SubSubCategoryName;
-                                   //model.DisplayIndex=entity.DisplayIndex;
-                                   //model.DisplayOnHome=entity.DisplayOnHome;
-                                   //model.IsActive=entity.IsActive;
-                                   //model.ServiceType_ID = entity.ServiceType_ID;
-                                   //model.ServiceTypeValue=entity.ServiceTypeValue;
-                                   model.TotalViews=entity.TotalViews;
+                                    model.SubSubCat_Id = Convert.ToInt64(entity.SubSubCat_Id);
+                                    model.SubSubCategoryName = entityServices.SubSubCategoryName;
+                                    model.AncharTagTitle = entity.AncharTagTitle;
+                                    model.AncharTagUrl = entity.AncharTagUrl;
+                                    model.DisplayIndex = entity.DisplayIndex;
+                                    model.IsActive = entity.IsActive;
+                                    model.TotalViews=entity.TotalViews;
                                    model.Url=entity.Url;
                                    model.Metadata=entity.Metadata;
                                    model.Keyword=entity.Keyword;
@@ -345,36 +341,26 @@ namespace SHF.Controllers
                             }
                             else
                             {
+                                var entityServices = this.businessServices1Master.FindBy(services1master => services1master.SubSubCat_Id == model.SubSubCat_Id).FirstOrDefault();
                                 var entity = new EntityModel.Services1Section1Master();
-
-                               // Mapper.Map(model, entity);
-                                entity.Tenant = null;
+                              
                                 entity.ID = Convert.ToInt64(model.ID);
-                                //entity.Cat_Id = model.Category_ID;
-                                //entity.Tenant = null;
-                                //entity.CategoriesMaster = null;
-                                //entity.SubCategoriesMaster = null;
-                                //entity.ServiceType = null;
-                                //entity.Cat_Id = model.Category_ID;
-                                //entity.SubCat_Id = model.SubCategory_ID;
-                                //entity.SubSubCategoryName = model.SubSubCategoryName;
-                                //entity.DisplayIndex = model.DisplayIndex;
-                                //entity.DisplayOnHome = model.DisplayOnHome;
-                                //entity.IsActive = model.IsActive;
-                                //entity.ServiceType_ID = busConstant.Code.SERVICE_TYPE;
-                                //entity.ServiceTypeValue = model.ServiceTypeValue;
+                                entity.Service_Id = entityServices.ID;
+                                entity.SubSubCat_Id = model.SubSubCat_Id;
+                                entity.AncharTagTitle = model.AncharTagTitle;
+                                entity.AncharTagUrl = model.AncharTagUrl;
+                                entity.DisplayIndex = model.DisplayIndex;
+                                entity.IsActive = model.IsActive;
                                 entity.TotalViews = model.TotalViews;
                                 entity.Url = model.Url;
                                 entity.Metadata = model.Metadata;
                                 entity.Keyword = model.Keyword;
                                 entity.MetaDescription = model.MetaDescription;
                                 entity.Tenant_ID = model.Tenant_ID;
-                                //entity.CreatedBy = model.CreatedBy;
-                                //entity.CreatedOn = model.CreatedOn;
-                                //entity.UpdatedBy = model.UpdatedBy;
-                                //entity.UpdatedOn = model.UpdatedOn;
-                                entity.IsDeleted = model.IsDeleted;
-
+                                entity.Tenant = null;
+                                //entity.Services1Section1Masters = null;
+                                entity.SubSubCategoriesMaster = null;
+                                entity.Services1Master = null;
                                 this.businessServices1Section1Master.Update(entity);
 
                                 transaction.Complete();

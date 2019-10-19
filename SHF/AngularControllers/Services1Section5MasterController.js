@@ -1,5 +1,5 @@
-﻿angular.module(config.app).controller('Services1Section5MasterCtrl', ['$scope', '$http', '$window','CategoriesMasterCRUD','SubCategoriesMasterCRUD', 'Services1Section5MasterCRUD', 'TenantCRUD','CustomService','CodeValueCRUD',
-    function ($scope, $http, $window,CategoriesMasterCRUD,SubCategoriesMasterCRUD, Services1Section5MasterCRUD, TenantCRUD,CustomService,CodeValueCRUD) {      
+﻿angular.module(config.app).controller('Services1Section5MasterCtrl', ['$scope', '$http', '$window','CategoriesMasterCRUD','SubCategoriesMasterCRUD', 'Services1Section5MasterCRUD','Services1MasterCRUD', 'TenantCRUD','CustomService','CodeValueCRUD',
+    function ($scope, $http, $window,CategoriesMasterCRUD,SubCategoriesMasterCRUD, Services1Section5MasterCRUD,Services1MasterCRUD, TenantCRUD,CustomService,CodeValueCRUD) {      
         $scope.path = "";
         $scope.errors = {};
         $scope.errors.pageError = {};
@@ -12,7 +12,7 @@
         $scope.AllTenants = [];
         $scope.AllSubSubCategories = [];
         $scope.Services1Section5MasterCreateOrEditViewModel.SelectedTenant_ID = -1;
-        $scope.Services1Section5MasterCreateOrEditViewModel.SelectedSubSubCategory_ID = -1;
+        $scope.Services1Section5MasterCreateOrEditViewModel.SelectedSubSubCat_Id = -1;
        
        
         $scope.Cookie_Tenant_ID = parseInt(CustomService.GetTenantID());
@@ -286,12 +286,12 @@
         }
 /************load Sub Category**************************************************************************************************/
 $scope.LoadAllSubSubCategory = function () {
-            let catId = $scope.Services1Section5MasterCreateOrEditViewModel.SubSubCategory_ID;
-            $scope.BindSubSubCategoryDropDownList(catId);
+            let tenantId = $scope.Services1Section5MasterCreateOrEditViewModel.Tenant_ID;
+            $scope.BindSubSubCategoryDropDownList(tenantId);
         }
 
-$scope.BindSubSubCategoryDropDownList = function (catId) {
-            let promise = SubCategoriesMasterCRUD.LoadSubCategoriesDropdown(catId)
+$scope.BindSubSubCategoryDropDownList = function (tenantId) {
+            let promise = Services1MasterCRUD.LoadSubSubCategoriesDropdown(tenantId)
             promise.then(
                 function success(response) {
                     switch (response.data.Type) {
@@ -300,7 +300,7 @@ $scope.BindSubSubCategoryDropDownList = function (catId) {
                             console.log(response);
                             break;
                         case 'Response':
-                            $scope.AllSubCategories = response.data.Entity;
+                            $scope.AllSubSubCategories = response.data.Entity;
                             console.clear();
                             break;
                         default:
@@ -326,48 +326,6 @@ $scope.BindSubSubCategoryDropDownList = function (catId) {
 
                 });
         }  
-/****************************************************************************Load Category*************************************************************************************/
-$scope.LoadAllCategory = function () {
-            let tenantId = $scope.Services1Section5MasterCreateOrEditViewModel.Tenant_ID;
-            $scope.BindCategoryDropDownList(tenantId);
-        }
-
-        $scope.BindCategoryDropDownList = function (tenantId) {
-            let promise = CategoriesMasterCRUD.LoadCategoriesDropdown(tenantId)
-            promise.then(
-                function success(response) {
-                    switch (response.data.Type) {
-                        case 'Exception':
-                            CustomService.Notify(response.data.Message);
-                            console.log(response);
-                            break;
-                        case 'Response':
-                            $scope.AllCategories = response.data.Entity;
-                            console.clear();
-                            break;
-                        default:
-                            CustomService.Notify(response.data.Message);
-                            console.log(response);
-                            break;
-                    }
-                }, function errors(response) {
-                    switch (response.data.Type) {
-                        case 'Exception':
-                            CustomService.Notify(response.data.Message);
-                            console.log(response);
-                            break;
-                        case 'Validation':
-                            CustomService.Notify(response.data.Message);
-                            console.log(response);
-                            break;
-                        default:
-                            CustomService.Notify(response.data.Message);
-                            console.log(response);
-                            break;
-                    }
-
-                });
-        }   
  $scope.BindServiceTypeDropDownList = function (Id) {
             $scope.AllServiceType = [];
             $scope.AllServiceType = CodeValueCRUD.LoadCodeValueByCodeId(Id);

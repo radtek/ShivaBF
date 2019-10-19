@@ -52,85 +52,245 @@ angular.module(config.app).service('Services1MasterCRUD', function ($http) {
                     targets: 1
                 },
                 {
-                    name: "Services1Master_tenant.Services1Master.AncharTagTitle",
-                    data: "AncharTagTitle",
-                    title: "Anchar&nbsp;Tag&nbsp;Title",
+                    name: "Services1Master_tenant.Services1Master.BannerImagePath",
+                    data: "BannerImagePath",
+                    title: "BannerImagePath",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
                     targets: 2
                 },
-                 {
-                     name: "Services1Master_tenant.Services1Master.AncharTagUrl",
-                     data: "AncharTagUrl",
-                     title: "Anchar&nbsp;Tag&nbsp;Url",
-                     render: $.fn.dataTable.render.text(),
-                     width: "25%",
-                     targets: 3
-                 },
-                  {
-                      name: "Services1Master_tenant.Services1Master.AncharTagTitle",
-                      data: "SubCategoryName",
-                      title: "SubCategory&nbsp;Name",
-                      render: $.fn.dataTable.render.text(),
-                      width: "25%",
-                      targets: 4
-                  },
-                  {
-                    name: "Services1Master.SubSubCategoryName",
+                {
+                    name: "Services1Master_tenant.Services1Master.BannerOnHeading",
+                    data: "BannerOnHeading",
+                    title: "BannerOnHeading",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 3
+                },
+                {
+                    name: "SubSubCategoriesMaster.SubSubCategoryName",
                     data: "SubSubCategoryName",
-                    title: "Sub&nbsp;Sub&nbsp;CategoryName",
+                    title: "SubSubCategoryName",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 4
+                },
+                {
+                    name: "Services1Master_tenant.Services1Master.BannerHeadingDescription",
+                    data: "BannerHeadingDescription",
+                    title: "BannerHeadingDescription",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
                     targets: 5
                 },
                 {
+                    name: "Services1Master_tenant.Services1Master.BannerAncharTagTitle",
+                    data: "BannerAncharTagTitle",
+                    title: "BannerAncharTagTitle",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 6
+                },
+                {
+                    name: "Services1Master_tenant.Services1Master.BannerAncharTagUrl",
+                    data: "BannerAncharTagUrl",
+                    title: "BannerAncharTagUrl",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 6
+                },
+                {
+                    name: "Services1Master_tenant.Services1Master.Section1AfterBannerHeading",
+                    data: "Section1AfterBannerHeading",
+                    title: "Section1AfterBannerHeading",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 7
+                },
+                {
+                    name: "Services1Master_tenant.Services1Master.Section1AfterBannerDescription",
+                    data: "Section1AfterBannerDescription",
+                    title: "Section1AfterBannerDescription",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 8
+                },
+                   {
+                    name: "Services1Master_tenant.Services1Master.Section1AfterBannerImagePath",
+                    data: "Section1AfterBannerImagePath",
+                    title: "Section1AfterBannerImagePath",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 9
+                }, 
+                {
+                    name: "Services1Master_tenant.Services1Master.Section1AfterBannerImageOnDescription",
+                    data: "Section1AfterBannerImageOnDescription",
+                    title: "Section1AfterBannerImageOnDescription",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 10
+                },
+                {
+                    name: "Services1Master_tenant.Services1Master.Section2Heading",
+                    data: "Section2Heading",
+                    title: "Section2Heading",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 11
+                },
+                {
+                    name: "Services1Master_tenant.Services1Master.Section2Description",
+                    data: "Section2Description",
+                    title: "Section2Description",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 12
+                },
+                {
+                    name: "Services1Master_tenant.Services1Master.Section3Heading",
+                    data: "Section3Heading",
+                    title: "Section3Heading",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 13
+                },
+                {
+                    name: "Services1Master_tenant.Services1Master.Section3Description",
+                    data: "Section3Description",
+                    title: "Section3Description",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 14
+                },
+                {
+                    name: "Services1Master_tenant.Services1Master.Section3TextboxMaskedText",
+                    data: "Section3TextboxMaskedText",
+                    title: "Section3TextboxMaskedText",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 15
+                },
+                {
+                    name: "Services1Master_tenant.Services1Master.Section4Heading",
+                    data: "Section4Heading",
+                    title: "Section4Heading",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 16
+                },
+                {
+                    name: "Services1Master_tenant.Services1Master.Section5Heading",
+                    data: "Section5Heading",
+                    title: "Section5Heading",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 17
+                },
+                {
+                    name: "Services1Master_tenant.Services1Master.Section6Heading",
+                    data: "Section6Heading",
+                    title: "Section6Heading",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 18
+                },
+                    {
+                    name: "Services1Master_tenant.Services1Master.Section6Description",
+                    data: "Section6Description",
+                    title: "Section6Description",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 19
+                },
+                    {
+                    name: "Services1Master_tenant.Services1Master.Section7Description",
+                    data: "Section7Description",
+                    title: "Section7Description",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 20
+                },
+                  {
+                    name: "Services1Master_tenant.Services1Master.Section8Description",
+                    data: "Section8Description",
+                    title: "Section8Description",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 21
+                },
+                  {
+                    name: "Services1Master_tenant.Services1Master.Section96Heading",
+                    data: "Section96Heading",
+                    title: "Section96Heading",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 22
+                },
+                 {
+                    name: "Services1Master_tenant.Services1Master.Section9Description",
+                    data: "Section9Description",
+                    title: "Section9Description",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 23
+                },
+                {
+                    name: "Services1Master_tenant.Services1Master.Section10MappingBankFlag",
+                    data: "Section10MappingBankFlag",
+                    title: "Section10MappingBankFlag",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 24
+                },
+                 {
                     name: "Services1Master_tenant.Services1Master.DisplayIndex",
                     data: "DisplayIndex",
                     title: "Display&nbsp;Index",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 6
+                    targets: 25
                 },
- {
+                {
                     name: "Services1Master_tenant.Services1Master.Url",
                     data: "Url",
                     title: "Url",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 7
+                    targets: 26
                 },
- {
+                {
                     name: "Services1Master_tenant.Services1Master.Metadata",
                     data: "Metadata",
                     title: "Metadata",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 8
+                    targets: 27
                 },
-{
+                {
                     name: "Services1Master_tenant.Services1Master.MetaDescription",
                     data: "MetaDescription",
                     title: "MetaDescription",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 9
+                    targets: 28
                 },
-{
+                {
                     name: "Services1Master_tenant.Services1Master.Keyword",
                     data: "Keyword",
                     title: "Keyword",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 10
+                    targets: 29
                 },
 
-{
+                {
                     name: "Services1Master_tenant.Services1Master.TotalViews",
                     data: "TotalViews",
                     title: "TotalViews",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 11
+                    targets: 30
                 },
               {
                     name: "Services1Master_tenant.Services1Master.IsActive",
@@ -138,7 +298,7 @@ angular.module(config.app).service('Services1MasterCRUD', function ($http) {
                     title: "Is&nbsp;Active",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 12
+                    targets: 31
                 },
                 {
                     name: "tenant.Name",
@@ -147,7 +307,7 @@ angular.module(config.app).service('Services1MasterCRUD', function ($http) {
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
                     visible: viewBagTenantID <= 0 ? true : false,
-                    targets:13
+                    targets:32
                 },
                 {
                     name: "Services1Master_tenant.Services1Master.CreatedBy",
@@ -155,7 +315,7 @@ angular.module(config.app).service('Services1MasterCRUD', function ($http) {
                     title: "Created&nbsp;By",
                     render: $.fn.dataTable.render.text(),
                     width: "6%",
-                    targets: 14
+                    targets: 33
                 },
                 {
                     name: "Services1Master_tenant.Services1Master.CreatedOn",
@@ -167,7 +327,7 @@ angular.module(config.app).service('Services1MasterCRUD', function ($http) {
 
                     },
                     width: "11%",
-                    targets: 15
+                    targets: 34
                 },
                 {
                     name: "Services1Master_tenant.Services1Master.UpdatedBy",
@@ -175,7 +335,7 @@ angular.module(config.app).service('Services1MasterCRUD', function ($http) {
                     title: "Modified&nbsp;By",
                     render: $.fn.dataTable.render.text(),
                     width: "6%",
-                    targets: 16
+                    targets: 35
                 },
                 {
                     name: "Services1Master_tenant.Services1Master.UpdatedOn",
@@ -186,7 +346,7 @@ angular.module(config.app).service('Services1MasterCRUD', function ($http) {
                         return moment(date).format('DD-MM-YYYY hh:mm:ss a');
                     },
                     width: "11%",
-                    targets: 17
+                    targets: 36
                 },
                 {
                     name: null,
@@ -197,7 +357,7 @@ angular.module(config.app).service('Services1MasterCRUD', function ($http) {
                         return '<button type="button" class="btn btn-xs text-success btn-edit"><i title="Edit" class="fa fa-edit"></i></button>';
                     },
                     width: "2%",
-                    targets: 18
+                    targets: 37
                 },
                 {
                     name: null,
@@ -208,7 +368,7 @@ angular.module(config.app).service('Services1MasterCRUD', function ($http) {
                         return '<button type="button" class="btn btn-xs text-danger btn-delete"><i title="Delete" class="fa fa-trash"></i></button>';
                     },
                     width: "2%",
-                    targets: 19
+                    targets: 38
                 }
             ],
 
@@ -245,7 +405,13 @@ angular.module(config.app).service('Services1MasterCRUD', function ($http) {
         }
     }
 
-
+ this.LoadSubSubCategoriesDropdown = function SubSubCategoriesDropdown(tenantId) {
+        let request = $http({
+            method: "get",
+            url: "/Get/Services1Master/DropdownListbyTenantAsync?Id=" + tenantId
+        });
+        return request;
+    }
     this.LoadProductDropdown = function ProductDropdown(tenantId) {
         let request = $http({
             method: "get",

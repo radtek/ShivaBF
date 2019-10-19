@@ -219,6 +219,7 @@ namespace SHF.Helper
                 public const int ROLE_ALREADY_EXIST = 3;
                 public const int UOM_ALREADY_EXIST = 4;
                 public const int Slab_ALREADY_EXIST = 5;
+                public const int Services_ALREADY_EXIST = 6;
             }
         }
 

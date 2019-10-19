@@ -34,7 +34,7 @@ namespace SHF.EntityModel
 
         [System.ComponentModel.DefaultValue(SHF.Helper.busConstant.Code.SERVICE_TYPE)]
         public System.Int64 ServiceType_ID { get; set; }
-        [Column("ServiceType")]
+        [Column("ServiceTypeValue")]
         public System.String ServiceTypeValue { get; set; }
        
         [Column("TotalViews")]

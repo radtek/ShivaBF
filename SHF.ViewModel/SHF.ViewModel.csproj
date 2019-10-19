@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="ActiveMenuViewModel.cs" />
     <Compile Include="PriceFeaturesMappingViewModel.cs" />
+    <Compile Include="StateMasterViewModel.cs" />
     <Compile Include="Services1Section10BankMappingViewModel.cs" />
     <Compile Include="Services1MasterViewModel.cs" />
     <Compile Include="Services1Section6MasterPriceViewModel.cs" />

@@ -52,7 +52,9 @@
   <ItemGroup>
     <Compile Include="BaseBusiness.cs" />
     <Compile Include="busCache.cs" />
+    <Compile Include="BusinessLogic\PriceFeaturesMaster.cs" />
     <Compile Include="BusinessLogic\FAQMaster.cs" />
+    <Compile Include="BusinessLogic\StateMaster.cs" />
     <Compile Include="BusinessLogic\Services1Master.cs" />
     <Compile Include="BusinessLogic\Services1Section6PriceMaster.cs" />
     <Compile Include="BusinessLogic\Services1Section5Master.cs" />
@@ -70,7 +72,9 @@
     <Compile Include="BusinessLogic\BankMaster.cs" />
     <Compile Include="BusinessLogic\SubMenu.cs" />
     <Compile Include="BusinessLogic\Tenant.cs" />
+    <Compile Include="Interface\IPriceFeaturesMaster.cs" />
     <Compile Include="Interface\IFAQMaster.cs" />
+    <Compile Include="Interface\IStateMaster.cs" />
     <Compile Include="Interface\IServices1Master.cs" />
     <Compile Include="Interface\IServices1Section6PriceMaster.cs" />
     <Compile Include="Interface\IServices1Section5Master.cs" />

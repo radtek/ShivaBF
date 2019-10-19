@@ -18,6 +18,9 @@ namespace SHF.EntityModel
         [ForeignKey("Service_Id")]
         public virtual Services1Master Services1Master { get; set; }
         public System.Int64? Service_Id { get; set; }
+        [ForeignKey("SubSubCat_Id")]
+        public virtual SubSubCategoriesMaster SubSubCategoriesMaster { get; set; }
+        public System.Int64? SubSubCat_Id { get; set; }
         [ForeignKey("FAQMaster_Id")]
         public virtual FAQMaster FAQMaster { get; set; }
         public System.Int64? FAQMaster_Id { get; set; }
@@ -41,6 +44,6 @@ namespace SHF.EntityModel
         [ForeignKey("Tenant_ID")]
         public virtual Tenant Tenant { get; set; }
         public System.Int64? Tenant_ID { get; set; }
-        public virtual IEnumerable<Services1Section6PriceMaster> Services1Section6PriceMasters { get; set; }
+       // public virtual IEnumerable<Services1Section6PriceMaster> Services1Section6PriceMasters { get; set; }
     }
 }

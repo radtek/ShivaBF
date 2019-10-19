@@ -67,14 +67,14 @@ angular.module(config.app).service('Services1Section1MasterCRUD', function ($htt
                      width: "25%",
                      targets: 3
                  },
-                  {
-                      name: "Services1Section1Master_tenant.Services1Section1Master.AncharTagTitle",
-                      data: "SubCategoryName",
-                      title: "SubCategory&nbsp;Name",
-                      render: $.fn.dataTable.render.text(),
-                      width: "25%",
-                      targets: 4
-                  },
+               //   {
+                //      name: "Services1Section1Master_tenant.Services1Section1Master.AncharTagTitle",
+                //      data: "SubCategoryName",
+                //      title: "SubCategory&nbsp;Name",
+                //      render: $.fn.dataTable.render.text(),
+                 //     width: "25%",
+                 //     targets: 4
+                 // },
                   {
                     name: "Services1Section1Master.SubSubCategoryName",
                     data: "SubSubCategoryName",

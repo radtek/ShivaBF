@@ -94,7 +94,6 @@ namespace SHF.Business.BusinessLogic
                         AncharTagUrl = x.Services1Section1Master_tenant.Services1Section1Master.AncharTagUrl,
                         SubSubCategoryName = x.Services1Master.SubSubCategoryName,
                         DisplayIndex = x.Services1Section1Master_tenant.Services1Section1Master.DisplayIndex,
-                      //  DisplayOnHome = x.Services1Section1Master_tenant.Services1Section1Master.DisplayOnHome,
                         Url = x.Services1Section1Master_tenant.Services1Section1Master.Url,
                         Metadata = x.Services1Section1Master_tenant.Services1Section1Master.Metadata,
                         MetaDescription = x.Services1Section1Master_tenant.Services1Section1Master.MetaDescription,

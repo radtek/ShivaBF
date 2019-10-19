@@ -23,20 +23,30 @@
                 <div class="box box-primary">
                     <div class="box-body">
                         <input id="antiForgeryToken" data-ng-model="antiForgeryToken" type="hidden" data-ng-init="antiForgeryToken='@AntiForgeryToken()'" />
-                       
+
                         <div class="form-group" ng-class="{'has-error': (myForm.SubSubCategoryName.$touched || myForm.SubSubCategoryName.$dirty)  && myForm.SubSubCategoryName.$invalid}">
                             <label>Sub Sub Category Name</label>
-                            <select name="SubSubCategoryName" ng-model="Services1Section5MasterCreateOrEditViewModel.SubSubCategory_ID" class="form-control" style="width: 100%;" ng-options="x.ID as x.SubSubCategoryName for x in AllSubSubCategories" required>
-                                <option value="" ng-selected="Services1Section5MasterCreateOrEditViewModel.SelectedSubSubCategory_ID < 0">-- Select --</option>
+                            <select name="SubSubCategoryName" ng-model="Services1Section6PriceMasterCreateOrEditViewModel.SubSubCat_Id" class="form-control" style="width: 100%;" ng-options="x.ID as x.SubSubCategoryName for x in AllSubSubCategories" ng-change="LoadStates()" required>
+                                <option value="" ng-selected="Services1Section6PriceMasterCreateOrEditViewModel.SelectedSubSubCat_Id < 0">-- Select --</option>
                             </select>
                             <div class="help-block" ng-messages="myForm.SubSubCategoryName.$error" ng-if="myForm.SubSubCategoryName.$touched || myForm.SubSubCategoryName.$dirty && myForm.SubSubCategoryName.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
-                            <span class="text-danger" ng-show="errors.formErrors.Category_ID" ng-bind="errors.formErrors.Category_ID"></span>
+                            <span class="text-danger" ng-show="errors.formErrors.SubSubCat_Id" ng-bind="errors.formErrors.SubSubCat_Id"></span>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error': (myForm.StateName.$touched || myForm.StateName.$dirty)  && myForm.StateName.$invalid}">
+                            <label>State</label>
+                            <select name="StateName" ng-model="Services1Section6PriceMasterCreateOrEditViewModel.State_Id" class="form-control" style="width: 100%;" ng-options="x.ID as x.StateFullName for x in AllState" required>
+                                <option value="" ng-selected="Services1Section6PriceMasterCreateOrEditViewModel.SelectedState_Id < 0">-- Select --</option>
+                            </select>
+                            <div class="help-block" ng-messages="myForm.StateName.$error" ng-if="myForm.StateName.$touched || myForm.StateName.$dirty && myForm.StateName.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.State_Id" ng-bind="errors.formErrors.State_Id"></span>
                         </div>
                         <div class="form-group" ng-class="{'has-error': ((myForm.HeadingText.$touched && myForm.HeadingText.$invalid) || (!myForm.HeadingText.$pristine && myForm.HeadingText.$invalid))}">
                             <label>Heading Text</label>
-                            <input type="text" class="form-control" name="HeadingText" ng-model="Services1Section5MasterCreateOrEditViewModel.HeadingText" ng-disabled="Processing" autocomplete="off" placeholder="Enter Sub Sub Category Name" tooltip-placement="top" uib-tooltip="Enter Sub Sub Category Name" />
+                            <input type="text" class="form-control" name="HeadingText" ng-model="Services1Section6PriceMasterCreateOrEditViewModel.HeadingText" ng-disabled="Processing" autocomplete="off" placeholder="Enter Heading Text" tooltip-placement="top" uib-tooltip="Enter Heading Text" />
                             <div class="help-block" ng-messages="myForm.HeadingText.$error" ng-if="myForm.HeadingText.$touched || myForm.HeadingText.$dirty && myForm.HeadingText.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
@@ -44,7 +54,7 @@
                         </div>
                         <div class="form-group" ng-class="{'has-error': ((myForm.Price.$touched && myForm.Price.$invalid) || (!myForm.Price.$pristine && myForm.Price.$invalid))}">
                             <label>Price</label>
-                            <input type="text" class="form-control" name="Price" ng-model="Services1Section5MasterCreateOrEditViewModel.Price" ng-disabled="Processing" autocomplete="off" placeholder="Enter Sub Sub Category Name" tooltip-placement="top" uib-tooltip="Enter Sub Sub Category Name" />
+                            <input type="number" class="form-control" name="Price" ng-model="Services1Section6PriceMasterCreateOrEditViewModel.Price" ng-disabled="Processing" autocomplete="off" placeholder="Enter Price" tooltip-placement="top" uib-tooltip="Enter Price" />
                             <div class="help-block" ng-messages="myForm.Price.$error" ng-if="myForm.Price.$touched || myForm.Price.$dirty && myForm.Price.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
@@ -52,7 +62,7 @@
                         </div>
                         <div class="form-group" ng-class="{'has-error': ((myForm.AncharTagTitle.$touched && myForm.AncharTagTitle.$invalid) || (!myForm.AncharTagTitle.$pristine && myForm.AncharTagTitle.$invalid))}">
                             <label>Anchar Tag Title</label>
-                            <input type="text" class="form-control" name="AncharTagTitle" ng-model="Services1Section5MasterCreateOrEditViewModel.AncharTagTitle" ng-disabled="Processing" autocomplete="off" placeholder="Enter Sub Sub Category Name" tooltip-placement="top" uib-tooltip="Enter Sub Sub Category Name" />
+                            <input type="text" class="form-control" name="AncharTagTitle" ng-model="Services1Section6PriceMasterCreateOrEditViewModel.AncharTagTitle" ng-disabled="Processing" autocomplete="off" placeholder="Enter Anchar Tag Title" tooltip-placement="top" uib-tooltip="Enter Anchar Tag Title" />
                             <div class="help-block" ng-messages="myForm.AncharTagTitle.$error" ng-if="myForm.AncharTagTitle.$touched || myForm.AncharTagTitle.$dirty && myForm.AncharTagTitle.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
@@ -60,7 +70,7 @@
                         </div>
                         <div class="form-group" ng-class="{'has-error': ((myForm.AncharTagUrl.$touched && myForm.AncharTagUrl.$invalid) || (!myForm.AncharTagUrl.$pristine && myForm.AncharTagUrl.$invalid))}">
                             <label>Anchar Tag Url</label>
-                            <input type="text" class="form-control" name="AncharTagUrl" ng-model="Services1Section5MasterCreateOrEditViewModel.AncharTagUrl" ng-disabled="Processing" autocomplete="off" placeholder="Enter Sub Sub Category Name" tooltip-placement="top" uib-tooltip="Enter Sub Sub Category Name" />
+                            <input type="text" class="form-control" name="AncharTagUrl" ng-model="Services1Section6PriceMasterCreateOrEditViewModel.AncharTagUrl" ng-disabled="Processing" autocomplete="off" placeholder="Enter Anchar Tag Url" tooltip-placement="top" uib-tooltip="Enter Anchar Tag Url" />
                             <div class="help-block" ng-messages="myForm.AncharTagUrl.$error" ng-if="myForm.AncharTagUrl.$touched || myForm.AncharTagUrl.$dirty && myForm.AncharTagUrl.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
@@ -68,7 +78,7 @@
                         </div>
                         <div class="form-group" ng-class="{'has-error': (myForm.DisplayIndex.$touched || myForm.DisplayIndex.$dirty)  && myForm.DisplayIndex.$invalid}">
                             <label>Display Index</label>
-                            <input type="number" min="0" class="form-control" name="DisplayIndex" ng-model="Services1Section5MasterCreateOrEditViewModel.DisplayIndex" ng-disabled="Processing" autocomplete="off" placeholder="Enter Display Index" tooltip-placement="top" uib-tooltip="Enter Display Index" required />
+                            <input type="number" min="0" class="form-control" name="DisplayIndex" ng-model="Services1Section6PriceMasterCreateOrEditViewModel.DisplayIndex" ng-disabled="Processing" autocomplete="off" placeholder="Enter Display Index" tooltip-placement="top" uib-tooltip="Enter Display Index" required />
                             <div class="help-block" ng-messages="myForm.DisplayIndex.$error" ng-if="myForm.DisplayIndex.$touched || myForm.Description.$dirty && myForm.DisplayIndex.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
@@ -79,12 +89,12 @@
                             <label>Is Active</label><br />
                             <label>
                                 <!--https://codepen.io/mosluce/pen/yYmXGz-->
-                                <input icheck type="checkbox" class="form-control" ng-model="Services1Section5MasterCreateOrEditViewModel.IsActive" ng-checked="Services1Section5MasterCreateOrEditViewModel.IsActive"><span style="margin-left: 10px;">{{Services1Section5MasterCreateOrEditViewModel.IsActive ? 'Yes' : 'No'}} </span>
+                                <input icheck type="checkbox" class="form-control" ng-model="Services1Section6PriceMasterCreateOrEditViewModel.IsActive" ng-checked="Services1Section6PriceMasterCreateOrEditViewModel.IsActive"><span style="margin-left: 10px;">{{Services1Section6PriceMasterCreateOrEditViewModel.IsActive ? 'Yes' : 'No'}} </span>
                             </label>
                         </div>
                         <div class="form-group" ng-class="{'has-error': (myForm.TotalViews.$touched || myForm.TotalViews.$dirty)  && myForm.TotalViews.$invalid}">
                             <label>Total Views</label>
-                            <input type="number" min="0" class="form-control" name="TotalViews" ng-model="Services1Section5MasterCreateOrEditViewModel.TotalViews" ng-disabled="Processing" autocomplete="off" placeholder="Enter Total Views" tooltip-placement="top" uib-tooltip="Enter Total Views" required />
+                            <input type="number" min="0" class="form-control" name="TotalViews" ng-model="Services1Section6PriceMasterCreateOrEditViewModel.TotalViews" ng-disabled="Processing" autocomplete="off" placeholder="Enter Total Views" tooltip-placement="top" uib-tooltip="Enter Total Views" required />
                             <div class="help-block" ng-messages="myForm.TotalViews.$error" ng-if="myForm.TotalViews.$touched || myForm.TotalViews.$dirty && myForm.TotalViews.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
@@ -92,7 +102,7 @@
                         </div>
                         <div class="form-group" ng-class="{'has-error': (myForm.Url.$touched || myForm.TotalViews.$dirty)  && myForm.TotalViews.$invalid}">
                             <label>Url</label>
-                            <input type="text" class="form-control" name="Url" ng-model="Services1Section5MasterCreateOrEditViewModel.Url" ng-disabled="Processing" autocomplete="off" placeholder="Enter Url" tooltip-placement="top" uib-tooltip="Enter Url" required />
+                            <input type="text" class="form-control" name="Url" ng-model="Services1Section6PriceMasterCreateOrEditViewModel.Url" ng-disabled="Processing" autocomplete="off" placeholder="Enter Url" tooltip-placement="top" uib-tooltip="Enter Url" required />
                             <div class="help-block" ng-messages="myForm.Url.$error" ng-if="myForm.Url.$touched || myForm.Url.$dirty && myForm.Url.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
@@ -100,7 +110,7 @@
                         </div>
                         <div class="form-group" ng-class="{'has-error': (myForm.Metadata.$touched || myForm.Metadata.$dirty)  && myForm.TotalViews.$invalid}">
                             <label>Metadata</label>
-                            <input type="text" class="form-control" name="Metadata" ng-model="Services1Section5MasterCreateOrEditViewModel.Metadata" ng-disabled="Processing" autocomplete="off" placeholder="Enter Metadata" tooltip-placement="top" uib-tooltip="Enter Metadata" required />
+                            <input type="text" class="form-control" name="Metadata" ng-model="Services1Section6PriceMasterCreateOrEditViewModel.Metadata" ng-disabled="Processing" autocomplete="off" placeholder="Enter Metadata" tooltip-placement="top" uib-tooltip="Enter Metadata" required />
                             <div class="help-block" ng-messages="myForm.Metadata.$error" ng-if="myForm.Metadata.$touched || myForm.Metadata.$dirty && myForm.Metadata.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
@@ -108,7 +118,7 @@
                         </div>
                         <div class="form-group" ng-class="{'has-error': (myForm.MetaDescription.$touched || myForm.MetaDescription.$dirty)  && myForm.MetaDescription.$invalid}">
                             <label>Meta Description</label>
-                            <input type="text" class="form-control" name="MetaDescription" ng-model="Services1Section5MasterCreateOrEditViewModel.MetaDescription" ng-disabled="Processing" autocomplete="off" placeholder="Enter Meta Description" tooltip-placement="top" uib-tooltip="Enter Meta Description" required />
+                            <input type="text" class="form-control" name="MetaDescription" ng-model="Services1Section6PriceMasterCreateOrEditViewModel.MetaDescription" ng-disabled="Processing" autocomplete="off" placeholder="Enter Meta Description" tooltip-placement="top" uib-tooltip="Enter Meta Description" required />
                             <div class="help-block" ng-messages="myForm.MetaDescription.$error" ng-if="myForm.MetaDescription.$touched || myForm.MetaDescription.$dirty && myForm.MetaDescription.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
@@ -116,7 +126,7 @@
                         </div>
                         <div class="form-group" ng-class="{'has-error': (myForm.Keyword.$touched || myForm.Keyword.$dirty)  && myForm.Keyword.$invalid}">
                             <label>Keyword</label>
-                            <input type="text" class="form-control" name="Keyword" ng-model="Services1Section5MasterCreateOrEditViewModel.Keyword" ng-disabled="Processing" autocomplete="off" placeholder="Enter Keyword" tooltip-placement="top" uib-tooltip="Enter Keyword" required />
+                            <input type="text" class="form-control" name="Keyword" ng-model="Services1Section6PriceMasterCreateOrEditViewModel.Keyword" ng-disabled="Processing" autocomplete="off" placeholder="Enter Keyword" tooltip-placement="top" uib-tooltip="Enter Keyword" required />
                             <div class="help-block" ng-messages="myForm.Keyword.$error" ng-if="myForm.Keyword.$touched || myForm.Keyword.$dirty && myForm.Keyword.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>

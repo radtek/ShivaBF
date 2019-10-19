@@ -208,5 +208,11 @@ SERVICE_8:"SER8",
         }
     }
 
-
+this.LoadStateDropDown = function StateDropDown() {
+        let request = $http({
+            method: "get",
+            url: "/Get/StateMaster/DropdownListbyTenantAsync"
+        });
+        return request;
+    }
 });
