@@ -385,6 +385,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Services2Section3DownloadMasterController.cs" />
     <Compile Include="Controllers\Services2Section2FAQMappingController.cs" />
     <Compile Include="Controllers\Services2MasterController.cs" />
     <Compile Include="Controllers\Services1Section10BankMappingController.cs" />
@@ -454,6 +455,7 @@
     <Content Include="AngularControllers\PriceFeaturesMappingController.js" />
     <Content Include="AngularControllers\PriceFeaturesMasterController.js" />
     <Content Include="AngularControllers\FAQMasterController.js" />
+    <Content Include="AngularControllers\Services2Section3DownloadMasterController.js" />
     <Content Include="AngularControllers\Services2Section2FAQMappingController.js" />
     <Content Include="AngularControllers\Services2MasterController.js" />
     <Content Include="AngularControllers\Services1MasterController.js" />
@@ -8965,6 +8967,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Services\AspNetRole.js" />
     <Content Include="Scripts\Services\AspNetUser.js" />
+    <Content Include="Scripts\Services\Services2Section3DownloadMaster.js" />
     <Content Include="Scripts\Services\Services2Section2FAQMapping.js" />
     <Content Include="Scripts\Services\Services2Master.js" />
     <Content Include="Scripts\Services\Services1Section10BankMapping.js" />
@@ -9120,6 +9123,9 @@
     <Content Include="Views\Services2Section2FAQMapping\_CreateOrEdit.cshtml" />
     <Content Include="Views\Services2Section2FAQMapping\_CreateOrEditTenant.cshtml" />
     <Content Include="Views\Services2Section2FAQMapping\Index.cshtml" />
+    <Content Include="Views\Services2Section3DownloadMaster\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Services2Section3DownloadMaster\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\Services2Section3DownloadMaster\Index.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
