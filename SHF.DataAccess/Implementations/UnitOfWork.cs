@@ -46,6 +46,10 @@ namespace SHF.DataAccess.Implementations
         private GenericRepository<EntityModel.StateMaster> _StateMasterRepository;
         private GenericRepository<EntityModel.PriceFeaturesMapping> _PriceFeaturesMappingRepository;
         private GenericRepository<EntityModel.Services1Section8FAQMapping> _Services1Section8FAQMappingRepository;
+        private GenericRepository<EntityModel.Services2Master> _Services2MasterRepository;
+        private GenericRepository<EntityModel.Services2Section3DownloadMaster> _Services2Section3DownloadMasterRepository;
+        private GenericRepository<EntityModel.Services2Section2FAQMapping> _Services2Section2FAQMappingRepository;
+        private GenericRepository<EntityModel.Services2Section4Master> _Services2Section4MasterRepository;
         #endregion
 
 
@@ -342,7 +346,51 @@ namespace SHF.DataAccess.Implementations
                 return _Services1Section8FAQMappingRepository;
             }
         }
-
+        public GenericRepository<EntityModel.Services2Master> Services2MasterRepository
+        {
+            get
+            {
+                if (this._Services2MasterRepository == null)
+                {
+                    this._Services2MasterRepository = new GenericRepository<EntityModel.Services2Master>(context);
+                }
+                return _Services2MasterRepository;
+            }
+        }
+        public GenericRepository<EntityModel.Services2Section2FAQMapping> Services2Section2FAQMappingRepository
+        {
+            get
+            {
+                if (this._Services2Section2FAQMappingRepository == null)
+                {
+                    this._Services2Section2FAQMappingRepository = new GenericRepository<EntityModel.Services2Section2FAQMapping>(context);
+                }
+                return _Services2Section2FAQMappingRepository;
+            }
+        }
+        public GenericRepository<EntityModel.Services2Section3DownloadMaster> Services2Section3DownloadMasterRepository
+        {
+            get
+            {
+                if (this._Services2Section3DownloadMasterRepository == null)
+                {
+                    this._Services2Section3DownloadMasterRepository = new GenericRepository<EntityModel.Services2Section3DownloadMaster>(context);
+                }
+                return _Services2Section3DownloadMasterRepository;
+            }
+        }
+        public GenericRepository<EntityModel.Services2Section4Master> Services2Section4MasterRepository
+        {
+            get
+            {
+                if (this._Services2Section4MasterRepository == null)
+                {
+                    this._Services2Section4MasterRepository = new GenericRepository<EntityModel.Services2Section4Master>(context);
+                }
+                return _Services2Section4MasterRepository;
+            }
+        }
+       
         #endregion
 
         #region [Constructors]
