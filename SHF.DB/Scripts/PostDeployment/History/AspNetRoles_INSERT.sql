@@ -13,12 +13,12 @@ BEGIN
 END
 GO
 
-IF NOT EXISTS(SELECT 1 FROM dbo.AspNetRoles WITH(NOLOCK) WHERE Display_Name='Admin')
-BEGIN
-	INSERT INTO [dbo].[AspNetRoles] ([Display_Name],[Created_By],[Created_On],[Modified_By],[Modified_On],[Is_Active],[Is_Deleted],[Update_Seq],[Name])
-     VALUES('Admin','dbo',GetDate(),'dbo',GetDate(),1,0,0,'Admin')
-END
-GO
+--IF NOT EXISTS(SELECT 1 FROM dbo.AspNetRoles WITH(NOLOCK) WHERE Display_Name='Admin')
+--BEGIN
+--	INSERT INTO [dbo].[AspNetRoles] ([Display_Name],[Created_By],[Created_On],[Modified_By],[Modified_On],[Is_Active],[Is_Deleted],[Update_Seq],[Name])
+--     VALUES('Admin','dbo',GetDate(),'dbo',GetDate(),1,0,0,'Admin')
+--END
+--GO
 
 
 

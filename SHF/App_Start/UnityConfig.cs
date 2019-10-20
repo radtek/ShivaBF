@@ -43,7 +43,8 @@ namespace SHF
             container.RegisterType<Business.Interface.IStateMaster, Business.BusinessLogic.StateMaster>();
             container.RegisterType<Business.Interface.IPriceFeaturesMaster, Business.BusinessLogic.PriceFeaturesMaster>();
             container.RegisterType<Business.Interface.IPriceFeaturesMapping, Business.BusinessLogic.PriceFeaturesMapping>();
-
+            container.RegisterType<Business.Interface.IServices1Section8FAQMapping, Business.BusinessLogic.Services1Section8FAQMapping>();
+            container.RegisterType<Business.Interface.IServices1Section10BankMapping, Business.BusinessLogic.Services1Section10BankMapping>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

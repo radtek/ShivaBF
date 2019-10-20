@@ -385,6 +385,8 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Services1Section10BankMappingController.cs" />
+    <Compile Include="Controllers\Services1Section8FAQMappingController.cs" />
     <Compile Include="Controllers\PriceFeaturesMasterController.cs" />
     <Compile Include="Controllers\StateMasterController.cs" />
     <Compile Include="Controllers\Services1Section6PriceMasterController.cs" />
@@ -420,17 +422,9 @@
     <Compile Include="Helpers\CustomHelpers.cs" />
     <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Helpers\RequiredField.cs" />
-    <Compile Include="Migrations\201910191014318_updatefiled.cs" />
-    <Compile Include="Migrations\201910191014318_updatefiled.Designer.cs">
-      <DependentUpon>201910191014318_updatefiled.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910191238532_updatefiled1.cs" />
-    <Compile Include="Migrations\201910191238532_updatefiled1.Designer.cs">
-      <DependentUpon>201910191238532_updatefiled1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910191326389_updatefiled2.cs" />
-    <Compile Include="Migrations\201910191326389_updatefiled2.Designer.cs">
-      <DependentUpon>201910191326389_updatefiled2.cs</DependentUpon>
+    <Compile Include="Migrations\201910200522491_DBSetup.cs" />
+    <Compile Include="Migrations\201910200522491_DBSetup.Designer.cs">
+      <DependentUpon>201910200522491_DBSetup.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -459,6 +453,8 @@
     <Content Include="AngularControllers\PriceFeaturesMasterController.js" />
     <Content Include="AngularControllers\FAQMasterController.js" />
     <Content Include="AngularControllers\Services1MasterController.js" />
+    <Content Include="AngularControllers\Services1Section10BankMappingController.js" />
+    <Content Include="AngularControllers\Services1Section8FAQMappingController.js" />
     <Content Include="AngularControllers\Services1Section6PriceMasterController.js" />
     <Content Include="AngularControllers\Services1Section5MasterController.js" />
     <Content Include="AngularControllers\Services1Section4MasterController.js" />
@@ -8965,6 +8961,8 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Services\AspNetRole.js" />
     <Content Include="Scripts\Services\AspNetUser.js" />
+    <Content Include="Scripts\Services\Services1Section10BankMapping.js" />
+    <Content Include="Scripts\Services\Services1Section8FAQMapping.js" />
     <Content Include="Scripts\Services\PriceFeaturesMapping.js" />
     <Content Include="Scripts\Services\PriceFeaturesMaster.js" />
     <Content Include="Scripts\Services\FAQMaster.js" />
@@ -9104,6 +9102,12 @@
     <Content Include="Views\PriceFeaturesMapping\_CreateOrEdit.cshtml" />
     <Content Include="Views\PriceFeaturesMapping\_CreateOrEditTenant.cshtml" />
     <Content Include="Views\PriceFeaturesMapping\Index.cshtml" />
+    <Content Include="Views\Services1Section8FAQMapping\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Services1Section8FAQMapping\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\Services1Section8FAQMapping\Index.cshtml" />
+    <Content Include="Views\Services1Section10BankMapping\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Services1Section10BankMapping\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\Services1Section10BankMapping\Index.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
@@ -9198,14 +9202,8 @@
     <TypeScriptCompile Include="bower_components\sweetalert2\sweetalert2.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910191014318_updatefiled.resx">
-      <DependentUpon>201910191014318_updatefiled.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910191238532_updatefiled1.resx">
-      <DependentUpon>201910191238532_updatefiled1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910191326389_updatefiled2.resx">
-      <DependentUpon>201910191326389_updatefiled2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910200522491_DBSetup.resx">
+      <DependentUpon>201910200522491_DBSetup.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

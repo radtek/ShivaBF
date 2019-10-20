@@ -1,16 +1,16 @@
 ﻿//let app = angular.module('InventoryApp');
-angular.module(config.app).service('PriceFeaturesMappingCRUD', function ($http) {
+angular.module(config.app).service('Services1Section10BankMappingCRUD', function ($http) {
 
     this.GetTableObject = function TableData() {
-        let scope = angular.element(document.getElementById('PriceFeaturesMappingControllerScope')).scope();
-        let tenantId = scope.PriceFeaturesMappingCreateOrEditViewModel.Tenant_ID == null ? 0 : scope.PriceFeaturesMappingCreateOrEditViewModel.Tenant_ID;
+        let scope = angular.element(document.getElementById('Services1Section10BankMappingControllerScope')).scope();
+        let tenantId = scope.Services1Section10BankMappingCreateOrEditViewModel.Tenant_ID == null ? 0 : scope.Services1Section10BankMappingCreateOrEditViewModel.Tenant_ID;
         let viewBagTenantID = $('#ViewBag_TenantID').val();
         let antiForgeryToken = $('#antiForgeryToken').val();
         var src = '../../../Content/Images/';
         let oTable = $('#grdTable').DataTable({
             serverSide: true,
             ajax: {
-                url: '/Post/PriceFeaturesMapping/IndexAsync',
+                url: '/Post/Services1Section10BankMapping/IndexAsync',
                 type: 'POST',
                 dataSrc: 'data',
                 data: { 'tenantId': tenantId },
@@ -43,7 +43,7 @@ angular.module(config.app).service('PriceFeaturesMappingCRUD', function ($http) 
                     targets: 0
                 },
                 {
-                    name: "PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master_Services1Section6PriceMaster.PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master.PriceFeaturesMapping_tenant_PriceFeaturesMaster.PriceFeaturesMapping_tenant.PriceFeaturesMapping.ID",
+                    name: "Services1Section10BankMapping_tenant_BankMaster_Services1Master.Services1Section10BankMapping_tenant_BankMaster.Services1Section10BankMapping_tenant.Services1Section10BankMapping.ID",
                     data: "ID",
                     title: "ID",
                     render: $.fn.dataTable.render.text(),
@@ -59,25 +59,25 @@ angular.module(config.app).service('PriceFeaturesMappingCRUD', function ($http) 
                     targets: 2
                 },
                 {
-                    name: "PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master_Services1Section6PriceMaster.PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master.PriceFeaturesMapping_tenant_PriceFeaturesMaster.PriceFeaturesMaster.Description",
+                    name: "Services1Section10BankMapping_tenant_BankMaster_Services1Master.Services1Section10BankMapping_tenant_BankMaster.BankMaster.BankMaster_Id",
+                    data: "BankMaster_Id",
+                    title: "BankMaster_Id",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 2
+                },
+{
+                    name: "Services1Section10BankMapping_tenant_BankMaster_Services1Master.Services1Section10BankMapping_tenant_BankMaster.BankMaster.Description",
                     data: "Description",
                     title: "Description",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
                     targets: 2
                 },
-{
-                    name: "PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master_Services1Section6PriceMaster.PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master.PriceFeaturesMapping_tenant_PriceFeaturesMaster.PriceFeaturesMapping_tenant.PriceFeaturesMapping.S1S6PM_Id",
-                    data: "S1S6PM_Id",
-                    title: "Section6&nbsp;ID",
-                    render: $.fn.dataTable.render.text(),
-                    width: "3%",
-                    targets: 1
-                },
 
                
  {
-                    name: "PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master_Services1Section6PriceMaster.PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master.PriceFeaturesMapping_tenant_PriceFeaturesMaster.PriceFeaturesMapping_tenant.PriceFeaturesMapping.Url",
+                    name: "Services1Section10BankMapping_tenant_BankMaster_Services1Master.Services1Section10BankMapping_tenant_BankMaster.Services1Section10BankMapping_tenant.Services1Section10BankMapping.Url",
                     data: "Url",
                     title: "Url",
                     render: $.fn.dataTable.render.text(),
@@ -85,7 +85,7 @@ angular.module(config.app).service('PriceFeaturesMappingCRUD', function ($http) 
                     targets: 5
                 },
  {
-                    name: "PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master_Services1Section6PriceMaster.PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master.PriceFeaturesMapping_tenant_PriceFeaturesMaster.PriceFeaturesMapping_tenant.PriceFeaturesMapping.Metadata",
+                    name: "Services1Section10BankMapping_tenant_BankMaster_Services1Master.Services1Section10BankMapping_tenant_BankMaster.Services1Section10BankMapping_tenant.Services1Section10BankMapping.Metadata",
                     data: "Metadata",
                     title: "Metadata",
                     render: $.fn.dataTable.render.text(),
@@ -93,7 +93,7 @@ angular.module(config.app).service('PriceFeaturesMappingCRUD', function ($http) 
                     targets: 6
                 },
 {
-                    name: "PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master_Services1Section6PriceMaster.PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master.PriceFeaturesMapping_tenant_PriceFeaturesMaster.PriceFeaturesMapping_tenant.PriceFeaturesMapping.MetaDescription",
+                    name: "Services1Section10BankMapping_tenant_BankMaster_Services1Master.Services1Section10BankMapping_tenant_BankMaster.Services1Section10BankMapping_tenant.Services1Section10BankMapping.MetaDescription",
                     data: "MetaDescription",
                     title: "MetaDescription",
                     render: $.fn.dataTable.render.text(),
@@ -101,7 +101,7 @@ angular.module(config.app).service('PriceFeaturesMappingCRUD', function ($http) 
                     targets: 7
                 },
 {
-                    name: "PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master_Services1Section6PriceMaster.PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master.PriceFeaturesMapping_tenant_PriceFeaturesMaster.PriceFeaturesMapping_tenant.PriceFeaturesMapping.Keyword",
+                    name: "Services1Section10BankMapping_tenant_BankMaster_Services1Master.Services1Section10BankMapping_tenant_BankMaster.Services1Section10BankMapping_tenant.Services1Section10BankMapping.Keyword",
                     data: "Keyword",
                     title: "Keyword",
                     render: $.fn.dataTable.render.text(),
@@ -110,7 +110,7 @@ angular.module(config.app).service('PriceFeaturesMappingCRUD', function ($http) 
                 },
 
               {
-                    name: "PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master_Services1Section6PriceMaster.PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master.PriceFeaturesMapping_tenant_PriceFeaturesMaster.PriceFeaturesMapping_tenant.PriceFeaturesMapping.IsActive",
+                    name: "Services1Section10BankMapping_tenant_BankMaster_Services1Master.Services1Section10BankMapping_tenant_BankMaster.Services1Section10BankMapping_tenant.Services1Section10BankMapping.IsActive",
                     data: "IsActive",
                     title: "IsActive",
                     render: $.fn.dataTable.render.text(),
@@ -127,7 +127,7 @@ angular.module(config.app).service('PriceFeaturesMappingCRUD', function ($http) 
                     targets:11
                 },
                 {
-                    name: "PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master_Services1Section6PriceMaster.PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master.PriceFeaturesMapping_tenant_PriceFeaturesMaster.PriceFeaturesMapping_tenant.PriceFeaturesMapping.CreatedBy",
+                    name: "Services1Section10BankMapping_tenant_BankMaster_Services1Master.Services1Section10BankMapping_tenant_BankMaster.Services1Section10BankMapping_tenant.Services1Section10BankMapping.CreatedBy",
                     data: "CreatedBy",
                     title: "Created&nbsp;By",
                     render: $.fn.dataTable.render.text(),
@@ -135,7 +135,7 @@ angular.module(config.app).service('PriceFeaturesMappingCRUD', function ($http) 
                     targets: 12
                 },
                 {
-                    name: "PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master_Services1Section6PriceMaster.PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master.PriceFeaturesMapping_tenant_PriceFeaturesMaster.PriceFeaturesMapping_tenant.PriceFeaturesMapping.CreatedOn",
+                    name: "Services1Section10BankMapping_tenant_BankMaster_Services1Master.Services1Section10BankMapping_tenant_BankMaster.Services1Section10BankMapping_tenant.Services1Section10BankMapping.CreatedOn",
                     data: "CreatedOn",
                     title: "Created&nbsp;On",
                     render: function (data, type, row, meta) {
@@ -147,7 +147,7 @@ angular.module(config.app).service('PriceFeaturesMappingCRUD', function ($http) 
                     targets: 13
                 },
                 {
-                    name: "PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master_Services1Section6PriceMaster.PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master.PriceFeaturesMapping_tenant_PriceFeaturesMaster.PriceFeaturesMapping_tenant.PriceFeaturesMapping.UpdatedBy",
+                    name: "Services1Section10BankMapping_tenant_BankMaster_Services1Master.Services1Section10BankMapping_tenant_BankMaster.Services1Section10BankMapping_tenant.Services1Section10BankMapping.UpdatedBy",
                     data: "UpdatedBy",
                     title: "Modified&nbsp;By",
                     render: $.fn.dataTable.render.text(),
@@ -155,7 +155,7 @@ angular.module(config.app).service('PriceFeaturesMappingCRUD', function ($http) 
                     targets: 14
                 },
                 {
-                    name: "PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master_Services1Section6PriceMaster.PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master.PriceFeaturesMapping_tenant_PriceFeaturesMaster.PriceFeaturesMapping_tenant.PriceFeaturesMapping.UpdatedOn",
+                    name: "Services1Section10BankMapping_tenant_BankMaster_Services1Master.Services1Section10BankMapping_tenant_BankMaster.Services1Section10BankMapping_tenant.Services1Section10BankMapping.UpdatedOn",
                     data: "UpdatedOn",
                     title: "Modified&nbsp;On",
                     render: function (data, type, row, meta) {
@@ -200,13 +200,13 @@ angular.module(config.app).service('PriceFeaturesMappingCRUD', function ($http) 
         $('#grdTable tbody').off('click');
         $('#grdTable tbody').on('click', '.btn-edit', function () {
             let rowData = oTable.row($(this).parents('tr')).data();
-            let scope = angular.element(document.getElementById('PriceFeaturesMappingControllerScope')).scope();
+            let scope = angular.element(document.getElementById('Services1Section10BankMappingControllerScope')).scope();
             scope.EditAsync(rowData.ID);
         });
 
         $('#grdTable tbody').on('click', '.btn-delete', function () {
             let rowData = oTable.row($(this).parents('tr')).data();
-            let scope = angular.element(document.getElementById('PriceFeaturesMappingControllerScope')).scope();
+            let scope = angular.element(document.getElementById('Services1Section10BankMappingControllerScope')).scope();
             scope.DeleteAsync(rowData.ID);
         });
     }

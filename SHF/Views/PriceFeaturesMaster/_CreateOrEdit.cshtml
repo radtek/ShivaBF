@@ -35,46 +35,20 @@
                             <span class="text-danger" ng-show="errors.formErrors.Tenant_ID" ng-bind="errors.formErrors.Tenant_ID"></span>
                         </div>
 
-                        <div class="form-group" ng-class="{'has-error': ((myForm.CategoryName.$touched && myForm.CategoryName.$invalid) || (!myForm.CategoryName.$pristine && myForm.CategoryName.$invalid))}">
-                            <label>Category Name</label>
-                            <input type="text" class="form-control" name="CategoryName" ng-model="PriceFeaturesMasterCreateOrEditViewModel.CategoryName" ng-disabled="Processing" autocomplete="off" placeholder="Enter Icon Path" tooltip-placement="top" uib-tooltip="Select Icon Path" />
-                            <div class="help-block" ng-messages="myForm.CategoryName.$error" ng-if="myForm.CategoryName.$touched || myForm.CategoryName.$dirty && myForm.CategoryName.$invalid">
+                        <div class="form-group" ng-class="{'has-error': ((myForm.Description.$touched && myForm.Description.$invalid) || (!myForm.Description.$pristine && myForm.Description.$invalid))}">
+                            <label>Description</label>
+                            <input type="text" class="form-control" name="Description" ng-model="PriceFeaturesMasterCreateOrEditViewModel.Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter Description" tooltip-placement="top" uib-tooltip="Enter Description" />
+                            <div class="help-block" ng-messages="myForm.Description.$error" ng-if="myForm.Description.$touched || myForm.Description.$dirty && myForm.Description.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
-                            <span class="text-danger" ng-show="errors.formErrors.CategoryName" ng-bind="errors.formErrors.CategoryName"></span>
+                            <span class="text-danger" ng-show="errors.formErrors.Description" ng-bind="errors.formErrors.Description"></span>
                         </div>
-
-                        <div class="form-group" ng-class="{'has-error': (myForm.DisplayIndex.$touched || myForm.DisplayIndex.$dirty)  && myForm.DisplayIndex.$invalid}">
-                            <label>Display Index</label>
-                            <input type="number" min="0" class="form-control" name="DisplayIndex" ng-model="PriceFeaturesMasterCreateOrEditViewModel.DisplayIndex" ng-disabled="Processing" autocomplete="off" placeholder="Enter Display Index" tooltip-placement="top" uib-tooltip="Enter Display Index" required />
-                            <div class="help-block" ng-messages="myForm.DisplayIndex.$error" ng-if="myForm.DisplayIndex.$touched || myForm.Description.$dirty && myForm.DisplayIndex.$invalid">
-                                <div ng-messages-include="~/ValidationMessages.html"></div>
-                            </div>
-                            <span class="text-danger" ng-show="errors.formErrors.DisplayIndex" ng-bind="errors.formErrors.DisplayIndex"></span>
-                        </div>
-                        <div class="form-group">
-                            <label>Is Display On Home</label><br />
-                            <label>
-                                <!--https://codepen.io/mosluce/pen/yYmXGz-->
-                                <input icheck type="checkbox" class="form-control" ng-model="PriceFeaturesMasterCreateOrEditViewModel.DisplayOnHome" ng-checked="PriceFeaturesMasterCreateOrEditViewModel.DisplayOnHome"><span style="margin-left: 10px;">{{PriceFeaturesMasterCreateOrEditViewModel.DisplayOnHome ? 'Yes' : 'No'}} </span>
-                            </label>
-                        </div>
-
                         <div class="form-group">
                             <label>Is Active</label><br />
                             <label>
                                 <!--https://codepen.io/mosluce/pen/yYmXGz-->
                                 <input icheck type="checkbox" class="form-control" ng-model="PriceFeaturesMasterCreateOrEditViewModel.IsActive" ng-checked="PriceFeaturesMasterCreateOrEditViewModel.IsActive"><span style="margin-left: 10px;">{{PriceFeaturesMasterCreateOrEditViewModel.IsActive ? 'Yes' : 'No'}} </span>
                             </label>
-                        </div>
-
-                        <div class="form-group" ng-class="{'has-error': (myForm.TotalViews.$touched || myForm.TotalViews.$dirty)  && myForm.TotalViews.$invalid}">
-                            <label>Total Views</label>
-                            <input type="number" min="0" class="form-control" name="TotalViews" ng-model="PriceFeaturesMasterCreateOrEditViewModel.TotalViews" ng-disabled="Processing" autocomplete="off" placeholder="Enter Total Views" tooltip-placement="top" uib-tooltip="Enter Total Views" required />
-                            <div class="help-block" ng-messages="myForm.TotalViews.$error" ng-if="myForm.TotalViews.$touched || myForm.TotalViews.$dirty && myForm.TotalViews.$invalid">
-                                <div ng-messages-include="~/ValidationMessages.html"></div>
-                            </div>
-                            <span class="text-danger" ng-show="errors.formErrors.TotalViews" ng-bind="errors.formErrors.TotalViews"></span>
                         </div>
                         <div class="form-group" ng-class="{'has-error': (myForm.Url.$touched || myForm.TotalViews.$dirty)  && myForm.TotalViews.$invalid}">
                             <label>Url</label>

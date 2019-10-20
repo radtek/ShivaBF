@@ -35,7 +35,7 @@
                             <span class="text-danger" ng-show="errors.formErrors.Tenant_ID" ng-bind="errors.formErrors.Tenant_ID"></span>
                         </div>
 
-                        <div class="form-group" ng-class="{'has-error': ((myForm.IconPath.$touched && myForm.IconPath.$invalid) || (!myForm.IconPath.$pristine && myForm.IconPath.$invalid))}">
+                        @*<div class="form-group" ng-class="{'has-error': ((myForm.IconPath.$touched && myForm.IconPath.$invalid) || (!myForm.IconPath.$pristine && myForm.IconPath.$invalid))}">
                             <input id="antiForgeryToken" data-ng-model="antiForgeryToken" type="hidden" data-ng-init="antiForgeryToken='@AntiForgeryToken()'" />
                             <label>Icon Path</label>
                             <div class="button" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
@@ -49,7 +49,7 @@
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.IconPath" ng-bind="errors.formErrors.IconPath"></span>
-                        </div>
+                        </div>*@
 
                         <div class="form-group" ng-class="{'has-error': (myForm.Description.$touched || myForm.Description.$dirty)  && myForm.Description.$invalid}">
                             <label>Description</label>

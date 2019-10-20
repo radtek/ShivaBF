@@ -24,19 +24,21 @@ using System.ComponentModel;
 namespace SHF.Controllers
 {
     [AllowAnonymous]
-    public class FAQMasterController : BaseController
+    public class Services1Section10BankMappingController : BaseController
     {
         #region [Field & Contructor]
 
         private Business.Interface.IMessage businessMessage;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private Business.Interface.IFAQMaster businessFAQMaster;
+        private Business.Interface.IServices1Section10BankMapping businessServices1Section10BankMapping;
+        private Business.Interface.IServices1Master businessServices1Master;
 
-        public FAQMasterController(Business.Interface.IMessage Imessage, Business.Interface.IFAQMaster IfAQMaster)
+        public Services1Section10BankMappingController(Business.Interface.IMessage Imessage, Business.Interface.IServices1Section10BankMapping IServices1Section10BankMapping, Business.Interface.IServices1Master IServices1Master)
         {
             this.businessMessage = Imessage;
-            this.businessFAQMaster = IfAQMaster;
+            this.businessServices1Section10BankMapping = IServices1Section10BankMapping;
+            this.businessServices1Master = IServices1Master;
 
         }
         public ApplicationSignInManager SignInManager
@@ -65,12 +67,12 @@ namespace SHF.Controllers
         #endregion
 
         #region [ActionMethod]
-        // GET: FAQ Master
+        // GET: Categories Master
         [HttpGet]
         [Access]
         [OutputCache(Duration = busConstant.Settings.Cache.OutputCache.TimeOut.S300)]
-        [Route("Configurations/Master/FAQ/Index")]
-        [Route("Settings/Master/FAQ/Index")]
+        [Route("Configurations/Master/ServiceType1/Section10")]
+        [Route("Settings/Master/ServiceType1/Section10")]
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId<long>();
@@ -78,11 +80,11 @@ namespace SHF.Controllers
             return View();
         }
         [HttpPost]
-        [Route("Post/FAQ/IndexAsync")]
+        [Route("Post/Services1Section10BankMapping/IndexAsync")]
         [ValidateAntiForgeryTokens]
         public async Task<ActionResult> IndexAsync()
         {
-            BusinessResultViewModel<ViewModel.FAQMasterIndexViewModel> businessResult;
+            BusinessResultViewModel<ViewModel.Services1Section10BankMappingIndexViewModel> businessResult;
             try
             {
                 using (var transaction = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadUncommitted }))
@@ -92,7 +94,7 @@ namespace SHF.Controllers
                         long? tenantId = Request.Form.AllKeys.Contains("tenantId") ? Convert.ToInt64(Request.Form.GetValues("tenantId").FirstOrDefault()) : busConstant.Numbers.Integer.ZERO;
                         tenantId = tenantId > busConstant.Numbers.Integer.ZERO ? tenantId : null;
 
-                        businessResult = this.businessFAQMaster.Index(Request, tenantId);
+                        businessResult = this.businessServices1Section10BankMapping.Index(Request, tenantId);
                         transaction.Complete();
                     }
                     catch
@@ -121,12 +123,12 @@ namespace SHF.Controllers
 
         }
 
-
+       
         [HttpPost]
         [AuditAttribute]
         [ValidateAntiForgeryTokens]
-        [Route("Post/FAQMaster/CreateAsync")]
-        public async Task<ActionResult> CreateAsync(ViewModel.FAQMasterCreateOrEditViewModel model)
+        [Route("Post/Services1Section10BankMapping/CreateAsync")]
+        public async Task<ActionResult> CreateAsync(ViewModel.Services1Section10BankMappingCreateOrEditViewModel model)
         {
             try
             {
@@ -140,9 +142,9 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var catId = businessFAQMaster.FindBy(FAQ => FAQ.Title == model.Title && FAQ.Tenant_ID==model.Tenant_ID).FirstOrDefault();
+                            var productId = businessServices1Section10BankMapping.FindBy(subCategories => subCategories.Tenant_ID == model.Tenant_ID && subCategories.ID==model.ID).FirstOrDefault();
 
-                            if (catId.IsNotNull())
+                            if (productId.IsNotNull())
                             {
                                 transaction.Complete();
                                 var response = new JsonResponse<dynamic>()
@@ -157,10 +159,24 @@ namespace SHF.Controllers
                             }
                             else
                             {
-                                var entity = new EntityModel.FAQMaster();
-                                Mapper.Map(model, entity);
+                                var entityServices = this.businessServices1Master.FindBy(services1master => services1master.SubSubCat_Id == model.SubSubCat_Id).FirstOrDefault();
+                                var entity = new EntityModel.Services1Section10BankMapping();
                                 entity.Tenant = null;
-                                this.businessFAQMaster.Create(entity);
+                                entity.BankMaster = null;
+                                entity.Services1Master = null;
+                                entity.SubSubCategoriesMaster = null;
+                                entity.Service_Id = entityServices.ID;
+                                entity.BankMaster_Id = model.BankMaster_Id;
+                                entity.SubSubCat_Id = model.SubSubCat_Id; 
+                                entity.DisplayIndex = model.DisplayIndex;
+                                entity.IsActive = model.IsActive;
+                                entity.TotalViews = model.TotalViews;
+                                entity.Url = model.Url;
+                                entity.Metadata = model.Metadata;
+                                entity.Keyword = model.Keyword;
+                                entity.MetaDescription = model.MetaDescription;
+                                entity.Tenant_ID = model.Tenant_ID;
+                                this.businessServices1Section10BankMapping.Create(entity);
                                 transaction.Complete();
 
                                 var response = new JsonResponse<dynamic>()
@@ -195,7 +211,7 @@ namespace SHF.Controllers
 
 
         [HttpGet]
-        [Route("Get/FAQMaster/EditAsync")]
+        [Route("Get/Services1Section10BankMapping/EditAsync")]
         public async Task<ActionResult> EditAsync(long Id)
         {
             try
@@ -218,15 +234,33 @@ namespace SHF.Controllers
                         }
                         else
                         {
-                            var entity = this.businessFAQMaster.GetById(Id);
+                            var entity = this.businessServices1Section10BankMapping.GetById(Id);
 
                             if (entity.IsNotNull())
                             {
-                                var model = new ViewModel.FAQMasterCreateOrEditViewModel();
+                                var entityServices = this.businessServices1Master.FindBy(services1master => services1master.ID == entity.Service_Id).FirstOrDefault();
+                                var model = new ViewModel.Services1Section10BankMappingCreateOrEditViewModel();
 
-                                Mapper.Map(entity, model);
+                                model.ID = entity.ID;
+                               // model.SubSubCategory_Name = ent;
+                                model.BankMaster_Id = Convert.ToInt64(entity.BankMaster_Id);
+                                model.Service_Id = entity.Service_Id;
+                                model.SubSubCat_Id = Convert.ToInt64(entity.SubSubCat_Id);
+                                model.DisplayIndex = entity.DisplayIndex;
+                                model.IsActive = entity.IsActive;
+                                model.TotalViews = entity.TotalViews;
+                                model.Url = entity.Url;
+                                model.Metadata = entity.Metadata;
+                                model.Keyword = entity.Keyword;
+                                model.MetaDescription = entity.MetaDescription;
+                                model.Tenant_ID = Convert.ToInt64(entity.Tenant_ID);
+                                model.CreatedBy = entity.CreatedBy;
+                                model.CreatedOn = entity.CreatedOn;
+                                model.UpdatedBy = entity.UpdatedBy;
+                                model.UpdatedOn = entity.UpdatedOn;
+                                model.IsDeleted = entity.IsDeleted;
 
-                                var response = new JsonResponse<FAQMasterCreateOrEditViewModel>()
+                                var response = new JsonResponse<Services1Section10BankMappingCreateOrEditViewModel>()
                                 {
                                     Type = busConstant.Messages.Type.RESPONSE,
                                     Entity = model
@@ -269,8 +303,8 @@ namespace SHF.Controllers
         [HttpPost]
         [AuditAttribute]
         [ValidateAntiForgeryTokens]
-        [Route("Post/FAQMaster/EditAsync")]
-        public async Task<ActionResult> EditAsync(ViewModel.FAQMasterCreateOrEditViewModel model)
+        [Route("Post/Services1Section10BankMapping/EditAsync")]
+        public async Task<ActionResult> EditAsync(ViewModel.Services1Section10BankMappingCreateOrEditViewModel model)
         {
             try
             {
@@ -286,9 +320,9 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var FAQData = businessFAQMaster.FindBy(FAQ => FAQ.Tenant_ID == model.Tenant_ID && FAQ.ID == model.ID).FirstOrDefault();
+                            var SubCategoriesData = businessServices1Section10BankMapping.FindBy(SubCategories => SubCategories.Tenant_ID == model.Tenant_ID && SubCategories.ID == model.ID).FirstOrDefault();
 
-                            if (FAQData.IsNull())
+                            if (SubCategoriesData.IsNull())
                             {
                                 transaction.Complete();
                                 var response = new JsonResponse<dynamic>()
@@ -303,12 +337,25 @@ namespace SHF.Controllers
                             }
                             else
                             {
-                                var entity = new EntityModel.FAQMaster();
-
-                                Mapper.Map(model, entity);
+                                var entityServices = this.businessServices1Master.FindBy(services1master => services1master.SubSubCat_Id == model.SubSubCat_Id).FirstOrDefault();
+                                var entity = new EntityModel.Services1Section10BankMapping();
                                 entity.Tenant = null;
-
-                                this.businessFAQMaster.Update(entity);
+                                entity.BankMaster = null;
+                                entity.Services1Master = null;
+                                entity.SubSubCategoriesMaster = null;
+                                entity.ID = Convert.ToInt64(model.ID);
+                                entity.Service_Id = entityServices.ID;
+                                entity.BankMaster_Id = model.BankMaster_Id;
+                                entity.SubSubCat_Id = model.SubSubCat_Id;
+                                entity.DisplayIndex = model.DisplayIndex;
+                                entity.IsActive = model.IsActive;
+                                entity.TotalViews = model.TotalViews;
+                                entity.Url = model.Url;
+                                entity.Metadata = model.Metadata;
+                                entity.Keyword = model.Keyword;
+                                entity.MetaDescription = model.MetaDescription;
+                                entity.Tenant_ID = model.Tenant_ID;
+                                this.businessServices1Section10BankMapping.Update(entity);
 
                                 transaction.Complete();
 
@@ -345,50 +392,50 @@ namespace SHF.Controllers
         [HttpPost]
         [AuditAttribute]
         [ValidateAntiForgeryTokens]
-        [Route("Post/FAQMaster/Delete")]
+        [Route("Post/Services1Section10BankMapping/Delete")]
         public async Task<ActionResult> DeleteAsync(string Id)
         {
             try
             {
-                    using (var transaction = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadUncommitted }))
+                using (var transaction = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadUncommitted }))
+                {
+                    try
                     {
-                        try
+                        if (Convert.ToInt64(Id) == 0)
                         {
-                            if (Convert.ToInt64(Id) == 0)
+                            transaction.Complete();
+                            var response = new JsonResponse<dynamic>()
                             {
-                                transaction.Complete();
-                                var response = new JsonResponse<dynamic>()
-                                {
-                                    Type = busConstant.Messages.Type.EXCEPTION,
-                                    Message = busConstant.Messages.Type.Exceptions.BAD_REQUEST,
-                                };
+                                Type = busConstant.Messages.Type.EXCEPTION,
+                                Message = busConstant.Messages.Type.Exceptions.BAD_REQUEST,
+                            };
 
-                                Response.StatusCode = Convert.ToInt32(HttpStatusCode.BadRequest);
-                                return Json(response, JsonRequestBehavior.AllowGet);
-                            }
-                            else
-                            {
-                                this.businessFAQMaster.Delete(Convert.ToInt64(Id));
-
-
-                                var response = new JsonResponse<dynamic>()
-                                {
-                                    Type = busConstant.Messages.Type.RESPONSE,
-                                    Message = busConstant.Messages.Icon.SUCCESS,
-                                };
-
-                                transaction.Complete();
-                                return Json(response, JsonRequestBehavior.AllowGet);
-
-                            }
+                            Response.StatusCode = Convert.ToInt32(HttpStatusCode.BadRequest);
+                            return Json(response, JsonRequestBehavior.AllowGet);
                         }
-                        catch
+                        else
                         {
-                            transaction.Dispose();
-                            throw;
+                            this.businessServices1Section10BankMapping.Delete(Convert.ToInt64(Id));
+
+
+                            var response = new JsonResponse<dynamic>()
+                            {
+                                Type = busConstant.Messages.Type.RESPONSE,
+                                Message = busConstant.Messages.Icon.SUCCESS,
+                            };
+
+                            transaction.Complete();
+                            return Json(response, JsonRequestBehavior.AllowGet);
+
                         }
                     }
-               
+                    catch
+                    {
+                        transaction.Dispose();
+                        throw;
+                    }
+                }
+
             }
             catch (Exception ex)
             {
@@ -401,8 +448,8 @@ namespace SHF.Controllers
         }
 
         [HttpGet]
-        [Route("Get/FAQMaster/DropdownListbyTenantAsync")]
-        public async Task<ActionResult> GetFAQMasterByTenantIdAsync(long Id)
+        [Route("Get/Services1Section10BankMapping/DropdownListbyTenantAsync")]
+        public async Task<ActionResult> GetServices1Section10BankMappingByTenantIdAsync(long Id)
         {
             try
             {
@@ -410,7 +457,7 @@ namespace SHF.Controllers
                 {
                     try
                     {
-                        if (Id == 0)
+                        if (Id == default(long))
                         {
                             transaction.Complete();
                             var response = new JsonResponse<dynamic>()
@@ -424,15 +471,15 @@ namespace SHF.Controllers
                         }
                         else
                         {
-                            var entities = this.businessFAQMaster.GetAll().Where(faq => faq.Tenant_ID == Id).Select(x => new ViewModel.FAQDropdownListViewModel
+                            var entities = this.businessServices1Section10BankMapping.FindBy(category => category.ID == Id).Select(x => new ViewModel.SubCategoriesDropdownListViewModel
                             {
                                 ID = x.ID,
-                                Title = x.Title
+                                SubCategoryName = x.MetaDescription
                             });
 
                             if (entities.IsNotNull())
                             {
-                                var response = new JsonResponse<IEnumerable<ViewModel.FAQDropdownListViewModel>>()
+                                var response = new JsonResponse<IEnumerable<ViewModel.SubCategoriesDropdownListViewModel>>()
                                 {
                                     Type = busConstant.Messages.Type.RESPONSE,
                                     Entity = entities

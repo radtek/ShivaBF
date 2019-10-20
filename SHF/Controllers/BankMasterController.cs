@@ -17,10 +17,11 @@ using SHF.Helper;
 using SHF.Web.Filters;
 using SHF.Models;
 using SHF.ViewModel;
-
+using System.IO;
 
 namespace SHF.Controllers
 {
+    [AllowAnonymous]
     public class BankMasterController : BaseController
     {
         #region [Field & Contructor]
@@ -338,9 +339,94 @@ namespace SHF.Controllers
                 // unitOfWork.Dispose();
             }
         }
+        [HttpGet]
+        [Route("Get/BankMaster/DropdownListbyTenantAsync")]
+        public async Task<ActionResult> GetBankMasterByTenantIdAsync(long Id)
+        {
+            try
+            {
+                using (var transaction = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadUncommitted }))
+                {
+                    try
+                    {
+                        if (Id == 0)
+                        {
+                            transaction.Complete();
+                            var response = new JsonResponse<dynamic>()
+                            {
+                                Type = busConstant.Messages.Type.EXCEPTION,
+                                Message = busConstant.Messages.Type.Exceptions.BAD_REQUEST,
+                                StatusCode = Convert.ToInt32(HttpStatusCode.BadRequest)
+                            };
 
+                            return Json(response, JsonRequestBehavior.AllowGet);
+                        }
+                        else
+                        {
+                            var entities = this.businessBankMaster.GetAll().Where(Bank => Bank.Tenant_ID == Id).Select(x => new ViewModel.BankMasterDropdownListViewModel
+                            {
+                                ID = x.ID,
+                                Description = x.Description
+                            });
 
-        
+                            if (entities.IsNotNull())
+                            {
+                                var response = new JsonResponse<IEnumerable<ViewModel.BankMasterDropdownListViewModel>>()
+                                {
+                                    Type = busConstant.Messages.Type.RESPONSE,
+                                    Entity = entities
+                                };
+
+                                transaction.Complete();
+                                return Json(response, JsonRequestBehavior.AllowGet);
+                            }
+                            else
+                            {
+                                var response = new JsonResponse<dynamic>()
+                                {
+                                    Type = busConstant.Messages.Type.EXCEPTION,
+                                    Message = busConstant.Messages.Type.Exceptions.NOT_FOUND,
+                                    StatusCode = Convert.ToInt32(HttpStatusCode.NotFound)
+                                };
+                                transaction.Complete();
+
+                                return Json(response, JsonRequestBehavior.AllowGet);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Dispose();
+                        throw;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return ExceptionResponse(ex);
+            }
+        }
+        [HttpPost]
+        [Route("Post/Bank/FileUpload")]
+        public ContentResult Upload()
+        {
+            var tenantId = ViewBag.TenantID;
+            string path=Server.MapPath("~/"+String.Concat(busConstant.Settings.CMSPath.TENANAT_UPLOAD_DIRECTORY, tenantId));
+            //string path = Server.MapPath("~/Uploads/");
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+
+            foreach (string key in Request.Files)
+            {
+                HttpPostedFileBase postedFile = Request.Files[key];
+                postedFile.SaveAs(path + postedFile.FileName);
+            }
+
+            return Content("Success");
+        }
+
         #endregion
 
     }

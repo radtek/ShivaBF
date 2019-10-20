@@ -174,10 +174,10 @@ angular.module(config.app).service('BankMasterCRUD', function ($http) {
     }
 
 
-    this.LoadProductDropdown = function ProductDropdown(tenantId) {
+    this.LoadBankDropdown = function BankDropdown(tenantId) {
         let request = $http({
             method: "get",
-            url: "/Get/Product/DropdownListbyTenantAsync?Id=" + tenantId
+            url: "/Get/BankMaster/DropdownListbyTenantAsync?Id=" + tenantId
         });
         return request;
     }

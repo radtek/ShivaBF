@@ -16,7 +16,7 @@ namespace SHF.ViewModel
     public sealed class BankMasterCreateOrEditViewModel : BaseViewModel
     {
         [Display(Name = "Icon Path")]
-        [RequiredField(ErrorMessage = busConstant.Messages.Type.Validations.REQUIRED)]
+        //[RequiredField(ErrorMessage = busConstant.Messages.Type.Validations.REQUIRED)]
         public System.String IconPath { get; set; }
 
         [Display(Name = "Description")]
@@ -37,4 +37,10 @@ namespace SHF.ViewModel
         public System.String Description { get; set; }
         public System.Boolean? IsActive { get; set; }
 }
+    public class BankMasterDropdownListViewModel
+    {
+        public System.String Description { get; set; }
+        public System.Int64 ID { get; set; }
+
+    }
 }

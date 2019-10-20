@@ -6,7 +6,7 @@
         return cookieToken + ":" + formToken;
     }
 }
-
+<script src="~/Scripts/ng-file-upload-5.0.9.js"></script>
 <div class="modal-dialog">
     <div class="modal-content">
         <form name="myForm" ng-submit="myForm.$valid && createOreditAsyncForm()" novalidate>
@@ -15,7 +15,7 @@
                 <button type="button" class="close" ng-click="ShowConfirm('modal-createOredit')" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Services1 Section6 Price Features Mapping Details</h4>
+                <h4 class="modal-title">Services1 Section8 FAQ Mapping Details</h4>
             </div>
             <div class="modal-body">
                 <!-- general form elements -->
@@ -24,16 +24,6 @@
                     <div class="box-body">
                         <input id="antiForgeryToken" data-ng-model="antiForgeryToken" type="hidden" data-ng-init="antiForgeryToken='@AntiForgeryToken()'" />
 
-                        <div class="form-group" ng-class="{'has-error': (myForm.TenantName.$touched || myForm.TenantName.$dirty)  && myForm.TenantName.$invalid}">
-                            <label>Tenant Name</label>
-                            <select name="TenantName" ng-model="PriceFeaturesMappingCreateOrEditViewModel.Tenant_ID" class="form-control" style="width: 100%;" ng-options="x.ID as x.Name for x in AllTenants" ng-change="LoadAllSubSubCategory()" required>
-                                <option value="" ng-selected="PriceFeaturesMappingCreateOrEditViewModel.SelectedTenant_ID < 0">-- Select --</option>
-                            </select>
-                            <div class="help-block" ng-messages="myForm.TenantName.$error" ng-if="myForm.TenantName.$touched || myForm.TenantName.$dirty && myForm.TenantName.$invalid">
-                                <div ng-messages-include="~/ValidationMessages.html"></div>
-                            </div>
-                            <span class="text-danger" ng-show="errors.formErrors.Tenant_ID" ng-bind="errors.formErrors.Tenant_ID"></span>
-                        </div>
                         <div class="form-group" ng-class="{'has-error': (myForm.SubSubCategoryName.$touched || myForm.SubSubCategoryName.$dirty)  && myForm.SubSubCategoryName.$invalid}">
                             <label>Sub Sub Category Name</label>
                             <select name="SubSubCategoryName" ng-model="PriceFeaturesMappingCreateOrEditViewModel.SubSubCat_Id" class="form-control" style="width: 100%;" ng-options="x.ID as x.SubSubCategoryName for x in AllSubSubCategories" ng-change="LoadAllSection6ID()" required>
@@ -64,7 +54,7 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.PriceFeaturesMaster_Id" ng-bind="errors.formErrors.PriceFeaturesMaster_Id"></span>
                         </div>
-                       
+
                         <div class="form-group" ng-class="{'has-error': (myForm.DisplayIndex.$touched || myForm.DisplayIndex.$dirty)  && myForm.DisplayIndex.$invalid}">
                             <label>Display Index</label>
                             <input type="number" min="0" class="form-control" name="DisplayIndex" ng-model="PriceFeaturesMappingCreateOrEditViewModel.DisplayIndex" ng-disabled="Processing" autocomplete="off" placeholder="Enter Display Index" tooltip-placement="top" uib-tooltip="Enter Display Index" required />
@@ -73,7 +63,7 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.DisplayIndex" ng-bind="errors.formErrors.DisplayIndex"></span>
                         </div>
-                       
+
                         <div class="form-group">
                             <label>Is Active</label><br />
                             <label>
@@ -81,7 +71,6 @@
                                 <input icheck type="checkbox" class="form-control" ng-model="PriceFeaturesMappingCreateOrEditViewModel.IsActive" ng-checked="PriceFeaturesMappingCreateOrEditViewModel.IsActive"><span style="margin-left: 10px;">{{PriceFeaturesMappingCreateOrEditViewModel.IsActive ? 'Yes' : 'No'}} </span>
                             </label>
                         </div>
-
                         <div class="form-group" ng-class="{'has-error': (myForm.TotalViews.$touched || myForm.TotalViews.$dirty)  && myForm.TotalViews.$invalid}">
                             <label>Total Views</label>
                             <input type="number" min="0" class="form-control" name="TotalViews" ng-model="PriceFeaturesMappingCreateOrEditViewModel.TotalViews" ng-disabled="Processing" autocomplete="off" placeholder="Enter Total Views" tooltip-placement="top" uib-tooltip="Enter Total Views" required />
@@ -122,7 +111,6 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.Keyword" ng-bind="errors.formErrors.Keyword"></span>
                         </div>
-
                     </div>
                 </div>
             </div>

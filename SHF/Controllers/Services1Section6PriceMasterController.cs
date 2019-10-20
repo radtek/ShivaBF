@@ -469,7 +469,7 @@ namespace SHF.Controllers
                 {
                     try
                     {
-                        if (Id == default(long))
+                        if (Id == 0 || subsubcat_id==0)
                         {
                             transaction.Complete();
                             var response = new JsonResponse<dynamic>()
@@ -483,10 +483,10 @@ namespace SHF.Controllers
                         }
                         else
                         {
-                            var entities = this.businessServices1Section6PriceMaster.FindBy(S1S6M => S1S6M.Tenant_ID == Id && S1S6M.SubSubCat_Id== subsubcat_id).Select(x => new ViewModel.Services1Section6PriceMasterDropdownListViewModel
+                            var entities = this.businessServices1Section6PriceMaster.GetAll().Where(S1S6M => S1S6M.Tenant_ID ==Convert.ToInt64(Id) && S1S6M.SubSubCat_Id== Convert.ToInt64(subsubcat_id)).Select(x => new ViewModel.Services1Section6PriceMasterDropdownListViewModel
                             {
                                 ID = x.ID,
-                                Price = x.Price.ToString()
+                                Price = x.Price
                             });
 
                             if (entities.IsNotNull())

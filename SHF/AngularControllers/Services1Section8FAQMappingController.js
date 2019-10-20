@@ -1,5 +1,5 @@
-﻿angular.module(config.app).controller('PriceFeaturesMappingCtrl', ['$scope', '$http', '$window', 'PriceFeaturesMappingCRUD','PriceFeaturesMasterCRUD','Services1MasterCRUD','Services1Section6PriceMasterCRUD', 'TenantCRUD','CustomService',
-    function ($scope, $http, $window, PriceFeaturesMappingCRUD,PriceFeaturesMasterCRUD,Services1MasterCRUD,Services1Section6PriceMasterCRUD, TenantCRUD,CustomService) {      
+﻿angular.module(config.app).controller('Services1Section8FAQMappingCtrl', ['$scope', '$http', '$window','CategoriesMasterCRUD','SubCategoriesMasterCRUD', 'Services1Section8FAQMappingCRUD','Services1MasterCRUD','FAQMasterCRUD', 'TenantCRUD','CustomService','CodeValueCRUD',
+    function ($scope, $http, $window,CategoriesMasterCRUD,SubCategoriesMasterCRUD, Services1Section8FAQMappingCRUD,Services1MasterCRUD,FAQMasterCRUD, TenantCRUD,CustomService,CodeValueCRUD) {      
         $scope.path = "";
         $scope.errors = {};
         $scope.errors.pageError = {};
@@ -8,27 +8,22 @@
         $scope.errors.formErrors = null;
         $scope.Processing = false;
         $scope.Entity = {};
-        $scope.PriceFeaturesMappingCreateOrEditViewModel = {};
+        $scope.Services1Section8FAQMappingCreateOrEditViewModel = {};
         $scope.AllTenants = [];
         $scope.AllSubSubCategories = [];
-        $scope.AllSection6ID = [];
-        $scope.AllPriceFeatures = [];
-
-       
-        $scope.PriceFeaturesMappingCreateOrEditViewModel.SelectedTenant_ID = -1;
-        $scope.PriceFeaturesMappingCreateOrEditViewModel.SelectedSubSubCat_Id = -1;
-        $scope.PriceFeaturesMappingCreateOrEditViewModel.SelectedS1S6PM_Id = -1;
-        $scope.PriceFeaturesMappingCreateOrEditViewModel.SelectedPriceFeaturesMaster_Id = -1;
-       
+        $scope.Services1Section8FAQMappingCreateOrEditViewModel.SelectedTenant_ID = -1;
+        $scope.Services1Section8FAQMappingCreateOrEditViewModel.SelectedSubSubCat_Id = -1;
+        $scope.Services1Section8FAQMappingCreateOrEditViewModel.SelectedFAQMaster_Id = -1;
+        $scope.AllFAQMaster=[];
         $scope.Cookie_Tenant_ID = parseInt(CustomService.GetTenantID());
-        $scope.PriceFeaturesMappingCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;     
+        $scope.Services1Section8FAQMappingCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;     
 
         $scope.BindGrid = function () {
-            PriceFeaturesMappingCRUD.LoadTable();
+            Services1Section8FAQMappingCRUD.LoadTable();
         }      
 
         $scope.PageLoad = function () {
-            $scope.PriceFeaturesMappingCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
+            $scope.Services1Section8FAQMappingCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
             $scope.BindGrid();
         }
 
@@ -39,7 +34,7 @@
 
 
         $scope.Clear = function () {
-            $scope.PriceFeaturesMappingCreateOrEditViewModel = {};
+            $scope.Services1Section8FAQMappingCreateOrEditViewModel = {};
             $scope.Reset();
         }            
       
@@ -55,13 +50,14 @@
             $scope.errors.formErrors = null;
             $scope.Processing = false;
             $scope.Clear();
+            $scope.BindServiceTypeDropDownList(1020);
             if ($scope.Cookie_Tenant_ID <= 0) {
                 $scope.BindTenantDropDownList();
-                $scope.PriceFeaturesMappingCreateOrEditViewModel.SelectedTenant_ID = -1;
-               // $scope.PriceFeaturesMappingCreateOrEditViewModel.SelectedUnitOfMesurment = -1;
+                $scope.Services1Section8FAQMappingCreateOrEditViewModel.SelectedTenant_ID = -1;
+               // $scope.Services1Section8FAQMappingCreateOrEditViewModel.SelectedUnitOfMesurment = -1;
             } else {
-                $scope.PriceFeaturesMappingCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
-               // $scope.BindUnitOfMeasurementDropDownList($scope.PriceFeaturesMappingCreateOrEditViewModel.Tenant_ID);
+                $scope.Services1Section8FAQMappingCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
+               // $scope.BindUnitOfMeasurementDropDownList($scope.Services1Section8FAQMappingCreateOrEditViewModel.Tenant_ID);
             }
             $('#modal-createOredit').modal('show');
         }
@@ -106,10 +102,11 @@
 /********************************************************************************/
         $scope.EditAsync = function (Id) {
             $scope.Clear();
+            $scope.BindServiceTypeDropDownList(1020);
             if ($scope.Cookie_Tenant_ID <= 0) {
                 $scope.BindTenantDropDownList();
-            }
-            $http.get("/Get/PriceFeaturesMapping/EditAsync?Id=" + Id
+           }
+            $http.get("/Get/Services1Section8FAQMapping/EditAsync?Id=" + Id
             ).then(
                 function success(response) {
                     switch (response.data.Type) {
@@ -118,7 +115,11 @@
                             console.log(response);
                             break;
                         case 'Response':
-                            $scope.PriceFeaturesMappingCreateOrEditViewModel = response.data.Entity;
+                            $scope.Services1Section8FAQMappingCreateOrEditViewModel = response.data.Entity;
+                           // $scope.LoadAllCategory();
+                            $scope.LoadAllSubSubCategory();
+                            $scope.LoadFAQMaster();
+                            //$scope.Services1Section8FAQMappingCreateOrEditViewModel.Category_ID=$scope.Services1Section8FAQMappingCreateOrEditViewModel.Category_ID;
                             $('#modal-createOredit').modal('show');
                             console.clear();
                             break;
@@ -153,9 +154,9 @@
             $scope.Processing = true;
             $scope.path = "";
            if ($scope.myForm.$valid) {
-                $scope.path = ($scope.PriceFeaturesMappingCreateOrEditViewModel.ID == undefined || $scope.PriceFeaturesMappingCreateOrEditViewModel.ID == null || 
-          $scope.PriceFeaturesMappingCreateOrEditViewModel.ID == 0) ? "/Post/PriceFeaturesMapping/CreateAsync" : "/Post/PriceFeaturesMapping/EditAsync";
-               $http.post($scope.path, $scope.PriceFeaturesMappingCreateOrEditViewModel,
+                $scope.path = ($scope.Services1Section8FAQMappingCreateOrEditViewModel.ID == undefined || $scope.Services1Section8FAQMappingCreateOrEditViewModel.ID == null || 
+          $scope.Services1Section8FAQMappingCreateOrEditViewModel.ID == 0) ? "/Post/Services1Section8FAQMapping/CreateAsync" : "/Post/Services1Section8FAQMapping/EditAsync";
+               $http.post($scope.path, $scope.Services1Section8FAQMappingCreateOrEditViewModel,
                     {
                         headers: { 'RequestVerificationToken': $scope.antiForgeryToken }
                     }
@@ -252,7 +253,7 @@
                     if (willDelete) {
                         var obj = {};
                         obj.Id = Id;
-                  $http.post("/Post/PriceFeaturesMapping/Delete/", obj,
+                  $http.post("/Post/Services1Section8FAQMapping/Delete/", obj,
                     {
                         headers: { 'RequestVerificationToken': $scope.antiForgeryToken }
                     }
@@ -286,7 +287,7 @@
         }
 /************load Sub Category**************************************************************************************************/
 $scope.LoadAllSubSubCategory = function () {
-            let tenantId = $scope.PriceFeaturesMappingCreateOrEditViewModel.Tenant_ID;
+            let tenantId = $scope.Services1Section8FAQMappingCreateOrEditViewModel.Tenant_ID;
             $scope.BindSubSubCategoryDropDownList(tenantId);
         }
 
@@ -325,16 +326,15 @@ $scope.BindSubSubCategoryDropDownList = function (tenantId) {
                     }
 
                 });
-        }
-/************load LoadAllSection6ID Category**************************************************************************************************/
-$scope.LoadAllSection6ID = function () {
-            let tenantId = $scope.PriceFeaturesMappingCreateOrEditViewModel.Tenant_ID;
-            let subsubcat_id = $scope.PriceFeaturesMappingCreateOrEditViewModel.SubSubCat_Id;
-            $scope.BindSection6IDByTenantAndSubSubCatID(tenantId,subsubcat_id);
+        }  
+/****************************************************************************Load Category*************************************************************************************/
+$scope.LoadFAQMaster = function () {
+            let tenantId = $scope.Services1Section8FAQMappingCreateOrEditViewModel.Tenant_ID;
+            $scope.BindFAQMasterDropDownList(tenantId);
         }
 
-$scope.BindSection6IDByTenantAndSubSubCatID = function (tenantId,subsubcat_id) {
-            let promise = Services1Section6PriceMasterCRUD.LoadSection6IDByTenantAndSubSubCatID(tenantId,subsubcat_id)
+$scope.BindFAQMasterDropDownList = function (tenantId) {
+            let promise = FAQMasterCRUD.LoadFAQDropdown(tenantId)
             promise.then(
                 function success(response) {
                     switch (response.data.Type) {
@@ -343,50 +343,7 @@ $scope.BindSection6IDByTenantAndSubSubCatID = function (tenantId,subsubcat_id) {
                             console.log(response);
                             break;
                         case 'Response':
-                            $scope.AllSection6ID = response.data.Entity;
-                            console.clear();
-                            break;
-                        default:
-                            CustomService.Notify(response.data.Message);
-                            console.log(response);
-                            break;
-                    }
-                }, function errors(response) {
-                    switch (response.data.Type) {
-                        case 'Exception':
-                            CustomService.Notify(response.data.Message);
-                            console.log(response);
-                            break;
-                        case 'Validation':
-                            CustomService.Notify(response.data.Message);
-                            console.log(response);
-                            break;
-                        default:
-                            CustomService.Notify(response.data.Message);
-                            console.log(response);
-                            break;
-                    }
-
-                });
-        }
-/************load PriceFeaturesMasterCRUD Category**************************************************************************************************/
-$scope.LoadAllPriceFeaturesMaster = function () {
-
-            let tenantId = $scope.PriceFeaturesMappingCreateOrEditViewModel.Tenant_ID;
-          $scope.BindPriceFeaturesMaster(tenantId);
-        }
-
-$scope.BindPriceFeaturesMaster = function (tenantId) {
-            let promise = PriceFeaturesMasterCRUD.LoadPriceFeaturesDropdown(tenantId)
-            promise.then(
-                function success(response) {
-                    switch (response.data.Type) {
-                        case 'Exception':
-                            CustomService.Notify(response.data.Message);
-                            console.log(response);
-                            break;
-                        case 'Response':
-                            $scope.AllPriceFeatures = response.data.Entity;
+                            $scope.AllFAQMaster = response.data.Entity;
                             console.clear();
                             break;
                         default:
@@ -412,5 +369,10 @@ $scope.BindPriceFeaturesMaster = function (tenantId) {
 
                 });
         }  
+$scope.BindServiceTypeDropDownList = function (Id) {
+            $scope.AllServiceType = [];
+            $scope.AllServiceType = CodeValueCRUD.LoadCodeValueByCodeId(Id);
+        }         
     }]);
+
 

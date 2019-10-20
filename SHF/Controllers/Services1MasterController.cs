@@ -145,7 +145,7 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var catId = businessServices1Master.FindBy(Categories => Categories.Tenant_ID == model.Tenant_ID).FirstOrDefault();
+                            var catId = businessServices1Master.FindBy(Categories => Categories.Tenant_ID == model.Tenant_ID && Categories.SubSubCat_Id == model.SubSubCat_Id).FirstOrDefault();
 
                             if (catId.IsNotNull())
                             {
@@ -156,19 +156,6 @@ namespace SHF.Controllers
                                     Title = busConstant.Messages.Title.ERROR,
                                     Icon = busConstant.Messages.Icon.ERROR,
                                     MessageCode = busConstant.Messages.MessageCode.SKU_ALREADY_EXIST,
-                                    Message = busConstant.Messages.Type.Responses.ALREADY_EXIST
-                                };
-                                return Json(response, JsonRequestBehavior.AllowGet);
-                            }
-                            else if (catId.SubSubCat_Id== model.SubSubCat_Id)
-                            {
-                                transaction.Complete();
-                                var response = new JsonResponse<dynamic>()
-                                {
-                                    Type = busConstant.Messages.Type.EXCEPTION,
-                                    Title = busConstant.Messages.Title.ERROR,
-                                    Icon = busConstant.Messages.Icon.ERROR,
-                                    MessageCode = busConstant.Messages.MessageCode.Services_ALREADY_EXIST,
                                     Message = busConstant.Messages.Type.Responses.ALREADY_EXIST
                                 };
                                 return Json(response, JsonRequestBehavior.AllowGet);

@@ -71,8 +71,8 @@ namespace SHF.Controllers
         [HttpGet]
         [Access]
         [OutputCache(Duration = busConstant.Settings.Cache.OutputCache.TimeOut.S300)]
-        [Route("Configurations/Master/SubCategories/Index")]
-        [Route("Settings/Master/SubCategories/Index")]
+        [Route("Configurations/Master/ServiceType1/PriceMapping")]
+        [Route("Settings/Master/ServiceType1/PriceMapping")]
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId<long>();
@@ -80,7 +80,7 @@ namespace SHF.Controllers
             return View();
         }
         [HttpPost]
-        [Route("Post/SubCategories/IndexAsync")]
+        [Route("Post/PriceFeaturesMapping/IndexAsync")]
         [ValidateAntiForgeryTokens]
         public async Task<ActionResult> IndexAsync()
         {
@@ -159,7 +159,7 @@ namespace SHF.Controllers
                             }
                             else
                             {
-                                var entityServices = this.businessServices1Master.FindBy(services1master => services1master.ID == model.Service_Id).FirstOrDefault();
+                                var entityServices = this.businessServices1Master.FindBy(services1master => services1master.SubSubCat_Id == model.SubSubCat_Id).FirstOrDefault();
                                 var entity = new EntityModel.PriceFeaturesMapping();
                                 entity.Tenant = null;
                                 entity.PriceFeaturesMappings = null;
@@ -168,6 +168,7 @@ namespace SHF.Controllers
                                 entity.Services1Section6PriceMaster = null;
                                 entity.Service_Id = entityServices.ID;
                                 entity.S1S6PM_Id = model.S1S6PM_Id;
+                                entity.SubSubCat_Id = model.SubSubCat_Id; 
                                 entity.PriceFeaturesMaster_Id = model.PriceFeaturesMaster_Id;
                                 entity.DisplayIndex = model.DisplayIndex;
                                 entity.IsActive = model.IsActive;
@@ -246,6 +247,7 @@ namespace SHF.Controllers
                                // model.SubSubCategory_Name = ent;
                                 model.S1S6PM_Id = entity.S1S6PM_Id;
                                 model.Service_Id = entity.Service_Id;
+                                model.SubSubCat_Id = Convert.ToInt64(entity.SubSubCat_Id);
                                 model.PriceFeaturesMaster_Id = entity.PriceFeaturesMaster_Id;
                                 model.DisplayIndex = entity.DisplayIndex;
                                 model.IsActive = entity.IsActive;
@@ -338,7 +340,7 @@ namespace SHF.Controllers
                             }
                             else
                             {
-                                var entityServices = this.businessServices1Master.FindBy(services1master => services1master.ID == model.Service_Id).FirstOrDefault();
+                                var entityServices = this.businessServices1Master.FindBy(services1master => services1master.SubSubCat_Id == model.SubSubCat_Id).FirstOrDefault();
                                 var entity = new EntityModel.PriceFeaturesMapping();
                                 entity.Tenant = null;
                                 entity.PriceFeaturesMappings = null;
@@ -348,6 +350,7 @@ namespace SHF.Controllers
                                 entity.ID = Convert.ToInt64(model.ID);
                                 entity.Service_Id = entityServices.ID;
                                 entity.S1S6PM_Id = model.S1S6PM_Id;
+                                entity.SubSubCat_Id = model.SubSubCat_Id;
                                 entity.PriceFeaturesMaster_Id = model.PriceFeaturesMaster_Id;
                                 entity.DisplayIndex = model.DisplayIndex;
                                 entity.IsActive = model.IsActive;

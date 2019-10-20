@@ -265,7 +265,7 @@ angular.module(config.app).service('Services1Section6PriceMasterCRUD', function 
     this.LoadSection6IDByTenantAndSubSubCatID = function Section6IDByTenantAndSubSubCatID(tenantId,subsubcat_id) {
         let request = $http({
             method: "get",
-            url: "/Services1Section6PriceMaster/DropdownListbyTenantAsync?Id=" + tenantId+"&subsubcat_id"+subsubcat_id
+            url: "/Get/Services1Section6PriceMaster/DropdownListbyTenantAsync?Id=" + tenantId+"&subsubcat_id="+subsubcat_id
         });
         return request;
     }

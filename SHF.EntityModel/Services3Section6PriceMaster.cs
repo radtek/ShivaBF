@@ -21,6 +21,9 @@ namespace SHF.EntityModel
         [ForeignKey("State_Id")]
         public virtual StateMaster StateMaster { get; set; }
         public System.Int64? State_Id { get; set; }
+        [ForeignKey("SubSubCat_Id")]
+        public virtual SubSubCategoriesMaster SubSubCategoriesMaster { get; set; }
+        public System.Int64? SubSubCat_Id { get; set; }
         [Column("HeadingText")]
         public System.String HeadingText { get; set; }
         [Column("Price")]

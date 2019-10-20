@@ -45,6 +45,7 @@ namespace SHF.DataAccess.Implementations
         private GenericRepository<EntityModel.Services1Section6PriceMaster> _Services1Section6PriceMasterRepository;
         private GenericRepository<EntityModel.StateMaster> _StateMasterRepository;
         private GenericRepository<EntityModel.PriceFeaturesMapping> _PriceFeaturesMappingRepository;
+        private GenericRepository<EntityModel.Services1Section8FAQMapping> _Services1Section8FAQMappingRepository;
         #endregion
 
 
@@ -330,7 +331,18 @@ namespace SHF.DataAccess.Implementations
                 return _PriceFeaturesMappingRepository;
             }
         }
-       
+        public GenericRepository<EntityModel.Services1Section8FAQMapping> Services1Section8FAQMappingRepository
+        {
+            get
+            {
+                if (this._Services1Section8FAQMappingRepository == null)
+                {
+                    this._Services1Section8FAQMappingRepository = new GenericRepository<EntityModel.Services1Section8FAQMapping>(context);
+                }
+                return _Services1Section8FAQMappingRepository;
+            }
+        }
+
         #endregion
 
         #region [Constructors]

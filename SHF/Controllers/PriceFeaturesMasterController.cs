@@ -23,7 +23,7 @@ using System.ComponentModel;
 
 namespace SHF.Controllers
 {
-    //[AllowAnonymous]
+    [AllowAnonymous]
     public class PriceFeaturesMasterController : BaseController
     {
         #region [Field & Contructor]
@@ -140,7 +140,7 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var catId = businessPriceFeaturesMaster.FindBy(PriceFeaturesMaster => PriceFeaturesMaster.Tenant_ID == model.Tenant_ID).FirstOrDefault();
+                            var catId = businessPriceFeaturesMaster.FindBy(PriceFeaturesMaster => PriceFeaturesMaster.Tenant_ID == model.Tenant_ID && PriceFeaturesMaster.Description == model.Description).FirstOrDefault();
 
                             if (catId.IsNotNull())
                             {
@@ -158,7 +158,14 @@ namespace SHF.Controllers
                             else
                             {
                                 var entity = new EntityModel.PriceFeaturesMaster();
-                                Mapper.Map(model, entity);
+                                // Mapper.Map(model, entity);
+                                entity.Description = model.Description;
+                                entity.IsActive = model.IsActive;
+                                entity.Url = model.Url;
+                                entity.Metadata = model.Metadata;
+                                entity.Keyword = model.Keyword;
+                                entity.MetaDescription = model.MetaDescription;
+                                entity.Tenant_ID = model.Tenant_ID;
                                 entity.Tenant = null;
                                 this.businessPriceFeaturesMaster.Create(entity);
                                 transaction.Complete();
@@ -224,7 +231,20 @@ namespace SHF.Controllers
                             {
                                 var model = new ViewModel.PriceFeaturesMasterCreateOrEditViewModel();
 
-                                Mapper.Map(entity, model);
+                                model.ID = entity.ID;
+                                // model.SubSubCategory_Name = ent;
+                                model.Description = entity.Description;
+                                model.IsActive = entity.IsActive;
+                                model.Url = entity.Url;
+                                model.Metadata = entity.Metadata;
+                                model.Keyword = entity.Keyword;
+                                model.MetaDescription = entity.MetaDescription;
+                                model.Tenant_ID = Convert.ToInt64(entity.Tenant_ID);
+                                model.CreatedBy = entity.CreatedBy;
+                                model.CreatedOn = entity.CreatedOn;
+                                model.UpdatedBy = entity.UpdatedBy;
+                                model.UpdatedOn = entity.UpdatedOn;
+                                model.IsDeleted = entity.IsDeleted;
 
                                 var response = new JsonResponse<PriceFeaturesMasterCreateOrEditViewModel>()
                                 {
@@ -304,10 +324,15 @@ namespace SHF.Controllers
                             else
                             {
                                 var entity = new EntityModel.PriceFeaturesMaster();
-
-                                Mapper.Map(model, entity);
+                                entity.ID = Convert.ToInt64(model.ID);
+                                entity.Description = model.Description;
+                                entity.IsActive = model.IsActive;
+                                entity.Url = model.Url;
+                                entity.Metadata = model.Metadata;
+                                entity.Keyword = model.Keyword;
+                                entity.MetaDescription = model.MetaDescription;
+                                entity.Tenant_ID = model.Tenant_ID;
                                 entity.Tenant = null;
-
                                 this.businessPriceFeaturesMaster.Update(entity);
 
                                 transaction.Complete();
