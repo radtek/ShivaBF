@@ -16,7 +16,7 @@ namespace SHF.EntityModel
         [Column(Order = 1)]
         public virtual long ID { get; set; }
         [ForeignKey("Service_Id")]
-        public virtual Services2Master Services1Master { get; set; }
+        public virtual Services2Master Services2Master { get; set; }
         public System.Int64? Service_Id { get; set; }
         [ForeignKey("SubSubCat_Id")]
         public virtual SubSubCategoriesMaster SubSubCategoriesMaster { get; set; }
