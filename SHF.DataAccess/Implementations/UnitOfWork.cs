@@ -50,6 +50,10 @@ namespace SHF.DataAccess.Implementations
         private GenericRepository<EntityModel.Services2Section3DownloadMaster> _Services2Section3DownloadMasterRepository;
         private GenericRepository<EntityModel.Services2Section2FAQMapping> _Services2Section2FAQMappingRepository;
         private GenericRepository<EntityModel.Services2Section4Master> _Services2Section4MasterRepository;
+        private GenericRepository<EntityModel.Services3Master> _Services3MasterRepository;
+        private GenericRepository<EntityModel.Services3HeadingButtons> _Services3HeadingButtonsRepository;
+        private GenericRepository<EntityModel.Services3Section4> _Services3Section4Repository;
+        private GenericRepository<EntityModel.Services3Section6PriceMaster> _Services3Section6PriceMasterRepository;
         #endregion
 
 
@@ -390,7 +394,51 @@ namespace SHF.DataAccess.Implementations
                 return _Services2Section4MasterRepository;
             }
         }
-       
+        public GenericRepository<EntityModel.Services3Master> Services3MasterRepository
+        {
+            get
+            {
+                if (this._Services3MasterRepository == null)
+                {
+                    this._Services3MasterRepository = new GenericRepository<EntityModel.Services3Master>(context);
+                }
+                return _Services3MasterRepository;
+            }
+        }
+        public GenericRepository<EntityModel.Services3HeadingButtons> Services3HeadingButtonsRepository
+        {
+            get
+            {
+                if (this._Services3HeadingButtonsRepository == null)
+                {
+                    this._Services3HeadingButtonsRepository = new GenericRepository<EntityModel.Services3HeadingButtons>(context);
+                }
+                return _Services3HeadingButtonsRepository;
+            }
+        }
+        public GenericRepository<EntityModel.Services3Section4> Services3Section4Repository
+        {
+            get
+            {
+                if (this._Services3Section4Repository == null)
+                {
+                    this._Services3Section4Repository = new GenericRepository<EntityModel.Services3Section4>(context);
+                }
+                return _Services3Section4Repository;
+            }
+        }
+        public GenericRepository<EntityModel.Services3Section6PriceMaster> Services3Section6PriceMasterRepository
+        {
+            get
+            {
+                if (this._Services3Section6PriceMasterRepository == null)
+                {
+                    this._Services3Section6PriceMasterRepository = new GenericRepository<EntityModel.Services3Section6PriceMaster>(context);
+                }
+                return _Services3Section6PriceMasterRepository;
+            }
+        }
+        
         #endregion
 
         #region [Constructors]
