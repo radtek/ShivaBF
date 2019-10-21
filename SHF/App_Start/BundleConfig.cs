@@ -161,6 +161,7 @@ namespace SHF
                           "~/Scripts/Services/Services4Section2Master.js",
                           "~/Scripts/Services/Services4Section2MasterChild.js",
                            "~/Scripts/Services/Services4Section3.js",
+                           "~/Scripts/Services/Services4Section3DownloadMaster.js",
                  "~/AngularControllers/AspNetUserController.js",
                  "~/AngularControllers/RoleController.js",
                  "~/AngularControllers/TenantController.js",
@@ -193,7 +194,8 @@ namespace SHF
                       "~/AngularControllers/Services4Section2FAQMappingController.js",
                        "~/AngularControllers/Services4Section2MasterController.js",
                         "~/AngularControllers/Services4Section2MasterChildController.js",
-                        "~/AngularControllers/Services4Section3Controller.js"
+                        "~/AngularControllers/Services4Section3Controller.js",
+                         "~/AngularControllers/Services4Section3DownloadMasterController.js"
                 ));
 
 
