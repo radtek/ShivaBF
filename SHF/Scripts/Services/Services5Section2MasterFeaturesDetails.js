@@ -1,17 +1,16 @@
 ﻿//let app = angular.module('InventoryApp');
-
-angular.module(config.app).service('Services5Section2MasterCRUD', function ($http) {
+angular.module(config.app).service('Services5Section2MasterFeaturesDetailsCRUD', function ($http) {
 
     this.GetTableObject = function TableData() {
-        let scope = angular.element(document.getElementById('Services5Section2MasterControllerScope')).scope();
-        let tenantId = scope.Services5Section2MasterCreateOrEditViewModel.Tenant_ID == null ? 0 : scope.Services5Section2MasterCreateOrEditViewModel.Tenant_ID;
+        let scope = angular.element(document.getElementById('Services5Section2MasterFeaturesDetailsControllerScope')).scope();
+        let tenantId = scope.Services5Section2MasterFeaturesDetailsCreateOrEditViewModel.Tenant_ID == null ? 0 : scope.Services5Section2MasterFeaturesDetailsCreateOrEditViewModel.Tenant_ID;
         let viewBagTenantID = $('#ViewBag_TenantID').val();
         let antiForgeryToken = $('#antiForgeryToken').val();
         var src = '../../../Content/Images/';
         let oTable = $('#grdTable').DataTable({
             serverSide: true,
             ajax: {
-                url: '/Post/Services5Section2Master/IndexAsync',
+                url: '/Post/Services5Section2MasterFeaturesDetails/IndexAsync',
                 type: 'POST',
                 dataSrc: 'data',
                 data: { 'tenantId': tenantId },
@@ -44,101 +43,79 @@ angular.module(config.app).service('Services5Section2MasterCRUD', function ($htt
                     targets: 0
                 },
                 {
-                    name: "Services5Section2Master_tenant.Services5Section2Master.ID",
+                    name: "Services5Section2MasterFeaturesDetails_tenant_Services5Master_Services5Section2Master.Services5Section2MasterFeaturesDetails_tenant_Services5Master.Services5Section2MasterFeaturesDetails_tenant.Services5Section2MasterFeaturesDetails.ID",
                     data: "ID",
                     title: "ID",
                     render: $.fn.dataTable.render.text(),
                     width: "3%",
                     targets: 1
                 },
+{
+                    name: "SubSubCategoryMaster.SubSubCategoryName",
+                    data: "SubSubCategory_Name",
+                    title: "Sub&nbsp;Sub&nbsp;Category",
+                    render: $.fn.dataTable.render.text(),
+                    width: "3%",
+                    targets: 2
+                },
                 {
-                    name: "Services5Section2Master_tenant.Services5Section2Master.AncharTagTitle",
-                    data: "AncharTagTitle",
-                    title: "Anchar&nbsp;Tag&nbsp;Title",
+                    name: "Services5Section2MasterFeaturesDetails_tenant_PriceFeaturesMaster_Services1Master_Services1Section6PriceMaster.Services5Section2MasterFeaturesDetails_tenant_PriceFeaturesMaster_Services1Master.Services5Section2MasterFeaturesDetails_tenant_PriceFeaturesMaster.PriceFeaturesMaster.Text",
+                    data: "Text",
+                    title: "Text",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
                     targets: 2
                 },
-                 {
-                     name: "Services5Section2Master_tenant.Services5Section2Master.AncharTagUrl",
-                     data: "AncharTagUrl",
-                     title: "Anchar&nbsp;Tag&nbsp;Url",
-                     render: $.fn.dataTable.render.text(),
-                     width: "25%",
-                     targets: 3
-                 },
-                 {
-                      name: "Services5Section2Master_tenant.Services5Section2Master.ImageFilePath",
-                     data: "ImageFilePath",
-                     title: "ImageFilePath",
-                     render: $.fn.dataTable.render.text(),
-                     width: "25%",
-                     targets: 4
-                 },
-                  {
-                    name: "Services5Section2Master.SubSubCategoryName",
-                    data: "SubSubCategoryName",
-                    title: "Sub&nbsp;Sub&nbsp;CategoryName",
+{
+                    name: "Services5Section2MasterFeaturesDetails_tenant_Services5Master_Services5Section2Master.Services5Section2MasterFeaturesDetails_tenant_Services5Master.Services5Section2MasterFeaturesDetails_tenant.Services5Section2MasterFeaturesDetails.S5S2M_Id",
+                    data: "S5S2M_Id",
+                    title: "Section2&nbsp;ID",
                     render: $.fn.dataTable.render.text(),
-                    width: "25%",
-                    targets: 5
+                    width: "3%",
+                    targets: 1
                 },
-                {
-                    name: "Services5Section2Master_tenant.Services5Section2Master.DisplayIndex",
-                    data: "DisplayIndex",
-                    title: "Display&nbsp;Index",
-                    render: $.fn.dataTable.render.text(),
-                    width: "25%",
-                    targets: 6
-                },
+
+               
  {
-                    name: "Services5Section2Master_tenant.Services5Section2Master.Url",
+                    name: "Services5Section2MasterFeaturesDetails_tenant_Services5Master_Services5Section2Master.Services5Section2MasterFeaturesDetails_tenant_Services5Master.Services5Section2MasterFeaturesDetails_tenant.Services5Section2MasterFeaturesDetails.Url",
                     data: "Url",
                     title: "Url",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 7
+                    targets: 5
                 },
  {
-                    name: "Services5Section2Master_tenant.Services5Section2Master.Metadata",
+                    name: "Services5Section2MasterFeaturesDetails_tenant_Services5Master_Services5Section2Master.Services5Section2MasterFeaturesDetails_tenant_Services5Master.Services5Section2MasterFeaturesDetails_tenant.Services5Section2MasterFeaturesDetails.Metadata",
                     data: "Metadata",
                     title: "Metadata",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 8
+                    targets: 6
                 },
 {
-                    name: "Services5Section2Master_tenant.Services5Section2Master.MetaDescription",
+                    name: "Services5Section2MasterFeaturesDetails_tenant_Services5Master_Services5Section2Master.Services5Section2MasterFeaturesDetails_tenant_Services5Master.Services5Section2MasterFeaturesDetails_tenant.Services5Section2MasterFeaturesDetails.MetaDescription",
                     data: "MetaDescription",
                     title: "MetaDescription",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 9
+                    targets: 7
                 },
 {
-                    name: "Services5Section2Master_tenant.Services5Section2Master.Keyword",
+                    name: "Services5Section2MasterFeaturesDetails_tenant_Services5Master_Services5Section2Master.Services5Section2MasterFeaturesDetails_tenant_Services5Master.Services5Section2MasterFeaturesDetails_tenant.Services5Section2MasterFeaturesDetails.Keyword",
                     data: "Keyword",
                     title: "Keyword",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 10
+                    targets: 8
                 },
 
-{
-                    name: "Services5Section2Master_tenant.Services5Section2Master.TotalViews",
-                    data: "TotalViews",
-                    title: "TotalViews",
-                    render: $.fn.dataTable.render.text(),
-                    width: "25%",
-                    targets: 11
-                },
               {
-                    name: "Services5Section2Master_tenant.Services5Section2Master.IsActive",
+                    name: "Services5Section2MasterFeaturesDetails_tenant_Services5Master_Services5Section2Master.Services5Section2MasterFeaturesDetails_tenant_Services5Master.Services5Section2MasterFeaturesDetails_tenant.Services5Section2MasterFeaturesDetails.IsActive",
                     data: "IsActive",
-                    title: "Is&nbsp;Active",
+                    title: "IsActive",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 12
+                    targets: 10
                 },
                 {
                     name: "tenant.Name",
@@ -147,18 +124,18 @@ angular.module(config.app).service('Services5Section2MasterCRUD', function ($htt
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
                     visible: viewBagTenantID <= 0 ? true : false,
-                    targets:13
+                    targets:11
                 },
                 {
-                    name: "Services5Section2Master_tenant.Services5Section2Master.CreatedBy",
+                    name: "Services5Section2MasterFeaturesDetails_tenant_Services5Master_Services5Section2Master.Services5Section2MasterFeaturesDetails_tenant_Services5Master.Services5Section2MasterFeaturesDetails_tenant.Services5Section2MasterFeaturesDetails.CreatedBy",
                     data: "CreatedBy",
                     title: "Created&nbsp;By",
                     render: $.fn.dataTable.render.text(),
                     width: "6%",
-                    targets: 14
+                    targets: 12
                 },
                 {
-                    name: "Services5Section2Master_tenant.Services5Section2Master.CreatedOn",
+                    name: "Services5Section2MasterFeaturesDetails_tenant_Services5Master_Services5Section2Master.Services5Section2MasterFeaturesDetails_tenant_Services5Master.Services5Section2MasterFeaturesDetails_tenant.Services5Section2MasterFeaturesDetails.CreatedOn",
                     data: "CreatedOn",
                     title: "Created&nbsp;On",
                     render: function (data, type, row, meta) {
@@ -167,18 +144,18 @@ angular.module(config.app).service('Services5Section2MasterCRUD', function ($htt
 
                     },
                     width: "11%",
-                    targets: 15
+                    targets: 13
                 },
                 {
-                    name: "Services5Section2Master_tenant.Services5Section2Master.UpdatedBy",
+                    name: "Services5Section2MasterFeaturesDetails_tenant_Services5Master_Services5Section2Master.Services5Section2MasterFeaturesDetails_tenant_Services5Master.Services5Section2MasterFeaturesDetails_tenant.Services5Section2MasterFeaturesDetails.UpdatedBy",
                     data: "UpdatedBy",
                     title: "Modified&nbsp;By",
                     render: $.fn.dataTable.render.text(),
                     width: "6%",
-                    targets: 16
+                    targets: 14
                 },
                 {
-                    name: "Services5Section2Master_tenant.Services5Section2Master.UpdatedOn",
+                    name: "Services5Section2MasterFeaturesDetails_tenant_Services5Master_Services5Section2Master.Services5Section2MasterFeaturesDetails_tenant_Services5Master.Services5Section2MasterFeaturesDetails_tenant.Services5Section2MasterFeaturesDetails.UpdatedOn",
                     data: "UpdatedOn",
                     title: "Modified&nbsp;On",
                     render: function (data, type, row, meta) {
@@ -186,7 +163,7 @@ angular.module(config.app).service('Services5Section2MasterCRUD', function ($htt
                         return moment(date).format('DD-MM-YYYY hh:mm:ss a');
                     },
                     width: "11%",
-                    targets: 17
+                    targets: 15
                 },
                 {
                     name: null,
@@ -197,7 +174,7 @@ angular.module(config.app).service('Services5Section2MasterCRUD', function ($htt
                         return '<button type="button" class="btn btn-xs text-success btn-edit"><i title="Edit" class="fa fa-edit"></i></button>';
                     },
                     width: "2%",
-                    targets: 18
+                    targets: 16
                 },
                 {
                     name: null,
@@ -208,7 +185,7 @@ angular.module(config.app).service('Services5Section2MasterCRUD', function ($htt
                         return '<button type="button" class="btn btn-xs text-danger btn-delete"><i title="Delete" class="fa fa-trash"></i></button>';
                     },
                     width: "2%",
-                    targets: 19
+                    targets: 17
                 }
             ],
 
@@ -223,13 +200,13 @@ angular.module(config.app).service('Services5Section2MasterCRUD', function ($htt
         $('#grdTable tbody').off('click');
         $('#grdTable tbody').on('click', '.btn-edit', function () {
             let rowData = oTable.row($(this).parents('tr')).data();
-            let scope = angular.element(document.getElementById('Services5Section2MasterControllerScope')).scope();
+            let scope = angular.element(document.getElementById('Services5Section2MasterFeaturesDetailsControllerScope')).scope();
             scope.EditAsync(rowData.ID);
         });
 
         $('#grdTable tbody').on('click', '.btn-delete', function () {
             let rowData = oTable.row($(this).parents('tr')).data();
-            let scope = angular.element(document.getElementById('Services5Section2MasterControllerScope')).scope();
+            let scope = angular.element(document.getElementById('Services5Section2MasterFeaturesDetailsControllerScope')).scope();
             scope.DeleteAsync(rowData.ID);
         });
     }
@@ -244,53 +221,7 @@ angular.module(config.app).service('Services5Section2MasterCRUD', function ($htt
             this.GetTableObject();
         }
     }
- this.LoadSection2IDByTenantAndSubSubCatID = function Section2IDByTenantAndSubSubCatID(tenantId,subsubcat_id) {
-        let request = $http({
-            method: "get",
-            url: "/Get/Services5Section2Master/DropdownListbyTenantAsync?Id=" + tenantId+"&subsubcat_id="+subsubcat_id
-        });
-        return request;
-    }
 
-    this.LoadProductDropdown = function ProductDropdown(tenantId) {
-        let request = $http({
-            method: "get",
-            url: "/Get/Product/DropdownListbyTenantAsync?Id=" + tenantId
-        });
-        return request;
-    }
-
-    this.LoadPurchaseProductDropdown = function PurchaseProductDropdown(tenantId) {
-        let request = $http({
-            method: "get",
-            url: "/Get/Product/PurchaseDropdownListbyTenantAsync?Id=" + tenantId
-        });
-        return request;
-    }
-
-    this.LoadPurchaseProductDropdownByVendor = function PurchaseProductDropdownByVendor(vendorId) {
-        let request = $http({
-            method: "get",
-            url: "/Get/Product/PurchaseDropdownListbyVendorAsync?Id=" + vendorId
-        });
-        return request;
-    }
-
-    this.LoadSaleableProductDropdownByTenant = function SaleableProductDropdownByTenantId(tenantId) {
-        let request = $http({
-            method: "get",
-            url: "/Get/Sales/SaleableProductDropdownListbyTenantAsync?Id=" + tenantId
-        });
-        return request;
-    }
-
-    this.LoadAllProductDropdownByVendorId = function AllProductDropdownByVendorId(vendorId) {
-        let request = $http({
-            method: "get",
-            url: "/Get/Purchase/AllProductDropdownListByVendorAsync?Id=" + vendorId
-        });
-        return request;
-    }
 
 });
 
