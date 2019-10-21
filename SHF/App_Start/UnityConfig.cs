@@ -50,6 +50,7 @@ namespace SHF
             container.RegisterType<Business.Interface.IServices2Section3DownloadMaster, Business.BusinessLogic.Services2Section3DownloadMaster>();
             container.RegisterType<Business.Interface.IServices2Section4Master, Business.BusinessLogic.Services2Section4Master>();
             container.RegisterType<Business.Interface.IServices3Master, Business.BusinessLogic.Services3Master>();
+            container.RegisterType<Business.Interface.IServices3HeadingButtons, Business.BusinessLogic.Services3HeadingButtons>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

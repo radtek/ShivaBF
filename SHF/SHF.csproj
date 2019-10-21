@@ -385,6 +385,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Services3HeadingButtonsController.cs" />
     <Compile Include="Controllers\Services3MasterController.cs" />
     <Compile Include="Controllers\Services2Section4MasterController.cs" />
     <Compile Include="Controllers\Services2Section3DownloadMasterController.cs" />
@@ -457,6 +458,7 @@
     <Content Include="AngularControllers\PriceFeaturesMappingController.js" />
     <Content Include="AngularControllers\PriceFeaturesMasterController.js" />
     <Content Include="AngularControllers\FAQMasterController.js" />
+    <Content Include="AngularControllers\Services3HeadingButtonsController.js" />
     <Content Include="AngularControllers\Services3MasterController.js" />
     <Content Include="AngularControllers\Services2Section4MasterController.js" />
     <Content Include="AngularControllers\Services2Section3DownloadMasterController.js" />
@@ -8971,6 +8973,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Services\AspNetRole.js" />
     <Content Include="Scripts\Services\AspNetUser.js" />
+    <Content Include="Scripts\Services\Services3HeadingButtons.js" />
     <Content Include="Scripts\Services\Services3Master.js" />
     <Content Include="Scripts\Services\Services2Section4Master.js" />
     <Content Include="Scripts\Services\Services2Section3DownloadMaster.js" />
