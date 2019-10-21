@@ -53,6 +53,7 @@
     <Compile Include="BaseBusiness.cs" />
     <Compile Include="busCache.cs" />
     <Compile Include="BusinessLogic\FAQMaster.cs" />
+    <Compile Include="BusinessLogic\Services3Section6PriceMaster.cs" />
     <Compile Include="BusinessLogic\Services3Section4.cs" />
     <Compile Include="BusinessLogic\Services3HeadingButtons.cs" />
     <Compile Include="BusinessLogic\Services3Master.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="BusinessLogic\BankMaster.cs" />
     <Compile Include="BusinessLogic\SubMenu.cs" />
     <Compile Include="BusinessLogic\Tenant.cs" />
+    <Compile Include="Interface\IServices3Section6PriceMaster.cs" />
     <Compile Include="Interface\IServices3Section4.cs" />
     <Compile Include="Interface\IServices3HeadingButtons.cs" />
     <Compile Include="Interface\IServices3Master.cs" />
