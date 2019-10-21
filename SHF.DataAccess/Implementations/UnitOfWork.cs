@@ -54,6 +54,17 @@ namespace SHF.DataAccess.Implementations
         private GenericRepository<EntityModel.Services3HeadingButtons> _Services3HeadingButtonsRepository;
         private GenericRepository<EntityModel.Services3Section4> _Services3Section4Repository;
         private GenericRepository<EntityModel.Services3Section6PriceMaster> _Services3Section6PriceMasterRepository;
+        private GenericRepository<EntityModel.Services4Master> _Services4MasterRepository;
+        private GenericRepository<EntityModel.Services4Section2FAQMapping> _Services4Section2FAQMappingRepository;
+        private GenericRepository<EntityModel.Services4Section2Master> _Services4Section2MasterRepository;
+        private GenericRepository<EntityModel.Services4Section2MasterChild> _Services4Section2MasterChildRepository;
+        private GenericRepository<EntityModel.Services4Section3> _Services4Section3Repository;
+        private GenericRepository<EntityModel.Services4Section3DownloadMaster> _Services4Section3DownloadMasterRepository;
+        private GenericRepository<EntityModel.Services4Section3Master> _Services4Section3MasterRepository;
+        private GenericRepository<EntityModel.Services4Section3MasterChild> _Services4Section3MasterChildRepository;
+        private GenericRepository<EntityModel.Services4Section567FieldMaster> _Services4Section567FieldMasterRepository;
+        private GenericRepository<EntityModel.Services4Section567FieldValues> _Services4Section567FieldValuesRepository;
+
         #endregion
 
 
@@ -438,7 +449,118 @@ namespace SHF.DataAccess.Implementations
                 return _Services3Section6PriceMasterRepository;
             }
         }
+        public GenericRepository<EntityModel.Services4Master> Services4MasterRepository
+        {
+            get
+            {
+                if (this._Services4MasterRepository == null)
+                {
+                    this._Services4MasterRepository = new GenericRepository<EntityModel.Services4Master>(context);
+                }
+                return _Services4MasterRepository;
+            }
+        }
+        public GenericRepository<EntityModel.Services4Section2FAQMapping> Services4Section2FAQMappingRepository
+        {
+            get
+            {
+                if (this._Services4Section2FAQMappingRepository == null)
+                {
+                    this._Services4Section2FAQMappingRepository = new GenericRepository<EntityModel.Services4Section2FAQMapping>(context);
+                }
+                return _Services4Section2FAQMappingRepository;
+            }
+        }
+        public GenericRepository<EntityModel.Services4Section2Master> Services4Section2MasterRepository
+        {
+            get
+            {
+                if (this._Services4Section2MasterRepository == null)
+                {
+                    this._Services4Section2MasterRepository = new GenericRepository<EntityModel.Services4Section2Master>(context);
+                }
+                return _Services4Section2MasterRepository;
+            }
+        }
+        public GenericRepository<EntityModel.Services4Section2MasterChild> Services4Section2MasterChildRepository
+        {
+            get
+            {
+                if (this._Services4Section2MasterChildRepository == null)
+                {
+                    this._Services4Section2MasterChildRepository = new GenericRepository<EntityModel.Services4Section2MasterChild>(context);
+                }
+                return _Services4Section2MasterChildRepository;
+            }
+        }
+        public GenericRepository<EntityModel.Services4Section3> Services4Section3Repository
+        {
+            get
+            {
+                if (this._Services4Section3Repository == null)
+                {
+                    this._Services4Section3Repository = new GenericRepository<EntityModel.Services4Section3>(context);
+                }
+                return _Services4Section3Repository;
+            }
+        }
+        public GenericRepository<EntityModel.Services4Section3DownloadMaster> Services4Section3DownloadMasterRepository
+        {
+            get
+            {
+                if (this._Services4Section3DownloadMasterRepository == null)
+                {
+                    this._Services4Section3DownloadMasterRepository = new GenericRepository<EntityModel.Services4Section3DownloadMaster>(context);
+                }
+                return _Services4Section3DownloadMasterRepository;
+            }
+        }
+        public GenericRepository<EntityModel.Services4Section3Master> Services4Section3MasterRepository
+        {
+            get
+            {
+                if (this._Services4Section3MasterRepository == null)
+                {
+                    this._Services4Section3MasterRepository = new GenericRepository<EntityModel.Services4Section3Master>(context);
+                }
+                return _Services4Section3MasterRepository;
+            }
+        }
+        public GenericRepository<EntityModel.Services4Section3MasterChild> Services4Section3MasterChildRepository
+        {
+            get
+            {
+                if (this._Services4Section3MasterChildRepository == null)
+                {
+                    this._Services4Section3MasterChildRepository = new GenericRepository<EntityModel.Services4Section3MasterChild>(context);
+                }
+                return _Services4Section3MasterChildRepository;
+            }
+        }
+        public GenericRepository<EntityModel.Services4Section567FieldMaster> Services4Section567FieldMasterRepository
+        {
+            get
+            {
+                if (this._Services4Section567FieldMasterRepository == null)
+                {
+                    this._Services4Section567FieldMasterRepository = new GenericRepository<EntityModel.Services4Section567FieldMaster>(context);
+                }
+                return _Services4Section567FieldMasterRepository;
+            }
+        }
+        public GenericRepository<EntityModel.Services4Section567FieldValues> Services4Section567FieldValuesRepository
+        {
+            get
+            {
+                if (this._Services4Section567FieldValuesRepository == null)
+                {
+                    this._Services4Section567FieldValuesRepository = new GenericRepository<EntityModel.Services4Section567FieldValues>(context);
+                }
+                return _Services4Section567FieldValuesRepository;
+            }
+        }
         
+     
         #endregion
 
         #region [Constructors]

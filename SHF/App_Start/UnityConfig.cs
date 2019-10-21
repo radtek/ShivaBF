@@ -53,6 +53,7 @@ namespace SHF
             container.RegisterType<Business.Interface.IServices3HeadingButtons, Business.BusinessLogic.Services3HeadingButtons>();
             container.RegisterType<Business.Interface.IServices3Section4, Business.BusinessLogic.Services3Section4>();
             container.RegisterType<Business.Interface.IServices3Section6PriceMaster, Business.BusinessLogic.Services3Section6PriceMaster>();
+            container.RegisterType<Business.Interface.IServices4Master, Business.BusinessLogic.Services4Master>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }
