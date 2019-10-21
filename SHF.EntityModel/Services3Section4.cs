@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SHF.EntityModel
 {
-    [Table("Tbl_SServices3Section4", Schema = "dbo")]
+    [Table("Tbl_Services3Section4", Schema = "dbo")]
     public class Services3Section4 : BaseEntity
     {
         [Key]
