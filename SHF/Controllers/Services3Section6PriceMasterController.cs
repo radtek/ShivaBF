@@ -169,7 +169,7 @@ namespace SHF.Controllers
                                 entity.SubSubCat_Id = model.SubSubCat_Id;
                                 entity.AncharTagTitle = model.AncharTagTitle;
                                 entity.AncharTagUrl = model.AncharTagUrl;
-                                entity.Heading = model.HeadingText;
+                                entity.HeadingText = model.Heading;
                                 entity.Price =model.Price;
                                 entity.DisplayIndex = model.DisplayIndex;
                                 entity.IsActive = model.IsActive;
@@ -252,8 +252,8 @@ namespace SHF.Controllers
                                     model.SubSubCategoryName = entityServices.SubSubCategoryName;
                                     model.AncharTagTitle = entity.AncharTagTitle;
                                     model.AncharTagUrl = entity.AncharTagUrl;
-                                    model.HeadingText = entity.Heading;
-                                    model.Price = entity.Price;
+                                    model.Heading = entity.HeadingText;
+                                    model.Price = Convert.ToInt32(entity.Price);
                                     model.DisplayIndex = entity.DisplayIndex;
                                     model.IsActive = entity.IsActive;
                                     model.TotalViews=entity.TotalViews;
@@ -353,7 +353,7 @@ namespace SHF.Controllers
                                 entity.SubSubCat_Id = model.SubSubCat_Id;
                                 entity.AncharTagTitle = model.AncharTagTitle;
                                 entity.AncharTagUrl = model.AncharTagUrl;
-                                entity.Heading = model.HeadingText;
+                                entity.HeadingText = model.Heading;
                                 entity.Price = model.Price;
                                 entity.DisplayIndex = model.DisplayIndex;
                                 entity.IsActive = model.IsActive;

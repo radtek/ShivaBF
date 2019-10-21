@@ -3,7 +3,7 @@ namespace SHF.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class DBSetup : DbMigration
+    public partial class DBsetup : DbMigration
     {
         public override void Up()
         {
@@ -1169,7 +1169,7 @@ namespace SHF.Migrations
                 .Index(t => t.Tenant_ID);
             
             CreateTable(
-                "dbo.Tbl_SServices3Section4",
+                "dbo.Tbl_Services3Section4",
                 c => new
                     {
                         ID = c.Long(nullable: false, identity: true),
@@ -1290,6 +1290,7 @@ namespace SHF.Migrations
                     {
                         ID = c.Long(nullable: false, identity: true),
                         Service_Id = c.Long(),
+                        SubSubCat_Id = c.Long(),
                         FAQMaster_Id = c.Long(),
                         DisplayIndex = c.Int(nullable: false),
                         IsActive = c.Boolean(),
@@ -1308,8 +1309,10 @@ namespace SHF.Migrations
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Tbl_FAQMaster", t => t.FAQMaster_Id)
                 .ForeignKey("dbo.Tbl_Services4Master", t => t.Service_Id)
+                .ForeignKey("dbo.Tbl_SubSubCategoriesMaster", t => t.SubSubCat_Id)
                 .ForeignKey("dbo.Tbl_Tenant", t => t.Tenant_ID)
                 .Index(t => t.Service_Id)
+                .Index(t => t.SubSubCat_Id)
                 .Index(t => t.FAQMaster_Id)
                 .Index(t => t.Tenant_ID);
             
@@ -1319,6 +1322,7 @@ namespace SHF.Migrations
                     {
                         ID = c.Long(nullable: false, identity: true),
                         Service_Id = c.Long(),
+                        SubSubCat_Id = c.Long(),
                         Heading = c.String(),
                         Description = c.String(),
                         DisplayIndex = c.Int(nullable: false),
@@ -1337,8 +1341,10 @@ namespace SHF.Migrations
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Tbl_Services4Master", t => t.Service_Id)
+                .ForeignKey("dbo.Tbl_SubSubCategoriesMaster", t => t.SubSubCat_Id)
                 .ForeignKey("dbo.Tbl_Tenant", t => t.Tenant_ID)
                 .Index(t => t.Service_Id)
+                .Index(t => t.SubSubCat_Id)
                 .Index(t => t.Tenant_ID);
             
             CreateTable(
@@ -1348,6 +1354,7 @@ namespace SHF.Migrations
                         ID = c.Long(nullable: false, identity: true),
                         Service_Id = c.Long(),
                         S4S2M_id = c.Long(),
+                        SubSubCat_Id = c.Long(),
                         FeatureDescription = c.String(),
                         Price = c.Long(nullable: false),
                         AncharTagTitle = c.String(),
@@ -1369,9 +1376,11 @@ namespace SHF.Migrations
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Tbl_Services4Master", t => t.Service_Id)
                 .ForeignKey("dbo.Tbl_Services4Section2Master", t => t.S4S2M_id)
+                .ForeignKey("dbo.Tbl_SubSubCategoriesMaster", t => t.SubSubCat_Id)
                 .ForeignKey("dbo.Tbl_Tenant", t => t.Tenant_ID)
                 .Index(t => t.Service_Id)
                 .Index(t => t.S4S2M_id)
+                .Index(t => t.SubSubCat_Id)
                 .Index(t => t.Tenant_ID);
             
             CreateTable(
@@ -1380,6 +1389,7 @@ namespace SHF.Migrations
                     {
                         ID = c.Long(nullable: false, identity: true),
                         Service_Id = c.Long(),
+                        SubSubCat_Id = c.Long(),
                         Heading = c.String(),
                         ShortDescription = c.String(),
                         DisplayIndex = c.Int(nullable: false),
@@ -1398,8 +1408,10 @@ namespace SHF.Migrations
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Tbl_Services4Master", t => t.Service_Id)
+                .ForeignKey("dbo.Tbl_SubSubCategoriesMaster", t => t.SubSubCat_Id)
                 .ForeignKey("dbo.Tbl_Tenant", t => t.Tenant_ID)
                 .Index(t => t.Service_Id)
+                .Index(t => t.SubSubCat_Id)
                 .Index(t => t.Tenant_ID);
             
             CreateTable(
@@ -1408,6 +1420,7 @@ namespace SHF.Migrations
                     {
                         ID = c.Long(nullable: false, identity: true),
                         Service_Id = c.Long(),
+                        SubSubCat_Id = c.Long(),
                         AncharTagTitle = c.String(),
                         AncharTagUrl = c.String(),
                         DownloadFilePath = c.String(),
@@ -1426,9 +1439,11 @@ namespace SHF.Migrations
                         Is_Deleted = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.Tbl_Services2Master", t => t.Service_Id)
+                .ForeignKey("dbo.Tbl_Services4Master", t => t.Service_Id)
+                .ForeignKey("dbo.Tbl_SubSubCategoriesMaster", t => t.SubSubCat_Id)
                 .ForeignKey("dbo.Tbl_Tenant", t => t.Tenant_ID)
                 .Index(t => t.Service_Id)
+                .Index(t => t.SubSubCat_Id)
                 .Index(t => t.Tenant_ID);
             
             CreateTable(
@@ -1437,6 +1452,7 @@ namespace SHF.Migrations
                     {
                         ID = c.Long(nullable: false, identity: true),
                         Service_Id = c.Long(),
+                        SubSubCat_Id = c.Long(),
                         Heading = c.String(),
                         Description = c.String(),
                         DisplayIndex = c.Int(nullable: false),
@@ -1455,8 +1471,10 @@ namespace SHF.Migrations
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Tbl_Services4Master", t => t.Service_Id)
+                .ForeignKey("dbo.Tbl_SubSubCategoriesMaster", t => t.SubSubCat_Id)
                 .ForeignKey("dbo.Tbl_Tenant", t => t.Tenant_ID)
                 .Index(t => t.Service_Id)
+                .Index(t => t.SubSubCat_Id)
                 .Index(t => t.Tenant_ID);
             
             CreateTable(
@@ -1465,6 +1483,7 @@ namespace SHF.Migrations
                     {
                         ID = c.Long(nullable: false, identity: true),
                         Service_Id = c.Long(),
+                        SubSubCat_Id = c.Long(),
                         S4S3M_id = c.Long(),
                         FeatureDescription = c.String(),
                         Price = c.Long(nullable: false),
@@ -1487,8 +1506,10 @@ namespace SHF.Migrations
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Tbl_Services4Master", t => t.Service_Id)
                 .ForeignKey("dbo.Tbl_Services4Section3Master", t => t.S4S3M_id)
+                .ForeignKey("dbo.Tbl_SubSubCategoriesMaster", t => t.SubSubCat_Id)
                 .ForeignKey("dbo.Tbl_Tenant", t => t.Tenant_ID)
                 .Index(t => t.Service_Id)
+                .Index(t => t.SubSubCat_Id)
                 .Index(t => t.S4S3M_id)
                 .Index(t => t.Tenant_ID);
             
@@ -1498,6 +1519,7 @@ namespace SHF.Migrations
                     {
                         ID = c.Long(nullable: false, identity: true),
                         Service_Id = c.Long(),
+                        SubSubCat_Id = c.Long(),
                         FieldName = c.String(),
                         SectionType = c.String(),
                         DisplayIndex = c.Int(nullable: false),
@@ -1516,8 +1538,10 @@ namespace SHF.Migrations
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Tbl_Services4Master", t => t.Service_Id)
+                .ForeignKey("dbo.Tbl_SubSubCategoriesMaster", t => t.SubSubCat_Id)
                 .ForeignKey("dbo.Tbl_Tenant", t => t.Tenant_ID)
                 .Index(t => t.Service_Id)
+                .Index(t => t.SubSubCat_Id)
                 .Index(t => t.Tenant_ID);
             
             CreateTable(
@@ -1526,6 +1550,7 @@ namespace SHF.Migrations
                     {
                         ID = c.Long(nullable: false, identity: true),
                         S4S567FM_Id = c.Long(),
+                        SubSubCat_Id = c.Long(),
                         RowNumber = c.Int(nullable: false),
                         DisplayText = c.String(),
                         DownloadFilePath = c.String(),
@@ -1545,8 +1570,10 @@ namespace SHF.Migrations
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Tbl_Services4Section567FieldMaster", t => t.S4S567FM_Id)
+                .ForeignKey("dbo.Tbl_SubSubCategoriesMaster", t => t.SubSubCat_Id)
                 .ForeignKey("dbo.Tbl_Tenant", t => t.Tenant_ID)
                 .Index(t => t.S4S567FM_Id)
+                .Index(t => t.SubSubCat_Id)
                 .Index(t => t.Tenant_ID);
             
             CreateTable(
@@ -1595,6 +1622,7 @@ namespace SHF.Migrations
                     {
                         ID = c.Long(nullable: false, identity: true),
                         Service_Id = c.Long(),
+                        SubSubCat_Id = c.Long(),
                         AncharTagTitle = c.String(),
                         AncharTagUrl = c.String(),
                         ImageFilePath = c.String(),
@@ -1614,8 +1642,10 @@ namespace SHF.Migrations
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Tbl_Services5Master", t => t.Service_Id)
+                .ForeignKey("dbo.Tbl_SubSubCategoriesMaster", t => t.SubSubCat_Id)
                 .ForeignKey("dbo.Tbl_Tenant", t => t.Tenant_ID)
                 .Index(t => t.Service_Id)
+                .Index(t => t.SubSubCat_Id)
                 .Index(t => t.Tenant_ID);
             
             CreateTable(
@@ -1624,6 +1654,7 @@ namespace SHF.Migrations
                     {
                         ID = c.Long(nullable: false, identity: true),
                         Service_Id = c.Long(),
+                        SubSubCat_Id = c.Long(),
                         S5S2M_Id = c.Long(),
                         Text = c.String(),
                         DisplayIndex = c.Int(nullable: false),
@@ -1643,8 +1674,10 @@ namespace SHF.Migrations
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Tbl_Services5Master", t => t.Service_Id)
                 .ForeignKey("dbo.Tbl_Services5Section2Master", t => t.S5S2M_Id)
+                .ForeignKey("dbo.Tbl_SubSubCategoriesMaster", t => t.SubSubCat_Id)
                 .ForeignKey("dbo.Tbl_Tenant", t => t.Tenant_ID)
                 .Index(t => t.Service_Id)
+                .Index(t => t.SubSubCat_Id)
                 .Index(t => t.S5S2M_Id)
                 .Index(t => t.Tenant_ID);
             
@@ -1694,6 +1727,7 @@ namespace SHF.Migrations
                     {
                         ID = c.Long(nullable: false, identity: true),
                         Service_Id = c.Long(),
+                        SubSubCat_Id = c.Long(),
                         Title = c.String(),
                         ImageFilePath = c.String(),
                         DisplayIndex = c.Int(nullable: false),
@@ -1712,8 +1746,10 @@ namespace SHF.Migrations
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Tbl_Services6Master", t => t.Service_Id)
+                .ForeignKey("dbo.Tbl_SubSubCategoriesMaster", t => t.SubSubCat_Id)
                 .ForeignKey("dbo.Tbl_Tenant", t => t.Tenant_ID)
                 .Index(t => t.Service_Id)
+                .Index(t => t.SubSubCat_Id)
                 .Index(t => t.Tenant_ID);
             
             CreateTable(
@@ -1722,6 +1758,7 @@ namespace SHF.Migrations
                     {
                         ID = c.Long(nullable: false, identity: true),
                         Service_Id = c.Long(),
+                        SubSubCat_Id = c.Long(),
                         S6S2M_Id = c.Long(),
                         Price = c.Long(nullable: false),
                         AncharTagTitle = c.String(),
@@ -1743,8 +1780,10 @@ namespace SHF.Migrations
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Tbl_Services6Master", t => t.Service_Id)
                 .ForeignKey("dbo.Tbl_Services6Section2Master", t => t.S6S2M_Id)
+                .ForeignKey("dbo.Tbl_SubSubCategoriesMaster", t => t.SubSubCat_Id)
                 .ForeignKey("dbo.Tbl_Tenant", t => t.Tenant_ID)
                 .Index(t => t.Service_Id)
+                .Index(t => t.SubSubCat_Id)
                 .Index(t => t.S6S2M_Id)
                 .Index(t => t.Tenant_ID);
             
@@ -1754,6 +1793,7 @@ namespace SHF.Migrations
                     {
                         ID = c.Long(nullable: false, identity: true),
                         Service_Id = c.Long(),
+                        SubSubCat_Id = c.Long(),
                         AncharTagTitle = c.String(),
                         AncharTagUrl = c.String(),
                         DisplayIndex = c.Int(nullable: false),
@@ -1772,8 +1812,10 @@ namespace SHF.Migrations
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Tbl_Services7Master", t => t.Service_Id)
+                .ForeignKey("dbo.Tbl_SubSubCategoriesMaster", t => t.SubSubCat_Id)
                 .ForeignKey("dbo.Tbl_Tenant", t => t.Tenant_ID)
                 .Index(t => t.Service_Id)
+                .Index(t => t.SubSubCat_Id)
                 .Index(t => t.Tenant_ID);
             
             CreateTable(
@@ -1827,6 +1869,7 @@ namespace SHF.Migrations
                     {
                         ID = c.Long(nullable: false, identity: true),
                         Service_Id = c.Long(),
+                        SubSubCat_Id = c.Long(),
                         State_Id = c.Long(),
                         HeadingText = c.String(),
                         Price = c.Long(nullable: false),
@@ -1849,8 +1892,10 @@ namespace SHF.Migrations
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Tbl_Services7Master", t => t.Service_Id)
                 .ForeignKey("dbo.Tbl_StateMaster", t => t.State_Id)
+                .ForeignKey("dbo.Tbl_SubSubCategoriesMaster", t => t.SubSubCat_Id)
                 .ForeignKey("dbo.Tbl_Tenant", t => t.Tenant_ID)
                 .Index(t => t.Service_Id)
+                .Index(t => t.SubSubCat_Id)
                 .Index(t => t.State_Id)
                 .Index(t => t.Tenant_ID);
             
@@ -1860,6 +1905,7 @@ namespace SHF.Migrations
                     {
                         ID = c.Long(nullable: false, identity: true),
                         Service_Id = c.Long(),
+                        SubSubCat_Id = c.Long(),
                         AncharTagTitle = c.String(),
                         AncharTagUrl = c.String(),
                         DisplayIndex = c.Int(nullable: false),
@@ -1878,8 +1924,10 @@ namespace SHF.Migrations
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Tbl_Services8Master", t => t.Service_Id)
+                .ForeignKey("dbo.Tbl_SubSubCategoriesMaster", t => t.SubSubCat_Id)
                 .ForeignKey("dbo.Tbl_Tenant", t => t.Tenant_ID)
                 .Index(t => t.Service_Id)
+                .Index(t => t.SubSubCat_Id)
                 .Index(t => t.Tenant_ID);
             
             CreateTable(
@@ -1933,6 +1981,7 @@ namespace SHF.Migrations
                     {
                         ID = c.Long(nullable: false, identity: true),
                         Service_Id = c.Long(),
+                        SubSubCat_Id = c.Long(),
                         HeadingText = c.String(),
                         ShortDescription = c.String(),
                         AncharTagTitle = c.String(),
@@ -1953,8 +2002,10 @@ namespace SHF.Migrations
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Tbl_Services7Master", t => t.Service_Id)
+                .ForeignKey("dbo.Tbl_SubSubCategoriesMaster", t => t.SubSubCat_Id)
                 .ForeignKey("dbo.Tbl_Tenant", t => t.Tenant_ID)
                 .Index(t => t.Service_Id)
+                .Index(t => t.SubSubCat_Id)
                 .Index(t => t.Tenant_ID);
             
             CreateTable(
@@ -2046,59 +2097,76 @@ namespace SHF.Migrations
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "Tenant_ID", "dbo.Tbl_Tenant");
             DropForeignKey("dbo.Tbl_Services8Section6Master", "Tenant_ID", "dbo.Tbl_Tenant");
+            DropForeignKey("dbo.Tbl_Services8Section6Master", "SubSubCat_Id", "dbo.Tbl_SubSubCategoriesMaster");
             DropForeignKey("dbo.Tbl_Services8Section6Master", "Service_Id", "dbo.Tbl_Services7Master");
             DropForeignKey("dbo.Tbl_Services8HeadingButtons", "Tenant_ID", "dbo.Tbl_Tenant");
+            DropForeignKey("dbo.Tbl_Services8HeadingButtons", "SubSubCat_Id", "dbo.Tbl_SubSubCategoriesMaster");
             DropForeignKey("dbo.Tbl_Services8HeadingButtons", "Service_Id", "dbo.Tbl_Services8Master");
             DropForeignKey("dbo.Tbl_Services8Master", "Tenant_ID", "dbo.Tbl_Tenant");
             DropForeignKey("dbo.Tbl_Services8Master", "SubSubCat_Id", "dbo.Tbl_SubSubCategoriesMaster");
             DropForeignKey("dbo.Tbl_Services8Master", "SubCat_Id", "dbo.Tbl_SubCategoriesMaster");
             DropForeignKey("dbo.Tbl_Services8Master", "Cat_Id", "dbo.Tbl_CategoriesMaster");
             DropForeignKey("dbo.Tbl_Services7Section6PriceMaster", "Tenant_ID", "dbo.Tbl_Tenant");
+            DropForeignKey("dbo.Tbl_Services7Section6PriceMaster", "SubSubCat_Id", "dbo.Tbl_SubSubCategoriesMaster");
             DropForeignKey("dbo.Tbl_Services7Section6PriceMaster", "State_Id", "dbo.Tbl_StateMaster");
             DropForeignKey("dbo.Tbl_Services7Section6PriceMaster", "Service_Id", "dbo.Tbl_Services7Master");
             DropForeignKey("dbo.Tbl_Services7HeadingButtons", "Tenant_ID", "dbo.Tbl_Tenant");
+            DropForeignKey("dbo.Tbl_Services7HeadingButtons", "SubSubCat_Id", "dbo.Tbl_SubSubCategoriesMaster");
             DropForeignKey("dbo.Tbl_Services7HeadingButtons", "Service_Id", "dbo.Tbl_Services7Master");
             DropForeignKey("dbo.Tbl_Services7Master", "Tenant_ID", "dbo.Tbl_Tenant");
             DropForeignKey("dbo.Tbl_Services7Master", "SubSubCat_Id", "dbo.Tbl_SubSubCategoriesMaster");
             DropForeignKey("dbo.Tbl_Services7Master", "SubCat_Id", "dbo.Tbl_SubCategoriesMaster");
             DropForeignKey("dbo.Tbl_Services7Master", "Cat_Id", "dbo.Tbl_CategoriesMaster");
             DropForeignKey("dbo.Tbl_Services6Section2MasterFeaturesDetails", "Tenant_ID", "dbo.Tbl_Tenant");
+            DropForeignKey("dbo.Tbl_Services6Section2MasterFeaturesDetails", "SubSubCat_Id", "dbo.Tbl_SubSubCategoriesMaster");
             DropForeignKey("dbo.Tbl_Services6Section2MasterFeaturesDetails", "S6S2M_Id", "dbo.Tbl_Services6Section2Master");
             DropForeignKey("dbo.Tbl_Services6Section2MasterFeaturesDetails", "Service_Id", "dbo.Tbl_Services6Master");
             DropForeignKey("dbo.Tbl_Services6Section2Master", "Tenant_ID", "dbo.Tbl_Tenant");
+            DropForeignKey("dbo.Tbl_Services6Section2Master", "SubSubCat_Id", "dbo.Tbl_SubSubCategoriesMaster");
             DropForeignKey("dbo.Tbl_Services6Section2Master", "Service_Id", "dbo.Tbl_Services6Master");
             DropForeignKey("dbo.Tbl_Services6Master", "Tenant_ID", "dbo.Tbl_Tenant");
             DropForeignKey("dbo.Tbl_Services6Master", "SubSubCat_Id", "dbo.Tbl_SubSubCategoriesMaster");
             DropForeignKey("dbo.Tbl_Services6Master", "SubCat_Id", "dbo.Tbl_SubCategoriesMaster");
             DropForeignKey("dbo.Tbl_Services6Master", "Cat_Id", "dbo.Tbl_CategoriesMaster");
             DropForeignKey("dbo.Tbl_Services5Section2MasterFeaturesDetails", "Tenant_ID", "dbo.Tbl_Tenant");
+            DropForeignKey("dbo.Tbl_Services5Section2MasterFeaturesDetails", "SubSubCat_Id", "dbo.Tbl_SubSubCategoriesMaster");
             DropForeignKey("dbo.Tbl_Services5Section2MasterFeaturesDetails", "S5S2M_Id", "dbo.Tbl_Services5Section2Master");
             DropForeignKey("dbo.Tbl_Services5Section2MasterFeaturesDetails", "Service_Id", "dbo.Tbl_Services5Master");
             DropForeignKey("dbo.Tbl_Services5Section2Master", "Tenant_ID", "dbo.Tbl_Tenant");
+            DropForeignKey("dbo.Tbl_Services5Section2Master", "SubSubCat_Id", "dbo.Tbl_SubSubCategoriesMaster");
             DropForeignKey("dbo.Tbl_Services5Section2Master", "Service_Id", "dbo.Tbl_Services5Master");
             DropForeignKey("dbo.Tbl_Services5Master", "Tenant_ID", "dbo.Tbl_Tenant");
             DropForeignKey("dbo.Tbl_Services5Master", "SubSubCat_Id", "dbo.Tbl_SubSubCategoriesMaster");
             DropForeignKey("dbo.Tbl_Services5Master", "SubCat_Id", "dbo.Tbl_SubCategoriesMaster");
             DropForeignKey("dbo.Tbl_Services5Master", "Cat_Id", "dbo.Tbl_CategoriesMaster");
             DropForeignKey("dbo.Tbl_Services4Section567FieldValues", "Tenant_ID", "dbo.Tbl_Tenant");
+            DropForeignKey("dbo.Tbl_Services4Section567FieldValues", "SubSubCat_Id", "dbo.Tbl_SubSubCategoriesMaster");
             DropForeignKey("dbo.Tbl_Services4Section567FieldValues", "S4S567FM_Id", "dbo.Tbl_Services4Section567FieldMaster");
             DropForeignKey("dbo.Tbl_Services4Section567FieldMaster", "Tenant_ID", "dbo.Tbl_Tenant");
+            DropForeignKey("dbo.Tbl_Services4Section567FieldMaster", "SubSubCat_Id", "dbo.Tbl_SubSubCategoriesMaster");
             DropForeignKey("dbo.Tbl_Services4Section567FieldMaster", "Service_Id", "dbo.Tbl_Services4Master");
             DropForeignKey("dbo.Tbl_Services4Section3MasterChild", "Tenant_ID", "dbo.Tbl_Tenant");
+            DropForeignKey("dbo.Tbl_Services4Section3MasterChild", "SubSubCat_Id", "dbo.Tbl_SubSubCategoriesMaster");
             DropForeignKey("dbo.Tbl_Services4Section3MasterChild", "S4S3M_id", "dbo.Tbl_Services4Section3Master");
             DropForeignKey("dbo.Tbl_Services4Section3MasterChild", "Service_Id", "dbo.Tbl_Services4Master");
             DropForeignKey("dbo.Tbl_Services4Section3Master", "Tenant_ID", "dbo.Tbl_Tenant");
+            DropForeignKey("dbo.Tbl_Services4Section3Master", "SubSubCat_Id", "dbo.Tbl_SubSubCategoriesMaster");
             DropForeignKey("dbo.Tbl_Services4Section3Master", "Service_Id", "dbo.Tbl_Services4Master");
             DropForeignKey("dbo.Tbl_Services4Section3DownloadMaster", "Tenant_ID", "dbo.Tbl_Tenant");
-            DropForeignKey("dbo.Tbl_Services4Section3DownloadMaster", "Service_Id", "dbo.Tbl_Services2Master");
+            DropForeignKey("dbo.Tbl_Services4Section3DownloadMaster", "SubSubCat_Id", "dbo.Tbl_SubSubCategoriesMaster");
+            DropForeignKey("dbo.Tbl_Services4Section3DownloadMaster", "Service_Id", "dbo.Tbl_Services4Master");
             DropForeignKey("dbo.Tbl_Services4Section3", "Tenant_ID", "dbo.Tbl_Tenant");
+            DropForeignKey("dbo.Tbl_Services4Section3", "SubSubCat_Id", "dbo.Tbl_SubSubCategoriesMaster");
             DropForeignKey("dbo.Tbl_Services4Section3", "Service_Id", "dbo.Tbl_Services4Master");
             DropForeignKey("dbo.Tbl_Services4Section2MasterChild", "Tenant_ID", "dbo.Tbl_Tenant");
+            DropForeignKey("dbo.Tbl_Services4Section2MasterChild", "SubSubCat_Id", "dbo.Tbl_SubSubCategoriesMaster");
             DropForeignKey("dbo.Tbl_Services4Section2MasterChild", "S4S2M_id", "dbo.Tbl_Services4Section2Master");
             DropForeignKey("dbo.Tbl_Services4Section2MasterChild", "Service_Id", "dbo.Tbl_Services4Master");
             DropForeignKey("dbo.Tbl_Services4Section2Master", "Tenant_ID", "dbo.Tbl_Tenant");
+            DropForeignKey("dbo.Tbl_Services4Section2Master", "SubSubCat_Id", "dbo.Tbl_SubSubCategoriesMaster");
             DropForeignKey("dbo.Tbl_Services4Section2Master", "Service_Id", "dbo.Tbl_Services4Master");
             DropForeignKey("dbo.Tbl_Services4Section2FAQMapping", "Tenant_ID", "dbo.Tbl_Tenant");
+            DropForeignKey("dbo.Tbl_Services4Section2FAQMapping", "SubSubCat_Id", "dbo.Tbl_SubSubCategoriesMaster");
             DropForeignKey("dbo.Tbl_Services4Section2FAQMapping", "Service_Id", "dbo.Tbl_Services4Master");
             DropForeignKey("dbo.Tbl_Services4Section2FAQMapping", "FAQMaster_Id", "dbo.Tbl_FAQMaster");
             DropForeignKey("dbo.Tbl_Services4Master", "Tenant_ID", "dbo.Tbl_Tenant");
@@ -2109,9 +2177,9 @@ namespace SHF.Migrations
             DropForeignKey("dbo.Tbl_Services3Section6PriceMaster", "SubSubCat_Id", "dbo.Tbl_SubSubCategoriesMaster");
             DropForeignKey("dbo.Tbl_Services3Section6PriceMaster", "State_Id", "dbo.Tbl_StateMaster");
             DropForeignKey("dbo.Tbl_Services3Section6PriceMaster", "Service_Id", "dbo.Tbl_Services3Master");
-            DropForeignKey("dbo.Tbl_SServices3Section4", "Tenant_ID", "dbo.Tbl_Tenant");
-            DropForeignKey("dbo.Tbl_SServices3Section4", "SubSubCat_Id", "dbo.Tbl_SubSubCategoriesMaster");
-            DropForeignKey("dbo.Tbl_SServices3Section4", "Service_Id", "dbo.Tbl_Services3Master");
+            DropForeignKey("dbo.Tbl_Services3Section4", "Tenant_ID", "dbo.Tbl_Tenant");
+            DropForeignKey("dbo.Tbl_Services3Section4", "SubSubCat_Id", "dbo.Tbl_SubSubCategoriesMaster");
+            DropForeignKey("dbo.Tbl_Services3Section4", "Service_Id", "dbo.Tbl_Services3Master");
             DropForeignKey("dbo.Tbl_Services3HeadingButtons", "Tenant_ID", "dbo.Tbl_Tenant");
             DropForeignKey("dbo.Tbl_Services3HeadingButtons", "SubSubCat_Id", "dbo.Tbl_SubSubCategoriesMaster");
             DropForeignKey("dbo.Tbl_Services3HeadingButtons", "Service_Id", "dbo.Tbl_Services3Master");
@@ -2204,26 +2272,32 @@ namespace SHF.Migrations
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUsers", new[] { "Tenant_ID" });
             DropIndex("dbo.Tbl_Services8Section6Master", new[] { "Tenant_ID" });
+            DropIndex("dbo.Tbl_Services8Section6Master", new[] { "SubSubCat_Id" });
             DropIndex("dbo.Tbl_Services8Section6Master", new[] { "Service_Id" });
             DropIndex("dbo.Tbl_Services8Master", new[] { "Tenant_ID" });
             DropIndex("dbo.Tbl_Services8Master", new[] { "SubSubCat_Id" });
             DropIndex("dbo.Tbl_Services8Master", new[] { "SubCat_Id" });
             DropIndex("dbo.Tbl_Services8Master", new[] { "Cat_Id" });
             DropIndex("dbo.Tbl_Services8HeadingButtons", new[] { "Tenant_ID" });
+            DropIndex("dbo.Tbl_Services8HeadingButtons", new[] { "SubSubCat_Id" });
             DropIndex("dbo.Tbl_Services8HeadingButtons", new[] { "Service_Id" });
             DropIndex("dbo.Tbl_Services7Section6PriceMaster", new[] { "Tenant_ID" });
             DropIndex("dbo.Tbl_Services7Section6PriceMaster", new[] { "State_Id" });
+            DropIndex("dbo.Tbl_Services7Section6PriceMaster", new[] { "SubSubCat_Id" });
             DropIndex("dbo.Tbl_Services7Section6PriceMaster", new[] { "Service_Id" });
             DropIndex("dbo.Tbl_Services7Master", new[] { "Tenant_ID" });
             DropIndex("dbo.Tbl_Services7Master", new[] { "SubSubCat_Id" });
             DropIndex("dbo.Tbl_Services7Master", new[] { "SubCat_Id" });
             DropIndex("dbo.Tbl_Services7Master", new[] { "Cat_Id" });
             DropIndex("dbo.Tbl_Services7HeadingButtons", new[] { "Tenant_ID" });
+            DropIndex("dbo.Tbl_Services7HeadingButtons", new[] { "SubSubCat_Id" });
             DropIndex("dbo.Tbl_Services7HeadingButtons", new[] { "Service_Id" });
             DropIndex("dbo.Tbl_Services6Section2MasterFeaturesDetails", new[] { "Tenant_ID" });
             DropIndex("dbo.Tbl_Services6Section2MasterFeaturesDetails", new[] { "S6S2M_Id" });
+            DropIndex("dbo.Tbl_Services6Section2MasterFeaturesDetails", new[] { "SubSubCat_Id" });
             DropIndex("dbo.Tbl_Services6Section2MasterFeaturesDetails", new[] { "Service_Id" });
             DropIndex("dbo.Tbl_Services6Section2Master", new[] { "Tenant_ID" });
+            DropIndex("dbo.Tbl_Services6Section2Master", new[] { "SubSubCat_Id" });
             DropIndex("dbo.Tbl_Services6Section2Master", new[] { "Service_Id" });
             DropIndex("dbo.Tbl_Services6Master", new[] { "Tenant_ID" });
             DropIndex("dbo.Tbl_Services6Master", new[] { "SubSubCat_Id" });
@@ -2231,33 +2305,44 @@ namespace SHF.Migrations
             DropIndex("dbo.Tbl_Services6Master", new[] { "Cat_Id" });
             DropIndex("dbo.Tbl_Services5Section2MasterFeaturesDetails", new[] { "Tenant_ID" });
             DropIndex("dbo.Tbl_Services5Section2MasterFeaturesDetails", new[] { "S5S2M_Id" });
+            DropIndex("dbo.Tbl_Services5Section2MasterFeaturesDetails", new[] { "SubSubCat_Id" });
             DropIndex("dbo.Tbl_Services5Section2MasterFeaturesDetails", new[] { "Service_Id" });
             DropIndex("dbo.Tbl_Services5Section2Master", new[] { "Tenant_ID" });
+            DropIndex("dbo.Tbl_Services5Section2Master", new[] { "SubSubCat_Id" });
             DropIndex("dbo.Tbl_Services5Section2Master", new[] { "Service_Id" });
             DropIndex("dbo.Tbl_Services5Master", new[] { "Tenant_ID" });
             DropIndex("dbo.Tbl_Services5Master", new[] { "SubSubCat_Id" });
             DropIndex("dbo.Tbl_Services5Master", new[] { "SubCat_Id" });
             DropIndex("dbo.Tbl_Services5Master", new[] { "Cat_Id" });
             DropIndex("dbo.Tbl_Services4Section567FieldValues", new[] { "Tenant_ID" });
+            DropIndex("dbo.Tbl_Services4Section567FieldValues", new[] { "SubSubCat_Id" });
             DropIndex("dbo.Tbl_Services4Section567FieldValues", new[] { "S4S567FM_Id" });
             DropIndex("dbo.Tbl_Services4Section567FieldMaster", new[] { "Tenant_ID" });
+            DropIndex("dbo.Tbl_Services4Section567FieldMaster", new[] { "SubSubCat_Id" });
             DropIndex("dbo.Tbl_Services4Section567FieldMaster", new[] { "Service_Id" });
             DropIndex("dbo.Tbl_Services4Section3MasterChild", new[] { "Tenant_ID" });
             DropIndex("dbo.Tbl_Services4Section3MasterChild", new[] { "S4S3M_id" });
+            DropIndex("dbo.Tbl_Services4Section3MasterChild", new[] { "SubSubCat_Id" });
             DropIndex("dbo.Tbl_Services4Section3MasterChild", new[] { "Service_Id" });
             DropIndex("dbo.Tbl_Services4Section3Master", new[] { "Tenant_ID" });
+            DropIndex("dbo.Tbl_Services4Section3Master", new[] { "SubSubCat_Id" });
             DropIndex("dbo.Tbl_Services4Section3Master", new[] { "Service_Id" });
             DropIndex("dbo.Tbl_Services4Section3DownloadMaster", new[] { "Tenant_ID" });
+            DropIndex("dbo.Tbl_Services4Section3DownloadMaster", new[] { "SubSubCat_Id" });
             DropIndex("dbo.Tbl_Services4Section3DownloadMaster", new[] { "Service_Id" });
             DropIndex("dbo.Tbl_Services4Section3", new[] { "Tenant_ID" });
+            DropIndex("dbo.Tbl_Services4Section3", new[] { "SubSubCat_Id" });
             DropIndex("dbo.Tbl_Services4Section3", new[] { "Service_Id" });
             DropIndex("dbo.Tbl_Services4Section2MasterChild", new[] { "Tenant_ID" });
+            DropIndex("dbo.Tbl_Services4Section2MasterChild", new[] { "SubSubCat_Id" });
             DropIndex("dbo.Tbl_Services4Section2MasterChild", new[] { "S4S2M_id" });
             DropIndex("dbo.Tbl_Services4Section2MasterChild", new[] { "Service_Id" });
             DropIndex("dbo.Tbl_Services4Section2Master", new[] { "Tenant_ID" });
+            DropIndex("dbo.Tbl_Services4Section2Master", new[] { "SubSubCat_Id" });
             DropIndex("dbo.Tbl_Services4Section2Master", new[] { "Service_Id" });
             DropIndex("dbo.Tbl_Services4Section2FAQMapping", new[] { "Tenant_ID" });
             DropIndex("dbo.Tbl_Services4Section2FAQMapping", new[] { "FAQMaster_Id" });
+            DropIndex("dbo.Tbl_Services4Section2FAQMapping", new[] { "SubSubCat_Id" });
             DropIndex("dbo.Tbl_Services4Section2FAQMapping", new[] { "Service_Id" });
             DropIndex("dbo.Tbl_Services4Master", new[] { "Tenant_ID" });
             DropIndex("dbo.Tbl_Services4Master", new[] { "SubSubCat_Id" });
@@ -2267,9 +2352,9 @@ namespace SHF.Migrations
             DropIndex("dbo.Tbl_Services3Section6PriceMaster", new[] { "SubSubCat_Id" });
             DropIndex("dbo.Tbl_Services3Section6PriceMaster", new[] { "State_Id" });
             DropIndex("dbo.Tbl_Services3Section6PriceMaster", new[] { "Service_Id" });
-            DropIndex("dbo.Tbl_SServices3Section4", new[] { "Tenant_ID" });
-            DropIndex("dbo.Tbl_SServices3Section4", new[] { "SubSubCat_Id" });
-            DropIndex("dbo.Tbl_SServices3Section4", new[] { "Service_Id" });
+            DropIndex("dbo.Tbl_Services3Section4", new[] { "Tenant_ID" });
+            DropIndex("dbo.Tbl_Services3Section4", new[] { "SubSubCat_Id" });
+            DropIndex("dbo.Tbl_Services3Section4", new[] { "Service_Id" });
             DropIndex("dbo.Tbl_Services3Master", new[] { "Tenant_ID" });
             DropIndex("dbo.Tbl_Services3Master", new[] { "SubSubCat_Id" });
             DropIndex("dbo.Tbl_Services3Master", new[] { "SubCat_Id" });
@@ -2384,7 +2469,7 @@ namespace SHF.Migrations
             DropTable("dbo.Tbl_Services4Section2FAQMapping");
             DropTable("dbo.Tbl_Services4Master");
             DropTable("dbo.Tbl_Services3Section6PriceMaster");
-            DropTable("dbo.Tbl_SServices3Section4");
+            DropTable("dbo.Tbl_Services3Section4");
             DropTable("dbo.Tbl_Services3Master");
             DropTable("dbo.Tbl_Services3HeadingButtons");
             DropTable("dbo.Tbl_Services2Section4Master");

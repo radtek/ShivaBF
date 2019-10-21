@@ -97,7 +97,7 @@ namespace SHF.Business.BusinessLogic
                         AncharTagTitle = x.Services4Section2MasterChild_tenant.Services4Section2MasterChild.AncharTagTitle,
                         AncharTagUrl = x.Services4Section2MasterChild_tenant.Services4Section2MasterChild.AncharTagUrl,
                         FeatureDescription = x.Services4Section2MasterChild_tenant.Services4Section2MasterChild.FeatureDescription,
-                        Price = x.Services4Section2MasterChild_tenant.Services4Section2MasterChild.Price,
+                        Price = Convert.ToInt32(x.Services4Section2MasterChild_tenant.Services4Section2MasterChild.Price),
                         SubSubCategoryName = x.Services4Master.SubSubCategoryName,
                         DisplayIndex = x.Services4Section2MasterChild_tenant.Services4Section2MasterChild.DisplayIndex,
                         Url = x.Services4Section2MasterChild_tenant.Services4Section2MasterChild.Url,

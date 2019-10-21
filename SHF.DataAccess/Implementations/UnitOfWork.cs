@@ -64,6 +64,12 @@ namespace SHF.DataAccess.Implementations
         private GenericRepository<EntityModel.Services4Section3MasterChild> _Services4Section3MasterChildRepository;
         private GenericRepository<EntityModel.Services4Section567FieldMaster> _Services4Section567FieldMasterRepository;
         private GenericRepository<EntityModel.Services4Section567FieldValues> _Services4Section567FieldValuesRepository;
+        private GenericRepository<EntityModel.Services5Master> _Services5MasterRepository;
+        private GenericRepository<EntityModel.Services5Section2Master> _Services5Section2MasterRepository;
+        private GenericRepository<EntityModel.Services5Section2MasterFeaturesDetails> _Services5Section2MasterFeaturesDetailsRepository;
+        private GenericRepository<EntityModel.Services6Master> _Services6MasterRepository;
+        private GenericRepository<EntityModel.Services6Section2Master> _Services6Section2MasterRepository;
+        private GenericRepository<EntityModel.Services6Section2MasterFeaturesDetails> _Services6Section2MasterFeaturesDetailsRepository;
 
         #endregion
 
@@ -559,8 +565,73 @@ namespace SHF.DataAccess.Implementations
                 return _Services4Section567FieldValuesRepository;
             }
         }
-        
-     
+        public GenericRepository<EntityModel.Services5Master> Services5MasterRepository
+        {
+            get
+            {
+                if (this._Services5MasterRepository == null)
+                {
+                    this._Services5MasterRepository = new GenericRepository<EntityModel.Services5Master>(context);
+                }
+                return _Services5MasterRepository;
+            }
+        }
+        public GenericRepository<EntityModel.Services5Section2Master> Services5Section2MasterRepository
+        {
+            get
+            {
+                if (this._Services5Section2MasterRepository == null)
+                {
+                    this._Services5Section2MasterRepository = new GenericRepository<EntityModel.Services5Section2Master>(context);
+                }
+                return _Services5Section2MasterRepository;
+            }
+        }
+        public GenericRepository<EntityModel.Services5Section2MasterFeaturesDetails> Services5Section2MasterFeaturesDetailsRepository
+        {
+            get
+            {
+                if (this._Services5Section2MasterFeaturesDetailsRepository == null)
+                {
+                    this._Services5Section2MasterFeaturesDetailsRepository = new GenericRepository<EntityModel.Services5Section2MasterFeaturesDetails>(context);
+                }
+                return _Services5Section2MasterFeaturesDetailsRepository;
+            }
+        }
+        public GenericRepository<EntityModel.Services6Master> Services6MasterRepository
+        {
+            get
+            {
+                if (this._Services6MasterRepository == null)
+                {
+                    this._Services6MasterRepository = new GenericRepository<EntityModel.Services6Master>(context);
+                }
+                return _Services6MasterRepository;
+            }
+        }
+        public GenericRepository<EntityModel.Services6Section2Master> Services6Section2MasterRepository
+        {
+            get
+            {
+                if (this._Services6Section2MasterRepository == null)
+                {
+                    this._Services6Section2MasterRepository = new GenericRepository<EntityModel.Services6Section2Master>(context);
+                }
+                return _Services6Section2MasterRepository;
+            }
+        }
+        public GenericRepository<EntityModel.Services6Section2MasterFeaturesDetails> Services6Section2MasterFeaturesDetailsRepository
+        {
+            get
+            {
+                if (this._Services6Section2MasterFeaturesDetailsRepository == null)
+                {
+                    this._Services6Section2MasterFeaturesDetailsRepository = new GenericRepository<EntityModel.Services6Section2MasterFeaturesDetails>(context);
+                }
+                return _Services6Section2MasterFeaturesDetailsRepository;
+            }
+        }
+
         #endregion
 
         #region [Constructors]

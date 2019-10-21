@@ -91,7 +91,7 @@ namespace SHF.Business.BusinessLogic
                     {
                         ID = x.Services4Section2Master_tenant.Services4Section2Master.ID,
                         Heading = x.Services4Section2Master_tenant.Services4Section2Master.Heading,
-                        Description = x.Services4Section2Master_tenant.Services4Section2Master.ShortDescription,
+                        Description = x.Services4Section2Master_tenant.Services4Section2Master.Description,
                         SubSubCategoryName = x.Services4Master.SubSubCategoryName,
                         DisplayIndex = x.Services4Section2Master_tenant.Services4Section2Master.DisplayIndex,
                         Url = x.Services4Section2Master_tenant.Services4Section2Master.Url,

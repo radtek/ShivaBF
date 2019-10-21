@@ -32,13 +32,13 @@ namespace SHF.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private Business.Interface.IServices4Section3DownloadMaster businessServices4Section3DownloadMaster;
-        private Business.Interface.IServices2Master businessServices2Master;
+        private Business.Interface.IServices4Master businessServices4Master;
 
-        public Services4Section3DownloadMasterController(Business.Interface.IMessage Imessage, Business.Interface.IServices4Section3DownloadMaster IServices4Section3DownloadMaster, Business.Interface.IServices2Master IServices2Master)
+        public Services4Section3DownloadMasterController(Business.Interface.IMessage Imessage, Business.Interface.IServices4Section3DownloadMaster IServices4Section3DownloadMaster, Business.Interface.IServices4Master IServices4Master)
         {
             this.businessMessage = Imessage;
             this.businessServices4Section3DownloadMaster = IServices4Section3DownloadMaster;
-            this.businessServices2Master = IServices2Master;
+            this.businessServices4Master = IServices4Master;
 
         }
         public ApplicationSignInManager SignInManager
@@ -159,12 +159,12 @@ namespace SHF.Controllers
                             }
                             else
                             {
-                                var entityServices = this.businessServices2Master.FindBy(Services2Master => Services2Master.SubSubCat_Id == model.SubSubCat_Id).FirstOrDefault();
+                                var entityServices = this.businessServices4Master.FindBy(Services4Master => Services4Master.SubSubCat_Id == model.SubSubCat_Id).FirstOrDefault();
                                 var entity = new EntityModel.Services4Section3DownloadMaster();
                                 entity.Tenant = null;
                                 //entity.Services4Section3DownloadMasters = null;
                                 entity.SubSubCategoriesMaster = null;
-                                entity.Services2Master = null;
+                                entity.Services4Master = null;
                                 entity.Service_Id = entityServices.ID;
                                 entity.SubSubCat_Id = model.SubSubCat_Id;
                                 entity.AncharTagTitle = model.AncharTagTitle;
@@ -241,7 +241,7 @@ namespace SHF.Controllers
 
                             if (entity.IsNotNull())
                             {
-                                var entityServices = this.businessServices2Master.FindBy(Services2Master => Services2Master.SubSubCat_Id == entity.SubSubCat_Id).FirstOrDefault();
+                                var entityServices = this.businessServices4Master.FindBy(Services4Master => Services4Master.SubSubCat_Id == entity.SubSubCat_Id).FirstOrDefault();
                                 var model = new ViewModel.Services4Section3DownloadMasterCreateOrEditViewModel();
 
                                 // Mapper.Map(entity, model);
@@ -343,7 +343,7 @@ namespace SHF.Controllers
                             }
                             else
                             {
-                                var entityServices = this.businessServices2Master.FindBy(Services2Master => Services2Master.SubSubCat_Id == model.SubSubCat_Id).FirstOrDefault();
+                                var entityServices = this.businessServices4Master.FindBy(Services4Master => Services4Master.SubSubCat_Id == model.SubSubCat_Id).FirstOrDefault();
                                 var entity = new EntityModel.Services4Section3DownloadMaster();
                               
                                 entity.ID = Convert.ToInt64(model.ID);
@@ -363,7 +363,7 @@ namespace SHF.Controllers
                                 entity.Tenant = null;
                                 //entity.Services4Section3DownloadMasters = null;
                                 entity.SubSubCategoriesMaster = null;
-                                entity.Services2Master = null;
+                                entity.Services4Master = null;
                                 this.businessServices4Section3DownloadMaster.Update(entity);
 
                                 transaction.Complete();

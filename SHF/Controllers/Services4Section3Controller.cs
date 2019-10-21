@@ -169,8 +169,6 @@ namespace SHF.Controllers
                                 entity.SubSubCat_Id = model.SubSubCat_Id;
                                 entity.Heading = model.Heading;
                                 entity.ShortDescription = model.ShortDescription;
-                                entity.AncharTagTitle = model.AncharTagTitle;
-                                entity.AncharTagUrl = model.AncharTagUrl;
                                 entity.DisplayIndex = model.DisplayIndex;
                                 entity.IsActive = model.IsActive;
                                 entity.TotalViews = model.TotalViews;
@@ -252,8 +250,7 @@ namespace SHF.Controllers
                                     model.SubSubCategoryName = entityServices.SubSubCategoryName;
                                     model.Heading = entity.Heading;
                                     model.ShortDescription = entity.ShortDescription;
-                                    model.AncharTagTitle = entity.AncharTagTitle;
-                                    model.AncharTagUrl = entity.AncharTagUrl;
+                                   
                                     model.DisplayIndex = entity.DisplayIndex;
                                     model.IsActive = entity.IsActive;
                                     model.TotalViews=entity.TotalViews;
@@ -353,8 +350,7 @@ namespace SHF.Controllers
                                 entity.SubSubCat_Id = model.SubSubCat_Id;
                                 entity.Heading = model.Heading;
                                 entity.ShortDescription = model.ShortDescription;
-                                entity.AncharTagTitle = model.AncharTagTitle;
-                                entity.AncharTagUrl = model.AncharTagUrl;
+                              
                                 entity.DisplayIndex = model.DisplayIndex;
                                 entity.IsActive = model.IsActive;
                                 entity.TotalViews = model.TotalViews;
@@ -486,7 +482,7 @@ namespace SHF.Controllers
                             var entities = this.businessServices4Section3.FindBy(product => product.Tenant_ID == Id).Select(x => new ViewModel.Services4Section3DropdownListViewModel
                             {
                                 ID = x.ID,
-                                AncharTagTitle = x.AncharTagTitle
+                                Heading = x.Heading
                             });
 
                             if (entities.IsNotNull())

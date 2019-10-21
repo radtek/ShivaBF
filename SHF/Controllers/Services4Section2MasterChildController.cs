@@ -253,7 +253,7 @@ namespace SHF.Controllers
                                     model.AncharTagTitle = entity.AncharTagTitle;
                                     model.AncharTagUrl = entity.AncharTagUrl;
                                     model.FeatureDescription = entity.FeatureDescription;
-                                    model.Price = entity.Price;
+                                    model.Price = Convert.ToInt32(entity.Price);
                                     model.DisplayIndex = entity.DisplayIndex;
                                     model.IsActive = entity.IsActive;
                                     model.TotalViews=entity.TotalViews;

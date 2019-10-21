@@ -24,22 +24,22 @@ using System.ComponentModel;
 namespace SHF.Controllers
 {
     [AllowAnonymous]
-    public class Services4MasterController : BaseController
+    public class Services5MasterController : BaseController
     {
         #region [Field & Contructor]
 
         private Business.Interface.IMessage businessMessage;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private Business.Interface.IServices4Master businessServices4Master;
+        private Business.Interface.IServices5Master businessServices5Master;
         private Business.Interface.ITenant businessTenant;
         private Business.Interface.ISubSubCategoriesMaster businessSubSubCategoriesMaster;
         
 
-        public Services4MasterController(Business.Interface.IMessage Imessage, Business.Interface.IServices4Master IServices4Master, Business.Interface.ITenant Itenant, Business.Interface.ISubSubCategoriesMaster IsubSubCategoriesMaster)
+        public Services5MasterController(Business.Interface.IMessage Imessage, Business.Interface.IServices5Master IServices5Master, Business.Interface.ITenant Itenant, Business.Interface.ISubSubCategoriesMaster IsubSubCategoriesMaster)
         {
             this.businessMessage = Imessage;
-            this.businessServices4Master = IServices4Master;
+            this.businessServices5Master = IServices5Master;
             this.businessSubSubCategoriesMaster = IsubSubCategoriesMaster;
             this.businessTenant = Itenant;
 
@@ -74,8 +74,8 @@ namespace SHF.Controllers
         [HttpGet]
         [Access]
         [OutputCache(Duration = busConstant.Settings.Cache.OutputCache.TimeOut.S300)]
-        [Route("Configurations/Master/ServiceType4/Index")]
-        [Route("Settings/Master/ServiceType4/Index")]
+        [Route("Configurations/Master/ServiceType5/Index")]
+        [Route("Settings/Master/ServiceType5/Index")]
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId<long>();
@@ -83,11 +83,11 @@ namespace SHF.Controllers
             return View();
         }
         [HttpPost]
-        [Route("Post/ServiceType4/IndexAsync")]
+        [Route("Post/ServiceType5/IndexAsync")]
         [ValidateAntiForgeryTokens]
         public async Task<ActionResult> IndexAsync()
         {
-            BusinessResultViewModel<ViewModel.Services4MasterIndexViewModel> businessResult;
+            BusinessResultViewModel<ViewModel.Services5MasterIndexViewModel> businessResult;
             try
             {
                 using (var transaction = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadUncommitted }))
@@ -97,7 +97,7 @@ namespace SHF.Controllers
                         long? tenantId = Request.Form.AllKeys.Contains("tenantId") ? Convert.ToInt64(Request.Form.GetValues("tenantId").FirstOrDefault()) : busConstant.Numbers.Integer.ZERO;
                         tenantId = tenantId > busConstant.Numbers.Integer.ZERO ? tenantId : null;
 
-                        businessResult = this.businessServices4Master.Index(Request, tenantId);
+                        businessResult = this.businessServices5Master.Index(Request, tenantId);
                         transaction.Complete();
                     }
                     catch
@@ -130,8 +130,8 @@ namespace SHF.Controllers
         [HttpPost]
         [AuditAttribute]
         [ValidateAntiForgeryTokens]
-        [Route("Post/Services4Master/CreateAsync")]
-        public async Task<ActionResult> CreateAsync(ViewModel.Services4MasterCreateOrEditViewModel model)
+        [Route("Post/Services5Master/CreateAsync")]
+        public async Task<ActionResult> CreateAsync(ViewModel.Services5MasterCreateOrEditViewModel model)
         {
             try
             {
@@ -145,7 +145,7 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var catId = businessServices4Master.FindBy(Categories => Categories.Tenant_ID == model.Tenant_ID && Categories.SubSubCat_Id == model.SubSubCat_Id).FirstOrDefault();
+                            var catId = businessServices5Master.FindBy(Categories => Categories.Tenant_ID == model.Tenant_ID && Categories.SubSubCat_Id == model.SubSubCat_Id).FirstOrDefault();
 
                             if (catId.IsNotNull())
                             {
@@ -163,7 +163,7 @@ namespace SHF.Controllers
                             else
                             {
                                 var entitySubSubCategoryName = this.businessSubSubCategoriesMaster.GetById(Convert.ToInt64(model.SubSubCat_Id));
-                                var entity = new EntityModel.Services4Master();
+                                var entity = new EntityModel.Services5Master();
                                 // Mapper.Map(model, entity);
                                 //entity.ID = model.ID;
                                 entity.BannerImagePath = model.BannerImagePath;
@@ -175,15 +175,9 @@ namespace SHF.Controllers
                                 entity.BannerHeadingDescription = model.BannerHeadingDescription;
                                 entity.BannerOnHeading = model.BannerOnHeading;
                                 entity.Section1Description = model.Section1Description;
-                                entity.Section2PriceingHeading = model.Section2PriceingHeading;
-                                entity.Section2PriceingDescription = model.Section2PriceingDescription;
-                                entity.Section3PriceingHeading = model.Section3PriceingHeading;
-                                entity.Section3PriceingDescription = model.Section3PriceingDescription;
-                                entity.Section4PriceingHeading = model.Section4PriceingHeading;
-                                entity.Section4PriceingDescription = model.Section4PriceingDescription;
-                                entity.Section5PriceingHeading = model.Section5PriceingHeading;
-                                entity.Section6PriceingHeading = model.Section6PriceingHeading;
-                                entity.Section7PriceingHeading = model.Section7PriceingHeading;
+                                entity.Section2Heading = model.Section2Heading;
+                                entity.Section2HeadingDescription = model.Section2HeadingDescription;
+                               
                                 entity.DisplayIndex = model.DisplayIndex;
                                 entity.Url= model.Url;
                                 entity.Metadata= model.Metadata;
@@ -202,7 +196,7 @@ namespace SHF.Controllers
                                 entity.SubCategoriesMaster = null;
                                 entity.SubSubCategoriesMaster = null;
                                 entity.CategoriesMaster = null;
-                                this.businessServices4Master.Create(entity);
+                                this.businessServices5Master.Create(entity);
                                 transaction.Complete();
 
                                 var response = new JsonResponse<dynamic>()
@@ -237,7 +231,7 @@ namespace SHF.Controllers
 
 
         [HttpGet]
-        [Route("Get/Services4Master/EditAsync")]
+        [Route("Get/Services5Master/EditAsync")]
         public async Task<ActionResult> EditAsync(long Id)
         {
             try
@@ -260,11 +254,11 @@ namespace SHF.Controllers
                         }
                         else
                         {
-                            var entity = this.businessServices4Master.GetById(Id);
+                            var entity = this.businessServices5Master.GetById(Id);
 
                             if (entity.IsNotNull())
                             {
-                                var model = new ViewModel.Services4MasterCreateOrEditViewModel();
+                                var model = new ViewModel.Services5MasterCreateOrEditViewModel();
                                 var entitySubSubCategoryName = this.businessSubSubCategoriesMaster.GetById(Convert.ToInt64(Id));
                                 model.ID = entity.ID;
                                 model.BannerImagePath = entity.BannerImagePath;
@@ -276,15 +270,9 @@ namespace SHF.Controllers
                                 model.BannerHeadingDescription = entity.BannerHeadingDescription;
                                 model.BannerOnHeading = entity.BannerOnHeading;
                                 model.Section1Description = entity.Section1Description;
-                                model.Section2PriceingHeading = entity.Section2PriceingHeading;
-                                model.Section2PriceingDescription = entity.Section2PriceingDescription;
-                                model.Section3PriceingHeading = entity.Section3PriceingHeading;
-                                model.Section3PriceingDescription = entity.Section3PriceingDescription;
-                                model.Section4PriceingHeading = entity.Section4PriceingHeading;
-                                model.Section4PriceingDescription = entity.Section4PriceingDescription;
-                                model.Section5PriceingHeading = entity.Section5PriceingHeading;
-                                model.Section6PriceingHeading = entity.Section6PriceingHeading;
-                                model.Section7PriceingHeading = entity.Section7PriceingHeading;
+                                model.Section2Heading = entity.Section2Heading;
+                                model.Section2HeadingDescription = entity.Section2HeadingDescription;
+                              
                                 model.DisplayIndex = entity.DisplayIndex;
                                 model.Url = entity.Url.ToString();
                                 model.Metadata = entity.Metadata.ToString();
@@ -299,7 +287,7 @@ namespace SHF.Controllers
                                 model.UpdatedOn = entity.UpdatedOn;
 
 
-                                var response = new JsonResponse<Services4MasterCreateOrEditViewModel>()
+                                var response = new JsonResponse<Services5MasterCreateOrEditViewModel>()
                                 {
                                     Type = busConstant.Messages.Type.RESPONSE,
                                     Entity = model
@@ -342,8 +330,8 @@ namespace SHF.Controllers
         [HttpPost]
         [AuditAttribute]
         [ValidateAntiForgeryTokens]
-        [Route("Post/Services4Master/EditAsync")]
-        public async Task<ActionResult> EditAsync(ViewModel.Services4MasterCreateOrEditViewModel model)
+        [Route("Post/Services5Master/EditAsync")]
+        public async Task<ActionResult> EditAsync(ViewModel.Services5MasterCreateOrEditViewModel model)
         {
             try
             {
@@ -359,7 +347,7 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var CategoriesData = businessServices4Master.FindBy(Categories => Categories.Tenant_ID == model.Tenant_ID && Categories.ID != model.ID).FirstOrDefault();
+                            var CategoriesData = businessServices5Master.FindBy(Categories => Categories.Tenant_ID == model.Tenant_ID && Categories.ID != model.ID).FirstOrDefault();
 
                             if (CategoriesData.IsNotNull())
                             {
@@ -376,7 +364,7 @@ namespace SHF.Controllers
                             }
                             else
                             {
-                                var entity = this.businessServices4Master.GetById(Convert.ToInt64(model.ID));
+                                var entity = this.businessServices5Master.GetById(Convert.ToInt64(model.ID));
                                 var entitySubSubCategoryName = this.businessSubSubCategoriesMaster.GetById(Convert.ToInt64(model.SubSubCat_Id));
                                
                                 // Mapper.Map(model, entity);
@@ -390,15 +378,9 @@ namespace SHF.Controllers
                                 entity.BannerHeadingDescription = model.BannerHeadingDescription;
                                 entity.BannerOnHeading = model.BannerOnHeading;
                                 entity.Section1Description = model.Section1Description;
-                                entity.Section2PriceingHeading = model.Section2PriceingHeading;
-                                entity.Section2PriceingDescription = model.Section2PriceingDescription;
-                                entity.Section3PriceingHeading = model.Section3PriceingHeading;
-                                entity.Section3PriceingDescription = model.Section3PriceingDescription;
-                                entity.Section4PriceingHeading = model.Section4PriceingHeading;
-                                entity.Section4PriceingDescription = model.Section4PriceingDescription;
-                                entity.Section5PriceingHeading = model.Section5PriceingHeading;
-                                entity.Section6PriceingHeading = model.Section6PriceingHeading;
-                                entity.Section7PriceingHeading = model.Section7PriceingHeading;
+                                entity.Section2Heading = model.Section2Heading;
+                                entity.Section2HeadingDescription = model.Section2HeadingDescription;
+                               
                                 entity.DisplayIndex = model.DisplayIndex;
                                 entity.Url = model.Url;
                                 entity.Metadata = model.Metadata;
@@ -418,7 +400,7 @@ namespace SHF.Controllers
                                 entity.SubSubCategoriesMaster = null;
                                 entity.CategoriesMaster = null;
 
-                                this.businessServices4Master.Update(entity);
+                                this.businessServices5Master.Update(entity);
 
                                 transaction.Complete();
 
@@ -455,7 +437,7 @@ namespace SHF.Controllers
         [HttpPost]
         [AuditAttribute]
         [ValidateAntiForgeryTokens]
-        [Route("Post/Services4Master/Delete")]
+        [Route("Post/Services5Master/Delete")]
         public async Task<ActionResult> DeleteAsync(string Id)
         {
             try
@@ -478,7 +460,7 @@ namespace SHF.Controllers
                             }
                             else
                             {
-                                this.businessServices4Master.Delete(Convert.ToInt64(Id));
+                                this.businessServices5Master.Delete(Convert.ToInt64(Id));
 
 
                                 var response = new JsonResponse<dynamic>()
@@ -511,8 +493,8 @@ namespace SHF.Controllers
         }
 
         [HttpGet]
-        [Route("Get/Services4Master/DropdownListbyTenantAsync")]
-        public async Task<ActionResult> GetServices4MasterByTenantIdAsync(long? Id)
+        [Route("Get/Services5Master/DropdownListbyTenantAsync")]
+        public async Task<ActionResult> GetServices5MasterByTenantIdAsync(long? Id)
         {
             try
             {
@@ -535,8 +517,8 @@ namespace SHF.Controllers
                         else
                         {
                           
-                            var entities= this.businessSubSubCategoriesMaster.GetAll().Where(x =>(x.Tenant_ID == Id && x.ServiceTypeValue==busConstant.Code.CodeValue.ServiceType.SERVICE_4))
-                                .Select(x => new ViewModel.Services4MasterDropdownListViewModel
+                            var entities= this.businessSubSubCategoriesMaster.GetAll().Where(x =>(x.Tenant_ID == Id && x.ServiceTypeValue==busConstant.Code.CodeValue.ServiceType.SERVICE_5))
+                                .Select(x => new ViewModel.Services5MasterDropdownListViewModel
                             {
                                 ID = x.ID,
                                 SubSubCategoryName = x.SubSubCategoryName
@@ -544,7 +526,7 @@ namespace SHF.Controllers
 
                             if (entities.IsNotNull())
                             {
-                                var response = new JsonResponse<IEnumerable<ViewModel.Services4MasterDropdownListViewModel>>()
+                                var response = new JsonResponse<IEnumerable<ViewModel.Services5MasterDropdownListViewModel>>()
                                 {
                                     Type = busConstant.Messages.Type.RESPONSE,
                                     Entity = entities

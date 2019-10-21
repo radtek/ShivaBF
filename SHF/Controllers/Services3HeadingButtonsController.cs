@@ -80,7 +80,7 @@ namespace SHF.Controllers
             return View();
         }
         [HttpPost]
-        [Route("Post/SectionHeadingButtons/IndexAsync")]
+        [Route("Post/Services3HeadingButtons/IndexAsync")]
         [ValidateAntiForgeryTokens]
         public async Task<ActionResult> IndexAsync()
         {

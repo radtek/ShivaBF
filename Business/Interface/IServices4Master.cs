@@ -11,24 +11,24 @@ namespace SHF.Business.Interface
 {
     public interface IServices4Master
     {
-        EntityModel.Services3Master Create(EntityModel.Services3Master entity);
+        EntityModel.Services4Master Create(EntityModel.Services4Master entity);
 
-        IEnumerable<EntityModel.Services3Master> FindBy(Expression<Func<EntityModel.Services3Master, bool>> filter = null);
+        IEnumerable<EntityModel.Services4Master> FindBy(Expression<Func<EntityModel.Services4Master, bool>> filter = null);
 
-        EntityModel.Services3Master GetById(long Id);
+        EntityModel.Services4Master GetById(long Id);
 
-        IEnumerable<EntityModel.Services3Master> GetAll();
+        IEnumerable<EntityModel.Services4Master> GetAll();
 
-        EntityModel.Services3Master Update(EntityModel.Services3Master entity);
+        EntityModel.Services4Master Update(EntityModel.Services4Master entity);
 
         void Delete(long Id);
 
-        void DeleteWhere(Expression<Func<EntityModel.Services3Master, bool>> filter = null);
+        void DeleteWhere(Expression<Func<EntityModel.Services4Master, bool>> filter = null);
 
-        ViewModel.BusinessResultViewModel<ViewModel.Services3MasterIndexViewModel> Index(HttpRequestBase Request, long? tenant_Id);
+        ViewModel.BusinessResultViewModel<ViewModel.Services4MasterIndexViewModel> Index(HttpRequestBase Request, long? tenant_Id);
 
-        Int32 Count(Expression<Func<EntityModel.Services3Master, bool>> filter = null);
+        Int32 Count(Expression<Func<EntityModel.Services4Master, bool>> filter = null);
 
-      // IEnumerable<ViewModel.Services3MasterDropdownListViewModel> GetDropdownList();
+      // IEnumerable<ViewModel.Services4MasterDropdownListViewModel> GetDropdownList();
     }
 }

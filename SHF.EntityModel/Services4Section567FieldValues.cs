@@ -18,6 +18,9 @@ namespace SHF.EntityModel
         [ForeignKey("S4S567FM_Id")]
         public virtual Services4Section567FieldMaster Services4Section567FieldMaster { get; set; }
         public System.Int64? S4S567FM_Id { get; set; }
+        [ForeignKey("SubSubCat_Id")]
+        public virtual SubSubCategoriesMaster SubSubCategoriesMaster { get; set; }
+        public System.Int64? SubSubCat_Id { get; set; }
         [Column("RowNumber")]
         public System.Int32 RowNumber { get; set; }
         [Column("DisplayText")]

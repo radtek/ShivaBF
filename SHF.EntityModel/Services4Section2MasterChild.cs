@@ -21,6 +21,9 @@ namespace SHF.EntityModel
         [ForeignKey("S4S2M_id")]
         public virtual Services4Section2Master Services4Section2Master { get; set; }
         public System.Int64? S4S2M_id { get; set; }
+        [ForeignKey("SubSubCat_Id")]
+        public virtual SubSubCategoriesMaster SubSubCategoriesMaster { get; set; }
+        public System.Int64? SubSubCat_Id { get; set; }
         [Column("FeatureDescription")]
         public System.String FeatureDescription { get; set; }
         [Column("Price")]
