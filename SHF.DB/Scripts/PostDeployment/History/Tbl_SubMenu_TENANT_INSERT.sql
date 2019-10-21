@@ -922,7 +922,7 @@ GO
 
 DECLARE	@ParrentName VARCHAR(100)='Service Type 5', 
 		@Name VARCHAR(100)='S5 Section 2 Master', 
-        @Url VARCHAR(150)='/Configurations/Master/ServiceType4/Section2Master', 
+        @Url VARCHAR(150)='/Configurations/Master/ServiceType5/Section2Master', 
         @Is_Active BIT=1, 
         @Update_Seq INT=0,
         @Created_By VARCHAR(10)='dbo',
@@ -946,7 +946,7 @@ GO
 
 DECLARE	@ParrentName VARCHAR(100)='Service Type 5', 
 		@Name VARCHAR(100)='S5 Section 2 Features', 
-        @Url VARCHAR(150)='/Configurations/Master/ServiceType4/Section2Features', 
+        @Url VARCHAR(150)='/Configurations/Master/ServiceType5/Section2Features', 
         @Is_Active BIT=1, 
         @Update_Seq INT=0,
         @Created_By VARCHAR(10)='dbo',
