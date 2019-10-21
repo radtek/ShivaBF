@@ -9141,6 +9141,9 @@
     <Content Include="Views\Services3Master\_CreateOrEdit.cshtml" />
     <Content Include="Views\Services3Master\_CreateOrEditTenant.cshtml" />
     <Content Include="Views\Services3Master\Index.cshtml" />
+    <Content Include="Views\Services3HeadingButtons\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Services3HeadingButtons\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\Services3HeadingButtons\Index.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
