@@ -53,6 +53,7 @@
     <Compile Include="BaseBusiness.cs" />
     <Compile Include="busCache.cs" />
     <Compile Include="BusinessLogic\FAQMaster.cs" />
+    <Compile Include="BusinessLogic\Services4Section3.cs" />
     <Compile Include="BusinessLogic\Services4Section2MasterChild.cs" />
     <Compile Include="BusinessLogic\Services4Section2Master.cs" />
     <Compile Include="BusinessLogic\Services4Section2FAQMapping.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="BusinessLogic\BankMaster.cs" />
     <Compile Include="BusinessLogic\SubMenu.cs" />
     <Compile Include="BusinessLogic\Tenant.cs" />
+    <Compile Include="Interface\IServices4Section3.cs" />
     <Compile Include="Interface\IServices4Section2MasterChild.cs" />
     <Compile Include="Interface\IServices4Section2Master.cs" />
     <Compile Include="Interface\IServices4Section2FAQMapping.cs" />

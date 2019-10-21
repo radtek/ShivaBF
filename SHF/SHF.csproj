@@ -386,6 +386,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Services4Section2MasterChildController.cs" />
+    <Compile Include="Controllers\Services4Section3Controller.cs" />
     <Compile Include="Controllers\Services4Section2MasterController.cs" />
     <Compile Include="Controllers\Services4Section2FAQMappingController.cs" />
     <Compile Include="Controllers\Services4MasterController.cs" />
@@ -465,6 +466,7 @@
     <Content Include="AngularControllers\PriceFeaturesMasterController.js" />
     <Content Include="AngularControllers\FAQMasterController.js" />
     <Content Include="AngularControllers\Services4Section2MasterChildController.js" />
+    <Content Include="AngularControllers\Services4Section3Controller.js" />
     <Content Include="AngularControllers\Services4Section2MasterController.js" />
     <Content Include="AngularControllers\Services4Section2FAQMappingController.js" />
     <Content Include="AngularControllers\Services4MasterController.js" />
@@ -8985,6 +8987,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Services\AspNetRole.js" />
     <Content Include="Scripts\Services\AspNetUser.js" />
+    <Content Include="Scripts\Services\Services4Section3.js" />
     <Content Include="Scripts\Services\Services4Section2MasterChild.js" />
     <Content Include="Scripts\Services\Services4Section2Master.js" />
     <Content Include="Scripts\Services\Services4Section2FAQMapping.js" />
@@ -9180,6 +9183,9 @@
     <Content Include="Views\Services4Section2MasterChild\_CreateOrEdit.cshtml" />
     <Content Include="Views\Services4Section2MasterChild\_CreateOrEditTenant.cshtml" />
     <Content Include="Views\Services4Section2MasterChild\Index.cshtml" />
+    <Content Include="Views\Services4Section3\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Services4Section3\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\Services4Section3\Index.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
