@@ -1,17 +1,17 @@
 ﻿//let app = angular.module('InventoryApp');
 
-angular.module(config.app).service('Services7Section4CRUD', function ($http) {
+angular.module(config.app).service('Services8Section6MasterCRUD', function ($http) {
 
     this.GetTableObject = function TableData() {
-        let scope = angular.element(document.getElementById('Services7Section4ControllerScope')).scope();
-        let tenantId = scope.Services7Section4CreateOrEditViewModel.Tenant_ID == null ? 0 : scope.Services7Section4CreateOrEditViewModel.Tenant_ID;
+        let scope = angular.element(document.getElementById('Services8Section6MasterControllerScope')).scope();
+        let tenantId = scope.Services8Section6MasterCreateOrEditViewModel.Tenant_ID == null ? 0 : scope.Services8Section6MasterCreateOrEditViewModel.Tenant_ID;
         let viewBagTenantID = $('#ViewBag_TenantID').val();
         let antiForgeryToken = $('#antiForgeryToken').val();
         var src = '../../../Content/Images/';
         let oTable = $('#grdTable').DataTable({
             serverSide: true,
             ajax: {
-                url: '/Post/Services7Section4/IndexAsync',
+                url: '/Post/Services8Section6/IndexAsync',
                 type: 'POST',
                 dataSrc: 'data',
                 data: { 'tenantId': tenantId },
@@ -44,7 +44,7 @@ angular.module(config.app).service('Services7Section4CRUD', function ($http) {
                     targets: 0
                 },
                 {
-                    name: "Services7Section4_tenant.Services7Section4.ID",
+                    name: "Services8Section6Master_tenant.Services8Section6Master.ID",
                     data: "ID",
                     title: "ID",
                     render: $.fn.dataTable.render.text(),
@@ -52,7 +52,7 @@ angular.module(config.app).service('Services7Section4CRUD', function ($http) {
                     targets: 1
                 },
                 {
-                    name: "Services7Section4_tenant.Services7Section4.HeadingText",
+                    name: "Services8Section6Master_tenant.Services8Section6Master.HeadingText",
                     data: "HeadingText",
                     title: "Heading&nbsp;Text",
                     render: $.fn.dataTable.render.text(),
@@ -60,7 +60,7 @@ angular.module(config.app).service('Services7Section4CRUD', function ($http) {
                     targets: 2
                 },
                  {
-                     name: "Services7Section4_tenant.Services7Section4.ShortDescription",
+                     name: "Services8Section6Master_tenant.Services8Section6Master.ShortDescription",
                      data: "ShortDescription",
                      title: "Short&nbsp;Description",
                      render: $.fn.dataTable.render.text(),
@@ -68,7 +68,7 @@ angular.module(config.app).service('Services7Section4CRUD', function ($http) {
                      targets: 3
                  },
                 {
-                    name: "Services7Section4_tenant.Services7Section4.AncharTagTitle",
+                    name: "Services8Section6Master_tenant.Services8Section6Master.AncharTagTitle",
                     data: "AncharTagTitle",
                     title: "Anchar&nbsp;Tag&nbsp;Title",
                     render: $.fn.dataTable.render.text(),
@@ -76,7 +76,7 @@ angular.module(config.app).service('Services7Section4CRUD', function ($http) {
                     targets: 4
                 },
                  {
-                     name: "Services7Section4_tenant.Services7Section4.AncharTagUrl",
+                     name: "Services8Section6Master_tenant.Services8Section6Master.AncharTagUrl",
                      data: "AncharTagUrl",
                      title: "Anchar&nbsp;Tag&nbsp;Url",
                      render: $.fn.dataTable.render.text(),
@@ -84,7 +84,7 @@ angular.module(config.app).service('Services7Section4CRUD', function ($http) {
                      targets: 5
                  },
                  // {
-                 //     name: "Services7Section4_tenant.Services7Section4.AncharTagTitle",
+                 //     name: "Services8Section6Master_tenant.Services8Section6Master.AncharTagTitle",
                  //     data: "SubCategoryName",
                  //     title: "SubCategory&nbsp;Name",
                  //     render: $.fn.dataTable.render.text(),
@@ -92,7 +92,7 @@ angular.module(config.app).service('Services7Section4CRUD', function ($http) {
                  //     targets: 6
                  // },
                   {
-                    name: "Services7Section4.SubSubCategoryName",
+                    name: "Services8Section6Master.SubSubCategoryName",
                     data: "SubSubCategoryName",
                     title: "Sub&nbsp;Sub&nbsp;CategoryName",
                     render: $.fn.dataTable.render.text(),
@@ -100,7 +100,7 @@ angular.module(config.app).service('Services7Section4CRUD', function ($http) {
                     targets: 7
                 },
                 {
-                    name: "Services7Section4_tenant.Services7Section4.DisplayIndex",
+                    name: "Services8Section6Master_tenant.Services8Section6Master.DisplayIndex",
                     data: "DisplayIndex",
                     title: "Display&nbsp;Index",
                     render: $.fn.dataTable.render.text(),
@@ -108,7 +108,7 @@ angular.module(config.app).service('Services7Section4CRUD', function ($http) {
                     targets: 8
                 },
  {
-                    name: "Services7Section4_tenant.Services7Section4.Url",
+                    name: "Services8Section6Master_tenant.Services8Section6Master.Url",
                     data: "Url",
                     title: "Url",
                     render: $.fn.dataTable.render.text(),
@@ -116,7 +116,7 @@ angular.module(config.app).service('Services7Section4CRUD', function ($http) {
                     targets: 9
                 },
  {
-                    name: "Services7Section4_tenant.Services7Section4.Metadata",
+                    name: "Services8Section6Master_tenant.Services8Section6Master.Metadata",
                     data: "Metadata",
                     title: "Metadata",
                     render: $.fn.dataTable.render.text(),
@@ -124,7 +124,7 @@ angular.module(config.app).service('Services7Section4CRUD', function ($http) {
                     targets: 10
                 },
 {
-                    name: "Services7Section4_tenant.Services7Section4.MetaDescription",
+                    name: "Services8Section6Master_tenant.Services8Section6Master.MetaDescription",
                     data: "MetaDescription",
                     title: "MetaDescription",
                     render: $.fn.dataTable.render.text(),
@@ -132,7 +132,7 @@ angular.module(config.app).service('Services7Section4CRUD', function ($http) {
                     targets: 11
                 },
 {
-                    name: "Services7Section4_tenant.Services7Section4.Keyword",
+                    name: "Services8Section6Master_tenant.Services8Section6Master.Keyword",
                     data: "Keyword",
                     title: "Keyword",
                     render: $.fn.dataTable.render.text(),
@@ -141,7 +141,7 @@ angular.module(config.app).service('Services7Section4CRUD', function ($http) {
                 },
 
 {
-                    name: "Services7Section4_tenant.Services7Section4.TotalViews",
+                    name: "Services8Section6Master_tenant.Services8Section6Master.TotalViews",
                     data: "TotalViews",
                     title: "TotalViews",
                     render: $.fn.dataTable.render.text(),
@@ -149,7 +149,7 @@ angular.module(config.app).service('Services7Section4CRUD', function ($http) {
                     targets: 13
                 },
               {
-                    name: "Services7Section4_tenant.Services7Section4.IsActive",
+                    name: "Services8Section6Master_tenant.Services8Section6Master.IsActive",
                     data: "IsActive",
                     title: "Is&nbsp;Active",
                     render: $.fn.dataTable.render.text(),
@@ -166,7 +166,7 @@ angular.module(config.app).service('Services7Section4CRUD', function ($http) {
                     targets:15
                 },
                 {
-                    name: "Services7Section4_tenant.Services7Section4.CreatedBy",
+                    name: "Services8Section6Master_tenant.Services8Section6Master.CreatedBy",
                     data: "CreatedBy",
                     title: "Created&nbsp;By",
                     render: $.fn.dataTable.render.text(),
@@ -174,7 +174,7 @@ angular.module(config.app).service('Services7Section4CRUD', function ($http) {
                     targets: 16
                 },
                 {
-                    name: "Services7Section4_tenant.Services7Section4.CreatedOn",
+                    name: "Services8Section6Master_tenant.Services8Section6Master.CreatedOn",
                     data: "CreatedOn",
                     title: "Created&nbsp;On",
                     render: function (data, type, row, meta) {
@@ -186,7 +186,7 @@ angular.module(config.app).service('Services7Section4CRUD', function ($http) {
                     targets: 17
                 },
                 {
-                    name: "Services7Section4_tenant.Services7Section4.UpdatedBy",
+                    name: "Services8Section6Master_tenant.Services8Section6Master.UpdatedBy",
                     data: "UpdatedBy",
                     title: "Modified&nbsp;By",
                     render: $.fn.dataTable.render.text(),
@@ -194,7 +194,7 @@ angular.module(config.app).service('Services7Section4CRUD', function ($http) {
                     targets: 18
                 },
                 {
-                    name: "Services7Section4_tenant.Services7Section4.UpdatedOn",
+                    name: "Services8Section6Master_tenant.Services8Section6Master.UpdatedOn",
                     data: "UpdatedOn",
                     title: "Modified&nbsp;On",
                     render: function (data, type, row, meta) {
@@ -239,13 +239,13 @@ angular.module(config.app).service('Services7Section4CRUD', function ($http) {
         $('#grdTable tbody').off('click');
         $('#grdTable tbody').on('click', '.btn-edit', function () {
             let rowData = oTable.row($(this).parents('tr')).data();
-            let scope = angular.element(document.getElementById('Services7Section4ControllerScope')).scope();
+            let scope = angular.element(document.getElementById('Services8Section6MasterControllerScope')).scope();
             scope.EditAsync(rowData.ID);
         });
 
         $('#grdTable tbody').on('click', '.btn-delete', function () {
             let rowData = oTable.row($(this).parents('tr')).data();
-            let scope = angular.element(document.getElementById('Services7Section4ControllerScope')).scope();
+            let scope = angular.element(document.getElementById('Services8Section6MasterControllerScope')).scope();
             scope.DeleteAsync(rowData.ID);
         });
     }
