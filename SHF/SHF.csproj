@@ -385,6 +385,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Services8HeadingButtonsController.cs" />
     <Compile Include="Controllers\Services8MasterController.cs" />
     <Compile Include="Controllers\Services7Section4Controller.cs" />
     <Compile Include="Controllers\Services7Section6PriceMasterController.cs" />
@@ -474,6 +475,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AngularControllers\AspNetUserController.js" />
+    <Content Include="AngularControllers\Services8HeadingButtonsController.js" />
     <Content Include="AngularControllers\Services8MasterController.js" />
     <Content Include="AngularControllers\Services7Section4MasterController.js" />
     <Content Include="AngularControllers\Services7Section6PriceMasterController.js" />
@@ -9011,6 +9013,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Services\AspNetRole.js" />
     <Content Include="Scripts\Services\AspNetUser.js" />
+    <Content Include="Scripts\Services\Services8HeadingButtons.js" />
     <Content Include="Scripts\Services\Services8Master.js" />
     <Content Include="Scripts\Services\Services7Section4.js" />
     <Content Include="Scripts\Services\Services7Section6PriceMaster.js" />
@@ -9258,6 +9261,9 @@
     <Content Include="Views\Services8Master\_CreateOrEdit.cshtml" />
     <Content Include="Views\Services8Master\_CreateOrEditTenant.cshtml" />
     <Content Include="Views\Services8Master\Index.cshtml" />
+    <Content Include="Views\Services8HeadingButtons\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Services8HeadingButtons\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\Services8HeadingButtons\Index.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
