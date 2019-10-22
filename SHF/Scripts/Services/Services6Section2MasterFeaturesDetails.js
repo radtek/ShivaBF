@@ -1,16 +1,16 @@
 ﻿//let app = angular.module('InventoryApp');
-angular.module(config.app).service('Services5Section2MasterFeaturesDetailsCRUD', function ($http) {
+angular.module(config.app).service('Services6Section2MasterFeaturesDetailsCRUD', function ($http) {
 
     this.GetTableObject = function TableData() {
-        let scope = angular.element(document.getElementById('Services5Section2MasterFeaturesDetailsControllerScope')).scope();
-        let tenantId = scope.Services5Section2MasterFeaturesDetailsCreateOrEditViewModel.Tenant_ID == null ? 0 : scope.Services5Section2MasterFeaturesDetailsCreateOrEditViewModel.Tenant_ID;
+        let scope = angular.element(document.getElementById('Services6Section2MasterFeaturesDetailsControllerScope')).scope();
+        let tenantId = scope.Services6Section2MasterFeaturesDetailsCreateOrEditViewModel.Tenant_ID == null ? 0 : scope.Services6Section2MasterFeaturesDetailsCreateOrEditViewModel.Tenant_ID;
         let viewBagTenantID = $('#ViewBag_TenantID').val();
         let antiForgeryToken = $('#antiForgeryToken').val();
         var src = '../../../Content/Images/';
         let oTable = $('#grdTable').DataTable({
             serverSide: true,
             ajax: {
-                url: '/Post/Services5Section2MasterFeaturesDetails/IndexAsync',
+                url: '/Post/Services6Section2MasterFeaturesDetails/IndexAsync',
                 type: 'POST',
                 dataSrc: 'data',
                 data: { 'tenantId': tenantId },
@@ -43,7 +43,7 @@ angular.module(config.app).service('Services5Section2MasterFeaturesDetailsCRUD',
                     targets: 0
                 },
                 {
-                    name: "Services5Section2MasterFeaturesDetails_tenant_Services5Master_Services5Section2Master.Services5Section2MasterFeaturesDetails_tenant_Services5Master.Services5Section2MasterFeaturesDetails_tenant.Services5Section2MasterFeaturesDetails.ID",
+                    name: "Services6Section2MasterFeaturesDetails_tenant_Services6Master_Services6Section2Master.Services6Section2MasterFeaturesDetails_tenant_Services6Master.Services6Section2MasterFeaturesDetails_tenant.Services6Section2MasterFeaturesDetails.ID",
                     data: "ID",
                     title: "ID",
                     render: $.fn.dataTable.render.text(),
@@ -59,17 +59,33 @@ angular.module(config.app).service('Services5Section2MasterFeaturesDetailsCRUD',
                     targets: 2
                 },
                 {
-                    name: "Services5Section2MasterFeaturesDetails_tenant_Services5Section2Master.Services5Section2MasterFeaturesDetails_tenant.Services5Section2MasterFeaturesDetails.Text",
-                    data: "Text",
-                    title: "Text",
+                    name: "Services6Section2MasterFeaturesDetails_tenant_Services6Master_Services6Section2Master.Services6Section2MasterFeaturesDetails_tenant_Services6Master.Services6Section2MasterFeaturesDetails_tenant.Services6Section2MasterFeaturesDetails.Price",
+                    data: "Price",
+                    title: "Price",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
                     targets: 2
                 },
 {
-                    name: "Services5Section2MasterFeaturesDetails_tenant_Services5Master_Services5Section2Master.Services5Section2MasterFeaturesDetails_tenant_Services5Master.Services5Section2MasterFeaturesDetails_tenant.Services5Section2MasterFeaturesDetails.S5S2M_Id",
+                    name: "Services6Section2MasterFeaturesDetails_tenant_Services6Master_Services6Section2Master.Services6Section2MasterFeaturesDetails_tenant_Services6Master.Services6Section2MasterFeaturesDetails_tenant.Services6Section2MasterFeaturesDetails.S5S2M_Id",
                     data: "S5S2M_Id",
                     title: "Section2&nbsp;ID",
+                    render: $.fn.dataTable.render.text(),
+                    width: "3%",
+                    targets: 1
+                },
+{
+                    name: "Services6Section2MasterFeaturesDetails_tenant_Services6Master_Services6Section2Master.Services6Section2MasterFeaturesDetails_tenant_Services6Master.Services6Section2MasterFeaturesDetails_tenant.Services6Section2MasterFeaturesDetails.AncharTagTitle",
+                    data: "AncharTagTitle",
+                    title: "AncharTagTitle",
+                    render: $.fn.dataTable.render.text(),
+                    width: "3%",
+                    targets: 1
+                },
+{
+                    name: "Services6Section2MasterFeaturesDetails_tenant_Services6Master_Services6Section2Master.Services6Section2MasterFeaturesDetails_tenant_Services6Master.Services6Section2MasterFeaturesDetails_tenant.Services6Section2MasterFeaturesDetails.AncharTagUrl",
+                    data: "AncharTagUrl",
+                    title: "AncharTagUrl",
                     render: $.fn.dataTable.render.text(),
                     width: "3%",
                     targets: 1
@@ -77,7 +93,7 @@ angular.module(config.app).service('Services5Section2MasterFeaturesDetailsCRUD',
 
                
  {
-                    name: "Services5Section2MasterFeaturesDetails_tenant_Services5Master_Services5Section2Master.Services5Section2MasterFeaturesDetails_tenant_Services5Master.Services5Section2MasterFeaturesDetails_tenant.Services5Section2MasterFeaturesDetails.Url",
+                    name: "Services6Section2MasterFeaturesDetails_tenant_Services6Master_Services6Section2Master.Services6Section2MasterFeaturesDetails_tenant_Services6Master.Services6Section2MasterFeaturesDetails_tenant.Services6Section2MasterFeaturesDetails.Url",
                     data: "Url",
                     title: "Url",
                     render: $.fn.dataTable.render.text(),
@@ -85,7 +101,7 @@ angular.module(config.app).service('Services5Section2MasterFeaturesDetailsCRUD',
                     targets: 5
                 },
  {
-                    name: "Services5Section2MasterFeaturesDetails_tenant_Services5Master_Services5Section2Master.Services5Section2MasterFeaturesDetails_tenant_Services5Master.Services5Section2MasterFeaturesDetails_tenant.Services5Section2MasterFeaturesDetails.Metadata",
+                    name: "Services6Section2MasterFeaturesDetails_tenant_Services6Master_Services6Section2Master.Services6Section2MasterFeaturesDetails_tenant_Services6Master.Services6Section2MasterFeaturesDetails_tenant.Services6Section2MasterFeaturesDetails.Metadata",
                     data: "Metadata",
                     title: "Metadata",
                     render: $.fn.dataTable.render.text(),
@@ -93,7 +109,7 @@ angular.module(config.app).service('Services5Section2MasterFeaturesDetailsCRUD',
                     targets: 6
                 },
 {
-                    name: "Services5Section2MasterFeaturesDetails_tenant_Services5Master_Services5Section2Master.Services5Section2MasterFeaturesDetails_tenant_Services5Master.Services5Section2MasterFeaturesDetails_tenant.Services5Section2MasterFeaturesDetails.MetaDescription",
+                    name: "Services6Section2MasterFeaturesDetails_tenant_Services6Master_Services6Section2Master.Services6Section2MasterFeaturesDetails_tenant_Services6Master.Services6Section2MasterFeaturesDetails_tenant.Services6Section2MasterFeaturesDetails.MetaDescription",
                     data: "MetaDescription",
                     title: "MetaDescription",
                     render: $.fn.dataTable.render.text(),
@@ -101,7 +117,7 @@ angular.module(config.app).service('Services5Section2MasterFeaturesDetailsCRUD',
                     targets: 7
                 },
 {
-                    name: "Services5Section2MasterFeaturesDetails_tenant_Services5Master_Services5Section2Master.Services5Section2MasterFeaturesDetails_tenant_Services5Master.Services5Section2MasterFeaturesDetails_tenant.Services5Section2MasterFeaturesDetails.Keyword",
+                    name: "Services6Section2MasterFeaturesDetails_tenant_Services6Master_Services6Section2Master.Services6Section2MasterFeaturesDetails_tenant_Services6Master.Services6Section2MasterFeaturesDetails_tenant.Services6Section2MasterFeaturesDetails.Keyword",
                     data: "Keyword",
                     title: "Keyword",
                     render: $.fn.dataTable.render.text(),
@@ -110,7 +126,7 @@ angular.module(config.app).service('Services5Section2MasterFeaturesDetailsCRUD',
                 },
 
               {
-                    name: "Services5Section2MasterFeaturesDetails_tenant_Services5Master_Services5Section2Master.Services5Section2MasterFeaturesDetails_tenant_Services5Master.Services5Section2MasterFeaturesDetails_tenant.Services5Section2MasterFeaturesDetails.IsActive",
+                    name: "Services6Section2MasterFeaturesDetails_tenant_Services6Master_Services6Section2Master.Services6Section2MasterFeaturesDetails_tenant_Services6Master.Services6Section2MasterFeaturesDetails_tenant.Services6Section2MasterFeaturesDetails.IsActive",
                     data: "IsActive",
                     title: "IsActive",
                     render: $.fn.dataTable.render.text(),
@@ -127,7 +143,7 @@ angular.module(config.app).service('Services5Section2MasterFeaturesDetailsCRUD',
                     targets:11
                 },
                 {
-                    name: "Services5Section2MasterFeaturesDetails_tenant_Services5Master_Services5Section2Master.Services5Section2MasterFeaturesDetails_tenant_Services5Master.Services5Section2MasterFeaturesDetails_tenant.Services5Section2MasterFeaturesDetails.CreatedBy",
+                    name: "Services6Section2MasterFeaturesDetails_tenant_Services6Master_Services6Section2Master.Services6Section2MasterFeaturesDetails_tenant_Services6Master.Services6Section2MasterFeaturesDetails_tenant.Services6Section2MasterFeaturesDetails.CreatedBy",
                     data: "CreatedBy",
                     title: "Created&nbsp;By",
                     render: $.fn.dataTable.render.text(),
@@ -135,7 +151,7 @@ angular.module(config.app).service('Services5Section2MasterFeaturesDetailsCRUD',
                     targets: 12
                 },
                 {
-                    name: "Services5Section2MasterFeaturesDetails_tenant_Services5Master_Services5Section2Master.Services5Section2MasterFeaturesDetails_tenant_Services5Master.Services5Section2MasterFeaturesDetails_tenant.Services5Section2MasterFeaturesDetails.CreatedOn",
+                    name: "Services6Section2MasterFeaturesDetails_tenant_Services6Master_Services6Section2Master.Services6Section2MasterFeaturesDetails_tenant_Services6Master.Services6Section2MasterFeaturesDetails_tenant.Services6Section2MasterFeaturesDetails.CreatedOn",
                     data: "CreatedOn",
                     title: "Created&nbsp;On",
                     render: function (data, type, row, meta) {
@@ -147,7 +163,7 @@ angular.module(config.app).service('Services5Section2MasterFeaturesDetailsCRUD',
                     targets: 13
                 },
                 {
-                    name: "Services5Section2MasterFeaturesDetails_tenant_Services5Master_Services5Section2Master.Services5Section2MasterFeaturesDetails_tenant_Services5Master.Services5Section2MasterFeaturesDetails_tenant.Services5Section2MasterFeaturesDetails.UpdatedBy",
+                    name: "Services6Section2MasterFeaturesDetails_tenant_Services6Master_Services6Section2Master.Services6Section2MasterFeaturesDetails_tenant_Services6Master.Services6Section2MasterFeaturesDetails_tenant.Services6Section2MasterFeaturesDetails.UpdatedBy",
                     data: "UpdatedBy",
                     title: "Modified&nbsp;By",
                     render: $.fn.dataTable.render.text(),
@@ -155,7 +171,7 @@ angular.module(config.app).service('Services5Section2MasterFeaturesDetailsCRUD',
                     targets: 14
                 },
                 {
-                    name: "Services5Section2MasterFeaturesDetails_tenant_Services5Master_Services5Section2Master.Services5Section2MasterFeaturesDetails_tenant_Services5Master.Services5Section2MasterFeaturesDetails_tenant.Services5Section2MasterFeaturesDetails.UpdatedOn",
+                    name: "Services6Section2MasterFeaturesDetails_tenant_Services6Master_Services6Section2Master.Services6Section2MasterFeaturesDetails_tenant_Services6Master.Services6Section2MasterFeaturesDetails_tenant.Services6Section2MasterFeaturesDetails.UpdatedOn",
                     data: "UpdatedOn",
                     title: "Modified&nbsp;On",
                     render: function (data, type, row, meta) {
@@ -200,13 +216,13 @@ angular.module(config.app).service('Services5Section2MasterFeaturesDetailsCRUD',
         $('#grdTable tbody').off('click');
         $('#grdTable tbody').on('click', '.btn-edit', function () {
             let rowData = oTable.row($(this).parents('tr')).data();
-            let scope = angular.element(document.getElementById('Services5Section2MasterFeaturesDetailsControllerScope')).scope();
+            let scope = angular.element(document.getElementById('Services6Section2MasterFeaturesDetailsControllerScope')).scope();
             scope.EditAsync(rowData.ID);
         });
 
         $('#grdTable tbody').on('click', '.btn-delete', function () {
             let rowData = oTable.row($(this).parents('tr')).data();
-            let scope = angular.element(document.getElementById('Services5Section2MasterFeaturesDetailsControllerScope')).scope();
+            let scope = angular.element(document.getElementById('Services6Section2MasterFeaturesDetailsControllerScope')).scope();
             scope.DeleteAsync(rowData.ID);
         });
     }

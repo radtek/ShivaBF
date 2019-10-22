@@ -385,6 +385,9 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Services6Section2MasterController.cs" />
+    <Compile Include="Controllers\Services6Section2MasterFeaturesDetailsController.cs" />
+    <Compile Include="Controllers\Services6MasterController.cs" />
     <Compile Include="Controllers\Services5Section2MasterFeaturesDetailsController.cs" />
     <Compile Include="Controllers\Services5Section2MasterController.cs" />
     <Compile Include="Controllers\Services5MasterController.cs" />
@@ -466,6 +469,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AngularControllers\AspNetUserController.js" />
+    <Content Include="AngularControllers\Services6Section2MasterController.js" />
+    <Content Include="AngularControllers\Services6Section2MasterFeaturesDetailsController.js" />
+    <Content Include="AngularControllers\Services6MasterController.js" />
     <Content Include="AngularControllers\Services5Section2MasterFeaturesDetailsController.js" />
     <Content Include="AngularControllers\PriceFeaturesMappingController.js" />
     <Content Include="AngularControllers\PriceFeaturesMasterController.js" />
@@ -8995,6 +9001,9 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Services\AspNetRole.js" />
     <Content Include="Scripts\Services\AspNetUser.js" />
+    <Content Include="Scripts\Services\Services6Section2Master.js" />
+    <Content Include="Scripts\Services\Services6Section2MasterFeaturesDetails.js" />
+    <Content Include="Scripts\Services\Services6Master.js" />
     <Content Include="Scripts\Services\Services5Section2MasterFeaturesDetails.js" />
     <Content Include="Scripts\Services\Services5Section2Master.js" />
     <Content Include="Scripts\Services\Services5Master.js" />
@@ -9210,6 +9219,15 @@
     <Content Include="Views\Services5Section2MasterFeaturesDetails\_CreateOrEdit.cshtml" />
     <Content Include="Views\Services5Section2MasterFeaturesDetails\_CreateOrEditTenant.cshtml" />
     <Content Include="Views\Services5Section2MasterFeaturesDetails\Index.cshtml" />
+    <Content Include="Views\Services6Master\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Services6Master\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\Services6Master\Index.cshtml" />
+    <Content Include="Views\Services6Section2Master\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Services6Section2Master\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\Services6Section2Master\Index.cshtml" />
+    <Content Include="Views\Services6Section2MasterFeaturesDetails\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Services6Section2MasterFeaturesDetails\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\Services6Section2MasterFeaturesDetails\Index.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />

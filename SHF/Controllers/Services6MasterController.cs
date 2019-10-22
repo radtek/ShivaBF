@@ -24,21 +24,24 @@ using System.ComponentModel;
 namespace SHF.Controllers
 {
     [AllowAnonymous]
-    public class Services5Section2MasterController : BaseController
+    public class Services6MasterController : BaseController
     {
         #region [Field & Contructor]
 
         private Business.Interface.IMessage businessMessage;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private Business.Interface.IServices5Section2Master businessServices5Section2Master;
-        private Business.Interface.IServices5Master businessServices5Master;
+        private Business.Interface.IServices6Master businessServices6Master;
+        private Business.Interface.ITenant businessTenant;
+        private Business.Interface.ISubSubCategoriesMaster businessSubSubCategoriesMaster;
+        
 
-        public Services5Section2MasterController(Business.Interface.IMessage Imessage, Business.Interface.IServices5Section2Master IServices5Section2Master, Business.Interface.IServices5Master IServices5Master)
+        public Services6MasterController(Business.Interface.IMessage Imessage, Business.Interface.IServices6Master IServices6Master, Business.Interface.ITenant Itenant, Business.Interface.ISubSubCategoriesMaster IsubSubCategoriesMaster)
         {
             this.businessMessage = Imessage;
-            this.businessServices5Section2Master = IServices5Section2Master;
-            this.businessServices5Master = IServices5Master;
+            this.businessServices6Master = IServices6Master;
+            this.businessSubSubCategoriesMaster = IsubSubCategoriesMaster;
+            this.businessTenant = Itenant;
 
         }
         public ApplicationSignInManager SignInManager
@@ -71,8 +74,8 @@ namespace SHF.Controllers
         [HttpGet]
         [Access]
         [OutputCache(Duration = busConstant.Settings.Cache.OutputCache.TimeOut.S300)]
-        [Route("Configurations/Master/ServiceType5/Section2Master")]
-        [Route("Settings/Master/ServiceType5/Section2Master")]
+        [Route("Configurations/Master/ServiceType6/Index")]
+        [Route("Settings/Master/ServiceType6/Index")]
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId<long>();
@@ -80,11 +83,11 @@ namespace SHF.Controllers
             return View();
         }
         [HttpPost]
-        [Route("Post/Services5Section2Master/IndexAsync")]
+        [Route("Post/ServiceType6/IndexAsync")]
         [ValidateAntiForgeryTokens]
         public async Task<ActionResult> IndexAsync()
         {
-            BusinessResultViewModel<ViewModel.Services5Section2MasterIndexViewModel> businessResult;
+            BusinessResultViewModel<ViewModel.Services6MasterIndexViewModel> businessResult;
             try
             {
                 using (var transaction = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadUncommitted }))
@@ -94,7 +97,7 @@ namespace SHF.Controllers
                         long? tenantId = Request.Form.AllKeys.Contains("tenantId") ? Convert.ToInt64(Request.Form.GetValues("tenantId").FirstOrDefault()) : busConstant.Numbers.Integer.ZERO;
                         tenantId = tenantId > busConstant.Numbers.Integer.ZERO ? tenantId : null;
 
-                        businessResult = this.businessServices5Section2Master.Index(Request, tenantId);
+                        businessResult = this.businessServices6Master.Index(Request, tenantId);
                         transaction.Complete();
                     }
                     catch
@@ -123,12 +126,12 @@ namespace SHF.Controllers
 
         }
 
-       
+
         [HttpPost]
         [AuditAttribute]
         [ValidateAntiForgeryTokens]
-        [Route("Post/Services5Section2Master/CreateAsync")]
-        public async Task<ActionResult> CreateAsync(ViewModel.Services5Section2MasterCreateOrEditViewModel model)
+        [Route("Post/Services6Master/CreateAsync")]
+        public async Task<ActionResult> CreateAsync(ViewModel.Services6MasterCreateOrEditViewModel model)
         {
             try
             {
@@ -142,9 +145,9 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var productId = businessServices5Section2Master.FindBy(Services5Section3Download => Services5Section3Download.Tenant_ID == model.Tenant_ID && Services5Section3Download.ID==model.ID).FirstOrDefault();
+                            var catId = businessServices6Master.FindBy(Categories => Categories.Tenant_ID == model.Tenant_ID && Categories.SubSubCat_Id == model.SubSubCat_Id).FirstOrDefault();
 
-                            if (productId.IsNotNull())
+                            if (catId.IsNotNull())
                             {
                                 transaction.Complete();
                                 var response = new JsonResponse<dynamic>()
@@ -159,27 +162,41 @@ namespace SHF.Controllers
                             }
                             else
                             {
-                                var entityServices = this.businessServices5Master.FindBy(Services5Master => Services5Master.SubSubCat_Id == model.SubSubCat_Id).FirstOrDefault();
-                                var entity = new EntityModel.Services5Section2Master();
-                                entity.Tenant = null;
-                                //entity.Services5Section2Masters = null;
-                                entity.SubSubCategoriesMaster = null;
-                                entity.Services5Master = null;
-                                entity.Service_Id = entityServices.ID;
+                                var entitySubSubCategoryName = this.businessSubSubCategoriesMaster.GetById(Convert.ToInt64(model.SubSubCat_Id));
+                                var entity = new EntityModel.Services6Master();
+                                // Mapper.Map(model, entity);
+                                //entity.ID = model.ID;
+                                entity.BannerImagePath = model.BannerImagePath;
+                                entity.BannerOnHeading = model.BannerOnHeading;
+                                entity.Cat_Id = entitySubSubCategoryName.Cat_Id;
+                                entity.SubCat_Id = entitySubSubCategoryName.SubCat_Id;
                                 entity.SubSubCat_Id = model.SubSubCat_Id;
-                                entity.AncharTagTitle = model.AncharTagTitle;
-                                entity.AncharTagUrl = model.AncharTagUrl;
-                                entity.ImageFilePath = model.ImageFilePath;
+                                entity.SubSubCategoryName = entitySubSubCategoryName.SubSubCategoryName;
+                                entity.BannerHeadingDescription = model.BannerHeadingDescription;
+                                entity.BannerOnHeading = model.BannerOnHeading;
+                                entity.Section1Description = model.Section1Description;
+                                entity.Section2Heading = model.Section2Heading;
+                                entity.Section2HeadingDescription = model.Section2HeadingDescription;
+                               
                                 entity.DisplayIndex = model.DisplayIndex;
-                                entity.IsActive = model.IsActive;
+                                entity.Url= model.Url;
+                                entity.Metadata= model.Metadata;
+                                entity.MetaDescription= model.MetaDescription;
+                                entity.Keyword= model.Keyword;
                                 entity.TotalViews = model.TotalViews;
-                                entity.Url = model.Url;
-                                entity.Metadata = model.Metadata;
-                                entity.Keyword = model.Keyword;
-                                entity.MetaDescription = model.MetaDescription;
+                                entity.IsActive = model.IsActive;
                                 entity.Tenant_ID = model.Tenant_ID;
-                                //Mapper.Map(model, entity);
-                                 this.businessServices5Section2Master.Create(entity);
+                                //entity.CreatedBy = model.CreatedBy;
+                                //entity.UpdatedBy = model.UpdatedBy;
+                                //entity.CreatedOn = model.CreatedOn;
+                                //entity.UpdatedOn = model.UpdatedOn;
+
+                                entity.Tenant = null;
+                                entity.CategoriesMaster = null;
+                                entity.SubCategoriesMaster = null;
+                                entity.SubSubCategoriesMaster = null;
+                                entity.CategoriesMaster = null;
+                                this.businessServices6Master.Create(entity);
                                 transaction.Complete();
 
                                 var response = new JsonResponse<dynamic>()
@@ -214,7 +231,7 @@ namespace SHF.Controllers
 
 
         [HttpGet]
-        [Route("Get/Services5Section2Master/EditAsync")]
+        [Route("Get/Services6Master/EditAsync")]
         public async Task<ActionResult> EditAsync(long Id)
         {
             try
@@ -237,36 +254,40 @@ namespace SHF.Controllers
                         }
                         else
                         {
-                            var entity = this.businessServices5Section2Master.GetById(Id);
+                            var entity = this.businessServices6Master.GetById(Id);
 
                             if (entity.IsNotNull())
                             {
-                                var entityServices = this.businessServices5Master.FindBy(Services5Master => Services5Master.SubSubCat_Id == entity.SubSubCat_Id).FirstOrDefault();
-                                var model = new ViewModel.Services5Section2MasterCreateOrEditViewModel();
+                                var model = new ViewModel.Services6MasterCreateOrEditViewModel();
+                                var entitySubSubCategoryName = this.businessSubSubCategoriesMaster.GetById(Convert.ToInt64(Id));
+                                model.ID = entity.ID;
+                                model.BannerImagePath = entity.BannerImagePath;
+                                model.BannerOnHeading = entity.BannerOnHeading;
+                                model.Cat_Id = entity.Cat_Id;
+                                model.SubCat_Id = entity.SubCat_Id;
+                                model.SubSubCat_Id = entity.SubSubCat_Id;
+                                model.SubSubCategoryName = entity.SubSubCategoryName;
+                                model.BannerHeadingDescription = entity.BannerHeadingDescription;
+                                model.BannerOnHeading = entity.BannerOnHeading;
+                                model.Section1Description = entity.Section1Description;
+                                model.Section2Heading = entity.Section2Heading;
+                                model.Section2HeadingDescription = entity.Section2HeadingDescription;
+                              
+                                model.DisplayIndex = entity.DisplayIndex;
+                                model.Url = entity.Url.ToString();
+                                model.Metadata = entity.Metadata.ToString();
+                                model.MetaDescription = entity.MetaDescription.ToString();
+                                model.Keyword = entity.Keyword.ToString();
+                                model.IsActive = entity.IsActive;
+                                model.TotalViews = entity.TotalViews;
+                                model.Tenant_ID = Convert.ToInt64(entity.Tenant_ID);
+                                model.CreatedBy = entity.CreatedBy;
+                                model.UpdatedBy = entity.UpdatedBy;
+                                model.CreatedOn = entity.CreatedOn;
+                                model.UpdatedOn = entity.UpdatedOn;
 
-                                // Mapper.Map(entity, model);
 
-                                   model.ID=entity.ID;
-                                    model.SubSubCat_Id = Convert.ToInt64(entity.SubSubCat_Id);
-                                    model.SubSubCategoryName = entityServices.SubSubCategoryName;
-                                    model.AncharTagTitle = entity.AncharTagTitle;
-                                    model.AncharTagUrl = entity.AncharTagUrl;
-                                    model.ImageFilePath = entity.ImageFilePath;
-                                    model.DisplayIndex = entity.DisplayIndex;
-                                    model.IsActive = entity.IsActive;
-                                    model.TotalViews=entity.TotalViews;
-                                   model.Url=entity.Url;
-                                   model.Metadata=entity.Metadata;
-                                   model.Keyword=entity.Keyword;
-                                   model.MetaDescription=entity.MetaDescription;
-                                   model.Tenant_ID= Convert.ToInt64(entity.Tenant_ID);
-                                   model.CreatedBy=entity.CreatedBy;
-                                   model.CreatedOn=entity.CreatedOn;
-                                   model.UpdatedBy=entity.UpdatedBy;
-                                   model.UpdatedOn=entity.UpdatedOn;
-                                   model.IsDeleted=entity.IsDeleted;
-
-                                var response = new JsonResponse<Services5Section2MasterCreateOrEditViewModel>()
+                                var response = new JsonResponse<Services6MasterCreateOrEditViewModel>()
                                 {
                                     Type = busConstant.Messages.Type.RESPONSE,
                                     Entity = model
@@ -309,8 +330,8 @@ namespace SHF.Controllers
         [HttpPost]
         [AuditAttribute]
         [ValidateAntiForgeryTokens]
-        [Route("Post/Services5Section2Master/EditAsync")]
-        public async Task<ActionResult> EditAsync(ViewModel.Services5Section2MasterCreateOrEditViewModel model)
+        [Route("Post/Services6Master/EditAsync")]
+        public async Task<ActionResult> EditAsync(ViewModel.Services6MasterCreateOrEditViewModel model)
         {
             try
             {
@@ -326,9 +347,9 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var Services5Section3DownloadData = businessServices5Section2Master.FindBy(Services5Section3Download => Services5Section3Download.Tenant_ID == model.Tenant_ID && Services5Section3Download.ID == model.ID).FirstOrDefault();
+                            var CategoriesData = businessServices6Master.FindBy(Categories => Categories.Tenant_ID == model.Tenant_ID && Categories.ID != model.ID).FirstOrDefault();
 
-                            if (Services5Section3DownloadData.IsNull())
+                            if (CategoriesData.IsNotNull())
                             {
                                 transaction.Complete();
                                 var response = new JsonResponse<dynamic>()
@@ -343,28 +364,43 @@ namespace SHF.Controllers
                             }
                             else
                             {
-                                var entityServices = this.businessServices5Master.FindBy(Services5Master => Services5Master.SubSubCat_Id == model.SubSubCat_Id).FirstOrDefault();
-                                var entity = new EntityModel.Services5Section2Master();
-                              
+                                var entity = this.businessServices6Master.GetById(Convert.ToInt64(model.ID));
+                                var entitySubSubCategoryName = this.businessSubSubCategoriesMaster.GetById(Convert.ToInt64(model.SubSubCat_Id));
+                               
+                                // Mapper.Map(model, entity);
                                 entity.ID = Convert.ToInt64(model.ID);
-                                entity.Service_Id = entityServices.ID;
+                                entity.BannerImagePath = model.BannerImagePath;
+                                entity.BannerOnHeading = model.BannerOnHeading;
+                                entity.Cat_Id = entitySubSubCategoryName.Cat_Id;
+                                entity.SubCat_Id = entitySubSubCategoryName.SubCat_Id;
                                 entity.SubSubCat_Id = model.SubSubCat_Id;
-                                entity.AncharTagTitle = model.AncharTagTitle;
-                                entity.AncharTagUrl = model.AncharTagUrl;
-                                entity.ImageFilePath = model.ImageFilePath;
+                                entity.SubSubCategoryName = entitySubSubCategoryName.SubSubCategoryName;
+                                entity.BannerHeadingDescription = model.BannerHeadingDescription;
+                                entity.BannerOnHeading = model.BannerOnHeading;
+                                entity.Section1Description = model.Section1Description;
+                                entity.Section2Heading = model.Section2Heading;
+                                entity.Section2HeadingDescription = model.Section2HeadingDescription;
+                               
                                 entity.DisplayIndex = model.DisplayIndex;
-                                entity.IsActive = model.IsActive;
-                                entity.TotalViews = model.TotalViews;
                                 entity.Url = model.Url;
                                 entity.Metadata = model.Metadata;
-                                entity.Keyword = model.Keyword;
                                 entity.MetaDescription = model.MetaDescription;
+                                entity.Keyword = model.Keyword;
+                                entity.TotalViews = model.TotalViews;
+                                entity.IsActive = model.IsActive;
                                 entity.Tenant_ID = model.Tenant_ID;
+                                //entity.CreatedBy = model.CreatedBy;
+                                //entity.UpdatedBy = model.UpdatedBy;
+                                //entity.CreatedOn = model.CreatedOn;
+                                //entity.UpdatedOn = model.UpdatedOn;
+
                                 entity.Tenant = null;
-                                //entity.Services5Section2Masters = null;
+                                entity.CategoriesMaster = null;
+                                entity.SubCategoriesMaster = null;
                                 entity.SubSubCategoriesMaster = null;
-                                entity.Services5Master = null;
-                                this.businessServices5Section2Master.Update(entity);
+                                entity.CategoriesMaster = null;
+
+                                this.businessServices6Master.Update(entity);
 
                                 transaction.Complete();
 
@@ -401,50 +437,50 @@ namespace SHF.Controllers
         [HttpPost]
         [AuditAttribute]
         [ValidateAntiForgeryTokens]
-        [Route("Post/Services5Section2Master/Delete")]
+        [Route("Post/Services6Master/Delete")]
         public async Task<ActionResult> DeleteAsync(string Id)
         {
             try
             {
-                using (var transaction = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadUncommitted }))
-                {
-                    try
+                    using (var transaction = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadUncommitted }))
                     {
-                        if (Convert.ToInt64(Id) == 0)
+                        try
                         {
-                            transaction.Complete();
-                            var response = new JsonResponse<dynamic>()
+                            if (Convert.ToInt64(Id) == 0)
                             {
-                                Type = busConstant.Messages.Type.EXCEPTION,
-                                Message = busConstant.Messages.Type.Exceptions.BAD_REQUEST,
-                            };
+                                transaction.Complete();
+                                var response = new JsonResponse<dynamic>()
+                                {
+                                    Type = busConstant.Messages.Type.EXCEPTION,
+                                    Message = busConstant.Messages.Type.Exceptions.BAD_REQUEST,
+                                };
 
-                            Response.StatusCode = Convert.ToInt32(HttpStatusCode.BadRequest);
-                            return Json(response, JsonRequestBehavior.AllowGet);
+                                Response.StatusCode = Convert.ToInt32(HttpStatusCode.BadRequest);
+                                return Json(response, JsonRequestBehavior.AllowGet);
+                            }
+                            else
+                            {
+                                this.businessServices6Master.Delete(Convert.ToInt64(Id));
+
+
+                                var response = new JsonResponse<dynamic>()
+                                {
+                                    Type = busConstant.Messages.Type.RESPONSE,
+                                    Message = busConstant.Messages.Icon.SUCCESS,
+                                };
+
+                                transaction.Complete();
+                                return Json(response, JsonRequestBehavior.AllowGet);
+
+                            }
                         }
-                        else
+                        catch
                         {
-                            this.businessServices5Section2Master.Delete(Convert.ToInt64(Id));
-
-
-                            var response = new JsonResponse<dynamic>()
-                            {
-                                Type = busConstant.Messages.Type.RESPONSE,
-                                Message = busConstant.Messages.Icon.SUCCESS,
-                            };
-
-                            transaction.Complete();
-                            return Json(response, JsonRequestBehavior.AllowGet);
-
+                            transaction.Dispose();
+                            throw;
                         }
                     }
-                    catch
-                    {
-                        transaction.Dispose();
-                        throw;
-                    }
-                }
-
+               
             }
             catch (Exception ex)
             {
@@ -457,8 +493,8 @@ namespace SHF.Controllers
         }
 
         [HttpGet]
-        [Route("Get/Services5Section2Master/DropdownListbyTenantAsync")]
-        public async Task<ActionResult> GetServices5Section2MasterByTenantIdAsync(long Id, long subsubcat_id)
+        [Route("Get/Services6Master/DropdownListbyTenantAsync")]
+        public async Task<ActionResult> GetServices6MasterByTenantIdAsync(long? Id)
         {
             try
             {
@@ -466,7 +502,7 @@ namespace SHF.Controllers
                 {
                     try
                     {
-                        if (Id == 0 || subsubcat_id == 0)
+                        if (Id == null)
                         {
                             transaction.Complete();
                             var response = new JsonResponse<dynamic>()
@@ -480,15 +516,17 @@ namespace SHF.Controllers
                         }
                         else
                         {
-                            var entities = this.businessServices5Section2Master.GetAll().Where(S5S2M => S5S2M.Tenant_ID == Convert.ToInt64(Id) && S5S2M.SubSubCat_Id == Convert.ToInt64(subsubcat_id)).Select(x => new ViewModel.Services5Section2MasterDropdownListViewModel
+                          
+                            var entities= this.businessSubSubCategoriesMaster.GetAll().Where(x =>(x.Tenant_ID == Id && x.ServiceTypeValue==busConstant.Code.CodeValue.ServiceType.SERVICE_6))
+                                .Select(x => new ViewModel.Services6MasterDropdownListViewModel
                             {
                                 ID = x.ID,
-                                AncharTagTitle = x.ID.ToString()
+                                SubSubCategoryName = x.SubSubCategoryName
                             });
 
                             if (entities.IsNotNull())
                             {
-                                var response = new JsonResponse<IEnumerable<ViewModel.Services5Section2MasterDropdownListViewModel>>()
+                                var response = new JsonResponse<IEnumerable<ViewModel.Services6MasterDropdownListViewModel>>()
                                 {
                                     Type = busConstant.Messages.Type.RESPONSE,
                                     Entity = entities
@@ -523,6 +561,7 @@ namespace SHF.Controllers
                 return ExceptionResponse(ex);
             }
         }
+
 
         #endregion
 

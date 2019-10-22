@@ -1,5 +1,5 @@
-﻿angular.module(config.app).controller('Services5Section2MasterFeaturesDetailsCtrl', ['$scope', '$http', '$window', 'Services5Section2MasterFeaturesDetailsCRUD','PriceFeaturesMasterCRUD','Services5MasterCRUD','Services5Section2MasterCRUD', 'TenantCRUD','CustomService',
-    function ($scope, $http, $window, Services5Section2MasterFeaturesDetailsCRUD,PriceFeaturesMasterCRUD,Services5MasterCRUD,Services5Section2MasterCRUD, TenantCRUD,CustomService) {      
+﻿angular.module(config.app).controller('Services6MasterCtrl', ['$scope', '$http', '$window','SubSubCategoriesMasterCRUD', 'Services6MasterCRUD', 'TenantCRUD','CustomService','CodeValueCRUD',
+    function ($scope, $http, $window,SubSubCategoriesMasterCRUD, Services6MasterCRUD, TenantCRUD,CustomService,CodeValueCRUD) {      
         $scope.path = "";
         $scope.errors = {};
         $scope.errors.pageError = {};
@@ -8,27 +8,22 @@
         $scope.errors.formErrors = null;
         $scope.Processing = false;
         $scope.Entity = {};
-        $scope.Services5Section2MasterFeaturesDetailsCreateOrEditViewModel = {};
+        $scope.Services6MasterCreateOrEditViewModel = {};
         $scope.AllTenants = [];
         $scope.AllSubSubCategories = [];
-        $scope.AllSection2ID = [];
-        $scope.AllPriceFeatures = [];
-
+        $scope.Services6MasterCreateOrEditViewModel.SelectedTenant_ID = -1;
+        $scope.Services6MasterCreateOrEditViewModel.SelectedSubSubCat_Id = -1;
        
-        $scope.Services5Section2MasterFeaturesDetailsCreateOrEditViewModel.SelectedTenant_ID = -1;
-        $scope.Services5Section2MasterFeaturesDetailsCreateOrEditViewModel.SelectedSubSubCat_Id = -1;
-        $scope.Services5Section2MasterFeaturesDetailsCreateOrEditViewModel.SelectedS5S2M_Id = -1;
-        $scope.Services5Section2MasterFeaturesDetailsCreateOrEditViewModel.SelectedPriceFeaturesMaster_Id = -1;
        
         $scope.Cookie_Tenant_ID = parseInt(CustomService.GetTenantID());
-        $scope.Services5Section2MasterFeaturesDetailsCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;     
+        $scope.Services6MasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;     
 
         $scope.BindGrid = function () {
-            Services5Section2MasterFeaturesDetailsCRUD.LoadTable();
+            Services6MasterCRUD.LoadTable();
         }      
 
         $scope.PageLoad = function () {
-            $scope.Services5Section2MasterFeaturesDetailsCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
+            $scope.Services6MasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
             $scope.BindGrid();
         }
 
@@ -39,7 +34,7 @@
 
 
         $scope.Clear = function () {
-            $scope.Services5Section2MasterFeaturesDetailsCreateOrEditViewModel = {};
+            $scope.Services6MasterCreateOrEditViewModel = {};
             $scope.Reset();
         }            
       
@@ -55,13 +50,14 @@
             $scope.errors.formErrors = null;
             $scope.Processing = false;
             $scope.Clear();
+            $scope.BindServiceTypeDropDownList(1020);
             if ($scope.Cookie_Tenant_ID <= 0) {
                 $scope.BindTenantDropDownList();
-                $scope.Services5Section2MasterFeaturesDetailsCreateOrEditViewModel.SelectedTenant_ID = -1;
-               // $scope.Services5Section2MasterFeaturesDetailsCreateOrEditViewModel.SelectedUnitOfMesurment = -1;
+                $scope.Services6MasterCreateOrEditViewModel.SelectedTenant_ID = -1;
+               // $scope.Services6MasterCreateOrEditViewModel.SelectedUnitOfMesurment = -1;
             } else {
-                $scope.Services5Section2MasterFeaturesDetailsCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
-               // $scope.BindUnitOfMeasurementDropDownList($scope.Services5Section2MasterFeaturesDetailsCreateOrEditViewModel.Tenant_ID);
+                $scope.Services6MasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
+               // $scope.BindUnitOfMeasurementDropDownList($scope.Services6MasterCreateOrEditViewModel.Tenant_ID);
             }
             $('#modal-createOredit').modal('show');
         }
@@ -106,10 +102,11 @@
 /********************************************************************************/
         $scope.EditAsync = function (Id) {
             $scope.Clear();
+            $scope.BindServiceTypeDropDownList(1020);
             if ($scope.Cookie_Tenant_ID <= 0) {
                 $scope.BindTenantDropDownList();
-            }
-            $http.get("/Get/Services5Section2MasterFeaturesDetails/EditAsync?Id=" + Id
+           }
+            $http.get("/Get/Services6Master/EditAsync?Id=" + Id
             ).then(
                 function success(response) {
                     switch (response.data.Type) {
@@ -118,7 +115,10 @@
                             console.log(response);
                             break;
                         case 'Response':
-                            $scope.Services5Section2MasterFeaturesDetailsCreateOrEditViewModel = response.data.Entity;
+                            $scope.Services6MasterCreateOrEditViewModel = response.data.Entity;
+                           // $scope.LoadAllCategory();
+                            $scope.LoadAllSubSubCategory();
+                            //$scope.Services6MasterCreateOrEditViewModel.Category_ID=$scope.Services6MasterCreateOrEditViewModel.Category_ID;
                             $('#modal-createOredit').modal('show');
                             console.clear();
                             break;
@@ -153,9 +153,9 @@
             $scope.Processing = true;
             $scope.path = "";
            if ($scope.myForm.$valid) {
-                $scope.path = ($scope.Services5Section2MasterFeaturesDetailsCreateOrEditViewModel.ID == undefined || $scope.Services5Section2MasterFeaturesDetailsCreateOrEditViewModel.ID == null || 
-          $scope.Services5Section2MasterFeaturesDetailsCreateOrEditViewModel.ID == 0) ? "/Post/Services5Section2MasterFeaturesDetails/CreateAsync" : "/Post/Services5Section2MasterFeaturesDetails/EditAsync";
-               $http.post($scope.path, $scope.Services5Section2MasterFeaturesDetailsCreateOrEditViewModel,
+                $scope.path = ($scope.Services6MasterCreateOrEditViewModel.ID == undefined || $scope.Services6MasterCreateOrEditViewModel.ID == null || 
+          $scope.Services6MasterCreateOrEditViewModel.ID == 0) ? "/Post/Services6Master/CreateAsync" : "/Post/Services6Master/EditAsync";
+               $http.post($scope.path, $scope.Services6MasterCreateOrEditViewModel,
                     {
                         headers: { 'RequestVerificationToken': $scope.antiForgeryToken }
                     }
@@ -252,7 +252,7 @@
                     if (willDelete) {
                         var obj = {};
                         obj.Id = Id;
-                  $http.post("/Post/Services5Section2MasterFeaturesDetails/Delete/", obj,
+                  $http.post("/Post/Services6Master/Delete/", obj,
                     {
                         headers: { 'RequestVerificationToken': $scope.antiForgeryToken }
                     }
@@ -284,14 +284,15 @@
                     }
                 });
         }
-/************load Sub Category**************************************************************************************************/
+/************load Sub Sub Category**************************************************************************************************/
 $scope.LoadAllSubSubCategory = function () {
-            let tenantId = $scope.Services5Section2MasterFeaturesDetailsCreateOrEditViewModel.Tenant_ID;
+            let tenantId = $scope.Services6MasterCreateOrEditViewModel.Tenant_ID;
+debugger;
             $scope.BindSubSubCategoryDropDownList(tenantId);
         }
 
 $scope.BindSubSubCategoryDropDownList = function (tenantId) {
-            let promise = Services5MasterCRUD.LoadSubSubCategoriesDropdown(tenantId)
+            let promise = Services6MasterCRUD.LoadSubSubCategoriesDropdown(tenantId)
             promise.then(
                 function success(response) {
                     switch (response.data.Type) {
@@ -325,92 +326,12 @@ $scope.BindSubSubCategoryDropDownList = function (tenantId) {
                     }
 
                 });
-        }
-/************load LoadAllSection2ID Category**************************************************************************************************/
-$scope.LoadAllSection2ID = function () {
-            let tenantId = $scope.Services5Section2MasterFeaturesDetailsCreateOrEditViewModel.Tenant_ID;
-            let subsubcat_id = $scope.Services5Section2MasterFeaturesDetailsCreateOrEditViewModel.SubSubCat_Id;
-            $scope.BindSection2IDByTenantAndSubSubCatID(tenantId,subsubcat_id);
-        }
-
-$scope.BindSection2IDByTenantAndSubSubCatID = function (tenantId,subsubcat_id) {
-            let promise = Services5Section2MasterCRUD.LoadSection2IDByTenantAndSubSubCatID(tenantId,subsubcat_id)
-            promise.then(
-                function success(response) {
-                    switch (response.data.Type) {
-                        case 'Exception':
-                            CustomService.Notify(response.data.Message);
-                            console.log(response);
-                            break;
-                        case 'Response':
-                            $scope.AllSection2ID = response.data.Entity;
-                            console.clear();
-                            break;
-                        default:
-                            CustomService.Notify(response.data.Message);
-                            console.log(response);
-                            break;
-                    }
-                }, function errors(response) {
-                    switch (response.data.Type) {
-                        case 'Exception':
-                            CustomService.Notify(response.data.Message);
-                            console.log(response);
-                            break;
-                        case 'Validation':
-                            CustomService.Notify(response.data.Message);
-                            console.log(response);
-                            break;
-                        default:
-                            CustomService.Notify(response.data.Message);
-                            console.log(response);
-                            break;
-                    }
-
-                });
-        }
-/************load PriceFeaturesMasterCRUD Category**************************************************************************************************/
-$scope.LoadAllPriceFeaturesMaster = function () {
-
-            let tenantId = $scope.Services5Section2MasterFeaturesDetailsCreateOrEditViewModel.Tenant_ID;
-          $scope.BindPriceFeaturesMaster(tenantId);
-        }
-
-$scope.BindPriceFeaturesMaster = function (tenantId) {
-            let promise = PriceFeaturesMasterCRUD.LoadPriceFeaturesDropdown(tenantId)
-            promise.then(
-                function success(response) {
-                    switch (response.data.Type) {
-                        case 'Exception':
-                            CustomService.Notify(response.data.Message);
-                            console.log(response);
-                            break;
-                        case 'Response':
-                            $scope.AllPriceFeatures = response.data.Entity;
-                            console.clear();
-                            break;
-                        default:
-                            CustomService.Notify(response.data.Message);
-                            console.log(response);
-                            break;
-                    }
-                }, function errors(response) {
-                    switch (response.data.Type) {
-                        case 'Exception':
-                            CustomService.Notify(response.data.Message);
-                            console.log(response);
-                            break;
-                        case 'Validation':
-                            CustomService.Notify(response.data.Message);
-                            console.log(response);
-                            break;
-                        default:
-                            CustomService.Notify(response.data.Message);
-                            console.log(response);
-                            break;
-                    }
-
-                });
         }  
+
+ $scope.BindServiceTypeDropDownList = function (Id) {
+            $scope.AllServiceType = [];
+            $scope.AllServiceType = CodeValueCRUD.LoadCodeValueByCodeId(Id);
+        }         
     }]);
+
 
