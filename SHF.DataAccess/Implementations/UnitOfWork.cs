@@ -70,6 +70,13 @@ namespace SHF.DataAccess.Implementations
         private GenericRepository<EntityModel.Services6Master> _Services6MasterRepository;
         private GenericRepository<EntityModel.Services6Section2Master> _Services6Section2MasterRepository;
         private GenericRepository<EntityModel.Services6Section2MasterFeaturesDetails> _Services6Section2MasterFeaturesDetailsRepository;
+        private GenericRepository<EntityModel.Services7Master> _Services7MasterRepository;
+        private GenericRepository<EntityModel.Services7HeadingButtons> _Services7HeadingButtonsRepository;
+        private GenericRepository<EntityModel.Services7Section4> _Services7Section4Repository;
+        private GenericRepository<EntityModel.Services7Section6PriceMaster> _Services7Section6PriceMasterRepository;
+        private GenericRepository<EntityModel.Services8Master> _Services8MasterRepository;
+        private GenericRepository<EntityModel.Services8HeadingButtons> _Services8HeadingButtonsRepository;
+        private GenericRepository<EntityModel.Services8Section6Master> _Services8Section6MasterRepository;
 
         #endregion
 
@@ -631,7 +638,85 @@ namespace SHF.DataAccess.Implementations
                 return _Services6Section2MasterFeaturesDetailsRepository;
             }
         }
+        public GenericRepository<EntityModel.Services7Master> Services7MasterRepository
+        {
+            get
+            {
+                if (this._Services7MasterRepository == null)
+                {
+                    this._Services7MasterRepository = new GenericRepository<EntityModel.Services7Master>(context);
+                }
+                return _Services7MasterRepository;
+            }
+        }
+        public GenericRepository<EntityModel.Services7HeadingButtons> Services7HeadingButtonsRepository
+        {
+            get
+            {
+                if (this._Services7HeadingButtonsRepository == null)
+                {
+                    this._Services7HeadingButtonsRepository = new GenericRepository<EntityModel.Services7HeadingButtons>(context);
+                }
+                return _Services7HeadingButtonsRepository;
+            }
+        }
+        public GenericRepository<EntityModel.Services7Section4> Services7Section4Repository
+        {
+            get
+            {
+                if (this._Services7Section4Repository == null)
+                {
+                    this._Services7Section4Repository = new GenericRepository<EntityModel.Services7Section4>(context);
+                }
+                return _Services7Section4Repository;
+            }
+        }
+        public GenericRepository<EntityModel.Services7Section6PriceMaster> Services7Section6PriceMasterRepository
+        {
+            get
+            {
+                if (this._Services7Section6PriceMasterRepository == null)
+                {
+                    this._Services7Section6PriceMasterRepository = new GenericRepository<EntityModel.Services7Section6PriceMaster>(context);
+                }
+                return _Services7Section6PriceMasterRepository;
+            }
+        }
 
+        public GenericRepository<EntityModel.Services8Master> Services8MasterRepository
+        {
+            get
+            {
+                if (this._Services8MasterRepository == null)
+                {
+                    this._Services8MasterRepository = new GenericRepository<EntityModel.Services8Master>(context);
+                }
+                return _Services8MasterRepository;
+            }
+        }
+        public GenericRepository<EntityModel.Services8HeadingButtons> Services8HeadingButtonsRepository
+        {
+            get
+            {
+                if (this._Services8HeadingButtonsRepository == null)
+                {
+                    this._Services8HeadingButtonsRepository = new GenericRepository<EntityModel.Services8HeadingButtons>(context);
+                }
+                return _Services8HeadingButtonsRepository;
+            }
+        }
+        
+        public GenericRepository<EntityModel.Services8Section6Master> Services8Section6MasterRepository
+        {
+            get
+            {
+                if (this._Services8Section6MasterRepository == null)
+                {
+                    this._Services8Section6MasterRepository = new GenericRepository<EntityModel.Services8Section6Master>(context);
+                }
+                return _Services8Section6MasterRepository;
+            }
+        }
         #endregion
 
         #region [Constructors]
