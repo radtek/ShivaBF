@@ -66,6 +66,7 @@ namespace SHF
             container.RegisterType<Business.Interface.IServices6Section2Master, Business.BusinessLogic.Services6Section2Master>();
             container.RegisterType<Business.Interface.IServices6Section2MasterFeaturesDetails, Business.BusinessLogic.Services6Section2MasterFeaturesDetails>();
             container.RegisterType<Business.Interface.IServices7Master, Business.BusinessLogic.Services7Master>();
+            container.RegisterType<Business.Interface.IServices7HeadingButtons, Business.BusinessLogic.Services7HeadingButtons>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }
