@@ -170,6 +170,7 @@ namespace SHF
                               "~/Scripts/Services/Services6Section2MasterFeaturesDetails.js",
                                "~/Scripts/Services/Services7Master.js",
                                "~/Scripts/Services/Services7HeadingButtons.js",
+                                "~/Scripts/Services/Services7Section6PriceMaster.js",
                  "~/AngularControllers/AspNetUserController.js",
                  "~/AngularControllers/RoleController.js",
                  "~/AngularControllers/TenantController.js",
@@ -211,7 +212,8 @@ namespace SHF
                            "~/AngularControllers/Services6Section2MasterController.js",
                            "~/AngularControllers/Services6Section2MasterFeaturesDetailsController.js",
                             "~/AngularControllers/Services7MasterController.js",
-                            "~/AngularControllers/Services7HeadingButtonsController.js"
+                            "~/AngularControllers/Services7HeadingButtonsController.js",
+                            "~/AngularControllers/Services7Section6PriceMasterController.js"
                 ));
 
 
