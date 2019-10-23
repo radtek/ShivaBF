@@ -481,6 +481,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AngularControllers\AspNetUserController.js" />
+    <Content Include="AngularControllers\Services1MasterController - Copy.js" />
     <Content Include="AngularControllers\Services8Section6MasterController.js" />
     <Content Include="AngularControllers\Services8HeadingButtonsController.js" />
     <Content Include="AngularControllers\Services8MasterController.js" />
@@ -9020,6 +9021,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Services\AspNetRole.js" />
     <Content Include="Scripts\Services\AspNetUser.js" />
+    <Content Include="Scripts\Services\BlogMaster.js" />
     <Content Include="Scripts\Services\Services8Section6Master.js" />
     <Content Include="Scripts\Services\Services8HeadingButtons.js" />
     <Content Include="Scripts\Services\Services8Master.js" />
