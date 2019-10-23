@@ -33,10 +33,10 @@ namespace SHF.Helper
                         public abstract class ConnectionString
                         {
                             //public const string DEFAULT = DEVELOPMENT_HOME;
-                            public const string DEFAULT = DEVELOPMENT;
+                            //public const string DEFAULT = DEVELOPMENT;
                             //public const string DEFAULT = DEVELOPMENT_L;
                            // public const string DEFAULT = TESTING;
-                          //public const string DEFAULT = PRODUCTION;
+                          public const string DEFAULT = PRODUCTION;
                         }
                         private const string DEVELOPMENT_HOME = "DevelopmentHome";
                         private const string DEVELOPMENT = "DevelopmentMSSQL";
