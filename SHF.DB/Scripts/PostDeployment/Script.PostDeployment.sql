@@ -40,6 +40,11 @@ go
 :r .\History\Update_Or_Delete_Statements.sql
 go
 
+:r .\History\load_tempservices.sql
+go
+
+:r .\History\load_Cat_Sub_SubSub.sql
+go
 
 
 

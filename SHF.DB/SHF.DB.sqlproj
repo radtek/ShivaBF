@@ -92,8 +92,9 @@
     <None Include="Scripts\PostDeployment\History\DBCleanUp.sql" />
     <None Include="InventoryApp_Inventory.DB.publish.publish.xml" />
     <None Include="Scripts\PostDeployment\History\Tbl_Message_INSERT.sql" />
-    <None Include="Scripts\PostDeployment\History\SetupOneTime.sql" />
+    <None Include="Scripts\PostDeployment\History\load_Cat_Sub_SubSub.sql" />
     <None Include="Scripts\PostDeployment\History\Tbl_StateMaster_INSERT.sql" />
+    <None Include="Scripts\PostDeployment\History\load_tempservices.sql" />
   </ItemGroup>
   <ItemGroup>
     <PreDeploy Include="Scripts\PreDeployment\Script.PreDeployment.sql" />
