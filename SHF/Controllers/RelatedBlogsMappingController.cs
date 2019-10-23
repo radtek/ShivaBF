@@ -24,21 +24,21 @@ using System.ComponentModel;
 namespace SHF.Controllers
 {
     [AllowAnonymous]
-    public class BlogMasterController : BaseController
+    public class RelatedBlogsMappingController : BaseController
     {
         #region [Field & Contructor]
 
         private Business.Interface.IMessage businessMessage;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private Business.Interface.IRelatedBlogsMapping businessRelatedBlogsMapping;
         private Business.Interface.IBlogMaster businessBlogMaster;
-        private Business.Interface.IServices8Master businessServices8Master;
 
-        public BlogMasterController(Business.Interface.IMessage Imessage, Business.Interface.IBlogMaster IBlogMaster, Business.Interface.IServices8Master IServices8Master)
+        public RelatedBlogsMappingController(Business.Interface.IMessage Imessage, Business.Interface.IRelatedBlogsMapping IRelatedBlogsMapping, Business.Interface.IBlogMaster IBlogMaster)
         {
             this.businessMessage = Imessage;
+            this.businessRelatedBlogsMapping = IRelatedBlogsMapping;
             this.businessBlogMaster = IBlogMaster;
-            this.businessServices8Master = IServices8Master;
 
         }
         public ApplicationSignInManager SignInManager
@@ -71,8 +71,8 @@ namespace SHF.Controllers
         [HttpGet]
         [Access]
         [OutputCache(Duration = busConstant.Settings.Cache.OutputCache.TimeOut.S300)]
-        [Route("Configurations/Master/Blog/BlogMaster")]
-        [Route("SettingsMaster/Blog/BlogMaster")]
+        [Route("Configurations/Master/Blog/RelatedBlogsDetails")]
+        [Route("Settings/Master/Blog/RelatedBlogsDetails")]
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId<long>();
@@ -80,11 +80,11 @@ namespace SHF.Controllers
             return View();
         }
         [HttpPost]
-        [Route("Post/BlogMaster/IndexAsync")]
+        [Route("Post/RelatedBlogsMapping/IndexAsync")]
         [ValidateAntiForgeryTokens]
         public async Task<ActionResult> IndexAsync()
         {
-            BusinessResultViewModel<ViewModel.BlogMasterIndexViewModel> businessResult;
+            BusinessResultViewModel<ViewModel.RelatedBlogsMappingIndexViewModel> businessResult;
             try
             {
                 using (var transaction = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadUncommitted }))
@@ -94,7 +94,7 @@ namespace SHF.Controllers
                         long? tenantId = Request.Form.AllKeys.Contains("tenantId") ? Convert.ToInt64(Request.Form.GetValues("tenantId").FirstOrDefault()) : busConstant.Numbers.Integer.ZERO;
                         tenantId = tenantId > busConstant.Numbers.Integer.ZERO ? tenantId : null;
 
-                        businessResult = this.businessBlogMaster.Index(Request, tenantId);
+                        businessResult = this.businessRelatedBlogsMapping.Index(Request, tenantId);
                         transaction.Complete();
                     }
                     catch
@@ -127,8 +127,8 @@ namespace SHF.Controllers
         [HttpPost]
         [AuditAttribute]
         [ValidateAntiForgeryTokens]
-        [Route("Post/BlogMaster/CreateAsync")]
-        public async Task<ActionResult> CreateAsync(ViewModel.BlogMasterCreateOrEditViewModel model)
+        [Route("Post/RelatedBlogsMapping/CreateAsync")]
+        public async Task<ActionResult> CreateAsync(ViewModel.RelatedBlogsMappingCreateOrEditViewModel model)
         {
             try
             {
@@ -142,7 +142,7 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var productId = businessBlogMaster.FindBy(Services1Section4 => Services1Section4.Tenant_ID == model.Tenant_ID && Services1Section4.ID==model.ID).FirstOrDefault();
+                            var productId = businessRelatedBlogsMapping.FindBy(Services1Section4 => Services1Section4.Tenant_ID == model.Tenant_ID && Services1Section4.ID==model.ID).FirstOrDefault();
 
                             if (productId.IsNotNull())
                             {
@@ -160,17 +160,12 @@ namespace SHF.Controllers
                             else
                             {
                                
-                                var entity = new EntityModel.BlogMaster();
+                                var entity = new EntityModel.RelatedBlogsMapping();
                                 entity.Tenant = null;
-                                entity.BannerImagePath = model.BannerImagePath;
-                                entity.BannerDescription1 = model.BannerDescription1;
-                                entity.BannerDescription2 = model.BannerDescription2;
-                                entity.BlogTitle = model.BlogTitle;
-                                entity.Section1ImagePath = model.Section1ImagePath;
-                                entity.Section2Heading = model.Section2Heading;
-                                entity.Section2Description = model.Section2Description;
-                                entity.Section3Heading = model.Section3Heading;
-                                entity.Section3Description = model.Section3Description;
+                                entity.BlogMaster = null;
+                                entity.BlogMaster1 = null;
+                                entity.Related_Blog_Id = model.Related_Blog_Id;
+                                entity.Blog_Id = model.Blog_Id;
                                 entity.Url = model.Url.ToString();
                                 entity.Metadata = model.Metadata.ToString();
                                 entity.MetaDescription = model.MetaDescription.ToString();
@@ -182,7 +177,7 @@ namespace SHF.Controllers
                                 entity.Keyword = model.Keyword;
                                 entity.MetaDescription = model.MetaDescription;
                                 entity.Tenant_ID = model.Tenant_ID;
-                                this.businessBlogMaster.Create(entity);
+                                this.businessRelatedBlogsMapping.Create(entity);
                                 transaction.Complete();
 
                                 var response = new JsonResponse<dynamic>()
@@ -217,7 +212,7 @@ namespace SHF.Controllers
 
 
         [HttpGet]
-        [Route("Get/BlogMaster/EditAsync")]
+        [Route("Get/RelatedBlogsMapping/EditAsync")]
         public async Task<ActionResult> EditAsync(long Id)
         {
             try
@@ -240,25 +235,18 @@ namespace SHF.Controllers
                         }
                         else
                         {
-                            var entity = this.businessBlogMaster.GetById(Id);
+                            var entity = this.businessRelatedBlogsMapping.GetById(Id);
 
                             if (entity.IsNotNull())
                             {
                                 
-                                var model = new ViewModel.BlogMasterCreateOrEditViewModel();
+                                var model = new ViewModel.RelatedBlogsMappingCreateOrEditViewModel();
 
                                 // Mapper.Map(entity, model);
 
                                 model.ID = entity.ID;
-                                model.BannerImagePath = entity.BannerImagePath;
-                                model.BannerDescription1 = entity.BannerDescription1;
-                                model.BannerDescription2 = entity.BannerDescription2;
-                                model.BlogTitle = entity.BlogTitle;
-                                model.Section1ImagePath = entity.Section1ImagePath;
-                                model.Section2Heading = entity.Section2Heading;
-                                model.Section2Description = entity.Section2Description;
-                                model.Section3Heading = entity.Section3Heading;
-                                model.Section3Description = entity.Section3Description;
+                                model.Related_Blog_Id = entity.Related_Blog_Id;
+                                model.Blog_Id = entity.Blog_Id;
                                 model.Url = entity.Url.ToString();
                                 model.Metadata = entity.Metadata.ToString();
                                 model.MetaDescription = entity.MetaDescription.ToString();
@@ -277,7 +265,7 @@ namespace SHF.Controllers
                                 model.IsDeleted = entity.IsDeleted;
 
 
-                                var response = new JsonResponse<BlogMasterCreateOrEditViewModel>()
+                                var response = new JsonResponse<RelatedBlogsMappingCreateOrEditViewModel>()
                                 {
                                     Type = busConstant.Messages.Type.RESPONSE,
                                     Entity = model
@@ -320,8 +308,8 @@ namespace SHF.Controllers
         [HttpPost]
         [AuditAttribute]
         [ValidateAntiForgeryTokens]
-        [Route("Post/BlogMaster/EditAsync")]
-        public async Task<ActionResult> EditAsync(ViewModel.BlogMasterCreateOrEditViewModel model)
+        [Route("Post/RelatedBlogsMapping/EditAsync")]
+        public async Task<ActionResult> EditAsync(ViewModel.RelatedBlogsMappingCreateOrEditViewModel model)
         {
             try
             {
@@ -337,7 +325,7 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var Services1Section4Data = businessBlogMaster.FindBy(Services1Section4 => Services1Section4.Tenant_ID == model.Tenant_ID && Services1Section4.ID == model.ID).FirstOrDefault();
+                            var Services1Section4Data = businessRelatedBlogsMapping.FindBy(Services1Section4 => Services1Section4.Tenant_ID == model.Tenant_ID && Services1Section4.ID == model.ID).FirstOrDefault();
 
                             if (Services1Section4Data.IsNull())
                             {
@@ -355,19 +343,15 @@ namespace SHF.Controllers
                             else
                             {
                                
-                                var entity = this.businessBlogMaster.GetById(Convert.ToInt64(model.ID));
+                                var entity = this.businessRelatedBlogsMapping.GetById(Convert.ToInt64(model.ID));
                                 if (entity.IsNotNull())
                                 {
                                     entity.Tenant = null;
-                                    entity.BannerImagePath = model.BannerImagePath;
-                                    entity.BannerDescription1 = model.BannerDescription1;
-                                    entity.BannerDescription2 = model.BannerDescription2;
-                                    entity.BlogTitle = model.BlogTitle;
-                                    entity.Section1ImagePath = model.Section1ImagePath;
-                                    entity.Section2Heading = model.Section2Heading;
-                                    entity.Section2Description = model.Section2Description;
-                                    entity.Section3Heading = model.Section3Heading;
-                                    entity.Section3Description = model.Section3Description;
+                                    entity.BlogMaster = null;
+                                    entity.BlogMaster1 = null;
+                                    entity.Related_Blog_Id = model.Related_Blog_Id;
+                                    entity.Blog_Id = model.Blog_Id;
+                                    entity.Blog_Id = model.Blog_Id;
                                     entity.Url = model.Url.ToString();
                                     entity.Metadata = model.Metadata.ToString();
                                     entity.MetaDescription = model.MetaDescription.ToString();
@@ -379,8 +363,9 @@ namespace SHF.Controllers
                                     entity.Keyword = model.Keyword;
                                     entity.MetaDescription = model.MetaDescription;
                                     entity.Tenant_ID = model.Tenant_ID;
+                                   
                                     //Mapper.Map(model, entity);
-                                    this.businessBlogMaster.Update(entity);
+                                    this.businessRelatedBlogsMapping.Update(entity);
                                 }
                                 transaction.Complete();
 
@@ -417,7 +402,7 @@ namespace SHF.Controllers
         [HttpPost]
         [AuditAttribute]
         [ValidateAntiForgeryTokens]
-        [Route("Post/BlogMaster/Delete")]
+        [Route("Post/RelatedBlogsMapping/Delete")]
         public async Task<ActionResult> DeleteAsync(string Id)
         {
             try
@@ -440,7 +425,7 @@ namespace SHF.Controllers
                         }
                         else
                         {
-                            this.businessBlogMaster.Delete(Convert.ToInt64(Id));
+                            this.businessRelatedBlogsMapping.Delete(Convert.ToInt64(Id));
 
 
                             var response = new JsonResponse<dynamic>()
@@ -473,8 +458,8 @@ namespace SHF.Controllers
         }
 
         [HttpGet]
-        [Route("Get/BlogMaster/DropdownListbyTenantAsync")]
-        public async Task<ActionResult> GetBlogMasterByTenantIdAsync(long Id)
+        [Route("Get/RelatedBlogsMapping/DropdownListbyTenantAsync")]
+        public async Task<ActionResult> GetRelatedBlogsMappingByTenantIdAsync(long Id)
         {
             try
             {
@@ -496,15 +481,15 @@ namespace SHF.Controllers
                         }
                         else
                         {
-                            var entities = this.businessBlogMaster.FindBy(product => product.Tenant_ID == Id).Select(x => new ViewModel.BlogMasterDropdownListViewModel
+                            var entities = this.businessRelatedBlogsMapping.FindBy(product => product.Tenant_ID == Id).Select(x => new ViewModel.RelatedBlogsMappingDropdownListViewModel
                             {
                                 ID = x.ID,
-                                BlogTitle = x.BlogTitle
+                                RelatedBlogTitle = x.Blog_Id.ToString()
                             });
 
                             if (entities.IsNotNull())
                             {
-                                var response = new JsonResponse<IEnumerable<ViewModel.BlogMasterDropdownListViewModel>>()
+                                var response = new JsonResponse<IEnumerable<ViewModel.RelatedBlogsMappingDropdownListViewModel>>()
                                 {
                                     Type = busConstant.Messages.Type.RESPONSE,
                                     Entity = entities

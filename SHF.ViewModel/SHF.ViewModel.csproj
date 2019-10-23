@@ -43,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActiveMenuViewModel.cs" />
+    <Compile Include="RelatedBlogsMappingViewModel.cs" />
+    <Compile Include="BannerNavigationsDetailsViewModel.cs" />
     <Compile Include="BlogMasterViewModel.cs" />
     <Compile Include="Services8Section6MasterViewModel.cs" />
     <Compile Include="Services8HeadingButtonsViewModel.cs" />

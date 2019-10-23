@@ -72,6 +72,9 @@ namespace SHF
             container.RegisterType<Business.Interface.IServices8Master, Business.BusinessLogic.Services8Master>();
             container.RegisterType<Business.Interface.IServices8HeadingButtons, Business.BusinessLogic.Services8HeadingButtons>();
             container.RegisterType<Business.Interface.IServices8Section6Master, Business.BusinessLogic.Services8Section6Master>();
+            container.RegisterType<Business.Interface.IBlogMaster, Business.BusinessLogic.BlogMaster>();
+            container.RegisterType<Business.Interface.IBannerNavigationsDetails, Business.BusinessLogic.BannerNavigationsDetails>();
+            container.RegisterType<Business.Interface.IRelatedBlogsMapping, Business.BusinessLogic.RelatedBlogsMapping>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

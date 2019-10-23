@@ -175,6 +175,9 @@ namespace SHF
                                  "~/Scripts/Services/Services8Master.js",
                                  "~/Scripts/Services/Services8HeadingButtons.js",
                                  "~/Scripts/Services/Services8Section6Master.js",
+                                  "~/Scripts/Services/BlogMaster.js",
+                                   "~/Scripts/Services/BannerNavigationsDetails.js",
+                                   "~/Scripts/Services/RelatedBlogsMapping.js",
                  "~/AngularControllers/AspNetUserController.js",
                  "~/AngularControllers/RoleController.js",
                  "~/AngularControllers/TenantController.js",
@@ -221,7 +224,10 @@ namespace SHF
                             "~/AngularControllers/Services7Section4Controller.js",
                             "~/AngularControllers/Services8MasterController.js",
                             "~/AngularControllers/Services8HeadingButtonsController.js",
-                            "~/AngularControllers/Services8Section6MasterController.js"
+                            "~/AngularControllers/Services8Section6MasterController.js",
+                            "~/AngularControllers/BlogMasterController.js",
+                             "~/AngularControllers/BannerNavigationsDetailsController.js",
+                             "~/AngularControllers/RelatedBlogsMappingController.js"
                 ));
 
 

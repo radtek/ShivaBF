@@ -18,6 +18,9 @@ namespace SHF.EntityModel
         [ForeignKey("Blog_Id")]
         public virtual BlogMaster BlogMaster { get; set; }
         public System.Int64? Blog_Id { get; set; }
+        [ForeignKey("Related_Blog_Id")]
+        public virtual BlogMaster BlogMaster1 { get; set; }
+        public System.Int64? Related_Blog_Id { get; set; }
         [Column("DisplayIndex")]
         public System.Int32 DisplayIndex { get; set; }
         [Column("IsActive")]

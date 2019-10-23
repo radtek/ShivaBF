@@ -1,0 +1,115 @@
+﻿@functions{
+    public string AntiForgeryToken()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return cookieToken + ":" + formToken;
+    }
+}
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <form name="myForm" ng-submit="myForm.$valid && createOreditAsyncForm()" novalidate>
+            <!--myForm.$valid && -->
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="ShowConfirm('modal-createOredit')" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Banner Navigations Details</h4>
+            </div>
+            <div class="modal-body">
+                <!-- general form elements -->
+                <div id="errorMessages" class="text-danger" ng-if="ValidationSummary" ng-repeat="vs in ValidationSummary">{{vs}}</div>
+                <div class="box box-primary">
+                    <div class="box-body">
+                        <input id="antiForgeryToken" data-ng-model="antiForgeryToken" type="hidden" data-ng-init="antiForgeryToken='@AntiForgeryToken()'" />
+                        <div class="form-group" ng-class="{'has-error': (myForm.TenantName.$touched || myForm.TenantName.$dirty)  && myForm.TenantName.$invalid}">
+                            <label>Tenant Name</label>
+                            <select name="TenantName" ng-model="RelatedBlogsMappingCreateOrEditViewModel.Tenant_ID" class="form-control" style="width: 100%;" ng-options="x.ID as x.Name for x in AllTenants" ng-change="LoadAllBlogTitle()" required>
+                                <option value="" ng-selected="RelatedBlogsMappingCreateOrEditViewModel.SelectedTenant_ID < 0">-- Select --</option>
+                            </select>
+                            <div class="help-block" ng-messages="myForm.TenantName.$error" ng-if="myForm.TenantName.$touched || myForm.TenantName.$dirty && myForm.TenantName.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.Tenant_ID" ng-bind="errors.formErrors.Tenant_ID"></span>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error': (myForm.BlogTitle.$touched || myForm.BlogTitle.$dirty)  && myForm.BlogTitle.$invalid}">
+                            <label>Blog Title</label>
+                            <select name="BlogTitle" ng-model="RelatedBlogsMappingCreateOrEditViewModel.Blog_Id" class="form-control" style="width: 100%;" ng-options="x.ID as x.BlogTitle for x in AllBlogTitle" ng-change="LoadAllRelatedBlogTitle()" required>
+                                <option value="" ng-selected="RelatedBlogsMappingCreateOrEditViewModel.SelectedBlog_Id < 0">-- Select --</option>
+                            </select>
+                            <div class="help-block" ng-messages="myForm.BlogTitle.$error" ng-if="myForm.BlogTitle.$touched || myForm.BlogTitle.$dirty && myForm.BlogTitle.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.SubSubCat_Id" ng-bind="errors.formErrors.SubSubCat_Id"></span>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error': (myForm.RelatedBlogTitle.$touched || myForm.RelatedBlogTitle.$dirty)  && myForm.RelatedBlogTitle.$invalid}">
+                            <label>Related Blog Id</label>
+                            <select name="RelatedBlogTitle" ng-model="RelatedBlogsMappingCreateOrEditViewModel.RelatedBlog_Id" class="form-control" style="width: 100%;" ng-options="x.ID as x.RelatedBlogTitle for x in AllRelatedBlogTitle" required>
+                                <option value="" ng-selected="RelatedBlogsMappingCreateOrEditViewModel.SelectedRelatedBlog_Id < 0">-- Select --</option>
+                            </select>
+                            <div class="help-block" ng-messages="myForm.RelatedBlogTitle.$error" ng-if="myForm.RelatedBlogTitle.$touched || myForm.RelatedBlogTitle.$dirty && myForm.RelatedBlogTitle.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.SubSubCat_Id" ng-bind="errors.formErrors.SubSubCat_Id"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Is Active</label><br />
+                            <label>
+                                <!--https://codepen.io/mosluce/pen/yYmXGz-->
+                                <input icheck type="checkbox" class="form-control" ng-model="RelatedBlogsMappingCreateOrEditViewModel.IsActive" ng-checked="RelatedBlogsMappingCreateOrEditViewModel.IsActive"><span style="margin-left: 10px;">{{RelatedBlogsMappingCreateOrEditViewModel.IsActive ? 'Yes' : 'No'}} </span>
+                            </label>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error': (myForm.TotalViews.$touched || myForm.TotalViews.$dirty)  && myForm.TotalViews.$invalid}">
+                            <label>Total Views</label>
+                            <input type="number" min="0" class="form-control" name="TotalViews" ng-model="RelatedBlogsMappingCreateOrEditViewModel.TotalViews" ng-disabled="Processing" autocomplete="off" placeholder="Enter Total Views" tooltip-placement="top" uib-tooltip="Enter Total Views" required />
+                            <div class="help-block" ng-messages="myForm.TotalViews.$error" ng-if="myForm.TotalViews.$touched || myForm.TotalViews.$dirty && myForm.TotalViews.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.TotalViews" ng-bind="errors.formErrors.TotalViews"></span>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error': (myForm.Url.$touched || myForm.TotalViews.$dirty)  && myForm.TotalViews.$invalid}">
+                            <label>Url</label>
+                            <input type="text" class="form-control" name="Url" ng-model="RelatedBlogsMappingCreateOrEditViewModel.Url" ng-disabled="Processing" autocomplete="off" placeholder="Enter Url" tooltip-placement="top" uib-tooltip="Enter Url" required />
+                            <div class="help-block" ng-messages="myForm.Url.$error" ng-if="myForm.Url.$touched || myForm.Url.$dirty && myForm.Url.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.Url" ng-bind="errors.formErrors.Url"></span>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error': (myForm.Metadata.$touched || myForm.Metadata.$dirty)  && myForm.TotalViews.$invalid}">
+                            <label>Metadata</label>
+                            <input type="text" class="form-control" name="Metadata" ng-model="RelatedBlogsMappingCreateOrEditViewModel.Metadata" ng-disabled="Processing" autocomplete="off" placeholder="Enter Metadata" tooltip-placement="top" uib-tooltip="Enter Metadata" required />
+                            <div class="help-block" ng-messages="myForm.Metadata.$error" ng-if="myForm.Metadata.$touched || myForm.Metadata.$dirty && myForm.Metadata.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.Metadata" ng-bind="errors.formErrors.Metadata"></span>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error': (myForm.MetaDescription.$touched || myForm.MetaDescription.$dirty)  && myForm.MetaDescription.$invalid}">
+                            <label>Meta Description</label>
+                            <input type="text" class="form-control" name="MetaDescription" ng-model="RelatedBlogsMappingCreateOrEditViewModel.MetaDescription" ng-disabled="Processing" autocomplete="off" placeholder="Enter Meta Description" tooltip-placement="top" uib-tooltip="Enter Meta Description" required />
+                            <div class="help-block" ng-messages="myForm.MetaDescription.$error" ng-if="myForm.MetaDescription.$touched || myForm.MetaDescription.$dirty && myForm.MetaDescription.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.MetaDescription" ng-bind="errors.formErrors.MetaDescription"></span>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error': (myForm.Keyword.$touched || myForm.Keyword.$dirty)  && myForm.Keyword.$invalid}">
+                            <label>Keyword</label>
+                            <input type="text" class="form-control" name="Keyword" ng-model="RelatedBlogsMappingCreateOrEditViewModel.Keyword" ng-disabled="Processing" autocomplete="off" placeholder="Enter Keyword" tooltip-placement="top" uib-tooltip="Enter Keyword" required />
+                            <div class="help-block" ng-messages="myForm.Keyword.$error" ng-if="myForm.Keyword.$touched || myForm.Keyword.$dirty && myForm.Keyword.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.Keyword" ng-bind="errors.formErrors.Keyword"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" ng-if="!Processing" class="btn btn-sm btn-success pull-left" ng-disabled="myForm.$invalid">Save</button>
+                <span ng-if="Processing" class="btn btn-sm btn-success pull-left">Processing...</span>
+                <button ng-click="Clear()" class="btn btn-sm btn-default pull-left">Clear</button>
+                <span class="btn btn-sm btn-danger" ng-click="ShowConfirm('modal-createOredit')">Close</span>
+            </div>
+        </form>
+    </div>
+    <!-- /.modal-content -->
+</div>

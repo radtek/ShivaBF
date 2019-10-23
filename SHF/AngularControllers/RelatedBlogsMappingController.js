@@ -1,5 +1,5 @@
-﻿angular.module(config.app).controller('Services1MasterCtrl', ['$scope', '$http', '$window','SubSubCategoriesMasterCRUD', 'Services1MasterCRUD', 'TenantCRUD','CustomService','CodeValueCRUD',
-    function ($scope, $http, $window,SubSubCategoriesMasterCRUD, Services1MasterCRUD, TenantCRUD,CustomService,CodeValueCRUD) {      
+﻿angular.module(config.app).controller('RelatedBlogsMappingCtrl', ['$scope', '$http', '$window','SubSubCategoriesMasterCRUD', 'RelatedBlogsMappingCRUD','BlogMasterCRUD', 'TenantCRUD','CustomService','CodeValueCRUD',
+    function ($scope, $http, $window,SubSubCategoriesMasterCRUD, RelatedBlogsMappingCRUD,BlogMasterCRUD, TenantCRUD,CustomService,CodeValueCRUD) {      
         $scope.path = "";
         $scope.errors = {};
         $scope.errors.pageError = {};
@@ -8,22 +8,24 @@
         $scope.errors.formErrors = null;
         $scope.Processing = false;
         $scope.Entity = {};
-        $scope.Services1MasterCreateOrEditViewModel = {};
+        $scope.RelatedBlogsMappingCreateOrEditViewModel = {};
         $scope.AllTenants = [];
-        $scope.AllSubSubCategories = [];
-        $scope.Services1MasterCreateOrEditViewModel.SelectedTenant_ID = -1;
-        $scope.Services1MasterCreateOrEditViewModel.SelectedSubSubCat_Id = -1;
+        $scope.AllBlogTitle = [];
+        $scope.RelatedBlogsMappingCreateOrEditViewModel.SelectedTenant_ID = -1;
+        $scope.RelatedBlogsMappingCreateOrEditViewModel.SelectedBlog_Id = -1;
+        $scope.RelatedBlogsMappingCreateOrEditViewModel.SelectedRelatedBlog_Id = -1;
+
        
        
         $scope.Cookie_Tenant_ID = parseInt(CustomService.GetTenantID());
-        $scope.Services1MasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;     
+        $scope.RelatedBlogsMappingCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;     
 
         $scope.BindGrid = function () {
-            Services1MasterCRUD.LoadTable();
+            RelatedBlogsMappingCRUD.LoadTable();
         }      
 
         $scope.PageLoad = function () {
-            $scope.Services1MasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
+            $scope.RelatedBlogsMappingCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
             $scope.BindGrid();
         }
 
@@ -34,7 +36,7 @@
 
 
         $scope.Clear = function () {
-            $scope.Services1MasterCreateOrEditViewModel = {};
+            $scope.RelatedBlogsMappingCreateOrEditViewModel = {};
             $scope.Reset();
         }            
       
@@ -53,11 +55,11 @@
             $scope.BindServiceTypeDropDownList(1020);
             if ($scope.Cookie_Tenant_ID <= 0) {
                 $scope.BindTenantDropDownList();
-                $scope.Services1MasterCreateOrEditViewModel.SelectedTenant_ID = -1;
-               // $scope.Services1MasterCreateOrEditViewModel.SelectedUnitOfMesurment = -1;
+                $scope.RelatedBlogsMappingCreateOrEditViewModel.SelectedTenant_ID = -1;
+               // $scope.RelatedBlogsMappingCreateOrEditViewModel.SelectedUnitOfMesurment = -1;
             } else {
-                $scope.Services1MasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
-               // $scope.BindUnitOfMeasurementDropDownList($scope.Services1MasterCreateOrEditViewModel.Tenant_ID);
+                $scope.RelatedBlogsMappingCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
+               // $scope.BindUnitOfMeasurementDropDownList($scope.RelatedBlogsMappingCreateOrEditViewModel.Tenant_ID);
             }
             $('#modal-createOredit').modal('show');
         }
@@ -106,7 +108,7 @@
             if ($scope.Cookie_Tenant_ID <= 0) {
                 $scope.BindTenantDropDownList();
            }
-            $http.get("/Get/Services1Master/EditAsync?Id=" + Id
+            $http.get("/Get/RelatedBlogsMapping/EditAsync?Id=" + Id
             ).then(
                 function success(response) {
                     switch (response.data.Type) {
@@ -115,10 +117,10 @@
                             console.log(response);
                             break;
                         case 'Response':
-                            $scope.Services1MasterCreateOrEditViewModel = response.data.Entity;
+                            $scope.RelatedBlogsMappingCreateOrEditViewModel = response.data.Entity;
                            // $scope.LoadAllCategory();
-                            $scope.LoadAllSubSubCategory();
-                            //$scope.Services1MasterCreateOrEditViewModel.Category_ID=$scope.Services1MasterCreateOrEditViewModel.Category_ID;
+                           // $scope.LoadAllSubSubCategory();
+                            //$scope.RelatedBlogsMappingCreateOrEditViewModel.Category_ID=$scope.RelatedBlogsMappingCreateOrEditViewModel.Category_ID;
                             $('#modal-createOredit').modal('show');
                             console.clear();
                             break;
@@ -153,9 +155,9 @@
             $scope.Processing = true;
             $scope.path = "";
            if ($scope.myForm.$valid) {
-                $scope.path = ($scope.Services1MasterCreateOrEditViewModel.ID == undefined || $scope.Services1MasterCreateOrEditViewModel.ID == null || 
-          $scope.Services1MasterCreateOrEditViewModel.ID == 0) ? "/Post/Services1Master/CreateAsync" : "/Post/Services1Master/EditAsync";
-               $http.post($scope.path, $scope.Services1MasterCreateOrEditViewModel,
+                $scope.path = ($scope.RelatedBlogsMappingCreateOrEditViewModel.ID == undefined || $scope.RelatedBlogsMappingCreateOrEditViewModel.ID == null || 
+          $scope.RelatedBlogsMappingCreateOrEditViewModel.ID == 0) ? "/Post/RelatedBlogsMapping/CreateAsync" : "/Post/RelatedBlogsMapping/EditAsync";
+               $http.post($scope.path, $scope.RelatedBlogsMappingCreateOrEditViewModel,
                     {
                         headers: { 'RequestVerificationToken': $scope.antiForgeryToken }
                     }
@@ -252,7 +254,7 @@
                     if (willDelete) {
                         var obj = {};
                         obj.Id = Id;
-                  $http.post("/Post/Services1Master/Delete/", obj,
+                  $http.post("/Post/RelatedBlogsMapping/Delete/", obj,
                     {
                         headers: { 'RequestVerificationToken': $scope.antiForgeryToken }
                     }
@@ -284,15 +286,15 @@
                     }
                 });
         }
-/************load Sub Sub Category**************************************************************************************************/
-$scope.LoadAllSubSubCategory = function () {
-            let tenantId = $scope.Services1MasterCreateOrEditViewModel.Tenant_ID;
+/************load AllBlogTitle**************************************************************************************************/
+$scope.LoadAllBlogTitle = function () {
+            let tenantId = $scope.RelatedBlogsMappingCreateOrEditViewModel.Tenant_ID;
 debugger;
-            $scope.BindSubSubCategoryDropDownList(tenantId);
+            $scope.BindAllBlogTitleDropDownList(tenantId);
         }
 
-$scope.BindSubSubCategoryDropDownList = function (tenantId) {
-            let promise = Services1MasterCRUD.LoadSubSubCategoriesDropdown(tenantId)
+$scope.BindAllBlogTitleDropDownList = function (tenantId) {
+            let promise = BlogMasterCRUD.LoadBlogTitleDropdown(tenantId)
             promise.then(
                 function success(response) {
                     switch (response.data.Type) {
@@ -301,7 +303,50 @@ $scope.BindSubSubCategoryDropDownList = function (tenantId) {
                             console.log(response);
                             break;
                         case 'Response':
-                            $scope.AllSubSubCategories = response.data.Entity;
+                            $scope.AllRelatedBlogTitle = response.data.Entity;
+                            console.clear();
+                            break;
+                        default:
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                    }
+                }, function errors(response) {
+                    switch (response.data.Type) {
+                        case 'Exception':
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                        case 'Validation':
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                        default:
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                    }
+
+                });
+        }  
+
+$scope.LoadAllRelatedBlogTitle = function () {
+            let tenantId = $scope.RelatedBlogsMappingCreateOrEditViewModel.Tenant_ID;
+debugger;
+            $scope.BindAllRelatedBlogTitleDropDownList(tenantId);
+        }
+
+$scope.BindAllRelatedBlogTitleDropDownList = function (tenantId) {
+            let promise = BlogMasterCRUD.LoadBlogTitleDropdown(tenantId)
+            promise.then(
+                function success(response) {
+                    switch (response.data.Type) {
+                        case 'Exception':
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                        case 'Response':
+                            $scope.AllRelatedBlogTitle = response.data.Entity;
                             console.clear();
                             break;
                         default:
