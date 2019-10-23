@@ -35,6 +35,8 @@ namespace SHF.EntityModel
         public System.String Section3Description { get; set; }
         [Column("IsActive")]
         public System.Boolean? IsActive { get; set; }
+        [Column("TotalViews")]
+        public System.Int32 TotalViews { get; set; }
         [Column("Url")]
         public string Url { get; set; }
 
