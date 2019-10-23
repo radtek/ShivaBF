@@ -8,23 +8,16 @@ using System.Threading.Tasks;
 
 namespace SHF.EntityModel
 {
-    [Table("Tbl_Services8Section6Master", Schema = "dbo")]
-    public class Services8Section6Master : BaseEntity
+    [Table("Tbl_BannerNavigationsDetails", Schema = "dbo")]
+    public class BannerNavigationsDetails : BaseEntity
     {
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         [Column(Order = 1)]
         public virtual long ID { get; set; }
-        [ForeignKey("Service_Id")]
-        public virtual Services8Master Services8Master { get; set; }
-        public System.Int64? Service_Id { get; set; }
-        [ForeignKey("SubSubCat_Id")]
-        public virtual SubSubCategoriesMaster SubSubCategoriesMaster { get; set; }
-        public System.Int64? SubSubCat_Id { get; set; }
-        [Column("HeadingText")]
-        public System.String HeadingText { get; set; }
-        [Column("ShortDescription")]
-        public System.String ShortDescription { get; set; }
+        [ForeignKey("Blog_Id")]
+        public virtual BlogMaster BlogMaster { get; set; }
+        public System.Int64? Blog_Id { get; set; }
         [Column("AncharTagTitle")]
         public System.String AncharTagTitle { get; set; }
         [Column("AncharTagUrl")]
@@ -49,6 +42,5 @@ namespace SHF.EntityModel
         [ForeignKey("Tenant_ID")]
         public virtual Tenant Tenant { get; set; }
         public System.Int64? Tenant_ID { get; set; }
-        public virtual IEnumerable<Services1Section6PriceMaster> Services1Section6PriceMasters { get; set; }
     }
 }

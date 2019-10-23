@@ -52,6 +52,10 @@
     <Compile Include="AspNetRoleSubMenu.cs" />
     <Compile Include="AspNetUser.cs" />
     <Compile Include="AspNetUserRole.cs" />
+    <Compile Include="CommentsReply.cs" />
+    <Compile Include="BlogCommentsDetails.cs" />
+    <Compile Include="RelatedBlogsMapping.cs" />
+    <Compile Include="BannerNavigationsDetails.cs" />
     <Compile Include="HomePageSection4Testimonails.cs" />
     <Compile Include="HomePageSection4.cs" />
     <Compile Include="HomePageSection5.cs" />
@@ -60,6 +64,7 @@
     <Compile Include="HomePageSection2.cs" />
     <Compile Include="HomePageSection1.cs" />
     <Compile Include="HomePageBanner.cs" />
+    <Compile Include="BlogMaster.cs" />
     <Compile Include="Services6Section2MasterFeaturesDetails.cs" />
     <Compile Include="Services6Section2Master.cs" />
     <Compile Include="Services6Master.cs" />

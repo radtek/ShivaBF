@@ -77,6 +77,12 @@ namespace SHF.DataAccess.Implementations
         private GenericRepository<EntityModel.Services8Master> _Services8MasterRepository;
         private GenericRepository<EntityModel.Services8HeadingButtons> _Services8HeadingButtonsRepository;
         private GenericRepository<EntityModel.Services8Section6Master> _Services8Section6MasterRepository;
+        private GenericRepository<EntityModel.BlogMaster> _BlogMasterRepository;
+        private GenericRepository<EntityModel.BannerNavigationsDetails> _BannerNavigationsDetailsRepository;
+        private GenericRepository<EntityModel.BlogCommentsDetails> _BlogCommentsDetailsRepository;
+        private GenericRepository<EntityModel.RelatedBlogsMapping> _RelatedBlogsMappingRepository;
+        private GenericRepository<EntityModel.CommentsReply> _CommentsReplyRepository;
+
 
         #endregion
 
@@ -717,6 +723,62 @@ namespace SHF.DataAccess.Implementations
                 return _Services8Section6MasterRepository;
             }
         }
+        public GenericRepository<EntityModel.BlogMaster> BlogMasterRepository
+        {
+            get
+            {
+                if (this._BlogMasterRepository == null)
+                {
+                    this._BlogMasterRepository = new GenericRepository<EntityModel.BlogMaster>(context);
+                }
+                return _BlogMasterRepository;
+            }
+        }
+        public GenericRepository<EntityModel.BannerNavigationsDetails> BannerNavigationsDetailsRepository
+        {
+            get
+            {
+                if (this._BannerNavigationsDetailsRepository == null)
+                {
+                    this._BannerNavigationsDetailsRepository = new GenericRepository<EntityModel.BannerNavigationsDetails>(context);
+                }
+                return _BannerNavigationsDetailsRepository;
+            }
+        }
+        public GenericRepository<EntityModel.BlogCommentsDetails> BlogCommentsDetailsRepository
+        {
+            get
+            {
+                if (this._BlogCommentsDetailsRepository == null)
+                {
+                    this._BlogCommentsDetailsRepository = new GenericRepository<EntityModel.BlogCommentsDetails>(context);
+                }
+                return _BlogCommentsDetailsRepository;
+            }
+        }
+        public GenericRepository<EntityModel.RelatedBlogsMapping> RelatedBlogsMappingRepository
+        {
+            get
+            {
+                if (this._RelatedBlogsMappingRepository == null)
+                {
+                    this._RelatedBlogsMappingRepository = new GenericRepository<EntityModel.RelatedBlogsMapping>(context);
+                }
+                return _RelatedBlogsMappingRepository;
+            }
+        }
+        public GenericRepository<EntityModel.CommentsReply> CommentsReplyRepository
+        {
+            get
+            {
+                if (this._CommentsReplyRepository == null)
+                {
+                    this._CommentsReplyRepository = new GenericRepository<EntityModel.CommentsReply>(context);
+                }
+                return _CommentsReplyRepository;
+            }
+        }
+
         #endregion
 
         #region [Constructors]

@@ -167,7 +167,7 @@ namespace SHF.Controllers
                                 entity.Services8Master = null;
                                 entity.Service_Id = entityServices.ID;
                                 entity.SubSubCat_Id = model.SubSubCat_Id;
-                                entity.Heading = model.Heading;
+                                entity.HeadingText = model.HeadingText;
                                 entity.ShortDescription = model.ShortDescription;
                                 entity.AncharTagTitle = model.AncharTagTitle;
                                 entity.AncharTagUrl = model.AncharTagUrl;
@@ -250,7 +250,7 @@ namespace SHF.Controllers
                                 model.ID = entity.ID;
                                 model.SubSubCat_Id = Convert.ToInt64(entity.SubSubCat_Id);
                                 model.SubSubCategoryName = entityServices.SubSubCategoryName;
-                                model.Heading = entity.Heading;
+                                model.HeadingText = entity.HeadingText;
                                 model.ShortDescription = entity.ShortDescription;
                                 model.AncharTagTitle = entity.AncharTagTitle;
                                 model.AncharTagUrl = entity.AncharTagUrl;
@@ -354,7 +354,7 @@ namespace SHF.Controllers
                                 entity.Services8Master = null;
                                 entity.Service_Id = entityServices.ID;
                                 entity.SubSubCat_Id = model.SubSubCat_Id;
-                                entity.Heading = model.Heading;
+                                entity.HeadingText = model.HeadingText;
                                 entity.ShortDescription = model.ShortDescription;
                                 entity.AncharTagTitle = model.AncharTagTitle;
                                 entity.AncharTagUrl = model.AncharTagUrl;

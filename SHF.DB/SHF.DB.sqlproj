@@ -95,6 +95,7 @@
     <None Include="Scripts\PostDeployment\History\load_Cat_Sub_SubSub.sql" />
     <None Include="Scripts\PostDeployment\History\Tbl_StateMaster_INSERT.sql" />
     <None Include="Scripts\PostDeployment\History\load_tempservices.sql" />
+    <None Include="Scripts\PostDeployment\History\update_Tenant_Cat_Sub_SubSub.sql" />
   </ItemGroup>
   <ItemGroup>
     <PreDeploy Include="Scripts\PreDeployment\Script.PreDeployment.sql" />

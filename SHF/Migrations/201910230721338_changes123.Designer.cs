@@ -7,13 +7,13 @@ namespace SHF.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class DBsetup : IMigrationMetadata
+    public sealed partial class changes123 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(DBsetup));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(changes123));
         
         string IMigrationMetadata.Id
         {
-            get { return "201910211952269_DBsetup"; }
+            get { return "201910230721338_changes123"; }
         }
         
         string IMigrationMetadata.Source

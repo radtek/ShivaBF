@@ -108,6 +108,12 @@ namespace SHF.DataAccess
         public DbSet<SHF.EntityModel.Services8HeadingButtons> Services8HeadingButtons { get; set; }
         public DbSet<SHF.EntityModel.Services8Master> Services8Master { get; set; }
         public DbSet<SHF.EntityModel.Services8Section6Master> Services8Section6Master { get; set; }
+        /****Blog***/
+        public DbSet<SHF.EntityModel.BlogMaster> BlogMaster { get; set; }
+        public DbSet<SHF.EntityModel.BlogCommentsDetails> BlogCommentsDetails { get; set; }
+        public DbSet<SHF.EntityModel.RelatedBlogsMapping> RelatedBlogsMapping { get; set; }
+        public DbSet<SHF.EntityModel.CommentsReply> CommentsReply { get; set; }
+        public DbSet<SHF.EntityModel.BannerNavigationsDetails> BannerNavigationsDetails { get; set; }
 
     }
 }
