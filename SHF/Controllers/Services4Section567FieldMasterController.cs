@@ -123,7 +123,7 @@ namespace SHF.Controllers
 
         }
 
-       
+
         [HttpPost]
         [AuditAttribute]
         [ValidateAntiForgeryTokens]
@@ -142,7 +142,7 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var productId = businessServices4Section567FieldMaster.FindBy(Services2Section3Download => Services2Section3Download.Tenant_ID == model.Tenant_ID && Services2Section3Download.ID==model.ID).FirstOrDefault();
+                            var productId = businessServices4Section567FieldMaster.FindBy(Services2Section3Download => Services2Section3Download.Tenant_ID == model.Tenant_ID && Services2Section3Download.ID == model.ID).FirstOrDefault();
 
                             if (productId.IsNotNull())
                             {
@@ -178,7 +178,7 @@ namespace SHF.Controllers
                                 entity.MetaDescription = model.MetaDescription;
                                 entity.Tenant_ID = model.Tenant_ID;
                                 //Mapper.Map(model, entity);
-                                 this.businessServices4Section567FieldMaster.Create(entity);
+                                this.businessServices4Section567FieldMaster.Create(entity);
                                 transaction.Complete();
 
                                 var response = new JsonResponse<dynamic>()
@@ -245,25 +245,25 @@ namespace SHF.Controllers
 
                                 // Mapper.Map(entity, model);
 
-                                   model.ID=entity.ID;
-                                    model.SubSubCat_Id = Convert.ToInt64(entity.SubSubCat_Id);
-                                    model.SubSubCategoryName = entityServices.SubSubCategoryName;
-                                    model.FieldName = entity.FieldName;
-                                    model.SectionType = entity.SectionType;
-                                   
-                                    model.DisplayIndex = entity.DisplayIndex;
-                                    model.IsActive = entity.IsActive;
-                                    model.TotalViews=entity.TotalViews;
-                                   model.Url=entity.Url;
-                                   model.Metadata=entity.Metadata;
-                                   model.Keyword=entity.Keyword;
-                                   model.MetaDescription=entity.MetaDescription;
-                                   model.Tenant_ID= Convert.ToInt64(entity.Tenant_ID);
-                                   model.CreatedBy=entity.CreatedBy;
-                                   model.CreatedOn=entity.CreatedOn;
-                                   model.UpdatedBy=entity.UpdatedBy;
-                                   model.UpdatedOn=entity.UpdatedOn;
-                                   model.IsDeleted=entity.IsDeleted;
+                                model.ID = entity.ID;
+                                model.SubSubCat_Id = Convert.ToInt64(entity.SubSubCat_Id);
+                                model.SubSubCategoryName = entityServices.SubSubCategoryName;
+                                model.FieldName = entity.FieldName;
+                                model.SectionType = entity.SectionType;
+
+                                model.DisplayIndex = entity.DisplayIndex;
+                                model.IsActive = entity.IsActive;
+                                model.TotalViews = entity.TotalViews;
+                                model.Url = entity.Url;
+                                model.Metadata = entity.Metadata;
+                                model.Keyword = entity.Keyword;
+                                model.MetaDescription = entity.MetaDescription;
+                                model.Tenant_ID = Convert.ToInt64(entity.Tenant_ID);
+                                model.CreatedBy = entity.CreatedBy;
+                                model.CreatedOn = entity.CreatedOn;
+                                model.UpdatedBy = entity.UpdatedBy;
+                                model.UpdatedOn = entity.UpdatedOn;
+                                model.IsDeleted = entity.IsDeleted;
 
                                 var response = new JsonResponse<Services4Section567FieldMasterCreateOrEditViewModel>()
                                 {
@@ -342,11 +342,11 @@ namespace SHF.Controllers
                             }
                             else
                             {
+                                var entityServices = this.businessServices4Master.FindBy(Services4Master => Services4Master.SubSubCat_Id == model.SubSubCat_Id).FirstOrDefault();
                                 var entity = this.businessServices4Section567FieldMaster.GetById(Convert.ToInt64(model.ID));
-                                if (entity.isNotNull())
+                                if (entity.IsNotNull())
                                 {
-                                    var entityServices = this.businessServices4Master.FindBy(Services4Master => Services4Master.SubSubCat_Id == model.SubSubCat_Id).FirstOrDefault();
-                                     entity.Service_Id = entityServices.ID;
+                                    entity.Service_Id = entityServices.ID;
                                     entity.SubSubCat_Id = model.SubSubCat_Id;
                                     entity.FieldName = model.FieldName;
                                     entity.SectionType = model.SectionType;
@@ -377,7 +377,19 @@ namespace SHF.Controllers
                                     };
                                     return Json(response);
                                 }
+                                else
+                                {
+                                    var response = new JsonResponse<dynamic>()
+                                    {
+                                        Type = busConstant.Messages.Type.EXCEPTION,
+                                        Message = busConstant.Messages.Type.Exceptions.NOT_FOUND,
+                                    };
+
+                                    transaction.Complete();
+                                    return Json(response, JsonRequestBehavior.AllowGet);
+                                }
                             }
+
 
                         }
                         catch

@@ -123,7 +123,7 @@ namespace SHF.Controllers
 
         }
 
-       
+
         [HttpPost]
         [AuditAttribute]
         [ValidateAntiForgeryTokens]
@@ -142,7 +142,7 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var productId = businessBannerNavigationsDetails.FindBy(Services1Section4 => Services1Section4.Tenant_ID == model.Tenant_ID && Services1Section4.ID==model.ID).FirstOrDefault();
+                            var productId = businessBannerNavigationsDetails.FindBy(Services1Section4 => Services1Section4.Tenant_ID == model.Tenant_ID && Services1Section4.ID == model.ID).FirstOrDefault();
 
                             if (productId.IsNotNull())
                             {
@@ -159,7 +159,7 @@ namespace SHF.Controllers
                             }
                             else
                             {
-                               
+
                                 var entity = new EntityModel.BannerNavigationsDetails();
                                 entity.Tenant = null;
                                 entity.BlogMaster = null;
@@ -239,7 +239,7 @@ namespace SHF.Controllers
 
                             if (entity.IsNotNull())
                             {
-                                
+
                                 var model = new ViewModel.BannerNavigationsDetailsCreateOrEditViewModel();
 
                                 // Mapper.Map(entity, model);
@@ -343,7 +343,7 @@ namespace SHF.Controllers
                             }
                             else
                             {
-                               
+
                                 var entity = this.businessBannerNavigationsDetails.GetById(Convert.ToInt64(model.ID));
                                 if (entity.IsNotNull())
                                 {
@@ -363,21 +363,33 @@ namespace SHF.Controllers
                                     entity.Keyword = model.Keyword;
                                     entity.MetaDescription = model.MetaDescription;
                                     entity.Tenant_ID = model.Tenant_ID;
-                                   
+
                                     //Mapper.Map(model, entity);
                                     this.businessBannerNavigationsDetails.Update(entity);
-                                }
-                                transaction.Complete();
 
-                                var response = new JsonResponse<dynamic>()
+                                    transaction.Complete();
+
+                                    var response = new JsonResponse<dynamic>()
+                                    {
+                                        Type = busConstant.Messages.Type.RESPONSE,
+                                        Title = busConstant.Messages.Title.SUCCESS,
+                                        Icon = busConstant.Messages.Icon.SUCCESS,
+                                        Message = busConstant.Messages.Type.Responses.SAVE,
+                                        MessageCode = busConstant.Messages.MessageCode.SAVE
+                                    };
+                                    return Json(response);
+                                }
+                                else
                                 {
-                                    Type = busConstant.Messages.Type.RESPONSE,
-                                    Title = busConstant.Messages.Title.SUCCESS,
-                                    Icon = busConstant.Messages.Icon.SUCCESS,
-                                    Message = busConstant.Messages.Type.Responses.SAVE,
-                                    MessageCode = busConstant.Messages.MessageCode.SAVE
-                                };
-                                return Json(response);
+                                    var response = new JsonResponse<dynamic>()
+                                    {
+                                        Type = busConstant.Messages.Type.EXCEPTION,
+                                        Message = busConstant.Messages.Type.Exceptions.NOT_FOUND,
+                                    };
+
+                                    transaction.Complete();
+                                    return Json(response, JsonRequestBehavior.AllowGet);
+                                }
                             }
 
                         }

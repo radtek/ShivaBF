@@ -123,7 +123,7 @@ namespace SHF.Controllers
 
         }
 
-       
+
         [HttpPost]
         [AuditAttribute]
         [ValidateAntiForgeryTokens]
@@ -142,7 +142,7 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var productId = businessServices1Section6PriceMaster.FindBy(Services1Section6Price => Services1Section6Price.Tenant_ID == model.Tenant_ID && Services1Section6Price.ID==model.ID).FirstOrDefault();
+                            var productId = businessServices1Section6PriceMaster.FindBy(Services1Section6Price => Services1Section6Price.Tenant_ID == model.Tenant_ID && Services1Section6Price.ID == model.ID).FirstOrDefault();
 
                             if (productId.IsNotNull())
                             {
@@ -345,41 +345,55 @@ namespace SHF.Controllers
                             else
                             {
                                 var entityServices = this.businessServices1Master.FindBy(services1master => services1master.SubSubCat_Id == model.SubSubCat_Id).FirstOrDefault();
-                                var entity = new EntityModel.Services1Section6PriceMaster();
-                                entity.Tenant = null;
-                                entity.StateMaster = null;
-                                entity.SubSubCategoriesMaster = null;
-                                entity.Services1Master = null;
-                                entity.ID = Convert.ToInt64(model.ID);
-                                entity.Service_Id = entityServices.ID;
-                                entity.State_Id = model.State_Id;
-                                entity.SubSubCat_Id = model.SubSubCat_Id;
-                                entity.HeadingText = model.HeadingText;
-                                entity.Price = model.Price;
-                                entity.AncharTagTitle = model.AncharTagTitle;
-                                entity.AncharTagUrl = model.AncharTagUrl;
-                                entity.DisplayIndex = model.DisplayIndex;
-                                entity.IsActive = model.IsActive;
-                                entity.TotalViews = model.TotalViews;
-                                entity.Url = model.Url;
-                                entity.Metadata = model.Metadata;
-                                entity.Keyword = model.Keyword;
-                                entity.MetaDescription = model.MetaDescription;
-                                entity.Tenant_ID = model.Tenant_ID;
-                                //Mapper.Map(model, entity);
-                                this.businessServices1Section6PriceMaster.Update(entity);
-                              
-                                transaction.Complete();
-
-                                var response = new JsonResponse<dynamic>()
+                                var entity = this.businessServices1Section6PriceMaster.GetById(Convert.ToInt64(model.ID));
+                                if (entity.IsNotNull())
                                 {
-                                    Type = busConstant.Messages.Type.RESPONSE,
-                                    Title = busConstant.Messages.Title.SUCCESS,
-                                    Icon = busConstant.Messages.Icon.SUCCESS,
-                                    Message = busConstant.Messages.Type.Responses.SAVE,
-                                    MessageCode = busConstant.Messages.MessageCode.SAVE
-                                };
-                                return Json(response);
+
+                                    entity.Tenant = null;
+                                    entity.StateMaster = null;
+                                    entity.SubSubCategoriesMaster = null;
+                                    entity.Services1Master = null;
+                                    entity.Service_Id = entityServices.ID;
+                                    entity.State_Id = model.State_Id;
+                                    entity.SubSubCat_Id = model.SubSubCat_Id;
+                                    entity.HeadingText = model.HeadingText;
+                                    entity.Price = model.Price;
+                                    entity.AncharTagTitle = model.AncharTagTitle;
+                                    entity.AncharTagUrl = model.AncharTagUrl;
+                                    entity.DisplayIndex = model.DisplayIndex;
+                                    entity.IsActive = model.IsActive;
+                                    entity.TotalViews = model.TotalViews;
+                                    entity.Url = model.Url;
+                                    entity.Metadata = model.Metadata;
+                                    entity.Keyword = model.Keyword;
+                                    entity.MetaDescription = model.MetaDescription;
+                                    entity.Tenant_ID = model.Tenant_ID;
+                                    //Mapper.Map(model, entity);
+                                    this.businessServices1Section6PriceMaster.Update(entity);
+
+                                    transaction.Complete();
+
+                                    var response = new JsonResponse<dynamic>()
+                                    {
+                                        Type = busConstant.Messages.Type.RESPONSE,
+                                        Title = busConstant.Messages.Title.SUCCESS,
+                                        Icon = busConstant.Messages.Icon.SUCCESS,
+                                        Message = busConstant.Messages.Type.Responses.SAVE,
+                                        MessageCode = busConstant.Messages.MessageCode.SAVE
+                                    };
+                                    return Json(response);
+                                }
+                                else
+                                {
+                                    var response = new JsonResponse<dynamic>()
+                                    {
+                                        Type = busConstant.Messages.Type.EXCEPTION,
+                                        Message = busConstant.Messages.Type.Exceptions.NOT_FOUND,
+                                    };
+
+                                    transaction.Complete();
+                                    return Json(response, JsonRequestBehavior.AllowGet);
+                                }
                             }
 
                         }
@@ -461,7 +475,7 @@ namespace SHF.Controllers
 
         [HttpGet]
         [Route("Get/Services1Section6PriceMaster/DropdownListbyTenantAsync")]
-        public async Task<ActionResult> GetServices1Section6PriceMasterByTenantIdAsync(long Id,long subsubcat_id)
+        public async Task<ActionResult> GetServices1Section6PriceMasterByTenantIdAsync(long Id, long subsubcat_id)
         {
             try
             {
@@ -469,7 +483,7 @@ namespace SHF.Controllers
                 {
                     try
                     {
-                        if (Id == 0 || subsubcat_id==0)
+                        if (Id == 0 || subsubcat_id == 0)
                         {
                             transaction.Complete();
                             var response = new JsonResponse<dynamic>()
@@ -483,7 +497,7 @@ namespace SHF.Controllers
                         }
                         else
                         {
-                            var entities = this.businessServices1Section6PriceMaster.GetAll().Where(S1S6M => S1S6M.Tenant_ID ==Convert.ToInt64(Id) && S1S6M.SubSubCat_Id== Convert.ToInt64(subsubcat_id)).Select(x => new ViewModel.Services1Section6PriceMasterDropdownListViewModel
+                            var entities = this.businessServices1Section6PriceMaster.GetAll().Where(S1S6M => S1S6M.Tenant_ID == Convert.ToInt64(Id) && S1S6M.SubSubCat_Id == Convert.ToInt64(subsubcat_id)).Select(x => new ViewModel.Services1Section6PriceMasterDropdownListViewModel
                             {
                                 ID = x.ID,
                                 Price = x.Price

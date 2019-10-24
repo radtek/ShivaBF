@@ -323,8 +323,12 @@ namespace SHF.Controllers
                             }
                             else
                             {
-                                var entity = new EntityModel.PriceFeaturesMaster();
-                                entity.ID = Convert.ToInt64(model.ID);
+                              
+                                var entity = this.businessPriceFeaturesMaster.GetById(Convert.ToInt64(model.ID));
+
+                                if (entity.IsNotNull())
+                                {
+                                
                                 entity.Description = model.Description;
                                 entity.IsActive = model.IsActive;
                                 entity.Url = model.Url;
@@ -346,6 +350,18 @@ namespace SHF.Controllers
                                     MessageCode = busConstant.Messages.MessageCode.SAVE
                                 };
                                 return Json(response);
+                                }
+                                else
+                                {
+                                    var response = new JsonResponse<dynamic>()
+                                    {
+                                        Type = busConstant.Messages.Type.EXCEPTION,
+                                        Message = busConstant.Messages.Type.Exceptions.NOT_FOUND,
+                                    };
+
+                                    transaction.Complete();
+                                    return Json(response, JsonRequestBehavior.AllowGet);
+                                }
                             }
 
                         }

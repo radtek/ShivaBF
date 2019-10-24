@@ -123,7 +123,7 @@ namespace SHF.Controllers
 
         }
 
-       
+
         [HttpPost]
         [AuditAttribute]
         [ValidateAntiForgeryTokens]
@@ -142,7 +142,7 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var productId = businessServices4Section2FAQMapping.FindBy(subCategories => subCategories.Tenant_ID == model.Tenant_ID && subCategories.ID==model.ID).FirstOrDefault();
+                            var productId = businessServices4Section2FAQMapping.FindBy(subCategories => subCategories.Tenant_ID == model.Tenant_ID && subCategories.ID == model.ID).FirstOrDefault();
 
                             if (productId.IsNotNull())
                             {
@@ -167,7 +167,7 @@ namespace SHF.Controllers
                                 entity.SubSubCategoriesMaster = null;
                                 entity.Service_Id = entityServices.ID;
                                 entity.FAQMaster_Id = model.FAQMaster_Id;
-                                entity.SubSubCat_Id = model.SubSubCat_Id; 
+                                entity.SubSubCat_Id = model.SubSubCat_Id;
                                 entity.DisplayIndex = model.DisplayIndex;
                                 entity.IsActive = model.IsActive;
                                 entity.TotalViews = model.TotalViews;
@@ -242,7 +242,7 @@ namespace SHF.Controllers
                                 var model = new ViewModel.Services4Section2FAQMappingCreateOrEditViewModel();
 
                                 model.ID = entity.ID;
-                               // model.SubSubCategory_Name = ent;
+                                // model.SubSubCategory_Name = ent;
                                 model.FAQMaster_Id = Convert.ToInt64(entity.FAQMaster_Id);
                                 model.Service_Id = entity.Service_Id;
                                 model.SubSubCat_Id = Convert.ToInt64(entity.SubSubCat_Id);
@@ -338,41 +338,55 @@ namespace SHF.Controllers
                             else
                             {
                                 var entityServices = this.businessServices4Master.FindBy(Services4Master => Services4Master.SubSubCat_Id == model.SubSubCat_Id).FirstOrDefault();
-                                var entity = new EntityModel.Services4Section2FAQMapping();
-                                entity.Tenant = null;
-                                entity.FAQMaster = null;
-                                entity.Services4Master = null;
-                                entity.SubSubCategoriesMaster = null;
-                                entity.ID = Convert.ToInt64(model.ID);
-                                entity.Service_Id = entityServices.ID;
-                                entity.FAQMaster_Id = model.FAQMaster_Id;
-                                entity.SubSubCat_Id = model.SubSubCat_Id;
-                                entity.DisplayIndex = model.DisplayIndex;
-                                entity.IsActive = model.IsActive;
-                                entity.TotalViews = model.TotalViews;
-                                entity.Url = model.Url;
-                                entity.Metadata = model.Metadata;
-                                entity.Keyword = model.Keyword;
-                                entity.MetaDescription = model.MetaDescription;
-                                entity.Tenant_ID = model.Tenant_ID;
-                                entity.CreatedBy = model.CreatedBy;
-                                entity.CreatedOn = model.CreatedOn;
-                                entity.UpdatedBy = model.UpdatedBy;
-                                entity.UpdatedOn = model.UpdatedOn;
-                                entity.IsDeleted = model.IsDeleted;
-                                this.businessServices4Section2FAQMapping.Update(entity);
-
-                                transaction.Complete();
-
-                                var response = new JsonResponse<dynamic>()
+                                var entity = this.businessServices4Section2FAQMapping.GetById(Convert.ToInt64(model.ID));
+                                if (entity.IsNotNull())
                                 {
-                                    Type = busConstant.Messages.Type.RESPONSE,
-                                    Title = busConstant.Messages.Title.SUCCESS,
-                                    Icon = busConstant.Messages.Icon.SUCCESS,
-                                    Message = busConstant.Messages.Type.Responses.SAVE,
-                                    MessageCode = busConstant.Messages.MessageCode.SAVE
-                                };
-                                return Json(response);
+
+                                    entity.Tenant = null;
+                                    entity.FAQMaster = null;
+                                    entity.Services4Master = null;
+                                    entity.SubSubCategoriesMaster = null;
+                                    entity.Service_Id = entityServices.ID;
+                                    entity.FAQMaster_Id = model.FAQMaster_Id;
+                                    entity.SubSubCat_Id = model.SubSubCat_Id;
+                                    entity.DisplayIndex = model.DisplayIndex;
+                                    entity.IsActive = model.IsActive;
+                                    entity.TotalViews = model.TotalViews;
+                                    entity.Url = model.Url;
+                                    entity.Metadata = model.Metadata;
+                                    entity.Keyword = model.Keyword;
+                                    entity.MetaDescription = model.MetaDescription;
+                                    entity.Tenant_ID = model.Tenant_ID;
+                                    entity.CreatedBy = model.CreatedBy;
+                                    entity.CreatedOn = model.CreatedOn;
+                                    entity.UpdatedBy = model.UpdatedBy;
+                                    entity.UpdatedOn = model.UpdatedOn;
+                                    entity.IsDeleted = model.IsDeleted;
+                                    this.businessServices4Section2FAQMapping.Update(entity);
+
+                                    transaction.Complete();
+
+                                    var response = new JsonResponse<dynamic>()
+                                    {
+                                        Type = busConstant.Messages.Type.RESPONSE,
+                                        Title = busConstant.Messages.Title.SUCCESS,
+                                        Icon = busConstant.Messages.Icon.SUCCESS,
+                                        Message = busConstant.Messages.Type.Responses.SAVE,
+                                        MessageCode = busConstant.Messages.MessageCode.SAVE
+                                    };
+                                    return Json(response);
+                                }
+                                else
+                                {
+                                    var response = new JsonResponse<dynamic>()
+                                    {
+                                        Type = busConstant.Messages.Type.EXCEPTION,
+                                        Message = busConstant.Messages.Type.Exceptions.NOT_FOUND,
+                                    };
+
+                                    transaction.Complete();
+                                    return Json(response, JsonRequestBehavior.AllowGet);
+                                }
                             }
 
                         }

@@ -342,7 +342,7 @@ namespace SHF.Controllers
                             }
                             else
                             {
-                               
+
                                 var entity = this.businessRelatedBlogsMapping.GetById(Convert.ToInt64(model.ID));
                                 if (entity.IsNotNull())
                                 {
@@ -363,23 +363,35 @@ namespace SHF.Controllers
                                     entity.Keyword = model.Keyword;
                                     entity.MetaDescription = model.MetaDescription;
                                     entity.Tenant_ID = model.Tenant_ID;
-                                   
+
                                     //Mapper.Map(model, entity);
                                     this.businessRelatedBlogsMapping.Update(entity);
+
+                                    transaction.Complete();
+
+                                    var response = new JsonResponse<dynamic>()
+                                    {
+                                        Type = busConstant.Messages.Type.RESPONSE,
+                                        Title = busConstant.Messages.Title.SUCCESS,
+                                        Icon = busConstant.Messages.Icon.SUCCESS,
+                                        Message = busConstant.Messages.Type.Responses.SAVE,
+                                        MessageCode = busConstant.Messages.MessageCode.SAVE
+                                    };
+                                    return Json(response);
                                 }
-                                transaction.Complete();
-
-                                var response = new JsonResponse<dynamic>()
+                                else
                                 {
-                                    Type = busConstant.Messages.Type.RESPONSE,
-                                    Title = busConstant.Messages.Title.SUCCESS,
-                                    Icon = busConstant.Messages.Icon.SUCCESS,
-                                    Message = busConstant.Messages.Type.Responses.SAVE,
-                                    MessageCode = busConstant.Messages.MessageCode.SAVE
-                                };
-                                return Json(response);
-                            }
+                                    var response = new JsonResponse<dynamic>()
+                                    {
+                                        Type = busConstant.Messages.Type.EXCEPTION,
+                                        Message = busConstant.Messages.Type.Exceptions.NOT_FOUND,
+                                    };
 
+                                    transaction.Complete();
+                                    return Json(response, JsonRequestBehavior.AllowGet);
+                                }
+
+                            }
                         }
                         catch
                         {

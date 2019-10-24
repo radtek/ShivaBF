@@ -123,7 +123,7 @@ namespace SHF.Controllers
 
         }
 
-       
+
         [HttpPost]
         [AuditAttribute]
         [ValidateAntiForgeryTokens]
@@ -142,7 +142,7 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var productId = businessServices5Section2MasterFeaturesDetails.FindBy(subCategories => subCategories.Tenant_ID == model.Tenant_ID && subCategories.ID==model.ID).FirstOrDefault();
+                            var productId = businessServices5Section2MasterFeaturesDetails.FindBy(subCategories => subCategories.Tenant_ID == model.Tenant_ID && subCategories.ID == model.ID).FirstOrDefault();
 
                             if (productId.IsNotNull())
                             {
@@ -167,7 +167,7 @@ namespace SHF.Controllers
                                 entity.SubSubCategoriesMaster = null;
                                 entity.Service_Id = entityServices.ID;
                                 entity.S5S2M_Id = model.S5S2M_Id;
-                                entity.SubSubCat_Id = model.SubSubCat_Id; 
+                                entity.SubSubCat_Id = model.SubSubCat_Id;
                                 entity.Text = model.Text;
                                 entity.DisplayIndex = model.DisplayIndex;
                                 entity.IsActive = model.IsActive;
@@ -243,7 +243,7 @@ namespace SHF.Controllers
                                 var model = new ViewModel.Services5Section2MasterFeaturesDetailsCreateOrEditViewModel();
 
                                 model.ID = entity.ID;
-                               // model.SubSubCategory_Name = ent;
+                                // model.SubSubCategory_Name = ent;
                                 model.S5S2M_Id = entity.S5S2M_Id;
                                 model.Service_Id = entity.Service_Id;
                                 model.SubSubCat_Id = Convert.ToInt64(entity.SubSubCat_Id);
@@ -340,38 +340,50 @@ namespace SHF.Controllers
                             else
                             {
                                 var entityServices = this.businessServices5Master.FindBy(Services5Master => Services5Master.SubSubCat_Id == model.SubSubCat_Id).FirstOrDefault();
-                                var entity = new EntityModel.Services5Section2MasterFeaturesDetails();
-                              
-                                entity.ID = Convert.ToInt64(model.ID);
-                                entity.Tenant = null;
-                                entity.Services5Section2Master = null;
-                                entity.Services5Master = null;
-                                entity.SubSubCategoriesMaster = null;
-                                entity.Service_Id = entityServices.ID;
-                                entity.S5S2M_Id = model.S5S2M_Id;
-                                entity.SubSubCat_Id = model.SubSubCat_Id;
-                                entity.Text = model.Text;
-                                entity.DisplayIndex = model.DisplayIndex;
-                                entity.IsActive = model.IsActive;
-                                entity.TotalViews = model.TotalViews;
-                                entity.Url = model.Url;
-                                entity.Metadata = model.Metadata;
-                                entity.Keyword = model.Keyword;
-                                entity.MetaDescription = model.MetaDescription;
-                                entity.Tenant_ID = model.Tenant_ID;
-                                this.businessServices5Section2MasterFeaturesDetails.Update(entity);
-
-                                transaction.Complete();
-
-                                var response = new JsonResponse<dynamic>()
+                                var entity = this.businessServices5Section2MasterFeaturesDetails.GetById(Convert.ToInt64(model.ID));
+                                if (entity.IsNotNull())
                                 {
-                                    Type = busConstant.Messages.Type.RESPONSE,
-                                    Title = busConstant.Messages.Title.SUCCESS,
-                                    Icon = busConstant.Messages.Icon.SUCCESS,
-                                    Message = busConstant.Messages.Type.Responses.SAVE,
-                                    MessageCode = busConstant.Messages.MessageCode.SAVE
-                                };
-                                return Json(response);
+                                    entity.Tenant = null;
+                                    entity.Services5Section2Master = null;
+                                    entity.Services5Master = null;
+                                    entity.SubSubCategoriesMaster = null;
+                                    entity.Service_Id = entityServices.ID;
+                                    entity.S5S2M_Id = model.S5S2M_Id;
+                                    entity.SubSubCat_Id = model.SubSubCat_Id;
+                                    entity.Text = model.Text;
+                                    entity.DisplayIndex = model.DisplayIndex;
+                                    entity.IsActive = model.IsActive;
+                                    entity.TotalViews = model.TotalViews;
+                                    entity.Url = model.Url;
+                                    entity.Metadata = model.Metadata;
+                                    entity.Keyword = model.Keyword;
+                                    entity.MetaDescription = model.MetaDescription;
+                                    entity.Tenant_ID = model.Tenant_ID;
+                                    this.businessServices5Section2MasterFeaturesDetails.Update(entity);
+
+                                    transaction.Complete();
+
+                                    var response = new JsonResponse<dynamic>()
+                                    {
+                                        Type = busConstant.Messages.Type.RESPONSE,
+                                        Title = busConstant.Messages.Title.SUCCESS,
+                                        Icon = busConstant.Messages.Icon.SUCCESS,
+                                        Message = busConstant.Messages.Type.Responses.SAVE,
+                                        MessageCode = busConstant.Messages.MessageCode.SAVE
+                                    };
+                                    return Json(response);
+                                }
+                                else
+                                {
+                                    var response = new JsonResponse<dynamic>()
+                                    {
+                                        Type = busConstant.Messages.Type.EXCEPTION,
+                                        Message = busConstant.Messages.Type.Exceptions.NOT_FOUND,
+                                    };
+
+                                    transaction.Complete();
+                                    return Json(response, JsonRequestBehavior.AllowGet);
+                                }
                             }
 
                         }

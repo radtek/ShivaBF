@@ -367,9 +367,11 @@ namespace SHF.Controllers
                             else
                             {
                                 var entitySubSubCategoryName = this.businessSubSubCategoriesMaster.GetById(Convert.ToInt64(model.SubSubCat_Id));
-                                var entity = new EntityModel.Services2Master();
-                                // Mapper.Map(model, entity);
-                                entity.ID = Convert.ToInt64(model.ID);
+                                var entity = this.businessServices2Master.GetById(Convert.ToInt64(model.ID));
+                                if (entity.IsNotNull())
+                                {
+                                    // Mapper.Map(model, entity);
+                               
                                 entity.BannerImagePath = model.BannerImagePath;
                                 entity.BannerOnHeading = model.BannerOnHeading;
                                 entity.Cat_Id = entitySubSubCategoryName.Cat_Id;
@@ -415,6 +417,18 @@ namespace SHF.Controllers
                                     MessageCode = busConstant.Messages.MessageCode.SAVE
                                 };
                                 return Json(response);
+                                }
+                                else
+                                {
+                                    var response = new JsonResponse<dynamic>()
+                                    {
+                                        Type = busConstant.Messages.Type.EXCEPTION,
+                                        Message = busConstant.Messages.Type.Exceptions.NOT_FOUND,
+                                    };
+
+                                    transaction.Complete();
+                                    return Json(response, JsonRequestBehavior.AllowGet);
+                                }
                             }
 
                         }

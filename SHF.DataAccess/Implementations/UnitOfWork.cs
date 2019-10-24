@@ -82,6 +82,15 @@ namespace SHF.DataAccess.Implementations
         private GenericRepository<EntityModel.BlogCommentsDetails> _BlogCommentsDetailsRepository;
         private GenericRepository<EntityModel.RelatedBlogsMapping> _RelatedBlogsMappingRepository;
         private GenericRepository<EntityModel.CommentsReply> _CommentsReplyRepository;
+        private GenericRepository<EntityModel.IPInfo> _IPInfoRepository;
+        private GenericRepository<EntityModel.HomePageBanner> _HomePageBannerRepository;
+        private GenericRepository<EntityModel.HomePageSection1> _HomePageSection1Repository;
+        private GenericRepository<EntityModel.HomePageSection2> _HomePageSection2Repository;
+        private GenericRepository<EntityModel.HomePageSection3> _HomePageSection3Repository;
+        private GenericRepository<EntityModel.HomePageSection3Features> _HomePageSection3FeaturesRepository;
+        private GenericRepository<EntityModel.HomePageSection4> _HomePageSection4Repository;
+        private GenericRepository<EntityModel.HomePageSection4Testimonails> _HomePageSection4TestimonailsRepository;
+        private GenericRepository<EntityModel.HomePageSection5> _HomePageSection5Repository;
 
 
         #endregion
@@ -778,7 +787,95 @@ namespace SHF.DataAccess.Implementations
                 return _CommentsReplyRepository;
             }
         }
-
+        public GenericRepository<EntityModel.IPInfo> IPInfoRepository
+        {
+            get
+            {
+                if (this._IPInfoRepository == null)
+                {
+                    this._IPInfoRepository = new GenericRepository<EntityModel.IPInfo>(context);
+                }
+                return _IPInfoRepository;
+            }
+        }
+        public GenericRepository<EntityModel.HomePageBanner> HomePageBannerRepository
+        {
+            get
+            {
+                if (this._HomePageBannerRepository == null)
+                {
+                    this._HomePageBannerRepository = new GenericRepository<EntityModel.HomePageBanner>(context);
+                }
+                return _HomePageBannerRepository;
+            }
+        }
+        public GenericRepository<EntityModel.HomePageSection1> HomePageSection1Repository
+        {
+            get
+            {
+                if (this._HomePageSection1Repository == null)
+                {
+                    this._HomePageSection1Repository = new GenericRepository<EntityModel.HomePageSection1>(context);
+                }
+                return _HomePageSection1Repository;
+            }
+        }
+        public GenericRepository<EntityModel.HomePageSection2> HomePageSection2Repository
+        {
+            get
+            {
+                if (this._HomePageSection2Repository == null)
+                {
+                    this._HomePageSection2Repository = new GenericRepository<EntityModel.HomePageSection2>(context);
+                }
+                return _HomePageSection2Repository;
+            }
+        }
+        public GenericRepository<EntityModel.HomePageSection3> HomePageSection3Repository
+        {
+            get
+            {
+                if (this._HomePageSection3Repository == null)
+                {
+                    this._HomePageSection3Repository = new GenericRepository<EntityModel.HomePageSection3>(context);
+                }
+                return _HomePageSection3Repository;
+            }
+        }
+        public GenericRepository<EntityModel.HomePageSection3Features> HomePageSection3FeaturesRepository
+        {
+            get
+            {
+                if (this._HomePageSection3FeaturesRepository == null)
+                {
+                    this._HomePageSection3FeaturesRepository = new GenericRepository<EntityModel.HomePageSection3Features>(context);
+                }
+                return _HomePageSection3FeaturesRepository;
+            }
+        }
+        public GenericRepository<EntityModel.HomePageSection4> HomePageSection4Repository
+        {
+            get
+            {
+                if (this._HomePageSection4Repository == null)
+                {
+                    this._HomePageSection4Repository = new GenericRepository<EntityModel.HomePageSection4>(context);
+                }
+                return _HomePageSection4Repository;
+            }
+        }
+        public GenericRepository<EntityModel.HomePageSection5> HomePageSection5Repository
+        {
+            get
+            {
+                if (this._HomePageSection5Repository == null)
+                {
+                    this._HomePageSection5Repository = new GenericRepository<EntityModel.HomePageSection5>(context);
+                }
+                return _HomePageSection5Repository;
+            }
+        }
+        
         #endregion
 
         #region [Constructors]

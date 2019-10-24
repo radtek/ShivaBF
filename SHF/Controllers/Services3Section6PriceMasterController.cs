@@ -123,7 +123,7 @@ namespace SHF.Controllers
 
         }
 
-       
+
         [HttpPost]
         [AuditAttribute]
         [ValidateAntiForgeryTokens]
@@ -142,7 +142,7 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var productId = businessServices3Section6PriceMaster.FindBy(Services2Section4 => Services2Section4.Tenant_ID == model.Tenant_ID && Services2Section4.ID==model.ID).FirstOrDefault();
+                            var productId = businessServices3Section6PriceMaster.FindBy(Services2Section4 => Services2Section4.Tenant_ID == model.Tenant_ID && Services2Section4.ID == model.ID).FirstOrDefault();
 
                             if (productId.IsNotNull())
                             {
@@ -170,7 +170,7 @@ namespace SHF.Controllers
                                 entity.AncharTagTitle = model.AncharTagTitle;
                                 entity.AncharTagUrl = model.AncharTagUrl;
                                 entity.HeadingText = model.Heading;
-                                entity.Price =model.Price;
+                                entity.Price = model.Price;
                                 entity.DisplayIndex = model.DisplayIndex;
                                 entity.IsActive = model.IsActive;
                                 entity.TotalViews = model.TotalViews;
@@ -180,7 +180,7 @@ namespace SHF.Controllers
                                 entity.MetaDescription = model.MetaDescription;
                                 entity.Tenant_ID = model.Tenant_ID;
                                 //Mapper.Map(model, entity);
-                                 this.businessServices3Section6PriceMaster.Create(entity);
+                                this.businessServices3Section6PriceMaster.Create(entity);
                                 transaction.Complete();
 
                                 var response = new JsonResponse<dynamic>()
@@ -247,26 +247,26 @@ namespace SHF.Controllers
 
                                 // Mapper.Map(entity, model);
 
-                                   model.ID=entity.ID;
-                                    model.SubSubCat_Id = Convert.ToInt64(entity.SubSubCat_Id);
-                                    model.SubSubCategoryName = entityServices.SubSubCategoryName;
-                                    model.AncharTagTitle = entity.AncharTagTitle;
-                                    model.AncharTagUrl = entity.AncharTagUrl;
-                                    model.Heading = entity.HeadingText;
-                                    model.Price = Convert.ToInt32(entity.Price);
-                                    model.DisplayIndex = entity.DisplayIndex;
-                                    model.IsActive = entity.IsActive;
-                                    model.TotalViews=entity.TotalViews;
-                                    model.Url=entity.Url;
-                                    model.Metadata=entity.Metadata;
-                                    model.Keyword=entity.Keyword;
-                                   model.MetaDescription=entity.MetaDescription;
-                                   model.Tenant_ID= Convert.ToInt64(entity.Tenant_ID);
-                                   model.CreatedBy=entity.CreatedBy;
-                                   model.CreatedOn=entity.CreatedOn;
-                                   model.UpdatedBy=entity.UpdatedBy;
-                                   model.UpdatedOn=entity.UpdatedOn;
-                                   model.IsDeleted=entity.IsDeleted;
+                                model.ID = entity.ID;
+                                model.SubSubCat_Id = Convert.ToInt64(entity.SubSubCat_Id);
+                                model.SubSubCategoryName = entityServices.SubSubCategoryName;
+                                model.AncharTagTitle = entity.AncharTagTitle;
+                                model.AncharTagUrl = entity.AncharTagUrl;
+                                model.Heading = entity.HeadingText;
+                                model.Price = Convert.ToInt32(entity.Price);
+                                model.DisplayIndex = entity.DisplayIndex;
+                                model.IsActive = entity.IsActive;
+                                model.TotalViews = entity.TotalViews;
+                                model.Url = entity.Url;
+                                model.Metadata = entity.Metadata;
+                                model.Keyword = entity.Keyword;
+                                model.MetaDescription = entity.MetaDescription;
+                                model.Tenant_ID = Convert.ToInt64(entity.Tenant_ID);
+                                model.CreatedBy = entity.CreatedBy;
+                                model.CreatedOn = entity.CreatedOn;
+                                model.UpdatedBy = entity.UpdatedBy;
+                                model.UpdatedOn = entity.UpdatedOn;
+                                model.IsDeleted = entity.IsDeleted;
 
                                 var response = new JsonResponse<Services3Section6PriceMasterCreateOrEditViewModel>()
                                 {
@@ -346,40 +346,53 @@ namespace SHF.Controllers
                             else
                             {
                                 var entityServices = this.businessServices3Master.FindBy(Services3Master => Services3Master.SubSubCat_Id == model.SubSubCat_Id).FirstOrDefault();
-                                var entity = new EntityModel.Services3Section6PriceMaster();
-                              
-                                entity.ID = Convert.ToInt64(model.ID);
-                                entity.Service_Id = entityServices.ID;
-                                entity.SubSubCat_Id = model.SubSubCat_Id;
-                                entity.AncharTagTitle = model.AncharTagTitle;
-                                entity.AncharTagUrl = model.AncharTagUrl;
-                                entity.HeadingText = model.Heading;
-                                entity.Price = model.Price;
-                                entity.DisplayIndex = model.DisplayIndex;
-                                entity.IsActive = model.IsActive;
-                                entity.TotalViews = model.TotalViews;
-                                entity.Url = model.Url;
-                                entity.Metadata = model.Metadata;
-                                entity.Keyword = model.Keyword;
-                                entity.MetaDescription = model.MetaDescription;
-                                entity.Tenant_ID = model.Tenant_ID;
-                                entity.Tenant = null;
-                                //entity.Services3Section6PriceMasters = null;
-                                entity.SubSubCategoriesMaster = null;
-                                entity.Services3Master = null;
-                                this.businessServices3Section6PriceMaster.Update(entity);
-
-                                transaction.Complete();
-
-                                var response = new JsonResponse<dynamic>()
+                                var entity = this.businessServices3Section6PriceMaster.GetById(Convert.ToInt64(model.ID));
+                                if (entity.IsNotNull())
                                 {
-                                    Type = busConstant.Messages.Type.RESPONSE,
-                                    Title = busConstant.Messages.Title.SUCCESS,
-                                    Icon = busConstant.Messages.Icon.SUCCESS,
-                                    Message = busConstant.Messages.Type.Responses.SAVE,
-                                    MessageCode = busConstant.Messages.MessageCode.SAVE
-                                };
-                                return Json(response);
+
+                                    entity.Service_Id = entityServices.ID;
+                                    entity.SubSubCat_Id = model.SubSubCat_Id;
+                                    entity.AncharTagTitle = model.AncharTagTitle;
+                                    entity.AncharTagUrl = model.AncharTagUrl;
+                                    entity.HeadingText = model.Heading;
+                                    entity.Price = model.Price;
+                                    entity.DisplayIndex = model.DisplayIndex;
+                                    entity.IsActive = model.IsActive;
+                                    entity.TotalViews = model.TotalViews;
+                                    entity.Url = model.Url;
+                                    entity.Metadata = model.Metadata;
+                                    entity.Keyword = model.Keyword;
+                                    entity.MetaDescription = model.MetaDescription;
+                                    entity.Tenant_ID = model.Tenant_ID;
+                                    entity.Tenant = null;
+                                    //entity.Services3Section6PriceMasters = null;
+                                    entity.SubSubCategoriesMaster = null;
+                                    entity.Services3Master = null;
+                                    this.businessServices3Section6PriceMaster.Update(entity);
+
+                                    transaction.Complete();
+
+                                    var response = new JsonResponse<dynamic>()
+                                    {
+                                        Type = busConstant.Messages.Type.RESPONSE,
+                                        Title = busConstant.Messages.Title.SUCCESS,
+                                        Icon = busConstant.Messages.Icon.SUCCESS,
+                                        Message = busConstant.Messages.Type.Responses.SAVE,
+                                        MessageCode = busConstant.Messages.MessageCode.SAVE
+                                    };
+                                    return Json(response);
+                                }
+                                else
+                                {
+                                    var response = new JsonResponse<dynamic>()
+                                    {
+                                        Type = busConstant.Messages.Type.EXCEPTION,
+                                        Message = busConstant.Messages.Type.Exceptions.NOT_FOUND,
+                                    };
+
+                                    transaction.Complete();
+                                    return Json(response, JsonRequestBehavior.AllowGet);
+                                }
                             }
 
                         }

@@ -344,9 +344,9 @@ namespace SHF.Controllers
                             else
                             {
                                 var entityServices = this.businessServices4Master.FindBy(Services4Master => Services4Master.SubSubCat_Id == model.SubSubCat_Id).FirstOrDefault();
-                                var entity = new EntityModel.Services4Section2Master();
-                              
-                                entity.ID = Convert.ToInt64(model.ID);
+                                var entity = this.businessServices4Section2Master.GetById(Convert.ToInt64(model.ID));
+                                if (entity.IsNotNull())
+                                {
                                 entity.Service_Id = entityServices.ID;
                                 entity.SubSubCat_Id = model.SubSubCat_Id;
                                 entity.Heading = model.Heading;
@@ -377,6 +377,18 @@ namespace SHF.Controllers
                                     MessageCode = busConstant.Messages.MessageCode.SAVE
                                 };
                                 return Json(response);
+                                }
+                                else
+                                {
+                                    var response = new JsonResponse<dynamic>()
+                                    {
+                                        Type = busConstant.Messages.Type.EXCEPTION,
+                                        Message = busConstant.Messages.Type.Exceptions.NOT_FOUND,
+                                    };
+
+                                    transaction.Complete();
+                                    return Json(response, JsonRequestBehavior.AllowGet);
+                                }
                             }
 
                         }

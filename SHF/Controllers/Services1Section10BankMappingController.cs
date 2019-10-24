@@ -338,24 +338,25 @@ namespace SHF.Controllers
                             else
                             {
                                 var entityServices = this.businessServices1Master.FindBy(services1master => services1master.SubSubCat_Id == model.SubSubCat_Id).FirstOrDefault();
-                                var entity = new EntityModel.Services1Section10BankMapping();
-                                entity.Tenant = null;
-                                entity.BankMaster = null;
-                                entity.Services1Master = null;
-                                entity.SubSubCategoriesMaster = null;
-                                entity.ID = Convert.ToInt64(model.ID);
-                                entity.Service_Id = entityServices.ID;
-                                entity.BankMaster_Id = model.BankMaster_Id;
-                                entity.SubSubCat_Id = model.SubSubCat_Id;
-                                entity.DisplayIndex = model.DisplayIndex;
-                                entity.IsActive = model.IsActive;
-                                entity.TotalViews = model.TotalViews;
-                                entity.Url = model.Url;
-                                entity.Metadata = model.Metadata;
-                                entity.Keyword = model.Keyword;
-                                entity.MetaDescription = model.MetaDescription;
-                                entity.Tenant_ID = model.Tenant_ID;
-                                this.businessServices1Section10BankMapping.Update(entity);
+                                var entity = this.businessServices1Section10BankMapping.GetById(Convert.ToInt64(model.ID));
+                                if (entity.IsNotNull())
+                                {
+                                    entity.Tenant = null;
+                                    entity.BankMaster = null;
+                                    entity.Services1Master = null;
+                                    entity.SubSubCategoriesMaster = null;
+                                    entity.Service_Id = entityServices.ID;
+                                    entity.BankMaster_Id = model.BankMaster_Id;
+                                    entity.SubSubCat_Id = model.SubSubCat_Id;
+                                    entity.DisplayIndex = model.DisplayIndex;
+                                    entity.IsActive = model.IsActive;
+                                    entity.TotalViews = model.TotalViews;
+                                    entity.Url = model.Url;
+                                    entity.Metadata = model.Metadata;
+                                    entity.Keyword = model.Keyword;
+                                    entity.MetaDescription = model.MetaDescription;
+                                    entity.Tenant_ID = model.Tenant_ID;
+                                    this.businessServices1Section10BankMapping.Update(entity);
 
                                 transaction.Complete();
 
@@ -368,6 +369,18 @@ namespace SHF.Controllers
                                     MessageCode = busConstant.Messages.MessageCode.SAVE
                                 };
                                 return Json(response);
+                                }
+                                else
+                                {
+                                    var response = new JsonResponse<dynamic>()
+                                    {
+                                        Type = busConstant.Messages.Type.EXCEPTION,
+                                        Message = busConstant.Messages.Type.Exceptions.NOT_FOUND,
+                                    };
+
+                                    transaction.Complete();
+                                    return Json(response, JsonRequestBehavior.AllowGet);
+                                }
                             }
 
                         }

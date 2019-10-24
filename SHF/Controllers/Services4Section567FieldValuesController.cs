@@ -123,7 +123,7 @@ namespace SHF.Controllers
 
         }
 
-       
+
         [HttpPost]
         [AuditAttribute]
         [ValidateAntiForgeryTokens]
@@ -142,7 +142,7 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var productId = businessServices4Section567FieldValues.FindBy(Services2Section4 => Services2Section4.Tenant_ID == model.Tenant_ID && Services2Section4.ID==model.ID).FirstOrDefault();
+                            var productId = businessServices4Section567FieldValues.FindBy(Services2Section4 => Services2Section4.Tenant_ID == model.Tenant_ID && Services2Section4.ID == model.ID).FirstOrDefault();
 
                             if (productId.IsNotNull())
                             {
@@ -170,7 +170,7 @@ namespace SHF.Controllers
                                 entity.RowNumber = model.RowNumber;
                                 entity.DisplayText = model.DisplayText;
                                 entity.DownloadFilePath = model.DownloadFilePath;
-                                entity.S4S567FM_Id =model.S4S567FM_Id;
+                                entity.S4S567FM_Id = model.S4S567FM_Id;
                                 entity.DisplayIndex = model.DisplayIndex;
                                 entity.IsActive = model.IsActive;
                                 entity.TotalViews = model.TotalViews;
@@ -180,7 +180,7 @@ namespace SHF.Controllers
                                 entity.MetaDescription = model.MetaDescription;
                                 entity.Tenant_ID = model.Tenant_ID;
                                 //Mapper.Map(model, entity);
-                                 this.businessServices4Section567FieldValues.Create(entity);
+                                this.businessServices4Section567FieldValues.Create(entity);
                                 transaction.Complete();
 
                                 var response = new JsonResponse<dynamic>()
@@ -247,26 +247,26 @@ namespace SHF.Controllers
 
                                 // Mapper.Map(entity, model);
 
-                                    model.ID=entity.ID;
-                                    model.SubSubCat_Id = Convert.ToInt64(entity.SubSubCat_Id);
-                                    model.SubSubCategoryName = entityServices.SubSubCategoryName;
-                                    model.RowNumber = entity.RowNumber;
-                                    model.DisplayText = entity.DisplayText;
-                                    model.DownloadFilePath = entity.DownloadFilePath;
-                                    model.S4S567FM_Id = entity.S4S567FM_Id;
-                                    model.DisplayIndex = entity.DisplayIndex;
-                                    model.IsActive = entity.IsActive;
-                                    model.TotalViews=entity.TotalViews;
-                                    model.Url=entity.Url;
-                                    model.Metadata=entity.Metadata;
-                                    model.Keyword=entity.Keyword;
-                                    model.MetaDescription=entity.MetaDescription;
-                                    model.Tenant_ID= Convert.ToInt64(entity.Tenant_ID);
-                                    model.CreatedBy=entity.CreatedBy;
-                                    model.CreatedOn=entity.CreatedOn;
-                                    model.UpdatedBy=entity.UpdatedBy;
-                                    model.UpdatedOn=entity.UpdatedOn;
-                                    model.IsDeleted=entity.IsDeleted;
+                                model.ID = entity.ID;
+                                model.SubSubCat_Id = Convert.ToInt64(entity.SubSubCat_Id);
+                                model.SubSubCategoryName = entityServices.SubSubCategoryName;
+                                model.RowNumber = entity.RowNumber;
+                                model.DisplayText = entity.DisplayText;
+                                model.DownloadFilePath = entity.DownloadFilePath;
+                                model.S4S567FM_Id = entity.S4S567FM_Id;
+                                model.DisplayIndex = entity.DisplayIndex;
+                                model.IsActive = entity.IsActive;
+                                model.TotalViews = entity.TotalViews;
+                                model.Url = entity.Url;
+                                model.Metadata = entity.Metadata;
+                                model.Keyword = entity.Keyword;
+                                model.MetaDescription = entity.MetaDescription;
+                                model.Tenant_ID = Convert.ToInt64(entity.Tenant_ID);
+                                model.CreatedBy = entity.CreatedBy;
+                                model.CreatedOn = entity.CreatedOn;
+                                model.UpdatedBy = entity.UpdatedBy;
+                                model.UpdatedOn = entity.UpdatedOn;
+                                model.IsDeleted = entity.IsDeleted;
 
                                 var response = new JsonResponse<Services4Section567FieldValuesCreateOrEditViewModel>()
                                 {
@@ -345,12 +345,11 @@ namespace SHF.Controllers
                             }
                             else
                             {
-                                var entity = this.businessServices4Section567FieldValues.GetById(Convert.ToInt64(model.ID));
-                                if (entity.isNotNull())
-                                {
-                                    var entityServices = this.businessServices4Master.FindBy(Services4Master => Services4Master.SubSubCat_Id == model.SubSubCat_Id).FirstOrDefault();
 
-                                    entity.ID = Convert.ToInt64(model.ID);
+                                var entityServices = this.businessServices4Master.FindBy(Services4Master => Services4Master.SubSubCat_Id == model.SubSubCat_Id).FirstOrDefault();
+                                var entity = this.businessServices4Section567FieldValues.GetById(Convert.ToInt64(model.ID));
+                                if (entity.IsNotNull())
+                                {
                                     entity.Service_Id = entityServices.ID;
                                     entity.SubSubCat_Id = model.SubSubCat_Id;
                                     entity.RowNumber = model.RowNumber;
@@ -383,7 +382,19 @@ namespace SHF.Controllers
                                     };
                                     return Json(response);
                                 }
+                                else
+                                {
+                                    var response = new JsonResponse<dynamic>()
+                                    {
+                                        Type = busConstant.Messages.Type.EXCEPTION,
+                                        Message = busConstant.Messages.Type.Exceptions.NOT_FOUND,
+                                    };
+
+                                    transaction.Complete();
+                                    return Json(response, JsonRequestBehavior.AllowGet);
+                                }
                             }
+
                         }
                         catch
                         {
@@ -488,7 +499,7 @@ namespace SHF.Controllers
                             var entities = this.businessServices4Section567FieldValues.FindBy(product => product.Tenant_ID == Id).Select(x => new ViewModel.Services4Section567FieldValuesDropdownListViewModel
                             {
                                 ID = x.ID,
-                                RowNumber = x.RowNumber
+                                S4S567FM_Id = x.S4S567FM_Id.ToString()
                             });
 
                             if (entities.IsNotNull())

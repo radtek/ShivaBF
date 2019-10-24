@@ -54,6 +54,7 @@
     <Compile Include="AspNetUserRole.cs" />
     <Compile Include="CommentsReply.cs" />
     <Compile Include="BlogCommentsDetails.cs" />
+    <Compile Include="IPInfo.cs" />
     <Compile Include="RelatedBlogsMapping.cs" />
     <Compile Include="BannerNavigationsDetails.cs" />
     <Compile Include="HomePageSection4Testimonails.cs" />

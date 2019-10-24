@@ -338,12 +338,13 @@ namespace SHF.Controllers
                             else
                             {
                                 var entityServices = this.businessServices2Master.FindBy(Services2Master => Services2Master.SubSubCat_Id == model.SubSubCat_Id).FirstOrDefault();
-                                var entity = new EntityModel.Services2Section2FAQMapping();
+                                var entity = this.businessServices2Section2FAQMapping.GetById(Convert.ToInt64(model.ID));
+                                if (entity.IsNotNull())
+                                {
                                 entity.Tenant = null;
                                 entity.FAQMaster = null;
                                 entity.Services2Master = null;
                                 entity.SubSubCategoriesMaster = null;
-                                entity.ID = Convert.ToInt64(model.ID);
                                 entity.Service_Id = entityServices.ID;
                                 entity.FAQMaster_Id = model.FAQMaster_Id;
                                 entity.SubSubCat_Id = model.SubSubCat_Id;
@@ -373,6 +374,18 @@ namespace SHF.Controllers
                                     MessageCode = busConstant.Messages.MessageCode.SAVE
                                 };
                                 return Json(response);
+                                }
+                                else
+                                {
+                                    var response = new JsonResponse<dynamic>()
+                                    {
+                                        Type = busConstant.Messages.Type.EXCEPTION,
+                                        Message = busConstant.Messages.Type.Exceptions.NOT_FOUND,
+                                    };
+
+                                    transaction.Complete();
+                                    return Json(response, JsonRequestBehavior.AllowGet);
+                                }
                             }
 
                         }
