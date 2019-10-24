@@ -388,6 +388,7 @@
     <Compile Include="Controllers\RelatedBlogsMappingController.cs" />
     <Compile Include="Controllers\BannerNavigationsDetailsController.cs" />
     <Compile Include="Controllers\BlogMasterController.cs" />
+    <Compile Include="Controllers\Services4Section567FieldValuesController.cs" />
     <Compile Include="Controllers\Services4Section567FieldMasterController.cs" />
     <Compile Include="Controllers\Services8Section6MasterController.cs" />
     <Compile Include="Controllers\Services8HeadingButtonsController.cs" />
