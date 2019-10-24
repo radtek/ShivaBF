@@ -487,6 +487,7 @@
     <Content Include="AngularControllers\RelatedBlogsMappingController.js" />
     <Content Include="AngularControllers\BannerNavigationsDetailsController.js" />
     <Content Include="AngularControllers\BlogMasterController.js" />
+    <Content Include="AngularControllers\Services4Section567FieldValuesController.js" />
     <Content Include="AngularControllers\Services4Section567FieldMasterController.js" />
     <Content Include="AngularControllers\Services8Section6MasterController.js" />
     <Content Include="AngularControllers\Services8HeadingButtonsController.js" />
@@ -9030,6 +9031,7 @@
     <Content Include="Scripts\Services\RelatedBlogsMapping.js" />
     <Content Include="Scripts\Services\BannerNavigationsDetails.js" />
     <Content Include="Scripts\Services\BlogMaster.js" />
+    <Content Include="Scripts\Services\Services4Section567FieldValues.js" />
     <Content Include="Scripts\Services\Services4Section567FieldMaster.js" />
     <Content Include="Scripts\Services\Services8Section6Master.js" />
     <Content Include="Scripts\Services\Services8HeadingButtons.js" />
@@ -9298,6 +9300,9 @@
     <Content Include="Views\Services4Section567FieldMaster\_CreateOrEdit.cshtml" />
     <Content Include="Views\Services4Section567FieldMaster\_CreateOrEditTenant.cshtml" />
     <Content Include="Views\Services4Section567FieldMaster\Index.cshtml" />
+    <Content Include="Views\Services4Section567FieldValues\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Services4Section567FieldValues\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\Services4Section567FieldValues\Index.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />

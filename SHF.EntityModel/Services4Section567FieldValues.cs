@@ -15,6 +15,9 @@ namespace SHF.EntityModel
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         [Column(Order = 1)]
         public virtual long ID { get; set; }
+        [ForeignKey("Service_Id")]
+        public virtual Services4Master Services4Master { get; set; }
+        public System.Int64? Service_Id { get; set; }
         [ForeignKey("S4S567FM_Id")]
         public virtual Services4Section567FieldMaster Services4Section567FieldMaster { get; set; }
         public System.Int64? S4S567FM_Id { get; set; }
