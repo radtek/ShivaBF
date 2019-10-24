@@ -59,6 +59,7 @@ namespace SHF
             container.RegisterType<Business.Interface.IServices4Section2MasterChild, Business.BusinessLogic.Services4Section2MasterChild>();
             container.RegisterType<Business.Interface.IServices4Section3, Business.BusinessLogic.Services4Section3>();
             container.RegisterType<Business.Interface.IServices4Section3DownloadMaster, Business.BusinessLogic.Services4Section3DownloadMaster>();
+            container.RegisterType<Business.Interface.IServices4Section567FieldMaster, Business.BusinessLogic.Services4Section567FieldMaster>();
             container.RegisterType<Business.Interface.IServices5Master, Business.BusinessLogic.Services5Master>();
             container.RegisterType<Business.Interface.IServices5Section2Master, Business.BusinessLogic.Services5Section2Master>();
             container.RegisterType<Business.Interface.IServices5Section2MasterFeaturesDetails, Business.BusinessLogic.Services5Section2MasterFeaturesDetails>();

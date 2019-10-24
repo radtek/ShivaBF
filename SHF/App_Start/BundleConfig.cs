@@ -161,6 +161,7 @@ namespace SHF
                           "~/Scripts/Services/Services4Section2Master.js",
                           "~/Scripts/Services/Services4Section2MasterChild.js",
                            "~/Scripts/Services/Services4Section3.js",
+                             "~/Scripts/Services/Services4Section567FieldMaster.js",
                            "~/Scripts/Services/Services4Section3DownloadMaster.js",
                             "~/Scripts/Services/Services5Master.js",
                              "~/Scripts/Services/Services5Section2Master.js",
@@ -227,7 +228,8 @@ namespace SHF
                             "~/AngularControllers/Services8Section6MasterController.js",
                             "~/AngularControllers/BlogMasterController.js",
                              "~/AngularControllers/BannerNavigationsDetailsController.js",
-                             "~/AngularControllers/RelatedBlogsMappingController.js"
+                             "~/AngularControllers/RelatedBlogsMappingController.js",
+                             "~/AngularControllers/Services4Section567FieldMasterController.js"
                 ));
 
 
