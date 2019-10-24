@@ -45,7 +45,7 @@
                         </div>
                         <div class="form-group" ng-class="{'has-error': (myForm.RelatedBlogTitle.$touched || myForm.RelatedBlogTitle.$dirty)  && myForm.RelatedBlogTitle.$invalid}">
                             <label>Related Blog Id</label>
-                            <select name="RelatedBlogTitle" ng-model="RelatedBlogsMappingCreateOrEditViewModel.RelatedBlog_Id" class="form-control" style="width: 100%;" ng-options="x.ID as x.RelatedBlogTitle for x in AllRelatedBlogTitle" required>
+                            <select name="RelatedBlogTitle" ng-model="RelatedBlogsMappingCreateOrEditViewModel.RelatedBlog_Id" class="form-control" style="width: 100%;" ng-options="x.ID as x.BlogTitle for x in AllRelatedBlogTitle" required>
                                 <option value="" ng-selected="RelatedBlogsMappingCreateOrEditViewModel.SelectedRelatedBlog_Id < 0">-- Select --</option>
                             </select>
                             <div class="help-block" ng-messages="myForm.RelatedBlogTitle.$error" ng-if="myForm.RelatedBlogTitle.$touched || myForm.RelatedBlogTitle.$dirty && myForm.RelatedBlogTitle.$invalid">

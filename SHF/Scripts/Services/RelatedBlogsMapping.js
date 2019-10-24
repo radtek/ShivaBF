@@ -44,7 +44,7 @@ angular.module(config.app).service('RelatedBlogsMappingCRUD', function ($http) {
                     targets: 0
                 },
                 {
-                    name: "RelatedBlogsMapping_tenant.RelatedBlogsMapping.ID",
+                    name: "RelatedBlogsMapping_tenant_Blog.RelatedBlogsMapping_tenant.RelatedBlogsMapping.ID",
                     data: "ID",
                     title: "ID",
                     render: $.fn.dataTable.render.text(),
@@ -53,7 +53,7 @@ angular.module(config.app).service('RelatedBlogsMappingCRUD', function ($http) {
                 },
                
                 {
-                    name: "RelatedBlogsMapping_tenant.RelatedBlogsMapping.BlogTitle",
+                    name: "RelatedBlogsMapping_tenant_Blog.RelatedBlogsMapping_tenant.RelatedBlogsMapping.BlogTitle",
                     data: "BlogTitle",
                     title: "BlogTitle",
                     render: $.fn.dataTable.render.text(),
@@ -62,7 +62,7 @@ angular.module(config.app).service('RelatedBlogsMappingCRUD', function ($http) {
                 },
                
                 {
-                    name: "RelatedBlogsMapping_tenant.RelatedBlogsMapping.Url",
+                    name: "RelatedBlogsMapping_tenant_Blog.RelatedBlogsMapping_tenant.RelatedBlogsMapping.Url",
                     data: "Url",
                     title: "Url",
                     render: $.fn.dataTable.render.text(),
@@ -70,7 +70,7 @@ angular.module(config.app).service('RelatedBlogsMappingCRUD', function ($http) {
                     targets: 26
                 },
                 {
-                    name: "RelatedBlogsMapping_tenant.RelatedBlogsMapping.Metadata",
+                    name: "RelatedBlogsMapping_tenant_Blog.RelatedBlogsMapping_tenant.RelatedBlogsMapping.Metadata",
                     data: "Metadata",
                     title: "Metadata",
                     render: $.fn.dataTable.render.text(),
@@ -78,7 +78,7 @@ angular.module(config.app).service('RelatedBlogsMappingCRUD', function ($http) {
                     targets: 27
                 },
                 {
-                    name: "RelatedBlogsMapping_tenant.RelatedBlogsMapping.MetaDescription",
+                    name: "RelatedBlogsMapping_tenant_Blog.RelatedBlogsMapping_tenant.RelatedBlogsMapping.MetaDescription",
                     data: "MetaDescription",
                     title: "MetaDescription",
                     render: $.fn.dataTable.render.text(),
@@ -86,7 +86,7 @@ angular.module(config.app).service('RelatedBlogsMappingCRUD', function ($http) {
                     targets: 28
                 },
                 {
-                    name: "RelatedBlogsMapping_tenant.RelatedBlogsMapping.Keyword",
+                    name: "RelatedBlogsMapping_tenant_Blog.RelatedBlogsMapping_tenant.RelatedBlogsMapping.Keyword",
                     data: "Keyword",
                     title: "Keyword",
                     render: $.fn.dataTable.render.text(),
@@ -95,7 +95,7 @@ angular.module(config.app).service('RelatedBlogsMappingCRUD', function ($http) {
                 },
 
                 {
-                    name: "RelatedBlogsMapping_tenant.RelatedBlogsMapping.TotalViews",
+                    name: "RelatedBlogsMapping_tenant_Blog.RelatedBlogsMapping_tenant.RelatedBlogsMapping.TotalViews",
                     data: "TotalViews",
                     title: "TotalViews",
                     render: $.fn.dataTable.render.text(),
@@ -103,7 +103,7 @@ angular.module(config.app).service('RelatedBlogsMappingCRUD', function ($http) {
                     targets: 30
                 },
               {
-                    name: "RelatedBlogsMapping_tenant.RelatedBlogsMapping.IsActive",
+                    name: "RelatedBlogsMapping_tenant_Blog.RelatedBlogsMapping_tenant.RelatedBlogsMapping.IsActive",
                     data: "IsActive",
                     title: "Is&nbsp;Active",
                     render: $.fn.dataTable.render.text(),
@@ -120,7 +120,7 @@ angular.module(config.app).service('RelatedBlogsMappingCRUD', function ($http) {
                     targets:32
                 },
                 {
-                    name: "RelatedBlogsMapping_tenant.RelatedBlogsMapping.CreatedBy",
+                    name: "RelatedBlogsMapping_tenant_Blog.RelatedBlogsMapping_tenant.RelatedBlogsMapping.CreatedBy",
                     data: "CreatedBy",
                     title: "Created&nbsp;By",
                     render: $.fn.dataTable.render.text(),
@@ -128,7 +128,7 @@ angular.module(config.app).service('RelatedBlogsMappingCRUD', function ($http) {
                     targets: 33
                 },
                 {
-                    name: "RelatedBlogsMapping_tenant.RelatedBlogsMapping.CreatedOn",
+                    name: "RelatedBlogsMapping_tenant_Blog.RelatedBlogsMapping_tenant.RelatedBlogsMapping.CreatedOn",
                     data: "CreatedOn",
                     title: "Created&nbsp;On",
                     render: function (data, type, row, meta) {
@@ -140,7 +140,7 @@ angular.module(config.app).service('RelatedBlogsMappingCRUD', function ($http) {
                     targets: 34
                 },
                 {
-                    name: "RelatedBlogsMapping_tenant.RelatedBlogsMapping.UpdatedBy",
+                    name: "RelatedBlogsMapping_tenant_Blog.RelatedBlogsMapping_tenant.RelatedBlogsMapping.UpdatedBy",
                     data: "UpdatedBy",
                     title: "Modified&nbsp;By",
                     render: $.fn.dataTable.render.text(),
@@ -148,7 +148,7 @@ angular.module(config.app).service('RelatedBlogsMappingCRUD', function ($http) {
                     targets: 35
                 },
                 {
-                    name: "RelatedBlogsMapping_tenant.RelatedBlogsMapping.UpdatedOn",
+                    name: "RelatedBlogsMapping_tenant_Blog.RelatedBlogsMapping_tenant.RelatedBlogsMapping.UpdatedOn",
                     data: "UpdatedOn",
                     title: "Modified&nbsp;On",
                     render: function (data, type, row, meta) {

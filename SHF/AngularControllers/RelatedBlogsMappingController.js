@@ -303,7 +303,7 @@ $scope.BindAllBlogTitleDropDownList = function (tenantId) {
                             console.log(response);
                             break;
                         case 'Response':
-                            $scope.AllRelatedBlogTitle = response.data.Entity;
+                            $scope.AllBlogTitle = response.data.Entity;
                             console.clear();
                             break;
                         default:
