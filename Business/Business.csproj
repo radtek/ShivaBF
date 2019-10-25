@@ -190,5 +190,9 @@
       <Name>SHF.ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BusinessLogic\FrontEnd\" />
+    <Folder Include="Interface\FrontEnd\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
