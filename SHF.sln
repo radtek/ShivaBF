@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{984DF8E6-44C6-48D6-B48E-3A3B0750503D}"
 EndProject
@@ -23,7 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{
 		..\..\Users\Developer\Downloads\shiva.xlsx = ..\..\Users\Developer\Downloads\shiva.xlsx
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SHF.API", "SHF.API\SHF.API.csproj", "{9328CE6B-E534-41D5-8CBB-00A3559084D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SHF.API", "SHF.API\SHF.API.csproj", "{EE1FA2B3-C52C-4447-92F1-4C33334F6814}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,10 +61,10 @@ Global
 		{2597F47F-7520-462B-830C-00187BFCD1D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2597F47F-7520-462B-830C-00187BFCD1D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2597F47F-7520-462B-830C-00187BFCD1D3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9328CE6B-E534-41D5-8CBB-00A3559084D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9328CE6B-E534-41D5-8CBB-00A3559084D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9328CE6B-E534-41D5-8CBB-00A3559084D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9328CE6B-E534-41D5-8CBB-00A3559084D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE1FA2B3-C52C-4447-92F1-4C33334F6814}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE1FA2B3-C52C-4447-92F1-4C33334F6814}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE1FA2B3-C52C-4447-92F1-4C33334F6814}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE1FA2B3-C52C-4447-92F1-4C33334F6814}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
