@@ -407,25 +407,31 @@ namespace SHF.Controllers
             }
         }
         [HttpPost]
-        [Route("Post/Bank/FileUpload")]
-        public ContentResult Upload()
+        [Route("Post/Bank/FileUpload")]      
+        public virtual string UploadFiles(object obj)
         {
             var tenantId = ViewBag.TenantID;
-            string path=Server.MapPath("~/"+String.Concat(busConstant.Settings.CMSPath.TENANAT_UPLOAD_DIRECTORY, tenantId));
+            var length = Request.ContentLength;
+            var bytes = new byte[length];
+            Request.InputStream.Read(bytes, 0, length);
+
+            var fileName = Request.Headers["X-File-Name"];
+            var fileSize = Request.Headers["X-File-Size"];
+            var fileType = Request.Headers["X-File-Type"];
+            string path = Server.MapPath("~/" + String.Concat(busConstant.Settings.CMSPath.TENANAT_UPLOAD_DIRECTORY, tenantId));
             //string path = Server.MapPath("~/Uploads/");
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
             }
+            var saveToFileLoc = path + fileName;
+            var fileStream = new FileStream(saveToFileLoc, FileMode.Create, FileAccess.ReadWrite);
+            fileStream.Write(bytes, 0, length);
+            fileStream.Close();
 
-            foreach (string key in Request.Files)
-            {
-                HttpPostedFileBase postedFile = Request.Files[key];
-                postedFile.SaveAs(path + postedFile.FileName);
-            }
-
-            return Content("Success");
+            return string.Format("{0} bytes uploaded", bytes.Length);
         }
+       
 
         #endregion
 
