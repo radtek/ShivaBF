@@ -16,11 +16,14 @@ namespace SHF.API.Controllers
     {
         #region [Field & Contructor]
 
-        private Business.Interface.IMessage businessMessage;
-        private Business.Interface.ICategoriesMaster businessCategoriesMaster;
-        private Business.Interface.ISubCategoriesMaster businessSubCategoriesMaster;
-        private Business.Interface.ISubSubCategoriesMaster businessSubSubCategoriesMaster;
+        private readonly Business.Interface.IMessage businessMessage;
+        private readonly Business.Interface.ICategoriesMaster businessCategoriesMaster;
+        private readonly Business.Interface.ISubCategoriesMaster businessSubCategoriesMaster;
+        private readonly Business.Interface.ISubSubCategoriesMaster businessSubSubCategoriesMaster;
+        //public MenusController()
+        //{ 
 
+        //}
         public MenusController(Business.Interface.IMessage Imessage, Business.Interface.ICategoriesMaster ICategoriesMaster, Business.Interface.ISubCategoriesMaster ISubCategoriesMaster, Business.Interface.ISubSubCategoriesMaster ISubSubCategoriesMaster)
         {
             this.businessMessage = Imessage;
@@ -35,7 +38,8 @@ namespace SHF.API.Controllers
         public JsonResult<MenusMasterIndexViewModel> GetAllActiveMenusByTenantId(string tenantId)
         {
             var MenusMasterIndexViewModel = new MenusMasterIndexViewModel();
-            var categories = this.businessCategoriesMaster.GetAll().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.DisplayOnHome == true && x.IsActive == true).OrderBy(a => a.DisplayIndex);
+            var categories1 = businessCategoriesMaster.GetAll();
+            var categories = businessCategoriesMaster.GetAll().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.DisplayOnHome == true && x.IsActive == true).OrderBy(a => a.DisplayIndex);
             foreach (var tempcat in categories)
             {
                 var MenusMasterCategoryIndexViewModel = new MenusMasterCategoryIndexViewModel();
