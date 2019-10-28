@@ -453,6 +453,7 @@
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Filters\ActionFilters.cs" />
     <Compile Include="Filters\CustomErrorFilter.cs" />
+    <Compile Include="Filters\EnableCorsAttribute.cs" />
     <Compile Include="Filters\ExceptionFilters.cs" />
     <Compile Include="Filters\ValidateAntiForgeryTokens.cs" />
     <Compile Include="Global.asax.cs">

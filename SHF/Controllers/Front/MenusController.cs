@@ -8,6 +8,7 @@ using System.Reflection;
 using System.ComponentModel;
 using System.Web.Http.Results;
 using SHF.ViewModel.FrontEnd;
+using SHF.Web.Filters;
 
 namespace SHF.Controllers.Front
 {
@@ -36,6 +37,7 @@ namespace SHF.Controllers.Front
 
         }
         // GET: api/GetAllActiveMenusByTenantId?tenantId=1
+        [EnableCors]
         [HttpGet]
         [Route("api/GetAllActiveMenusByTenantId")]
         public JsonResult<MenusMasterIndexViewModel> GetAllActiveMenusByTenantId(string tenantId)
