@@ -1,18 +1,16 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
-using System.Reflection;
-using System.ComponentModel;
-using System.Web.Http.Results;
+
 using SHF.ViewModel.FrontEnd;
 using SHF.Web.Filters;
 
 namespace SHF.Controllers.Front
 {
-    [AllowAnonymous]
+   
     public class MenusController : ApiController
     {
 
@@ -36,13 +34,22 @@ namespace SHF.Controllers.Front
             this.businessSubSubCategoriesMaster = ISubSubCategoriesMaster;
 
         }
-        // GET: api/GetAllActiveMenusByTenantId?tenantId=1
-        [EnableCors]
+        [Route("api/MasterListData/CandidateData/")]
         [HttpGet]
-        [Route("api/GetAllActiveMenusByTenantId")]
-        public JsonResult<MenusMasterIndexViewModel> GetAllActiveMenusByTenantId(string tenantId)
+        public MenusMasterIndexViewModel GetAllMasterListDataByDate()
         {
-           
+            var MenusMasterIndexViewModel = new MenusMasterIndexViewModel();
+            //object p = await MenusMasterIndexViewModel;
+            //return (MenusMasterIndexViewModel)MenusMasterIndexViewModel;
+            return MenusMasterIndexViewModel;
+        }
+        //GET: api/GetAllActiveMenusByTenantId? tenantId = 1
+       // [EnableCors]
+        [Route("api/Menus/GetAllActiveMenusByTenantId/{tenantId}")]
+        [HttpGet]
+        public MenusMasterIndexViewModel GetAllActiveMenusByTenantId(string tenantId)
+        {
+          // string tenantId = "1";
             var MenusMasterIndexViewModel = new MenusMasterIndexViewModel();
             var lstMenusMasterCategoryIndexViewModel = new List<MenusMasterCategoryIndexViewModel>();
             var categories = UnitOfWork.CategoriesMasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.DisplayOnHome == true && x.IsActive == true).OrderBy(a => a.DisplayIndex);
@@ -50,6 +57,7 @@ namespace SHF.Controllers.Front
             {
                 var MenusMasterCategoryIndexViewModel = new MenusMasterCategoryIndexViewModel();
                 MenusMasterCategoryIndexViewModel.ID = tempcat.ID;
+                MenusMasterCategoryIndexViewModel.Cat_Id = tempcat.ID;
                 MenusMasterCategoryIndexViewModel.CategoryName = tempcat.CategoryName;
                 MenusMasterCategoryIndexViewModel.DisplayIndex = tempcat.DisplayIndex;
                 MenusMasterCategoryIndexViewModel.Tenant_ID = Convert.ToInt64(tempcat.Tenant_ID);
@@ -59,6 +67,7 @@ namespace SHF.Controllers.Front
                 {
                     var MenusMasterSubCategoryIndexViewModel = new MenusMasterSubCategoryIndexViewModel();
                     MenusMasterSubCategoryIndexViewModel.ID = tempsubcat.ID;
+                    MenusMasterSubCategoryIndexViewModel.SubCategory_ID = tempsubcat.ID;
                     MenusMasterSubCategoryIndexViewModel.SubCategoryName = tempsubcat.SubCategoryName;
                     MenusMasterSubCategoryIndexViewModel.DisplayIndex = tempsubcat.DisplayIndex;
                     MenusMasterSubCategoryIndexViewModel.Category_ID = Convert.ToInt64(tempsubcat.Cat_Id);
@@ -68,8 +77,10 @@ namespace SHF.Controllers.Front
                     var lstMenusMasterSubSubCategoryIndexViewModel = new List<MenusMasterSubSubCategoryIndexViewModel>();
                     foreach (var tempsubsubcat in subsubcategories)
                     {
+                         
                         var MenusMasterSubSubCategoryIndexViewModel = new MenusMasterSubSubCategoryIndexViewModel();
                         MenusMasterSubSubCategoryIndexViewModel.ID = tempsubsubcat.ID;
+                        MenusMasterSubSubCategoryIndexViewModel.SubSubCategory_ID = tempsubsubcat.ID;
                         MenusMasterSubSubCategoryIndexViewModel.SubSubCategoryName = tempsubsubcat.SubSubCategoryName;
                         MenusMasterSubSubCategoryIndexViewModel.DisplayIndex = tempsubsubcat.DisplayIndex;
                         MenusMasterSubSubCategoryIndexViewModel.ServiceTypeValue = tempsubsubcat.ServiceTypeValue;
@@ -88,7 +99,8 @@ namespace SHF.Controllers.Front
             }
             MenusMasterIndexViewModel.MenusMasterCategoryIndexViewModel = lstMenusMasterCategoryIndexViewModel;
             /*some db operation*/
-            return Json(MenusMasterIndexViewModel);
+            // return Json("ajs");
+            return MenusMasterIndexViewModel;
         }
         #endregion
     }
