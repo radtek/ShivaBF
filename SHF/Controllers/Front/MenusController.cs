@@ -34,15 +34,7 @@ namespace SHF.Controllers.Front
             this.businessSubSubCategoriesMaster = ISubSubCategoriesMaster;
 
         }
-        [Route("api/MasterListData/CandidateData/")]
-        [HttpGet]
-        public MenusMasterIndexViewModel GetAllMasterListDataByDate()
-        {
-            var MenusMasterIndexViewModel = new MenusMasterIndexViewModel();
-            //object p = await MenusMasterIndexViewModel;
-            //return (MenusMasterIndexViewModel)MenusMasterIndexViewModel;
-            return MenusMasterIndexViewModel;
-        }
+        
         //GET: api/GetAllActiveMenusByTenantId? tenantId = 1
        // [EnableCors]
         [Route("api/Menus/GetAllActiveMenusByTenantId/{tenantId}")]
@@ -77,18 +69,20 @@ namespace SHF.Controllers.Front
                     var lstMenusMasterSubSubCategoryIndexViewModel = new List<MenusMasterSubSubCategoryIndexViewModel>();
                     foreach (var tempsubsubcat in subsubcategories)
                     {
-                         
+
+
                         var MenusMasterSubSubCategoryIndexViewModel = new MenusMasterSubSubCategoryIndexViewModel();
                         MenusMasterSubSubCategoryIndexViewModel.ID = tempsubsubcat.ID;
                         MenusMasterSubSubCategoryIndexViewModel.SubSubCategory_ID = tempsubsubcat.ID;
                         MenusMasterSubSubCategoryIndexViewModel.SubSubCategoryName = tempsubsubcat.SubSubCategoryName;
                         MenusMasterSubSubCategoryIndexViewModel.DisplayIndex = tempsubsubcat.DisplayIndex;
                         MenusMasterSubSubCategoryIndexViewModel.ServiceTypeValue = tempsubsubcat.ServiceTypeValue;
+                        MenusMasterSubSubCategoryIndexViewModel.url = tempsubsubcat.ServiceTypeValue;
                         MenusMasterSubSubCategoryIndexViewModel.Category_ID = Convert.ToInt64(tempsubsubcat.Cat_Id);
                         MenusMasterSubSubCategoryIndexViewModel.SubCategory_ID = Convert.ToInt64(tempsubsubcat.SubCat_Id);
                         MenusMasterSubSubCategoryIndexViewModel.Tenant_ID = Convert.ToInt64(tempsubsubcat.Tenant_ID);
                         lstMenusMasterSubSubCategoryIndexViewModel.Add(MenusMasterSubSubCategoryIndexViewModel);
-
+                        GetUrlBySubSubCatId(tempsubsubcat, MenusMasterSubSubCategoryIndexViewModel);
                     }
                     MenusMasterSubCategoryIndexViewModel.MenusMasterSubSubCategoryViewModel = lstMenusMasterSubSubCategoryIndexViewModel;
                     lstMenusMasterSubCategoryIndexViewModel.Add(MenusMasterSubCategoryIndexViewModel);
@@ -101,6 +95,69 @@ namespace SHF.Controllers.Front
             /*some db operation*/
             // return Json("ajs");
             return MenusMasterIndexViewModel;
+        }
+
+        private void GetUrlBySubSubCatId(EntityModel.SubSubCategoriesMaster tempsubsubcat, MenusMasterSubSubCategoryIndexViewModel MenusMasterSubSubCategoryIndexViewModel)
+        {
+            switch (tempsubsubcat.ServiceTypeValue)
+            {
+                case "SER1":
+                    var service1 = UnitOfWork.Services1MasterRepository.Get().Where(x => x.SubSubCat_Id == tempsubsubcat.ID && x.IsActive == true).FirstOrDefault();
+                    if(service1!=null)
+                    MenusMasterSubSubCategoryIndexViewModel.url = service1.Url;
+                    else
+                        MenusMasterSubSubCategoryIndexViewModel.url = "#";
+                    break;
+                case "SER2":
+                    var service2 = UnitOfWork.Services2MasterRepository.Get().Where(x => x.SubSubCat_Id == tempsubsubcat.ID && x.IsActive == true).FirstOrDefault();
+                    if (service2 != null)
+                        MenusMasterSubSubCategoryIndexViewModel.url = service2.Url;
+                    else
+                        MenusMasterSubSubCategoryIndexViewModel.url = "#";
+                    break;
+                case "SER3":
+                    var service3 = UnitOfWork.Services3MasterRepository.Get().Where(x => x.SubSubCat_Id == tempsubsubcat.ID && x.IsActive == true).FirstOrDefault();
+                    if (service3 != null)
+                        MenusMasterSubSubCategoryIndexViewModel.url = service3.Url;
+                    else
+                        MenusMasterSubSubCategoryIndexViewModel.url = "#";
+                    break;
+                case "SER4":
+                    var service4 = UnitOfWork.Services4MasterRepository.Get().Where(x => x.SubSubCat_Id == tempsubsubcat.ID && x.IsActive == true).FirstOrDefault();
+                    if (service4 != null)
+                        MenusMasterSubSubCategoryIndexViewModel.url = service4.Url;
+                    else
+                        MenusMasterSubSubCategoryIndexViewModel.url = "#";
+                    break;
+                case "SER5":
+                    var service5 = UnitOfWork.Services5MasterRepository.Get().Where(x => x.SubSubCat_Id == tempsubsubcat.ID && x.IsActive == true).FirstOrDefault();
+                    if (service5 != null)
+                        MenusMasterSubSubCategoryIndexViewModel.url = service5.Url;
+                    else
+                        MenusMasterSubSubCategoryIndexViewModel.url = "#";
+                    break;
+                case "SER6":
+                    var service6 = UnitOfWork.Services6MasterRepository.Get().Where(x => x.SubSubCat_Id == tempsubsubcat.ID && x.IsActive == true).FirstOrDefault();
+                    if (service6 != null)
+                        MenusMasterSubSubCategoryIndexViewModel.url = service6.Url;
+                    else
+                        MenusMasterSubSubCategoryIndexViewModel.url = "#";
+                    break;
+                case "SER7":
+                    var service7 = UnitOfWork.Services7MasterRepository.Get().Where(x => x.SubSubCat_Id == tempsubsubcat.ID && x.IsActive == true).FirstOrDefault();
+                    if (service7 != null)
+                        MenusMasterSubSubCategoryIndexViewModel.url = service7.Url;
+                    else
+                        MenusMasterSubSubCategoryIndexViewModel.url = "#";
+                    break;
+                case "SER8":
+                    var service8 = UnitOfWork.Services8MasterRepository.Get().Where(x => x.SubSubCat_Id == tempsubsubcat.ID && x.IsActive == true).FirstOrDefault();
+                    if (service8 != null)
+                        MenusMasterSubSubCategoryIndexViewModel.url = service8.Url;
+                    else
+                        MenusMasterSubSubCategoryIndexViewModel.url = "#";
+                    break;
+            }
         }
         #endregion
     }

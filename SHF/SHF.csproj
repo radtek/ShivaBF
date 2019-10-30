@@ -392,6 +392,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Front\ServiceType1Controller.cs" />
     <Compile Include="Controllers\Front\MenusController.cs" />
     <Compile Include="Controllers\RelatedBlogsMappingController.cs" />
     <Compile Include="Controllers\BannerNavigationsDetailsController.cs" />

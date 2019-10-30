@@ -46,6 +46,7 @@ namespace SHF.ViewModel.FrontEnd
         public System.Int64 SubCategory_ID { get; set; }
         public System.Int64 Category_ID { get; set; }
         public System.String ServiceTypeValue { get; set; }
+        public System.String url { get; set; }
         public System.Int32 DisplayIndex { get; set; }
         public System.Int64 Tenant_ID { get; set; }
     }
