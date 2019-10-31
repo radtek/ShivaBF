@@ -43,7 +43,7 @@ namespace SHF.Controllers.Front
         {
           // string tenantId = "1";
             var lststateMasterViewModel = new List<StateMasterViewModel>();
-             var statemaster = UnitOfWork.StateMasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.IsActive == true);
+             var statemaster = UnitOfWork.StateMasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) || x.Tenant_ID==null && x.IsActive == true);
             foreach (var tempstate in statemaster)
             {
                 var stateMasterViewModel = new StateMasterViewModel();

@@ -53,12 +53,13 @@ angular.module(config.app).service('BankMasterCRUD', function ($http) {
                 },
                 {
                     name: "bank.IconPath",
-                    data: "Icon Path",
-                    title: "Name",
+                    data: "IconPath",
+                    title: "IconPath",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
                     targets: 2
                 },
+               
                 {
                     name: "bank.Description",
                     data: "Description",

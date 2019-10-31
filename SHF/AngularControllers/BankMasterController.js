@@ -103,19 +103,7 @@
             }
         }
 
- $scope.upload = function (file) {
-        Upload.upload({
-            url: 'upload/url',
-            data: {file: file, 'username': $scope.username}
-        }).then(function (resp) {
-            console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
-        }, function (resp) {
-            console.log('Error status: ' + resp.status);
-        }, function (evt) {
-            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
-        });
-    };
+ 
         $scope.BindUnitOfMeasurementDropDownList = function (tenantId) {
             let promise = UnitOfMeasurementCRUD.LoadUnitOfMeasurementDropdown(tenantId)
             promise.then(
@@ -313,7 +301,7 @@
             reqObj.addEventListener("load", uploadComplete, false)
             reqObj.addEventListener("error", uploadFailed, false)
             reqObj.addEventListener("abort", uploadCanceled, false)
-            reqObj.open("POST", "/FileUpload/UploadFiles", true);
+            reqObj.open("POST", "/Post/Bank/FileUpload", true);
             reqObj.setRequestHeader("Content-Type", "multipart/form-data");
             reqObj.setRequestHeader('X-File-Name', name);
             reqObj.setRequestHeader('X-File-Type', type);
@@ -332,7 +320,7 @@
             function uploadComplete(evt) {
                 document.getElementById('P' + index).innerHTML = '<span style="color:Green;font-weight:bold;font-style: oblique">Saved..</span>';
                 $scope.NoOfFileSaved++;
-                BankMasterCreateOrEditViewModel.IconPath = name;
+               $scope.BankMasterCreateOrEditViewModel.IconPath = name;
                 $scope.$apply();
             }
             function uploadFailed(evt) {

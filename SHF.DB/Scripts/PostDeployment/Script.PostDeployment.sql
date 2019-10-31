@@ -43,6 +43,9 @@ go
 :r .\History\load_tempservices.sql
 go
 
+:r .\History\Tbl_StateMaster_INSERT.sql
+go
+
 :r .\History\load_Cat_Sub_SubSub.sql
 go
 

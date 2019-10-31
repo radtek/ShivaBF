@@ -138,7 +138,7 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var productId = businessBankMaster.FindBy(bank => bank.Tenant_ID == model.Tenant_ID).FirstOrDefault();
+                            var productId = businessBankMaster.FindBy(bank => bank.Tenant_ID == model.Tenant_ID && bank.ID==model.ID).FirstOrDefault();
 
                             if (productId.IsNotNull())
                             {

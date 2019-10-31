@@ -265,6 +265,7 @@ namespace SHF.Controllers.Front
                     services1Section8FAQMappingViewModel.FAQMaster_Id = Convert.ToInt64(tempservices1Section8FAQMapping.Services1Section8FAQMapping_tenant.Services1Section8FAQMapping.FAQMaster_Id);
                     services1Section8FAQMappingViewModel.Service_Id = tempservices1Section8FAQMapping.Services1Section8FAQMapping_tenant.Services1Section8FAQMapping.Service_Id;
                     services1Section8FAQMappingViewModel.SubSubCat_Id = Convert.ToInt64(tempservices1Section8FAQMapping.Services1Section8FAQMapping_tenant.Services1Section8FAQMapping.SubSubCat_Id);
+                    services1Section8FAQMappingViewModel.Title = tempservices1Section8FAQMapping.FAQMaster.Title;
                     services1Section8FAQMappingViewModel.Description = tempservices1Section8FAQMapping.FAQMaster.Description;
                     services1Section8FAQMappingViewModel.DisplayIndex = tempservices1Section8FAQMapping.Services1Section8FAQMapping_tenant.Services1Section8FAQMapping.DisplayIndex;
                     services1Section8FAQMappingViewModel.IsActive = tempservices1Section8FAQMapping.Services1Section8FAQMapping_tenant.Services1Section8FAQMapping.IsActive;

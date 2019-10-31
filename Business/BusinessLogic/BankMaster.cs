@@ -76,7 +76,7 @@ namespace SHF.Business.BusinessLogic
                         ID = x.bank.ID,
                         Description = x.bank.Description,
                         IsActive = x.bank.IsActive,
-                        IconPath = x.bank.IconPath,
+                        IconPath = String.Concat(busConstant.Settings.CMSPath.TENANAT_UPLOAD_DIRECTORY, x.tenant.ID)+"/"+x.bank.IconPath,
                         TenantName = x.tenant.Name,
                         Tenant_ID = x.tenant.ID,
                         CreatedBy = x.bank.CreatedBy,
