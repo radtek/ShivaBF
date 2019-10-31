@@ -85,6 +85,103 @@ namespace SHF.Controllers.Front
             // return Json("ajs");
             return ServiceType1ViewModel;
         }
+
+        [Route("api/ServiceType1/GetServiceType1Section1MasterByTenantIdAndServiceId/{tenantId}/{Id}")]
+        [HttpGet]
+        public List<ServiceType1Section1MasterViewModel> GetServiceType1Section1MasterByTenantIdAndServiceId(string tenantId, string Id)
+        {
+            // string tenantId = "1";
+            var lstServiceType1Section1MasterViewModel = new List<ServiceType1Section1MasterViewModel>();
+            var ServiceType1Section1Master = UnitOfWork.Services1Section1MasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.Service_Id == Convert.ToInt64(Id) && x.IsActive == true).OrderBy(x=>x.DisplayIndex);
+            foreach (var tempservice1Section1 in ServiceType1Section1Master)
+            {
+                var serviceType1Section1MasterViewModel = new ServiceType1Section1MasterViewModel();
+               serviceType1Section1MasterViewModel.ID = tempservice1Section1.ID;
+                serviceType1Section1MasterViewModel.Service_Id = tempservice1Section1.Service_Id;
+                serviceType1Section1MasterViewModel.SubSubCat_Id = Convert.ToInt64(tempservice1Section1.SubSubCat_Id);
+               //serviceType1Section1MasterViewModel.SubSubCategoryName = tempservice1Section1Services.SubSubCategoryName;
+               serviceType1Section1MasterViewModel.AncharTagTitle = tempservice1Section1.AncharTagTitle;
+               serviceType1Section1MasterViewModel.AncharTagUrl = tempservice1Section1.AncharTagUrl;
+               serviceType1Section1MasterViewModel.DisplayIndex = tempservice1Section1.DisplayIndex;
+               serviceType1Section1MasterViewModel.IsActive = tempservice1Section1.IsActive;
+               serviceType1Section1MasterViewModel.TotalViews = tempservice1Section1.TotalViews;
+               serviceType1Section1MasterViewModel.Url = tempservice1Section1.Url;
+               serviceType1Section1MasterViewModel.Metadata = tempservice1Section1.Metadata;
+               serviceType1Section1MasterViewModel.Keyword = tempservice1Section1.Keyword;
+               serviceType1Section1MasterViewModel.MetaDescription = tempservice1Section1.MetaDescription;
+               serviceType1Section1MasterViewModel.Tenant_ID = Convert.ToInt64(tempservice1Section1.Tenant_ID);
+                lstServiceType1Section1MasterViewModel.Add(serviceType1Section1MasterViewModel);
+            }
+            /*some db operation*/
+            // return Json("ajs");
+            return lstServiceType1Section1MasterViewModel;
+        }
+
+
+        [Route("api/ServiceType1/GetServiceType1Section4MasterByTenantIdAndServiceId/{tenantId}/{Id}")]
+        [HttpGet]
+        public List<ServiceType1Section4MasterViewModel> GetServiceType1Section4MasterByTenantIdAndServiceId(string tenantId, string Id)
+        {
+            // string tenantId = "1";
+            var lstServiceType1Section4MasterViewModel = new List<ServiceType1Section4MasterViewModel>();
+            var ServiceType1Section4Master = UnitOfWork.Services1Section4MasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.Service_Id == Convert.ToInt64(Id) && x.IsActive == true).OrderBy(x => x.DisplayIndex);
+            foreach (var tempservice1Section4 in ServiceType1Section4Master)
+            {
+                var serviceType1Section4MasterViewModel = new ServiceType1Section4MasterViewModel();
+                serviceType1Section4MasterViewModel.ID = tempservice1Section4.ID;
+                serviceType1Section4MasterViewModel.Service_Id = tempservice1Section4.Service_Id;
+                serviceType1Section4MasterViewModel.SubSubCat_Id = Convert.ToInt64(tempservice1Section4.SubSubCat_Id);
+                serviceType1Section4MasterViewModel.HeadingText = tempservice1Section4.HeadingText;
+                serviceType1Section4MasterViewModel.ShortDescription = tempservice1Section4.ShortDescription;
+                serviceType1Section4MasterViewModel.AncharTagTitle = tempservice1Section4.AncharTagTitle;
+                serviceType1Section4MasterViewModel.AncharTagUrl = tempservice1Section4.AncharTagUrl;
+                serviceType1Section4MasterViewModel.DisplayIndex = tempservice1Section4.DisplayIndex;
+                serviceType1Section4MasterViewModel.IsActive = tempservice1Section4.IsActive;
+                serviceType1Section4MasterViewModel.TotalViews = tempservice1Section4.TotalViews;
+                serviceType1Section4MasterViewModel.Url = tempservice1Section4.Url;
+                serviceType1Section4MasterViewModel.Metadata = tempservice1Section4.Metadata;
+                serviceType1Section4MasterViewModel.Keyword = tempservice1Section4.Keyword;
+                serviceType1Section4MasterViewModel.MetaDescription = tempservice1Section4.MetaDescription;
+                serviceType1Section4MasterViewModel.Tenant_ID = Convert.ToInt64(tempservice1Section4.Tenant_ID);
+                lstServiceType1Section4MasterViewModel.Add(serviceType1Section4MasterViewModel);
+            }
+            /*some db operation*/
+            // return Json("ajs");
+            return lstServiceType1Section4MasterViewModel;
+        }
+
+
+        [Route("api/ServiceType1/GetServiceType1Section5MasterByTenantIdAndServiceId/{tenantId}/{Id}")]
+        [HttpGet]
+        public List<ServiceType1Section5MasterViewModel> GetServiceType1Section5MasterByTenantIdAndServiceId(string tenantId, string Id)
+        {
+            // string tenantId = "1";
+            var lstServiceType1Section5MasterViewModel = new List<ServiceType1Section5MasterViewModel>();
+            var ServiceType1Section5Master = UnitOfWork.Services1Section5MasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.Service_Id == Convert.ToInt64(Id) && x.IsActive == true).OrderBy(x => x.DisplayIndex);
+            foreach (var tempservice1Section5 in ServiceType1Section5Master)
+            {
+                var serviceType1Section5MasterViewModel = new ServiceType1Section5MasterViewModel();
+                serviceType1Section5MasterViewModel.ID = tempservice1Section5.ID;
+                serviceType1Section5MasterViewModel.Service_Id = tempservice1Section5.Service_Id;
+                serviceType1Section5MasterViewModel.SubSubCat_Id = Convert.ToInt64(tempservice1Section5.SubSubCat_Id);
+                serviceType1Section5MasterViewModel.HeadingText = tempservice1Section5.HeadingText;
+                serviceType1Section5MasterViewModel.ShortDescription = tempservice1Section5.ShortDescription;
+                serviceType1Section5MasterViewModel.AncharTagTitle = tempservice1Section5.AncharTagTitle;
+                serviceType1Section5MasterViewModel.AncharTagUrl = tempservice1Section5.AncharTagUrl;
+                serviceType1Section5MasterViewModel.DisplayIndex = tempservice1Section5.DisplayIndex;
+                serviceType1Section5MasterViewModel.IsActive = tempservice1Section5.IsActive;
+                serviceType1Section5MasterViewModel.TotalViews = tempservice1Section5.TotalViews;
+                serviceType1Section5MasterViewModel.Url = tempservice1Section5.Url;
+                serviceType1Section5MasterViewModel.Metadata = tempservice1Section5.Metadata;
+                serviceType1Section5MasterViewModel.Keyword = tempservice1Section5.Keyword;
+                serviceType1Section5MasterViewModel.MetaDescription = tempservice1Section5.MetaDescription;
+                serviceType1Section5MasterViewModel.Tenant_ID = Convert.ToInt64(tempservice1Section5.Tenant_ID);
+                lstServiceType1Section5MasterViewModel.Add(serviceType1Section5MasterViewModel);
+            }
+            /*some db operation*/
+            // return Json("ajs");
+            return lstServiceType1Section5MasterViewModel;
+        }
         #endregion
     }
 
