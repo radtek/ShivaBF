@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
-using SHF.ViewModel;
+
 using SHF.ViewModel.FrontEnd;
 using SHF.Web.Filters;
 
@@ -181,6 +181,68 @@ namespace SHF.Controllers.Front
             /*some db operation*/
             // return Json("ajs");
             return lstServiceType1Section5MasterViewModel;
+        }
+
+
+        [Route("api/ServiceType1/GetServiceType1Section6PriceMasterByTenantIdAndServiceId/{tenantId}/{Id}/{StateFullName}")]
+        [HttpGet]
+        public List<Services1Section6PriceMasterViewModel> GetServiceType1Section6PriceMasterByTenantIdAndServiceId(string tenantId, string Id,string StateFullName)
+        {
+            // string tenantId = "1";
+            var lstServices1Section6PriceMasterViewModel = new List<Services1Section6PriceMasterViewModel>();
+            var state = UnitOfWork.StateMasterRepository.Get().Where(x => x.StateFullName == StateFullName).FirstOrDefault();
+            if (state != null)
+            {
+                var Services1Section6PriceMaster = UnitOfWork.Services1Section6PriceMasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.Service_Id == Convert.ToInt64(Id) && x.IsActive == true && x.State_Id == state.ID).OrderBy(x => x.DisplayIndex);
+
+                foreach (var tempservices1Section6PriceMaster in Services1Section6PriceMaster)
+                {
+                    var services1Section6PriceMasterViewModel = new Services1Section6PriceMasterViewModel();
+                    services1Section6PriceMasterViewModel.ID = tempservices1Section6PriceMaster.ID;
+                    services1Section6PriceMasterViewModel.SubSubCat_Id = Convert.ToInt64(tempservices1Section6PriceMaster.SubSubCat_Id);
+                    services1Section6PriceMasterViewModel.HeadingText = tempservices1Section6PriceMaster.HeadingText;
+                    services1Section6PriceMasterViewModel.Price = tempservices1Section6PriceMaster.Price;
+                    services1Section6PriceMasterViewModel.AncharTagTitle = tempservices1Section6PriceMaster.AncharTagTitle;
+                    services1Section6PriceMasterViewModel.AncharTagUrl = tempservices1Section6PriceMaster.AncharTagUrl;
+                    services1Section6PriceMasterViewModel.DisplayIndex = tempservices1Section6PriceMaster.DisplayIndex;
+                    services1Section6PriceMasterViewModel.IsActive = tempservices1Section6PriceMaster.IsActive;
+                    services1Section6PriceMasterViewModel.TotalViews = tempservices1Section6PriceMaster.TotalViews;
+                    services1Section6PriceMasterViewModel.Url = tempservices1Section6PriceMaster.Url;
+                    services1Section6PriceMasterViewModel.Metadata = tempservices1Section6PriceMaster.Metadata;
+                    services1Section6PriceMasterViewModel.Keyword = tempservices1Section6PriceMaster.Keyword;
+                    services1Section6PriceMasterViewModel.MetaDescription = tempservices1Section6PriceMaster.MetaDescription;
+                    services1Section6PriceMasterViewModel.Tenant_ID = Convert.ToInt64(tempservices1Section6PriceMaster.Tenant_ID);
+
+                    var objPriceFeaturesMapping = UnitOfWork.PriceFeaturesMappingRepository.Get().Join(UnitOfWork.TenantRepository.Get(), PriceFeaturesMapping => PriceFeaturesMapping.Tenant_ID, tenant => tenant.ID, (PriceFeaturesMapping, tenant) => new { PriceFeaturesMapping, tenant })
+                    .Join(UnitOfWork.PriceFeaturesMasterRepository.Get(), PriceFeaturesMapping_tenant => PriceFeaturesMapping_tenant.PriceFeaturesMapping.PriceFeaturesMaster_Id, PriceFeaturesMaster => PriceFeaturesMaster.ID, (PriceFeaturesMapping_tenant, PriceFeaturesMaster) => new { PriceFeaturesMapping_tenant, PriceFeaturesMaster })
+                    .Where(x => x.PriceFeaturesMapping_tenant.PriceFeaturesMapping.Tenant_ID == Convert.ToInt64(tenantId) && x.PriceFeaturesMapping_tenant.PriceFeaturesMapping.IsActive == true && x.PriceFeaturesMapping_tenant.PriceFeaturesMapping.S1S6PM_Id == Convert.ToInt64(Id)).OrderBy(a => a.PriceFeaturesMapping_tenant.PriceFeaturesMapping.DisplayIndex);
+                    var lstpriceFeaturesMappingViewModel = new List<PriceFeaturesMappingViewModel>();
+
+                    foreach (var tempPriceFeaturesMapping in objPriceFeaturesMapping)
+                    {
+                        var priceFeaturesMappingViewModel = new PriceFeaturesMappingViewModel();
+                        priceFeaturesMappingViewModel.S1S6PM_Id = tempPriceFeaturesMapping.PriceFeaturesMapping_tenant.PriceFeaturesMapping.S1S6PM_Id;
+                        priceFeaturesMappingViewModel.Service_Id = tempPriceFeaturesMapping.PriceFeaturesMapping_tenant.PriceFeaturesMapping.Service_Id;
+                        priceFeaturesMappingViewModel.SubSubCat_Id = Convert.ToInt64(tempPriceFeaturesMapping.PriceFeaturesMapping_tenant.PriceFeaturesMapping.SubSubCat_Id);
+                        priceFeaturesMappingViewModel.PriceFeaturesMaster_Id = tempPriceFeaturesMapping.PriceFeaturesMapping_tenant.PriceFeaturesMapping.PriceFeaturesMaster_Id;
+                        priceFeaturesMappingViewModel.Description = tempPriceFeaturesMapping.PriceFeaturesMaster.Description;
+                        priceFeaturesMappingViewModel.DisplayIndex = tempPriceFeaturesMapping.PriceFeaturesMapping_tenant.PriceFeaturesMapping.DisplayIndex;
+                        priceFeaturesMappingViewModel.IsActive = tempPriceFeaturesMapping.PriceFeaturesMapping_tenant.PriceFeaturesMapping.IsActive;
+                        priceFeaturesMappingViewModel.TotalViews = tempPriceFeaturesMapping.PriceFeaturesMapping_tenant.PriceFeaturesMapping.TotalViews;
+                        priceFeaturesMappingViewModel.Url = tempPriceFeaturesMapping.PriceFeaturesMapping_tenant.PriceFeaturesMapping.Url;
+                        priceFeaturesMappingViewModel.Metadata = tempPriceFeaturesMapping.PriceFeaturesMapping_tenant.PriceFeaturesMapping.Metadata;
+                        priceFeaturesMappingViewModel.Keyword = tempPriceFeaturesMapping.PriceFeaturesMapping_tenant.PriceFeaturesMapping.Keyword;
+                        priceFeaturesMappingViewModel.MetaDescription = tempPriceFeaturesMapping.PriceFeaturesMapping_tenant.PriceFeaturesMapping.MetaDescription;
+                        priceFeaturesMappingViewModel.Tenant_ID = Convert.ToInt64(tempPriceFeaturesMapping.PriceFeaturesMapping_tenant.PriceFeaturesMapping.Tenant_ID);
+                        lstpriceFeaturesMappingViewModel.Add(priceFeaturesMappingViewModel);
+                    }
+                    services1Section6PriceMasterViewModel.PriceFeaturesMappingViewModel = lstpriceFeaturesMappingViewModel;
+                    lstServices1Section6PriceMasterViewModel.Add(services1Section6PriceMasterViewModel);
+                }
+            }
+            /*some db operation*/
+            // return Json("ajs");
+            return lstServices1Section6PriceMasterViewModel;
         }
         #endregion
     }
