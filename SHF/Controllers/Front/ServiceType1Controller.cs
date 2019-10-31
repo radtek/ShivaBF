@@ -244,6 +244,43 @@ namespace SHF.Controllers.Front
             // return Json("ajs");
             return lstServices1Section6PriceMasterViewModel;
         }
+
+
+        [Route("api/ServiceType1/GetServiceType1Section8FAQMappingByTenantIdAndServiceId/{tenantId}/{Id}")]
+        [HttpGet]
+        public List<Services1Section8FAQMappingViewModel> GetServiceType1Section8FAQMappingByTenantIdAndServiceId(string tenantId, string Id)
+        {
+            // string tenantId = "1";
+            var lstservices1Section8FAQMappingViewModel = new List<Services1Section8FAQMappingViewModel>();
+            var services1Section8FAQMapping = UnitOfWork.Services1Section8FAQMappingRepository.Get().Join(UnitOfWork.TenantRepository.Get(), Services1Section8FAQMapping => Services1Section8FAQMapping.Tenant_ID, tenant => tenant.ID, (Services1Section8FAQMapping, tenant) => new { Services1Section8FAQMapping, tenant })
+                    .Join(UnitOfWork.FAQMasterRepository.Get(), Services1Section8FAQMapping_tenant => Services1Section8FAQMapping_tenant.Services1Section8FAQMapping.FAQMaster_Id, FAQMaster => FAQMaster.ID, (Services1Section8FAQMapping_tenant, FAQMaster) => new { Services1Section8FAQMapping_tenant, FAQMaster })
+                    .Where(x => x.Services1Section8FAQMapping_tenant.Services1Section8FAQMapping.Tenant_ID == Convert.ToInt64(tenantId) && x.Services1Section8FAQMapping_tenant.Services1Section8FAQMapping.Service_Id == Convert.ToInt64(Id) && x.Services1Section8FAQMapping_tenant.Services1Section8FAQMapping.IsActive == true)
+                    .OrderBy(x => x.Services1Section8FAQMapping_tenant.Services1Section8FAQMapping.DisplayIndex);
+            if (services1Section8FAQMapping != null)
+            {
+                foreach (var tempservices1Section8FAQMapping in services1Section8FAQMapping)
+                {
+                    var services1Section8FAQMappingViewModel = new Services1Section8FAQMappingViewModel();
+                    services1Section8FAQMappingViewModel.ID = tempservices1Section8FAQMapping.Services1Section8FAQMapping_tenant.Services1Section8FAQMapping.ID;
+                    services1Section8FAQMappingViewModel.FAQMaster_Id = Convert.ToInt64(tempservices1Section8FAQMapping.Services1Section8FAQMapping_tenant.Services1Section8FAQMapping.FAQMaster_Id);
+                    services1Section8FAQMappingViewModel.Service_Id = tempservices1Section8FAQMapping.Services1Section8FAQMapping_tenant.Services1Section8FAQMapping.Service_Id;
+                    services1Section8FAQMappingViewModel.SubSubCat_Id = Convert.ToInt64(tempservices1Section8FAQMapping.Services1Section8FAQMapping_tenant.Services1Section8FAQMapping.SubSubCat_Id);
+                    services1Section8FAQMappingViewModel.Description = tempservices1Section8FAQMapping.FAQMaster.Description;
+                    services1Section8FAQMappingViewModel.DisplayIndex = tempservices1Section8FAQMapping.Services1Section8FAQMapping_tenant.Services1Section8FAQMapping.DisplayIndex;
+                    services1Section8FAQMappingViewModel.IsActive = tempservices1Section8FAQMapping.Services1Section8FAQMapping_tenant.Services1Section8FAQMapping.IsActive;
+                    services1Section8FAQMappingViewModel.TotalViews = tempservices1Section8FAQMapping.Services1Section8FAQMapping_tenant.Services1Section8FAQMapping.TotalViews;
+                    services1Section8FAQMappingViewModel.Url = tempservices1Section8FAQMapping.Services1Section8FAQMapping_tenant.Services1Section8FAQMapping.Url;
+                    services1Section8FAQMappingViewModel.Metadata = tempservices1Section8FAQMapping.Services1Section8FAQMapping_tenant.Services1Section8FAQMapping.Metadata;
+                    services1Section8FAQMappingViewModel.Keyword = tempservices1Section8FAQMapping.Services1Section8FAQMapping_tenant.Services1Section8FAQMapping.Keyword;
+                    services1Section8FAQMappingViewModel.MetaDescription = tempservices1Section8FAQMapping.Services1Section8FAQMapping_tenant.Services1Section8FAQMapping.MetaDescription;
+                    services1Section8FAQMappingViewModel.Tenant_ID = Convert.ToInt64(tempservices1Section8FAQMapping.Services1Section8FAQMapping_tenant.Services1Section8FAQMapping.Tenant_ID);
+                    lstservices1Section8FAQMappingViewModel.Add(services1Section8FAQMappingViewModel);
+                }
+            }
+            /*some db operation*/
+            // return Json("ajs");
+            return lstservices1Section8FAQMappingViewModel;
+        }
         #endregion
     }
 
