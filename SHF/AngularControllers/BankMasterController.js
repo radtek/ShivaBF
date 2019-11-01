@@ -296,6 +296,7 @@
             }
         }
         $scope.UploadFileIndividual = function (fileToUpload, name, type, size, index) {
+        var tenantId=$scope.BankMasterCreateOrEditViewModel.Tenant_ID;
             var reqObj = new XMLHttpRequest();
             reqObj.upload.addEventListener("progress", uploadProgress, false)
             reqObj.addEventListener("load", uploadComplete, false)
@@ -306,6 +307,7 @@
             reqObj.setRequestHeader('X-File-Name', name);
             reqObj.setRequestHeader('X-File-Type', type);
             reqObj.setRequestHeader('X-File-Size', size);
+            reqObj.setRequestHeader('tenantId', tenantId);
             reqObj.send(fileToUpload);
             function uploadProgress(evt) {
                 if (evt.lengthComputable) {

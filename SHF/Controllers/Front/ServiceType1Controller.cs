@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
-
+using SHF.Helper;
 using SHF.ViewModel.FrontEnd;
 using SHF.Web.Filters;
 
@@ -281,6 +281,44 @@ namespace SHF.Controllers.Front
             /*some db operation*/
             // return Json("ajs");
             return lstservices1Section8FAQMappingViewModel;
+        }
+
+
+        [Route("api/ServiceType1/GetServiceType1Section10BankMappingByTenantIdAndServiceId/{tenantId}/{Id}")]
+        [HttpGet]
+        public List<Services1Section10BankMappingViewModel> GetServiceType1Section10BankMappingByTenantIdAndServiceId(string tenantId, string Id)
+        {
+            // string tenantId = "1";
+            var lstservices1Section10BankMappingViewModel = new List<Services1Section10BankMappingViewModel>();
+            var services1Section10BankMapping = UnitOfWork.Services1Section10BankMappingRepository.Get().Join(UnitOfWork.TenantRepository.Get(), Services1Section10BankMapping => Services1Section10BankMapping.Tenant_ID, tenant => tenant.ID, (Services1Section10BankMapping, tenant) => new { Services1Section10BankMapping, tenant })
+                    .Join(UnitOfWork.BankMasterRepository.Get(), Services1Section10BankMapping_tenant => Services1Section10BankMapping_tenant.Services1Section10BankMapping.BankMaster_Id, BankMaster => BankMaster.ID, (Services1Section10BankMapping_tenant, BankMaster) => new { Services1Section10BankMapping_tenant, BankMaster })
+                    .Where(x => x.Services1Section10BankMapping_tenant.Services1Section10BankMapping.Tenant_ID == Convert.ToInt64(tenantId) && x.Services1Section10BankMapping_tenant.Services1Section10BankMapping.Service_Id == Convert.ToInt64(Id) && x.Services1Section10BankMapping_tenant.Services1Section10BankMapping.IsActive == true)
+                    .OrderBy(x => x.Services1Section10BankMapping_tenant.Services1Section10BankMapping.DisplayIndex);
+            if (services1Section10BankMapping != null)
+            {
+                foreach (var tempservices1Section10BankMapping in services1Section10BankMapping)
+                {
+                    var services1Section10BankMappingViewModel = new Services1Section10BankMappingViewModel();
+                    services1Section10BankMappingViewModel.ID = tempservices1Section10BankMapping.Services1Section10BankMapping_tenant.Services1Section10BankMapping.ID;
+                    services1Section10BankMappingViewModel.BankMaster_Id = Convert.ToInt64(tempservices1Section10BankMapping.Services1Section10BankMapping_tenant.Services1Section10BankMapping.BankMaster_Id);
+                    services1Section10BankMappingViewModel.Service_Id = tempservices1Section10BankMapping.Services1Section10BankMapping_tenant.Services1Section10BankMapping.Service_Id;
+                    services1Section10BankMappingViewModel.SubSubCat_Id = Convert.ToInt64(tempservices1Section10BankMapping.Services1Section10BankMapping_tenant.Services1Section10BankMapping.SubSubCat_Id);
+                    services1Section10BankMappingViewModel.IconPath = String.Concat(busConstant.Settings.CMSPath.TENANAT_UPLOAD_DIRECTORY, tempservices1Section10BankMapping.Services1Section10BankMapping_tenant.Services1Section10BankMapping.Tenant_ID) + "/" + tempservices1Section10BankMapping.BankMaster.IconPath;
+                    services1Section10BankMappingViewModel.Description = tempservices1Section10BankMapping.BankMaster.Description;
+                    services1Section10BankMappingViewModel.DisplayIndex = tempservices1Section10BankMapping.Services1Section10BankMapping_tenant.Services1Section10BankMapping.DisplayIndex;
+                    services1Section10BankMappingViewModel.IsActive = tempservices1Section10BankMapping.Services1Section10BankMapping_tenant.Services1Section10BankMapping.IsActive;
+                    services1Section10BankMappingViewModel.TotalViews = tempservices1Section10BankMapping.Services1Section10BankMapping_tenant.Services1Section10BankMapping.TotalViews;
+                    services1Section10BankMappingViewModel.Url = tempservices1Section10BankMapping.Services1Section10BankMapping_tenant.Services1Section10BankMapping.Url;
+                    services1Section10BankMappingViewModel.Metadata = tempservices1Section10BankMapping.Services1Section10BankMapping_tenant.Services1Section10BankMapping.Metadata;
+                    services1Section10BankMappingViewModel.Keyword = tempservices1Section10BankMapping.Services1Section10BankMapping_tenant.Services1Section10BankMapping.Keyword;
+                    services1Section10BankMappingViewModel.MetaDescription = tempservices1Section10BankMapping.Services1Section10BankMapping_tenant.Services1Section10BankMapping.MetaDescription;
+                    services1Section10BankMappingViewModel.Tenant_ID = Convert.ToInt64(tempservices1Section10BankMapping.Services1Section10BankMapping_tenant.Services1Section10BankMapping.Tenant_ID);
+                    lstservices1Section10BankMappingViewModel.Add(services1Section10BankMappingViewModel);
+                }
+            }
+            /*some db operation*/
+            // return Json("ajs");
+            return lstservices1Section10BankMappingViewModel;
         }
         #endregion
     }

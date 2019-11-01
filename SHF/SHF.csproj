@@ -463,6 +463,7 @@
     </Compile>
     <Compile Include="Helpers\BusMapper.cs" />
     <Compile Include="Helpers\CustomHelpers.cs" />
+    <Compile Include="Helpers\CompressImage.cs" />
     <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Helpers\RequiredField.cs" />
     <Compile Include="Migrations\201910301446359_DBsetup.cs" />

@@ -59,6 +59,17 @@ angular.module(config.app).service('BankMasterCRUD', function ($http) {
                     width: "25%",
                     targets: 2
                 },
+{
+                    name: "bank.IconPath",
+                    data: "IconPath",
+                    title: "Image Preview",
+                   render: function (data, type, row, meta) {
+                        return '<img src="'+data+'" style="height:150px;width:200px;"/>';
+                    },
+                    width: "40%",
+                    targets: 2
+                },
+
                
                 {
                     name: "bank.Description",
