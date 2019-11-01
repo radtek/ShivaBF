@@ -36,12 +36,44 @@
                         </div>
                         <div class="form-group" ng-class="{'has-error': ((myForm.BannerImagePath.$touched && myForm.BannerImagePath.$invalid) || (!myForm.BannerImagePath.$pristine && myForm.BannerImagePath.$invalid))}">
                             <label>Banner Image Path</label>
-                            <input type="text" class="form-control" name="BannerImagePath" ng-model="Services1MasterCreateOrEditViewModel.BannerImagePath" ng-disabled="Processing" autocomplete="off" placeholder="Enter Banner Image Path" tooltip-placement="top" uib-tooltip="Enter Banner Image Path" />
+                            <div class="col-md-12" style="text-align:center;margin-bottom:10px;">
+                                <input type="file" id="file" name="file" single onchange="angular.element(this).scope().setFile(this)" accept="image/*" class="btn btn-primary" required />
+                            </div>
+                            <div class="col-md-12">
+                                <button ng-click="UploadFile()" class="button button4">Upload</button>
+                            </div>
+                            <div class="col-md-12" style="padding-top:10px;">
+                                <div class="col-md-7">
+                                    <table align="center" border="1" cellpadding="4" cellspacing="4">
+                                        <thead>
+                                            <tr>
+                                                <th style="background-color: Yellow;color: blue">File Name</th>
+                                                <th style="background-color: Yellow;color: blue">File Type</th>
+                                                <th style="background-color: Yellow;color: blue">File Size</th>
+                                                <th style="background-color: Yellow;color: blue">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="file in fileList">
+                                                <td style="color: blue">{{file.file.name}}</td>
+                                                <td style="color: blue">{{file.file.type}}</td>
+                                                <td style="color: blue">{{file.file.size}}</td>
+                                                <td>
+                                                    <div id="{{'P'+$index}}">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <input type="hidden" class="form-control" name="BannerImagePath" ng-model="Services1MasterCreateOrEditViewModel.BannerImagePath" />
                             <div class="help-block" ng-messages="myForm.BannerImagePath.$error" ng-if="myForm.BannerImagePath.$touched || myForm.BannerImagePath.$dirty && myForm.BannerImagePath.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.BannerImagePath" ng-bind="errors.formErrors.BannerImagePath"></span>
                         </div>
+
                         <div class="form-group" ng-class="{'has-error': ((myForm.BannerOnHeading.$touched && myForm.BannerOnHeading.$invalid) || (!myForm.BannerOnHeading.$pristine && myForm.BannerOnHeading.$invalid))}">
                             <label>Banner On Heading</label>
                             <input type="text" class="form-control" name="BannerOnHeading" ng-model="Services1MasterCreateOrEditViewModel.BannerOnHeading" ng-disabled="Processing" autocomplete="off" placeholder="Enter Banner On Heading" tooltip-placement="top" uib-tooltip="Enter Banner On Heading" />
@@ -92,12 +124,52 @@
                         </div>
                         <div class="form-group" ng-class="{'has-error': ((myForm.Section1AfterBannerImagePath.$touched && myForm.Section1AfterBannerImagePath.$invalid) || (!myForm.Section1AfterBannerImagePath.$pristine && myForm.Section1AfterBannerImagePath.$invalid))}">
                             <label>Section1 After BannerImagePath</label>
-                            <input type="text" class="form-control" name="Section1AfterBannerImagePath" ng-model="Services1MasterCreateOrEditViewModel.Section1AfterBannerImagePath" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section1 After BannerImagePath" tooltip-placement="top" uib-tooltip="Enter Section1 After BannerImagePath" />
+                            <div class="col-md-12" style="text-align:center;margin-bottom:10px;">
+                                <input type="file" id="file2" name="file" single onchange="angular.element(this).scope().setFile(this)" accept="image/*" class="btn btn-primary" required />
+                            </div>
+                            <div class="col-md-12">
+                                <button ng-click="UploadFile2()" class="button button4">Upload</button>
+                            </div>
+                            <div class="col-md-12" style="padding-top:10px;">
+                                <div class="col-md-7">
+                                    <table align="center" border="1" cellpadding="4" cellspacing="4">
+                                        <thead>
+                                            <tr>
+                                                <th style="background-color: Yellow;color: blue">File Name</th>
+                                                <th style="background-color: Yellow;color: blue">File Type</th>
+                                                <th style="background-color: Yellow;color: blue">File Size</th>
+                                                <th style="background-color: Yellow;color: blue">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="file in fileList2">
+                                                <td style="color: blue">{{file.file.name}}</td>
+                                                <td style="color: blue">{{file.file.type}}</td>
+                                                <td style="color: blue">{{file.file.size}}</td>
+                                                <td>
+                                                    <div id="{{'P2'+$index}}">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <input type="hidden" class="form-control" name="Section1AfterBannerImagePath" ng-model="Services1MasterCreateOrEditViewModel.Section1AfterBannerImagePath" />
                             <div class="help-block" ng-messages="myForm.Section1AfterBannerImagePath.$error" ng-if="myForm.Section1AfterBannerImagePath.$touched || myForm.Section1AfterBannerImagePath.$dirty && myForm.Section1AfterBannerImagePath.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.Section1AfterBannerImagePath" ng-bind="errors.formErrors.Section1AfterBannerImagePath"></span>
                         </div>
+
+                        @*<div class="form-group" ng-class="{'has-error': ((myForm.Section1AfterBannerImagePath.$touched && myForm.Section1AfterBannerImagePath.$invalid) || (!myForm.Section1AfterBannerImagePath.$pristine && myForm.Section1AfterBannerImagePath.$invalid))}">
+            <label>Section1 After BannerImagePath</label>
+            <input type="text" class="form-control" name="Section1AfterBannerImagePath" ng-model="Services1MasterCreateOrEditViewModel.Section1AfterBannerImagePath" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section1 After BannerImagePath" tooltip-placement="top" uib-tooltip="Enter Section1 After BannerImagePath" />
+            <div class="help-block" ng-messages="myForm.Section1AfterBannerImagePath.$error" ng-if="myForm.Section1AfterBannerImagePath.$touched || myForm.Section1AfterBannerImagePath.$dirty && myForm.Section1AfterBannerImagePath.$invalid">
+                <div ng-messages-include="~/ValidationMessages.html"></div>
+            </div>
+            <span class="text-danger" ng-show="errors.formErrors.Section1AfterBannerImagePath" ng-bind="errors.formErrors.Section1AfterBannerImagePath"></span>
+        </div>*@
                         <div class="form-group" ng-class="{'has-error': ((myForm.Section1AfterBannerImageOnDescription.$touched && myForm.Section1AfterBannerImageOnDescription.$invalid) || (!myForm.Section1AfterBannerImageOnDescription.$pristine && myForm.Section1AfterBannerImageOnDescription.$invalid))}">
                             <label>Section1 After BannerImageOnDescription</label>
                             <input type="text" class="form-control" name="Section1AfterBannerImageOnDescription" ng-model="Services1MasterCreateOrEditViewModel.Section1AfterBannerImageOnDescription" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section1 After BannerImageOnDescription" tooltip-placement="top" uib-tooltip="Enter Section1 After BannerImageOnDescription" />
@@ -225,7 +297,6 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.DisplayIndex" ng-bind="errors.formErrors.DisplayIndex"></span>
                         </div>
-
                         <div class="form-group">
                             <label>Is Active</label><br />
                             <label>
@@ -273,7 +344,6 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.Keyword" ng-bind="errors.formErrors.Keyword"></span>
                         </div>
-
                     </div>
                 </div>
             </div>
