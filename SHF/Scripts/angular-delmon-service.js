@@ -21,6 +21,10 @@ app.service('CustomService', function () {
                         value = KeyValuePair[1];
                         break;
 
+                    case 'lruweiverP':
+                        value = KeyValuePair[1];
+                        break;
+
                     default:
                         break;
                 }
@@ -29,6 +33,9 @@ app.service('CustomService', function () {
 
         return value;
     }
+
+
+
 
     function checkCookie() {
         var user = getCookie("nomleD");
@@ -89,7 +96,16 @@ app.service('CustomService', function () {
         }
     }
 
-
+ this.PreViewBaseUrl = function () {
+        return getCookie('nomleD', 'lruweiverP');
+    }
+this.PreviewOpen=function(url) {
+//debugger;
+var PB=this.PreViewBaseUrl();
+var mainurl=PB+url;
+window.open(mainurl,"Preview", "resizable=yes, toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, copyhistory=no").blur();
+window.focus();
+    }
 
     this.GetTenantID = function () {
         return getCookie('nomleD', 'DItnaneT');

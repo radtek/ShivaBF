@@ -23,6 +23,7 @@ using System.Drawing;
 using System.Drawing.Text;
 using SHF.Web.Filters;
 using System.Drawing.Imaging;
+using System.Configuration;
 
 namespace SHF.Controllers
 {
@@ -281,12 +282,23 @@ namespace SHF.Controllers
                     {
                         cookie.Values[busConstant.Settings.Cookie.SubKeys.ROLE_NAME] = user.UserName;
                     }
+                    if (cookie.Values[busConstant.Settings.Cookie.SubKeys.PREVIEW_URL] != null)
+                    {
+                        cookie.Values[busConstant.Settings.Cookie.SubKeys.PREVIEW_URL] = null;
+                    }
+                    else
+                    {
+                        
+                        cookie.Values[busConstant.Settings.Cookie.SubKeys.PREVIEW_URL] = ConfigurationManager.AppSettings[busConstant.Settings.DataBase.SqlServer.Connections.PreviewUrlString.PREVIEWUrl];
+                    }
+                    
 
                 }
                 else
                 {
                     cookie.Values[busConstant.Settings.Cookie.SubKeys.TENANT_ID] = user.Tenant_ID.GetValueOrDefault().ToString();
                     cookie.Values[busConstant.Settings.Cookie.SubKeys.ROLE_NAME] = user.UserName;
+                    cookie.Values[busConstant.Settings.Cookie.SubKeys.PREVIEW_URL] = ConfigurationManager.AppSettings[busConstant.Settings.DataBase.SqlServer.Connections.PreviewUrlString.PREVIEWUrl];
                 }
 
 
@@ -296,6 +308,7 @@ namespace SHF.Controllers
                 cookie = new HttpCookie(busConstant.Settings.Cookie.Name.DELMON_SOLUTIONS);
                 cookie.Values[busConstant.Settings.Cookie.SubKeys.TENANT_ID] = user.Tenant_ID.GetValueOrDefault().ToString();
                 cookie.Values[busConstant.Settings.Cookie.SubKeys.ROLE_NAME] = user.UserName;
+                cookie.Values[busConstant.Settings.Cookie.SubKeys.PREVIEW_URL] = ConfigurationManager.AppSettings[busConstant.Settings.DataBase.SqlServer.Connections.PreviewUrlString.PREVIEWUrl];
             }
             //cookie.Expires = DateTime.Now.AddDays(1);
             Response.Cookies.Add(cookie);

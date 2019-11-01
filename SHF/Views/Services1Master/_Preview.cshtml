@@ -1,0 +1,29 @@
+﻿@functions{
+    public string AntiForgeryToken()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return cookieToken + ":" + formToken;
+    }
+}
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <form name="myForm" novalidate>
+            <!--myForm.$valid && -->
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="ShowConfirm('modal-preview')" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Services1 Master Details</h4>
+            </div>
+            <div id="myModal" class="reveal col-lg-12" style="background-color:white;" data-reveal >
+              
+            </div>
+            <div class="modal-footer">
+                <span class="btn btn-sm btn-danger" ng-click="ShowConfirm('modal-preview')">Close</span>
+            </div>
+        </form>
+    </div>
+    <!-- /.modal-content -->
+</div>

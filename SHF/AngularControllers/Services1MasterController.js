@@ -69,7 +69,11 @@
             }
             $('#modal-createOredit').modal('show');
         }
+   $scope.Preview = function (url) {
+    CustomService.PreviewOpen(url);
+}
 
+        
         $scope.BindTenantDropDownList = function () {
             if ($scope.AllTenants.length <= 0) {
                 let result = TenantCRUD.LoadTenantDropdown();

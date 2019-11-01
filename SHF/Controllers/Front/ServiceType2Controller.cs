@@ -155,20 +155,20 @@ namespace SHF.Controllers.Front
                 foreach (var tempServices2Section2FAQMapping in Services2Section2FAQMapping)
                 {
                     var Services2Section2FAQMappingViewModel = new Services2Section2FAQMappingViewModel();
-                    Services2Section2FAQMappingViewModel.ID = tempServices2Section2FAQMapping.Services2Section2FAQMapping_tenant.Services2Section2FAQMapping.ID;
-                    Services2Section2FAQMappingViewModel.FAQMaster_Id = Convert.ToInt64(tempServices2Section2FAQMapping.Services2Section2FAQMapping_tenant.Services2Section2FAQMapping.FAQMaster_Id);
-                    Services2Section2FAQMappingViewModel.Service_Id = tempServices2Section2FAQMapping.Services2Section2FAQMapping_tenant.Services2Section2FAQMapping.Service_Id;
-                    Services2Section2FAQMappingViewModel.SubSubCat_Id = Convert.ToInt64(tempServices2Section2FAQMapping.Services2Section2FAQMapping_tenant.Services2Section2FAQMapping.SubSubCat_Id);
+                    Services2Section2FAQMappingViewModel.ID = tempServices2Section2FAQMapping.Services2Section2FAQMapping_tenant.services2Section2FAQMapping.ID;
+                    Services2Section2FAQMappingViewModel.FAQMaster_Id = Convert.ToInt64(tempServices2Section2FAQMapping.Services2Section2FAQMapping_tenant.services2Section2FAQMapping.FAQMaster_Id);
+                    Services2Section2FAQMappingViewModel.Service_Id = tempServices2Section2FAQMapping.Services2Section2FAQMapping_tenant.services2Section2FAQMapping.Service_Id;
+                    Services2Section2FAQMappingViewModel.SubSubCat_Id = Convert.ToInt64(tempServices2Section2FAQMapping.Services2Section2FAQMapping_tenant.services2Section2FAQMapping.SubSubCat_Id);
                     Services2Section2FAQMappingViewModel.Title = tempServices2Section2FAQMapping.FAQMaster.Title;
                     Services2Section2FAQMappingViewModel.Description = tempServices2Section2FAQMapping.FAQMaster.Description;
-                    Services2Section2FAQMappingViewModel.DisplayIndex = tempServices2Section2FAQMapping.Services2Section2FAQMapping_tenant.Services2Section2FAQMapping.DisplayIndex;
-                    Services2Section2FAQMappingViewModel.IsActive = tempServices2Section2FAQMapping.Services2Section2FAQMapping_tenant.Services2Section2FAQMapping.IsActive;
-                    Services2Section2FAQMappingViewModel.TotalViews = tempServices2Section2FAQMapping.Services2Section2FAQMapping_tenant.Services2Section2FAQMapping.TotalViews;
-                    Services2Section2FAQMappingViewModel.Url = tempServices2Section2FAQMapping.Services2Section2FAQMapping_tenant.Services2Section2FAQMapping.Url;
-                    Services2Section2FAQMappingViewModel.Metadata = tempServices2Section2FAQMapping.Services2Section2FAQMapping_tenant.Services2Section2FAQMapping.Metadata;
-                    Services2Section2FAQMappingViewModel.Keyword = tempServices2Section2FAQMapping.Services2Section2FAQMapping_tenant.Services2Section2FAQMapping.Keyword;
-                    Services2Section2FAQMappingViewModel.MetaDescription = tempServices2Section2FAQMapping.Services2Section2FAQMapping_tenant.Services2Section2FAQMapping.MetaDescription;
-                    Services2Section2FAQMappingViewModel.Tenant_ID = Convert.ToInt64(tempServices2Section2FAQMapping.Services2Section2FAQMapping_tenant.Services2Section2FAQMapping.Tenant_ID);
+                    Services2Section2FAQMappingViewModel.DisplayIndex = tempServices2Section2FAQMapping.Services2Section2FAQMapping_tenant.services2Section2FAQMapping.DisplayIndex;
+                    Services2Section2FAQMappingViewModel.IsActive = tempServices2Section2FAQMapping.Services2Section2FAQMapping_tenant.services2Section2FAQMapping.IsActive;
+                    Services2Section2FAQMappingViewModel.TotalViews = tempServices2Section2FAQMapping.Services2Section2FAQMapping_tenant.services2Section2FAQMapping.TotalViews;
+                    Services2Section2FAQMappingViewModel.Url = tempServices2Section2FAQMapping.Services2Section2FAQMapping_tenant.services2Section2FAQMapping.Url;
+                    Services2Section2FAQMappingViewModel.Metadata = tempServices2Section2FAQMapping.Services2Section2FAQMapping_tenant.services2Section2FAQMapping.Metadata;
+                    Services2Section2FAQMappingViewModel.Keyword = tempServices2Section2FAQMapping.Services2Section2FAQMapping_tenant.services2Section2FAQMapping.Keyword;
+                    Services2Section2FAQMappingViewModel.MetaDescription = tempServices2Section2FAQMapping.Services2Section2FAQMapping_tenant.services2Section2FAQMapping.MetaDescription;
+                    Services2Section2FAQMappingViewModel.Tenant_ID = Convert.ToInt64(tempServices2Section2FAQMapping.Services2Section2FAQMapping_tenant.services2Section2FAQMapping.Tenant_ID);
                     lstServices2Section2FAQMappingViewModel.Add(Services2Section2FAQMappingViewModel);
                 }
             }

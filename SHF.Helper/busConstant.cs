@@ -43,6 +43,15 @@ namespace SHF.Helper
                         private const string DEVELOPMENT_L = "DevelopmentMSSQLL";
                         private const string TESTING = "TestingMSSQL";
                         private const string PRODUCTION = "ProductionMSSQL";
+                        public abstract class PreviewUrlString
+                        {
+                             public const string PREVIEWUrl = LOCAL_URL;
+                            //public const string PREVIEWUrl = TEST_URL;
+                            //public const string PREVIEWUrl = PROD_URL;
+                        }
+                        private const string LOCAL_URL = "LocalURL";
+                        private const string TEST_URL = "TestURL";
+                        private const string PROD_URL = "ProdURL";
                     }
                 }
             }
@@ -108,6 +117,7 @@ namespace SHF.Helper
                     public const string BRANCH_ID = "&DIhcnarB";
                     public const string USER_ID = "&DIresU";
                     public const string ROLE_NAME = "&emaNeloR";
+                    public const string PREVIEW_URL = "&lruweiverP";
                 }
             }
 
