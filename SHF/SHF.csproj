@@ -9418,6 +9418,8 @@
     <Content Include="Views\Services4Section567FieldValues\Index.cshtml" />
     <Content Include="Views\Services1Master\_Preview.cshtml" />
     <Content Include="Views\Services1Master\_Guide.cshtml" />
+    <Content Include="Views\Services1Section1Master\_Guide.cshtml" />
+    <Content Include="Views\Services1Section1Master\_Preview.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />

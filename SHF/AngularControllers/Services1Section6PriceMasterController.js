@@ -17,7 +17,12 @@
         $scope.AllState=[];
         $scope.Cookie_Tenant_ID = parseInt(CustomService.GetTenantID());
         $scope.Services1Section6PriceMasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;     
-
+        $scope.Preview = function (url) {
+          CustomService.PreviewOpen(url);
+            }
+       $scope.Guide = function () {
+            $('#modal-guide').modal('show');
+        }
         $scope.BindGrid = function () {
             Services1Section6PriceMasterCRUD.LoadTable();
         }      

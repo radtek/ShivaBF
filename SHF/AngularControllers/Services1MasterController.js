@@ -69,12 +69,11 @@
             }
             $('#modal-createOredit').modal('show');
         }
-   $scope.Preview = function (url) {
+$scope.Preview = function (url) {
     CustomService.PreviewOpen(url);
 }
 $scope.Guide = function () {
- // $('.image-link').magnificPopup({type:'image'});
- $('#modal-guide').modal('show');
+$('#modal-guide').modal('show');
 }
    
         $scope.BindTenantDropDownList = function () {
