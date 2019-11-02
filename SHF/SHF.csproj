@@ -6378,6 +6378,19 @@
     <Content Include="bower_components\jvectormap\tests\markers.html" />
     <Content Include="bower_components\jvectormap\tests\memory.html" />
     <Content Include="bower_components\jvectormap\tests\reverse-projection.html" />
+    <Content Include="bower_components\magnific-popup\.gitignore" />
+    <Content Include="bower_components\magnific-popup\dist\jquery.magnific-popup.js" />
+    <Content Include="bower_components\magnific-popup\dist\jquery.magnific-popup.min.js" />
+    <Content Include="bower_components\magnific-popup\dist\magnific-popup.css" />
+    <Content Include="bower_components\magnific-popup\Gruntfile.js" />
+    <Content Include="bower_components\magnific-popup\src\js\ajax.js" />
+    <Content Include="bower_components\magnific-popup\src\js\core.js" />
+    <Content Include="bower_components\magnific-popup\src\js\gallery.js" />
+    <Content Include="bower_components\magnific-popup\src\js\iframe.js" />
+    <Content Include="bower_components\magnific-popup\src\js\image.js" />
+    <Content Include="bower_components\magnific-popup\src\js\inline.js" />
+    <Content Include="bower_components\magnific-popup\src\js\retina.js" />
+    <Content Include="bower_components\magnific-popup\src\js\zoom.js" />
     <Content Include="bower_components\mdr-angular-select2\dist\mdr-select2.js" />
     <Content Include="bower_components\mdr-angular-select2\dist\mdr-select2.min.js" />
     <Content Include="bower_components\mdr-angular-select2\gulpfile.js" />
@@ -7394,6 +7407,7 @@
     <Content Include="fonts\new-aakash-logo.png" />
     <Content Include="Global.asax" />
     <Content Include="Content\site.css" />
+    <Content Include="Media\Guide\Service1Master.png" />
     <Content Include="Media\Thumbs\Tenants\1\91dac66c-568f-40c0-a22a-e1f769000a28.jpeg" />
     <Content Include="Media\Thumbs\Tenants\1\dbce6132-f001-4b26-84c3-2ae415b9a095.jpeg" />
     <Content Include="Media\Thumbs\Tenants\2\680f30fe-d922-479c-9ba0-3220fcf8cb14.jpeg" />
@@ -8105,6 +8119,18 @@
     <Content Include="bower_components\foundation\scss\foundation\_functions.scss" />
     <Content Include="bower_components\foundation\scss\foundation\_settings.scss" />
     <Content Include="bower_components\foundation\scss\normalize.scss" />
+    <Content Include="libman.json" />
+    <Content Include="bower_components\magnific-popup\.bower.json" />
+    <Content Include="bower_components\magnific-popup\.jshintrc" />
+    <Content Include="bower_components\magnific-popup\.travis.yml" />
+    <Content Include="bower_components\magnific-popup\bower.json" />
+    <Content Include="bower_components\magnific-popup\composer.json" />
+    <Content Include="bower_components\magnific-popup\LICENSE" />
+    <Content Include="bower_components\magnific-popup\magnific-popup.jquery.json" />
+    <Content Include="bower_components\magnific-popup\package.json" />
+    <Content Include="bower_components\magnific-popup\README.md" />
+    <Content Include="bower_components\magnific-popup\src\css\main.scss" />
+    <Content Include="bower_components\magnific-popup\src\css\_settings.scss" />
     <None Include="Reports\DataSets\DSInward.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -9391,6 +9417,7 @@
     <Content Include="Views\Services4Section567FieldValues\_CreateOrEditTenant.cshtml" />
     <Content Include="Views\Services4Section567FieldValues\Index.cshtml" />
     <Content Include="Views\Services1Master\_Preview.cshtml" />
+    <Content Include="Views\Services1Master\_Guide.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />

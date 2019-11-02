@@ -72,8 +72,11 @@
    $scope.Preview = function (url) {
     CustomService.PreviewOpen(url);
 }
-
-        
+$scope.Guide = function () {
+ // $('.image-link').magnificPopup({type:'image'});
+ $('#modal-guide').modal('show');
+}
+   
         $scope.BindTenantDropDownList = function () {
             if ($scope.AllTenants.length <= 0) {
                 let result = TenantCRUD.LoadTenantDropdown();

@@ -26,6 +26,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SHF.API", "SHF.API\SHF.API.csproj", "{EE1FA2B3-C52C-4447-92F1-4C33334F6814}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Image Guide", "Image Guide", "{D4B66B5B-8395-4488-B200-52D8685D35D4}"
+	ProjectSection(SolutionItems) = preProject
+		SHF\Media\Uploads\Tenants\1\Service1Master.png = SHF\Media\Uploads\Tenants\1\Service1Master.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

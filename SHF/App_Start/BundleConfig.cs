@@ -89,6 +89,8 @@ namespace SHF
                       "~/plugins/iCheck/icheck.js",
                       "~/bower_components/fastclick/lib/fastclick.js",
                       "~/bower_components/ckeditor/ckeditor.js",
+                      "~/bower_components/magnific-popup/dist/magnific-popup.css",
+                      "~/bower_components/magnific-popup/dist/jquery.magnific-popup.js",
                       "~/Scripts/toastr.js",
                       //"~/Scripts/JSLINQ-vsdoc.js",
                       "~/Scripts/JSLINQ.js",
