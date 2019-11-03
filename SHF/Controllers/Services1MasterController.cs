@@ -17,8 +17,6 @@ using SHF.Helper;
 using SHF.Web.Filters;
 using SHF.Models;
 using SHF.ViewModel;
-using System.Reflection;
-using System.ComponentModel;
 using System.IO;
 using SHF.Helpers;
 
@@ -129,7 +127,7 @@ namespace SHF.Controllers
 
 
         [HttpPost]
-        [AuditAttribute]
+        [Audit]
         [ValidateAntiForgeryTokens]
         [Route("Post/Services1Master/CreateAsync")]
         public async Task<ActionResult> CreateAsync(ViewModel.Services1MasterCreateOrEditViewModel model)
@@ -360,7 +358,7 @@ namespace SHF.Controllers
 
 
         [HttpPost]
-        [AuditAttribute]
+        [Audit]
         [ValidateAntiForgeryTokens]
         [Route("Post/Services1Master/EditAsync")]
         public async Task<ActionResult> EditAsync(ViewModel.Services1MasterCreateOrEditViewModel model)
@@ -607,7 +605,7 @@ namespace SHF.Controllers
         }
 
         [HttpPost]
-        [Route("Post/Services1Master/FileUpload")]
+        [Route("Post/Services1/FileUpload")]
         public virtual string UploadFiles(object obj)
         {
             //  var tenantId = ViewBag.TenantID;

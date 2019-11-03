@@ -379,7 +379,7 @@ $scope.BindSubSubCategoryDropDownList = function (tenantId) {
      reqObj.addEventListener("load", uploadComplete, false)
      reqObj.addEventListener("error", uploadFailed, false)
      reqObj.addEventListener("abort", uploadCanceled, false)
-     reqObj.open("POST", "/Post/Services1Master/FileUpload", true);
+     reqObj.open("POST", "/Post/Services1/FileUpload", true);
      reqObj.setRequestHeader("Content-Type", "multipart/form-data");
      reqObj.setRequestHeader('X-File-Name', name);
      reqObj.setRequestHeader('X-File-Type', type);
@@ -445,7 +445,7 @@ $scope.BindSubSubCategoryDropDownList = function (tenantId) {
      reqObj.addEventListener("load", uploadComplete, false)
      reqObj.addEventListener("error", uploadFailed, false)
      reqObj.addEventListener("abort", uploadCanceled, false)
-     reqObj.open("POST", "/Post/Services1Master/FileUpload", true);
+     reqObj.open("POST", "/Post/Services1/FileUpload", true);
      reqObj.setRequestHeader("Content-Type", "multipart/form-data");
      reqObj.setRequestHeader('X-File-Name', name);
      reqObj.setRequestHeader('X-File-Type', type);

@@ -112,7 +112,8 @@ namespace SHF.Business.BusinessLogic
                         CreatedBy = x.PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master_Services1Section6PriceMaster.PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master.PriceFeaturesMapping_tenant_PriceFeaturesMaster.PriceFeaturesMapping_tenant.PriceFeaturesMapping.CreatedBy,
                         CreatedOn = x.PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master_Services1Section6PriceMaster.PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master.PriceFeaturesMapping_tenant_PriceFeaturesMaster.PriceFeaturesMapping_tenant.PriceFeaturesMapping.CreatedOn,
                         UpdatedBy = x.PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master_Services1Section6PriceMaster.PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master.PriceFeaturesMapping_tenant_PriceFeaturesMaster.PriceFeaturesMapping_tenant.PriceFeaturesMapping.UpdatedBy,
-                        UpdatedOn = x.PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master_Services1Section6PriceMaster.PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master.PriceFeaturesMapping_tenant_PriceFeaturesMaster.PriceFeaturesMapping_tenant.PriceFeaturesMapping.UpdatedOn
+                        UpdatedOn = x.PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master_Services1Section6PriceMaster.PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master.PriceFeaturesMapping_tenant_PriceFeaturesMaster.PriceFeaturesMapping_tenant.PriceFeaturesMapping.UpdatedOn,
+                        ServiceUrl = x.PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master_Services1Section6PriceMaster.PriceFeaturesMapping_tenant_PriceFeaturesMaster_Services1Master.Services1Master.Url
                     }).ToList();
 
 

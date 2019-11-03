@@ -348,7 +348,7 @@ angular.module(config.app).service('Services1MasterCRUD', function ($http) {
                     width: "11%",
                     targets: 36
                 },
-{
+                {
                     name: null,
                     data: "Preview",
                     title: "&nbsp;Preview&nbsp;&nbsp;",

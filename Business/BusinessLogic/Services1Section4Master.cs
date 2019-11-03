@@ -112,7 +112,8 @@ namespace SHF.Business.BusinessLogic
                         CreatedBy = x.Services1Section4Master_tenant.Services1Section4Master.CreatedBy,
                         CreatedOn = x.Services1Section4Master_tenant.Services1Section4Master.CreatedOn,
                         UpdatedBy = x.Services1Section4Master_tenant.Services1Section4Master.UpdatedBy,
-                        UpdatedOn = x.Services1Section4Master_tenant.Services1Section4Master.UpdatedOn
+                        UpdatedOn = x.Services1Section4Master_tenant.Services1Section4Master.UpdatedOn,
+                        ServiceUrl = x.Services1Master.Url
                     }).ToList();
 
 

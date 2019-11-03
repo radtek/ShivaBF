@@ -107,7 +107,8 @@ namespace SHF.Business.BusinessLogic
                         CreatedBy = x.Services1Section10BankMapping_tenant_BankMaster_Services1Master.Services1Section10BankMapping_tenant_BankMaster.Services1Section10BankMapping_tenant.Services1Section10BankMapping.CreatedBy,
                         CreatedOn = x.Services1Section10BankMapping_tenant_BankMaster_Services1Master.Services1Section10BankMapping_tenant_BankMaster.Services1Section10BankMapping_tenant.Services1Section10BankMapping.CreatedOn,
                         UpdatedBy = x.Services1Section10BankMapping_tenant_BankMaster_Services1Master.Services1Section10BankMapping_tenant_BankMaster.Services1Section10BankMapping_tenant.Services1Section10BankMapping.UpdatedBy,
-                        UpdatedOn = x.Services1Section10BankMapping_tenant_BankMaster_Services1Master.Services1Section10BankMapping_tenant_BankMaster.Services1Section10BankMapping_tenant.Services1Section10BankMapping.UpdatedOn
+                        UpdatedOn = x.Services1Section10BankMapping_tenant_BankMaster_Services1Master.Services1Section10BankMapping_tenant_BankMaster.Services1Section10BankMapping_tenant.Services1Section10BankMapping.UpdatedOn,
+                        ServiceUrl = x.Services1Section10BankMapping_tenant_BankMaster_Services1Master.Services1Master.Url
                     }).ToList();
 
 

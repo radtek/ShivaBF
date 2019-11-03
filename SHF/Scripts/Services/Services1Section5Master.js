@@ -56,7 +56,7 @@ angular.module(config.app).service('Services1Section5MasterCRUD', function ($htt
                     data: "HeadingText",
                     title: "Heading&nbsp;Text",
                     render: $.fn.dataTable.render.text(),
-                    width: "25%",
+                    width: "30%",
                     targets: 2
                 },
                  {
@@ -64,7 +64,7 @@ angular.module(config.app).service('Services1Section5MasterCRUD', function ($htt
                      data: "ShortDescription",
                      title: "Short&nbsp;Description",
                      render: $.fn.dataTable.render.text(),
-                     width: "25%",
+                     width: "60%",
                      targets: 3
                  },
                 {
@@ -205,6 +205,24 @@ angular.module(config.app).service('Services1Section5MasterCRUD', function ($htt
                     targets: 19
                 },
                 {
+                    name: "Services1Master.Url",
+                    data: "ServiceUrl",
+                    title: "ServiceUrl",
+                    width: "11%",
+                    targets: 17
+                },
+{
+                    name: null,
+                    data: "Preview",
+                    title: "&nbsp;Preview&nbsp;&nbsp;",
+                    orderable: false,
+                    render: function (data, type, row, meta) {
+                        return '<button type="button" class="btn btn-xs text-success btn-preview"><i title="Preview" class="fa fa-eye"></i></button>';
+                    },
+                    width: "2%",
+                    targets: 37
+                },
+                {
                     name: null,
                     data: "ID",
                     title: "&nbsp;Edit&nbsp;&nbsp;",
@@ -248,7 +266,13 @@ angular.module(config.app).service('Services1Section5MasterCRUD', function ($htt
             let scope = angular.element(document.getElementById('Services1Section5MasterControllerScope')).scope();
             scope.DeleteAsync(rowData.ID);
         });
-    }
+
+      $('#grdTable tbody').on('click', '.btn-preview', function () {
+            let rowData = oTable.row($(this).parents('tr')).data();
+            let scope = angular.element(document.getElementById('Services1Section5MasterControllerScope')).scope();
+            scope.Preview('Views/services1.html?u='+rowData.ServiceUrl+'#divService1Section5Master');
+        });
+       }
 
     this.LoadTable = function GetObject() {
         if ($.fn.dataTable.isDataTable('#grdTable')) {

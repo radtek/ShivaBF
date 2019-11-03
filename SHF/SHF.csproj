@@ -9416,10 +9416,14 @@
     <Content Include="Views\Services4Section567FieldValues\_CreateOrEdit.cshtml" />
     <Content Include="Views\Services4Section567FieldValues\_CreateOrEditTenant.cshtml" />
     <Content Include="Views\Services4Section567FieldValues\Index.cshtml" />
-    <Content Include="Views\Services1Master\_Preview.cshtml" />
     <Content Include="Views\Services1Master\_Guide.cshtml" />
     <Content Include="Views\Services1Section1Master\_Guide.cshtml" />
-    <Content Include="Views\Services1Section1Master\_Preview.cshtml" />
+    <Content Include="Views\Services1Section4Master\_Guide.cshtml" />
+    <Content Include="Views\Services1Section5Master\_Guide.cshtml" />
+    <Content Include="Views\Services1Section6PriceMaster\_Guide.cshtml" />
+    <Content Include="Views\Services1Section8FAQMapping\_Guide.cshtml" />
+    <Content Include="Views\Services1Section10BankMapping\_Guide.cshtml" />
+    <Content Include="Views\PriceFeaturesMapping\_Guide.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />

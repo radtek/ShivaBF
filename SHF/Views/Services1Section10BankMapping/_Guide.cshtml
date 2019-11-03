@@ -6,22 +6,31 @@
         return cookieToken + ":" + formToken;
     }
 }
-
+<style>
+    .modal-dialog {
+        position: relative;
+        display: table; /* <-- This makes the trick */
+        overflow-y: auto;
+        overflow-x: auto;
+        width: auto;
+        min-width: 600px;
+    }
+</style>
 <div class="modal-dialog">
     <div class="modal-content">
         <form name="myForm" novalidate>
             <!--myForm.$valid && -->
             <div class="modal-header">
-                <button type="button" class="close" ng-click="ShowConfirm('modal-preview')" aria-label="Close">
+                <button type="button" class="close" ng-click="ShowConfirm('modal-guide')" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Services1 Master Details</h4>
+                <h4 class="modal-title">Services1 Section1 Master Guide</h4>
             </div>
             <div id="myModal" class="reveal col-lg-12" style="background-color:white;" data-reveal >
-              
+                <img src="~/Media/Guide/Service1Master.png"  height="100%" width="100%" />
             </div>
             <div class="modal-footer">
-                <span class="btn btn-sm btn-danger" ng-click="ShowConfirm('modal-preview')">Close</span>
+                <span class="btn btn-sm btn-danger" ng-click="ShowConfirm('modal-guide')">Close</span>
             </div>
         </form>
     </div>

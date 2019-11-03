@@ -204,6 +204,24 @@ angular.module(config.app).service('Services1Section6PriceMasterCRUD', function 
                     width: "11%",
                     targets: 19
                 },
+ {
+                    name: "Services1Master.Url",
+                    data: "ServiceUrl",
+                    title: "ServiceUrl",
+                    width: "11%",
+                    targets: 17
+                },
+{
+                    name: null,
+                    data: "Preview",
+                    title: "&nbsp;Preview&nbsp;&nbsp;",
+                    orderable: false,
+                    render: function (data, type, row, meta) {
+                        return '<button type="button" class="btn btn-xs text-success btn-preview"><i title="Preview" class="fa fa-eye"></i></button>';
+                    },
+                    width: "2%",
+                    targets: 37
+                },
                 {
                     name: null,
                     data: "ID",
@@ -247,6 +265,11 @@ angular.module(config.app).service('Services1Section6PriceMasterCRUD', function 
             let rowData = oTable.row($(this).parents('tr')).data();
             let scope = angular.element(document.getElementById('Services1Section6PriceMasterControllerScope')).scope();
             scope.DeleteAsync(rowData.ID);
+        });
+ $('#grdTable tbody').on('click', '.btn-preview', function () {
+            let rowData = oTable.row($(this).parents('tr')).data();
+            let scope = angular.element(document.getElementById('Services1Section6PriceMasterControllerScope')).scope();
+            scope.Preview('Views/services1.html?u='+rowData.ServiceUrl+'#price');
         });
     }
 

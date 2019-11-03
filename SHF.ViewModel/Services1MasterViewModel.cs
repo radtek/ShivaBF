@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SHF.Helper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -87,11 +88,11 @@ namespace SHF.ViewModel
         public System.Int64? SubSubCat_Id { get; set; }
 
         public System.String SubSubCategoryName { get; set; }
-
+        [RequiredField(ErrorMessage = busConstant.Messages.Type.Validations.REQUIRED)]
         public System.String BannerImagePath { get; set; }
-
+        [RequiredField(ErrorMessage = busConstant.Messages.Type.Validations.REQUIRED)]
         public System.String BannerOnHeading { get; set; }
-
+        [RequiredField(ErrorMessage = busConstant.Messages.Type.Validations.REQUIRED)]
         public System.String BannerHeadingDescription { get; set; }
 
         public System.String BannerAncharTagTitle { get; set; }
@@ -101,7 +102,7 @@ namespace SHF.ViewModel
         public System.String Section1AfterBannerHeading { get; set; }
 
         public System.String Section1AfterBannerDescription { get; set; }
-
+        [RequiredField(ErrorMessage = busConstant.Messages.Type.Validations.REQUIRED)]
         public System.String Section1AfterBannerImagePath { get; set; }
 
         public System.String Section1AfterBannerImageOnDescription { get; set; }
@@ -135,10 +136,15 @@ namespace SHF.ViewModel
         public System.Int32 DisplayIndex { get; set; }
         public System.Boolean? DisplayOnHome { get; set; }
         public System.Boolean? IsActive { get; set; }
+        
         public System.Int32 TotalViews { get; set; }
+        [RequiredField(ErrorMessage = busConstant.Messages.Type.Validations.REQUIRED)]
         public string Url { get; set; }
+        [RequiredField(ErrorMessage = busConstant.Messages.Type.Validations.REQUIRED)]
         public string Metadata { get; set; }
+        [RequiredField(ErrorMessage = busConstant.Messages.Type.Validations.REQUIRED)]
         public string Keyword { get; set; }
+        [RequiredField(ErrorMessage = busConstant.Messages.Type.Validations.REQUIRED)]
         public string MetaDescription { get; set; }
         public System.String TenantName { get; set; }
         public System.Int64 Tenant_ID { get; set; }
