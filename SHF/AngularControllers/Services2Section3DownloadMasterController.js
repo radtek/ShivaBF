@@ -367,7 +367,7 @@ $scope.BindSubSubCategoryDropDownList = function (tenantId) {
      }
  }
  $scope.UploadFileIndividual = function (fileToUpload, name, type, size, index) {
-     var tenantId = $scope.BankMasterCreateOrEditViewModel.Tenant_ID;
+     var tenantId = $scope.Services2Section3DownloadMasterCreateOrEditViewModel.Tenant_ID;
      var reqObj = new XMLHttpRequest();
      reqObj.upload.addEventListener("progress", uploadProgress, false)
      reqObj.addEventListener("load", uploadComplete, false)
@@ -393,7 +393,7 @@ $scope.BindSubSubCategoryDropDownList = function (tenantId) {
      function uploadComplete(evt) {
          document.getElementById('P' + index).innerHTML = '<span style="color:Green;font-weight:bold;font-style: oblique">Saved..</span>';
          $scope.NoOfFileSaved++;
-         $scope.BankMasterCreateOrEditViewModel.IconPath = name;
+         $scope.Services2Section3DownloadMasterCreateOrEditViewModel.DownloadFilePath = name;
          $scope.$apply();
      }
      function uploadFailed(evt) {

@@ -60,6 +60,16 @@ angular.module(config.app).service('Services2MasterCRUD', function ($http) {
                     targets: 2
                 },
                 {
+                    name: "Services2Master_tenant.Services2Master.BannerImagePath",
+                    data: "BannerImagePath",
+                    title: "Image Preview",
+                   render: function (data, type, row, meta) {
+                        return '<img src="'+data+'" style="height:150px;width:200px;"/>';
+                    },
+                    width: "40%",
+                    targets: 2
+                },
+                {
                     name: "Services2Master_tenant.Services2Master.BannerOnHeading",
                     data: "BannerOnHeading",
                     title: "BannerOnHeading",
@@ -88,10 +98,10 @@ angular.module(config.app).service('Services2MasterCRUD', function ($http) {
                     data: "Section1Description",
                     title: "Section1Description",
                     render: $.fn.dataTable.render.text(),
-                    width: "25%",
+                    width: "50%",
                     targets: 6
                 },
-               
+              
                 {
                     name: "Services2Master_tenant.Services2Master.Section2FAQDescription",
                     data: "Section2FAQDescription",
@@ -232,6 +242,17 @@ angular.module(config.app).service('Services2MasterCRUD', function ($http) {
                 },
                 {
                     name: null,
+                    data: "Preview",
+                    title: "&nbsp;Preview&nbsp;&nbsp;",
+                    orderable: false,
+                    render: function (data, type, row, meta) {
+                        return '<button type="button" class="btn btn-xs text-success btn-preview"><i title="Preview" class="fa fa-eye"></i></button>';
+                    },
+                    width: "2%",
+                    targets: 37
+                },
+                {
+                    name: null,
                     data: "ID",
                     title: "&nbsp;Edit&nbsp;&nbsp;",
                     orderable: false,
@@ -273,6 +294,11 @@ angular.module(config.app).service('Services2MasterCRUD', function ($http) {
             let rowData = oTable.row($(this).parents('tr')).data();
             let scope = angular.element(document.getElementById('Services2MasterControllerScope')).scope();
             scope.DeleteAsync(rowData.ID);
+        });
+     $('#grdTable tbody').on('click', '.btn-preview', function () {
+            let rowData = oTable.row($(this).parents('tr')).data();
+            let scope = angular.element(document.getElementById('Services2MasterControllerScope')).scope();
+            scope.Preview('Views/services2.html?u='+rowData.Url);
         });
     }
 

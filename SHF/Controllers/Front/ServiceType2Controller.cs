@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -47,7 +48,7 @@ namespace SHF.Controllers.Front
             if (ServiceType2!=null)
             {
                 ServiceType2ViewModel.ID = ServiceType2.ID;
-                ServiceType2ViewModel.BannerImagePath = ServiceType2.BannerImagePath;
+                ServiceType2ViewModel.BannerImagePath = ConfigurationManager.AppSettings[busConstant.Settings.DataBase.SqlServer.Connections.AdminUrlString.ADMINUrl] + String.Concat(busConstant.Settings.CMSPath.TENANAT_UPLOAD_DIRECTORY, ServiceType2.Tenant_ID) + "/" + ServiceType2.BannerImagePath;
                 ServiceType2ViewModel.BannerOnHeading = ServiceType2.BannerOnHeading;
                 ServiceType2ViewModel.Cat_Id = ServiceType2.Cat_Id;
                 ServiceType2ViewModel.SubCat_Id = ServiceType2.SubCat_Id;
@@ -92,7 +93,7 @@ namespace SHF.Controllers.Front
                 services2Section3DownloadMasterViewModel.SubSubCat_Id = Convert.ToInt64(tempserviceType23DownloadMaster.SubSubCat_Id);
                 services2Section3DownloadMasterViewModel.AncharTagTitle = tempserviceType23DownloadMaster.AncharTagTitle;
                 services2Section3DownloadMasterViewModel.AncharTagUrl = tempserviceType23DownloadMaster.AncharTagUrl;
-                services2Section3DownloadMasterViewModel.DownloadFilePath = tempserviceType23DownloadMaster.DownloadFilePath;
+                services2Section3DownloadMasterViewModel.DownloadFilePath = ConfigurationManager.AppSettings[busConstant.Settings.DataBase.SqlServer.Connections.AdminUrlString.ADMINUrl] + String.Concat(busConstant.Settings.CMSPath.TENANAT_UPLOAD_DIRECTORY, tempserviceType23DownloadMaster.Tenant_ID) + "/" + tempserviceType23DownloadMaster.DownloadFilePath;
                 services2Section3DownloadMasterViewModel.DisplayIndex = tempserviceType23DownloadMaster.DisplayIndex;
                 services2Section3DownloadMasterViewModel.IsActive = tempserviceType23DownloadMaster.IsActive;
                 services2Section3DownloadMasterViewModel.TotalViews = tempserviceType23DownloadMaster.TotalViews;
@@ -124,6 +125,7 @@ namespace SHF.Controllers.Front
                 ServiceType2Section4MasterViewModel.AncharTagTitle = tempservice2Section4.AncharTagTitle;
                 ServiceType2Section4MasterViewModel.AncharTagUrl = tempservice2Section4.AncharTagUrl;
                 ServiceType2Section4MasterViewModel.HeadingText = tempservice2Section4.Heading;
+                ServiceType2Section4MasterViewModel.Description = tempservice2Section4.Description;
                 ServiceType2Section4MasterViewModel.Price = tempservice2Section4.Price;
                 ServiceType2Section4MasterViewModel.DisplayIndex = tempservice2Section4.DisplayIndex;
                 ServiceType2Section4MasterViewModel.IsActive = tempservice2Section4.IsActive;

@@ -28,7 +28,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SHF.API", "SHF.API\SHF.API.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Image Guide", "Image Guide", "{D4B66B5B-8395-4488-B200-52D8685D35D4}"
 	ProjectSection(SolutionItems) = preProject
+		C:\Users\Developer\Downloads\screencapture-file-E-GitHub-Ecom-SHFHtml-Pages-services2-html-2019-11-03-20_38_13.png = C:\Users\Developer\Downloads\screencapture-file-E-GitHub-Ecom-SHFHtml-Pages-services2-html-2019-11-03-20_38_13.png
 		SHF\Media\Uploads\Tenants\1\Service1Master.png = SHF\Media\Uploads\Tenants\1\Service1Master.png
+		C:\Users\Developer\Downloads\Service2Master.png = C:\Users\Developer\Downloads\Service2Master.png
 	EndProjectSection
 EndProject
 Global

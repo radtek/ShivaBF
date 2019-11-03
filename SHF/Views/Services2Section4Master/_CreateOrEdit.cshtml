@@ -67,6 +67,14 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.HeadingText" ng-bind="errors.formErrors.HeadingText"></span>
                         </div>
+                        <div class="form-group" ng-class="{'has-error': ((myForm.Description.$touched && myForm.HeadingText.$invalid) || (!myForm.Description.$pristine && myForm.Description.$invalid))}">
+                            <label>Description</label>
+                            <input type="text" class="form-control" name="Description" ng-model="Services2Section4MasterCreateOrEditViewModel.Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter Heading Text" tooltip-placement="top" uib-tooltip="Enter Heading Text" />
+                            <div class="help-block" ng-messages="myForm.Description.$error" ng-if="myForm.Description.$touched || myForm.Description.$dirty && myForm.Description.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.Description" ng-bind="errors.formErrors.Description"></span>
+                        </div>
                         <div class="form-group" ng-class="{'has-error': (myForm.Price.$touched || myForm.Price.$dirty)  && myForm.Price.$invalid}">
                             <label>Price</label>
                             <input type="number" min="0" class="form-control" name="Price" ng-model="Services2Section4MasterCreateOrEditViewModel.Price" ng-disabled="Processing" autocomplete="off" placeholder="Enter Display Index" tooltip-placement="top" uib-tooltip="Enter Display Index" required />

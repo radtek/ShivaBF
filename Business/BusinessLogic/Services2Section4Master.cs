@@ -44,14 +44,15 @@ namespace SHF.Business.BusinessLogic
 
                 //Count total Records meeting criteria
                 totalRecords = unitOfWork.Services2Section4MasterRepository.Get().Join(unitOfWork.TenantRepository.Get(), Services2Section4Master => Services2Section4Master.Tenant_ID, tenant => tenant.ID, (Services2Section4Master, tenant) => new { Services2Section4Master, tenant })
-                    .Join(unitOfWork.Services1MasterRepository.Get(), Services2Section4Master_tenant => Services2Section4Master_tenant.Services2Section4Master.Service_Id, Services1Master => Services1Master.ID, (Services2Section4Master_tenant, Services1Master) => new { Services2Section4Master_tenant, Services1Master })
+                    .Join(unitOfWork.Services2MasterRepository.Get(), Services2Section4Master_tenant => Services2Section4Master_tenant.Services2Section4Master.Service_Id, Services2Master => Services2Master.ID, (Services2Section4Master_tenant, Services2Master) => new { Services2Section4Master_tenant, Services2Master })
                     .Count(x => (tenant_Id == null || x.Services2Section4Master_tenant.Services2Section4Master.Tenant_ID == tenant_Id)
                             && (x.Services2Section4Master_tenant.Services2Section4Master.ID.ToString().Contains(searchValue)
                         || x.Services2Section4Master_tenant.Services2Section4Master.AncharTagTitle.CaseInsensitiveContains(searchValue)
                         || x.Services2Section4Master_tenant.Services2Section4Master.AncharTagUrl.CaseInsensitiveContains(searchValue)
                         || x.Services2Section4Master_tenant.Services2Section4Master.Heading.CaseInsensitiveContains(searchValue)
+                         || x.Services2Section4Master_tenant.Services2Section4Master.Description.CaseInsensitiveContains(searchValue)
                         || x.Services2Section4Master_tenant.Services2Section4Master.Price.ToString().CaseInsensitiveContains(searchValue)
-                        || x.Services1Master.SubSubCategoryName.CaseInsensitiveContains(searchValue)
+                        || x.Services2Master.SubSubCategoryName.CaseInsensitiveContains(searchValue)
                         || x.Services2Section4Master_tenant.Services2Section4Master.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
                         ||x.Services2Section4Master_tenant.Services2Section4Master.Url.ToString().CaseInsensitiveContains(searchValue)
                         ||x.Services2Section4Master_tenant.Services2Section4Master.Metadata.ToString().CaseInsensitiveContains(searchValue)
@@ -69,14 +70,15 @@ namespace SHF.Business.BusinessLogic
 
                 //Database query
                 collection = unitOfWork.Services2Section4MasterRepository.Get().Join(unitOfWork.TenantRepository.Get(), Services2Section4Master => Services2Section4Master.Tenant_ID, tenant => tenant.ID, (Services2Section4Master, tenant) => new { Services2Section4Master, tenant })
-                    .Join(unitOfWork.Services1MasterRepository.Get(), Services2Section4Master_tenant => Services2Section4Master_tenant.Services2Section4Master.Service_Id, Services1Master => Services1Master.ID, (Services2Section4Master_tenant, Services1Master) => new { Services2Section4Master_tenant, Services1Master })
+                    .Join(unitOfWork.Services2MasterRepository.Get(), Services2Section4Master_tenant => Services2Section4Master_tenant.Services2Section4Master.Service_Id, Services2Master => Services2Master.ID, (Services2Section4Master_tenant, Services2Master) => new { Services2Section4Master_tenant, Services2Master })
                     .Where(x => (tenant_Id == null || x.Services2Section4Master_tenant.Services2Section4Master.Tenant_ID == tenant_Id)
                             && (x.Services2Section4Master_tenant.Services2Section4Master.ID.ToString().Contains(searchValue)
                         || x.Services2Section4Master_tenant.Services2Section4Master.AncharTagTitle.CaseInsensitiveContains(searchValue)
                         || x.Services2Section4Master_tenant.Services2Section4Master.AncharTagUrl.CaseInsensitiveContains(searchValue)
                         || x.Services2Section4Master_tenant.Services2Section4Master.Heading.CaseInsensitiveContains(searchValue)
+                         || x.Services2Section4Master_tenant.Services2Section4Master.Description.CaseInsensitiveContains(searchValue)
                         || x.Services2Section4Master_tenant.Services2Section4Master.Price.ToString().CaseInsensitiveContains(searchValue)
-                        || x.Services1Master.SubSubCategoryName.CaseInsensitiveContains(searchValue)
+                        || x.Services2Master.SubSubCategoryName.CaseInsensitiveContains(searchValue)
                         || x.Services2Section4Master_tenant.Services2Section4Master.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
                         || x.Services2Section4Master_tenant.Services2Section4Master.Url.ToString().CaseInsensitiveContains(searchValue)
                         || x.Services2Section4Master_tenant.Services2Section4Master.Metadata.ToString().CaseInsensitiveContains(searchValue)
@@ -97,8 +99,9 @@ namespace SHF.Business.BusinessLogic
                         AncharTagTitle = x.Services2Section4Master_tenant.Services2Section4Master.AncharTagTitle,
                         AncharTagUrl = x.Services2Section4Master_tenant.Services2Section4Master.AncharTagUrl,
                         HeadingText = x.Services2Section4Master_tenant.Services2Section4Master.Heading,
+                        Description = x.Services2Section4Master_tenant.Services2Section4Master.Description,
                         Price = x.Services2Section4Master_tenant.Services2Section4Master.Price,
-                        SubSubCategoryName = x.Services1Master.SubSubCategoryName,
+                        SubSubCategoryName = x.Services2Master.SubSubCategoryName,
                         DisplayIndex = x.Services2Section4Master_tenant.Services2Section4Master.DisplayIndex,
                         Url = x.Services2Section4Master_tenant.Services2Section4Master.Url,
                         Metadata = x.Services2Section4Master_tenant.Services2Section4Master.Metadata,
@@ -111,7 +114,8 @@ namespace SHF.Business.BusinessLogic
                         CreatedBy = x.Services2Section4Master_tenant.Services2Section4Master.CreatedBy,
                         CreatedOn = x.Services2Section4Master_tenant.Services2Section4Master.CreatedOn,
                         UpdatedBy = x.Services2Section4Master_tenant.Services2Section4Master.UpdatedBy,
-                        UpdatedOn = x.Services2Section4Master_tenant.Services2Section4Master.UpdatedOn
+                        UpdatedOn = x.Services2Section4Master_tenant.Services2Section4Master.UpdatedOn,
+                        ServiceUrl = x.Services2Master.Url
                     }).ToList();
 
 

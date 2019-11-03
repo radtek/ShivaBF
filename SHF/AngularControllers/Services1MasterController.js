@@ -465,7 +465,7 @@ $scope.BindSubSubCategoryDropDownList = function (tenantId) {
      function uploadComplete(evt) {
          document.getElementById('P2' + index).innerHTML = '<span style="color:Green;font-weight:bold;font-style: oblique">Saved..</span>';
          $scope.NoOfFileSaved++;
-         $scope.Services1MasterCreateOrEditViewModel.IconPath = name;
+         $scope.Services1MasterCreateOrEditViewModel.BannerImagePath = name;
          $scope.$apply();
      }
      function uploadFailed(evt) {

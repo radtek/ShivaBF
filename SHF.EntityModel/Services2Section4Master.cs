@@ -27,6 +27,9 @@ namespace SHF.EntityModel
         public System.String AncharTagUrl { get; set; }
         [Column("Heading")]
         public System.String Heading { get; set; }
+        [Column("Description")]
+        public System.String Description { get; set; }
+
         [Column("Price")]
         public System.Int32 Price { get; set; }
         [Column("DisplayIndex")]

@@ -170,6 +170,7 @@ namespace SHF.Controllers
                                 entity.AncharTagTitle = model.AncharTagTitle;
                                 entity.AncharTagUrl = model.AncharTagUrl;
                                 entity.Heading = model.HeadingText;
+                                entity.Description = model.Description;
                                 entity.Price = model.Price;
                                 entity.DisplayIndex = model.DisplayIndex;
                                 entity.IsActive = model.IsActive;
@@ -253,6 +254,7 @@ namespace SHF.Controllers
                                 model.AncharTagTitle = entity.AncharTagTitle;
                                 model.AncharTagUrl = entity.AncharTagUrl;
                                 model.HeadingText = entity.Heading;
+                                model.Description = entity.Description;
                                 model.Price = entity.Price;
                                 model.DisplayIndex = entity.DisplayIndex;
                                 model.IsActive = entity.IsActive;
@@ -355,6 +357,7 @@ namespace SHF.Controllers
                                     entity.AncharTagTitle = model.AncharTagTitle;
                                     entity.AncharTagUrl = model.AncharTagUrl;
                                     entity.Heading = model.HeadingText;
+                                    entity.Description = model.Description;
                                     entity.Price = model.Price;
                                     entity.DisplayIndex = model.DisplayIndex;
                                     entity.IsActive = model.IsActive;

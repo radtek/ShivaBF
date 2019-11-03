@@ -17,6 +17,13 @@
        
         $scope.Cookie_Tenant_ID = parseInt(CustomService.GetTenantID());
         $scope.Services2MasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;     
+
+       $scope.fileList = [];
+        $scope.curFile;
+        $scope.ImageProperty = {
+            file: ''
+        }
+
         $scope.Preview = function (url) {
           CustomService.PreviewOpen(url);
             }
@@ -336,7 +343,72 @@ $scope.BindSubSubCategoryDropDownList = function (tenantId) {
  $scope.BindServiceTypeDropDownList = function (Id) {
             $scope.AllServiceType = [];
             $scope.AllServiceType = CodeValueCRUD.LoadCodeValueByCodeId(Id);
-        }         
+        }  
+
+ /***************************************for file Upload****************************/
+
+       
+        $scope.setFile = function (element) {
+            $scope.fileList = [];
+
+            var files = element.files;
+            for (var i = 0; i < files.length; i++) {
+                $scope.ImageProperty.file = files[i];
+
+                $scope.fileList.push($scope.ImageProperty);
+                $scope.ImageProperty = {};
+                $scope.$apply();
+            }
+        }
+        $scope.UploadFile = function () {
+            for (var i = 0; i < $scope.fileList.length; i++) {
+                $scope.UploadFileIndividual($scope.fileList[i].file,
+                                            $scope.fileList[i].file.name,
+                                            $scope.fileList[i].file.type,
+                                            $scope.fileList[i].file.size,
+                                            i);
+            }
+        }
+        $scope.UploadFileIndividual = function (fileToUpload, name, type, size, index) {
+        var tenantId=$scope.Services2MasterCreateOrEditViewModel.Tenant_ID;
+            var reqObj = new XMLHttpRequest();
+            reqObj.upload.addEventListener("progress", uploadProgress, false)
+            reqObj.addEventListener("load", uploadComplete, false)
+            reqObj.addEventListener("error", uploadFailed, false)
+            reqObj.addEventListener("abort", uploadCanceled, false)
+            reqObj.open("POST", "/Post/Services2Master/FileUpload", true);
+            reqObj.setRequestHeader("Content-Type", "multipart/form-data");
+            reqObj.setRequestHeader('X-File-Name', name);
+            reqObj.setRequestHeader('X-File-Type', type);
+            reqObj.setRequestHeader('X-File-Size', size);
+            reqObj.setRequestHeader('tenantId', tenantId);
+            reqObj.send(fileToUpload);
+            function uploadProgress(evt) {
+                if (evt.lengthComputable) {
+                    var uploadProgressCount = Math.round(evt.loaded * 100 / evt.total);
+                    document.getElementById('P' + index).innerHTML = uploadProgressCount;
+                    if (uploadProgressCount == 100) {
+                        document.getElementById('P' + index).innerHTML =
+                       '<i class="fa fa-refresh fa-spin" style="color:green;"></i>';
+                    }
+                }
+            }
+            function uploadComplete(evt) {
+                document.getElementById('P' + index).innerHTML = '<span style="color:Green;font-weight:bold;font-style: oblique">Saved..</span>';
+                $scope.NoOfFileSaved++;
+               $scope.Services2MasterCreateOrEditViewModel.BannerImagePath = name;
+                $scope.$apply();
+            }
+            function uploadFailed(evt) {
+                document.getElementById('P' + index).innerHTML = '<span style="color:Red;font-weight:bold;font-style: oblique">Upload Failed..</span>';
+            }
+            function uploadCanceled(evt) {
+                document.getElementById('P' + index).innerHTML = '<span style="color:Red;font-weight:bold;font-style: oblique">Canceled..</span>';
+            }
+        }
+
+
+        /**************************end File Upload************************/       
     }]);
 
 

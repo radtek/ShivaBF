@@ -63,7 +63,7 @@
                         <div class="form-group" ng-class="{'has-error': ((myForm.DownloadFilePath.$touched && myForm.DownloadFilePath.$invalid) || (!myForm.DownloadFilePath.$pristine && myForm.DownloadFilePath.$invalid))}">
                             <label>Download File Path</label>
                             <div class="col-md-12" style="text-align:center;margin-bottom:10px;">
-                                <input type="file" id="file" name="file" single onchange="angular.element(this).scope().setFile(this)" accept="image/*" class="btn btn-primary" required />
+                                <input type="file" id="file" name="file" single onchange="angular.element(this).scope().setFile(this)"  class="btn btn-primary" required />
                             </div>
                             <div class="col-md-12">
                                 <button ng-click="UploadFile()" class="button button4">Upload</button>

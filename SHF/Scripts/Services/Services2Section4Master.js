@@ -75,6 +75,14 @@ angular.module(config.app).service('Services2Section4MasterCRUD', function ($htt
                      width: "25%",
                      targets: 4
                  },
+ {
+                      name: "Services2Section4Master_tenant.Services2Section4Master.Description",
+                     data: "Description",
+                     title: "Description",
+                     render: $.fn.dataTable.render.text(),
+                     width: "40%",
+                     targets: 4
+                 },
                 {
                       name: "Services2Section4Master_tenant.Services2Section4Master.Price",
                      data: "Price",
@@ -196,6 +204,24 @@ angular.module(config.app).service('Services2Section4MasterCRUD', function ($htt
                     width: "11%",
                     targets: 17
                 },
+{
+                    name: "Services2Master.Url",
+                    data: "ServiceUrl",
+                    title: "ServiceUrl",
+                    width: "11%",
+                    targets: 17
+                },
+                {
+                    name: null,
+                    data: "Preview",
+                    title: "&nbsp;Preview&nbsp;&nbsp;",
+                    orderable: false,
+                    render: function (data, type, row, meta) {
+                        return '<button type="button" class="btn btn-xs text-success btn-preview"><i title="Preview" class="fa fa-eye"></i></button>';
+                    },
+                    width: "2%",
+                    targets: 37
+                },
                 {
                     name: null,
                     data: "ID",
@@ -239,6 +265,13 @@ angular.module(config.app).service('Services2Section4MasterCRUD', function ($htt
             let rowData = oTable.row($(this).parents('tr')).data();
             let scope = angular.element(document.getElementById('Services2Section4MasterControllerScope')).scope();
             scope.DeleteAsync(rowData.ID);
+        });
+
+
+        $('#grdTable tbody').on('click', '.btn-preview', function () {
+            let rowData = oTable.row($(this).parents('tr')).data();
+            let scope = angular.element(document.getElementById('Services2Section4MasterControllerScope')).scope();
+            scope.Preview('Views/services2.html?u='+rowData.ServiceUrl+'#divSection4Master');
         });
     }
 

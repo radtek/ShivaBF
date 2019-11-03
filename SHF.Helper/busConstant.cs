@@ -52,6 +52,16 @@ namespace SHF.Helper
                         private const string LOCAL_URL = "LocalURL";
                         private const string TEST_URL = "TestURL";
                         private const string PROD_URL = "ProdURL";
+
+                        public abstract class AdminUrlString
+                        {
+                            public const string ADMINUrl = LOCAL_ADMIN_URL;
+                            //public const string ADMINUrl = TEST_ADMIN_URL;
+                            //public const string ADMINUrl = PROD_ADMIN_URL;
+                        }
+                        private const string LOCAL_ADMIN_URL = "LocalAdminURL";
+                        private const string TEST_ADMIN_URL = "TestAdminURL";
+                        private const string PROD_ADMIN_URL = "ProdAdminURL";
                     }
                 }
             }

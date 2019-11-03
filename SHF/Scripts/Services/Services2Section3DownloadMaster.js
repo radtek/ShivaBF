@@ -188,6 +188,24 @@ angular.module(config.app).service('Services2Section3DownloadMasterCRUD', functi
                     width: "11%",
                     targets: 17
                 },
+{
+                    name: "Services2Master.Url",
+                    data: "ServiceUrl",
+                    title: "ServiceUrl",
+                    width: "11%",
+                    targets: 17
+                },
+                {
+                    name: null,
+                    data: "Preview",
+                    title: "&nbsp;Preview&nbsp;&nbsp;",
+                    orderable: false,
+                    render: function (data, type, row, meta) {
+                        return '<button type="button" class="btn btn-xs text-success btn-preview"><i title="Preview" class="fa fa-eye"></i></button>';
+                    },
+                    width: "2%",
+                    targets: 37
+                },
                 {
                     name: null,
                     data: "ID",
@@ -231,6 +249,12 @@ angular.module(config.app).service('Services2Section3DownloadMasterCRUD', functi
             let rowData = oTable.row($(this).parents('tr')).data();
             let scope = angular.element(document.getElementById('Services2Section3DownloadMasterControllerScope')).scope();
             scope.DeleteAsync(rowData.ID);
+        });
+
+        $('#grdTable tbody').on('click', '.btn-preview', function () {
+            let rowData = oTable.row($(this).parents('tr')).data();
+            let scope = angular.element(document.getElementById('Services2Section3DownloadMasterControllerScope')).scope();
+            scope.Preview('Views/services2.html?u='+rowData.ServiceUrl+'#divSection3DownloadMaster');
         });
     }
 

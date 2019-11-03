@@ -44,13 +44,13 @@ namespace SHF.Business.BusinessLogic
 
                 //Count total Records meeting criteria
                 totalRecords = unitOfWork.Services2Section3DownloadMasterRepository.Get().Join(unitOfWork.TenantRepository.Get(), Services2Section3DownloadMaster => Services2Section3DownloadMaster.Tenant_ID, tenant => tenant.ID, (Services2Section3DownloadMaster, tenant) => new { Services2Section3DownloadMaster, tenant })
-                    .Join(unitOfWork.Services1MasterRepository.Get(), Services2Section3DownloadMaster_tenant => Services2Section3DownloadMaster_tenant.Services2Section3DownloadMaster.Service_Id, Services1Master => Services1Master.ID, (Services2Section3DownloadMaster_tenant, Services1Master) => new { Services2Section3DownloadMaster_tenant, Services1Master })
+                    .Join(unitOfWork.Services2MasterRepository.Get(), Services2Section3DownloadMaster_tenant => Services2Section3DownloadMaster_tenant.Services2Section3DownloadMaster.Service_Id, Services2Master => Services2Master.ID, (Services2Section3DownloadMaster_tenant, Services2Master) => new { Services2Section3DownloadMaster_tenant, Services2Master })
                     .Count(x => (tenant_Id == null || x.Services2Section3DownloadMaster_tenant.Services2Section3DownloadMaster.Tenant_ID == tenant_Id)
                             && (x.Services2Section3DownloadMaster_tenant.Services2Section3DownloadMaster.ID.ToString().Contains(searchValue)
                         || x.Services2Section3DownloadMaster_tenant.Services2Section3DownloadMaster.AncharTagTitle.CaseInsensitiveContains(searchValue)
                         || x.Services2Section3DownloadMaster_tenant.Services2Section3DownloadMaster.AncharTagUrl.CaseInsensitiveContains(searchValue)
                         || x.Services2Section3DownloadMaster_tenant.Services2Section3DownloadMaster.DownloadFilePath.CaseInsensitiveContains(searchValue)
-                        || x.Services1Master.SubSubCategoryName.CaseInsensitiveContains(searchValue)
+                        || x.Services2Master.SubSubCategoryName.CaseInsensitiveContains(searchValue)
                         || x.Services2Section3DownloadMaster_tenant.Services2Section3DownloadMaster.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
                         ||x.Services2Section3DownloadMaster_tenant.Services2Section3DownloadMaster.Url.ToString().CaseInsensitiveContains(searchValue)
                         ||x.Services2Section3DownloadMaster_tenant.Services2Section3DownloadMaster.Metadata.ToString().CaseInsensitiveContains(searchValue)
@@ -68,13 +68,13 @@ namespace SHF.Business.BusinessLogic
 
                 //Database query
                 collection = unitOfWork.Services2Section3DownloadMasterRepository.Get().Join(unitOfWork.TenantRepository.Get(), Services2Section3DownloadMaster => Services2Section3DownloadMaster.Tenant_ID, tenant => tenant.ID, (Services2Section3DownloadMaster, tenant) => new { Services2Section3DownloadMaster, tenant })
-                    .Join(unitOfWork.Services1MasterRepository.Get(), Services2Section3DownloadMaster_tenant => Services2Section3DownloadMaster_tenant.Services2Section3DownloadMaster.Service_Id, Services1Master => Services1Master.ID, (Services2Section3DownloadMaster_tenant, Services1Master) => new { Services2Section3DownloadMaster_tenant, Services1Master })
+                    .Join(unitOfWork.Services2MasterRepository.Get(), Services2Section3DownloadMaster_tenant => Services2Section3DownloadMaster_tenant.Services2Section3DownloadMaster.Service_Id, Services2Master => Services2Master.ID, (Services2Section3DownloadMaster_tenant, Services2Master) => new { Services2Section3DownloadMaster_tenant, Services2Master })
                     .Where(x => (tenant_Id == null || x.Services2Section3DownloadMaster_tenant.Services2Section3DownloadMaster.Tenant_ID == tenant_Id)
                             && (x.Services2Section3DownloadMaster_tenant.Services2Section3DownloadMaster.ID.ToString().Contains(searchValue)
                         || x.Services2Section3DownloadMaster_tenant.Services2Section3DownloadMaster.AncharTagTitle.CaseInsensitiveContains(searchValue)
                         || x.Services2Section3DownloadMaster_tenant.Services2Section3DownloadMaster.AncharTagUrl.CaseInsensitiveContains(searchValue)
                         || x.Services2Section3DownloadMaster_tenant.Services2Section3DownloadMaster.DownloadFilePath.CaseInsensitiveContains(searchValue)
-                        || x.Services1Master.SubSubCategoryName.CaseInsensitiveContains(searchValue)
+                        || x.Services2Master.SubSubCategoryName.CaseInsensitiveContains(searchValue)
                         || x.Services2Section3DownloadMaster_tenant.Services2Section3DownloadMaster.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
                         || x.Services2Section3DownloadMaster_tenant.Services2Section3DownloadMaster.Url.ToString().CaseInsensitiveContains(searchValue)
                         || x.Services2Section3DownloadMaster_tenant.Services2Section3DownloadMaster.Metadata.ToString().CaseInsensitiveContains(searchValue)
@@ -95,7 +95,7 @@ namespace SHF.Business.BusinessLogic
                         AncharTagTitle = x.Services2Section3DownloadMaster_tenant.Services2Section3DownloadMaster.AncharTagTitle,
                         AncharTagUrl = x.Services2Section3DownloadMaster_tenant.Services2Section3DownloadMaster.AncharTagUrl,
                         DownloadFilePath = x.Services2Section3DownloadMaster_tenant.Services2Section3DownloadMaster.DownloadFilePath,
-                        SubSubCategoryName = x.Services1Master.SubSubCategoryName,
+                        SubSubCategoryName = x.Services2Master.SubSubCategoryName,
                         DisplayIndex = x.Services2Section3DownloadMaster_tenant.Services2Section3DownloadMaster.DisplayIndex,
                         Url = x.Services2Section3DownloadMaster_tenant.Services2Section3DownloadMaster.Url,
                         Metadata = x.Services2Section3DownloadMaster_tenant.Services2Section3DownloadMaster.Metadata,
@@ -108,7 +108,8 @@ namespace SHF.Business.BusinessLogic
                         CreatedBy = x.Services2Section3DownloadMaster_tenant.Services2Section3DownloadMaster.CreatedBy,
                         CreatedOn = x.Services2Section3DownloadMaster_tenant.Services2Section3DownloadMaster.CreatedOn,
                         UpdatedBy = x.Services2Section3DownloadMaster_tenant.Services2Section3DownloadMaster.UpdatedBy,
-                        UpdatedOn = x.Services2Section3DownloadMaster_tenant.Services2Section3DownloadMaster.UpdatedOn
+                        UpdatedOn = x.Services2Section3DownloadMaster_tenant.Services2Section3DownloadMaster.UpdatedOn,
+                        ServiceUrl = x.Services2Master.Url
                     }).ToList();
 
 

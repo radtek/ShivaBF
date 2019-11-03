@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -47,7 +48,7 @@ namespace SHF.Controllers.Front
             if (servicetype1!=null)
             {
                 ServiceType1ViewModel.ID = servicetype1.ID;
-                ServiceType1ViewModel.BannerImagePath = servicetype1.BannerImagePath;
+                ServiceType1ViewModel.BannerImagePath = ConfigurationManager.AppSettings[busConstant.Settings.DataBase.SqlServer.Connections.AdminUrlString.ADMINUrl]+String.Concat(busConstant.Settings.CMSPath.TENANAT_UPLOAD_DIRECTORY, servicetype1.Tenant_ID) + "/"+servicetype1.BannerImagePath;
                 ServiceType1ViewModel.BannerOnHeading = servicetype1.BannerOnHeading;
                 ServiceType1ViewModel.Cat_Id = servicetype1.Cat_Id;
                 ServiceType1ViewModel.SubCat_Id = servicetype1.SubCat_Id;
@@ -58,7 +59,7 @@ namespace SHF.Controllers.Front
                 ServiceType1ViewModel.BannerAncharTagUrl = servicetype1.BannerAncharTagUrl;
                 ServiceType1ViewModel.Section1AfterBannerHeading = servicetype1.Section1AfterBannerHeading;
                 ServiceType1ViewModel.Section1AfterBannerDescription = servicetype1.Section1AfterBannerDescription;
-                ServiceType1ViewModel.Section1AfterBannerImagePath = servicetype1.Section1AfterBannerImagePath;
+                ServiceType1ViewModel.Section1AfterBannerImagePath = ConfigurationManager.AppSettings[busConstant.Settings.DataBase.SqlServer.Connections.AdminUrlString.ADMINUrl] + String.Concat(busConstant.Settings.CMSPath.TENANAT_UPLOAD_DIRECTORY, servicetype1.Tenant_ID) + "/" + servicetype1.Section1AfterBannerImagePath;
                 ServiceType1ViewModel.Section1AfterBannerImageOnDescription = servicetype1.Section1AfterBannerImageOnDescription;
                 ServiceType1ViewModel.Section2Heading = servicetype1.Section2Heading;
                 ServiceType1ViewModel.Section2Description = servicetype1.Section2Description;

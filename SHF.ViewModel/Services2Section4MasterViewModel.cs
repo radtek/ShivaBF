@@ -16,6 +16,7 @@ namespace SHF.ViewModel
         public System.String AncharTagTitle { get; set; }
         public System.String AncharTagUrl { get; set; }
         public System.String HeadingText { get; set; }
+        public System.String Description { get; set; }
         public System.Int32 Price { get; set; }
         public System.Int32 DisplayIndex { get; set; }
         public System.Boolean? DisplayOnHome { get; set; }
@@ -27,6 +28,7 @@ namespace SHF.ViewModel
         public string MetaDescription { get; set; }
         public System.String TenantName { get; set; }
         public System.Int64 Tenant_ID { get; set; }
+        public string ServiceUrl { get; set; }
     }
 
     public sealed class Services2Section4MasterCreateOrEditViewModel : BaseViewModel
@@ -37,6 +39,7 @@ namespace SHF.ViewModel
         public System.String AncharTagTitle { get; set; }
         public System.String AncharTagUrl { get; set; }
         public System.String HeadingText { get; set; }
+        public System.String Description { get; set; }
         public System.Int32 Price { get; set; }
         public System.Int32 DisplayIndex { get; set; }
         public System.Boolean? DisplayOnHome { get; set; }

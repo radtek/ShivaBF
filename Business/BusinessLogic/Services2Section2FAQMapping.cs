@@ -109,7 +109,8 @@ namespace SHF.Business.BusinessLogic
                         CreatedBy = x.Services2Section2FAQMapping_tenant_FAQMaster_Services2Master.Services2Section2FAQMapping_tenant_FAQMaster.Services2Section2FAQMapping_tenant.Services2Section2FAQMapping.CreatedBy,
                         CreatedOn = x.Services2Section2FAQMapping_tenant_FAQMaster_Services2Master.Services2Section2FAQMapping_tenant_FAQMaster.Services2Section2FAQMapping_tenant.Services2Section2FAQMapping.CreatedOn,
                         UpdatedBy = x.Services2Section2FAQMapping_tenant_FAQMaster_Services2Master.Services2Section2FAQMapping_tenant_FAQMaster.Services2Section2FAQMapping_tenant.Services2Section2FAQMapping.UpdatedBy,
-                        UpdatedOn = x.Services2Section2FAQMapping_tenant_FAQMaster_Services2Master.Services2Section2FAQMapping_tenant_FAQMaster.Services2Section2FAQMapping_tenant.Services2Section2FAQMapping.UpdatedOn
+                        UpdatedOn = x.Services2Section2FAQMapping_tenant_FAQMaster_Services2Master.Services2Section2FAQMapping_tenant_FAQMaster.Services2Section2FAQMapping_tenant.Services2Section2FAQMapping.UpdatedOn,
+                        ServiceUrl = x.Services2Section2FAQMapping_tenant_FAQMaster_Services2Master.Services2Master.Url
                     }).ToList();
 
 

@@ -471,6 +471,10 @@
     <Compile Include="Migrations\201910301446359_DBsetup.Designer.cs">
       <DependentUpon>201910301446359_DBsetup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911030835238_changes.cs" />
+    <Compile Include="Migrations\201911030835238_changes.Designer.cs">
+      <DependentUpon>201911030835238_changes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Error\CustomHandleErrorInfo.cs" />
@@ -7408,6 +7412,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\site.css" />
     <Content Include="Media\Guide\Service1Master.png" />
+    <Content Include="Media\Guide\Service2Master.png" />
     <Content Include="Media\Thumbs\Tenants\1\91dac66c-568f-40c0-a22a-e1f769000a28.jpeg" />
     <Content Include="Media\Thumbs\Tenants\1\dbce6132-f001-4b26-84c3-2ae415b9a095.jpeg" />
     <Content Include="Media\Thumbs\Tenants\2\680f30fe-d922-479c-9ba0-3220fcf8cb14.jpeg" />
@@ -9424,6 +9429,10 @@
     <Content Include="Views\Services1Section8FAQMapping\_Guide.cshtml" />
     <Content Include="Views\Services1Section10BankMapping\_Guide.cshtml" />
     <Content Include="Views\PriceFeaturesMapping\_Guide.cshtml" />
+    <Content Include="Views\Services2Master\_Guide.cshtml" />
+    <Content Include="Views\Services2Section2FAQMapping\_Guide.cshtml" />
+    <Content Include="Views\Services2Section3DownloadMaster\_Guide.cshtml" />
+    <Content Include="Views\Services2Section4Master\_Guide.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
@@ -9520,6 +9529,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201910301446359_DBsetup.resx">
       <DependentUpon>201910301446359_DBsetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911030835238_changes.resx">
+      <DependentUpon>201911030835238_changes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

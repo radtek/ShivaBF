@@ -72,6 +72,7 @@ namespace SHF.ViewModel.FrontEnd
         public System.String AncharTagTitle { get; set; }
         public System.String AncharTagUrl { get; set; }
         public System.String HeadingText { get; set; }
+        public System.String Description { get; set; }
         public System.Int32 Price { get; set; }
         public System.Int32 DisplayIndex { get; set; }
         public System.Boolean? DisplayOnHome { get; set; }
