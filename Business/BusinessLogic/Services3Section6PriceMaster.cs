@@ -45,24 +45,25 @@ namespace SHF.Business.BusinessLogic
                 //Count total Records meeting criteria
                 totalRecords = unitOfWork.Services3Section6PriceMasterRepository.Get().Join(unitOfWork.TenantRepository.Get(), Services3Section6PriceMaster => Services3Section6PriceMaster.Tenant_ID, tenant => tenant.ID, (Services3Section6PriceMaster, tenant) => new { Services3Section6PriceMaster, tenant })
                     .Join(unitOfWork.Services3MasterRepository.Get(), Services3Section6PriceMaster_tenant => Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Service_Id, Services3Master => Services3Master.ID, (Services3Section6PriceMaster_tenant, Services3Master) => new { Services3Section6PriceMaster_tenant, Services3Master })
-                    .Count(x => (tenant_Id == null || x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Tenant_ID == tenant_Id)
-                            && (x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.ID.ToString().Contains(searchValue)
-                        || x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.AncharTagTitle.CaseInsensitiveContains(searchValue)
-                        || x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.AncharTagUrl.CaseInsensitiveContains(searchValue)
-                        || x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.HeadingText.CaseInsensitiveContains(searchValue)
-                        || x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Price.ToString().CaseInsensitiveContains(searchValue)
-                        || x.Services3Master.SubSubCategoryName.CaseInsensitiveContains(searchValue)
-                        || x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
-                        ||x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Url.ToString().CaseInsensitiveContains(searchValue)
-                        ||x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Metadata.ToString().CaseInsensitiveContains(searchValue)
-                        ||x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.MetaDescription.ToString().CaseInsensitiveContains(searchValue)
-                        ||x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Keyword.ToString().CaseInsensitiveContains(searchValue)
-                        ||x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.TotalViews.ToString().CaseInsensitiveContains(searchValue)
-                        ||x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Tenant.Name.CaseInsensitiveContains(searchValue)
-                        ||x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.CreatedBy.CaseInsensitiveContains(searchValue)
-                        ||x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.UpdatedBy.CaseInsensitiveContains(searchValue)
-                        ||x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.CreatedOn.ToString().Contains(searchValue.IsMatchingTo("{0:dd/MM/yyyy HH:mm:ss tt}") ? Convert.ToDateTime(searchValue).ToString("dd/MM/yyyy HH:mm:ss tt") : searchValue)
-                        ||x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.UpdatedOn.ToString().Contains(searchValue.IsMatchingTo("{0:dd/MM/yyyy HH:mm:ss tt}") ? Convert.ToDateTime(searchValue).ToString("dd/MM/yyyy HH:mm:ss tt") : searchValue)
+                    .Join(unitOfWork.StateMasterRepository.Get(), Services3Section6PriceMaster_tenant_Services3Master => Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.State_Id, stateMaster => stateMaster.ID, (Services3Section6PriceMaster_tenant_Services3Master, stateMaster) => new { Services3Section6PriceMaster_tenant_Services3Master, stateMaster })
+                    .Count(x => (tenant_Id == null || x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Tenant_ID == tenant_Id)
+                            && (x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.ID.ToString().Contains(searchValue)
+                        || x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.AncharTagTitle.CaseInsensitiveContains(searchValue)
+                        || x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.AncharTagUrl.CaseInsensitiveContains(searchValue)
+                        || x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.HeadingText.CaseInsensitiveContains(searchValue)
+                        || x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Price.ToString().CaseInsensitiveContains(searchValue)
+                        || x.Services3Section6PriceMaster_tenant_Services3Master.Services3Master.SubSubCategoryName.CaseInsensitiveContains(searchValue)
+                        || x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
+                        ||x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Url.ToString().CaseInsensitiveContains(searchValue)
+                        ||x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Metadata.ToString().CaseInsensitiveContains(searchValue)
+                        ||x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.MetaDescription.ToString().CaseInsensitiveContains(searchValue)
+                        ||x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Keyword.ToString().CaseInsensitiveContains(searchValue)
+                        ||x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.TotalViews.ToString().CaseInsensitiveContains(searchValue)
+                        ||x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Tenant.Name.CaseInsensitiveContains(searchValue)
+                        ||x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.CreatedBy.CaseInsensitiveContains(searchValue)
+                        ||x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.UpdatedBy.CaseInsensitiveContains(searchValue)
+                        ||x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.CreatedOn.ToString().Contains(searchValue.IsMatchingTo("{0:dd/MM/yyyy HH:mm:ss tt}") ? Convert.ToDateTime(searchValue).ToString("dd/MM/yyyy HH:mm:ss tt") : searchValue)
+                        ||x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.UpdatedOn.ToString().Contains(searchValue.IsMatchingTo("{0:dd/MM/yyyy HH:mm:ss tt}") ? Convert.ToDateTime(searchValue).ToString("dd/MM/yyyy HH:mm:ss tt") : searchValue)
                         ));
 
                 pageSize = pageSize < busConstant.Numbers.Integer.ZERO ? totalRecords : pageSize;
@@ -70,48 +71,51 @@ namespace SHF.Business.BusinessLogic
                 //Database query
                 collection = unitOfWork.Services3Section6PriceMasterRepository.Get().Join(unitOfWork.TenantRepository.Get(), Services3Section6PriceMaster => Services3Section6PriceMaster.Tenant_ID, tenant => tenant.ID, (Services3Section6PriceMaster, tenant) => new { Services3Section6PriceMaster, tenant })
                     .Join(unitOfWork.Services3MasterRepository.Get(), Services3Section6PriceMaster_tenant => Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Service_Id, Services3Master => Services3Master.ID, (Services3Section6PriceMaster_tenant, Services3Master) => new { Services3Section6PriceMaster_tenant, Services3Master })
-                    .Where(x => (tenant_Id == null || x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Tenant_ID == tenant_Id)
-                            && (x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.ID.ToString().Contains(searchValue)
-                        || x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.AncharTagTitle.CaseInsensitiveContains(searchValue)
-                        || x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.AncharTagUrl.CaseInsensitiveContains(searchValue)
-                        || x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.HeadingText.CaseInsensitiveContains(searchValue)
-                        || x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Price.ToString().CaseInsensitiveContains(searchValue)
-                        || x.Services3Master.SubSubCategoryName.CaseInsensitiveContains(searchValue)
-                        || x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
-                        || x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Url.ToString().CaseInsensitiveContains(searchValue)
-                        || x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Metadata.ToString().CaseInsensitiveContains(searchValue)
-                        || x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.MetaDescription.ToString().CaseInsensitiveContains(searchValue)
-                        || x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Keyword.ToString().CaseInsensitiveContains(searchValue)
-                        || x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.TotalViews.ToString().CaseInsensitiveContains(searchValue)
-                        || x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Tenant.Name.CaseInsensitiveContains(searchValue)
-                        || x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.CreatedBy.CaseInsensitiveContains(searchValue)
-                        || x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.UpdatedBy.CaseInsensitiveContains(searchValue)
-                        || x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.CreatedOn.ToString().Contains(searchValue.IsMatchingTo("{0:dd/MM/yyyy HH:mm:ss tt}") ? Convert.ToDateTime(searchValue).ToString("dd/MM/yyyy HH:mm:ss tt") : searchValue)
-                        || x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.UpdatedOn.ToString().Contains(searchValue.IsMatchingTo("{0:dd/MM/yyyy HH:mm:ss tt}") ? Convert.ToDateTime(searchValue).ToString("dd/MM/yyyy HH:mm:ss tt") : searchValue)
+                    .Join(unitOfWork.StateMasterRepository.Get(), Services3Section6PriceMaster_tenant_Services3Master => Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.State_Id, stateMaster => stateMaster.ID, (Services3Section6PriceMaster_tenant_Services3Master, stateMaster) => new { Services3Section6PriceMaster_tenant_Services3Master, stateMaster })
+                    .Where(x => (tenant_Id == null || x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Tenant_ID == tenant_Id)
+                            && (x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.ID.ToString().Contains(searchValue)
+                        || x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.AncharTagTitle.CaseInsensitiveContains(searchValue)
+                        || x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.AncharTagUrl.CaseInsensitiveContains(searchValue)
+                        || x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.HeadingText.CaseInsensitiveContains(searchValue)
+                        || x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Price.ToString().CaseInsensitiveContains(searchValue)
+                        || x.Services3Section6PriceMaster_tenant_Services3Master.Services3Master.SubSubCategoryName.CaseInsensitiveContains(searchValue)
+                        || x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
+                        || x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Url.ToString().CaseInsensitiveContains(searchValue)
+                        || x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Metadata.ToString().CaseInsensitiveContains(searchValue)
+                        || x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.MetaDescription.ToString().CaseInsensitiveContains(searchValue)
+                        || x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Keyword.ToString().CaseInsensitiveContains(searchValue)
+                        || x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.TotalViews.ToString().CaseInsensitiveContains(searchValue)
+                        || x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Tenant.Name.CaseInsensitiveContains(searchValue)
+                        || x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.CreatedBy.CaseInsensitiveContains(searchValue)
+                        || x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.UpdatedBy.CaseInsensitiveContains(searchValue)
+                        || x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.CreatedOn.ToString().Contains(searchValue.IsMatchingTo("{0:dd/MM/yyyy HH:mm:ss tt}") ? Convert.ToDateTime(searchValue).ToString("dd/MM/yyyy HH:mm:ss tt") : searchValue)
+                        || x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.UpdatedOn.ToString().Contains(searchValue.IsMatchingTo("{0:dd/MM/yyyy HH:mm:ss tt}") ? Convert.ToDateTime(searchValue).ToString("dd/MM/yyyy HH:mm:ss tt") : searchValue)
                         ))
                     .OrderBy(sortColumn + " " + sortColumnDir)
                     .Skip(skip).Take(pageSize).ToList()
                     .Select(x => new ViewModel.Services3Section6PriceMasterIndexViewModel
                     {
-                        ID = x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.ID,
-                        AncharTagTitle = x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.AncharTagTitle,
-                        AncharTagUrl = x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.AncharTagUrl,
-                        Heading = x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.HeadingText,
-                        Price = Convert.ToInt16(x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Price),
-                        SubSubCategoryName = x.Services3Master.SubSubCategoryName,
-                        DisplayIndex = x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.DisplayIndex,
-                        Url = x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Url,
-                        Metadata = x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Metadata,
-                        MetaDescription = x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.MetaDescription,
-                        Keyword = x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Keyword,
-                        TotalViews = x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.TotalViews,
-                        IsActive = x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.IsActive,
-                        TenantName = x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Tenant.Name,
-                        Tenant_ID = x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Tenant.ID,
-                        CreatedBy = x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.CreatedBy,
-                        CreatedOn = x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.CreatedOn,
-                        UpdatedBy = x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.UpdatedBy,
-                        UpdatedOn = x.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.UpdatedOn
+                        ID = x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.ID,
+                        StateFullName = x.stateMaster.StateFullName,
+                        AncharTagTitle = x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.AncharTagTitle,
+                        AncharTagUrl = x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.AncharTagUrl,
+                        Heading = x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.HeadingText,
+                        Description = x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Description,
+                        Price = Convert.ToInt32(x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Price),
+                        SubSubCategoryName = x.Services3Section6PriceMaster_tenant_Services3Master.Services3Master.SubSubCategoryName,
+                        DisplayIndex = x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.DisplayIndex,
+                        Url = x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Url,
+                        Metadata = x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Metadata,
+                        MetaDescription = x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.MetaDescription,
+                        Keyword = x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Keyword,
+                        TotalViews = x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.TotalViews,
+                        IsActive = x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.IsActive,
+                        TenantName = x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Tenant.Name,
+                        Tenant_ID = x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Tenant.ID,
+                        CreatedBy = x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.CreatedBy,
+                        CreatedOn = x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.CreatedOn,
+                        UpdatedBy = x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.UpdatedBy,
+                        UpdatedOn = x.Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.UpdatedOn
                     }).ToList();
 
 

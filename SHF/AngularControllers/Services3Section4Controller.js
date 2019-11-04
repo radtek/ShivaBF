@@ -10,11 +10,17 @@
         $scope.Entity = {};
         $scope.Services3Section4CreateOrEditViewModel = {};
         $scope.AllTenants = [];
+        $scope.AllState=[];
         $scope.AllSubSubCategories = [];
         $scope.Services3Section4CreateOrEditViewModel.SelectedTenant_ID = -1;
         $scope.Services3Section4CreateOrEditViewModel.SelectedSubSubCat_Id = -1;
-       
-       
+        $scope.Services3Section4CreateOrEditViewModel.SelectedState_Id = -1;
+        $scope.Preview = function (url) {
+          CustomService.PreviewOpen(url);
+            }
+       $scope.Guide = function () {
+            $('#modal-guide').modal('show');
+        }
         $scope.Cookie_Tenant_ID = parseInt(CustomService.GetTenantID());
         $scope.Services3Section4CreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;     
 
@@ -118,6 +124,7 @@
                             $scope.Services3Section4CreateOrEditViewModel = response.data.Entity;
                            // $scope.LoadAllCategory();
                             $scope.LoadAllSubSubCategory();
+ $scope.LoadStates();
                             //$scope.Services3Section4CreateOrEditViewModel.Category_ID=$scope.Services3Section4CreateOrEditViewModel.Category_ID;
                             $('#modal-createOredit').modal('show');
                             console.clear();
@@ -326,6 +333,45 @@ $scope.BindSubSubCategoryDropDownList = function (tenantId) {
 
                 });
         }  
+/****************************************************************************Load Category*************************************************************************************/
+$scope.LoadStates = function () {
+debugger
+  let promise = CodeValueCRUD.LoadStateDropDown();
+            promise.then(
+                function success(response) {
+                    switch (response.data.Type) {
+                        case 'Exception':
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                        case 'Response':
+                            $scope.AllState = response.data.Entity;
+                            console.clear();
+                            break;
+                        default:
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                    }
+                }, function errors(response) {
+                    switch (response.data.Type) {
+                        case 'Exception':
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                        case 'Validation':
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                        default:
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                    }
+
+                });
+         
+        } 
  $scope.BindServiceTypeDropDownList = function (Id) {
             $scope.AllServiceType = [];
             $scope.AllServiceType = CodeValueCRUD.LoadCodeValueByCodeId(Id);

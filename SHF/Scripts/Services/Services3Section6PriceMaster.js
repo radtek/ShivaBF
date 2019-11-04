@@ -44,7 +44,7 @@ angular.module(config.app).service('Services3Section6PriceMasterCRUD', function 
                     targets: 0
                 },
                 {
-                    name: "Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.ID",
+                    name: "Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.ID",
                     data: "ID",
                     title: "ID",
                     render: $.fn.dataTable.render.text(),
@@ -52,36 +52,52 @@ angular.module(config.app).service('Services3Section6PriceMasterCRUD', function 
                     targets: 1
                 },
                 {
-                    name: "Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.AncharTagTitle",
+                     name: "stateMaster.StateFullName",
+                     data: "StateFullName",
+                     title: "StateFullName",
+                     render: $.fn.dataTable.render.text(),
+                     width: "25%",
+                     targets: 2
+                 },
+                {
+                    name: "Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.AncharTagTitle",
                     data: "AncharTagTitle",
                     title: "Anchar&nbsp;Tag&nbsp;Title",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 2
+                    targets: 3
                 },
                  {
-                     name: "Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.AncharTagUrl",
+                     name: "Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.AncharTagUrl",
                      data: "AncharTagUrl",
                      title: "Anchar&nbsp;Tag&nbsp;Url",
                      render: $.fn.dataTable.render.text(),
                      width: "25%",
-                     targets: 3
+                     targets: 4
                  },
                  {
-                      name: "Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Heading",
+                      name: "Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.HeadingText",
                      data: "Heading",
                      title: "Heading",
                      render: $.fn.dataTable.render.text(),
                      width: "25%",
-                     targets: 4
+                     targets: 5
+                 },
+                 {
+                      name: "Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Description",
+                     data: "Description",
+                     title: "Description",
+                     render: $.fn.dataTable.render.text(),
+                     width: "25%",
+                     targets: 6
                  },
                 {
-                      name: "Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Price",
+                      name: "Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Price",
                      data: "Price",
                      title: "Price",
                      render: $.fn.dataTable.render.text(),
                      width: "25%",
-                     targets: 4
+                     targets: 7
                  },
                   {
                     name: "Services3Section6PriceMaster.SubSubCategoryName",
@@ -89,64 +105,64 @@ angular.module(config.app).service('Services3Section6PriceMasterCRUD', function 
                     title: "Sub&nbsp;Sub&nbsp;CategoryName",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 5
+                    targets: 8
                 },
                 {
-                    name: "Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.DisplayIndex",
+                    name: "Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.DisplayIndex",
                     data: "DisplayIndex",
                     title: "Display&nbsp;Index",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 6
+                    targets: 9
                 },
  {
-                    name: "Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Url",
+                    name: "Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Url",
                     data: "Url",
                     title: "Url",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 7
+                    targets: 10
                 },
  {
-                    name: "Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Metadata",
+                    name: "Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Metadata",
                     data: "Metadata",
                     title: "Metadata",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 8
+                    targets: 11
                 },
 {
-                    name: "Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.MetaDescription",
+                    name: "Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.MetaDescription",
                     data: "MetaDescription",
                     title: "MetaDescription",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 9
+                    targets: 12
                 },
 {
-                    name: "Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Keyword",
+                    name: "Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.Keyword",
                     data: "Keyword",
                     title: "Keyword",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 10
+                    targets: 13
                 },
 
 {
-                    name: "Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.TotalViews",
+                    name: "Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.TotalViews",
                     data: "TotalViews",
                     title: "TotalViews",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 11
+                    targets: 14
                 },
               {
-                    name: "Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.IsActive",
+                    name: "Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.IsActive",
                     data: "IsActive",
                     title: "Is&nbsp;Active",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 12
+                    targets: 15
                 },
                 {
                     name: "tenant.Name",
@@ -155,18 +171,18 @@ angular.module(config.app).service('Services3Section6PriceMasterCRUD', function 
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
                     visible: viewBagTenantID <= 0 ? true : false,
-                    targets:13
+                    targets:16
                 },
                 {
-                    name: "Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.CreatedBy",
+                    name: "Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.CreatedBy",
                     data: "CreatedBy",
                     title: "Created&nbsp;By",
                     render: $.fn.dataTable.render.text(),
                     width: "6%",
-                    targets: 14
+                    targets: 17
                 },
                 {
-                    name: "Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.CreatedOn",
+                    name: "Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.CreatedOn",
                     data: "CreatedOn",
                     title: "Created&nbsp;On",
                     render: function (data, type, row, meta) {
@@ -178,7 +194,7 @@ angular.module(config.app).service('Services3Section6PriceMasterCRUD', function 
                     targets: 15
                 },
                 {
-                    name: "Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.UpdatedBy",
+                    name: "Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.UpdatedBy",
                     data: "UpdatedBy",
                     title: "Modified&nbsp;By",
                     render: $.fn.dataTable.render.text(),
@@ -186,7 +202,7 @@ angular.module(config.app).service('Services3Section6PriceMasterCRUD', function 
                     targets: 16
                 },
                 {
-                    name: "Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.UpdatedOn",
+                    name: "Services3Section6PriceMaster_tenant_Services3Master.Services3Section6PriceMaster_tenant.Services3Section6PriceMaster.UpdatedOn",
                     data: "UpdatedOn",
                     title: "Modified&nbsp;On",
                     render: function (data, type, row, meta) {

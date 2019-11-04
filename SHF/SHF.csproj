@@ -475,6 +475,10 @@
     <Compile Include="Migrations\201911030835238_changes.Designer.cs">
       <DependentUpon>201911030835238_changes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911031801202_chnages.cs" />
+    <Compile Include="Migrations\201911031801202_chnages.Designer.cs">
+      <DependentUpon>201911031801202_chnages.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Error\CustomHandleErrorInfo.cs" />
@@ -9532,6 +9536,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911030835238_changes.resx">
       <DependentUpon>201911030835238_changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911031801202_chnages.resx">
+      <DependentUpon>201911031801202_chnages.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

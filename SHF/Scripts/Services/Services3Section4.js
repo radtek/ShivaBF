@@ -44,15 +44,23 @@ angular.module(config.app).service('Services3Section4CRUD', function ($http) {
                     targets: 0
                 },
                 {
-                    name: "Services3Section4_tenant.Services3Section4.ID",
+                    name: "Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.ID",
                     data: "ID",
                     title: "ID",
                     render: $.fn.dataTable.render.text(),
                     width: "3%",
                     targets: 1
                 },
+                {
+                     name: "stateMaster.StateFullName",
+                     data: "StateFullName",
+                     title: "StateFullName",
+                     render: $.fn.dataTable.render.text(),
+                     width: "25%",
+                     targets: 2
+                 },
                  {
-                     name: "Services3Section4_tenant.Services3Section4.Heading",
+                     name: "Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.Heading",
                      data: "Heading",
                      title: "Heading",
                      render: $.fn.dataTable.render.text(),
@@ -60,7 +68,7 @@ angular.module(config.app).service('Services3Section4CRUD', function ($http) {
                      targets: 2
                  },
                  {
-                     name: "Services3Section4_tenant.Services3Section4.ShortDescription",
+                     name: "Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.ShortDescription",
                      data: "ShortDescription",
                      title: "ShortDescription",
                      render: $.fn.dataTable.render.text(),
@@ -68,7 +76,7 @@ angular.module(config.app).service('Services3Section4CRUD', function ($http) {
                      targets: 2
                  },
                 {
-                    name: "Services3Section4_tenant.Services3Section4.AncharTagTitle",
+                    name: "Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.AncharTagTitle",
                     data: "AncharTagTitle",
                     title: "Anchar&nbsp;Tag&nbsp;Title",
                     render: $.fn.dataTable.render.text(),
@@ -76,7 +84,7 @@ angular.module(config.app).service('Services3Section4CRUD', function ($http) {
                     targets: 2
                 },
                  {
-                     name: "Services3Section4_tenant.Services3Section4.AncharTagUrl",
+                     name: "Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.AncharTagUrl",
                      data: "AncharTagUrl",
                      title: "Anchar&nbsp;Tag&nbsp;Url",
                      render: $.fn.dataTable.render.text(),
@@ -92,7 +100,7 @@ angular.module(config.app).service('Services3Section4CRUD', function ($http) {
                     targets: 5
                 },
                 {
-                    name: "Services3Section4_tenant.Services3Section4.DisplayIndex",
+                    name: "Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.DisplayIndex",
                     data: "DisplayIndex",
                     title: "Display&nbsp;Index",
                     render: $.fn.dataTable.render.text(),
@@ -100,7 +108,7 @@ angular.module(config.app).service('Services3Section4CRUD', function ($http) {
                     targets: 6
                 },
  {
-                    name: "Services3Section4_tenant.Services3Section4.Url",
+                    name: "Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.Url",
                     data: "Url",
                     title: "Url",
                     render: $.fn.dataTable.render.text(),
@@ -108,7 +116,7 @@ angular.module(config.app).service('Services3Section4CRUD', function ($http) {
                     targets: 7
                 },
  {
-                    name: "Services3Section4_tenant.Services3Section4.Metadata",
+                    name: "Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.Metadata",
                     data: "Metadata",
                     title: "Metadata",
                     render: $.fn.dataTable.render.text(),
@@ -116,7 +124,7 @@ angular.module(config.app).service('Services3Section4CRUD', function ($http) {
                     targets: 8
                 },
 {
-                    name: "Services3Section4_tenant.Services3Section4.MetaDescription",
+                    name: "Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.MetaDescription",
                     data: "MetaDescription",
                     title: "MetaDescription",
                     render: $.fn.dataTable.render.text(),
@@ -124,7 +132,7 @@ angular.module(config.app).service('Services3Section4CRUD', function ($http) {
                     targets: 9
                 },
 {
-                    name: "Services3Section4_tenant.Services3Section4.Keyword",
+                    name: "Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.Keyword",
                     data: "Keyword",
                     title: "Keyword",
                     render: $.fn.dataTable.render.text(),
@@ -133,7 +141,7 @@ angular.module(config.app).service('Services3Section4CRUD', function ($http) {
                 },
 
 {
-                    name: "Services3Section4_tenant.Services3Section4.TotalViews",
+                    name: "Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.TotalViews",
                     data: "TotalViews",
                     title: "TotalViews",
                     render: $.fn.dataTable.render.text(),
@@ -141,7 +149,7 @@ angular.module(config.app).service('Services3Section4CRUD', function ($http) {
                     targets: 11
                 },
               {
-                    name: "Services3Section4_tenant.Services3Section4.IsActive",
+                    name: "Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.IsActive",
                     data: "IsActive",
                     title: "Is&nbsp;Active",
                     render: $.fn.dataTable.render.text(),
@@ -158,7 +166,7 @@ angular.module(config.app).service('Services3Section4CRUD', function ($http) {
                     targets:13
                 },
                 {
-                    name: "Services3Section4_tenant.Services3Section4.CreatedBy",
+                    name: "Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.CreatedBy",
                     data: "CreatedBy",
                     title: "Created&nbsp;By",
                     render: $.fn.dataTable.render.text(),
@@ -166,7 +174,7 @@ angular.module(config.app).service('Services3Section4CRUD', function ($http) {
                     targets: 14
                 },
                 {
-                    name: "Services3Section4_tenant.Services3Section4.CreatedOn",
+                    name: "Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.CreatedOn",
                     data: "CreatedOn",
                     title: "Created&nbsp;On",
                     render: function (data, type, row, meta) {
@@ -178,7 +186,7 @@ angular.module(config.app).service('Services3Section4CRUD', function ($http) {
                     targets: 15
                 },
                 {
-                    name: "Services3Section4_tenant.Services3Section4.UpdatedBy",
+                    name: "Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.UpdatedBy",
                     data: "UpdatedBy",
                     title: "Modified&nbsp;By",
                     render: $.fn.dataTable.render.text(),
@@ -186,7 +194,7 @@ angular.module(config.app).service('Services3Section4CRUD', function ($http) {
                     targets: 16
                 },
                 {
-                    name: "Services3Section4_tenant.Services3Section4.UpdatedOn",
+                    name: "Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.UpdatedOn",
                     data: "UpdatedOn",
                     title: "Modified&nbsp;On",
                     render: function (data, type, row, meta) {

@@ -35,13 +35,23 @@
                         </div>
                         <div class="form-group" ng-class="{'has-error': (myForm.SubSubCategoryName.$touched || myForm.SubSubCategoryName.$dirty)  && myForm.SubSubCategoryName.$invalid}">
                             <label>Sub Sub Category Name</label>
-                            <select name="SubSubCategoryName" ng-model="Services3Section4CreateOrEditViewModel.SubSubCat_Id" class="form-control" style="width: 100%;" ng-options="x.ID as x.SubSubCategoryName for x in AllSubSubCategories" required>
+                            <select name="SubSubCategoryName" ng-model="Services3Section4CreateOrEditViewModel.SubSubCat_Id" class="form-control" style="width: 100%;" ng-options="x.ID as x.SubSubCategoryName for x in AllSubSubCategories" ng-change="LoadStates()" required>
                                 <option value="" ng-selected="Services3Section4CreateOrEditViewModel.SelectedSubSubCat_Id < 0">-- Select --</option>
                             </select>
                             <div class="help-block" ng-messages="myForm.SubSubCategoryName.$error" ng-if="myForm.SubSubCategoryName.$touched || myForm.SubSubCategoryName.$dirty && myForm.SubSubCategoryName.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.SubSubCat_Id" ng-bind="errors.formErrors.SubSubCat_Id"></span>
+                        </div>
+                         <div class="form-group" ng-class="{'has-error': (myForm.StateName.$touched || myForm.StateName.$dirty)  && myForm.StateName.$invalid}">
+                            <label>State</label>
+                            <select name="StateName" ng-model="Services3Section4CreateOrEditViewModel.State_Id" class="form-control" style="width: 100%;" ng-options="x.ID as x.StateFullName for x in AllState" required>
+                                <option value="" ng-selected="Services3Section4CreateOrEditViewModel.SelectedState_Id < 0">-- Select --</option>
+                            </select>
+                            <div class="help-block" ng-messages="myForm.StateName.$error" ng-if="myForm.StateName.$touched || myForm.StateName.$dirty && myForm.StateName.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.State_Id" ng-bind="errors.formErrors.State_Id"></span>
                         </div>
                         <div class="form-group" ng-class="{'has-error': ((myForm.Heading.$touched && myForm.Heading.$invalid) || (!myForm.Heading.$pristine && myForm.Heading.$invalid))}">
                             <label>Heading</label>

@@ -165,11 +165,14 @@ namespace SHF.Controllers
                                 //entity.Services3Section6PriceMasters = null;
                                 entity.SubSubCategoriesMaster = null;
                                 entity.Services3Master = null;
+                                entity.StateMaster = null;
                                 entity.Service_Id = entityServices.ID;
                                 entity.SubSubCat_Id = model.SubSubCat_Id;
+                                entity.State_Id = model.State_Id;
                                 entity.AncharTagTitle = model.AncharTagTitle;
                                 entity.AncharTagUrl = model.AncharTagUrl;
                                 entity.HeadingText = model.Heading;
+                                entity.Description = model.Description;
                                 entity.Price = model.Price;
                                 entity.DisplayIndex = model.DisplayIndex;
                                 entity.IsActive = model.IsActive;
@@ -249,10 +252,12 @@ namespace SHF.Controllers
 
                                 model.ID = entity.ID;
                                 model.SubSubCat_Id = Convert.ToInt64(entity.SubSubCat_Id);
+                                model.State_Id = Convert.ToInt64(entity.State_Id);
                                 model.SubSubCategoryName = entityServices.SubSubCategoryName;
                                 model.AncharTagTitle = entity.AncharTagTitle;
                                 model.AncharTagUrl = entity.AncharTagUrl;
                                 model.Heading = entity.HeadingText;
+                                model.Description = entity.Description;
                                 model.Price = Convert.ToInt32(entity.Price);
                                 model.DisplayIndex = entity.DisplayIndex;
                                 model.IsActive = entity.IsActive;
@@ -350,11 +355,16 @@ namespace SHF.Controllers
                                 if (entity.IsNotNull())
                                 {
 
+                                    entity.SubSubCategoriesMaster = null;
+                                    entity.Services3Master = null;
+                                    entity.StateMaster = null;
                                     entity.Service_Id = entityServices.ID;
                                     entity.SubSubCat_Id = model.SubSubCat_Id;
+                                    entity.State_Id = model.State_Id;
                                     entity.AncharTagTitle = model.AncharTagTitle;
                                     entity.AncharTagUrl = model.AncharTagUrl;
                                     entity.HeadingText = model.Heading;
+                                    entity.Description = model.Description;
                                     entity.Price = model.Price;
                                     entity.DisplayIndex = model.DisplayIndex;
                                     entity.IsActive = model.IsActive;
@@ -364,10 +374,6 @@ namespace SHF.Controllers
                                     entity.Keyword = model.Keyword;
                                     entity.MetaDescription = model.MetaDescription;
                                     entity.Tenant_ID = model.Tenant_ID;
-                                    entity.Tenant = null;
-                                    //entity.Services3Section6PriceMasters = null;
-                                    entity.SubSubCategoriesMaster = null;
-                                    entity.Services3Master = null;
                                     this.businessServices3Section6PriceMaster.Update(entity);
 
                                     transaction.Complete();

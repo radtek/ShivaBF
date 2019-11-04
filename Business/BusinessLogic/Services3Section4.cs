@@ -45,24 +45,25 @@ namespace SHF.Business.BusinessLogic
                 //Count total Records meeting criteria
                 totalRecords = unitOfWork.Services3Section4Repository.Get().Join(unitOfWork.TenantRepository.Get(), Services3Section4 => Services3Section4.Tenant_ID, tenant => tenant.ID, (Services3Section4, tenant) => new { Services3Section4, tenant })
                     .Join(unitOfWork.Services3MasterRepository.Get(), Services3Section4_tenant => Services3Section4_tenant.Services3Section4.Service_Id, Services3Master => Services3Master.ID, (Services3Section4_tenant, Services3Master) => new { Services3Section4_tenant, Services3Master })
-                    .Count(x => (tenant_Id == null || x.Services3Section4_tenant.Services3Section4.Tenant_ID == tenant_Id)
-                            && (x.Services3Section4_tenant.Services3Section4.ID.ToString().Contains(searchValue)
-                            || x.Services3Section4_tenant.Services3Section4.Heading.CaseInsensitiveContains(searchValue)
-                            || x.Services3Section4_tenant.Services3Section4.ShortDescription.CaseInsensitiveContains(searchValue)
-                        || x.Services3Section4_tenant.Services3Section4.AncharTagTitle.CaseInsensitiveContains(searchValue)
-                        || x.Services3Section4_tenant.Services3Section4.AncharTagUrl.CaseInsensitiveContains(searchValue)
-                        || x.Services3Master.SubSubCategoryName.CaseInsensitiveContains(searchValue)
-                        || x.Services3Section4_tenant.Services3Section4.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
-                        ||x.Services3Section4_tenant.Services3Section4.Url.ToString().CaseInsensitiveContains(searchValue)
-                        ||x.Services3Section4_tenant.Services3Section4.Metadata.ToString().CaseInsensitiveContains(searchValue)
-                        ||x.Services3Section4_tenant.Services3Section4.MetaDescription.ToString().CaseInsensitiveContains(searchValue)
-                        ||x.Services3Section4_tenant.Services3Section4.Keyword.ToString().CaseInsensitiveContains(searchValue)
-                        ||x.Services3Section4_tenant.Services3Section4.TotalViews.ToString().CaseInsensitiveContains(searchValue)
-                        ||x.Services3Section4_tenant.Services3Section4.Tenant.Name.CaseInsensitiveContains(searchValue)
-                        ||x.Services3Section4_tenant.Services3Section4.CreatedBy.CaseInsensitiveContains(searchValue)
-                        ||x.Services3Section4_tenant.Services3Section4.UpdatedBy.CaseInsensitiveContains(searchValue)
-                        ||x.Services3Section4_tenant.Services3Section4.CreatedOn.ToString().Contains(searchValue.IsMatchingTo("{0:dd/MM/yyyy HH:mm:ss tt}") ? Convert.ToDateTime(searchValue).ToString("dd/MM/yyyy HH:mm:ss tt") : searchValue)
-                        ||x.Services3Section4_tenant.Services3Section4.UpdatedOn.ToString().Contains(searchValue.IsMatchingTo("{0:dd/MM/yyyy HH:mm:ss tt}") ? Convert.ToDateTime(searchValue).ToString("dd/MM/yyyy HH:mm:ss tt") : searchValue)
+                    .Join(unitOfWork.StateMasterRepository.Get(), Services3Section4_tenant_Services3Master => Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.State_Id, stateMaster => stateMaster.ID, (Services3Section4_tenant_Services3Master, stateMaster) => new { Services3Section4_tenant_Services3Master, stateMaster })
+                    .Count(x => (tenant_Id == null || x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.Tenant_ID == tenant_Id)
+                            && (x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.ID.ToString().Contains(searchValue)
+                            || x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.Heading.CaseInsensitiveContains(searchValue)
+                            || x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.ShortDescription.CaseInsensitiveContains(searchValue)
+                        || x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.AncharTagTitle.CaseInsensitiveContains(searchValue)
+                        || x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.AncharTagUrl.CaseInsensitiveContains(searchValue)
+                        || x.Services3Section4_tenant_Services3Master.Services3Master.SubSubCategoryName.CaseInsensitiveContains(searchValue)
+                        || x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
+                        ||x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.Url.ToString().CaseInsensitiveContains(searchValue)
+                        ||x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.Metadata.ToString().CaseInsensitiveContains(searchValue)
+                        ||x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.MetaDescription.ToString().CaseInsensitiveContains(searchValue)
+                        ||x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.Keyword.ToString().CaseInsensitiveContains(searchValue)
+                        ||x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.TotalViews.ToString().CaseInsensitiveContains(searchValue)
+                        ||x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.Tenant.Name.CaseInsensitiveContains(searchValue)
+                        ||x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.CreatedBy.CaseInsensitiveContains(searchValue)
+                        ||x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.UpdatedBy.CaseInsensitiveContains(searchValue)
+                        ||x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.CreatedOn.ToString().Contains(searchValue.IsMatchingTo("{0:dd/MM/yyyy HH:mm:ss tt}") ? Convert.ToDateTime(searchValue).ToString("dd/MM/yyyy HH:mm:ss tt") : searchValue)
+                        ||x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.UpdatedOn.ToString().Contains(searchValue.IsMatchingTo("{0:dd/MM/yyyy HH:mm:ss tt}") ? Convert.ToDateTime(searchValue).ToString("dd/MM/yyyy HH:mm:ss tt") : searchValue)
                         ));
 
                 pageSize = pageSize < busConstant.Numbers.Integer.ZERO ? totalRecords : pageSize;
@@ -70,48 +71,50 @@ namespace SHF.Business.BusinessLogic
                 //Database query
                 collection = unitOfWork.Services3Section4Repository.Get().Join(unitOfWork.TenantRepository.Get(), Services3Section4 => Services3Section4.Tenant_ID, tenant => tenant.ID, (Services3Section4, tenant) => new { Services3Section4, tenant })
                     .Join(unitOfWork.Services3MasterRepository.Get(), Services3Section4_tenant => Services3Section4_tenant.Services3Section4.Service_Id, Services3Master => Services3Master.ID, (Services3Section4_tenant, Services3Master) => new { Services3Section4_tenant, Services3Master })
-                    .Where(x => (tenant_Id == null || x.Services3Section4_tenant.Services3Section4.Tenant_ID == tenant_Id)
-                            && (x.Services3Section4_tenant.Services3Section4.ID.ToString().Contains(searchValue)
-                            || x.Services3Section4_tenant.Services3Section4.Heading.CaseInsensitiveContains(searchValue)
-                            || x.Services3Section4_tenant.Services3Section4.ShortDescription.CaseInsensitiveContains(searchValue)
-                            || x.Services3Section4_tenant.Services3Section4.AncharTagTitle.CaseInsensitiveContains(searchValue)
-                        || x.Services3Section4_tenant.Services3Section4.AncharTagUrl.CaseInsensitiveContains(searchValue)
-                        || x.Services3Master.SubSubCategoryName.CaseInsensitiveContains(searchValue)
-                        || x.Services3Section4_tenant.Services3Section4.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
-                        || x.Services3Section4_tenant.Services3Section4.Url.ToString().CaseInsensitiveContains(searchValue)
-                        || x.Services3Section4_tenant.Services3Section4.Metadata.ToString().CaseInsensitiveContains(searchValue)
-                        || x.Services3Section4_tenant.Services3Section4.MetaDescription.ToString().CaseInsensitiveContains(searchValue)
-                        || x.Services3Section4_tenant.Services3Section4.Keyword.ToString().CaseInsensitiveContains(searchValue)
-                        || x.Services3Section4_tenant.Services3Section4.TotalViews.ToString().CaseInsensitiveContains(searchValue)
-                        || x.Services3Section4_tenant.Services3Section4.Tenant.Name.CaseInsensitiveContains(searchValue)
-                        || x.Services3Section4_tenant.Services3Section4.CreatedBy.CaseInsensitiveContains(searchValue)
-                        || x.Services3Section4_tenant.Services3Section4.UpdatedBy.CaseInsensitiveContains(searchValue)
-                        || x.Services3Section4_tenant.Services3Section4.CreatedOn.ToString().Contains(searchValue.IsMatchingTo("{0:dd/MM/yyyy HH:mm:ss tt}") ? Convert.ToDateTime(searchValue).ToString("dd/MM/yyyy HH:mm:ss tt") : searchValue)
-                        || x.Services3Section4_tenant.Services3Section4.UpdatedOn.ToString().Contains(searchValue.IsMatchingTo("{0:dd/MM/yyyy HH:mm:ss tt}") ? Convert.ToDateTime(searchValue).ToString("dd/MM/yyyy HH:mm:ss tt") : searchValue)
+                    .Join(unitOfWork.StateMasterRepository.Get(), Services3Section4_tenant_Services3Master => Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.State_Id, stateMaster => stateMaster.ID, (Services3Section4_tenant_Services3Master, stateMaster) => new { Services3Section4_tenant_Services3Master, stateMaster })
+                    .Where(x => (tenant_Id == null || x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.Tenant_ID == tenant_Id)
+                            && (x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.ID.ToString().Contains(searchValue)
+                            || x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.Heading.CaseInsensitiveContains(searchValue)
+                            || x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.ShortDescription.CaseInsensitiveContains(searchValue)
+                        || x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.AncharTagTitle.CaseInsensitiveContains(searchValue)
+                        || x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.AncharTagUrl.CaseInsensitiveContains(searchValue)
+                        || x.Services3Section4_tenant_Services3Master.Services3Master.SubSubCategoryName.CaseInsensitiveContains(searchValue)
+                        || x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
+                        || x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.Url.ToString().CaseInsensitiveContains(searchValue)
+                        || x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.Metadata.ToString().CaseInsensitiveContains(searchValue)
+                        || x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.MetaDescription.ToString().CaseInsensitiveContains(searchValue)
+                        || x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.Keyword.ToString().CaseInsensitiveContains(searchValue)
+                        || x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.TotalViews.ToString().CaseInsensitiveContains(searchValue)
+                        || x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.Tenant.Name.CaseInsensitiveContains(searchValue)
+                        || x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.CreatedBy.CaseInsensitiveContains(searchValue)
+                        || x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.UpdatedBy.CaseInsensitiveContains(searchValue)
+                        || x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.CreatedOn.ToString().Contains(searchValue.IsMatchingTo("{0:dd/MM/yyyy HH:mm:ss tt}") ? Convert.ToDateTime(searchValue).ToString("dd/MM/yyyy HH:mm:ss tt") : searchValue)
+                        || x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.UpdatedOn.ToString().Contains(searchValue.IsMatchingTo("{0:dd/MM/yyyy HH:mm:ss tt}") ? Convert.ToDateTime(searchValue).ToString("dd/MM/yyyy HH:mm:ss tt") : searchValue)
                         ))
                     .OrderBy(sortColumn + " " + sortColumnDir)
                     .Skip(skip).Take(pageSize).ToList()
                     .Select(x => new ViewModel.Services3Section4IndexViewModel
                     {
-                        ID = x.Services3Section4_tenant.Services3Section4.ID,
-                        Heading = x.Services3Section4_tenant.Services3Section4.Heading,
-                        ShortDescription = x.Services3Section4_tenant.Services3Section4.ShortDescription,
-                        AncharTagTitle = x.Services3Section4_tenant.Services3Section4.AncharTagTitle,
-                        AncharTagUrl = x.Services3Section4_tenant.Services3Section4.AncharTagUrl,
-                        SubSubCategoryName = x.Services3Master.SubSubCategoryName,
-                        DisplayIndex = x.Services3Section4_tenant.Services3Section4.DisplayIndex,
-                        Url = x.Services3Section4_tenant.Services3Section4.Url,
-                        Metadata = x.Services3Section4_tenant.Services3Section4.Metadata,
-                        MetaDescription = x.Services3Section4_tenant.Services3Section4.MetaDescription,
-                        Keyword = x.Services3Section4_tenant.Services3Section4.Keyword,
-                        TotalViews = x.Services3Section4_tenant.Services3Section4.TotalViews,
-                        IsActive = x.Services3Section4_tenant.Services3Section4.IsActive,
-                        TenantName = x.Services3Section4_tenant.Services3Section4.Tenant.Name,
-                        Tenant_ID = x.Services3Section4_tenant.Services3Section4.Tenant.ID,
-                        CreatedBy = x.Services3Section4_tenant.Services3Section4.CreatedBy,
-                        CreatedOn = x.Services3Section4_tenant.Services3Section4.CreatedOn,
-                        UpdatedBy = x.Services3Section4_tenant.Services3Section4.UpdatedBy,
-                        UpdatedOn = x.Services3Section4_tenant.Services3Section4.UpdatedOn
+                        ID = x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.ID,
+                        StateFullName = x.stateMaster.StateFullName,
+                        Heading = x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.Heading,
+                        ShortDescription = x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.ShortDescription,
+                        AncharTagTitle = x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.AncharTagTitle,
+                        AncharTagUrl = x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.AncharTagUrl,
+                        SubSubCategoryName = x.Services3Section4_tenant_Services3Master.Services3Master.SubSubCategoryName,
+                        DisplayIndex = x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.DisplayIndex,
+                        Url = x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.Url,
+                        Metadata = x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.Metadata,
+                        MetaDescription = x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.MetaDescription,
+                        Keyword = x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.Keyword,
+                        TotalViews = x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.TotalViews,
+                        IsActive = x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.IsActive,
+                        TenantName = x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.Tenant.Name,
+                        Tenant_ID = x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.Tenant.ID,
+                        CreatedBy = x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.CreatedBy,
+                        CreatedOn = x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.CreatedOn,
+                        UpdatedBy = x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.UpdatedBy,
+                        UpdatedOn = x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.UpdatedOn
                     }).ToList();
 
 

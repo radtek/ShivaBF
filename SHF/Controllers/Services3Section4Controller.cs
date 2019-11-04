@@ -165,8 +165,10 @@ namespace SHF.Controllers
                                 //entity.Services3Section4s = null;
                                 entity.SubSubCategoriesMaster = null;
                                 entity.Services3Master = null;
+                                entity.StateMaster = null;
                                 entity.Service_Id = entityServices.ID;
                                 entity.SubSubCat_Id = model.SubSubCat_Id;
+                                entity.State_Id = model.State_Id;
                                 entity.Heading = model.Heading;
                                 entity.ShortDescription = model.ShortDescription;
                                 entity.AncharTagTitle = model.AncharTagTitle;
@@ -250,6 +252,7 @@ namespace SHF.Controllers
                                 model.ID = entity.ID;
                                 model.SubSubCat_Id = Convert.ToInt64(entity.SubSubCat_Id);
                                 model.SubSubCategoryName = entityServices.SubSubCategoryName;
+                                model.State_Id = Convert.ToInt64(entity.State_Id);
                                 model.Heading = entity.Heading;
                                 model.ShortDescription = entity.ShortDescription;
                                 model.AncharTagTitle = entity.AncharTagTitle;
@@ -352,6 +355,7 @@ namespace SHF.Controllers
 
                                     entity.Service_Id = entityServices.ID;
                                     entity.SubSubCat_Id = model.SubSubCat_Id;
+                                    entity.State_Id = model.State_Id;
                                     entity.Heading = model.Heading;
                                     entity.ShortDescription = model.ShortDescription;
                                     entity.AncharTagTitle = model.AncharTagTitle;
@@ -368,6 +372,7 @@ namespace SHF.Controllers
                                     //entity.Services3Section4s = null;
                                     entity.SubSubCategoriesMaster = null;
                                     entity.Services3Master = null;
+                                    entity.StateMaster = null;
                                     this.businessServices3Section4.Update(entity);
 
                                     transaction.Complete();

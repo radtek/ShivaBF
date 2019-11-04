@@ -13,6 +13,8 @@ namespace SHF.ViewModel
         public System.Int64? Service_Id { get; set; }
         public System.Int64? SubSubCat_Id { get; set; }
         public System.String SubSubCategoryName { get; set; }
+        public System.String StateFullName { get; set; }
+        public System.Int64 State_Id { get; set; }
         public System.String Heading { get; set; }
         public System.String ShortDescription { get; set; }
         public System.String AncharTagTitle { get; set; }
@@ -35,6 +37,8 @@ namespace SHF.ViewModel
         public System.Int64? Service_Id { get; set; }
         public System.Int64? SubSubCat_Id { get; set; }
         public System.String SubSubCategoryName { get; set; }
+        public System.String StateFullName { get; set; }
+        public System.Int64 State_Id { get; set; }
         public System.String Heading { get; set; }
         public System.String ShortDescription { get; set; }
         public System.String AncharTagTitle { get; set; }

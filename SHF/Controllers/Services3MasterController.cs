@@ -19,7 +19,8 @@ using SHF.Models;
 using SHF.ViewModel;
 using System.Reflection;
 using System.ComponentModel;
-
+using System.IO;
+using SHF.Helpers;
 
 namespace SHF.Controllers
 {
@@ -586,6 +587,38 @@ namespace SHF.Controllers
             {
                 return ExceptionResponse(ex);
             }
+        }
+
+
+        [HttpPost]
+        [Route("Post/Services3Master/FileUpload")]
+        public virtual string UploadFiles(object obj)
+        {
+            //  var tenantId = ViewBag.TenantID;
+            var length = Request.ContentLength;
+            var bytes = new byte[length];
+            Request.InputStream.Read(bytes, 0, length);
+
+            var fileName = Request.Headers["X-File-Name"];
+            var fileSize = Request.Headers["X-File-Size"];
+            var fileType = Request.Headers["X-File-Type"];
+            var tenantId = Request.Headers["tenantId"];
+            string temppath = Server.MapPath("~/" + String.Concat(busConstant.Settings.CMSPath.TENANAT_UPLOAD_DIRECTORY));
+            string path = Server.MapPath("~/" + String.Concat(busConstant.Settings.CMSPath.TENANAT_UPLOAD_DIRECTORY, tenantId));
+            //string path = Server.MapPath("~/Uploads/");
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+            var saveToFileLoc = temppath + "/" + fileName;
+            // var destToFileLoc = path + "/" + fileName;
+            var fileStream = new FileStream(saveToFileLoc, FileMode.Create, FileAccess.ReadWrite);
+            fileStream.Write(bytes, 0, length);
+            fileStream.Close();
+            //Image file compress
+            CompressImage.CompressImageMethod(saveToFileLoc, path, 30);
+            System.IO.File.Delete(saveToFileLoc);
+            return string.Format("{0} bytes uploaded", bytes.Length);
         }
 
 
