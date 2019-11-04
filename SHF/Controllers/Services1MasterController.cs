@@ -605,7 +605,7 @@ namespace SHF.Controllers
         }
 
         [HttpPost]
-        [Route("Post/Services1/FileUpload")]
+        [Route("Post/ImageUpload/FileUpload")]
         public virtual string UploadFiles(object obj)
         {
             //  var tenantId = ViewBag.TenantID;

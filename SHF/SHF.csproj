@@ -469,18 +469,6 @@
     <Compile Include="Helpers\CompressImage.cs" />
     <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Helpers\RequiredField.cs" />
-    <Compile Include="Migrations\201910301446359_DBsetup.cs" />
-    <Compile Include="Migrations\201910301446359_DBsetup.Designer.cs">
-      <DependentUpon>201910301446359_DBsetup.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911030835238_changes.cs" />
-    <Compile Include="Migrations\201911030835238_changes.Designer.cs">
-      <DependentUpon>201911030835238_changes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911031801202_chnages.cs" />
-    <Compile Include="Migrations\201911031801202_chnages.Designer.cs">
-      <DependentUpon>201911031801202_chnages.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Error\CustomHandleErrorInfo.cs" />
@@ -6528,7 +6516,6 @@
     <Content Include="bower_components\moment\min\moment-with-locales.js" />
     <Content Include="bower_components\moment\min\moment-with-locales.min.js" />
     <Content Include="bower_components\moment\min\moment.min.js" />
-    <Content Include="bower_components\moment\min\tests.js" />
     <Content Include="bower_components\moment\moment.js" />
     <Content Include="bower_components\moment\src\lib\create\check-overflow.js" />
     <Content Include="bower_components\moment\src\lib\create\date-from-array.js" />
@@ -9536,17 +9523,6 @@
     <TypeScriptCompile Include="bower_components\JsBarcode\jsbarcode.d.ts" />
     <TypeScriptCompile Include="bower_components\moment\moment.d.ts" />
     <TypeScriptCompile Include="bower_components\sweetalert2\sweetalert2.d.ts" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910301446359_DBsetup.resx">
-      <DependentUpon>201910301446359_DBsetup.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911030835238_changes.resx">
-      <DependentUpon>201911030835238_changes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911031801202_chnages.resx">
-      <DependentUpon>201911031801202_chnages.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
