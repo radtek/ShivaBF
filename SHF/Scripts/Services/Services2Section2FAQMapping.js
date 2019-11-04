@@ -165,7 +165,7 @@ angular.module(config.app).service('Services2Section2FAQMappingCRUD', function (
                     width: "11%",
                     targets: 15
                 },
-{
+               {
                     name: "Services2Master.Url",
                     data: "ServiceUrl",
                     title: "ServiceUrl",

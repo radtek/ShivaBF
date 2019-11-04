@@ -14,7 +14,7 @@
         $scope.AllSubSubCategories = [];
         $scope.Services3Section6PriceMasterCreateOrEditViewModel.SelectedTenant_ID = -1;
         $scope.Services3Section6PriceMasterCreateOrEditViewModel.SelectedSubSubCat_Id = -1;
- $scope.Services3Section6PriceMasterCreateOrEditViewModel.SelectedState_Id = -1;
+        $scope.Services3Section6PriceMasterCreateOrEditViewModel.SelectedState_Id = -1;
         $scope.Preview = function (url) {
           CustomService.PreviewOpen(url);
             }

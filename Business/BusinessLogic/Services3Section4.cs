@@ -114,7 +114,8 @@ namespace SHF.Business.BusinessLogic
                         CreatedBy = x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.CreatedBy,
                         CreatedOn = x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.CreatedOn,
                         UpdatedBy = x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.UpdatedBy,
-                        UpdatedOn = x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.UpdatedOn
+                        UpdatedOn = x.Services3Section4_tenant_Services3Master.Services3Section4_tenant.Services3Section4.UpdatedOn,
+                        ServiceUrl = x.Services3Section4_tenant_Services3Master.Services3Master.Url
                     }).ToList();
 
 

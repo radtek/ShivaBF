@@ -2,9 +2,7 @@
 @{
     ViewBag.Title = "Index";
 }
-
 @section style{
-
     <link href="~/Content/dataTables.bootstrap.min.css" rel="stylesheet" />
 }
 <!-- Content Header (Page header) -->
@@ -17,7 +15,6 @@
         <li class="active"><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Configurations</li>
         <li class="active">Master</li>
-
         <li class="">Services3 Section6 Price Master Details</li>
     </ol>
 </section>
@@ -35,19 +32,19 @@
                         <button type="button" data-toggle="modal" ng-click="CreateAsync()">
                             <i class="fa fa-plus"></i>
                         </button>
-
+                    </div>  <div class="btn-sm btn-group">
+                        <a class="image-link" href="/Media/Guide/Service1Master.png" ng-click="Guide()"></a>
+                        <button type="button" data-toggle="modal" ng-click="Guide()">
+                            <i class="fa fa-camera-retro fa-lg"></i>
+                        </button>
                     </div>
                 </div>
                 <!-- /.box-header -->
                 <input type="hidden" value="@ViewBag.TenantID" id="ViewBag_TenantID" />
-
                 <input id="antiForgeryToken" type="hidden" value="@IndexAntiForgeryToken()" />
-
                 <div class="box-body">
                     <table id="grdTable" class="table table-bordered table-responsive table-striped dataTable" role="grid"></table>
                 </div>
-
-
 
                 <!-- /.box-body -->
             </div>
@@ -56,7 +53,6 @@
         <!-- /.col -->
     </div>
     <!-- /.row -->
-
     <div class="modal fade" id="modal-createOredit" data-backdrop="static" tabindex="-1" data-keyboard="false" style="display:none">
         <!--modal fade-->
         <!--modal fade-->
@@ -69,13 +65,21 @@
             Html.RenderPartial("_CreateOrEditTenant");
         }
     </div>
-
-
-
+    <div class="modal fade" id="modal-guide" data-backdrop="static" tabindex="-1" data-keyboard="false" style="display:none">
+        <!--modal fade-->
+        <!--modal fade-->
+        @if (ViewBag.TenantID <= SHF.Helper.busConstant.Numbers.Integer.ZERO)
+        {
+            Html.RenderPartial("_Guide");
+        }
+        else
+        {
+            Html.RenderPartial("_Guide");
+        }
+    </div>
 
 </section>
 <!-- /.content -->
-
 @functions{
     public string IndexAntiForgeryToken()
     {
@@ -84,11 +88,5 @@
         return cookieToken + ":" + formToken;
     }
 }
-
-
-
-
 @section scripts{
-
-
 }

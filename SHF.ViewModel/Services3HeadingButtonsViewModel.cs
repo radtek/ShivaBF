@@ -26,6 +26,7 @@ namespace SHF.ViewModel
         public string MetaDescription { get; set; }
         public System.String TenantName { get; set; }
         public System.Int64 Tenant_ID { get; set; }
+        public string ServiceUrl { get; set; }
     }
 
     public sealed class Services3HeadingButtonsCreateOrEditViewModel : BaseViewModel

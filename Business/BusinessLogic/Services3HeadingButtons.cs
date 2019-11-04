@@ -105,7 +105,8 @@ namespace SHF.Business.BusinessLogic
                         CreatedBy = x.Services3HeadingButtons_tenant.Services3HeadingButtons.CreatedBy,
                         CreatedOn = x.Services3HeadingButtons_tenant.Services3HeadingButtons.CreatedOn,
                         UpdatedBy = x.Services3HeadingButtons_tenant.Services3HeadingButtons.UpdatedBy,
-                        UpdatedOn = x.Services3HeadingButtons_tenant.Services3HeadingButtons.UpdatedOn
+                        UpdatedOn = x.Services3HeadingButtons_tenant.Services3HeadingButtons.UpdatedOn,
+                        ServiceUrl = x.Services3Master.Url
                     }).ToList();
 
 

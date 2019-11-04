@@ -393,6 +393,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Front\CommonController.cs" />
+    <Compile Include="Controllers\Front\ServiceType4Controller.cs" />
     <Compile Include="Controllers\Front\ServiceType3Controller.cs" />
     <Compile Include="Controllers\Front\ServiceType2Controller.cs" />
     <Compile Include="Controllers\Front\ServiceType1Controller.cs" />
@@ -7418,6 +7419,7 @@
     <Content Include="Content\site.css" />
     <Content Include="Media\Guide\Service1Master.png" />
     <Content Include="Media\Guide\Service2Master.png" />
+    <Content Include="Media\Guide\Service3Master.png" />
     <Content Include="Media\Thumbs\Tenants\1\91dac66c-568f-40c0-a22a-e1f769000a28.jpeg" />
     <Content Include="Media\Thumbs\Tenants\1\dbce6132-f001-4b26-84c3-2ae415b9a095.jpeg" />
     <Content Include="Media\Thumbs\Tenants\2\680f30fe-d922-479c-9ba0-3220fcf8cb14.jpeg" />
@@ -9438,6 +9440,10 @@
     <Content Include="Views\Services2Section2FAQMapping\_Guide.cshtml" />
     <Content Include="Views\Services2Section3DownloadMaster\_Guide.cshtml" />
     <Content Include="Views\Services2Section4Master\_Guide.cshtml" />
+    <Content Include="Views\Services3Master\_Guide.cshtml" />
+    <Content Include="Views\Services3HeadingButtons\_Guide.cshtml" />
+    <Content Include="Views\Services3Section4\_Guide.cshtml" />
+    <Content Include="Views\Services3Section6PriceMaster\_Guide.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
