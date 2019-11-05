@@ -535,7 +535,74 @@ namespace SHF.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("Get/SubSubCategoriesMaster/GetSubSubCategoriesUrl")]
+        public async Task<ActionResult> GetSubSubCategoriesUrl(long Id)
+        {
+            try
+            {
+                using (var transaction = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadUncommitted }))
+                {
+                    try
+                    {
+                        if (Id == default(long))
+                        {
+                            transaction.Complete();
+                            var response = new JsonResponse<dynamic>()
+                            {
+                                Type = busConstant.Messages.Type.EXCEPTION,
+                                Message = busConstant.Messages.Type.Exceptions.BAD_REQUEST,
+                            };
 
+                            Response.StatusCode = Convert.ToInt32(HttpStatusCode.BadRequest);
+                            return Json(response, JsonRequestBehavior.AllowGet);
+                        }
+                        else
+                        {
+                            var entity = this.businessSubSubCategoriesMaster.GetById(Id);
+
+                            if (entity.IsNotNull())
+                            {
+                                var model = new ViewModel.SubSubCategoriesMasterCreateOrEditViewModel();
+                                model.Url = entity.Url;
+                                var response = new JsonResponse<SubSubCategoriesMasterCreateOrEditViewModel>()
+                                {
+                                    Type = busConstant.Messages.Type.RESPONSE,
+                                    Entity = model
+                                };
+
+                                transaction.Complete();
+                                return Json(response, JsonRequestBehavior.AllowGet);
+                            }
+                            else
+                            {
+                                var response = new JsonResponse<dynamic>()
+                                {
+                                    Type = busConstant.Messages.Type.EXCEPTION,
+                                    Message = busConstant.Messages.Type.Exceptions.NOT_FOUND,
+                                };
+
+                                transaction.Complete();
+                                return Json(response, JsonRequestBehavior.AllowGet);
+                            }
+                        }
+                    }
+                    catch
+                    {
+                        transaction.Dispose();
+                        throw;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return ExceptionResponse(ex);
+            }
+            finally
+            {
+                //unitOfWork.Dispose();
+            }
+        }
         #endregion
 
     }

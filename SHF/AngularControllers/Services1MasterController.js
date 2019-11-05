@@ -411,6 +411,45 @@
 
 
         /**************************end File Upload************************/
+
+
+        /****************************************************************************Load LoadSubSubCateUrl*************************************************************************************/
+        $scope.LoadSubSubCateUrl = function (Id) {
+            let promise = SubSubCategoriesMasterCRUD.GetSubSubCategoriesUrl(Id)
+            promise.then(
+                function success(response) {
+                    switch (response.data.Type) {
+                        case 'Exception':
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                        case 'Response':
+                            $scope.Services1MasterCreateOrEditViewModel.Url = response.data.Entity.Url;
+                            console.clear();
+                            break;
+                        default:
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                    }
+                }, function errors(response) {
+                    switch (response.data.Type) {
+                        case 'Exception':
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                        case 'Validation':
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                        default:
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                    }
+
+                });
+        }
     }]);
 
 

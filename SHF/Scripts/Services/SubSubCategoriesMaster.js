@@ -237,11 +237,10 @@ angular.module(config.app).service('SubSubCategoriesMasterCRUD', function ($http
         }
     }
 
-
-    this.LoadProductDropdown = function ProductDropdown(tenantId) {
+    this.GetSubSubCategoriesUrl = function getSubSubCategoriesUrl(Id) {
         let request = $http({
             method: "get",
-            url: "/Get/Product/DropdownListbyTenantAsync?Id=" + tenantId
+            url: "/Get/SubSubCategoriesMaster/GetSubSubCategoriesUrl?Id=" + Id
         });
         return request;
     }

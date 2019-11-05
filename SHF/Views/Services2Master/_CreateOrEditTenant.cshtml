@@ -6,7 +6,7 @@
         return cookieToken + ":" + formToken;
     }
 }
-<script src="~/Scripts/ng-file-upload-5.0.9.js"></script>
+
 <div class="modal-dialog">
     <div class="modal-content">
         <form name="myForm" ng-submit="myForm.$valid && createOreditAsyncForm()" novalidate>
@@ -25,7 +25,7 @@
                         <input id="antiForgeryToken" data-ng-model="antiForgeryToken" type="hidden" data-ng-init="antiForgeryToken='@AntiForgeryToken()'" />
                         <div class="form-group" ng-class="{'has-error': (myForm.SubSubCategoryName.$touched || myForm.SubSubCategoryName.$dirty)  && myForm.SubSubCategoryName.$invalid}">
                             <label>Sub Sub Category Name</label>
-                            <select name="SubSubCategoryName" ng-model="Services2MasterCreateOrEditViewModel.SubSubCat_Id" class="form-control" style="width: 100%;" ng-options="x.ID as x.SubSubCategoryName for x in AllSubSubCategories" required>
+                            <select name="SubSubCategoryName" ng-model="Services2MasterCreateOrEditViewModel.SubSubCat_Id" class="form-control" style="width: 100%;" ng-options="x.ID as x.SubSubCategoryName for x in AllSubSubCategories" ng-change="LoadSubSubCateUrl(Services2MasterCreateOrEditViewModel.SubSubCat_Id)" required>
                                 <option value="" ng-selected="Services2MasterCreateOrEditViewModel.SelectedSubSubCat_Id < 0">-- Select --</option>
                             </select>
                             <div class="help-block" ng-messages="myForm.SubSubCategoryName.$error" ng-if="myForm.SubSubCategoryName.$touched || myForm.SubSubCategoryName.$dirty && myForm.SubSubCategoryName.$invalid">
@@ -33,13 +33,52 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.SubSubCat_Id" ng-bind="errors.formErrors.SubSubCat_Id"></span>
                         </div>
-                        <div class="form-group" ng-class="{'has-error': ((myForm.BannerImagePath.$touched && myForm.BannerImagePath.$invalid) || (!myForm.BannerImagePath.$pristine && myForm.BannerImagePath.$invalid))}">
+                        @*<div class="form-group" ng-class="{'has-error': ((myForm.BannerImagePath.$touched && myForm.BannerImagePath.$invalid) || (!myForm.BannerImagePath.$pristine && myForm.BannerImagePath.$invalid))}">
+            <label>Banner Image Path</label>
+            <div class="col-md-12" style="text-align:center;margin-bottom:10px;">
+                <input type="file" id="file" name="file" single onchange="angular.element(this).scope().setFile(this)" accept="image/*" class="btn btn-primary" required />
+            </div>
+            <div class="col-md-12">
+                <button ng-click="UploadFile()" class="button button4">Upload</button>
+            </div>
+            <div class="col-md-12" style="padding-top:10px;">
+                <div class="col-md-7">
+                    <table align="center" border="1" cellpadding="4" cellspacing="4">
+                        <thead>
+                            <tr>
+                                <th style="background-color: Yellow;color: blue">File Name</th>
+                                <th style="background-color: Yellow;color: blue">File Type</th>
+                                <th style="background-color: Yellow;color: blue">File Size</th>
+                                <th style="background-color: Yellow;color: blue">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="file in fileList">
+                                <td style="color: blue">{{file.file.name}}</td>
+                                <td style="color: blue">{{file.file.type}}</td>
+                                <td style="color: blue">{{file.file.size}}</td>
+                                <td>
+                                    <div id="{{'P'+$index}}">
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="help-block" ng-messages="myForm.BannerImagePath.$error" ng-if="myForm.BannerImagePath.$touched || myForm.BannerImagePath.$dirty && myForm.BannerImagePath.$invalid">
+                <div ng-messages-include="~/ValidationMessages.html"></div>
+            </div>
+            <span class="text-danger" ng-show="errors.formErrors.BannerImagePath" ng-bind="errors.formErrors.BannerImagePath"></span>
+        </div>*@
+                        <div class="form-group" ng-class="{'has-error': ((myForm.BannerImageFile.$touched && myForm.BannerImageFile.$invalid) || (!myForm.BannerImagePath.$pristine && myForm.BannerImagePath.$invalid))}">
                             <label>Banner Image Path</label>
-                            <input type="text" class="form-control" name="BannerImagePath" ng-model="Services2MasterCreateOrEditViewModel.BannerImagePath" ng-disabled="Processing" autocomplete="off" placeholder="Enter Banner Image Path" tooltip-placement="top" uib-tooltip="Enter Banner Image Path" />
-                            <div class="help-block" ng-messages="myForm.BannerImagePath.$error" ng-if="myForm.BannerImagePath.$touched || myForm.BannerImagePath.$dirty && myForm.BannerImagePath.$invalid">
+                            <input type="file" name="BannerImageFile" ng-model="Services2MasterCreateOrEditViewModel.BannerImageFile" required />
+                            @*<input type="file" accept="image/*" class="form-control" name="BannerImageFile" ng-model="Services2MasterCreateOrEditViewModel.BannerImageFile" ng-disabled="Processing" tooltip-placement="top" uib-tooltip="Enter Banner Image Path" />*@
+                            <div class="help-block" ng-messages="myForm.BannerImageFile.$error" ng-if="myForm.BannerImageFile.$touched || myForm.BannerImageFile.$dirty && myForm.BannerImageFile.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
-                            <span class="text-danger" ng-show="errors.formErrors.BannerImagePath" ng-bind="errors.formErrors.BannerImagePath"></span>
+                            <span class="text-danger" ng-show="errors.formErrors.BannerImageFile" ng-bind="errors.formErrors.BannerImageFile"></span>
                         </div>
                         <div class="form-group" ng-class="{'has-error': ((myForm.BannerOnHeading.$touched && myForm.BannerOnHeading.$invalid) || (!myForm.BannerOnHeading.$pristine && myForm.BannerOnHeading.$invalid))}">
                             <label>Banner On Heading</label>
@@ -107,7 +146,6 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.DisplayIndex" ng-bind="errors.formErrors.DisplayIndex"></span>
                         </div>
-
                         <div class="form-group">
                             <label>Is Active</label><br />
                             <label>
@@ -123,9 +161,9 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.TotalViews" ng-bind="errors.formErrors.TotalViews"></span>
                         </div>
-                        <div class="form-group" ng-class="{'has-error': (myForm.Url.$touched || myForm.TotalViews.$dirty)  && myForm.TotalViews.$invalid}">
+                        <div class="form-group" ng-class="{'has-error': (myForm.Url.$touched || myForm.Url.$dirty)  && myForm.Url.$invalid}">
                             <label>Url</label>
-                            <input type="text" class="form-control" name="Url" ng-model="Services2MasterCreateOrEditViewModel.Url" ng-disabled="Processing" autocomplete="off" placeholder="Enter Url" tooltip-placement="top" uib-tooltip="Enter Url" required />
+                            <input type="text" class="form-control" name="Url" ng-model="Services2MasterCreateOrEditViewModel.Url" readonly ng-disabled="Processing" autocomplete="off" placeholder="Enter Url" tooltip-placement="top" uib-tooltip="Enter Url" required />
                             <div class="help-block" ng-messages="myForm.Url.$error" ng-if="myForm.Url.$touched || myForm.Url.$dirty && myForm.Url.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>

@@ -375,7 +375,8 @@ $scope.LoadAllCategory = function () {
  $scope.BindServiceTypeDropDownList = function (Id) {
             $scope.AllServiceType = [];
             $scope.AllServiceType = CodeValueCRUD.LoadCodeValueByCodeId(Id);
-        }         
+ }
+
     }]);
 
 

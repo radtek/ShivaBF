@@ -6,7 +6,7 @@
         return cookieToken + ":" + formToken;
     }
 }
-<script src="~/Scripts/ng-file-upload-5.0.9.js"></script>
+
 <div class="modal-dialog">
     <div class="modal-content">
         <form name="myForm" ng-submit="myForm.$valid && createOreditAsyncForm()" novalidate>
@@ -26,7 +26,7 @@
                         
                         <div class="form-group" ng-class="{'has-error': (myForm.SubSubCategoryName.$touched || myForm.SubSubCategoryName.$dirty)  && myForm.SubSubCategoryName.$invalid}">
                             <label>Sub Sub Category Name</label>
-                            <select name="SubSubCategoryName" ng-model="Services8MasterCreateOrEditViewModel.SubSubCat_Id" class="form-control" style="width: 100%;" ng-options="x.ID as x.SubSubCategoryName for x in AllSubSubCategories" required>
+                            <select name="SubSubCategoryName" ng-model="Services8MasterCreateOrEditViewModel.SubSubCat_Id" class="form-control" style="width: 100%;" ng-options="x.ID as x.SubSubCategoryName for x in AllSubSubCategories" ng-change="LoadSubSubCateUrl(Services8MasterCreateOrEditViewModel.SubSubCat_Id)" required>
                                 <option value="" ng-selected="Services8MasterCreateOrEditViewModel.SelectedSubSubCat_Id < 0">-- Select --</option>
                             </select>
                             <div class="help-block" ng-messages="myForm.SubSubCategoryName.$error" ng-if="myForm.SubSubCategoryName.$touched || myForm.SubSubCategoryName.$dirty && myForm.SubSubCategoryName.$invalid">
@@ -146,9 +146,9 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.TotalViews" ng-bind="errors.formErrors.TotalViews"></span>
                         </div>
-                        <div class="form-group" ng-class="{'has-error': (myForm.Url.$touched || myForm.TotalViews.$dirty)  && myForm.TotalViews.$invalid}">
+                        <div class="form-group" ng-class="{'has-error': (myForm.Url.$touched || myForm.Url.$dirty)  && myForm.Url.$invalid}">
                             <label>Url</label>
-                            <input type="text" class="form-control" name="Url" ng-model="Services8MasterCreateOrEditViewModel.Url" ng-disabled="Processing" autocomplete="off" placeholder="Enter Url" tooltip-placement="top" uib-tooltip="Enter Url" required />
+                            <input type="text" class="form-control" name="Url" ng-model="Services8MasterCreateOrEditViewModel.Url" readonly ng-disabled="Processing" autocomplete="off" placeholder="Enter Url" tooltip-placement="top" uib-tooltip="Enter Url" required />
                             <div class="help-block" ng-messages="myForm.Url.$error" ng-if="myForm.Url.$touched || myForm.Url.$dirty && myForm.Url.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
