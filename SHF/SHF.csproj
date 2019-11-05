@@ -393,6 +393,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Front\CommonController.cs" />
+    <Compile Include="Controllers\Front\ServiceType6Controller.cs" />
     <Compile Include="Controllers\Front\ServiceType5Controller.cs" />
     <Compile Include="Controllers\Front\ServiceType4Controller.cs" />
     <Compile Include="Controllers\Front\ServiceType3Controller.cs" />
