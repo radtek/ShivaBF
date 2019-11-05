@@ -24,39 +24,14 @@
                     <div class="box-body">
                         <input id="antiForgeryToken" data-ng-model="antiForgeryToken" type="hidden" data-ng-init="antiForgeryToken='@AntiForgeryToken()'" />
 
+                        
                         <div class="form-group" ng-class="{'has-error': ((myForm.IconPath.$touched && myForm.IconPath.$invalid) || (!myForm.IconPath.$pristine && myForm.IconPath.$invalid))}">
                             <label>Icon Path</label>
-                            <div class="col-md-12" style="text-align:center;margin-bottom:10px;">
-                                <input type="file" id="file" name="file" single onchange="angular.element(this).scope().setFile(this)" accept="image/*" class="btn btn-primary" required />
-                            </div>
+                            <input type="text" class="form-control" name="IconPath" ng-model="BankMasterCreateOrEditViewModel.IconPath" readonly autocomplete="off" placeholder="Enter Title" tooltip-placement="top" uib-tooltip="Enter Title" />
                             <div class="col-md-12">
-                                <button ng-click="UploadFile()" class="button button4">Upload</button>
+                                <button ng-click="FileUploadAsync()" class="button button4">Upload File</button>
                             </div>
-                            <div class="col-md-12" style="padding-top:10px;">
-                                <div class="col-md-7">
-                                    <table align="center" border="1" cellpadding="4" cellspacing="4">
-                                        <thead>
-                                            <tr>
-                                                <th style="background-color: Yellow;color: blue">File Name</th>
-                                                <th style="background-color: Yellow;color: blue">File Type</th>
-                                                <th style="background-color: Yellow;color: blue">File Size</th>
-                                                <th style="background-color: Yellow;color: blue">Status</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr ng-repeat="file in fileList">
-                                                <td style="color: blue">{{file.file.name}}</td>
-                                                <td style="color: blue">{{file.file.type}}</td>
-                                                <td style="color: blue">{{file.file.size}}</td>
-                                                <td>
-                                                    <div id="{{'P'+$index}}">
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+
                             <div class="help-block" ng-messages="myForm.IconPath.$error" ng-if="myForm.IconPath.$touched || myForm.IconPath.$dirty && myForm.IconPath.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>

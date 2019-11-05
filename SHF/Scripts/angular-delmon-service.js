@@ -34,8 +34,45 @@ app.service('CustomService', function () {
         return value;
     }
 
+    this.UploadFile = function (fileList,url,tenantId) {
+        var output="";
+        for (var i = 0; i < fileList.length; i++) {
+          return outout= this.UploadFileIndividual(fileList[i].file,
+                                        fileList[i].file.name,
+                                        fileList[i].file.type,
+                                        fileList[i].file.size,
+                                        i,url,tenantId);
+        }
+    }
+       
 
-
+    this.UploadFileIndividual = function (fileToUpload, name, type, size, index,url,tenantId) {
+        var value = "";
+        var reqObj = new XMLHttpRequest();
+        reqObj.upload.addEventListener("progress", uploadProgress, false)
+        reqObj.addEventListener("load", uploadComplete, false)
+        reqObj.addEventListener("error", uploadFailed, false)
+        reqObj.addEventListener("abort", uploadCanceled, false)
+        reqObj.open("POST", url, true);
+        reqObj.setRequestHeader("Content-Type", "multipart/form-data");
+        reqObj.setRequestHeader('X-File-Name', name);
+        reqObj.setRequestHeader('X-File-Type', type);
+        reqObj.setRequestHeader('X-File-Size', size);
+        reqObj.setRequestHeader('tenantId', tenantId);
+        reqObj.send(fileToUpload);
+        function uploadProgress(evt) {
+           
+        }
+        function uploadComplete(evt) {
+            return value=name;
+        }
+        function uploadFailed(evt) {
+            return  value="Error";
+        }
+        function uploadCanceled(evt) {
+            return  value="Error";
+        }
+    }
 
     function checkCookie() {
         var user = getCookie("nomleD");

@@ -1,0 +1,72 @@
+﻿@functions{
+    public string AntiForgeryToken()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return cookieToken + ":" + formToken;
+    }
+}
+
+<div class="modal-dialog">
+    <div class="modal-content">
+                <!--myForm.$valid && -->
+                <div class="modal-header">
+                    <button type="button" class="close" ng-click="ShowConfirm('modal-fileupload')" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">File Upload</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="box box-primary">
+                        <div class="box-body">
+                            <input id="antiForgeryToken" data-ng-model="antiForgeryToken" type="hidden" data-ng-init="antiForgeryToken='@AntiForgeryToken()'" />
+
+                            <div class="form-group" ng-class="{'has-error': ((myForm.ImagePath.$touched && myForm.ImagePath.$invalid) || (!myForm.ImagePath.$pristine && myForm.ImagePath.$invalid))}">
+                                <label>Banner Image Path</label>
+                                <div class="col-md-12" style="text-align:center;margin-bottom:10px;">
+                                    <input type="file" id="file" name="file" single onchange="angular.element(this).scope().setFile(this)" accept="image/*" class="btn btn-primary" required />
+                                </div>
+
+                                <div class="col-md-12" style="padding-top:10px;">
+                                    <div class="col-md-7">
+                                        <table align="center" border="1" cellpadding="4" cellspacing="4">
+                                            <thead>
+                                                <tr>
+                                                    <th style="background-color: Yellow;color: blue">File Name</th>
+                                                    <th style="background-color: Yellow;color: blue">File Type</th>
+                                                    <th style="background-color: Yellow;color: blue">File Size</th>
+                                                    <th style="background-color: Yellow;color: blue">Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="file in fileList">
+                                                    <td style="color: blue">{{file.file.name}}</td>
+                                                    <td style="color: blue">{{file.file.type}}</td>
+                                                    <td style="color: blue">{{file.file.size}}</td>
+                                                    <td>
+                                                        <div id="{{'P'+$index}}">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="help-block" ng-messages="myForm.ImagePath.$error" ng-if="myForm.ImagePath.$touched || myForm.ImagePath.$dirty && myForm.ImagePath.$invalid">
+                                    <div ng-messages-include="~/ValidationMessages.html"></div>
+                                </div>
+                                <span class="text-danger" ng-show="errors.formErrors.ImagePath" ng-bind="errors.formErrors.ImagePath"></span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button ng-click="FileUploadAsyncPost()" class="btn btn-sm btn-success pull-left" ng-disabled="myForm.$invalid">Upload</button>
+                    <span ng-if="Processing" class="btn btn-sm btn-success pull-left">Processing...</span>
+                    <span class="btn btn-sm btn-danger" ng-click="ShowConfirm('modal-fileupload')">Close</span>
+                </div>
+        </div>
+    
+    <!-- /.modal-content -->
+</div>
