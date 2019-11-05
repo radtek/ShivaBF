@@ -17,7 +17,7 @@
    select distinct MAIN_CATEGORY_MENU as MAIN_CATEGORY_MENU,Main_Category_Display_Index,1,1,10,
    '/'+lower(replace(replace(dbo.udf_TitleCase(MAIN_CATEGORY_MENU),' ','_'),'&','')),
    dbo.udf_TitleCase(MAIN_CATEGORY_MENU),dbo.udf_TitleCase(MAIN_CATEGORY_MENU),dbo.udf_TitleCase(MAIN_CATEGORY_MENU),'dbo',GETDATE(),'dbo',getdate(),
-   0   FROM [SFApp].[dbo].[tempservices];
+   0   FROM [dbo].[tempservices];
    
      insert into [dbo].[Tbl_SubCategoriesMaster]
       ([SubCategoryName]

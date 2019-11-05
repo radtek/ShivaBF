@@ -469,6 +469,10 @@
     <Compile Include="Helpers\CompressImage.cs" />
     <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Helpers\RequiredField.cs" />
+    <Compile Include="Migrations\201911050207180_DBSetup.cs" />
+    <Compile Include="Migrations\201911050207180_DBSetup.Designer.cs">
+      <DependentUpon>201911050207180_DBSetup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Error\CustomHandleErrorInfo.cs" />
@@ -9523,6 +9527,11 @@
     <TypeScriptCompile Include="bower_components\JsBarcode\jsbarcode.d.ts" />
     <TypeScriptCompile Include="bower_components\moment\moment.d.ts" />
     <TypeScriptCompile Include="bower_components\sweetalert2\sweetalert2.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201911050207180_DBSetup.resx">
+      <DependentUpon>201911050207180_DBSetup.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
