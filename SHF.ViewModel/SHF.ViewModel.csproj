@@ -45,6 +45,7 @@
     <Compile Include="ActiveMenuViewModel.cs" />
     <Compile Include="FrontEnd\CommonMasterViewModel.cs" />
     <Compile Include="FrontEnd\MenusMasterViewModel.cs" />
+    <Compile Include="FrontEnd\ServicesType8ViewModel.cs" />
     <Compile Include="FrontEnd\ServicesType6ViewModel.cs" />
     <Compile Include="FrontEnd\ServicesType5ViewModel.cs" />
     <Compile Include="FrontEnd\ServicesType4ViewModel.cs" />
