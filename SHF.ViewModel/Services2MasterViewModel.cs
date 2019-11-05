@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace SHF.ViewModel
 {
@@ -19,7 +20,9 @@ namespace SHF.ViewModel
         public System.Int64? SubSubCat_Id { get; set; }
        
         public System.String SubSubCategoryName { get; set; }
-      
+
+        
+
         public System.String BannerImagePath { get; set; }
        
         public System.String BannerOnHeading { get; set; }
@@ -55,6 +58,9 @@ namespace SHF.ViewModel
         public System.Int64? SubSubCat_Id { get; set; }
 
         public System.String SubSubCategoryName { get; set; }
+
+        public HttpPostedFileBase BannerImageFile { get; set; }
+       
 
         public System.String BannerImagePath { get; set; }
 

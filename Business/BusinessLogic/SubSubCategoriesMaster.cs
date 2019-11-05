@@ -90,7 +90,7 @@ namespace SHF.Business.BusinessLogic
                     .Select(x => new ViewModel.SubSubCategoriesMasterIndexViewModel
                     {
                         ID = x.Sub_Categories_tenant.Sub_Categories.ID,
-                        SubCategoryName = x.Sub_Categories_tenant.Sub_Categories.SubSubCategoryName,
+                        SubSubCategoryName = x.Sub_Categories_tenant.Sub_Categories.SubSubCategoryName,
                         CategoryName = x.Categories.CategoryName,
                         DisplayIndex = x.Sub_Categories_tenant.Sub_Categories.DisplayIndex,
                         DisplayOnHome = x.Sub_Categories_tenant.Sub_Categories.DisplayOnHome,

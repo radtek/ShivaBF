@@ -52,9 +52,9 @@ angular.module(config.app).service('SubSubCategoriesMasterCRUD', function ($http
                     targets: 1
                 },
                 {
-                    name: "Sub_Categories_tenant.Sub_Categories.SubCategoryName",
-                    data: "SubCategoryName",
-                    title: "SubCategory&nbsp;Name",
+                    name: "Sub_Categories_tenant.Sub_Categories.SubSubCategoryName",
+                    data: "SubSubCategoryName",
+                    title: "SubSubCategory&nbsp;Name",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
                     targets: 2

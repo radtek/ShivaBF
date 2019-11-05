@@ -129,7 +129,7 @@ namespace SHF.Controllers
 
 
         [HttpPost]
-        [AuditAttribute]
+        [Audit]
         [ValidateAntiForgeryTokens]
         [Route("Post/Services2Master/CreateAsync")]
         public async Task<ActionResult> CreateAsync(ViewModel.Services2MasterCreateOrEditViewModel model)
@@ -167,6 +167,20 @@ namespace SHF.Controllers
                                 var entity = new EntityModel.Services2Master();
                                 // Mapper.Map(model, entity);
                                 //entity.ID = model.ID;
+                                // Mapper.Map(model, entity);
+                                string temppath = Server.MapPath("~/" + String.Concat(busConstant.Settings.CMSPath.TENANAT_UPLOAD_DIRECTORY));
+                                string path = Server.MapPath("~/" + String.Concat(busConstant.Settings.CMSPath.TENANAT_UPLOAD_DIRECTORY, model.Tenant_ID));
+                                //string path = Server.MapPath("~/Uploads/");
+                                if (!Directory.Exists(path))
+                                {
+                                    Directory.CreateDirectory(path);
+                                }
+                                var saveToFileLoc = temppath + "/" + model.BannerImageFile.FileName;
+                                model.BannerImageFile.SaveAs(saveToFileLoc);
+                                //Image file compress
+                                CompressImage.CompressImageMethod(saveToFileLoc, path, 30);
+                                System.IO.File.Delete(saveToFileLoc);
+                                entity.BannerImagePath = model.BannerImageFile.FileName;
                                 entity.BannerImagePath = model.BannerImagePath;
                                 entity.BannerOnHeading = model.BannerOnHeading;
                                 entity.Cat_Id = entitySubSubCategoryName.Cat_Id;
@@ -372,8 +386,19 @@ namespace SHF.Controllers
                                 if (entity.IsNotNull())
                                 {
                                     // Mapper.Map(model, entity);
-                               
-                                entity.BannerImagePath = model.BannerImagePath;
+                                    string temppath = Server.MapPath("~/" + String.Concat(busConstant.Settings.CMSPath.TENANAT_UPLOAD_DIRECTORY));
+                                    string path = Server.MapPath("~/" + String.Concat(busConstant.Settings.CMSPath.TENANAT_UPLOAD_DIRECTORY, model.Tenant_ID));
+                                    //string path = Server.MapPath("~/Uploads/");
+                                    if (!Directory.Exists(path))
+                                    {
+                                        Directory.CreateDirectory(path);
+                                    }
+                                    var saveToFileLoc = temppath + "/" + model.BannerImageFile.FileName;
+                                    model.BannerImageFile.SaveAs(saveToFileLoc);
+                                    //Image file compress
+                                    CompressImage.CompressImageMethod(saveToFileLoc, path, 30);
+                                    System.IO.File.Delete(saveToFileLoc);
+                                entity.BannerImagePath = model.BannerImageFile.FileName;
                                 entity.BannerOnHeading = model.BannerOnHeading;
                                 entity.Cat_Id = entitySubSubCategoryName.Cat_Id;
                                 entity.SubCat_Id = entitySubSubCategoryName.SubCat_Id;
