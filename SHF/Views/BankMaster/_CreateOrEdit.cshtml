@@ -69,17 +69,14 @@
                             <span class="text-danger" ng-show="errors.formErrors.Tenant_ID" ng-bind="errors.formErrors.Tenant_ID"></span>
                         </div>
 
-                        <div class="form-group" ng-class="{'has-error': ((myForm.IconPath.$touched && myForm.IconPath.$invalid) || (!myForm.IconPath.$pristine && myForm.IconPath.$invalid))}">
+                        <div class="form-group" ng-class="{'has-error': ((myForm.File.$touched && myForm.File.$invalid) || (!myForm.File.$pristine && myForm.File.$invalid))}">
                             <label>Icon Path</label>
-                            <input type="text" class="form-control" name="IconPath" ng-model="BankMasterCreateOrEditViewModel.IconPath" readonly autocomplete="off" placeholder="Enter Title" tooltip-placement="top" uib-tooltip="Enter Title" />
-                            <div class="col-md-12">
-                                <button ng-click="FileUploadAsync()" class="button button4">Upload File</button>
-                            </div>
-                             
-                            <div class="help-block" ng-messages="myForm.IconPath.$error" ng-if="myForm.IconPath.$touched || myForm.IconPath.$dirty && myForm.IconPath.$invalid">
+                            <input type="file" single class="form-control" name="File" ng-model="BankMasterCreateOrEditViewModel.File" readonly autocomplete="off" placeholder="Enter Title" tooltip-placement="top" uib-tooltip="Enter Title" />
+                           
+                            <div class="help-block" ng-messages="myForm.File.$error" ng-if="myForm.File.$touched || myForm.File.$dirty && myForm.File.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
-                            <span class="text-danger" ng-show="errors.formErrors.IconPath" ng-bind="errors.formErrors.IconPath"></span>
+                            <span class="text-danger" ng-show="errors.formErrors.File" ng-bind="errors.formErrors.File"></span>
                         </div>
 
                         <div class="form-group" ng-class="{'has-error': (myForm.Description.$touched || myForm.Description.$dirty)  && myForm.Description.$invalid}">

@@ -276,13 +276,13 @@
             $scope.ImageProperty = {
                 file: ''
             }
-            $scope.$apply();
             $('#modal-fileupload').modal('show');
         }
 
-        $scope.FileUploadAsyncPost() = function ()
+        $scope.FileUploadAsyncPost = function ()
         {
-            var val = $scope.FileUpload(fileList, "/Post/TenantCommonUploadFile/FileUpload", $scope.BankMasterCreateOrEditViewModel.Tenant_ID);
+debugger;
+            var val = $scope.FileUpload($scope.fileList, "/Post/TenantCommonUploadFile/FileUpload", $scope.BankMasterCreateOrEditViewModel.Tenant_ID);
             if (val !== "Error" && val !== "") {
                 $scope.BankMasterCreateOrEditViewModel.IconPath = val;
                 $('#modal-fileupload').modal('hide');
@@ -295,7 +295,6 @@
             $scope.ImageProperty = {
                 file: ''
             }
-            $scope.$apply();
             
         }
 
@@ -310,14 +309,14 @@
                 $scope.ImageProperty.file = files[i];
                 $scope.fileList.push($scope.ImageProperty);
                 $scope.ImageProperty = {};
-                $scope.$apply();
             }
         }
 
-        $scope.FileUpload = function (fileList, url, tenantId) {
-            return CustomService.UploadFile(fileList, url, tenantId);
+       $scope.FileUpload = function (fileList, url, tenantId) {
+             CustomService.FnUploadFile(fileList, url, tenantId).then(function (value) {
+           alert(value);
+        });
         }
-       
 
         /**************************end File Upload************************/
 

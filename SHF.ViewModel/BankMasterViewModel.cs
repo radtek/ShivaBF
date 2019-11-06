@@ -7,6 +7,7 @@ namespace SHF.ViewModel
 {
     public sealed class BankMasterIndexViewModel : BaseViewModel
     {
+        public dynamic File { get; set; }
         public System.String IconPath { get; set; }
         public System.String Description { get; set; }
         public System.Boolean? IsActive { get; set; }
@@ -18,7 +19,7 @@ namespace SHF.ViewModel
         [Display(Name = "Icon Path")]
         //[RequiredField(ErrorMessage = busConstant.Messages.Type.Validations.REQUIRED)]
         public System.String IconPath { get; set; }
-
+        public dynamic File { get; set; }
         [Display(Name = "Description")]
         [RequiredField(ErrorMessage = busConstant.Messages.Type.Validations.REQUIRED)]
         public System.String Description { get; set; }

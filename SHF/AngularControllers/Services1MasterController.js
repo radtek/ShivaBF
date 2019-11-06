@@ -15,9 +15,11 @@
         $scope.Services1MasterCreateOrEditViewModel.SelectedSubSubCat_Id = -1;
         $scope.fileList = [];
         $scope.curFile;
-        $scope.ImageProperty = {
+  $scope.ImageProperty = {
             file: ''
-        }
+        };
+        $scope.Services1MasterCreateOrEditViewModel.ImageProperty = [];
+       // $scope.Services1MasterCreateOrEditViewModel.ImageProperty.file={};
         $scope.Cookie_Tenant_ID = parseInt(CustomService.GetTenantID());
         $scope.Services1MasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
 
@@ -161,6 +163,7 @@
         $scope.createOreditAsyncForm = function () {
             $scope.Processing = true;
             $scope.path = "";
+debugger;
             if ($scope.myForm.$valid) {
                 $scope.path = ($scope.Services1MasterCreateOrEditViewModel.ID == undefined || $scope.Services1MasterCreateOrEditViewModel.ID == null ||
           $scope.Services1MasterCreateOrEditViewModel.ID == 0) ? "/Post/Services1Master/CreateAsync" : "/Post/Services1Master/EditAsync";
@@ -342,72 +345,79 @@
             $scope.AllServiceType = CodeValueCRUD.LoadCodeValueByCodeId(Id);
         }
 
-        $scope.FileUploadAsync = function () {
-            $scope.fileList = [];
-            $scope.curFile;
-            $scope.ImageProperty = {
-                file: ''
-            }
-            $scope.$apply();
-            $('#modal-fileupload').modal('show');
+       /***************************************for file Upload 1****************************/
+
+
+ $scope.setFile = function (element) {
+debugger;
+   var files = element.files;
+     //$scope.ImageProperty.file = files[0];   
+var reader = new FileReader();
+var fileByteArray = [];
+reader.readAsArrayBuffer(files[0]);
+reader.onloadend = function (evt) {
+    if (evt.target.readyState == FileReader.DONE) {
+       var arrayBuffer = evt.target.result,
+           array = new Uint8Array(arrayBuffer);
+       for (var i = 0; i < array.length; i++) {
+           fileByteArray.push(array[i]);
         }
+    }
+}
 
-        $scope.FileUploadAsyncPost() = function () {
-            var val = $scope.FileUpload(fileList, "/Post/TenantCommonUploadFile/FileUpload", $scope.Services1MasterCreateOrEditViewModel.Tenant_ID);
-            if (val !== "Error" && val !== "") {
-                $scope.Services1MasterCreateOrEditViewModel.BannerImagePath = val;
-                $('#modal-fileupload').modal('hide');
-            }
-            else {
-                $scope.Services1MasterCreateOrEditViewModel.BannerImagePath = "";
-            }
-            $scope.fileList = [];
-            $scope.curFile;
-            $scope.ImageProperty = {
-                file: ''
-            }
-            $scope.$apply();
-
-        }
-
-
-        $scope.Section1FileUploadAsync() = function () {
-            var val = $scope.FileUpload(fileList, "/Post/TenantCommonUploadFile/FileUpload", $scope.Services1MasterCreateOrEditViewModel.Tenant_ID);
-            if (val !== "Error" && val !== "") {
-                $scope.Services1MasterCreateOrEditViewModel.Section1AfterBannerImagePath = val;
-                $('#modal-fileupload').modal('hide');
-            }
-            else {
-                $scope.Services1MasterCreateOrEditViewModel.Section1AfterBannerImagePath = "";
-            }
-            $scope.fileList = [];
-            $scope.curFile;
-            $scope.ImageProperty = {
-                file: ''
-            }
-            $scope.$apply();
-
-        }
-
-
-        /***************************************for file Upload****************************/
-
-
-        $scope.setFile = function (element) {
-            $scope.fileList = [];
-
-            var files = element.files;
-            for (var i = 0; i < files.length; i++) {
-                $scope.ImageProperty.file = files[i];
-                $scope.fileList.push($scope.ImageProperty);
-                $scope.ImageProperty = {};
-                $scope.$apply();
-            }
-        }
-
-        $scope.FileUpload = function (fileList, url, tenantId) {
-            return CustomService.UploadFile(fileList, url, tenantId);
-        }
+$scope.Services1MasterCreateOrEditViewModel.ImageProperty =fileByteArray;
+   //  $scope.fileList = [];
+    // var files = element.files;
+     //$scope.ImageProperty.file = files[0];    
+     //$scope.Services1MasterCreateOrEditViewModel.ImageProperty =  $scope.ImageProperty;
+    
+ }
+ $scope.UploadFile = function () {
+     for (var i = 0; i < $scope.fileList.length; i++) {
+         $scope.UploadFileIndividual($scope.fileList[i].file,
+                                     $scope.fileList[i].file.name,
+                                     $scope.fileList[i].file.type,
+                                     $scope.fileList[i].file.size,
+                                     i);
+     }
+ }
+ $scope.UploadFileIndividual = function (fileToUpload, name, type, size, index) {
+     var tenantId = $scope.Services3MasterCreateOrEditViewModel.Tenant_ID;
+     var reqObj = new XMLHttpRequest();
+     reqObj.upload.addEventListener("progress", uploadProgress, false)
+     reqObj.addEventListener("load", uploadComplete, false)
+     reqObj.addEventListener("error", uploadFailed, false)
+     reqObj.addEventListener("abort", uploadCanceled, false)
+     reqObj.open("POST", "/Post/TenantCommonUploadFile/FileUpload", true);
+     reqObj.setRequestHeader("Content-Type", "multipart/form-data");
+     reqObj.setRequestHeader('X-File-Name', name);
+     reqObj.setRequestHeader('X-File-Type', type);
+     reqObj.setRequestHeader('X-File-Size', size);
+     reqObj.setRequestHeader('tenantId', tenantId);
+     reqObj.send(fileToUpload);
+     function uploadProgress(evt) {
+         if (evt.lengthComputable) {
+             var uploadProgressCount = Math.round(evt.loaded * 100 / evt.total);
+             document.getElementById('P' + index).innerHTML = uploadProgressCount;
+             if (uploadProgressCount == 100) {
+                 document.getElementById('P' + index).innerHTML =
+                '<i class="fa fa-refresh fa-spin" style="color:green;"></i>';
+             }
+         }
+     }
+     function uploadComplete(evt) {
+         document.getElementById('P' + index).innerHTML = '<span style="color:Green;font-weight:bold;font-style: oblique">Saved..</span>';
+         $scope.NoOfFileSaved++;
+         $scope.Services1MasterCreateOrEditViewModel.BannerImagePath = name;
+        // $scope.$apply();
+     }
+     function uploadFailed(evt) {
+         document.getElementById('P' + index).innerHTML = '<span style="color:Red;font-weight:bold;font-style: oblique">Upload Failed..</span>';
+     }
+     function uploadCanceled(evt) {
+         document.getElementById('P' + index).innerHTML = '<span style="color:Red;font-weight:bold;font-style: oblique">Canceled..</span>';
+     }
+ }
 
 
         /**************************end File Upload************************/

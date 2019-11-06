@@ -100,11 +100,11 @@
         <!--modal fade-->
         @if (ViewBag.TenantID <= SHF.Helper.busConstant.Numbers.Integer.ZERO)
         {
-            Html.RenderPartial("~/Shared/_FileUpload");
+            Html.RenderPartial("~/Views/Shared/_FileUpload.cshtml");
         }
         else
         {
-            Html.RenderPartial("~/Shared/_FileUpload");
+            Html.RenderPartial("~/Views/Shared/_FileUpload.cshtml");
         }
     </div>
 

@@ -148,8 +148,12 @@ namespace SHF.ViewModel
         public string MetaDescription { get; set; }
         public System.String TenantName { get; set; }
         public System.Int64 Tenant_ID { get; set; }
+       public Array[] ImageProperty{ get; set; }
     }
-
+    public class ImageProperty
+    {
+        public object file { get; set; }
+    }
     public class Services1MasterDropdownListViewModel
     {
         public System.String SubSubCategoryName { get; set; }

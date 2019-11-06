@@ -20,7 +20,7 @@ using SHF.ViewModel;
 using System.Reflection;
 using System.ComponentModel;
 using System.IO;
-using SHF.Helpers;
+
 
 namespace SHF.Controllers
 {
@@ -564,7 +564,7 @@ namespace SHF.Controllers
             fileStream.Write(bytes, 0, length);
             fileStream.Close();
             //Image file compress
-            CompressImage.CompressImageMethod(saveToFileLoc, path, 30);
+            SHF.Helpers.CompressImage.CompressImageMethod(saveToFileLoc, path, 30);
             System.IO.File.Delete(saveToFileLoc);
             return string.Format("{0} bytes uploaded", bytes.Length);
         }
