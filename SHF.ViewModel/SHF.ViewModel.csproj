@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActiveMenuViewModel.cs" />
+    <Compile Include="BannerMasterViewModel.cs" />
     <Compile Include="FrontEnd\CommonMasterViewModel.cs" />
     <Compile Include="FrontEnd\MenusMasterViewModel.cs" />
     <Compile Include="FrontEnd\ServicesType7ViewModel.cs" />

@@ -129,5 +129,7 @@ namespace SHF.Models
         public DbSet<SHF.EntityModel.BannerNavigationsDetails> BannerNavigationsDetails { get; set; }
         public DbSet<SHF.EntityModel.IPInfo> IPInfo { get; set; }
 
+        public DbSet<SHF.EntityModel.BannerMaster> BannerMaster { get; set; }
+
     }
 }

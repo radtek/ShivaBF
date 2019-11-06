@@ -392,6 +392,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BannerMasterController.cs" />
     <Compile Include="Controllers\Front\CommonController.cs" />
     <Compile Include="Controllers\Front\ServiceType7Controller.cs" />
     <Compile Include="Controllers\Front\ServiceType8Controller.cs" />
@@ -496,6 +497,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AngularControllers\AspNetUserController.js" />
+    <Content Include="AngularControllers\BannerMasterController.js" />
     <Content Include="AngularControllers\RelatedBlogsMappingController.js" />
     <Content Include="AngularControllers\BannerNavigationsDetailsController.js" />
     <Content Include="AngularControllers\BlogMasterController.js" />
@@ -9120,6 +9122,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Services\AspNetRole.js" />
     <Content Include="Scripts\Services\AspNetUser.js" />
+    <Content Include="Scripts\Services\BannerMaster.js" />
     <Content Include="Scripts\Services\RelatedBlogsMapping.js" />
     <Content Include="Scripts\Services\BannerNavigationsDetails.js" />
     <Content Include="Scripts\Services\BlogMaster.js" />
@@ -9412,6 +9415,9 @@
     <Content Include="Views\Services3Section4\_Guide.cshtml" />
     <Content Include="Views\Services3Section6PriceMaster\_Guide.cshtml" />
     <Content Include="Views\Shared\_FileUpload.cshtml" />
+    <Content Include="Views\BannerMaster\_CreateOrEdit.cshtml" />
+    <Content Include="Views\BannerMaster\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\BannerMaster\Index.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />

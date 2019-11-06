@@ -91,6 +91,7 @@ namespace SHF.DataAccess.Implementations
         private GenericRepository<EntityModel.HomePageSection4> _HomePageSection4Repository;
         private GenericRepository<EntityModel.HomePageSection4Testimonails> _HomePageSection4TestimonailsRepository;
         private GenericRepository<EntityModel.HomePageSection5> _HomePageSection5Repository;
+        private GenericRepository<EntityModel.BannerMaster> _BannerMasterRepository;
 
 
         #endregion
@@ -875,7 +876,19 @@ namespace SHF.DataAccess.Implementations
                 return _HomePageSection5Repository;
             }
         }
-        
+
+        public GenericRepository<EntityModel.BannerMaster> BannerMasterRepository
+        {
+            get
+            {
+                if (this._BannerMasterRepository == null)
+                {
+                    this._BannerMasterRepository = new GenericRepository<EntityModel.BannerMaster>(context);
+                }
+                return _BannerMasterRepository;
+            }
+        }
+      
         #endregion
 
         #region [Constructors]
