@@ -76,10 +76,10 @@ angular.module(config.app).service('BannerMasterCRUD', function ($http) {
                     targets: 2
                 },
                   {
-                        name: "Banner.BannerPath",
-                        data: "BannerPath",
+                   name: "Banner.BannerPath",
+                    data: "BannerPath",
                     title: "Image Preview",
-                   render: function (data, type, row, meta) {
+                    render: function (data, type, row, meta) {
                         return '<img src="'+data+'" style="height:150px;width:200px;"/>';
                     },
                     width: "40%",
@@ -200,10 +200,10 @@ angular.module(config.app).service('BannerMasterCRUD', function ($http) {
         return request;
     }
 
-    this.LoadPurchaseProductDropdown = function PurchaseProductDropdown(tenantId) {
+    this.LoadAllBannerMasterByTenantIdAsync = function GetAllBannerMasterByTenantIdAsync(tenantId) {
         let request = $http({
             method: "get",
-            url: "/Get/Product/PurchaseDropdownListbyTenantAsync?Id=" + tenantId
+            url: "/Get/BannerMaster/GetAllBannerMasterByTenantIdAsync?Id=" + tenantId
         });
         return request;
     }

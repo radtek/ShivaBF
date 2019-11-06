@@ -1,0 +1,49 @@
+﻿@functions{
+    public string AntiForgeryToken()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return cookieToken + ":" + formToken;
+    }
+}
+
+<div class="modal-dialog">
+    <div class="modal-content">
+                <!--myForm.$valid && -->
+                <div class="modal-header">
+                    <button type="button" class="close" ng-click="ShowConfirm('modal-bannermaster')" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Banner Master</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="box box-primary">
+                        <div class="box-body">
+                            <input id="antiForgeryToken" data-ng-model="antiForgeryToken" type="hidden" data-ng-init="antiForgeryToken='@AntiForgeryToken()'" />
+
+                            <div class="row">
+                                <div class="col-sm-4" ng-repeat="banner in AllBannerMaster">
+                                    <div class="card" style="border: 1px solid #ccc;padding: 6px;">
+                                        <div class="card-body">
+                                            <p class="card-text">{{banner.BannerName}}</p>
+                                            <img src="{{banner.BannerPath}}" alt="" style="height:100px;width:100px;"/>
+                                            <button type="button" class="btn btn-sm btn-success" ng-click="SelectBannerAsync(banner.ID,banner.BannerName)">Select</button>
+                                           </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  
+                    <span class="btn btn-sm btn-danger" ng-click="ShowConfirm('modal-bannermaster')">Close</span>
+                </div>
+        </div>
+    
+    <!-- /.modal-content -->
+</div>

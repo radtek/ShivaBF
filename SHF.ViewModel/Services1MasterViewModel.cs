@@ -148,7 +148,7 @@ namespace SHF.ViewModel
         public string MetaDescription { get; set; }
         public System.String TenantName { get; set; }
         public System.Int64 Tenant_ID { get; set; }
-       public Array[] ImageProperty{ get; set; }
+       
     }
     public class ImageProperty
     {

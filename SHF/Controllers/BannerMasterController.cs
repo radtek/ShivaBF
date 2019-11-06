@@ -226,7 +226,7 @@ namespace SHF.Controllers
                             if (entity.IsNotNull())
                             {
                                 var model = new ViewModel.BannerMasterCreateOrEditViewModel();
-
+                                model.ID = entity.ID;
                                 model.BannerPath = entity.BannerPath;
                                 model.AlternativeText = entity.AlternativeText;
                                 model.Title = entity.Title;
@@ -419,8 +419,77 @@ namespace SHF.Controllers
             }
         }
 
-        [HttpPost]
-        [Route("Post/BannerMaster/FileUpload")]
+        [HttpGet]
+        [Route("Get/BannerMaster/GetAllBannerMasterByTenantIdAsync")]
+        public async Task<ActionResult> GetAllBannerMasterByTenantIdAsync(long Id)
+        {
+            try
+            {
+                using (var transaction = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadUncommitted }))
+                {
+                    try
+                    {
+                        if (Id == 0)
+                        {
+                            transaction.Complete();
+                            var response = new JsonResponse<dynamic>()
+                            {
+                                Type = busConstant.Messages.Type.EXCEPTION,
+                                Message = busConstant.Messages.Type.Exceptions.BAD_REQUEST,
+                                StatusCode = Convert.ToInt32(HttpStatusCode.BadRequest)
+                            };
+
+                            return Json(response, JsonRequestBehavior.AllowGet);
+                        }
+                        else
+                        {
+                            var entities = this.businessBannerMaster.GetAll().Where(Banner => Banner.Tenant_ID == Id ).Select(x => new ViewModel.BannerMasterIndexViewModel
+                            {
+                                ID = x.ID,
+                                BannerPath = String.Concat(busConstant.Settings.CMSPath.TENANAT_UPLOAD_DIRECTORY, x.Tenant_ID) + "/" + x.BannerPath,
+                                BannerName = x.BannerPath
+                            });
+
+                            if (entities.IsNotNull())
+                            {
+                                var response = new JsonResponse<IEnumerable<ViewModel.BannerMasterIndexViewModel>>()
+                                {
+                                    Type = busConstant.Messages.Type.RESPONSE,
+                                    Entity = entities
+                                };
+
+                                transaction.Complete();
+                                return Json(response, JsonRequestBehavior.AllowGet);
+                            }
+                            else
+                            {
+                                var response = new JsonResponse<dynamic>()
+                                {
+                                    Type = busConstant.Messages.Type.EXCEPTION,
+                                    Message = busConstant.Messages.Type.Exceptions.NOT_FOUND,
+                                    StatusCode = Convert.ToInt32(HttpStatusCode.NotFound)
+                                };
+                                transaction.Complete();
+
+                                return Json(response, JsonRequestBehavior.AllowGet);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Dispose();
+                        throw;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return ExceptionResponse(ex);
+            }
+        }
+
+        [HttpPut]
+        [Route("PUT/BannerMaster/FileUpload")]
         public virtual string UploadFiles(object obj)
         {
             //  var tenantId = ViewBag.TenantID;

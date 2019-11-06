@@ -1,5 +1,5 @@
-﻿angular.module(config.app).controller('Services1MasterCtrl', ['$scope', '$http', '$window', 'SubSubCategoriesMasterCRUD', 'Services1MasterCRUD', 'TenantCRUD', 'CustomService', 'CodeValueCRUD',
-    function ($scope, $http, $window, SubSubCategoriesMasterCRUD, Services1MasterCRUD, TenantCRUD, CustomService, CodeValueCRUD) {
+﻿angular.module(config.app).controller('Services1MasterCtrl', ['$scope', '$http', '$window', 'SubSubCategoriesMasterCRUD', 'Services1MasterCRUD', 'TenantCRUD', 'CustomService', 'CodeValueCRUD','BannerMasterCRUD',
+    function ($scope, $http, $window, SubSubCategoriesMasterCRUD, Services1MasterCRUD, TenantCRUD, CustomService, CodeValueCRUD,BannerMasterCRUD) {
         $scope.path = "";
         $scope.errors = {};
         $scope.errors.pageError = {};
@@ -13,13 +13,8 @@
         $scope.AllSubSubCategories = [];
         $scope.Services1MasterCreateOrEditViewModel.SelectedTenant_ID = -1;
         $scope.Services1MasterCreateOrEditViewModel.SelectedSubSubCat_Id = -1;
-        $scope.fileList = [];
-        $scope.curFile;
-  $scope.ImageProperty = {
-            file: ''
-        };
-        $scope.Services1MasterCreateOrEditViewModel.ImageProperty = [];
-       // $scope.Services1MasterCreateOrEditViewModel.ImageProperty.file={};
+$scope.AllBannerMaster = [];
+
         $scope.Cookie_Tenant_ID = parseInt(CustomService.GetTenantID());
         $scope.Services1MasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
 
@@ -247,6 +242,10 @@ debugger;
             CustomService.OnClose(modelId);
         }
 
+$scope.SelectBannerAsync = function (ID,BannerName) {
+$scope.Services1MasterCreateOrEditViewModel.BannerImagePath=BannerName;
+$('#modal-bannermaster').modal('hide');
+}
 
 
         $scope.PageLoad();
@@ -345,82 +344,50 @@ debugger;
             $scope.AllServiceType = CodeValueCRUD.LoadCodeValueByCodeId(Id);
         }
 
-       /***************************************for file Upload 1****************************/
+$scope.SelectBannerasync = function () {
+           $scope.AllBannerMaster = [];
+            if ($scope.Services1MasterCreateOrEditViewModel.Tenant_ID == undefined || $scope.Services1MasterCreateOrEditViewModel.Tenant_ID <= 0 || $scope.Services1MasterCreateOrEditViewModel.Tenant_ID == null) {
+                swal("Please select Tenant", "", "error");
+                return;
+            }
+            var result = BannerMasterCRUD.LoadAllBannerMasterByTenantIdAsync($scope.Services1MasterCreateOrEditViewModel.Tenant_ID);
+            result.then(
+                function success(response) {
+                    switch (response.data.Type) {
 
+                        case 'Exception':
+                            swal('Error', response.data.Message, 'error');
+                            break;
 
- $scope.setFile = function (element) {
-debugger;
-   var files = element.files;
-     //$scope.ImageProperty.file = files[0];   
-var reader = new FileReader();
-var fileByteArray = [];
-reader.readAsArrayBuffer(files[0]);
-reader.onloadend = function (evt) {
-    if (evt.target.readyState == FileReader.DONE) {
-       var arrayBuffer = evt.target.result,
-           array = new Uint8Array(arrayBuffer);
-       for (var i = 0; i < array.length; i++) {
-           fileByteArray.push(array[i]);
+                        case 'Response':
+                            $scope.AllBannerMaster = response.data.Entity;
+                           
+                            break;
+
+                        default:
+                            swal('Error', 'Internal server error', 'error');
+                            break;
+                    }
+                }, function errors(response) {
+                    switch (response.data.Type) {
+
+                        case 'Exception':
+                            swal('Error', response.data.Message, 'error');
+                            break;
+
+                        case 'Validation':
+                            swal('Error', response.data.Message, 'error');
+                            break;
+
+                        default:
+                            swal('Error', 'Internal server error', 'error');
+                            break;
+                    }
+                    //console.clear();
+                });
+
+            $('#modal-bannermaster').modal('show');
         }
-    }
-}
-
-$scope.Services1MasterCreateOrEditViewModel.ImageProperty =fileByteArray;
-   //  $scope.fileList = [];
-    // var files = element.files;
-     //$scope.ImageProperty.file = files[0];    
-     //$scope.Services1MasterCreateOrEditViewModel.ImageProperty =  $scope.ImageProperty;
-    
- }
- $scope.UploadFile = function () {
-     for (var i = 0; i < $scope.fileList.length; i++) {
-         $scope.UploadFileIndividual($scope.fileList[i].file,
-                                     $scope.fileList[i].file.name,
-                                     $scope.fileList[i].file.type,
-                                     $scope.fileList[i].file.size,
-                                     i);
-     }
- }
- $scope.UploadFileIndividual = function (fileToUpload, name, type, size, index) {
-     var tenantId = $scope.Services3MasterCreateOrEditViewModel.Tenant_ID;
-     var reqObj = new XMLHttpRequest();
-     reqObj.upload.addEventListener("progress", uploadProgress, false)
-     reqObj.addEventListener("load", uploadComplete, false)
-     reqObj.addEventListener("error", uploadFailed, false)
-     reqObj.addEventListener("abort", uploadCanceled, false)
-     reqObj.open("POST", "/Post/TenantCommonUploadFile/FileUpload", true);
-     reqObj.setRequestHeader("Content-Type", "multipart/form-data");
-     reqObj.setRequestHeader('X-File-Name', name);
-     reqObj.setRequestHeader('X-File-Type', type);
-     reqObj.setRequestHeader('X-File-Size', size);
-     reqObj.setRequestHeader('tenantId', tenantId);
-     reqObj.send(fileToUpload);
-     function uploadProgress(evt) {
-         if (evt.lengthComputable) {
-             var uploadProgressCount = Math.round(evt.loaded * 100 / evt.total);
-             document.getElementById('P' + index).innerHTML = uploadProgressCount;
-             if (uploadProgressCount == 100) {
-                 document.getElementById('P' + index).innerHTML =
-                '<i class="fa fa-refresh fa-spin" style="color:green;"></i>';
-             }
-         }
-     }
-     function uploadComplete(evt) {
-         document.getElementById('P' + index).innerHTML = '<span style="color:Green;font-weight:bold;font-style: oblique">Saved..</span>';
-         $scope.NoOfFileSaved++;
-         $scope.Services1MasterCreateOrEditViewModel.BannerImagePath = name;
-        // $scope.$apply();
-     }
-     function uploadFailed(evt) {
-         document.getElementById('P' + index).innerHTML = '<span style="color:Red;font-weight:bold;font-style: oblique">Upload Failed..</span>';
-     }
-     function uploadCanceled(evt) {
-         document.getElementById('P' + index).innerHTML = '<span style="color:Red;font-weight:bold;font-style: oblique">Canceled..</span>';
-     }
- }
-
-
-        /**************************end File Upload************************/
 
 
         /****************************************************************************Load LoadSubSubCateUrl*************************************************************************************/

@@ -10,6 +10,7 @@
         $scope.Entity = {};
         $scope.BannerMasterCreateOrEditViewModel = {};
         $scope.AllTenants = [];
+        
        
         $scope.BannerMasterCreateOrEditViewModel.SelectedTenant_ID = -1;
         $scope.BannerMasterCreateOrEditViewModel.SelectedUnitOfMesurment = -1;
@@ -120,6 +121,9 @@
                         case 'Response':
                             $scope.BannerMasterCreateOrEditViewModel = response.data.Entity;
                             $('#modal-createOredit').modal('show');
+                            $scope.ImageProperty = {};
+                            $scope.$apply();
+                            $scope.fileList = [];
                             console.clear();
                             break;
                         case 'Validation':
@@ -269,12 +273,13 @@
             reqObj.addEventListener("load", uploadComplete, false)
             reqObj.addEventListener("error", uploadFailed, false)
             reqObj.addEventListener("abort", uploadCanceled, false)
-            reqObj.open("POST", "/Post/BannerMaster/FileUpload", true);
+            reqObj.open("PUT", "/PUT/BannerMaster/FileUpload", true);
             reqObj.setRequestHeader("Content-Type", "multipart/form-data");
             reqObj.setRequestHeader('X-File-Name', name);
             reqObj.setRequestHeader('X-File-Type', type);
             reqObj.setRequestHeader('X-File-Size', size);
             reqObj.setRequestHeader('tenantId', tenantId);
+           $scope.BannerMasterCreateOrEditViewModel.BannerPath=name;
             reqObj.send(fileToUpload);
             function uploadProgress(evt) {
                 if (evt.lengthComputable) {

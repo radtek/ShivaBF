@@ -31,13 +31,13 @@ namespace SHF.Controllers
         private Business.Interface.IMessage businessMessage;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private Business.Interface.IBannerNavigationsDetails businessBannerNavigationsDetails;
+        private Business.Interface.IBlogBannerNavigationsDetails businessBlogBannerNavigationsDetails;
         private Business.Interface.IBlogMaster businessBlogMaster;
 
-        public BlogBannerNavigationsDetailsController(Business.Interface.IMessage Imessage, Business.Interface.IBannerNavigationsDetails IBannerNavigationsDetails, Business.Interface.IBlogMaster IBlogMaster)
+        public BlogBannerNavigationsDetailsController(Business.Interface.IMessage Imessage, Business.Interface.IBlogBannerNavigationsDetails IBlogBannerNavigationsDetails, Business.Interface.IBlogMaster IBlogMaster)
         {
             this.businessMessage = Imessage;
-            this.businessBannerNavigationsDetails = IBannerNavigationsDetails;
+            this.businessBlogBannerNavigationsDetails = IBlogBannerNavigationsDetails;
             this.businessBlogMaster = IBlogMaster;
 
         }
@@ -84,7 +84,7 @@ namespace SHF.Controllers
         [ValidateAntiForgeryTokens]
         public async Task<ActionResult> IndexAsync()
         {
-            BusinessResultViewModel<ViewModel.BlogsBannerNavigationsDetailsCreateOrEditViewModel> businessResult;
+            BusinessResultViewModel<ViewModel.BlogsBannerNavigationsDetailsIndexViewModel> businessResult;
             try
             {
                 using (var transaction = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadUncommitted }))
@@ -94,7 +94,7 @@ namespace SHF.Controllers
                         long? tenantId = Request.Form.AllKeys.Contains("tenantId") ? Convert.ToInt64(Request.Form.GetValues("tenantId").FirstOrDefault()) : busConstant.Numbers.Integer.ZERO;
                         tenantId = tenantId > busConstant.Numbers.Integer.ZERO ? tenantId : null;
 
-                        businessResult = this.businessBannerNavigationsDetails.Index(Request, tenantId);
+                        businessResult = this.businessBlogBannerNavigationsDetails.Index(Request, tenantId);
                         transaction.Complete();
                     }
                     catch
@@ -142,7 +142,7 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var productId = businessBannerNavigationsDetails.FindBy(Services1Section4 => Services1Section4.Tenant_ID == model.Tenant_ID && Services1Section4.ID == model.ID).FirstOrDefault();
+                            var productId = businessBlogBannerNavigationsDetails.FindBy(Services1Section4 => Services1Section4.Tenant_ID == model.Tenant_ID && Services1Section4.ID == model.ID).FirstOrDefault();
 
                             if (productId.IsNotNull())
                             {
@@ -177,7 +177,7 @@ namespace SHF.Controllers
                                 entity.Keyword = model.Keyword;
                                 entity.MetaDescription = model.MetaDescription;
                                 entity.Tenant_ID = model.Tenant_ID;
-                                this.businessBannerNavigationsDetails.Create(entity);
+                                this.businessBlogBannerNavigationsDetails.Create(entity);
                                 transaction.Complete();
 
                                 var response = new JsonResponse<dynamic>()
@@ -235,7 +235,7 @@ namespace SHF.Controllers
                         }
                         else
                         {
-                            var entity = this.businessBannerNavigationsDetails.GetById(Id);
+                            var entity = this.businessBlogBannerNavigationsDetails.GetById(Id);
 
                             if (entity.IsNotNull())
                             {
@@ -326,7 +326,7 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var Services1Section4Data = businessBannerNavigationsDetails.FindBy(Services1Section4 => Services1Section4.Tenant_ID == model.Tenant_ID && Services1Section4.ID == model.ID).FirstOrDefault();
+                            var Services1Section4Data = businessBlogBannerNavigationsDetails.FindBy(Services1Section4 => Services1Section4.Tenant_ID == model.Tenant_ID && Services1Section4.ID == model.ID).FirstOrDefault();
 
                             if (Services1Section4Data.IsNull())
                             {
@@ -344,7 +344,7 @@ namespace SHF.Controllers
                             else
                             {
 
-                                var entity = this.businessBannerNavigationsDetails.GetById(Convert.ToInt64(model.ID));
+                                var entity = this.businessBlogBannerNavigationsDetails.GetById(Convert.ToInt64(model.ID));
                                 if (entity.IsNotNull())
                                 {
                                     entity.Tenant = null;
@@ -365,7 +365,7 @@ namespace SHF.Controllers
                                     entity.Tenant_ID = model.Tenant_ID;
 
                                     //Mapper.Map(model, entity);
-                                    this.businessBannerNavigationsDetails.Update(entity);
+                                    this.businessBlogBannerNavigationsDetails.Update(entity);
 
                                     transaction.Complete();
 
@@ -437,7 +437,7 @@ namespace SHF.Controllers
                         }
                         else
                         {
-                            this.businessBannerNavigationsDetails.Delete(Convert.ToInt64(Id));
+                            this.businessBlogBannerNavigationsDetails.Delete(Convert.ToInt64(Id));
 
 
                             var response = new JsonResponse<dynamic>()
@@ -493,7 +493,7 @@ namespace SHF.Controllers
                         }
                         else
                         {
-                            var entities = this.businessBannerNavigationsDetails.FindBy(product => product.Tenant_ID == Id).Select(x => new ViewModel.BlogsBannerNavigationsDetailsDropdownListViewModel
+                            var entities = this.businessBlogBannerNavigationsDetails.FindBy(product => product.Tenant_ID == Id).Select(x => new ViewModel.BlogsBannerNavigationsDetailsDropdownListViewModel
                             {
                                 ID = x.ID,
                                 BlogTitle = x.Blog_Id.ToString()

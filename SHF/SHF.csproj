@@ -476,6 +476,10 @@
     <Compile Include="Helpers\CompressImage.cs" />
     <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Helpers\RequiredField.cs" />
+    <Compile Include="Migrations\201911061858104_DBsetup.cs" />
+    <Compile Include="Migrations\201911061858104_DBsetup.Designer.cs">
+      <DependentUpon>201911061858104_DBsetup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Error\CustomHandleErrorInfo.cs" />
@@ -9425,6 +9429,7 @@
     <Content Include="Views\FooterBlockMaster\_CreateOrEdit.cshtml" />
     <Content Include="Views\FooterBlockMaster\_CreateOrEditTenant.cshtml" />
     <Content Include="Views\FooterBlockMaster\Index.cshtml" />
+    <Content Include="Views\Shared\_BannerMaster.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
@@ -9517,6 +9522,11 @@
     <TypeScriptCompile Include="bower_components\JsBarcode\jsbarcode.d.ts" />
     <TypeScriptCompile Include="bower_components\moment\moment.d.ts" />
     <TypeScriptCompile Include="bower_components\sweetalert2\sweetalert2.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201911061858104_DBsetup.resx">
+      <DependentUpon>201911061858104_DBsetup.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
