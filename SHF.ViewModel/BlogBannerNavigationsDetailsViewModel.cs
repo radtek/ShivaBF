@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SHF.ViewModel
 {
-   public class BannerNavigationsDetailsIndexViewModel : BaseViewModel
+   public class BlogsBannerNavigationsDetailsIndexViewModel : BaseViewModel
     {
        
         public System.String BlogTitle { get; set; }
@@ -24,7 +24,7 @@ namespace SHF.ViewModel
         public System.Int64 Tenant_ID { get; set; }
     }
 
-    public sealed class BannerNavigationsDetailsCreateOrEditViewModel : BaseViewModel
+    public sealed class BlogsBannerNavigationsDetailsCreateOrEditViewModel : BaseViewModel
     {
         public System.String BlogTitle { get; set; }
         public System.Int64? Blog_Id { get; set; }
@@ -40,7 +40,7 @@ namespace SHF.ViewModel
         public System.Int64 Tenant_ID { get; set; }
     }
 
-    public class BannerNavigationsDetailsDropdownListViewModel
+    public class BlogsBannerNavigationsDetailsDropdownListViewModel
     {
         public System.String BlogTitle { get; set; }
         public System.Int64 ID { get; set; }

@@ -126,7 +126,7 @@ namespace SHF.Models
         public DbSet<SHF.EntityModel.BlogCommentsDetails> BlogCommentsDetails { get; set; }
         public DbSet<SHF.EntityModel.RelatedBlogsMapping> RelatedBlogsMapping { get; set; }
         public DbSet<SHF.EntityModel.CommentsReply> CommentsReply { get; set; }
-        public DbSet<SHF.EntityModel.BannerNavigationsDetails> BannerNavigationsDetails { get; set; }
+        public DbSet<SHF.EntityModel.BlogBannerNavigationsDetails> BannerNavigationsDetails { get; set; }
         public DbSet<SHF.EntityModel.IPInfo> IPInfo { get; set; }
 
         public DbSet<SHF.EntityModel.BannerMaster> BannerMaster { get; set; }

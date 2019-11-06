@@ -130,7 +130,7 @@ namespace SHF.Business.BusinessLogic
 
 
 
-        public EntityModel.BannerNavigationsDetails Create(EntityModel.BannerNavigationsDetails entity)
+        public EntityModel.BlogBannerNavigationsDetails Create(EntityModel.BlogBannerNavigationsDetails entity)
         {
             try
             {
@@ -146,11 +146,11 @@ namespace SHF.Business.BusinessLogic
 
 
 
-        public EntityModel.BannerNavigationsDetails GetById(long Id)
+        public EntityModel.BlogBannerNavigationsDetails GetById(long Id)
         {
             try
             {
-                EntityModel.BannerNavigationsDetails entity;
+                EntityModel.BlogBannerNavigationsDetails entity;
                 if (Id == default(long))
                 {
                     throw new Exception(busConstant.Messages.Type.Exceptions.BAD_REQUEST);
@@ -168,7 +168,7 @@ namespace SHF.Business.BusinessLogic
 
 
 
-        public EntityModel.BannerNavigationsDetails Update(EntityModel.BannerNavigationsDetails entity)
+        public EntityModel.BlogBannerNavigationsDetails Update(EntityModel.BlogBannerNavigationsDetails entity)
         {
             try
             {
@@ -196,7 +196,7 @@ namespace SHF.Business.BusinessLogic
 
 
 
-        public IEnumerable<EntityModel.BannerNavigationsDetails> GetAll()
+        public IEnumerable<EntityModel.BlogBannerNavigationsDetails> GetAll()
         {
             try
             {
@@ -209,11 +209,11 @@ namespace SHF.Business.BusinessLogic
         }
 
 
-        public IEnumerable<EntityModel.BannerNavigationsDetails> FindBy(Expression<Func<EntityModel.BannerNavigationsDetails, bool>> filter = null)
+        public IEnumerable<EntityModel.BlogBannerNavigationsDetails> FindBy(Expression<Func<EntityModel.BlogBannerNavigationsDetails, bool>> filter = null)
         {
             try
             {
-                IEnumerable<EntityModel.BannerNavigationsDetails> entities;
+                IEnumerable<EntityModel.BlogBannerNavigationsDetails> entities;
                 if (filter.IsNotNull())
                 {
                     entities = unitOfWork.BannerNavigationsDetailsRepository.Get(filter);
@@ -233,7 +233,7 @@ namespace SHF.Business.BusinessLogic
 
 
 
-        public void DeleteWhere(Expression<Func<EntityModel.BannerNavigationsDetails, bool>> filter = null)
+        public void DeleteWhere(Expression<Func<EntityModel.BlogBannerNavigationsDetails, bool>> filter = null)
         {
             try
             {
@@ -265,7 +265,7 @@ namespace SHF.Business.BusinessLogic
         //    }
         //}
 
-        public Int32 Count(Expression<Func<EntityModel.BannerNavigationsDetails, bool>> filter = null)
+        public Int32 Count(Expression<Func<EntityModel.BlogBannerNavigationsDetails, bool>> filter = null)
         {
             try
             {

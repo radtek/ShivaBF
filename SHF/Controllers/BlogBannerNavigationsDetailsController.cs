@@ -24,7 +24,7 @@ using System.ComponentModel;
 namespace SHF.Controllers
 {
     [AllowAnonymous]
-    public class BannerNavigationsDetailsController : BaseController
+    public class BlogBannerNavigationsDetailsController : BaseController
     {
         #region [Field & Contructor]
 
@@ -34,7 +34,7 @@ namespace SHF.Controllers
         private Business.Interface.IBannerNavigationsDetails businessBannerNavigationsDetails;
         private Business.Interface.IBlogMaster businessBlogMaster;
 
-        public BannerNavigationsDetailsController(Business.Interface.IMessage Imessage, Business.Interface.IBannerNavigationsDetails IBannerNavigationsDetails, Business.Interface.IBlogMaster IBlogMaster)
+        public BlogBannerNavigationsDetailsController(Business.Interface.IMessage Imessage, Business.Interface.IBannerNavigationsDetails IBannerNavigationsDetails, Business.Interface.IBlogMaster IBlogMaster)
         {
             this.businessMessage = Imessage;
             this.businessBannerNavigationsDetails = IBannerNavigationsDetails;
@@ -84,7 +84,7 @@ namespace SHF.Controllers
         [ValidateAntiForgeryTokens]
         public async Task<ActionResult> IndexAsync()
         {
-            BusinessResultViewModel<ViewModel.BannerNavigationsDetailsIndexViewModel> businessResult;
+            BusinessResultViewModel<ViewModel.BlogsBannerNavigationsDetailsCreateOrEditViewModel> businessResult;
             try
             {
                 using (var transaction = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadUncommitted }))
@@ -128,7 +128,7 @@ namespace SHF.Controllers
         [AuditAttribute]
         [ValidateAntiForgeryTokens]
         [Route("Post/BannerNavigationsDetails/CreateAsync")]
-        public async Task<ActionResult> CreateAsync(ViewModel.BannerNavigationsDetailsCreateOrEditViewModel model)
+        public async Task<ActionResult> CreateAsync(ViewModel.BlogsBannerNavigationsDetailsCreateOrEditViewModel model)
         {
             try
             {
@@ -160,7 +160,7 @@ namespace SHF.Controllers
                             else
                             {
 
-                                var entity = new EntityModel.BannerNavigationsDetails();
+                                var entity = new EntityModel.BlogBannerNavigationsDetails();
                                 entity.Tenant = null;
                                 entity.BlogMaster = null;
                                 entity.AncharTagTitle = model.AncharTagTitle;
@@ -240,7 +240,7 @@ namespace SHF.Controllers
                             if (entity.IsNotNull())
                             {
 
-                                var model = new ViewModel.BannerNavigationsDetailsCreateOrEditViewModel();
+                                var model = new ViewModel.BlogsBannerNavigationsDetailsCreateOrEditViewModel();
 
                                 // Mapper.Map(entity, model);
 
@@ -266,7 +266,7 @@ namespace SHF.Controllers
                                 model.IsDeleted = entity.IsDeleted;
 
 
-                                var response = new JsonResponse<BannerNavigationsDetailsCreateOrEditViewModel>()
+                                var response = new JsonResponse<BlogsBannerNavigationsDetailsCreateOrEditViewModel>()
                                 {
                                     Type = busConstant.Messages.Type.RESPONSE,
                                     Entity = model
@@ -310,7 +310,7 @@ namespace SHF.Controllers
         [AuditAttribute]
         [ValidateAntiForgeryTokens]
         [Route("Post/BannerNavigationsDetails/EditAsync")]
-        public async Task<ActionResult> EditAsync(ViewModel.BannerNavigationsDetailsCreateOrEditViewModel model)
+        public async Task<ActionResult> EditAsync(ViewModel.BlogsBannerNavigationsDetailsCreateOrEditViewModel model)
         {
             try
             {
@@ -493,7 +493,7 @@ namespace SHF.Controllers
                         }
                         else
                         {
-                            var entities = this.businessBannerNavigationsDetails.FindBy(product => product.Tenant_ID == Id).Select(x => new ViewModel.BannerNavigationsDetailsDropdownListViewModel
+                            var entities = this.businessBannerNavigationsDetails.FindBy(product => product.Tenant_ID == Id).Select(x => new ViewModel.BlogsBannerNavigationsDetailsDropdownListViewModel
                             {
                                 ID = x.ID,
                                 BlogTitle = x.Blog_Id.ToString()
@@ -501,7 +501,7 @@ namespace SHF.Controllers
 
                             if (entities.IsNotNull())
                             {
-                                var response = new JsonResponse<IEnumerable<ViewModel.BannerNavigationsDetailsDropdownListViewModel>>()
+                                var response = new JsonResponse<IEnumerable<ViewModel.BlogsBannerNavigationsDetailsDropdownListViewModel>>()
                                 {
                                     Type = busConstant.Messages.Type.RESPONSE,
                                     Entity = entities

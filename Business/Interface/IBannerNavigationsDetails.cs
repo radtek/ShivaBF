@@ -11,23 +11,23 @@ namespace SHF.Business.Interface
 {
     public interface IBannerNavigationsDetails
     {
-        EntityModel.BannerNavigationsDetails Create(EntityModel.BannerNavigationsDetails entity);
+        EntityModel.BlogBannerNavigationsDetails Create(EntityModel.BlogBannerNavigationsDetails entity);
 
-        IEnumerable<EntityModel.BannerNavigationsDetails> FindBy(Expression<Func<EntityModel.BannerNavigationsDetails, bool>> filter = null);
+        IEnumerable<EntityModel.BlogBannerNavigationsDetails> FindBy(Expression<Func<EntityModel.BlogBannerNavigationsDetails, bool>> filter = null);
 
-        EntityModel.BannerNavigationsDetails GetById(long Id);
+        EntityModel.BlogBannerNavigationsDetails GetById(long Id);
 
-        IEnumerable<EntityModel.BannerNavigationsDetails> GetAll();
+        IEnumerable<EntityModel.BlogBannerNavigationsDetails> GetAll();
 
-        EntityModel.BannerNavigationsDetails Update(EntityModel.BannerNavigationsDetails entity);
+        EntityModel.BlogBannerNavigationsDetails Update(EntityModel.BlogBannerNavigationsDetails entity);
 
         void Delete(long Id);
 
-        void DeleteWhere(Expression<Func<EntityModel.BannerNavigationsDetails, bool>> filter = null);
+        void DeleteWhere(Expression<Func<EntityModel.BlogBannerNavigationsDetails, bool>> filter = null);
 
         ViewModel.BusinessResultViewModel<ViewModel.BannerNavigationsDetailsIndexViewModel> Index(HttpRequestBase Request, long? tenant_Id);
 
-        Int32 Count(Expression<Func<EntityModel.BannerNavigationsDetails, bool>> filter = null);
+        Int32 Count(Expression<Func<EntityModel.BlogBannerNavigationsDetails, bool>> filter = null);
 
       // IEnumerable<ViewModel.BannerNavigationsDetailsDropdownListViewModel> GetDropdownList();
     }

@@ -57,7 +57,7 @@
     <Compile Include="BlogCommentsDetails.cs" />
     <Compile Include="IPInfo.cs" />
     <Compile Include="RelatedBlogsMapping.cs" />
-    <Compile Include="BannerNavigationsDetails.cs" />
+    <Compile Include="BlogBannerNavigationsDetails.cs" />
     <Compile Include="HomePageSection4Testimonails.cs" />
     <Compile Include="HomePageSection4.cs" />
     <Compile Include="HomePageSection5.cs" />

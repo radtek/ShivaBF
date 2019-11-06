@@ -45,6 +45,7 @@
     <Compile Include="ActiveMenuViewModel.cs" />
     <Compile Include="BannerMasterViewModel.cs" />
     <Compile Include="FrontEnd\CommonMasterViewModel.cs" />
+    <Compile Include="FrontEnd\BlogsMasterViewModel.cs" />
     <Compile Include="FrontEnd\MenusMasterViewModel.cs" />
     <Compile Include="FrontEnd\ServicesType7ViewModel.cs" />
     <Compile Include="FrontEnd\ServicesType8ViewModel.cs" />
@@ -55,7 +56,7 @@
     <Compile Include="FrontEnd\ServicesType2ViewModel.cs" />
     <Compile Include="FrontEnd\ServicesType1ViewModel.cs" />
     <Compile Include="RelatedBlogsMappingViewModel.cs" />
-    <Compile Include="BannerNavigationsDetailsViewModel.cs" />
+    <Compile Include="BlogBannerNavigationsDetailsViewModel.cs" />
     <Compile Include="BlogMasterViewModel.cs" />
     <Compile Include="Services4Section567FieldValuesViewModel.cs" />
     <Compile Include="Services4Section567FieldMasterViewModel.cs" />

@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace SHF.EntityModel
 {
-    [Table("Tbl_BannerNavigationsDetails", Schema = "dbo")]
-    public class BannerNavigationsDetails : BaseEntity
+    [Table("Tbl_BlogBannerNavigationsDetails", Schema = "dbo")]
+    public class BlogBannerNavigationsDetails : BaseEntity
     {
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]

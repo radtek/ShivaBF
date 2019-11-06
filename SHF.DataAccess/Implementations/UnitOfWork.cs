@@ -78,7 +78,7 @@ namespace SHF.DataAccess.Implementations
         private GenericRepository<EntityModel.Services8HeadingButtons> _Services8HeadingButtonsRepository;
         private GenericRepository<EntityModel.Services8Section6Master> _Services8Section6MasterRepository;
         private GenericRepository<EntityModel.BlogMaster> _BlogMasterRepository;
-        private GenericRepository<EntityModel.BannerNavigationsDetails> _BannerNavigationsDetailsRepository;
+        private GenericRepository<EntityModel.BlogBannerNavigationsDetails> _BannerNavigationsDetailsRepository;
         private GenericRepository<EntityModel.BlogCommentsDetails> _BlogCommentsDetailsRepository;
         private GenericRepository<EntityModel.RelatedBlogsMapping> _RelatedBlogsMappingRepository;
         private GenericRepository<EntityModel.CommentsReply> _CommentsReplyRepository;
@@ -744,13 +744,13 @@ namespace SHF.DataAccess.Implementations
                 return _BlogMasterRepository;
             }
         }
-        public GenericRepository<EntityModel.BannerNavigationsDetails> BannerNavigationsDetailsRepository
+        public GenericRepository<EntityModel.BlogBannerNavigationsDetails> BannerNavigationsDetailsRepository
         {
             get
             {
                 if (this._BannerNavigationsDetailsRepository == null)
                 {
-                    this._BannerNavigationsDetailsRepository = new GenericRepository<EntityModel.BannerNavigationsDetails>(context);
+                    this._BannerNavigationsDetailsRepository = new GenericRepository<EntityModel.BlogBannerNavigationsDetails>(context);
                 }
                 return _BannerNavigationsDetailsRepository;
             }

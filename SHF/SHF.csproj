@@ -394,6 +394,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BannerMasterController.cs" />
     <Compile Include="Controllers\Front\CommonController.cs" />
+    <Compile Include="Controllers\Front\BlogsController.cs" />
     <Compile Include="Controllers\Front\ServiceType7Controller.cs" />
     <Compile Include="Controllers\Front\ServiceType8Controller.cs" />
     <Compile Include="Controllers\Front\ServiceType6Controller.cs" />
@@ -404,7 +405,7 @@
     <Compile Include="Controllers\Front\ServiceType1Controller.cs" />
     <Compile Include="Controllers\Front\MenusController.cs" />
     <Compile Include="Controllers\RelatedBlogsMappingController.cs" />
-    <Compile Include="Controllers\BannerNavigationsDetailsController.cs" />
+    <Compile Include="Controllers\BlogBannerNavigationsDetailsController.cs" />
     <Compile Include="Controllers\BlogMasterController.cs" />
     <Compile Include="Controllers\Services4Section567FieldValuesController.cs" />
     <Compile Include="Controllers\Services4Section567FieldMasterController.cs" />
