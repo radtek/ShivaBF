@@ -52,6 +52,8 @@
     <Compile Include="AspNetRoleSubMenu.cs" />
     <Compile Include="AspNetUser.cs" />
     <Compile Include="AspNetUserRole.cs" />
+    <Compile Include="FooterLinks.cs" />
+    <Compile Include="FooterBlockMaster.cs" />
     <Compile Include="BannerMaster.cs" />
     <Compile Include="CommentsReply.cs" />
     <Compile Include="BlogCommentsDetails.cs" />

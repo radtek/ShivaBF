@@ -52,9 +52,10 @@
   <ItemGroup>
     <Compile Include="BaseBusiness.cs" />
     <Compile Include="busCache.cs" />
+    <Compile Include="BusinessLogic\FooterBlockMaster.cs" />
     <Compile Include="BusinessLogic\BannerMaster.cs" />
     <Compile Include="BusinessLogic\RelatedBlogsMapping.cs" />
-    <Compile Include="BusinessLogic\BannerNavigationsDetails.cs" />
+    <Compile Include="BusinessLogic\BlogBannerNavigationsDetails.cs" />
     <Compile Include="BusinessLogic\FAQMaster.cs" />
     <Compile Include="BusinessLogic\BlogMaster.cs" />
     <Compile Include="BusinessLogic\Services4Section567FieldValues.cs" />
@@ -108,9 +109,10 @@
     <Compile Include="BusinessLogic\BankMaster.cs" />
     <Compile Include="BusinessLogic\SubMenu.cs" />
     <Compile Include="BusinessLogic\Tenant.cs" />
+    <Compile Include="Interface\IFooterBlockMaster.cs" />
     <Compile Include="Interface\IBannerMaster.cs" />
     <Compile Include="Interface\IRelatedBlogsMapping.cs" />
-    <Compile Include="Interface\IBannerNavigationsDetails.cs" />
+    <Compile Include="Interface\IBlogBannerNavigationsDetails.cs" />
     <Compile Include="Interface\IBlogMaster.cs" />
     <Compile Include="Interface\IServices4Section567FieldValues.cs" />
     <Compile Include="Interface\IServices4Section567FieldMaster.cs" />

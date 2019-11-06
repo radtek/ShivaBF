@@ -92,8 +92,8 @@ namespace SHF.DataAccess.Implementations
         private GenericRepository<EntityModel.HomePageSection4Testimonails> _HomePageSection4TestimonailsRepository;
         private GenericRepository<EntityModel.HomePageSection5> _HomePageSection5Repository;
         private GenericRepository<EntityModel.BannerMaster> _BannerMasterRepository;
-
-
+        private GenericRepository<EntityModel.FooterBlockMaster> _FooterBlockMasterRepository;
+        private GenericRepository<EntityModel.FooterLinks> _FooterLinksRepository;
         #endregion
 
 
@@ -888,7 +888,32 @@ namespace SHF.DataAccess.Implementations
                 return _BannerMasterRepository;
             }
         }
-      
+
+        public GenericRepository<EntityModel.FooterBlockMaster> FooterBlockMasterRepository
+        {
+            get
+            {
+                if (this._FooterBlockMasterRepository == null)
+                {
+                    this._FooterBlockMasterRepository = new GenericRepository<EntityModel.FooterBlockMaster>(context);
+                }
+                return _FooterBlockMasterRepository;
+            }
+        }
+
+        public GenericRepository<EntityModel.FooterLinks> FooterLinksRepository
+        {
+            get
+            {
+                if (this._FooterLinksRepository == null)
+                {
+                    this._FooterLinksRepository = new GenericRepository<EntityModel.FooterLinks>(context);
+                }
+                return _FooterLinksRepository;
+            }
+        }
+
+
         #endregion
 
         #region [Constructors]

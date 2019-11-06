@@ -17,11 +17,11 @@ using SHF.Helper;
 
 namespace SHF.Business.BusinessLogic
 {
-    public class BannerNavigationsDetails : BaseBusiness, IBannerNavigationsDetails
+    public class BlogBannerNavigationsDetails : BaseBusiness, IBlogBannerNavigationsDetails
     {
-        public ViewModel.BusinessResultViewModel<ViewModel.BannerNavigationsDetailsIndexViewModel> Index(HttpRequestBase Request, long? tenant_Id)
+        public ViewModel.BusinessResultViewModel<ViewModel.BlogsBannerNavigationsDetailsIndexViewModel> Index(HttpRequestBase Request, long? tenant_Id)
         {
-            List<ViewModel.BannerNavigationsDetailsIndexViewModel> collection;
+            List<ViewModel.BlogsBannerNavigationsDetailsIndexViewModel> collection;
             // ArrayList arrayList;
             try
             {
@@ -85,7 +85,7 @@ namespace SHF.Business.BusinessLogic
                         ))
                     .OrderBy(sortColumn + " " + sortColumnDir)
                     .Skip(skip).Take(pageSize).ToList()
-                    .Select(x => new ViewModel.BannerNavigationsDetailsIndexViewModel 
+                    .Select(x => new ViewModel.BlogsBannerNavigationsDetailsIndexViewModel 
                     {
                         ID = x.BannerNavigationsDetails_tenant.BannerNavigationsDetails.ID,
                         AncharTagTitle = x.BannerNavigationsDetails_tenant.BannerNavigationsDetails.AncharTagTitle,
@@ -105,7 +105,7 @@ namespace SHF.Business.BusinessLogic
                     }).ToList();
 
 
-                var businessResultViewModel = new ViewModel.BusinessResultViewModel<ViewModel.BannerNavigationsDetailsIndexViewModel>
+                var businessResultViewModel = new ViewModel.BusinessResultViewModel<ViewModel.BlogsBannerNavigationsDetailsIndexViewModel>
                 {
                     Draw = draw,
                     RecordsFiltered = totalRecords,

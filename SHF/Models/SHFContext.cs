@@ -130,6 +130,8 @@ namespace SHF.Models
         public DbSet<SHF.EntityModel.IPInfo> IPInfo { get; set; }
 
         public DbSet<SHF.EntityModel.BannerMaster> BannerMaster { get; set; }
-
+        
+        public DbSet<SHF.EntityModel.FooterBlockMaster> FooterBlockMaster { get; set; }
+        public DbSet<SHF.EntityModel.FooterLinks> FooterLinks { get; set; }
     }
 }

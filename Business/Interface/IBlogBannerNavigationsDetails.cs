@@ -9,7 +9,7 @@ using SHF.Helper;
 
 namespace SHF.Business.Interface
 {
-    public interface IBannerNavigationsDetails
+    public interface IBlogBannerNavigationsDetails
     {
         EntityModel.BlogBannerNavigationsDetails Create(EntityModel.BlogBannerNavigationsDetails entity);
 
@@ -25,7 +25,7 @@ namespace SHF.Business.Interface
 
         void DeleteWhere(Expression<Func<EntityModel.BlogBannerNavigationsDetails, bool>> filter = null);
 
-        ViewModel.BusinessResultViewModel<ViewModel.BannerNavigationsDetailsIndexViewModel> Index(HttpRequestBase Request, long? tenant_Id);
+        ViewModel.BusinessResultViewModel<ViewModel.BlogsBannerNavigationsDetailsIndexViewModel> Index(HttpRequestBase Request, long? tenant_Id);
 
         Int32 Count(Expression<Func<EntityModel.BlogBannerNavigationsDetails, bool>> filter = null);
 

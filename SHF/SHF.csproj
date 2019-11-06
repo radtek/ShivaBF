@@ -392,6 +392,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FooterBlockMasterController.cs" />
     <Compile Include="Controllers\BannerMasterController.cs" />
     <Compile Include="Controllers\Front\CommonController.cs" />
     <Compile Include="Controllers\Front\BlogsController.cs" />
@@ -498,6 +499,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AngularControllers\AspNetUserController.js" />
+    <Content Include="AngularControllers\FooterBlockMasterController.js" />
     <Content Include="AngularControllers\BannerMasterController.js" />
     <Content Include="AngularControllers\RelatedBlogsMappingController.js" />
     <Content Include="AngularControllers\BannerNavigationsDetailsController.js" />
@@ -9123,6 +9125,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Services\AspNetRole.js" />
     <Content Include="Scripts\Services\AspNetUser.js" />
+    <Content Include="Scripts\Services\FooterBlockMaster.js" />
     <Content Include="Scripts\Services\BannerMaster.js" />
     <Content Include="Scripts\Services\RelatedBlogsMapping.js" />
     <Content Include="Scripts\Services\BannerNavigationsDetails.js" />
@@ -9387,9 +9390,9 @@
     <Content Include="Views\BlogMaster\_CreateOrEdit.cshtml" />
     <Content Include="Views\BlogMaster\_CreateOrEditTenant.cshtml" />
     <Content Include="Views\BlogMaster\Index.cshtml" />
-    <Content Include="Views\BannerNavigationsDetails\_CreateOrEdit.cshtml" />
-    <Content Include="Views\BannerNavigationsDetails\_CreateOrEditTenant.cshtml" />
-    <Content Include="Views\BannerNavigationsDetails\Index.cshtml" />
+    <Content Include="Views\BlogBannerNavigationsDetails\_CreateOrEdit.cshtml" />
+    <Content Include="Views\BlogBannerNavigationsDetails\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\BlogBannerNavigationsDetails\Index.cshtml" />
     <Content Include="Views\RelatedBlogsMapping\_CreateOrEdit.cshtml" />
     <Content Include="Views\RelatedBlogsMapping\_CreateOrEditTenant.cshtml" />
     <Content Include="Views\RelatedBlogsMapping\Index.cshtml" />
@@ -9419,6 +9422,9 @@
     <Content Include="Views\BannerMaster\_CreateOrEdit.cshtml" />
     <Content Include="Views\BannerMaster\_CreateOrEditTenant.cshtml" />
     <Content Include="Views\BannerMaster\Index.cshtml" />
+    <Content Include="Views\FooterBlockMaster\_CreateOrEdit.cshtml" />
+    <Content Include="Views\FooterBlockMaster\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\FooterBlockMaster\Index.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
