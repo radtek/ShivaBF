@@ -25,10 +25,8 @@ namespace SHF
             container.RegisterType<Business.Interface.IAspNetUserRole, Business.BusinessLogic.AspNetUserRole>();
             container.RegisterType<Business.Interface.ISubMenu, Business.BusinessLogic.SubMenu>();
             container.RegisterType<Business.Interface.IAspNetRoleSubMenu, Business.BusinessLogic.AspNetRoleSubMenu>();
-            
             container.RegisterType<Business.Interface.ICode, Business.BusinessLogic.CodeValue>();
             container.RegisterType<Business.Interface.ICodeValue, Business.BusinessLogic.CodeValue>();
-            
             container.RegisterType<Business.Interface.IMessage, Business.BusinessLogic.Message>();
             container.RegisterType<Business.Interface.IBankMaster, Business.BusinessLogic.BankMaster>();
             container.RegisterType<Business.Interface.ICategoriesMaster, Business.BusinessLogic.CategoriesMaster>();
@@ -80,6 +78,7 @@ namespace SHF
             container.RegisterType<Business.Interface.IRelatedBlogsMapping, Business.BusinessLogic.RelatedBlogsMapping>();
             container.RegisterType<Business.Interface.IFooterBlockMaster, Business.BusinessLogic.FooterBlockMaster>();
             container.RegisterType<Business.Interface.IHomePageBanner, Business.BusinessLogic.HomePageBanner>();
+            container.RegisterType<Business.Interface.IHomePageSection1, Business.BusinessLogic.HomePageSection1>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

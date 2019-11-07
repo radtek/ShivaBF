@@ -405,6 +405,7 @@
     <Compile Include="Controllers\Front\ServiceType2Controller.cs" />
     <Compile Include="Controllers\Front\ServiceType1Controller.cs" />
     <Compile Include="Controllers\Front\MenusController.cs" />
+    <Compile Include="Controllers\HomePageSection1Controller.cs" />
     <Compile Include="Controllers\RelatedBlogsMappingController.cs" />
     <Compile Include="Controllers\BlogBannerNavigationsDetailsController.cs" />
     <Compile Include="Controllers\BlogMasterController.cs" />
@@ -506,6 +507,7 @@
     <Content Include="AngularControllers\AspNetUserController.js" />
     <Content Include="AngularControllers\FooterBlockMasterController.js" />
     <Content Include="AngularControllers\BannerMasterController.js" />
+    <Content Include="AngularControllers\HomePageSection1Controller.js" />
     <Content Include="AngularControllers\RelatedBlogsMappingController.js" />
     <Content Include="AngularControllers\BannerNavigationsDetailsController.js" />
     <Content Include="AngularControllers\BlogMasterController.js" />
@@ -9133,6 +9135,7 @@
     <Content Include="Scripts\Services\AspNetUser.js" />
     <Content Include="Scripts\Services\FooterBlockMaster.js" />
     <Content Include="Scripts\Services\BannerMaster.js" />
+    <Content Include="Scripts\Services\HomePageSection1.js" />
     <Content Include="Scripts\Services\RelatedBlogsMapping.js" />
     <Content Include="Scripts\Services\BannerNavigationsDetails.js" />
     <Content Include="Scripts\Services\BlogMaster.js" />
@@ -9460,6 +9463,10 @@
     <Content Include="Views\HomePageBanner\_CreateOrEditTenant.cshtml" />
     <Content Include="Views\HomePageBanner\_Guide.cshtml" />
     <Content Include="Views\HomePageBanner\Index.cshtml" />
+    <Content Include="Views\HomePageSection1\_CreateOrEdit.cshtml" />
+    <Content Include="Views\HomePageSection1\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\HomePageSection1\_Guide.cshtml" />
+    <Content Include="Views\HomePageSection1\Index.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />

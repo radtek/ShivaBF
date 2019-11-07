@@ -8,12 +8,11 @@ using System.Web;
 
 namespace SHF.ViewModel
 {
-   public class HomePageBannerIndexViewModel : BaseViewModel
+   public class HomePageSection1IndexViewModel : BaseViewModel
     {
         public System.String BannerImagePath { get; set; }
-        public System.String BannerOnHeading1 { get; set; }
-        public System.String BannerOnHeading2 { get; set; }
-        public System.String BannerHeadingDescription { get; set; }
+        public System.String ShortDescription { get; set; }
+        public System.String LongtDescription { get; set; }
         public System.String AncharTagTitle { get; set; }
         public System.String AncharTagUrl { get; set; }
         public System.Int32 DisplayIndex { get; set; }
@@ -28,12 +27,11 @@ namespace SHF.ViewModel
         public System.Int64 Tenant_ID { get; set; }
     }
 
-    public sealed class HomePageBannerCreateOrEditViewModel : BaseViewModel
+    public sealed class HomePageSection1CreateOrEditViewModel : BaseViewModel
     {
         public System.String BannerImagePath { get; set; }
-        public System.String BannerOnHeading1 { get; set; }
-        public System.String BannerOnHeading2 { get; set; }
-        public System.String BannerHeadingDescription { get; set; }
+        public System.String ShortDescription { get; set; }
+        public System.String LongtDescription { get; set; }
         public System.String AncharTagTitle { get; set; }
         public System.String AncharTagUrl { get; set; }
         public System.Int32 DisplayIndex { get; set; }
@@ -48,7 +46,7 @@ namespace SHF.ViewModel
         public System.Int64 Tenant_ID { get; set; }
     }
 
-    public class HomePageBannerDropdownListViewModel
+    public class HomePageSection1DropdownListViewModel
     {
         public System.String BannerImagePath { get; set; }
         public System.Int64 ID { get; set; }

@@ -102,7 +102,7 @@ namespace SHF
                        "~/Scripts/jspdf.js",
                         "~/Scripts/html2canvas.js",
                          "~/Scripts/pdfmake.js"//,
-                        // "~/Scripts/ng-file-upload-5.0.9.js"
+                                               // "~/Scripts/ng-file-upload-5.0.9.js"
                       ));
 
             bundles.Add(new ScriptBundle("~/bundles/angular-scripts").Include(
@@ -183,6 +183,7 @@ namespace SHF
                                     "~/Scripts/Services/BannerMaster.js",
                                      "~/Scripts/Services/FooterBlockMaster.js",
                                      "~/Scripts/Services/HomePageBanner.js",
+                                     "~/Scripts/Services/HomePageSection1.js",
                  "~/AngularControllers/AspNetUserController.js",
                  "~/AngularControllers/RoleController.js",
                  "~/AngularControllers/TenantController.js",
@@ -237,7 +238,8 @@ namespace SHF
                              "~/AngularControllers/RelatedBlogsMappingController.js",
                               "~/AngularControllers/BannerMasterController.js",
                                "~/AngularControllers/FooterBlockMasterController.js",
-                                "~/AngularControllers/HomePageBannerController.js"
+                                "~/AngularControllers/HomePageBannerController.js",
+                                "~/AngularControllers/HomePageSection1Controller.js"
 
                 ));
 
