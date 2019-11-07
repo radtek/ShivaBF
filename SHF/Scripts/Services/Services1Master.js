@@ -59,6 +59,16 @@ angular.module(config.app).service('Services1MasterCRUD', function ($http) {
                     width: "25%",
                     targets: 2
                 },
+ {
+                    name: "Services1Master_tenant.Services1Master.BannerImagePath",
+                    data: "BannerImagePath",
+                    title: "Image Preview",
+                   render: function (data, type, row, meta) {
+                        return '<img src="'+data+'" style="height:150px;width:200px;"/>';
+                    },
+                    width: "40%",
+                    targets: 2
+                },
                 {
                     name: "Services1Master_tenant.Services1Master.BannerOnHeading",
                     data: "BannerOnHeading",
@@ -123,6 +133,16 @@ angular.module(config.app).service('Services1MasterCRUD', function ($http) {
                     width: "25%",
                     targets: 9
                 }, 
+ {
+                    name: "Services1Master_tenant.Services1Master.Section1AfterBannerImagePath",
+                    data: "Section1AfterBannerImagePath",
+                    title: "Image Preview",
+                   render: function (data, type, row, meta) {
+                        return '<img src="'+data+'" style="height:150px;width:200px;"/>';
+                    },
+                    width: "40%",
+                    targets: 9
+                },
                 {
                     name: "Services1Master_tenant.Services1Master.Section1AfterBannerImageOnDescription",
                     data: "Section1AfterBannerImageOnDescription",

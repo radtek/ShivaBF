@@ -132,7 +132,7 @@ namespace SHF.Business.BusinessLogic
                     .Select(x => new ViewModel.Services1MasterIndexViewModel 
                     {
                         ID = x.Services1Master_tenant.Services1Master.ID,
-                        BannerImagePath = x.Services1Master_tenant.Services1Master.BannerImagePath,
+                        BannerImagePath = String.Concat(busConstant.Settings.CMSPath.TENANAT_UPLOAD_DIRECTORY, x.Services1Master_tenant.tenant.ID) + "/" + x.Services1Master_tenant.Services1Master.BannerImagePath,
                         BannerOnHeading = x.Services1Master_tenant.Services1Master.BannerOnHeading,
                         SubSubCategoryName = x.SubSubCategoriesMaster.SubSubCategoryName,
                         BannerHeadingDescription = x.Services1Master_tenant.Services1Master.BannerHeadingDescription,
@@ -140,7 +140,7 @@ namespace SHF.Business.BusinessLogic
                         BannerAncharTagUrl = x.Services1Master_tenant.Services1Master.BannerAncharTagUrl,
                         Section1AfterBannerHeading = x.Services1Master_tenant.Services1Master.Section1AfterBannerHeading,
                         Section1AfterBannerDescription = x.Services1Master_tenant.Services1Master.Section1AfterBannerDescription,
-                        Section1AfterBannerImagePath = x.Services1Master_tenant.Services1Master.Section1AfterBannerImagePath,
+                        Section1AfterBannerImagePath = String.Concat(busConstant.Settings.CMSPath.TENANAT_UPLOAD_DIRECTORY, x.Services1Master_tenant.tenant.ID) + "/" + x.Services1Master_tenant.Services1Master.Section1AfterBannerImagePath,
                         Section1AfterBannerImageOnDescription = x.Services1Master_tenant.Services1Master.Section1AfterBannerImageOnDescription,
                         Section2Heading = x.Services1Master_tenant.Services1Master.Section2Heading,
                         Section2Description = x.Services1Master_tenant.Services1Master.Section2Description,

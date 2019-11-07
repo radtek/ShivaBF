@@ -14,6 +14,7 @@
         $scope.Services1MasterCreateOrEditViewModel.SelectedTenant_ID = -1;
         $scope.Services1MasterCreateOrEditViewModel.SelectedSubSubCat_Id = -1;
 $scope.AllBannerMaster = [];
+$scope.SelectFor="";
 
         $scope.Cookie_Tenant_ID = parseInt(CustomService.GetTenantID());
         $scope.Services1MasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
@@ -243,8 +244,10 @@ debugger;
         }
 
 $scope.SelectBannerAsync = function (ID,BannerName) {
-$scope.Services1MasterCreateOrEditViewModel.BannerImagePath=BannerName;
+
+$scope.Services1MasterCreateOrEditViewModel[$scope.SelectFor]=BannerName;
 $('#modal-bannermaster').modal('hide');
+//$scope.SelectFor="";
 }
 
 
@@ -344,7 +347,9 @@ $('#modal-bannermaster').modal('hide');
             $scope.AllServiceType = CodeValueCRUD.LoadCodeValueByCodeId(Id);
         }
 
-$scope.SelectBannerasync = function () {
+$scope.SelectBannerasync = function (inputname) {
+$scope.SelectFor=inputname;
+//alert($scope.SelectFor);
            $scope.AllBannerMaster = [];
             if ($scope.Services1MasterCreateOrEditViewModel.Tenant_ID == undefined || $scope.Services1MasterCreateOrEditViewModel.Tenant_ID <= 0 || $scope.Services1MasterCreateOrEditViewModel.Tenant_ID == null) {
                 swal("Please select Tenant", "", "error");
