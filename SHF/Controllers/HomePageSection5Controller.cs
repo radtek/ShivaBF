@@ -146,7 +146,7 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var catId = businessHomePageSection5.FindBy(Categories => Categories.Tenant_ID == model.Tenant_ID && Categories.SubSubCat_Id == model.SubSubCat_Id).FirstOrDefault();
+                            var catId = businessHomePageSection5.FindBy(Categories => Categories.Tenant_ID == model.Tenant_ID && Categories.ID == model.ID).FirstOrDefault();
 
                             if (catId.IsNotNull())
                             {

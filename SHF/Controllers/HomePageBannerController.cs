@@ -146,7 +146,7 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var catId = businessHomePageBanner.FindBy(Categories => Categories.Tenant_ID == model.Tenant_ID && Categories.SubSubCat_Id == model.SubSubCat_Id).FirstOrDefault();
+                            var catId = businessHomePageBanner.FindBy(Categories => Categories.Tenant_ID == model.Tenant_ID ).FirstOrDefault();
 
                             if (catId.IsNotNull())
                             {
@@ -261,7 +261,7 @@ namespace SHF.Controllers
                                 model.Keyword = entity.Keyword;
                                 model.TotalViews = entity.TotalViews;
                                 model.IsActive = entity.IsActive;
-                                model.Tenant_ID = entity.Tenant_ID;
+                                model.Tenant_ID = Convert.ToInt64(entity.Tenant_ID);
 
 
                                 var response = new JsonResponse<HomePageBannerCreateOrEditViewModel>()
@@ -491,7 +491,7 @@ namespace SHF.Controllers
                         else
                         {
                           
-                            var entities= this.businessSubSubCategoriesMaster.GetAll().Where(x =>(x.Tenant_ID == Id && x.ServiceTypeValue==busConstant.Code.CodeValue.ServiceType.SERVICE_2))
+                            var entities= this.businessHomePageBanner.GetAll().Where(x =>(x.Tenant_ID == Id ))
                                 .Select(x => new ViewModel.HomePageBannerDropdownListViewModel
                             {
                                 ID = x.ID,
