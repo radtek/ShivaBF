@@ -81,6 +81,7 @@ namespace SHF
             container.RegisterType<Business.Interface.IHomePageSection1, Business.BusinessLogic.HomePageSection1>();
             container.RegisterType<Business.Interface.IHomePageSection2, Business.BusinessLogic.HomePageSection2>();
             container.RegisterType<Business.Interface.IHomePageSection3, Business.BusinessLogic.HomePageSection3>();
+            container.RegisterType<Business.Interface.IHomePageSection4, Business.BusinessLogic.HomePageSection4>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

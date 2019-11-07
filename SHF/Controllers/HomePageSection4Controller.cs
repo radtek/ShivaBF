@@ -25,22 +25,22 @@ using SHF.Helpers;
 namespace SHF.Controllers
 {
     [AllowAnonymous]
-    public class HomePageSection2Controller : BaseController
+    public class HomePageSection4Controller : BaseController
     {
         #region [Field & Contructor]
 
         private Business.Interface.IMessage businessMessage;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private Business.Interface.IHomePageSection2 businessHomePageSection2;
+        private Business.Interface.IHomePageSection4 businessHomePageSection4;
         private Business.Interface.ITenant businessTenant;
         private Business.Interface.ISubSubCategoriesMaster businessSubSubCategoriesMaster;
         
 
-        public HomePageSection2Controller(Business.Interface.IMessage Imessage, Business.Interface.IHomePageSection2 IHomePageSection2, Business.Interface.ITenant Itenant, Business.Interface.ISubSubCategoriesMaster IsubSubCategoriesMaster)
+        public HomePageSection4Controller(Business.Interface.IMessage Imessage, Business.Interface.IHomePageSection4 IHomePageSection4, Business.Interface.ITenant Itenant, Business.Interface.ISubSubCategoriesMaster IsubSubCategoriesMaster)
         {
             this.businessMessage = Imessage;
-            this.businessHomePageSection2 = IHomePageSection2;
+            this.businessHomePageSection4 = IHomePageSection4;
             this.businessSubSubCategoriesMaster = IsubSubCategoriesMaster;
             this.businessTenant = Itenant;
 
@@ -75,8 +75,8 @@ namespace SHF.Controllers
         [HttpGet]
         [Access]
         [OutputCache(Duration = busConstant.Settings.Cache.OutputCache.TimeOut.S300)]
-        [Route("Configurations/Master/HomePage/HomePageSection2")]
-        [Route("Settings/Master/HomePage/HomePageSection2")]
+        [Route("Configurations/Master/HomePage/HomePageSection4")]
+        [Route("Settings/Master/HomePage/HomePageSection4")]
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId<long>();
@@ -88,7 +88,7 @@ namespace SHF.Controllers
         [ValidateAntiForgeryTokens]
         public async Task<ActionResult> IndexAsync()
         {
-            BusinessResultViewModel<ViewModel.HomePageSection2IndexViewModel> businessResult;
+            BusinessResultViewModel<ViewModel.HomePageSection4IndexViewModel> businessResult;
             try
             {
                 using (var transaction = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadUncommitted }))
@@ -98,7 +98,7 @@ namespace SHF.Controllers
                         long? tenantId = Request.Form.AllKeys.Contains("tenantId") ? Convert.ToInt64(Request.Form.GetValues("tenantId").FirstOrDefault()) : busConstant.Numbers.Integer.ZERO;
                         tenantId = tenantId > busConstant.Numbers.Integer.ZERO ? tenantId : null;
 
-                        businessResult = this.businessHomePageSection2.Index(Request, tenantId);
+                        businessResult = this.businessHomePageSection4.Index(Request, tenantId);
                         transaction.Complete();
                     }
                     catch
@@ -131,8 +131,8 @@ namespace SHF.Controllers
         [HttpPost]
         [Audit]
         [ValidateAntiForgeryTokens]
-        [Route("Post/HomePageSection2/CreateAsync")]
-        public async Task<ActionResult> CreateAsync(ViewModel.HomePageSection2CreateOrEditViewModel model)
+        [Route("Post/HomePageSection4/CreateAsync")]
+        public async Task<ActionResult> CreateAsync(ViewModel.HomePageSection4CreateOrEditViewModel model)
         {
             try
             {
@@ -146,7 +146,7 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var catId = businessHomePageSection2.FindBy(Categories => Categories.Tenant_ID == model.Tenant_ID ).FirstOrDefault();
+                            var catId = businessHomePageSection4.FindBy(Categories => Categories.Tenant_ID == model.Tenant_ID && Categories.SubSubCat_Id == model.SubSubCat_Id).FirstOrDefault();
 
                             if (catId.IsNotNull())
                             {
@@ -164,15 +164,11 @@ namespace SHF.Controllers
                             else
                             {
                                
-                                var entity = new EntityModel.HomePageSection2();
+                                var entity = new EntityModel.HomePageSection4();
                                 
                                 entity.BannerImagePath = model.BannerImagePath;
                                 entity.Heading1 = model.Heading1;
                                 entity.Heading2 = model.Heading2;
-                                
-                                entity.Heading3 = model.Heading3;
-                                entity.Description1 = model.Description1;
-                                entity.Description2 = model.Description2;
                                 entity.DisplayIndex = model.DisplayIndex;
                                 entity.Url= model.Url;
                                 entity.Metadata= model.Metadata;
@@ -184,7 +180,7 @@ namespace SHF.Controllers
                                
                                 entity.Tenant = null;
                                 
-                                this.businessHomePageSection2.Create(entity);
+                                this.businessHomePageSection4.Create(entity);
                                 transaction.Complete();
 
                                 var response = new JsonResponse<dynamic>()
@@ -219,7 +215,7 @@ namespace SHF.Controllers
 
 
         [HttpGet]
-        [Route("Get/HomePageSection2/EditAsync")]
+        [Route("Get/HomePageSection4/EditAsync")]
         public async Task<ActionResult> EditAsync(long Id)
         {
             try
@@ -242,19 +238,17 @@ namespace SHF.Controllers
                         }
                         else
                         {
-                            var entity = this.businessHomePageSection2.GetById(Id);
+                            var entity = this.businessHomePageSection4.GetById(Id);
 
                             if (entity.IsNotNull())
                             {
-                                var model = new ViewModel.HomePageSection2CreateOrEditViewModel();
+                                var model = new ViewModel.HomePageSection4CreateOrEditViewModel();
                                
                                 model.ID = entity.ID;
                                 model.BannerImagePath = entity.BannerImagePath;
                                 model.Heading1 = entity.Heading1;
                                 model.Heading2 = entity.Heading2;
-                                model.Heading3 = entity.Heading3;
-                                model.Description1 = entity.Description1;
-                                model.Description2 = entity.Description2;
+                             
                                 model.DisplayIndex = entity.DisplayIndex;
                                 model.Url = entity.Url;
                                 model.Metadata = entity.Metadata;
@@ -265,7 +259,7 @@ namespace SHF.Controllers
                                 model.Tenant_ID = Convert.ToInt64(entity.Tenant_ID);
 
 
-                                var response = new JsonResponse<HomePageSection2CreateOrEditViewModel>()
+                                var response = new JsonResponse<HomePageSection4CreateOrEditViewModel>()
                                 {
                                     Type = busConstant.Messages.Type.RESPONSE,
                                     Entity = model
@@ -308,8 +302,8 @@ namespace SHF.Controllers
         [HttpPost]
         [AuditAttribute]
         [ValidateAntiForgeryTokens]
-        [Route("Post/HomePageSection2/EditAsync")]
-        public async Task<ActionResult> EditAsync(ViewModel.HomePageSection2CreateOrEditViewModel model)
+        [Route("Post/HomePageSection4/EditAsync")]
+        public async Task<ActionResult> EditAsync(ViewModel.HomePageSection4CreateOrEditViewModel model)
         {
             try
             {
@@ -325,7 +319,7 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var CategoriesData = businessHomePageSection2.FindBy(Categories => Categories.Tenant_ID == model.Tenant_ID && Categories.ID != model.ID).FirstOrDefault();
+                            var CategoriesData = businessHomePageSection4.FindBy(Categories => Categories.Tenant_ID == model.Tenant_ID && Categories.ID != model.ID).FirstOrDefault();
 
                             if (CategoriesData.IsNotNull())
                             {
@@ -343,7 +337,7 @@ namespace SHF.Controllers
                             else
                             {
                                 
-                                var entity = this.businessHomePageSection2.GetById(Convert.ToInt64(model.ID));
+                                var entity = this.businessHomePageSection4.GetById(Convert.ToInt64(model.ID));
                                 if (entity.IsNotNull())
                                 {
                                     // Mapper.Map(model, entity);
@@ -351,9 +345,6 @@ namespace SHF.Controllers
                                     entity.Heading1 = model.Heading1;
                                     entity.Heading2 = model.Heading2;
 
-                                    entity.Heading3 = model.Heading3;
-                                    entity.Description1 = model.Description1;
-                                    entity.Description2 = model.Description2;
                                     entity.DisplayIndex = model.DisplayIndex;
                                     entity.Url = model.Url;
                                     entity.Metadata = model.Metadata;
@@ -364,7 +355,7 @@ namespace SHF.Controllers
                                     entity.Tenant_ID = model.Tenant_ID;
                                     entity.Tenant = null;
                                 
-                                this.businessHomePageSection2.Update(entity);
+                                this.businessHomePageSection4.Update(entity);
 
                                 transaction.Complete();
 
@@ -413,7 +404,7 @@ namespace SHF.Controllers
         [HttpPost]
         [AuditAttribute]
         [ValidateAntiForgeryTokens]
-        [Route("Post/HomePageSection2/Delete")]
+        [Route("Post/HomePageSection4/Delete")]
         public async Task<ActionResult> DeleteAsync(string Id)
         {
             try
@@ -436,7 +427,7 @@ namespace SHF.Controllers
                             }
                             else
                             {
-                                this.businessHomePageSection2.Delete(Convert.ToInt64(Id));
+                                this.businessHomePageSection4.Delete(Convert.ToInt64(Id));
 
 
                                 var response = new JsonResponse<dynamic>()

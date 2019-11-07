@@ -405,6 +405,7 @@
     <Compile Include="Controllers\Front\ServiceType2Controller.cs" />
     <Compile Include="Controllers\Front\ServiceType1Controller.cs" />
     <Compile Include="Controllers\Front\MenusController.cs" />
+    <Compile Include="Controllers\HomePageSection4Controller.cs" />
     <Compile Include="Controllers\HomePageSection3Controller.cs" />
     <Compile Include="Controllers\HomePageSection2Controller.cs" />
     <Compile Include="Controllers\HomePageSection1Controller.cs" />
@@ -509,6 +510,7 @@
     <Content Include="AngularControllers\AspNetUserController.js" />
     <Content Include="AngularControllers\FooterBlockMasterController.js" />
     <Content Include="AngularControllers\BannerMasterController.js" />
+    <Content Include="AngularControllers\HomePageSection4Controller.js" />
     <Content Include="AngularControllers\HomePageSection3Controller.js" />
     <Content Include="AngularControllers\HomePageSection2Controller.js" />
     <Content Include="AngularControllers\HomePageSection1Controller.js" />
@@ -9139,6 +9141,7 @@
     <Content Include="Scripts\Services\AspNetUser.js" />
     <Content Include="Scripts\Services\FooterBlockMaster.js" />
     <Content Include="Scripts\Services\BannerMaster.js" />
+    <Content Include="Scripts\Services\HomePageSection4.js" />
     <Content Include="Scripts\Services\HomePageSection3.js" />
     <Content Include="Scripts\Services\HomePageSection2.js" />
     <Content Include="Scripts\Services\HomePageSection1.js" />
@@ -9481,6 +9484,10 @@
     <Content Include="Views\HomePageSection3\_CreateOrEditTenant.cshtml" />
     <Content Include="Views\HomePageSection3\_Guide.cshtml" />
     <Content Include="Views\HomePageSection3\Index.cshtml" />
+    <Content Include="Views\HomePageSection4\_CreateOrEdit.cshtml" />
+    <Content Include="Views\HomePageSection4\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\HomePageSection4\_Guide.cshtml" />
+    <Content Include="Views\HomePageSection4\Index.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />

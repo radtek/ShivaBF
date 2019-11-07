@@ -171,8 +171,8 @@ namespace SHF.Controllers
                                 entity.Heading2 = model.Heading2;
                                 
                                 entity.Heading3 = model.Heading3;
-                                entity.Description1 = model.Description1;
-                                entity.Description2 = model.Description2;
+                                entity.Heading4 = model.Heading4;
+                            
                                 entity.DisplayIndex = model.DisplayIndex;
                                 entity.Url= model.Url;
                                 entity.Metadata= model.Metadata;
@@ -253,8 +253,7 @@ namespace SHF.Controllers
                                 model.Heading1 = entity.Heading1;
                                 model.Heading2 = entity.Heading2;
                                 model.Heading3 = entity.Heading3;
-                                model.Description1 = entity.Description1;
-                                model.Description2 = entity.Description2;
+                                model.Heading4 = entity.Heading4;
                                 model.DisplayIndex = entity.DisplayIndex;
                                 model.Url = entity.Url;
                                 model.Metadata = entity.Metadata;
@@ -350,10 +349,8 @@ namespace SHF.Controllers
                                     entity.BannerImagePath = model.BannerImagePath;
                                     entity.Heading1 = model.Heading1;
                                     entity.Heading2 = model.Heading2;
-
                                     entity.Heading3 = model.Heading3;
-                                    entity.Description1 = model.Description1;
-                                    entity.Description2 = model.Description2;
+                                    entity.Heading4 = model.Heading4;
                                     entity.DisplayIndex = model.DisplayIndex;
                                     entity.Url = model.Url;
                                     entity.Metadata = model.Metadata;

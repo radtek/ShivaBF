@@ -50,6 +50,7 @@ namespace SHF.Business.BusinessLogic
                         || x.HomePageSection3.Heading1.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection3.Heading2.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection3.Heading3.CaseInsensitiveContains(searchValue)
+                        || x.HomePageSection3.Heading4.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection3.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
                         || x.HomePageSection3.Url.ToString().CaseInsensitiveContains(searchValue)
                         || x.HomePageSection3.Metadata.ToString().CaseInsensitiveContains(searchValue)
@@ -73,6 +74,7 @@ namespace SHF.Business.BusinessLogic
                         || x.HomePageSection3.Heading1.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection3.Heading2.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection3.Heading3.CaseInsensitiveContains(searchValue)
+                        || x.HomePageSection3.Heading4.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection3.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
                         || x.HomePageSection3.Url.ToString().CaseInsensitiveContains(searchValue)
                         || x.HomePageSection3.Metadata.ToString().CaseInsensitiveContains(searchValue)
@@ -94,6 +96,7 @@ namespace SHF.Business.BusinessLogic
                         Heading1 = x.HomePageSection3.Heading1,
                         Heading2 = x.HomePageSection3.Heading2,
                         Heading3 = x.HomePageSection3.Heading3,
+                        Heading4 = x.HomePageSection3.Heading4,
                         DisplayIndex = x.HomePageSection3.DisplayIndex,
                         Url= x.HomePageSection3.Url.ToString(),
                         Metadata= x.HomePageSection3.Metadata.ToString(),

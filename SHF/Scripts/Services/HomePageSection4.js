@@ -1,17 +1,17 @@
 ﻿//let app = angular.module('InventoryApp');
 
-angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
+angular.module(config.app).service('HomePageSection4CRUD', function ($http) {
 
     this.GetTableObject = function TableData() {
-        let scope = angular.element(document.getElementById('HomePageSection3ControllerScope')).scope();
-        let tenantId = scope.HomePageSection3CreateOrEditViewModel.Tenant_ID == null ? 0 : scope.HomePageSection3CreateOrEditViewModel.Tenant_ID;
+        let scope = angular.element(document.getElementById('HomePageSection4ControllerScope')).scope();
+        let tenantId = scope.HomePageSection4CreateOrEditViewModel.Tenant_ID == null ? 0 : scope.HomePageSection4CreateOrEditViewModel.Tenant_ID;
         let viewBagTenantID = $('#ViewBag_TenantID').val();
         let antiForgeryToken = $('#antiForgeryToken').val();
         var src = '../../../Content/Images/';
         let oTable = $('#grdTable').DataTable({
             serverSide: true,
             ajax: {
-                url: '/Post/HomePageSection3/IndexAsync',
+                url: '/Post/HomePageSection4/IndexAsync',
                 type: 'POST',
                 dataSrc: 'data',
                 data: { 'tenantId': tenantId },
@@ -44,7 +44,7 @@ angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
                     targets: 0
                 },
                 {
-                    name: "HomePageSection3.ID",
+                    name: "HomePageSection4.ID",
                     data: "ID",
                     title: "ID",
                     render: $.fn.dataTable.render.text(),
@@ -52,7 +52,7 @@ angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
                     targets: 1
                 },
                 {
-                    name: "HomePageSection3.BannerImagePath",
+                    name: "HomePageSection4.BannerImagePath",
                     data: "BannerImagePath",
                     title: "BannerImagePath",
                     render: $.fn.dataTable.render.text(),
@@ -60,7 +60,7 @@ angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
                     targets: 2
                 },
                 {
-                    name: "HomePageSection3.BannerImagePath",
+                    name: "HomePageSection4.BannerImagePath",
                     data: "BannerImagePath",
                     title: "Image Preview",
                     render: function (data, type, row, meta) {
@@ -70,7 +70,7 @@ angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
                     targets: 2
                 },
                 {
-                    name: "HomePageSection3.Heading1",
+                    name: "HomePageSection4.Heading1",
                     data: "Heading1",
                     title: "Heading1",
                     render: $.fn.dataTable.render.text(),
@@ -79,7 +79,7 @@ angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
                 },
 
                 {
-                    name: "HomePageSection3.Heading2",
+                    name: "HomePageSection4.Heading2",
                     data: "Heading2",
                     title: "Heading2",
                     render: $.fn.dataTable.render.text(),
@@ -87,24 +87,9 @@ angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
                     targets: 5
                 },
 
-                {
-                    name: "HomePageSection3.Heading3",
-                    data: "Heading3",
-                    title: "Heading3",
-                    render: $.fn.dataTable.render.text(),
-                    width: "25%",
-                    targets: 7
-                },
-                {
-                    name: "HomePageSection3.Heading4",
-                    data: "Heading4",
-                    title: "Heading4",
-                    render: $.fn.dataTable.render.text(),
-                    width: "25%",
-                    targets: 7
-                },
+               
                  {
-                     name: "HomePageSection3.DisplayIndex",
+                     name: "HomePageSection4.DisplayIndex",
                      data: "DisplayIndex",
                      title: "Display&nbsp;Index",
                      render: $.fn.dataTable.render.text(),
@@ -112,7 +97,7 @@ angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
                      targets: 11
                  },
                 {
-                    name: "HomePageSection3.Url",
+                    name: "HomePageSection4.Url",
                     data: "Url",
                     title: "Url",
                     render: $.fn.dataTable.render.text(),
@@ -120,7 +105,7 @@ angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
                     targets: 12
                 },
                 {
-                    name: "HomePageSection3.Metadata",
+                    name: "HomePageSection4.Metadata",
                     data: "Metadata",
                     title: "Metadata",
                     render: $.fn.dataTable.render.text(),
@@ -128,7 +113,7 @@ angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
                     targets: 13
                 },
                 {
-                    name: "HomePageSection3.MetaDescription",
+                    name: "HomePageSection4.MetaDescription",
                     data: "MetaDescription",
                     title: "MetaDescription",
                     render: $.fn.dataTable.render.text(),
@@ -136,7 +121,7 @@ angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
                     targets: 14
                 },
                 {
-                    name: "HomePageSection3.Keyword",
+                    name: "HomePageSection4.Keyword",
                     data: "Keyword",
                     title: "Keyword",
                     render: $.fn.dataTable.render.text(),
@@ -145,7 +130,7 @@ angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
                 },
 
                 {
-                    name: "HomePageSection3.TotalViews",
+                    name: "HomePageSection4.TotalViews",
                     data: "TotalViews",
                     title: "TotalViews",
                     render: $.fn.dataTable.render.text(),
@@ -153,7 +138,7 @@ angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
                     targets: 16
                 },
               {
-                  name: "HomePageSection3.IsActive",
+                  name: "HomePageSection4.IsActive",
                   data: "IsActive",
                   title: "Is&nbsp;Active",
                   render: $.fn.dataTable.render.text(),
@@ -170,7 +155,7 @@ angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
                     targets: 18
                 },
                 {
-                    name: "HomePageSection3.CreatedBy",
+                    name: "HomePageSection4.CreatedBy",
                     data: "CreatedBy",
                     title: "Created&nbsp;By",
                     render: $.fn.dataTable.render.text(),
@@ -178,7 +163,7 @@ angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
                     targets: 19
                 },
                 {
-                    name: "HomePageSection3.CreatedOn",
+                    name: "HomePageSection4.CreatedOn",
                     data: "CreatedOn",
                     title: "Created&nbsp;On",
                     render: function (data, type, row, meta) {
@@ -190,7 +175,7 @@ angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
                     targets: 20
                 },
                 {
-                    name: "HomePageSection3.UpdatedBy",
+                    name: "HomePageSection4.UpdatedBy",
                     data: "UpdatedBy",
                     title: "Modified&nbsp;By",
                     render: $.fn.dataTable.render.text(),
@@ -198,7 +183,7 @@ angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
                     targets: 21
                 },
                 {
-                    name: "HomePageSection3.UpdatedOn",
+                    name: "HomePageSection4.UpdatedOn",
                     data: "UpdatedOn",
                     title: "Modified&nbsp;On",
                     render: function (data, type, row, meta) {
@@ -254,18 +239,18 @@ angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
         $('#grdTable tbody').off('click');
         $('#grdTable tbody').on('click', '.btn-edit', function () {
             let rowData = oTable.row($(this).parents('tr')).data();
-            let scope = angular.element(document.getElementById('HomePageSection3ControllerScope')).scope();
+            let scope = angular.element(document.getElementById('HomePageSection4ControllerScope')).scope();
             scope.EditAsync(rowData.ID);
         });
 
         $('#grdTable tbody').on('click', '.btn-delete', function () {
             let rowData = oTable.row($(this).parents('tr')).data();
-            let scope = angular.element(document.getElementById('HomePageSection3ControllerScope')).scope();
+            let scope = angular.element(document.getElementById('HomePageSection4ControllerScope')).scope();
             scope.DeleteAsync(rowData.ID);
         });
         $('#grdTable tbody').on('click', '.btn-preview', function () {
             let rowData = oTable.row($(this).parents('tr')).data();
-            let scope = angular.element(document.getElementById('HomePageSection3ControllerScope')).scope();
+            let scope = angular.element(document.getElementById('HomePageSection4ControllerScope')).scope();
             scope.Preview('Views/services2.html?u=' + rowData.Url);
         });
     }
@@ -284,7 +269,7 @@ angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
     this.LoadSubSubCategoriesDropdown = function SubSubCategoriesDropdown(tenantId) {
         let request = $http({
             method: "get",
-            url: "/Get/HomePageSection3/DropdownListbyTenantAsync?Id=" + tenantId
+            url: "/Get/HomePageSection4/DropdownListbyTenantAsync?Id=" + tenantId
         });
         return request;
     }
