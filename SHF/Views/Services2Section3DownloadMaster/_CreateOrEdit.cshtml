@@ -59,46 +59,21 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.AncharTagUrl" ng-bind="errors.formErrors.AncharTagUrl"></span>
                         </div>
-
                         <div class="form-group" ng-class="{'has-error': ((myForm.DownloadFilePath.$touched && myForm.DownloadFilePath.$invalid) || (!myForm.DownloadFilePath.$pristine && myForm.DownloadFilePath.$invalid))}">
                             <label>Download File Path</label>
                             <div class="col-md-12" style="text-align:center;margin-bottom:10px;">
-                                <input type="file" id="file" name="file" single onchange="angular.element(this).scope().setFile(this)"  class="btn btn-primary" required />
+                                <input type="text" class="form-control" name="DownloadFilePath" ng-model="Services2Section3DownloadMasterCreateOrEditViewModel.DownloadFilePath" ng-disabled="Processing" autocomplete="off" required readonly placeholder="Enter DownloadFilePath" tooltip-placement="top" uib-tooltip="Enter DownloadFilePath" />
                             </div>
                             <div class="col-md-12">
-                                <button ng-click="UploadFile()" class="button button4">Upload</button>
+                                <span ng-click="SelectBannerasync('DownloadFilePath')" class="btn btn-sm btn-success">Select</span>
                             </div>
-                            <div class="col-md-12" style="padding-top:10px;">
-                                <div class="col-md-7">
-                                    <table align="center" border="1" cellpadding="4" cellspacing="4">
-                                        <thead>
-                                            <tr>
-                                                <th style="background-color: Yellow;color: blue">File Name</th>
-                                                <th style="background-color: Yellow;color: blue">File Type</th>
-                                                <th style="background-color: Yellow;color: blue">File Size</th>
-                                                <th style="background-color: Yellow;color: blue">Status</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr ng-repeat="file in fileList">
-                                                <td style="color: blue">{{file.file.name}}</td>
-                                                <td style="color: blue">{{file.file.type}}</td>
-                                                <td style="color: blue">{{file.file.size}}</td>
-                                                <td>
-                                                    <div id="{{'P'+$index}}">
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <input type="hidden" class="form-control" name="DownloadFilePath" ng-model="Services2Section3DownloadMasterCreateOrEditViewModel.DownloadFilePath" />
+
                             <div class="help-block" ng-messages="myForm.DownloadFilePath.$error" ng-if="myForm.DownloadFilePath.$touched || myForm.DownloadFilePath.$dirty && myForm.DownloadFilePath.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.DownloadFilePath" ng-bind="errors.formErrors.DownloadFilePath"></span>
                         </div>
+                        
 
                         <div class="form-group" ng-class="{'has-error': (myForm.DisplayIndex.$touched || myForm.DisplayIndex.$dirty)  && myForm.DisplayIndex.$invalid}">
                             <label>Display Index</label>

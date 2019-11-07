@@ -1,5 +1,5 @@
-﻿angular.module(config.app).controller('Services2MasterCtrl', ['$scope', '$http', '$window','SubSubCategoriesMasterCRUD', 'Services2MasterCRUD', 'TenantCRUD','CustomService','CodeValueCRUD',
-    function ($scope, $http, $window,SubSubCategoriesMasterCRUD, Services2MasterCRUD, TenantCRUD,CustomService,CodeValueCRUD) {      
+﻿angular.module(config.app).controller('Services2MasterCtrl', ['$scope', '$http', '$window','SubSubCategoriesMasterCRUD', 'Services2MasterCRUD', 'TenantCRUD','CustomService','CodeValueCRUD','BannerMasterCRUD',
+    function ($scope, $http, $window, SubSubCategoriesMasterCRUD, Services2MasterCRUD, TenantCRUD, CustomService, CodeValueCRUD, BannerMasterCRUD) {
         $scope.path = "";
         $scope.errors = {};
         $scope.errors.pageError = {};
@@ -13,7 +13,8 @@
         $scope.AllSubSubCategories = [];
         $scope.Services2MasterCreateOrEditViewModel.SelectedTenant_ID = -1;
         $scope.Services2MasterCreateOrEditViewModel.SelectedSubSubCat_Id = -1;
-       
+        $scope.AllBannerMaster = [];
+        $scope.SelectFor = "";
        
         $scope.Cookie_Tenant_ID = parseInt(CustomService.GetTenantID());
         $scope.Services2MasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;     
@@ -345,70 +346,60 @@ $scope.BindSubSubCategoryDropDownList = function (tenantId) {
             $scope.AllServiceType = CodeValueCRUD.LoadCodeValueByCodeId(Id);
         }  
 
- /***************************************for file Upload****************************/
-
-       
-        $scope.setFile = function (element) {
-            $scope.fileList = [];
-
-            var files = element.files;
-            for (var i = 0; i < files.length; i++) {
-                $scope.ImageProperty.file = files[i];
-
-                $scope.fileList.push($scope.ImageProperty);
-                $scope.ImageProperty = {};
-                $scope.$apply();
-            }
-        }
-        $scope.UploadFile = function () {
-            for (var i = 0; i < $scope.fileList.length; i++) {
-                $scope.UploadFileIndividual($scope.fileList[i].file,
-                                            $scope.fileList[i].file.name,
-                                            $scope.fileList[i].file.type,
-                                            $scope.fileList[i].file.size,
-                                            i);
-            }
-        }
-        $scope.UploadFileIndividual = function (fileToUpload, name, type, size, index) {
-        var tenantId=$scope.Services2MasterCreateOrEditViewModel.Tenant_ID;
-            var reqObj = new XMLHttpRequest();
-            reqObj.upload.addEventListener("progress", uploadProgress, false)
-            reqObj.addEventListener("load", uploadComplete, false)
-            reqObj.addEventListener("error", uploadFailed, false)
-            reqObj.addEventListener("abort", uploadCanceled, false)
-            reqObj.open("POST", "/Post/Services2Master/FileUpload", true);
-            reqObj.setRequestHeader("Content-Type", "multipart/form-data");
-            reqObj.setRequestHeader('X-File-Name', name);
-            reqObj.setRequestHeader('X-File-Type', type);
-            reqObj.setRequestHeader('X-File-Size', size);
-            reqObj.setRequestHeader('tenantId', tenantId);
-            reqObj.send(fileToUpload);
-            function uploadProgress(evt) {
-                if (evt.lengthComputable) {
-                    var uploadProgressCount = Math.round(evt.loaded * 100 / evt.total);
-                    document.getElementById('P' + index).innerHTML = uploadProgressCount;
-                    if (uploadProgressCount == 100) {
-                        document.getElementById('P' + index).innerHTML =
-                       '<i class="fa fa-refresh fa-spin" style="color:green;"></i>';
-                    }
-                }
-            }
-            function uploadComplete(evt) {
-                document.getElementById('P' + index).innerHTML = '<span style="color:Green;font-weight:bold;font-style: oblique">Saved..</span>';
-                $scope.NoOfFileSaved++;
-               $scope.Services2MasterCreateOrEditViewModel.BannerImagePath = name;
-                $scope.$apply();
-            }
-            function uploadFailed(evt) {
-                document.getElementById('P' + index).innerHTML = '<span style="color:Red;font-weight:bold;font-style: oblique">Upload Failed..</span>';
-            }
-            function uploadCanceled(evt) {
-                document.getElementById('P' + index).innerHTML = '<span style="color:Red;font-weight:bold;font-style: oblique">Canceled..</span>';
-            }
-        }
+        /**********************************PopUp Image Handling *********************************/
+ $scope.SelectBannerAsync = function (ID, BannerName) {
+     $scope.Services2MasterCreateOrEditViewModel[$scope.SelectFor] = BannerName;
+     $('#modal-bannermaster').modal('hide');
+ }
 
 
-        /**************************end File Upload************************/
+ $scope.SelectBannerasync = function (inputname) {
+     $scope.SelectFor = inputname;
+     $scope.AllBannerMaster = [];
+     if ($scope.Services2MasterCreateOrEditViewModel.Tenant_ID == undefined || $scope.Services2MasterCreateOrEditViewModel.Tenant_ID <= 0 || $scope.Services2MasterCreateOrEditViewModel.Tenant_ID == null) {
+         swal("Please select Tenant", "", "error");
+         return;
+     }
+     var result = BannerMasterCRUD.LoadAllBannerMasterByTenantIdAsync($scope.Services2MasterCreateOrEditViewModel.Tenant_ID);
+     result.then(
+         function success(response) {
+             switch (response.data.Type) {
+
+                 case 'Exception':
+                     swal('Error', response.data.Message, 'error');
+                     break;
+
+                 case 'Response':
+                     $scope.AllBannerMaster = response.data.Entity;
+
+                     break;
+
+                 default:
+                     swal('Error', 'Internal server error', 'error');
+                     break;
+             }
+         }, function errors(response) {
+             switch (response.data.Type) {
+
+                 case 'Exception':
+                     swal('Error', response.data.Message, 'error');
+                     break;
+
+                 case 'Validation':
+                     swal('Error', response.data.Message, 'error');
+                     break;
+
+                 default:
+                     swal('Error', 'Internal server error', 'error');
+                     break;
+             }
+             //console.clear();
+         });
+
+     $('#modal-bannermaster').modal('show');
+ }
+
+
 
         /****************************************************************************Load LoadSubSubCateUrl*************************************************************************************/
         $scope.LoadSubSubCateUrl = function (Id) {

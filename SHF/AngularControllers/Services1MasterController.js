@@ -159,8 +159,7 @@ $scope.SelectFor="";
         $scope.createOreditAsyncForm = function () {
             $scope.Processing = true;
             $scope.path = "";
-debugger;
-            if ($scope.myForm.$valid) {
+           if ($scope.myForm.$valid) {
                 $scope.path = ($scope.Services1MasterCreateOrEditViewModel.ID == undefined || $scope.Services1MasterCreateOrEditViewModel.ID == null ||
           $scope.Services1MasterCreateOrEditViewModel.ID == 0) ? "/Post/Services1Master/CreateAsync" : "/Post/Services1Master/EditAsync";
                 $http.post($scope.path, $scope.Services1MasterCreateOrEditViewModel,
@@ -243,12 +242,7 @@ debugger;
             CustomService.OnClose(modelId);
         }
 
-$scope.SelectBannerAsync = function (ID,BannerName) {
-
-$scope.Services1MasterCreateOrEditViewModel[$scope.SelectFor]=BannerName;
-$('#modal-bannermaster').modal('hide');
-//$scope.SelectFor="";
-}
+        
 
 
         $scope.PageLoad();
@@ -346,53 +340,58 @@ $('#modal-bannermaster').modal('hide');
             $scope.AllServiceType = [];
             $scope.AllServiceType = CodeValueCRUD.LoadCodeValueByCodeId(Id);
         }
-
-$scope.SelectBannerasync = function (inputname) {
-$scope.SelectFor=inputname;
-//alert($scope.SelectFor);
-           $scope.AllBannerMaster = [];
-            if ($scope.Services1MasterCreateOrEditViewModel.Tenant_ID == undefined || $scope.Services1MasterCreateOrEditViewModel.Tenant_ID <= 0 || $scope.Services1MasterCreateOrEditViewModel.Tenant_ID == null) {
-                swal("Please select Tenant", "", "error");
-                return;
-            }
-            var result = BannerMasterCRUD.LoadAllBannerMasterByTenantIdAsync($scope.Services1MasterCreateOrEditViewModel.Tenant_ID);
-            result.then(
-                function success(response) {
-                    switch (response.data.Type) {
-
-                        case 'Exception':
-                            swal('Error', response.data.Message, 'error');
-                            break;
-
-                        case 'Response':
-                            $scope.AllBannerMaster = response.data.Entity;
-                           
-                            break;
-
-                        default:
-                            swal('Error', 'Internal server error', 'error');
-                            break;
-                    }
-                }, function errors(response) {
-                    switch (response.data.Type) {
-
-                        case 'Exception':
-                            swal('Error', response.data.Message, 'error');
-                            break;
-
-                        case 'Validation':
-                            swal('Error', response.data.Message, 'error');
-                            break;
-
-                        default:
-                            swal('Error', 'Internal server error', 'error');
-                            break;
-                    }
-                    //console.clear();
-                });
-
-            $('#modal-bannermaster').modal('show');
+/**********************************PopUp Image Handling *********************************/
+        $scope.SelectBannerAsync = function (ID, BannerName) {
+            $scope.Services1MasterCreateOrEditViewModel[$scope.SelectFor] = BannerName;
+            $('#modal-bannermaster').modal('hide');
         }
+
+
+            $scope.SelectBannerasync = function (inputname) {
+               $scope.SelectFor=inputname;
+               $scope.AllBannerMaster = [];
+                if ($scope.Services1MasterCreateOrEditViewModel.Tenant_ID == undefined || $scope.Services1MasterCreateOrEditViewModel.Tenant_ID <= 0 || $scope.Services1MasterCreateOrEditViewModel.Tenant_ID == null) {
+                    swal("Please select Tenant", "", "error");
+                    return;
+                }
+                var result = BannerMasterCRUD.LoadAllBannerMasterByTenantIdAsync($scope.Services1MasterCreateOrEditViewModel.Tenant_ID);
+                result.then(
+                    function success(response) {
+                        switch (response.data.Type) {
+
+                            case 'Exception':
+                                swal('Error', response.data.Message, 'error');
+                                break;
+
+                            case 'Response':
+                                $scope.AllBannerMaster = response.data.Entity;
+                           
+                                break;
+
+                            default:
+                                swal('Error', 'Internal server error', 'error');
+                                break;
+                        }
+                    }, function errors(response) {
+                        switch (response.data.Type) {
+
+                            case 'Exception':
+                                swal('Error', response.data.Message, 'error');
+                                break;
+
+                            case 'Validation':
+                                swal('Error', response.data.Message, 'error');
+                                break;
+
+                            default:
+                                swal('Error', 'Internal server error', 'error');
+                                break;
+                        }
+                        //console.clear();
+                    });
+
+                $('#modal-bannermaster').modal('show');
+            }
 
 
         /****************************************************************************Load LoadSubSubCateUrl*************************************************************************************/
