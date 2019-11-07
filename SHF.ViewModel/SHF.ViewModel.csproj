@@ -56,6 +56,7 @@
     <Compile Include="FrontEnd\ServicesType3ViewModel.cs" />
     <Compile Include="FrontEnd\ServicesType2ViewModel.cs" />
     <Compile Include="FrontEnd\ServicesType1ViewModel.cs" />
+    <Compile Include="HomePageSection2ViewModel.cs" />
     <Compile Include="HomePageSection1ViewModel.cs" />
     <Compile Include="RelatedBlogsMappingViewModel.cs" />
     <Compile Include="BlogBannerNavigationsDetailsViewModel.cs" />

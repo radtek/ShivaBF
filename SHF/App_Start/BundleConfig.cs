@@ -184,6 +184,7 @@ namespace SHF
                                      "~/Scripts/Services/FooterBlockMaster.js",
                                      "~/Scripts/Services/HomePageBanner.js",
                                      "~/Scripts/Services/HomePageSection1.js",
+                                      "~/Scripts/Services/HomePageSection2.js",
                  "~/AngularControllers/AspNetUserController.js",
                  "~/AngularControllers/RoleController.js",
                  "~/AngularControllers/TenantController.js",
@@ -239,7 +240,8 @@ namespace SHF
                               "~/AngularControllers/BannerMasterController.js",
                                "~/AngularControllers/FooterBlockMasterController.js",
                                 "~/AngularControllers/HomePageBannerController.js",
-                                "~/AngularControllers/HomePageSection1Controller.js"
+                                "~/AngularControllers/HomePageSection1Controller.js",
+                                 "~/AngularControllers/HomePageSection2Controller.js"
 
                 ));
 
