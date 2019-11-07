@@ -135,9 +135,9 @@
                         </div>
                         <div class="form-group" ng-class="{'has-error': ((myForm.Section2Description.$touched && myForm.Section2Description.$invalid) || (!myForm.Section2Description.$pristine && myForm.Section2Description.$invalid))}">
                             <label>Section2 Description</label>
-                            <input type="text" class="form-control" name="Section2Description" ng-model="Services1MasterCreateOrEditViewModel.Section2Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section2 Description" tooltip-placement="top" uib-tooltip="Enter Section2 Description" />
+                            <textarea ckEditor class="form-control" name="Section2Description" ng-model="Services1MasterCreateOrEditViewModel.Section2Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section2 Description" tooltip-placement="top" uib-tooltip="Enter Section2 Description"></textarea>
                             <div class="help-block" ng-messages="myForm.Section2Description.$error" ng-if="myForm.Section2Description.$touched || myForm.Section2Description.$dirty && myForm.Section2Description.$invalid">
-                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.Section2Description" ng-bind="errors.formErrors.Section2Description"></span>
                         </div>
@@ -304,3 +304,4 @@
     </div>
     <!-- /.modal-content -->
 </div>
+@*<script src="~/bower_components/ckeditor/ckeditor.js"></script>*@
