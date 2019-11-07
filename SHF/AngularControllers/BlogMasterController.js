@@ -1,5 +1,5 @@
-﻿angular.module(config.app).controller('BlogMasterCtrl', ['$scope', '$http', '$window','SubSubCategoriesMasterCRUD', 'BlogMasterCRUD', 'TenantCRUD','CustomService','CodeValueCRUD',
-    function ($scope, $http, $window,SubSubCategoriesMasterCRUD, BlogMasterCRUD, TenantCRUD,CustomService,CodeValueCRUD) {      
+﻿angular.module(config.app).controller('BlogMasterCtrl', ['$scope', '$http', '$window', 'SubSubCategoriesMasterCRUD', 'BlogMasterCRUD', 'TenantCRUD', 'CustomService', 'CodeValueCRUD', 'BannerMasterCRUD',
+    function ($scope, $http, $window, SubSubCategoriesMasterCRUD, BlogMasterCRUD, TenantCRUD, CustomService, CodeValueCRUD, BannerMasterCRUD) {
         $scope.path = "";
         $scope.errors = {};
         $scope.errors.pageError = {};
@@ -11,16 +11,18 @@
         $scope.BlogMasterCreateOrEditViewModel = {};
         $scope.AllTenants = [];
         $scope.AllSubSubCategories = [];
+        $scope.AllBannerMaster = [];
+        $scope.SelectFor = "";
         $scope.BlogMasterCreateOrEditViewModel.SelectedTenant_ID = -1;
         $scope.BlogMasterCreateOrEditViewModel.SelectedSubSubCat_Id = -1;
-       
-       
+
+
         $scope.Cookie_Tenant_ID = parseInt(CustomService.GetTenantID());
-        $scope.BlogMasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;     
+        $scope.BlogMasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
 
         $scope.BindGrid = function () {
             BlogMasterCRUD.LoadTable();
-        }      
+        }
 
         $scope.PageLoad = function () {
             $scope.BlogMasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
@@ -36,8 +38,8 @@
         $scope.Clear = function () {
             $scope.BlogMasterCreateOrEditViewModel = {};
             $scope.Reset();
-        }            
-      
+        }
+
 
         /********************************************************************************************************************************************/
 
@@ -54,10 +56,10 @@
             if ($scope.Cookie_Tenant_ID <= 0) {
                 $scope.BindTenantDropDownList();
                 $scope.BlogMasterCreateOrEditViewModel.SelectedTenant_ID = -1;
-               // $scope.BlogMasterCreateOrEditViewModel.SelectedUnitOfMesurment = -1;
+                // $scope.BlogMasterCreateOrEditViewModel.SelectedUnitOfMesurment = -1;
             } else {
                 $scope.BlogMasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
-               // $scope.BindUnitOfMeasurementDropDownList($scope.BlogMasterCreateOrEditViewModel.Tenant_ID);
+                // $scope.BindUnitOfMeasurementDropDownList($scope.BlogMasterCreateOrEditViewModel.Tenant_ID);
             }
             $('#modal-createOredit').modal('show');
         }
@@ -99,13 +101,13 @@
                     });
             }
         }
-/********************************************************************************/
+        /********************************************************************************/
         $scope.EditAsync = function (Id) {
             $scope.Clear();
             $scope.BindServiceTypeDropDownList(1020);
             if ($scope.Cookie_Tenant_ID <= 0) {
                 $scope.BindTenantDropDownList();
-           }
+            }
             $http.get("/Get/BlogMaster/EditAsync?Id=" + Id
             ).then(
                 function success(response) {
@@ -116,8 +118,8 @@
                             break;
                         case 'Response':
                             $scope.BlogMasterCreateOrEditViewModel = response.data.Entity;
-                           // $scope.LoadAllCategory();
-                           // $scope.LoadAllSubSubCategory();
+                            // $scope.LoadAllCategory();
+                            // $scope.LoadAllSubSubCategory();
                             //$scope.BlogMasterCreateOrEditViewModel.Category_ID=$scope.BlogMasterCreateOrEditViewModel.Category_ID;
                             $('#modal-createOredit').modal('show');
                             console.clear();
@@ -152,42 +154,42 @@
         $scope.createOreditAsyncForm = function () {
             $scope.Processing = true;
             $scope.path = "";
-           if ($scope.myForm.$valid) {
-                $scope.path = ($scope.BlogMasterCreateOrEditViewModel.ID == undefined || $scope.BlogMasterCreateOrEditViewModel.ID == null || 
+            if ($scope.myForm.$valid) {
+                $scope.path = ($scope.BlogMasterCreateOrEditViewModel.ID == undefined || $scope.BlogMasterCreateOrEditViewModel.ID == null ||
           $scope.BlogMasterCreateOrEditViewModel.ID == 0) ? "/Post/BlogMaster/CreateAsync" : "/Post/BlogMaster/EditAsync";
-               $http.post($scope.path, $scope.BlogMasterCreateOrEditViewModel,
-                    {
-                        headers: { 'RequestVerificationToken': $scope.antiForgeryToken }
-                    }
-                ).then(
-                    function success(response) {
-                        $scope.Processing = false;
-                        switch (response.data.Type) {
-                            case 'Response':
-                                $('#modal-createOredit').modal('hide');
-                                CustomService.Alert(response);
-                                $scope.PageLoad();
-                                console.clear();
-                                break;
-                            case 'Exception':
-                                CustomService.Notify(response.data.Message);
-                                console.log(response);
-                                break;
-                            case 'Validation':
-                                CustomService.Notify(response.data.Message);
-                                console.log(response);
-                                break;
-                            default:
-                                CustomService.Notify(response.data.Message);
-                                console.log(response);
-                                break;
-                        }
-                    },
-                    function errors(response) {
-                        console.log(response);
-                        $scope.Processing = false;
-                        handleErrors(response.data);
-                    });
+                $http.post($scope.path, $scope.BlogMasterCreateOrEditViewModel,
+                     {
+                         headers: { 'RequestVerificationToken': $scope.antiForgeryToken }
+                     }
+                 ).then(
+                     function success(response) {
+                         $scope.Processing = false;
+                         switch (response.data.Type) {
+                             case 'Response':
+                                 $('#modal-createOredit').modal('hide');
+                                 CustomService.Alert(response);
+                                 $scope.PageLoad();
+                                 console.clear();
+                                 break;
+                             case 'Exception':
+                                 CustomService.Notify(response.data.Message);
+                                 console.log(response);
+                                 break;
+                             case 'Validation':
+                                 CustomService.Notify(response.data.Message);
+                                 console.log(response);
+                                 break;
+                             default:
+                                 CustomService.Notify(response.data.Message);
+                                 console.log(response);
+                                 break;
+                         }
+                     },
+                     function errors(response) {
+                         console.log(response);
+                         $scope.Processing = false;
+                         handleErrors(response.data);
+                     });
 
                 function updateErrors(errors) {
                     $scope.errors = {};
@@ -238,8 +240,8 @@
 
 
         $scope.PageLoad();
-              
- $scope.DeleteAsync = function (Id) {
+
+        $scope.DeleteAsync = function (Id) {
 
             swal({
                 title: "Are you sure?",
@@ -252,46 +254,46 @@
                     if (willDelete) {
                         var obj = {};
                         obj.Id = Id;
-                  $http.post("/Post/BlogMaster/Delete/", obj,
-                    {
-                        headers: { 'RequestVerificationToken': $scope.antiForgeryToken }
-                    }
-                ).then(function (response) {
-                            switch (response.data.Type) {
-                            case 'Response':
-                                $('#modal-createOredit').modal('hide');
-                                CustomService.Alert(response);
-                                $scope.PageLoad();
-                                console.clear();
-                                break;
-                            case 'Exception':
-                                CustomService.Notify(response.data.Message);
-                                console.log(response);
-                                break;
-                            case 'Validation':
-                                CustomService.Notify(response.data.Message);
-                                console.log(response);
-                                break;
-                            default:
-                                CustomService.Notify(response.data.Message);
-                                console.log(response);
-                                break;
-                        }
-                        })
+                        $http.post("/Post/BlogMaster/Delete/", obj,
+                          {
+                              headers: { 'RequestVerificationToken': $scope.antiForgeryToken }
+                          }
+                      ).then(function (response) {
+                          switch (response.data.Type) {
+                              case 'Response':
+                                  $('#modal-createOredit').modal('hide');
+                                  CustomService.Alert(response);
+                                  $scope.PageLoad();
+                                  console.clear();
+                                  break;
+                              case 'Exception':
+                                  CustomService.Notify(response.data.Message);
+                                  console.log(response);
+                                  break;
+                              case 'Validation':
+                                  CustomService.Notify(response.data.Message);
+                                  console.log(response);
+                                  break;
+                              default:
+                                  CustomService.Notify(response.data.Message);
+                                  console.log(response);
+                                  break;
+                          }
+                      })
                     }
                     else {
                         CustomService.Notify("Your record is safe!");
                     }
                 });
         }
-/************load Sub Sub Category**************************************************************************************************/
-$scope.LoadAllSubSubCategory = function () {
+        /************load Sub Sub Category**************************************************************************************************/
+        $scope.LoadAllSubSubCategory = function () {
             let tenantId = $scope.BlogMasterCreateOrEditViewModel.Tenant_ID;
-debugger;
+            debugger;
             $scope.BindSubSubCategoryDropDownList(tenantId);
         }
 
-$scope.BindSubSubCategoryDropDownList = function (tenantId) {
+        $scope.BindSubSubCategoryDropDownList = function (tenantId) {
             let promise = BlogMasterCRUD.LoadSubSubCategoriesDropdown(tenantId)
             promise.then(
                 function success(response) {
@@ -326,12 +328,64 @@ $scope.BindSubSubCategoryDropDownList = function (tenantId) {
                     }
 
                 });
-        }  
+        }
 
- $scope.BindServiceTypeDropDownList = function (Id) {
+        $scope.BindServiceTypeDropDownList = function (Id) {
             $scope.AllServiceType = [];
             $scope.AllServiceType = CodeValueCRUD.LoadCodeValueByCodeId(Id);
-        }         
+        }
+
+        /**********************************PopUp Image Handling *********************************/
+        $scope.SelectBannerAsync = function (ID, BannerName) {
+            $scope.BlogMasterCreateOrEditViewModel[$scope.SelectFor] = BannerName;
+            $('#modal-bannermaster').modal('hide');
+        }
+
+
+        $scope.SelectBannerasync = function (inputname) {
+            $scope.SelectFor = inputname;
+            $scope.AllBannerMaster = [];
+            if ($scope.BlogMasterCreateOrEditViewModel.Tenant_ID == undefined || $scope.BlogMasterCreateOrEditViewModel.Tenant_ID <= 0 || $scope.BlogMasterCreateOrEditViewModel.Tenant_ID == null) {
+                swal("Please select Tenant", "", "error");
+                return;
+            }
+            var result = BannerMasterCRUD.LoadAllBannerMasterByTenantIdAsync($scope.BlogMasterCreateOrEditViewModel.Tenant_ID);
+            result.then(
+                function success(response) {
+                    switch (response.data.Type) {
+
+                        case 'Exception':
+                            swal('Error', response.data.Message, 'error');
+                            break;
+
+                        case 'Response':
+                            $scope.AllBannerMaster = response.data.Entity;
+                            break;
+
+                        default:
+                            swal('Error', 'Internal server error', 'error');
+                            break;
+                    }
+                }, function errors(response) {
+                    switch (response.data.Type) {
+
+                        case 'Exception':
+                            swal('Error', response.data.Message, 'error');
+                            break;
+
+                        case 'Validation':
+                            swal('Error', response.data.Message, 'error');
+                            break;
+
+                        default:
+                            swal('Error', 'Internal server error', 'error');
+                            break;
+                    }
+                    //console.clear();
+                });
+
+            $('#modal-bannermaster').modal('show');
+        }
     }]);
 
 

@@ -9451,6 +9451,8 @@
     <Content Include="Views\Services8Master\_Guide.cshtml" />
     <Content Include="Views\Services8Section6Master\_Guide.cshtml" />
     <Content Include="Views\Services8HeadingButtons\_Guide.cshtml" />
+    <Content Include="Views\BlogMaster\_Guide.cshtml" />
+    <Content Include="Views\RelatedBlogsMapping\_Guide.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
