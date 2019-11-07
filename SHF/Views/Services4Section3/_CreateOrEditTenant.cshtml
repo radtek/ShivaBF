@@ -74,7 +74,7 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.TotalViews" ng-bind="errors.formErrors.TotalViews"></span>
                         </div>
-                        <div class="form-group" ng-class="{'has-error': (myForm.Url.$touched || myForm.TotalViews.$dirty)  && myForm.TotalViews.$invalid}">
+                        <div class="form-group" ng-class="{'has-error': (myForm.Url.$touched || myForm.Url.$dirty)  && myForm.Url.$invalid}">
                             <label>Url</label>
                             <input type="text" class="form-control" name="Url" ng-model="Services4Section3CreateOrEditViewModel.Url" ng-disabled="Processing" autocomplete="off" placeholder="Enter Url" tooltip-placement="top" uib-tooltip="Enter Url" required />
                             <div class="help-block" ng-messages="myForm.Url.$error" ng-if="myForm.Url.$touched || myForm.Url.$dirty && myForm.Url.$invalid">

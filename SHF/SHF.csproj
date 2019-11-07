@@ -9430,6 +9430,14 @@
     <Content Include="Views\FooterBlockMaster\_CreateOrEditTenant.cshtml" />
     <Content Include="Views\FooterBlockMaster\Index.cshtml" />
     <Content Include="Views\Shared\_BannerMaster.cshtml" />
+    <Content Include="Views\Services4Master\_Guide.cshtml" />
+    <Content Include="Views\Services4Section2FAQMapping\_Guide.cshtml" />
+    <Content Include="Views\Services4Section2Master\_Guide.cshtml" />
+    <Content Include="Views\Services4Section2MasterChild\_Guide.cshtml" />
+    <Content Include="Views\Services4Section3\_Guide.cshtml" />
+    <Content Include="Views\Services4Section3DownloadMaster\_Guide.cshtml" />
+    <Content Include="Views\Services4Section567FieldMaster\_Guide.cshtml" />
+    <Content Include="Views\Services4Section567FieldValues\_Guide.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />

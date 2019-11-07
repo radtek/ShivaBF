@@ -61,7 +61,13 @@
                         </div>
                         <div class="form-group" ng-class="{'has-error': ((myForm.DownloadFilePath.$touched && myForm.DownloadFilePath.$invalid) || (!myForm.DownloadFilePath.$pristine && myForm.DownloadFilePath.$invalid))}">
                             <label>Download File Path</label>
-                            <input type="text" class="form-control" name="DownloadFilePath" ng-model="Services4Section3DownloadMasterCreateOrEditViewModel.DownloadFilePath" ng-disabled="Processing" autocomplete="off" placeholder="Enter Sub Sub Category Name" tooltip-placement="top" uib-tooltip="Enter Sub Sub Category Name" />
+                            <div class="col-md-12" style="text-align:center;margin-bottom:10px;">
+                                <input type="text" class="form-control" name="DownloadFilePath" ng-model="Services4Section3DownloadMasterCreateOrEditViewModel.DownloadFilePath" ng-disabled="Processing" autocomplete="off" required readonly placeholder="Enter DownloadFilePath" tooltip-placement="top" uib-tooltip="Enter DownloadFilePath" />
+                            </div>
+                            <div class="col-md-12">
+                                <span ng-click="SelectBannerasync('DownloadFilePath')" class="btn btn-sm btn-success">Select</span>
+                            </div>
+
                             <div class="help-block" ng-messages="myForm.DownloadFilePath.$error" ng-if="myForm.DownloadFilePath.$touched || myForm.DownloadFilePath.$dirty && myForm.DownloadFilePath.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
@@ -91,7 +97,7 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.TotalViews" ng-bind="errors.formErrors.TotalViews"></span>
                         </div>
-                        <div class="form-group" ng-class="{'has-error': (myForm.Url.$touched || myForm.TotalViews.$dirty)  && myForm.TotalViews.$invalid}">
+                        <div class="form-group" ng-class="{'has-error': (myForm.Url.$touched || myForm.Url.$dirty)  && myForm.Url.$invalid}">
                             <label>Url</label>
                             <input type="text" class="form-control" name="Url" ng-model="Services4Section3DownloadMasterCreateOrEditViewModel.Url" ng-disabled="Processing" autocomplete="off" placeholder="Enter Url" tooltip-placement="top" uib-tooltip="Enter Url" required />
                             <div class="help-block" ng-messages="myForm.Url.$error" ng-if="myForm.Url.$touched || myForm.Url.$dirty && myForm.Url.$invalid">

@@ -1,5 +1,5 @@
-﻿angular.module(config.app).controller('Services4Section3DownloadMasterCtrl', ['$scope', '$http', '$window','CategoriesMasterCRUD','SubCategoriesMasterCRUD', 'Services4Section3DownloadMasterCRUD','Services2MasterCRUD','TenantCRUD','CustomService','CodeValueCRUD',
-    function ($scope, $http, $window,CategoriesMasterCRUD,SubCategoriesMasterCRUD, Services4Section3DownloadMasterCRUD,Services2MasterCRUD, TenantCRUD,CustomService,CodeValueCRUD) {      
+﻿angular.module(config.app).controller('Services4Section3DownloadMasterCtrl', ['$scope', '$http', '$window', 'CategoriesMasterCRUD', 'SubCategoriesMasterCRUD', 'Services4Section3DownloadMasterCRUD', 'Services2MasterCRUD', 'TenantCRUD', 'CustomService', 'CodeValueCRUD', 'BannerMasterCRUD',
+    function ($scope, $http, $window, CategoriesMasterCRUD, SubCategoriesMasterCRUD, Services4Section3DownloadMasterCRUD, Services2MasterCRUD, TenantCRUD, CustomService, CodeValueCRUD, BannerMasterCRUD) {
         $scope.path = "";
         $scope.errors = {};
         $scope.errors.pageError = {};
@@ -13,7 +13,8 @@
         $scope.AllSubSubCategories = [];
         $scope.Services4Section3DownloadMasterCreateOrEditViewModel.SelectedTenant_ID = -1;
         $scope.Services4Section3DownloadMasterCreateOrEditViewModel.SelectedSubSubCat_Id = -1;
-       
+        $scope.AllBannerMaster = [];
+        $scope.SelectFor = "";
        
         $scope.Cookie_Tenant_ID = parseInt(CustomService.GetTenantID());
         $scope.Services4Section3DownloadMasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;     
@@ -329,7 +330,60 @@ $scope.BindSubSubCategoryDropDownList = function (tenantId) {
  $scope.BindServiceTypeDropDownList = function (Id) {
             $scope.AllServiceType = [];
             $scope.AllServiceType = CodeValueCRUD.LoadCodeValueByCodeId(Id);
-        }         
+ }
+
+        /**********************************PopUp Image Handling *********************************/
+ $scope.SelectBannerAsync = function (ID, BannerName) {
+     $scope.Services4Section3DownloadMasterCreateOrEditViewModel[$scope.SelectFor] = BannerName;
+     $('#modal-bannermaster').modal('hide');
+ }
+
+
+ $scope.SelectBannerasync = function (inputname) {
+     $scope.SelectFor = inputname;
+     $scope.AllBannerMaster = [];
+     if ($scope.Services4Section3DownloadMasterCreateOrEditViewModel.Tenant_ID == undefined || $scope.Services4Section3DownloadMasterCreateOrEditViewModel.Tenant_ID <= 0 || $scope.Services4Section3DownloadMasterCreateOrEditViewModel.Tenant_ID == null) {
+         swal("Please select Tenant", "", "error");
+         return;
+     }
+     var result = BannerMasterCRUD.LoadAllBannerMasterByTenantIdAsync($scope.Services4Section3DownloadMasterCreateOrEditViewModel.Tenant_ID);
+     result.then(
+         function success(response) {
+             switch (response.data.Type) {
+
+                 case 'Exception':
+                     swal('Error', response.data.Message, 'error');
+                     break;
+
+                 case 'Response':
+                     $scope.AllBannerMaster = response.data.Entity;
+
+                     break;
+
+                 default:
+                     swal('Error', 'Internal server error', 'error');
+                     break;
+             }
+         }, function errors(response) {
+             switch (response.data.Type) {
+
+                 case 'Exception':
+                     swal('Error', response.data.Message, 'error');
+                     break;
+
+                 case 'Validation':
+                     swal('Error', response.data.Message, 'error');
+                     break;
+
+                 default:
+                     swal('Error', 'Internal server error', 'error');
+                     break;
+             }
+             //console.clear();
+         });
+
+     $('#modal-bannermaster').modal('show');
+ }
     }]);
 
 
