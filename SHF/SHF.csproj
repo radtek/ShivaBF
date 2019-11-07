@@ -9448,6 +9448,9 @@
     <Content Include="Views\Services7HeadingButtons\_Guide.cshtml" />
     <Content Include="Views\Services7Section4\_Guide.cshtml" />
     <Content Include="Views\Services7Section6PriceMaster\_Guide.cshtml" />
+    <Content Include="Views\Services8Master\_Guide.cshtml" />
+    <Content Include="Views\Services8Section6Master\_Guide.cshtml" />
+    <Content Include="Views\Services8HeadingButtons\_Guide.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />

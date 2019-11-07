@@ -1,5 +1,5 @@
-﻿angular.module(config.app).controller('Services8MasterCtrl', ['$scope', '$http', '$window','SubSubCategoriesMasterCRUD', 'Services8MasterCRUD', 'TenantCRUD','CustomService','CodeValueCRUD',
-    function ($scope, $http, $window,SubSubCategoriesMasterCRUD, Services8MasterCRUD, TenantCRUD,CustomService,CodeValueCRUD) {      
+﻿angular.module(config.app).controller('Services8MasterCtrl', ['$scope', '$http', '$window', 'SubSubCategoriesMasterCRUD', 'Services8MasterCRUD', 'TenantCRUD', 'CustomService', 'CodeValueCRUD', 'BannerMasterCRUD',
+    function ($scope, $http, $window, SubSubCategoriesMasterCRUD, Services8MasterCRUD, TenantCRUD, CustomService, CodeValueCRUD, BannerMasterCRUD) {
         $scope.path = "";
         $scope.errors = {};
         $scope.errors.pageError = {};
@@ -11,16 +11,18 @@
         $scope.Services8MasterCreateOrEditViewModel = {};
         $scope.AllTenants = [];
         $scope.AllSubSubCategories = [];
+        $scope.AllBannerMaster = [];
+        $scope.SelectFor = "";
         $scope.Services8MasterCreateOrEditViewModel.SelectedTenant_ID = -1;
         $scope.Services8MasterCreateOrEditViewModel.SelectedSubSubCat_Id = -1;
-       
-       
+
+
         $scope.Cookie_Tenant_ID = parseInt(CustomService.GetTenantID());
-        $scope.Services8MasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;     
+        $scope.Services8MasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
 
         $scope.BindGrid = function () {
             Services8MasterCRUD.LoadTable();
-        }      
+        }
 
         $scope.PageLoad = function () {
             $scope.Services8MasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
@@ -36,8 +38,8 @@
         $scope.Clear = function () {
             $scope.Services8MasterCreateOrEditViewModel = {};
             $scope.Reset();
-        }            
-      
+        }
+
 
         /********************************************************************************************************************************************/
 
@@ -54,10 +56,10 @@
             if ($scope.Cookie_Tenant_ID <= 0) {
                 $scope.BindTenantDropDownList();
                 $scope.Services8MasterCreateOrEditViewModel.SelectedTenant_ID = -1;
-               // $scope.Services8MasterCreateOrEditViewModel.SelectedUnitOfMesurment = -1;
+                // $scope.Services8MasterCreateOrEditViewModel.SelectedUnitOfMesurment = -1;
             } else {
                 $scope.Services8MasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
-               // $scope.BindUnitOfMeasurementDropDownList($scope.Services8MasterCreateOrEditViewModel.Tenant_ID);
+                // $scope.BindUnitOfMeasurementDropDownList($scope.Services8MasterCreateOrEditViewModel.Tenant_ID);
             }
             $('#modal-createOredit').modal('show');
         }
@@ -99,13 +101,13 @@
                     });
             }
         }
-/********************************************************************************/
+        /********************************************************************************/
         $scope.EditAsync = function (Id) {
             $scope.Clear();
             $scope.BindServiceTypeDropDownList(1020);
             if ($scope.Cookie_Tenant_ID <= 0) {
                 $scope.BindTenantDropDownList();
-           }
+            }
             $http.get("/Get/Services8Master/EditAsync?Id=" + Id
             ).then(
                 function success(response) {
@@ -116,7 +118,7 @@
                             break;
                         case 'Response':
                             $scope.Services8MasterCreateOrEditViewModel = response.data.Entity;
-                           // $scope.LoadAllCategory();
+                            // $scope.LoadAllCategory();
                             $scope.LoadAllSubSubCategory();
                             //$scope.Services8MasterCreateOrEditViewModel.Category_ID=$scope.Services8MasterCreateOrEditViewModel.Category_ID;
                             $('#modal-createOredit').modal('show');
@@ -152,42 +154,42 @@
         $scope.createOreditAsyncForm = function () {
             $scope.Processing = true;
             $scope.path = "";
-           if ($scope.myForm.$valid) {
-                $scope.path = ($scope.Services8MasterCreateOrEditViewModel.ID == undefined || $scope.Services8MasterCreateOrEditViewModel.ID == null || 
+            if ($scope.myForm.$valid) {
+                $scope.path = ($scope.Services8MasterCreateOrEditViewModel.ID == undefined || $scope.Services8MasterCreateOrEditViewModel.ID == null ||
           $scope.Services8MasterCreateOrEditViewModel.ID == 0) ? "/Post/Services8Master/CreateAsync" : "/Post/Services8Master/EditAsync";
-               $http.post($scope.path, $scope.Services8MasterCreateOrEditViewModel,
-                    {
-                        headers: { 'RequestVerificationToken': $scope.antiForgeryToken }
-                    }
-                ).then(
-                    function success(response) {
-                        $scope.Processing = false;
-                        switch (response.data.Type) {
-                            case 'Response':
-                                $('#modal-createOredit').modal('hide');
-                                CustomService.Alert(response);
-                                $scope.PageLoad();
-                                console.clear();
-                                break;
-                            case 'Exception':
-                                CustomService.Notify(response.data.Message);
-                                console.log(response);
-                                break;
-                            case 'Validation':
-                                CustomService.Notify(response.data.Message);
-                                console.log(response);
-                                break;
-                            default:
-                                CustomService.Notify(response.data.Message);
-                                console.log(response);
-                                break;
-                        }
-                    },
-                    function errors(response) {
-                        console.log(response);
-                        $scope.Processing = false;
-                        handleErrors(response.data);
-                    });
+                $http.post($scope.path, $scope.Services8MasterCreateOrEditViewModel,
+                     {
+                         headers: { 'RequestVerificationToken': $scope.antiForgeryToken }
+                     }
+                 ).then(
+                     function success(response) {
+                         $scope.Processing = false;
+                         switch (response.data.Type) {
+                             case 'Response':
+                                 $('#modal-createOredit').modal('hide');
+                                 CustomService.Alert(response);
+                                 $scope.PageLoad();
+                                 console.clear();
+                                 break;
+                             case 'Exception':
+                                 CustomService.Notify(response.data.Message);
+                                 console.log(response);
+                                 break;
+                             case 'Validation':
+                                 CustomService.Notify(response.data.Message);
+                                 console.log(response);
+                                 break;
+                             default:
+                                 CustomService.Notify(response.data.Message);
+                                 console.log(response);
+                                 break;
+                         }
+                     },
+                     function errors(response) {
+                         console.log(response);
+                         $scope.Processing = false;
+                         handleErrors(response.data);
+                     });
 
                 function updateErrors(errors) {
                     $scope.errors = {};
@@ -238,8 +240,8 @@
 
 
         $scope.PageLoad();
-              
- $scope.DeleteAsync = function (Id) {
+
+        $scope.DeleteAsync = function (Id) {
 
             swal({
                 title: "Are you sure?",
@@ -252,46 +254,46 @@
                     if (willDelete) {
                         var obj = {};
                         obj.Id = Id;
-                  $http.post("/Post/Services8Master/Delete/", obj,
-                    {
-                        headers: { 'RequestVerificationToken': $scope.antiForgeryToken }
-                    }
-                ).then(function (response) {
-                            switch (response.data.Type) {
-                            case 'Response':
-                                $('#modal-createOredit').modal('hide');
-                                CustomService.Alert(response);
-                                $scope.PageLoad();
-                                console.clear();
-                                break;
-                            case 'Exception':
-                                CustomService.Notify(response.data.Message);
-                                console.log(response);
-                                break;
-                            case 'Validation':
-                                CustomService.Notify(response.data.Message);
-                                console.log(response);
-                                break;
-                            default:
-                                CustomService.Notify(response.data.Message);
-                                console.log(response);
-                                break;
-                        }
-                        })
+                        $http.post("/Post/Services8Master/Delete/", obj,
+                          {
+                              headers: { 'RequestVerificationToken': $scope.antiForgeryToken }
+                          }
+                      ).then(function (response) {
+                          switch (response.data.Type) {
+                              case 'Response':
+                                  $('#modal-createOredit').modal('hide');
+                                  CustomService.Alert(response);
+                                  $scope.PageLoad();
+                                  console.clear();
+                                  break;
+                              case 'Exception':
+                                  CustomService.Notify(response.data.Message);
+                                  console.log(response);
+                                  break;
+                              case 'Validation':
+                                  CustomService.Notify(response.data.Message);
+                                  console.log(response);
+                                  break;
+                              default:
+                                  CustomService.Notify(response.data.Message);
+                                  console.log(response);
+                                  break;
+                          }
+                      })
                     }
                     else {
                         CustomService.Notify("Your record is safe!");
                     }
                 });
         }
-/************load Sub Sub Category**************************************************************************************************/
-$scope.LoadAllSubSubCategory = function () {
+        /************load Sub Sub Category**************************************************************************************************/
+        $scope.LoadAllSubSubCategory = function () {
             let tenantId = $scope.Services8MasterCreateOrEditViewModel.Tenant_ID;
-debugger;
+            debugger;
             $scope.BindSubSubCategoryDropDownList(tenantId);
         }
 
-$scope.BindSubSubCategoryDropDownList = function (tenantId) {
+        $scope.BindSubSubCategoryDropDownList = function (tenantId) {
             let promise = Services8MasterCRUD.LoadSubSubCategoriesDropdown(tenantId)
             promise.then(
                 function success(response) {
@@ -326,50 +328,101 @@ $scope.BindSubSubCategoryDropDownList = function (tenantId) {
                     }
 
                 });
-        }  
+        }
 
- $scope.BindServiceTypeDropDownList = function (Id) {
+        $scope.BindServiceTypeDropDownList = function (Id) {
             $scope.AllServiceType = [];
             $scope.AllServiceType = CodeValueCRUD.LoadCodeValueByCodeId(Id);
- }
+        }
 
         /****************************************************************************Load LoadSubSubCateUrl*************************************************************************************/
- $scope.LoadSubSubCateUrl = function (Id) {
-     let promise = SubSubCategoriesMasterCRUD.GetSubSubCategoriesUrl(Id)
-     promise.then(
-         function success(response) {
-             switch (response.data.Type) {
-                 case 'Exception':
-                     CustomService.Notify(response.data.Message);
-                     console.log(response);
-                     break;
-                 case 'Response':
-                     $scope.Services8MasterCreateOrEditViewModel.Url = response.data.Entity.Url;
-                     console.clear();
-                     break;
-                 default:
-                     CustomService.Notify(response.data.Message);
-                     console.log(response);
-                     break;
-             }
-         }, function errors(response) {
-             switch (response.data.Type) {
-                 case 'Exception':
-                     CustomService.Notify(response.data.Message);
-                     console.log(response);
-                     break;
-                 case 'Validation':
-                     CustomService.Notify(response.data.Message);
-                     console.log(response);
-                     break;
-                 default:
-                     CustomService.Notify(response.data.Message);
-                     console.log(response);
-                     break;
-             }
+        $scope.LoadSubSubCateUrl = function (Id) {
+            let promise = SubSubCategoriesMasterCRUD.GetSubSubCategoriesUrl(Id)
+            promise.then(
+                function success(response) {
+                    switch (response.data.Type) {
+                        case 'Exception':
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                        case 'Response':
+                            $scope.Services8MasterCreateOrEditViewModel.Url = response.data.Entity.Url;
+                            console.clear();
+                            break;
+                        default:
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                    }
+                }, function errors(response) {
+                    switch (response.data.Type) {
+                        case 'Exception':
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                        case 'Validation':
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                        default:
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                    }
 
-         });
- }
+                });
+        }
+        /**********************************PopUp Image Handling *********************************/
+        $scope.SelectBannerAsync = function (ID, BannerName) {
+            $scope.Services8MasterCreateOrEditViewModel[$scope.SelectFor] = BannerName;
+            $('#modal-bannermaster').modal('hide');
+        }
+
+
+        $scope.SelectBannerasync = function (inputname) {
+            $scope.SelectFor = inputname;
+            $scope.AllBannerMaster = [];
+            if ($scope.Services8MasterCreateOrEditViewModel.Tenant_ID == undefined || $scope.Services8MasterCreateOrEditViewModel.Tenant_ID <= 0 || $scope.Services8MasterCreateOrEditViewModel.Tenant_ID == null) {
+                swal("Please select Tenant", "", "error");
+                return;
+            }
+            var result = BannerMasterCRUD.LoadAllBannerMasterByTenantIdAsync($scope.Services8MasterCreateOrEditViewModel.Tenant_ID);
+            result.then(
+                function success(response) {
+                    switch (response.data.Type) {
+
+                        case 'Exception':
+                            swal('Error', response.data.Message, 'error');
+                            break;
+
+                        case 'Response':
+                            $scope.AllBannerMaster = response.data.Entity;
+                            break;
+
+                        default:
+                            swal('Error', 'Internal server error', 'error');
+                            break;
+                    }
+                }, function errors(response) {
+                    switch (response.data.Type) {
+
+                        case 'Exception':
+                            swal('Error', response.data.Message, 'error');
+                            break;
+
+                        case 'Validation':
+                            swal('Error', response.data.Message, 'error');
+                            break;
+
+                        default:
+                            swal('Error', 'Internal server error', 'error');
+                            break;
+                    }
+                    //console.clear();
+                });
+
+            $('#modal-bannermaster').modal('show');
+        }
     }]);
 
 

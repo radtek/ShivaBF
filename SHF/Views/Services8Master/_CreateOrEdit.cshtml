@@ -45,7 +45,13 @@
                         </div>
                         <div class="form-group" ng-class="{'has-error': ((myForm.BannerImagePath.$touched && myForm.BannerImagePath.$invalid) || (!myForm.BannerImagePath.$pristine && myForm.BannerImagePath.$invalid))}">
                             <label>Banner Image Path</label>
-                            <input type="text" class="form-control" name="BannerImagePath" ng-model="Services8MasterCreateOrEditViewModel.BannerImagePath" ng-disabled="Processing" autocomplete="off" placeholder="Enter Banner Image Path" tooltip-placement="top" uib-tooltip="Enter Banner Image Path" />
+                            <div class="col-md-12" style="text-align:center;margin-bottom:10px;">
+                                <input type="text" class="form-control" name="BannerImagePath" ng-model="Services8MasterCreateOrEditViewModel.BannerImagePath" ng-disabled="Processing" autocomplete="off" required readonly placeholder="Enter BannerImagePath" tooltip-placement="top" uib-tooltip="Enter BannerImagePath" />
+                            </div>
+                            <div class="col-md-12">
+                                <span ng-click="SelectBannerasync('BannerImagePath')" class="btn btn-sm btn-success">Select</span>
+                            </div>
+
                             <div class="help-block" ng-messages="myForm.BannerImagePath.$error" ng-if="myForm.BannerImagePath.$touched || myForm.BannerImagePath.$dirty && myForm.BannerImagePath.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
