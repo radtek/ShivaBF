@@ -61,12 +61,19 @@
                         </div>
                         <div class="form-group" ng-class="{'has-error': ((myForm.ImageFilePath.$touched && myForm.ImageFilePath.$invalid) || (!myForm.ImageFilePath.$pristine && myForm.ImageFilePath.$invalid))}">
                             <label>Image File Path</label>
-                            <input type="text" class="form-control" name="ImageFilePath" ng-model="Services5Section2MasterCreateOrEditViewModel.ImageFilePath" ng-disabled="Processing" autocomplete="off" placeholder="Enter Sub Sub Category Name" tooltip-placement="top" uib-tooltip="Enter Sub Sub Category Name" />
+                            <div class="col-md-12" style="text-align:center;margin-bottom:10px;">
+                                <input type="text" class="form-control" name="ImageFilePath" ng-model="Services5Section2MasterCreateOrEditViewModel.ImageFilePath" ng-disabled="Processing" autocomplete="off" required readonly placeholder="Enter ImageFilePath" tooltip-placement="top" uib-tooltip="Enter ImageFilePath" />
+                            </div>
+                            <div class="col-md-12">
+                                <span ng-click="SelectBannerasync('ImageFilePath')" class="btn btn-sm btn-success">Select</span>
+                            </div>
+
                             <div class="help-block" ng-messages="myForm.ImageFilePath.$error" ng-if="myForm.ImageFilePath.$touched || myForm.ImageFilePath.$dirty && myForm.ImageFilePath.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.ImageFilePath" ng-bind="errors.formErrors.ImageFilePath"></span>
                         </div>
+                        
                         <div class="form-group" ng-class="{'has-error': (myForm.DisplayIndex.$touched || myForm.DisplayIndex.$dirty)  && myForm.DisplayIndex.$invalid}">
                             <label>Display Index</label>
                             <input type="number" min="0" class="form-control" name="DisplayIndex" ng-model="Services5Section2MasterCreateOrEditViewModel.DisplayIndex" ng-disabled="Processing" autocomplete="off" placeholder="Enter Display Index" tooltip-placement="top" uib-tooltip="Enter Display Index" required />
@@ -91,7 +98,7 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.TotalViews" ng-bind="errors.formErrors.TotalViews"></span>
                         </div>
-                        <div class="form-group" ng-class="{'has-error': (myForm.Url.$touched || myForm.TotalViews.$dirty)  && myForm.TotalViews.$invalid}">
+                        <div class="form-group" ng-class="{'has-error': (myForm.Url.$touched || myForm.Url.$dirty)  && myForm.Url.$invalid}">
                             <label>Url</label>
                             <input type="text" class="form-control" name="Url" ng-model="Services5Section2MasterCreateOrEditViewModel.Url" ng-disabled="Processing" autocomplete="off" placeholder="Enter Url" tooltip-placement="top" uib-tooltip="Enter Url" required />
                             <div class="help-block" ng-messages="myForm.Url.$error" ng-if="myForm.Url.$touched || myForm.Url.$dirty && myForm.Url.$invalid">

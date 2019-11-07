@@ -9438,6 +9438,9 @@
     <Content Include="Views\Services4Section3DownloadMaster\_Guide.cshtml" />
     <Content Include="Views\Services4Section567FieldMaster\_Guide.cshtml" />
     <Content Include="Views\Services4Section567FieldValues\_Guide.cshtml" />
+    <Content Include="Views\Services5Master\_Guide.cshtml" />
+    <Content Include="Views\Services5Section2Master\_Guide.cshtml" />
+    <Content Include="Views\Services5Section2MasterFeaturesDetails\_Guide.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
