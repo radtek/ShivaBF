@@ -865,6 +865,18 @@ namespace SHF.DataAccess.Implementations
                 return _HomePageSection4Repository;
             }
         }
+        public GenericRepository<EntityModel.HomePageSection4Testimonails> HomePageSection4TestimonailsRepository
+        {
+            get
+            {
+                if (this._HomePageSection4TestimonailsRepository == null)
+                {
+                    this._HomePageSection4TestimonailsRepository = new GenericRepository<EntityModel.HomePageSection4Testimonails>(context);
+                }
+                return _HomePageSection4TestimonailsRepository;
+            }
+        }
+      
         public GenericRepository<EntityModel.HomePageSection5> HomePageSection5Repository
         {
             get
