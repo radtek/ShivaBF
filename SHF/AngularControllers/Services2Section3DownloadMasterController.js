@@ -13,12 +13,8 @@
         $scope.AllSubSubCategories = [];
         $scope.Services2Section3DownloadMasterCreateOrEditViewModel.SelectedTenant_ID = -1;
         $scope.Services2Section3DownloadMasterCreateOrEditViewModel.SelectedSubSubCat_Id = -1;
-       
-        $scope.fileList = [];
-        $scope.curFile;
-        $scope.ImageProperty = {
-            file: ''
-        }
+        $scope.AllBannerMaster = [];
+        $scope.SelectFor = "";
         $scope.Cookie_Tenant_ID = parseInt(CustomService.GetTenantID());
         $scope.Services2Section3DownloadMasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;     
         $scope.Preview = function (url) {

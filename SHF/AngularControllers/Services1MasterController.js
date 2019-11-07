@@ -13,8 +13,8 @@
         $scope.AllSubSubCategories = [];
         $scope.Services1MasterCreateOrEditViewModel.SelectedTenant_ID = -1;
         $scope.Services1MasterCreateOrEditViewModel.SelectedSubSubCat_Id = -1;
-$scope.AllBannerMaster = [];
-$scope.SelectFor="";
+        $scope.AllBannerMaster = [];
+        $scope.SelectFor="";
 
         $scope.Cookie_Tenant_ID = parseInt(CustomService.GetTenantID());
         $scope.Services1MasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;

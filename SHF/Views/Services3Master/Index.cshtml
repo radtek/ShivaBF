@@ -78,6 +78,19 @@
         }
     </div>
 
+    <div class="modal fade" id="modal-bannermaster" data-backdrop="static" tabindex="-1" data-keyboard="false" style="display:none">
+        <!--modal fade-->
+        <!--modal fade-->
+        @if (ViewBag.TenantID <= SHF.Helper.busConstant.Numbers.Integer.ZERO)
+        {
+            Html.RenderPartial("~/Views/Shared/_BannerMaster.cshtml");
+        }
+        else
+        {
+            Html.RenderPartial("~/Views/Shared/_BannerMaster.cshtml");
+        }
+    </div>
+
 </section>
 <!-- /.content -->
 @functions{
