@@ -9441,6 +9441,9 @@
     <Content Include="Views\Services5Master\_Guide.cshtml" />
     <Content Include="Views\Services5Section2Master\_Guide.cshtml" />
     <Content Include="Views\Services5Section2MasterFeaturesDetails\_Guide.cshtml" />
+    <Content Include="Views\Services6Master\_Guide.cshtml" />
+    <Content Include="Views\Services6Section2Master\_Guide.cshtml" />
+    <Content Include="Views\Services6Section2MasterFeaturesDetails\_Guide.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
