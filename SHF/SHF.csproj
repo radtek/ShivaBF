@@ -405,6 +405,7 @@
     <Compile Include="Controllers\Front\ServiceType2Controller.cs" />
     <Compile Include="Controllers\Front\ServiceType1Controller.cs" />
     <Compile Include="Controllers\Front\MenusController.cs" />
+    <Compile Include="Controllers\HomePageSection5Controller.cs" />
     <Compile Include="Controllers\HomePageSection4Controller.cs" />
     <Compile Include="Controllers\HomePageSection3Controller.cs" />
     <Compile Include="Controllers\HomePageSection2Controller.cs" />
@@ -510,6 +511,7 @@
     <Content Include="AngularControllers\AspNetUserController.js" />
     <Content Include="AngularControllers\FooterBlockMasterController.js" />
     <Content Include="AngularControllers\BannerMasterController.js" />
+    <Content Include="AngularControllers\HomePageSection5Controller.js" />
     <Content Include="AngularControllers\HomePageSection4Controller.js" />
     <Content Include="AngularControllers\HomePageSection3Controller.js" />
     <Content Include="AngularControllers\HomePageSection2Controller.js" />
@@ -9488,6 +9490,10 @@
     <Content Include="Views\HomePageSection4\_CreateOrEditTenant.cshtml" />
     <Content Include="Views\HomePageSection4\_Guide.cshtml" />
     <Content Include="Views\HomePageSection4\Index.cshtml" />
+    <Content Include="Views\HomePageSection5\_CreateOrEdit.cshtml" />
+    <Content Include="Views\HomePageSection5\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\HomePageSection5\_Guide.cshtml" />
+    <Content Include="Views\HomePageSection5\Index.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
