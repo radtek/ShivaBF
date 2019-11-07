@@ -408,6 +408,7 @@
     <Compile Include="Controllers\RelatedBlogsMappingController.cs" />
     <Compile Include="Controllers\BlogBannerNavigationsDetailsController.cs" />
     <Compile Include="Controllers\BlogMasterController.cs" />
+    <Compile Include="Controllers\HomePageBannerController.cs" />
     <Compile Include="Controllers\Services4Section567FieldValuesController.cs" />
     <Compile Include="Controllers\Services4Section567FieldMasterController.cs" />
     <Compile Include="Controllers\Services8Section6MasterController.cs" />
@@ -508,6 +509,7 @@
     <Content Include="AngularControllers\RelatedBlogsMappingController.js" />
     <Content Include="AngularControllers\BannerNavigationsDetailsController.js" />
     <Content Include="AngularControllers\BlogMasterController.js" />
+    <Content Include="AngularControllers\HomePageBannerController.js" />
     <Content Include="AngularControllers\Services4Section567FieldValuesController.js" />
     <Content Include="AngularControllers\Services4Section567FieldMasterController.js" />
     <Content Include="AngularControllers\Services8Section6MasterController.js" />
@@ -9134,6 +9136,7 @@
     <Content Include="Scripts\Services\RelatedBlogsMapping.js" />
     <Content Include="Scripts\Services\BannerNavigationsDetails.js" />
     <Content Include="Scripts\Services\BlogMaster.js" />
+    <Content Include="Scripts\Services\HomePageBanner.js" />
     <Content Include="Scripts\Services\Services4Section567FieldValues.js" />
     <Content Include="Scripts\Services\Services4Section567FieldMaster.js" />
     <Content Include="Scripts\Services\Services8Section6Master.js" />
@@ -9453,6 +9456,10 @@
     <Content Include="Views\Services8HeadingButtons\_Guide.cshtml" />
     <Content Include="Views\BlogMaster\_Guide.cshtml" />
     <Content Include="Views\RelatedBlogsMapping\_Guide.cshtml" />
+    <Content Include="Views\HomePageBanner\_CreateOrEdit.cshtml" />
+    <Content Include="Views\HomePageBanner\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\HomePageBanner\_Guide.cshtml" />
+    <Content Include="Views\HomePageBanner\Index.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
