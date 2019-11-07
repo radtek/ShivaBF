@@ -54,6 +54,7 @@
     <Compile Include="busCache.cs" />
     <Compile Include="BusinessLogic\FooterBlockMaster.cs" />
     <Compile Include="BusinessLogic\BannerMaster.cs" />
+    <Compile Include="BusinessLogic\HomePageSection3.cs" />
     <Compile Include="BusinessLogic\HomePageSection2.cs" />
     <Compile Include="BusinessLogic\HomePageSection1.cs" />
     <Compile Include="BusinessLogic\RelatedBlogsMapping.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="BusinessLogic\Tenant.cs" />
     <Compile Include="Interface\IFooterBlockMaster.cs" />
     <Compile Include="Interface\IBannerMaster.cs" />
+    <Compile Include="Interface\IHomePageSection3.cs" />
     <Compile Include="Interface\IHomePageSection2.cs" />
     <Compile Include="Interface\IHomePageSection1.cs" />
     <Compile Include="Interface\IRelatedBlogsMapping.cs" />
