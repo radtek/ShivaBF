@@ -6,6 +6,12 @@
         return cookieToken + ":" + formToken;
     }
 }
+<script src="~/plugins/summernote/summernote-bs4.js"></script>
+<script>
+$(function () {
+    // Summernote
+    $('.textarea').summernote()
+  })</script>
 <div class="modal-dialog">
     <div class="modal-content">
         <form name="myForm" ng-submit="myForm.$valid && createOreditAsyncForm()" novalidate>
@@ -16,7 +22,7 @@
                 </button>
                 <h4 class="modal-title">Services1  Master Details</h4>
             </div>
-            <div class="modal-body" >
+            <div class="modal-body">
                 <!-- general form elements -->
                 <div id="errorMessages" class="text-danger" ng-if="ValidationSummary" ng-repeat="vs in ValidationSummary">{{vs}}</div>
                 <div class="box box-primary">
@@ -117,7 +123,7 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.Section1AfterBannerImagePath" ng-bind="errors.formErrors.Section1AfterBannerImagePath"></span>
                         </div>
-                         <div class="form-group" ng-class="{'has-error': ((myForm.Section1AfterBannerImageOnDescription.$touched && myForm.Section1AfterBannerImageOnDescription.$invalid) || (!myForm.Section1AfterBannerImageOnDescription.$pristine && myForm.Section1AfterBannerImageOnDescription.$invalid))}">
+                        <div class="form-group" ng-class="{'has-error': ((myForm.Section1AfterBannerImageOnDescription.$touched && myForm.Section1AfterBannerImageOnDescription.$invalid) || (!myForm.Section1AfterBannerImageOnDescription.$pristine && myForm.Section1AfterBannerImageOnDescription.$invalid))}">
                             <label>Section1 After BannerImageOnDescription</label>
                             <input type="text" class="form-control" name="Section1AfterBannerImageOnDescription" ng-model="Services1MasterCreateOrEditViewModel.Section1AfterBannerImageOnDescription" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section1 After BannerImageOnDescription" tooltip-placement="top" uib-tooltip="Enter Section1 After BannerImageOnDescription" />
                             <div class="help-block" ng-messages="myForm.Section1AfterBannerImageOnDescription.$error" ng-if="myForm.Section1AfterBannerImageOnDescription.$touched || myForm.Section1AfterBannerImageOnDescription.$dirty && myForm.Section1AfterBannerImageOnDescription.$invalid">
@@ -135,10 +141,13 @@
                         </div>
                         <div class="form-group" ng-class="{'has-error': ((myForm.Section2Description.$touched && myForm.Section2Description.$invalid) || (!myForm.Section2Description.$pristine && myForm.Section2Description.$invalid))}">
                             <label>Section2 Description</label>
-                            <textarea ckEditor class="form-control" name="Section2Description" ng-model="Services1MasterCreateOrEditViewModel.Section2Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section2 Description" tooltip-placement="top" uib-tooltip="Enter Section2 Description"></textarea>
+                            <textarea class="form-control" name="editor1" ng-bind-html="Services1MasterCreateOrEditViewModel.Section2Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter terms and conditions" tooltip-placement="top" uib-tooltip="Enter terms and conditions" required></textarea>
+                            @*<textarea class="form-control wysiwyg" wysiwyg name="Section2Description" ng-model="Services1MasterCreateOrEditViewModel.Section2Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section2 Description" tooltip-placement="top" uib-tooltip="Enter Section2 Description"></textarea>*@
+                            <div>{{Services1MasterCreateOrEditViewModel.Section2Description}}</div>
                             <div class="help-block" ng-messages="myForm.Section2Description.$error" ng-if="myForm.Section2Description.$touched || myForm.Section2Description.$dirty && myForm.Section2Description.$invalid">
-                            <div ng-messages-include="~/ValidationMessages.html"></div>
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
+
                             <span class="text-danger" ng-show="errors.formErrors.Section2Description" ng-bind="errors.formErrors.Section2Description"></span>
                         </div>
                         <div class="form-group" ng-class="{'has-error': ((myForm.Section3Heading.$touched && myForm.Section3Heading.$invalid) || (!myForm.Section3Heading.$pristine && myForm.Section3Heading.$invalid))}">
@@ -304,4 +313,10 @@
     </div>
     <!-- /.modal-content -->
 </div>
-@*<script src="~/bower_components/ckeditor/ckeditor.js"></script>*@
+
+<script src="~/bower_components/ckeditor/ckeditor.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ng-ckeditor/0.2.1/ng-ckeditor.min.js"></script>
+<script>
+ CKEDITOR.replace( 'editor1' );
+</script>
+
