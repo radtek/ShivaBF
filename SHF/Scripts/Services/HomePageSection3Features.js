@@ -1,17 +1,17 @@
 ﻿//let app = angular.module('InventoryApp');
 
-angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
+angular.module(config.app).service('HomePageSection3FeaturesCRUD', function ($http) {
 
     this.GetTableObject = function TableData() {
-        let scope = angular.element(document.getElementById('HomePageSection3ControllerScope')).scope();
-        let tenantId = scope.HomePageSection3CreateOrEditViewModel.Tenant_ID == null ? 0 : scope.HomePageSection3CreateOrEditViewModel.Tenant_ID;
+        let scope = angular.element(document.getElementById('HomePageSection3FeaturesControllerScope')).scope();
+        let tenantId = scope.HomePageSection3FeaturesCreateOrEditViewModel.Tenant_ID == null ? 0 : scope.HomePageSection3FeaturesCreateOrEditViewModel.Tenant_ID;
         let viewBagTenantID = $('#ViewBag_TenantID').val();
         let antiForgeryToken = $('#antiForgeryToken').val();
         var src = '../../../Content/Images/';
         let oTable = $('#grdTable').DataTable({
             serverSide: true,
             ajax: {
-                url: '/Post/HomePageSection3/IndexAsync',
+                url: '/Post/HomePageSection3Features/IndexAsync',
                 type: 'POST',
                 dataSrc: 'data',
                 data: { 'tenantId': tenantId },
@@ -44,7 +44,7 @@ angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
                     targets: 0
                 },
                 {
-                    name: "HomePageSection3.ID",
+                    name: "HomePageSection3Features.ID",
                     data: "ID",
                     title: "ID",
                     render: $.fn.dataTable.render.text(),
@@ -52,59 +52,51 @@ angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
                     targets: 1
                 },
                 {
-                    name: "HomePageSection3.BannerImagePath",
-                    data: "BannerImagePath",
-                    title: "BannerImagePath",
+                    name: "HomePageSection3Features.HomePageSection3_Id",
+                    data: "HomePageSection3_Id",
+                    title: "HomePageSection3_Id",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
                     targets: 2
                 },
+               
                 {
-                    name: "HomePageSection3.BannerImagePath",
-                    data: "BannerImagePath",
-                    title: "Image Preview",
-                    render: function (data, type, row, meta) {
-                        return '<img src="' + data + '" style="height:150px;width:200px;"/>';
-                    },
-                    width: "40%",
-                    targets: 2
-                },
-                {
-                    name: "HomePageSection3.Heading1",
-                    data: "Heading1",
-                    title: "Heading1",
+                    name: "HomePageSection3Features.ShortDescription",
+                    data: "ShortDescription",
+                    title: "ShortDescription",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
                     targets: 3
                 },
 
                 {
-                    name: "HomePageSection3.Heading2",
-                    data: "Heading2",
-                    title: "Heading2",
+                    name: "HomePageSection3Features.LongDescription",
+                    data: "LongDescription",
+                    title: "LongDescription",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
                     targets: 5
                 },
+               
+                {
+                    name: "HomePageSection3Features.AncharTagTitle",
+                    data: "AncharTagTitle",
+                    title: "AncharTagTitle",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 7
+                },
+                {
+                    name: "HomePageSection3Features.AncharTagUrl",
+                    data: "AncharTagUrl",
+                    title: "AncharTagUrl",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 8
+                },
 
-                {
-                    name: "HomePageSection3.Heading3",
-                    data: "Heading3",
-                    title: "Heading3",
-                    render: $.fn.dataTable.render.text(),
-                    width: "25%",
-                    targets: 7
-                },
-                {
-                    name: "HomePageSection3.Heading4",
-                    data: "Heading4",
-                    title: "Heading4",
-                    render: $.fn.dataTable.render.text(),
-                    width: "25%",
-                    targets: 7
-                },
                  {
-                     name: "HomePageSection3.DisplayIndex",
+                     name: "HomePageSection3Features.DisplayIndex",
                      data: "DisplayIndex",
                      title: "Display&nbsp;Index",
                      render: $.fn.dataTable.render.text(),
@@ -112,7 +104,7 @@ angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
                      targets: 11
                  },
                 {
-                    name: "HomePageSection3.Url",
+                    name: "HomePageSection3Features.Url",
                     data: "Url",
                     title: "Url",
                     render: $.fn.dataTable.render.text(),
@@ -120,7 +112,7 @@ angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
                     targets: 12
                 },
                 {
-                    name: "HomePageSection3.Metadata",
+                    name: "HomePageSection3Features.Metadata",
                     data: "Metadata",
                     title: "Metadata",
                     render: $.fn.dataTable.render.text(),
@@ -128,7 +120,7 @@ angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
                     targets: 13
                 },
                 {
-                    name: "HomePageSection3.MetaDescription",
+                    name: "HomePageSection3Features.MetaDescription",
                     data: "MetaDescription",
                     title: "MetaDescription",
                     render: $.fn.dataTable.render.text(),
@@ -136,7 +128,7 @@ angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
                     targets: 14
                 },
                 {
-                    name: "HomePageSection3.Keyword",
+                    name: "HomePageSection3Features.Keyword",
                     data: "Keyword",
                     title: "Keyword",
                     render: $.fn.dataTable.render.text(),
@@ -145,7 +137,7 @@ angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
                 },
 
                 {
-                    name: "HomePageSection3.TotalViews",
+                    name: "HomePageSection3Features.TotalViews",
                     data: "TotalViews",
                     title: "TotalViews",
                     render: $.fn.dataTable.render.text(),
@@ -153,7 +145,7 @@ angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
                     targets: 16
                 },
               {
-                  name: "HomePageSection3.IsActive",
+                  name: "HomePageSection3Features.IsActive",
                   data: "IsActive",
                   title: "Is&nbsp;Active",
                   render: $.fn.dataTable.render.text(),
@@ -170,7 +162,7 @@ angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
                     targets: 18
                 },
                 {
-                    name: "HomePageSection3.CreatedBy",
+                    name: "HomePageSection3Features.CreatedBy",
                     data: "CreatedBy",
                     title: "Created&nbsp;By",
                     render: $.fn.dataTable.render.text(),
@@ -178,7 +170,7 @@ angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
                     targets: 19
                 },
                 {
-                    name: "HomePageSection3.CreatedOn",
+                    name: "HomePageSection3Features.CreatedOn",
                     data: "CreatedOn",
                     title: "Created&nbsp;On",
                     render: function (data, type, row, meta) {
@@ -190,7 +182,7 @@ angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
                     targets: 20
                 },
                 {
-                    name: "HomePageSection3.UpdatedBy",
+                    name: "HomePageSection3Features.UpdatedBy",
                     data: "UpdatedBy",
                     title: "Modified&nbsp;By",
                     render: $.fn.dataTable.render.text(),
@@ -198,7 +190,7 @@ angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
                     targets: 21
                 },
                 {
-                    name: "HomePageSection3.UpdatedOn",
+                    name: "HomePageSection3Features.UpdatedOn",
                     data: "UpdatedOn",
                     title: "Modified&nbsp;On",
                     render: function (data, type, row, meta) {
@@ -254,18 +246,18 @@ angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
         $('#grdTable tbody').off('click');
         $('#grdTable tbody').on('click', '.btn-edit', function () {
             let rowData = oTable.row($(this).parents('tr')).data();
-            let scope = angular.element(document.getElementById('HomePageSection3ControllerScope')).scope();
+            let scope = angular.element(document.getElementById('HomePageSection3FeaturesControllerScope')).scope();
             scope.EditAsync(rowData.ID);
         });
 
         $('#grdTable tbody').on('click', '.btn-delete', function () {
             let rowData = oTable.row($(this).parents('tr')).data();
-            let scope = angular.element(document.getElementById('HomePageSection3ControllerScope')).scope();
+            let scope = angular.element(document.getElementById('HomePageSection3FeaturesControllerScope')).scope();
             scope.DeleteAsync(rowData.ID);
         });
         $('#grdTable tbody').on('click', '.btn-preview', function () {
             let rowData = oTable.row($(this).parents('tr')).data();
-            let scope = angular.element(document.getElementById('HomePageSection3ControllerScope')).scope();
+            let scope = angular.element(document.getElementById('HomePageSection3FeaturesControllerScope')).scope();
             scope.Preview('Views/services2.html?u=' + rowData.Url);
         });
     }
@@ -281,10 +273,10 @@ angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
         }
     }
 
-    this.LoadAllHomePageSection3IdDropdown = function AllHomePageSection3IdDropdown(tenantId) {
+    this.LoadSubSubCategoriesDropdown = function SubSubCategoriesDropdown(tenantId) {
         let request = $http({
             method: "get",
-            url: "/Get/HomePageSection3/DropdownListbyTenantAsync?Id=" + tenantId
+            url: "/Get/HomePageSection3Features/DropdownListbyTenantAsync?Id=" + tenantId
         });
         return request;
     }

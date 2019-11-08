@@ -186,6 +186,7 @@ namespace SHF
                                      "~/Scripts/Services/HomePageSection1.js",
                                       "~/Scripts/Services/HomePageSection2.js",
                                       "~/Scripts/Services/HomePageSection3.js",
+                                       "~/Scripts/Services/HomePageSection3Features.js",
                                       "~/Scripts/Services/HomePageSection4.js",
                                        "~/Scripts/Services/HomePageSection4Testimonails.js",
                                        "~/Scripts/Services/HomePageSection5.js",
@@ -247,6 +248,7 @@ namespace SHF
                                 "~/AngularControllers/HomePageSection1Controller.js",
                                  "~/AngularControllers/HomePageSection2Controller.js",
                                  "~/AngularControllers/HomePageSection3Controller.js",
+                                 "~/AngularControllers/HomePageSection3FeaturesController.js",
                                  "~/AngularControllers/HomePageSection4Controller.js",
                                  "~/AngularControllers/HomePageSection4TestimonailsController.js",
                                   "~/AngularControllers/HomePageSection5Controller.js"

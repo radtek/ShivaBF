@@ -12,7 +12,7 @@ namespace SHF.ViewModel
     {
         public System.Int64 HomePageSection3_Id { get; set; }
         public System.String ShortDescription { get; set; }
-        public System.String LongtDescription { get; set; }
+        public System.String LongDescription { get; set; }
         public System.String AncharTagTitle { get; set; }
         public System.String AncharTagUrl { get; set; }
         public System.Int32 DisplayIndex { get; set; }
@@ -31,7 +31,7 @@ namespace SHF.ViewModel
     {
         public System.Int64 HomePageSection3_Id { get; set; }
         public System.String ShortDescription { get; set; }
-        public System.String LongtDescription { get; set; }
+        public System.String LongDescription { get; set; }
         public System.String AncharTagTitle { get; set; }
         public System.String AncharTagUrl { get; set; }
         public System.Int32 DisplayIndex { get; set; }

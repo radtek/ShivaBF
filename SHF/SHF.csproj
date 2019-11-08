@@ -405,6 +405,7 @@
     <Compile Include="Controllers\Front\ServiceType2Controller.cs" />
     <Compile Include="Controllers\Front\ServiceType1Controller.cs" />
     <Compile Include="Controllers\Front\MenusController.cs" />
+    <Compile Include="Controllers\HomePageSection3FeaturesController.cs" />
     <Compile Include="Controllers\HomePageSection4TestimonailsController.cs" />
     <Compile Include="Controllers\HomePageSection5Controller.cs" />
     <Compile Include="Controllers\HomePageSection4Controller.cs" />
@@ -512,6 +513,7 @@
     <Content Include="AngularControllers\AspNetUserController.js" />
     <Content Include="AngularControllers\FooterBlockMasterController.js" />
     <Content Include="AngularControllers\BannerMasterController.js" />
+    <Content Include="AngularControllers\HomePageSection3FeaturesController.js" />
     <Content Include="AngularControllers\HomePageSection4TestimonailsController.js" />
     <Content Include="AngularControllers\HomePageSection5Controller.js" />
     <Content Include="AngularControllers\HomePageSection4Controller.js" />
@@ -10794,6 +10796,7 @@
     <Content Include="Scripts\Services\AspNetUser.js" />
     <Content Include="Scripts\Services\FooterBlockMaster.js" />
     <Content Include="Scripts\Services\BannerMaster.js" />
+    <Content Include="Scripts\Services\HomePageSection3Features.js" />
     <Content Include="Scripts\Services\HomePageSection4Testimonails.js" />
     <Content Include="Scripts\Services\HomePageSection4.js" />
     <Content Include="Scripts\Services\HomePageSection3.js" />
@@ -11150,6 +11153,10 @@
     <Content Include="Views\HomePageSection4Testimonails\_CreateOrEditTenant.cshtml" />
     <Content Include="Views\HomePageSection4Testimonails\_Guide.cshtml" />
     <Content Include="Views\HomePageSection4Testimonails\Index.cshtml" />
+    <Content Include="Views\HomePageSection3Features\_CreateOrEdit.cshtml" />
+    <Content Include="Views\HomePageSection3Features\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\HomePageSection3Features\_Guide.cshtml" />
+    <Content Include="Views\HomePageSection3Features\Index.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />

@@ -25,22 +25,22 @@ using SHF.Helpers;
 namespace SHF.Controllers
 {
     [AllowAnonymous]
-    public class HomePageSection3Controller : BaseController
+    public class HomePageSection3FeaturesController : BaseController
     {
         #region [Field & Contructor]
 
         private Business.Interface.IMessage businessMessage;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private Business.Interface.IHomePageSection3 businessHomePageSection3;
+        private Business.Interface.IHomePageSection3Features businessHomePageSection3Features;
         private Business.Interface.ITenant businessTenant;
         private Business.Interface.ISubSubCategoriesMaster businessSubSubCategoriesMaster;
         
 
-        public HomePageSection3Controller(Business.Interface.IMessage Imessage, Business.Interface.IHomePageSection3 IHomePageSection3, Business.Interface.ITenant Itenant, Business.Interface.ISubSubCategoriesMaster IsubSubCategoriesMaster)
+        public HomePageSection3FeaturesController(Business.Interface.IMessage Imessage, Business.Interface.IHomePageSection3Features IHomePageSection3Features, Business.Interface.ITenant Itenant, Business.Interface.ISubSubCategoriesMaster IsubSubCategoriesMaster)
         {
             this.businessMessage = Imessage;
-            this.businessHomePageSection3 = IHomePageSection3;
+            this.businessHomePageSection3Features = IHomePageSection3Features;
             this.businessSubSubCategoriesMaster = IsubSubCategoriesMaster;
             this.businessTenant = Itenant;
 
@@ -75,8 +75,8 @@ namespace SHF.Controllers
         [HttpGet]
         [Access]
         [OutputCache(Duration = busConstant.Settings.Cache.OutputCache.TimeOut.S300)]
-        [Route("Configurations/Master/HomePage/HomePageSection3")]
-        [Route("Settings/Master/HomePage/HomePageSection3")]
+        [Route("Configurations/Master/HomePage/HomePageSection3Features")]
+        [Route("Settings/Master/HomePage/HomePageSection3Features")]
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId<long>();
@@ -88,7 +88,7 @@ namespace SHF.Controllers
         [ValidateAntiForgeryTokens]
         public async Task<ActionResult> IndexAsync()
         {
-            BusinessResultViewModel<ViewModel.HomePageSection3IndexViewModel> businessResult;
+            BusinessResultViewModel<ViewModel.HomePageSection3FeaturesIndexViewModel> businessResult;
             try
             {
                 using (var transaction = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadUncommitted }))
@@ -98,7 +98,7 @@ namespace SHF.Controllers
                         long? tenantId = Request.Form.AllKeys.Contains("tenantId") ? Convert.ToInt64(Request.Form.GetValues("tenantId").FirstOrDefault()) : busConstant.Numbers.Integer.ZERO;
                         tenantId = tenantId > busConstant.Numbers.Integer.ZERO ? tenantId : null;
 
-                        businessResult = this.businessHomePageSection3.Index(Request, tenantId);
+                        businessResult = this.businessHomePageSection3Features.Index(Request, tenantId);
                         transaction.Complete();
                     }
                     catch
@@ -131,8 +131,8 @@ namespace SHF.Controllers
         [HttpPost]
         [Audit]
         [ValidateAntiForgeryTokens]
-        [Route("Post/HomePageSection3/CreateAsync")]
-        public async Task<ActionResult> CreateAsync(ViewModel.HomePageSection3CreateOrEditViewModel model)
+        [Route("Post/HomePageSection3Features/CreateAsync")]
+        public async Task<ActionResult> CreateAsync(ViewModel.HomePageSection3FeaturesCreateOrEditViewModel model)
         {
             try
             {
@@ -146,7 +146,7 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var catId = businessHomePageSection3.FindBy(Categories => Categories.Tenant_ID == model.Tenant_ID && Categories.ID==model.ID ).FirstOrDefault();
+                            var catId = businessHomePageSection3Features.FindBy(Categories => Categories.Tenant_ID == model.Tenant_ID && Categories.ID == model.ID).FirstOrDefault();
 
                             if (catId.IsNotNull())
                             {
@@ -164,15 +164,14 @@ namespace SHF.Controllers
                             else
                             {
                                
-                                var entity = new EntityModel.HomePageSection3();
+                                var entity = new EntityModel.HomePageSection3Features();
                                 
-                                entity.BannerImagePath = model.BannerImagePath;
-                                entity.Heading1 = model.Heading1;
-                                entity.Heading2 = model.Heading2;
+                                entity.HomePageSection3_Id = model.HomePageSection3_Id;
+                                entity.ShortDescription = model.ShortDescription;
+                                entity.LongDescription = model.LongDescription;
                                 
-                                entity.Heading3 = model.Heading3;
-                                entity.Heading4 = model.Heading4;
-                            
+                                entity.AncharTagTitle = model.AncharTagTitle;
+                                entity.AncharTagUrl = model.AncharTagUrl;
                                 entity.DisplayIndex = model.DisplayIndex;
                                 entity.Url= model.Url;
                                 entity.Metadata= model.Metadata;
@@ -184,7 +183,7 @@ namespace SHF.Controllers
                                
                                 entity.Tenant = null;
                                 
-                                this.businessHomePageSection3.Create(entity);
+                                this.businessHomePageSection3Features.Create(entity);
                                 transaction.Complete();
 
                                 var response = new JsonResponse<dynamic>()
@@ -219,7 +218,7 @@ namespace SHF.Controllers
 
 
         [HttpGet]
-        [Route("Get/HomePageSection3/EditAsync")]
+        [Route("Get/HomePageSection3Features/EditAsync")]
         public async Task<ActionResult> EditAsync(long Id)
         {
             try
@@ -242,18 +241,19 @@ namespace SHF.Controllers
                         }
                         else
                         {
-                            var entity = this.businessHomePageSection3.GetById(Id);
+                            var entity = this.businessHomePageSection3Features.GetById(Id);
 
                             if (entity.IsNotNull())
                             {
-                                var model = new ViewModel.HomePageSection3CreateOrEditViewModel();
+                                var model = new ViewModel.HomePageSection3FeaturesCreateOrEditViewModel();
                                
                                 model.ID = entity.ID;
-                                model.BannerImagePath = entity.BannerImagePath;
-                                model.Heading1 = entity.Heading1;
-                                model.Heading2 = entity.Heading2;
-                                model.Heading3 = entity.Heading3;
-                                model.Heading4 = entity.Heading4;
+                                model.HomePageSection3_Id = Convert.ToInt64(entity.HomePageSection3_Id);
+                                model.ShortDescription = entity.ShortDescription;
+                                model.LongDescription = entity.LongDescription;
+                               
+                                model.AncharTagTitle = entity.AncharTagTitle;
+                                model.AncharTagUrl = entity.AncharTagUrl;
                                 model.DisplayIndex = entity.DisplayIndex;
                                 model.Url = entity.Url;
                                 model.Metadata = entity.Metadata;
@@ -264,7 +264,7 @@ namespace SHF.Controllers
                                 model.Tenant_ID = Convert.ToInt64(entity.Tenant_ID);
 
 
-                                var response = new JsonResponse<HomePageSection3CreateOrEditViewModel>()
+                                var response = new JsonResponse<HomePageSection3FeaturesCreateOrEditViewModel>()
                                 {
                                     Type = busConstant.Messages.Type.RESPONSE,
                                     Entity = model
@@ -307,8 +307,8 @@ namespace SHF.Controllers
         [HttpPost]
         [AuditAttribute]
         [ValidateAntiForgeryTokens]
-        [Route("Post/HomePageSection3/EditAsync")]
-        public async Task<ActionResult> EditAsync(ViewModel.HomePageSection3CreateOrEditViewModel model)
+        [Route("Post/HomePageSection3Features/EditAsync")]
+        public async Task<ActionResult> EditAsync(ViewModel.HomePageSection3FeaturesCreateOrEditViewModel model)
         {
             try
             {
@@ -324,7 +324,7 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var CategoriesData = businessHomePageSection3.FindBy(Categories => Categories.Tenant_ID == model.Tenant_ID && Categories.ID != model.ID).FirstOrDefault();
+                            var CategoriesData = businessHomePageSection3Features.FindBy(Categories => Categories.Tenant_ID == model.Tenant_ID && Categories.ID != model.ID).FirstOrDefault();
 
                             if (CategoriesData.IsNotNull())
                             {
@@ -342,15 +342,16 @@ namespace SHF.Controllers
                             else
                             {
                                 
-                                var entity = this.businessHomePageSection3.GetById(Convert.ToInt64(model.ID));
+                                var entity = this.businessHomePageSection3Features.GetById(Convert.ToInt64(model.ID));
                                 if (entity.IsNotNull())
                                 {
                                     // Mapper.Map(model, entity);
-                                    entity.BannerImagePath = model.BannerImagePath;
-                                    entity.Heading1 = model.Heading1;
-                                    entity.Heading2 = model.Heading2;
-                                    entity.Heading3 = model.Heading3;
-                                    entity.Heading4 = model.Heading4;
+                                    entity.HomePageSection3_Id = model.HomePageSection3_Id;
+                                    entity.ShortDescription = model.ShortDescription;
+                                    entity.LongDescription = model.LongDescription;
+                                    
+                                    entity.AncharTagTitle = model.AncharTagTitle;
+                                    entity.AncharTagUrl = model.AncharTagUrl;
                                     entity.DisplayIndex = model.DisplayIndex;
                                     entity.Url = model.Url;
                                     entity.Metadata = model.Metadata;
@@ -361,7 +362,7 @@ namespace SHF.Controllers
                                     entity.Tenant_ID = model.Tenant_ID;
                                     entity.Tenant = null;
                                 
-                                this.businessHomePageSection3.Update(entity);
+                                this.businessHomePageSection3Features.Update(entity);
 
                                 transaction.Complete();
 
@@ -410,7 +411,7 @@ namespace SHF.Controllers
         [HttpPost]
         [AuditAttribute]
         [ValidateAntiForgeryTokens]
-        [Route("Post/HomePageSection3/Delete")]
+        [Route("Post/HomePageSection3Features/Delete")]
         public async Task<ActionResult> DeleteAsync(string Id)
         {
             try
@@ -433,7 +434,7 @@ namespace SHF.Controllers
                             }
                             else
                             {
-                                this.businessHomePageSection3.Delete(Convert.ToInt64(Id));
+                                this.businessHomePageSection3Features.Delete(Convert.ToInt64(Id));
 
 
                                 var response = new JsonResponse<dynamic>()
@@ -465,75 +466,8 @@ namespace SHF.Controllers
             }
         }
 
+        
 
-        [HttpGet]
-        [Route("Get/HomePageSection3/DropdownListbyTenantAsync")]
-        public async Task<ActionResult> GetDropdownListbyTenantTenantIdAsync(long? Id)
-        {
-            try
-            {
-                using (var transaction = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadUncommitted }))
-                {
-                    try
-                    {
-                        if (Id == null)
-                        {
-                            transaction.Complete();
-                            var response = new JsonResponse<dynamic>()
-                            {
-                                Type = busConstant.Messages.Type.EXCEPTION,
-                                Message = busConstant.Messages.Type.Exceptions.BAD_REQUEST,
-                                StatusCode = Convert.ToInt32(HttpStatusCode.BadRequest)
-                            };
-
-                            return Json(response, JsonRequestBehavior.AllowGet);
-                        }
-                        else
-                        {
-
-                            var entities = this.businessHomePageSection3.GetAll().Where(x => x.Tenant_ID == Id)
-                                 .Select(x => new ViewModel.HomePageSection3DropdownListViewModel
-                                 {
-                                     ID = x.ID,
-                                     BannerImagePath = x.ID.ToString()
-                                 });
-                            if (entities.IsNotNull())
-                            {
-                                var response = new JsonResponse<IEnumerable<ViewModel.HomePageSection3DropdownListViewModel>>()
-                                {
-                                    Type = busConstant.Messages.Type.RESPONSE,
-                                    Entity = entities
-                                };
-
-                                transaction.Complete();
-                                return Json(response, JsonRequestBehavior.AllowGet);
-                            }
-                            else
-                            {
-                                var response = new JsonResponse<dynamic>()
-                                {
-                                    Type = busConstant.Messages.Type.EXCEPTION,
-                                    Message = busConstant.Messages.Type.Exceptions.NOT_FOUND,
-                                    StatusCode = Convert.ToInt32(HttpStatusCode.NotFound)
-                                };
-                                transaction.Complete();
-
-                                return Json(response, JsonRequestBehavior.AllowGet);
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        transaction.Dispose();
-                        throw;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                return ExceptionResponse(ex);
-            }
-        }
         #endregion
 
     }
