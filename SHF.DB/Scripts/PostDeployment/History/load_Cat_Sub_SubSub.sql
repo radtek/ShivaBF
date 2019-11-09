@@ -15,7 +15,7 @@
            ,[Is_Deleted])
    
    select distinct MAIN_CATEGORY_MENU as MAIN_CATEGORY_MENU,Main_Category_Display_Index,1,1,10,
-   '/'+lower(replace(replace(dbo.udf_TitleCase(MAIN_CATEGORY_MENU),' ','_'),'&','')),
+   lower(replace(replace(replace(dbo.udf_TitleCase(MAIN_CATEGORY_MENU),' ','_'),'&',''),'.','')),
    dbo.udf_TitleCase(MAIN_CATEGORY_MENU),dbo.udf_TitleCase(MAIN_CATEGORY_MENU),dbo.udf_TitleCase(MAIN_CATEGORY_MENU),'dbo',GETDATE(),'dbo',getdate(),
    0   FROM [dbo].[tempservices];
    
@@ -35,7 +35,7 @@
       ,[Modified_By]
       ,[Modified_On]
       ,[Is_Deleted])
-    select distinct t.sub_category_menu,c.ID,t.Sub_Category_Display_Index,1,1,10,'/'+lower(replace(replace(dbo.udf_TitleCase(t.sub_category_menu),' ','_'),'&','')),
+    select distinct t.sub_category_menu,c.ID,t.Sub_Category_Display_Index,1,1,10,lower(replace(replace(replace(dbo.udf_TitleCase(t.sub_category_menu),' ','_'),'&',''),'.','')),
    dbo.udf_TitleCase(t.sub_category_menu),dbo.udf_TitleCase(t.sub_category_menu),dbo.udf_TitleCase(t.sub_category_menu),'dbo',GETDATE(),'dbo',getdate(),
    0  from Tbl_CategoriesMaster c join tempservices t on c.CategoryName=t.MAIN_CATEGORY_MENU;
    
@@ -70,7 +70,7 @@
 				  when t.services_page_type='8' then 'SER8'
           else ''
 		  end as ServiceTypeValue,
-	  10,'/'+lower(replace(replace(dbo.udf_TitleCase(t.service_name),' ','_'),'&','')),
+	  10,lower(replace(replace(replace(dbo.udf_TitleCase(t.service_name),' ','_'),'&',''),'.','')),
    dbo.udf_TitleCase(t.service_name),dbo.udf_TitleCase(t.service_name),dbo.udf_TitleCase(t.service_name),'dbo',GETDATE(),'dbo',getdate(),
    0  from Tbl_CategoriesMaster c join tempservices t on c.CategoryName=t.MAIN_CATEGORY_MENU
    join Tbl_SubCategoriesMaster s on s.SubCategoryName=t.sub_category_menu;

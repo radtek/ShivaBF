@@ -163,7 +163,10 @@ angular.module(config.app).service('Services1MasterCRUD', function ($http) {
                     name: "Services1Master_tenant.Services1Master.Section2Description",
                     data: "Section2Description",
                     title: "Section2Description",
-                    render: $.fn.dataTable.render.text(),
+                    render: function (data, type, row, meta) {
+                       return $("<div/>").html(data).text(); 
+                    },
+                    //render: $.fn.dataTable.render.html(),
                     width: "25%",
                     targets: 12
                 },

@@ -159,7 +159,9 @@
         $scope.createOreditAsyncForm = function () {
             $scope.Processing = true;
             $scope.path = "";
-           if ($scope.myForm.$valid) {
+var objEditor = CKEDITOR.instances["Section2Description"];
+$scope.Services1MasterCreateOrEditViewModel.Section2Description= objEditor.getData();
+ if ($scope.myForm.$valid) {
                 $scope.path = ($scope.Services1MasterCreateOrEditViewModel.ID == undefined || $scope.Services1MasterCreateOrEditViewModel.ID == null ||
           $scope.Services1MasterCreateOrEditViewModel.ID == 0) ? "/Post/Services1Master/CreateAsync" : "/Post/Services1Master/EditAsync";
                 $http.post($scope.path, $scope.Services1MasterCreateOrEditViewModel,

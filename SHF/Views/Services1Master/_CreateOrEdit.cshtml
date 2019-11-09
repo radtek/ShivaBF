@@ -141,7 +141,7 @@ $(function () {
                         </div>
                         <div class="form-group" ng-class="{'has-error': ((myForm.Section2Description.$touched && myForm.Section2Description.$invalid) || (!myForm.Section2Description.$pristine && myForm.Section2Description.$invalid))}">
                             <label>Section2 Description</label>
-                            <textarea class="form-control" name="editor1" ng-bind-html="Services1MasterCreateOrEditViewModel.Section2Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter terms and conditions" tooltip-placement="top" uib-tooltip="Enter terms and conditions" required></textarea>
+                            <textarea id="Section2Description" class="form-control" name="Section2Description" ng-model="Services1MasterCreateOrEditViewModel.Section2Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter terms and conditions" tooltip-placement="top" uib-tooltip="Enter terms and conditions" required></textarea>
                             @*<textarea class="form-control wysiwyg" wysiwyg name="Section2Description" ng-model="Services1MasterCreateOrEditViewModel.Section2Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section2 Description" tooltip-placement="top" uib-tooltip="Enter Section2 Description"></textarea>*@
                             <div>{{Services1MasterCreateOrEditViewModel.Section2Description}}</div>
                             <div class="help-block" ng-messages="myForm.Section2Description.$error" ng-if="myForm.Section2Description.$touched || myForm.Section2Description.$dirty && myForm.Section2Description.$invalid">
@@ -160,163 +160,165 @@ $(function () {
                         </div>
                         <div class="form-group" ng-class="{'has-error': ((myForm.Section3Description.$touched && myForm.Section3Description.$invalid) || (!myForm.Section3Description.$pristine && myForm.Section3Description.$invalid))}">
                             <label>Section3 Description</label>
-                            <input type="text" class="form-control" name="Section3Description" ng-model="Services1MasterCreateOrEditViewModel.Section3Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section3 Description" tooltip-placement="top" uib-tooltip="Enter Section3 Description" />
-                            <div class="help-block" ng-messages="myForm.Section3Description.$error" ng-if="myForm.Section3Description.$touched || myForm.Section3Description.$dirty && myForm.Section3Description.$invalid">
-                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            <textarea class="form-control" ckeditor name="Section3Description" ng-model="Services1MasterCreateOrEditViewModel.Section3Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter terms and conditions" tooltip-placement="top" uib-tooltip="Enter terms and conditions" required></textarea>
+                            @* <input type="text" class="form-control" name="Section3Description" ng-model="Services1MasterCreateOrEditViewModel.Section3Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section3 Description" tooltip-placement="top" uib-tooltip="Enter Section3 Description" />*@
+                                    <div class="help-block" ng-messages="myForm.Section3Description.$error" ng-if="myForm.Section3Description.$touched || myForm.Section3Description.$dirty && myForm.Section3Description.$invalid">
+                                        <div ng-messages-include="~/ValidationMessages.html"></div>
+                                    </div>
+                                    <span class="text-danger" ng-show="errors.formErrors.Section3Description" ng-bind="errors.formErrors.Section3Description"></span>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error': ((myForm.Section3TextboxMaskedText.$touched && myForm.Section3TextboxMaskedText.$invalid) || (!myForm.Section3TextboxMaskedText.$pristine && myForm.Section3TextboxMaskedText.$invalid))}">
+                                    <label>Section3 TextboxMaskedText</label>
+                                    <input type="text" class="form-control" name="Section3TextboxMaskedText" ng-model="Services1MasterCreateOrEditViewModel.Section3TextboxMaskedText" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section3 TextboxMaskedText" tooltip-placement="top" uib-tooltip="Enter Section3 TextboxMaskedText" />
+                                    <div class="help-block" ng-messages="myForm.Section3TextboxMaskedText.$error" ng-if="myForm.Section3TextboxMaskedText.$touched || myForm.Section3TextboxMaskedText.$dirty && myForm.Section3TextboxMaskedText.$invalid">
+                                        <div ng-messages-include="~/ValidationMessages.html"></div>
+                                    </div>
+                                    <span class="text-danger" ng-show="errors.formErrors.Section3TextboxMaskedText" ng-bind="errors.formErrors.Section3TextboxMaskedText"></span>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error': ((myForm.Section4Heading.$touched && myForm.Section4Heading.$invalid) || (!myForm.Section4Heading.$pristine && myForm.Section4Heading.$invalid))}">
+                                    <label>Section4 Heading</label>
+                                    <input type="text" class="form-control" name="Section4Heading" ng-model="Services1MasterCreateOrEditViewModel.Section4Heading" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section4 Heading" tooltip-placement="top" uib-tooltip="Enter Section4 Heading" />
+                                    <div class="help-block" ng-messages="myForm.Section4Heading.$error" ng-if="myForm.Section4Heading.$touched || myForm.Section4Heading.$dirty && myForm.Section4Heading.$invalid">
+                                        <div ng-messages-include="~/ValidationMessages.html"></div>
+                                    </div>
+                                    <span class="text-danger" ng-show="errors.formErrors.Section4Heading" ng-bind="errors.formErrors.Section4Heading"></span>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error': ((myForm.Section5Heading.$touched && myForm.Section5Heading.$invalid) || (!myForm.Section5Heading.$pristine && myForm.Section5Heading.$invalid))}">
+                                    <label>Section5 Heading</label>
+                                    <input type="text" class="form-control" name="Section5Heading" ng-model="Services1MasterCreateOrEditViewModel.Section5Heading" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section5 Heading" tooltip-placement="top" uib-tooltip="Enter Section5 Heading" />
+                                    <div class="help-block" ng-messages="myForm.Section5Heading.$error" ng-if="myForm.Section5Heading.$touched || myForm.Section5Heading.$dirty && myForm.Section5Heading.$invalid">
+                                        <div ng-messages-include="~/ValidationMessages.html"></div>
+                                    </div>
+                                    <span class="text-danger" ng-show="errors.formErrors.Section5Heading" ng-bind="errors.formErrors.Section5Heading"></span>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error': ((myForm.Section6Heading.$touched && myForm.Section6Heading.$invalid) || (!myForm.Section6Heading.$pristine && myForm.Section6Heading.$invalid))}">
+                                    <label>Section6 Heading</label>
+                                    <input type="text" class="form-control" name="Section6Heading" ng-model="Services1MasterCreateOrEditViewModel.Section6Heading" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section6 Heading" tooltip-placement="top" uib-tooltip="Enter Section6 Heading" />
+                                    <div class="help-block" ng-messages="myForm.Section6Heading.$error" ng-if="myForm.Section6Heading.$touched || myForm.Section6Heading.$dirty && myForm.Section6Heading.$invalid">
+                                        <div ng-messages-include="~/ValidationMessages.html"></div>
+                                    </div>
+                                    <span class="text-danger" ng-show="errors.formErrors.Section6Heading" ng-bind="errors.formErrors.Section6Heading"></span>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error': ((myForm.Section6Description.$touched && myForm.Section6Description.$invalid) || (!myForm.Section6Description.$pristine && myForm.Section6Description.$invalid))}">
+                                    <label>Section6 Description</label>
+                                    <input type="text" class="form-control" name="Section6Description" ng-model="Services1MasterCreateOrEditViewModel.Section6Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section6 Description" tooltip-placement="top" uib-tooltip="Enter Section6 Description" />
+                                    <div class="help-block" ng-messages="myForm.Section6Description.$error" ng-if="myForm.Section6Description.$touched || myForm.Section6Description.$dirty && myForm.Section6Description.$invalid">
+                                        <div ng-messages-include="~/ValidationMessages.html"></div>
+                                    </div>
+                                    <span class="text-danger" ng-show="errors.formErrors.Section6Description" ng-bind="errors.formErrors.Section6Description"></span>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error': ((myForm.Section7Description.$touched && myForm.Section7Description.$invalid) || (!myForm.Section7Description.$pristine && myForm.Section7Description.$invalid))}">
+                                    <label>Section7 Description</label>
+                                    <input type="text" class="form-control" name="Section7Description" ng-model="Services1MasterCreateOrEditViewModel.Section7Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section7 Description" tooltip-placement="top" uib-tooltip="Enter Section7 Description" />
+                                    <div class="help-block" ng-messages="myForm.Section7Description.$error" ng-if="myForm.Section7Description.$touched || myForm.Section7Description.$dirty && myForm.Section7Description.$invalid">
+                                        <div ng-messages-include="~/ValidationMessages.html"></div>
+                                    </div>
+                                    <span class="text-danger" ng-show="errors.formErrors.Section7Description" ng-bind="errors.formErrors.Section7Description"></span>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error': ((myForm.Section8Description.$touched && myForm.Section8Description.$invalid) || (!myForm.Section8Description.$pristine && myForm.Section8Description.$invalid))}">
+                                    <label>Section8 Description</label>
+                                    <input type="text" class="form-control" name="Section8Description" ng-model="Services1MasterCreateOrEditViewModel.Section8Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section8 Description" tooltip-placement="top" uib-tooltip="Enter Section8 Description" />
+                                    <div class="help-block" ng-messages="myForm.Section8Description.$error" ng-if="myForm.Section8Description.$touched || myForm.Section8Description.$dirty && myForm.Section8Description.$invalid">
+                                        <div ng-messages-include="~/ValidationMessages.html"></div>
+                                    </div>
+                                    <span class="text-danger" ng-show="errors.formErrors.Section8Description" ng-bind="errors.formErrors.Section8Description"></span>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error': ((myForm.Section96Heading.$touched && myForm.Section96Heading.$invalid) || (!myForm.Section96Heading.$pristine && myForm.Section96Heading.$invalid))}">
+                                    <label>Section96 Heading</label>
+                                    <input type="text" class="form-control" name="Section96Heading" ng-model="Services1MasterCreateOrEditViewModel.Section96Heading" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section96 Heading" tooltip-placement="top" uib-tooltip="Enter Section96 Heading" />
+                                    <div class="help-block" ng-messages="myForm.Section96Heading.$error" ng-if="myForm.Section96Heading.$touched || myForm.Section96Heading.$dirty && myForm.Section96Heading.$invalid">
+                                        <div ng-messages-include="~/ValidationMessages.html"></div>
+                                    </div>
+                                    <span class="text-danger" ng-show="errors.formErrors.Section96Heading" ng-bind="errors.formErrors.Section96Heading"></span>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error': ((myForm.Section9Description.$touched && myForm.Section9Description.$invalid) || (!myForm.Section9Description.$pristine && myForm.Section9Description.$invalid))}">
+                                    <label>Section9 Description</label>
+                                    <input type="text" class="form-control" name="Section9Description" ng-model="Services1MasterCreateOrEditViewModel.Section9Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section9 Description" tooltip-placement="top" uib-tooltip="Enter Section9 Description" />
+                                    <div class="help-block" ng-messages="myForm.Section9Description.$error" ng-if="myForm.Section9Description.$touched || myForm.Section9Description.$dirty && myForm.Section9Description.$invalid">
+                                        <div ng-messages-include="~/ValidationMessages.html"></div>
+                                    </div>
+                                    <span class="text-danger" ng-show="errors.formErrors.Section9Description" ng-bind="errors.formErrors.Section9Description"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Section10 MappingBankFlag</label><br />
+                                    <label>
+                                        <!--https://codepen.io/mosluce/pen/yYmXGz-->
+                                        <input icheck type="checkbox" class="form-control" ng-model="Services1MasterCreateOrEditViewModel.Section10MappingBankFlag" ng-checked="Services1MasterCreateOrEditViewModel.Section10MappingBankFlag"><span style="margin-left: 10px;">{{Services1MasterCreateOrEditViewModel.Section10MappingBankFlag ? 'Yes' : 'No'}} </span>
+                                    </label>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error': (myForm.DisplayIndex.$touched || myForm.DisplayIndex.$dirty)  && myForm.DisplayIndex.$invalid}">
+                                    <label>Display Index</label>
+                                    <input type="number" min="0" class="form-control" name="DisplayIndex" ng-model="Services1MasterCreateOrEditViewModel.DisplayIndex" ng-disabled="Processing" autocomplete="off" placeholder="Enter Display Index" tooltip-placement="top" uib-tooltip="Enter Display Index" required />
+                                    <div class="help-block" ng-messages="myForm.DisplayIndex.$error" ng-if="myForm.DisplayIndex.$touched || myForm.Description.$dirty && myForm.DisplayIndex.$invalid">
+                                        <div ng-messages-include="~/ValidationMessages.html"></div>
+                                    </div>
+                                    <span class="text-danger" ng-show="errors.formErrors.DisplayIndex" ng-bind="errors.formErrors.DisplayIndex"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Is Active</label><br />
+                                    <label>
+                                        <!--https://codepen.io/mosluce/pen/yYmXGz-->
+                                        <input icheck type="checkbox" class="form-control" ng-model="Services1MasterCreateOrEditViewModel.IsActive" ng-checked="Services1MasterCreateOrEditViewModel.IsActive"><span style="margin-left: 10px;">{{Services1MasterCreateOrEditViewModel.IsActive ? 'Yes' : 'No'}} </span>
+                                    </label>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error': (myForm.TotalViews.$touched || myForm.TotalViews.$dirty)  && myForm.TotalViews.$invalid}">
+                                    <label>Total Views</label>
+                                    <input type="number" min="0" class="form-control" name="TotalViews" ng-model="Services1MasterCreateOrEditViewModel.TotalViews" ng-disabled="Processing" autocomplete="off" placeholder="Enter Total Views" tooltip-placement="top" uib-tooltip="Enter Total Views" required />
+                                    <div class="help-block" ng-messages="myForm.TotalViews.$error" ng-if="myForm.TotalViews.$touched || myForm.TotalViews.$dirty && myForm.TotalViews.$invalid">
+                                        <div ng-messages-include="~/ValidationMessages.html"></div>
+                                    </div>
+                                    <span class="text-danger" ng-show="errors.formErrors.TotalViews" ng-bind="errors.formErrors.TotalViews"></span>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error': (myForm.Url.$touched || myForm.Url.$dirty)  && myForm.Url.$invalid}">
+                                    <label>Url</label>
+                                    <input type="text" readonly class="form-control" name="Url" ng-model="Services1MasterCreateOrEditViewModel.Url" ng-disabled="Processing" autocomplete="off" placeholder="Enter Url" tooltip-placement="top" uib-tooltip="Enter Url" required />
+                                    <div class="help-block" ng-messages="myForm.Url.$error" ng-if="myForm.Url.$touched || myForm.Url.$dirty && myForm.Url.$invalid">
+                                        <div ng-messages-include="~/ValidationMessages.html"></div>
+                                    </div>
+                                    <span class="text-danger" ng-show="errors.formErrors.Url" ng-bind="errors.formErrors.Url"></span>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error': (myForm.Metadata.$touched || myForm.Metadata.$dirty)  && myForm.TotalViews.$invalid}">
+                                    <label>Metadata</label>
+                                    <input type="text" class="form-control" name="Metadata" ng-model="Services1MasterCreateOrEditViewModel.Metadata" ng-disabled="Processing" autocomplete="off" placeholder="Enter Metadata" tooltip-placement="top" uib-tooltip="Enter Metadata" required />
+                                    <div class="help-block" ng-messages="myForm.Metadata.$error" ng-if="myForm.Metadata.$touched || myForm.Metadata.$dirty && myForm.Metadata.$invalid">
+                                        <div ng-messages-include="~/ValidationMessages.html"></div>
+                                    </div>
+                                    <span class="text-danger" ng-show="errors.formErrors.Metadata" ng-bind="errors.formErrors.Metadata"></span>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error': (myForm.MetaDescription.$touched || myForm.MetaDescription.$dirty)  && myForm.MetaDescription.$invalid}">
+                                    <label>Meta Description</label>
+                                    <input type="text" class="form-control" name="MetaDescription" ng-model="Services1MasterCreateOrEditViewModel.MetaDescription" ng-disabled="Processing" autocomplete="off" placeholder="Enter Meta Description" tooltip-placement="top" uib-tooltip="Enter Meta Description" required />
+                                    <div class="help-block" ng-messages="myForm.MetaDescription.$error" ng-if="myForm.MetaDescription.$touched || myForm.MetaDescription.$dirty && myForm.MetaDescription.$invalid">
+                                        <div ng-messages-include="~/ValidationMessages.html"></div>
+                                    </div>
+                                    <span class="text-danger" ng-show="errors.formErrors.MetaDescription" ng-bind="errors.formErrors.MetaDescription"></span>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error': (myForm.Keyword.$touched || myForm.Keyword.$dirty)  && myForm.Keyword.$invalid}">
+                                    <label>Keyword</label>
+                                    <input type="text" class="form-control" name="Keyword" ng-model="Services1MasterCreateOrEditViewModel.Keyword" ng-disabled="Processing" autocomplete="off" placeholder="Enter Keyword" tooltip-placement="top" uib-tooltip="Enter Keyword" required />
+                                    <div class="help-block" ng-messages="myForm.Keyword.$error" ng-if="myForm.Keyword.$touched || myForm.Keyword.$dirty && myForm.Keyword.$invalid">
+                                        <div ng-messages-include="~/ValidationMessages.html"></div>
+                                    </div>
+                                    <span class="text-danger" ng-show="errors.formErrors.Keyword" ng-bind="errors.formErrors.Keyword"></span>
+                                </div>
                             </div>
-                            <span class="text-danger" ng-show="errors.formErrors.Section3Description" ng-bind="errors.formErrors.Section3Description"></span>
-                        </div>
-                        <div class="form-group" ng-class="{'has-error': ((myForm.Section3TextboxMaskedText.$touched && myForm.Section3TextboxMaskedText.$invalid) || (!myForm.Section3TextboxMaskedText.$pristine && myForm.Section3TextboxMaskedText.$invalid))}">
-                            <label>Section3 TextboxMaskedText</label>
-                            <input type="text" class="form-control" name="Section3TextboxMaskedText" ng-model="Services1MasterCreateOrEditViewModel.Section3TextboxMaskedText" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section3 TextboxMaskedText" tooltip-placement="top" uib-tooltip="Enter Section3 TextboxMaskedText" />
-                            <div class="help-block" ng-messages="myForm.Section3TextboxMaskedText.$error" ng-if="myForm.Section3TextboxMaskedText.$touched || myForm.Section3TextboxMaskedText.$dirty && myForm.Section3TextboxMaskedText.$invalid">
-                                <div ng-messages-include="~/ValidationMessages.html"></div>
-                            </div>
-                            <span class="text-danger" ng-show="errors.formErrors.Section3TextboxMaskedText" ng-bind="errors.formErrors.Section3TextboxMaskedText"></span>
-                        </div>
-                        <div class="form-group" ng-class="{'has-error': ((myForm.Section4Heading.$touched && myForm.Section4Heading.$invalid) || (!myForm.Section4Heading.$pristine && myForm.Section4Heading.$invalid))}">
-                            <label>Section4 Heading</label>
-                            <input type="text" class="form-control" name="Section4Heading" ng-model="Services1MasterCreateOrEditViewModel.Section4Heading" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section4 Heading" tooltip-placement="top" uib-tooltip="Enter Section4 Heading" />
-                            <div class="help-block" ng-messages="myForm.Section4Heading.$error" ng-if="myForm.Section4Heading.$touched || myForm.Section4Heading.$dirty && myForm.Section4Heading.$invalid">
-                                <div ng-messages-include="~/ValidationMessages.html"></div>
-                            </div>
-                            <span class="text-danger" ng-show="errors.formErrors.Section4Heading" ng-bind="errors.formErrors.Section4Heading"></span>
-                        </div>
-                        <div class="form-group" ng-class="{'has-error': ((myForm.Section5Heading.$touched && myForm.Section5Heading.$invalid) || (!myForm.Section5Heading.$pristine && myForm.Section5Heading.$invalid))}">
-                            <label>Section5 Heading</label>
-                            <input type="text" class="form-control" name="Section5Heading" ng-model="Services1MasterCreateOrEditViewModel.Section5Heading" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section5 Heading" tooltip-placement="top" uib-tooltip="Enter Section5 Heading" />
-                            <div class="help-block" ng-messages="myForm.Section5Heading.$error" ng-if="myForm.Section5Heading.$touched || myForm.Section5Heading.$dirty && myForm.Section5Heading.$invalid">
-                                <div ng-messages-include="~/ValidationMessages.html"></div>
-                            </div>
-                            <span class="text-danger" ng-show="errors.formErrors.Section5Heading" ng-bind="errors.formErrors.Section5Heading"></span>
-                        </div>
-                        <div class="form-group" ng-class="{'has-error': ((myForm.Section6Heading.$touched && myForm.Section6Heading.$invalid) || (!myForm.Section6Heading.$pristine && myForm.Section6Heading.$invalid))}">
-                            <label>Section6 Heading</label>
-                            <input type="text" class="form-control" name="Section6Heading" ng-model="Services1MasterCreateOrEditViewModel.Section6Heading" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section6 Heading" tooltip-placement="top" uib-tooltip="Enter Section6 Heading" />
-                            <div class="help-block" ng-messages="myForm.Section6Heading.$error" ng-if="myForm.Section6Heading.$touched || myForm.Section6Heading.$dirty && myForm.Section6Heading.$invalid">
-                                <div ng-messages-include="~/ValidationMessages.html"></div>
-                            </div>
-                            <span class="text-danger" ng-show="errors.formErrors.Section6Heading" ng-bind="errors.formErrors.Section6Heading"></span>
-                        </div>
-                        <div class="form-group" ng-class="{'has-error': ((myForm.Section6Description.$touched && myForm.Section6Description.$invalid) || (!myForm.Section6Description.$pristine && myForm.Section6Description.$invalid))}">
-                            <label>Section6 Description</label>
-                            <input type="text" class="form-control" name="Section6Description" ng-model="Services1MasterCreateOrEditViewModel.Section6Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section6 Description" tooltip-placement="top" uib-tooltip="Enter Section6 Description" />
-                            <div class="help-block" ng-messages="myForm.Section6Description.$error" ng-if="myForm.Section6Description.$touched || myForm.Section6Description.$dirty && myForm.Section6Description.$invalid">
-                                <div ng-messages-include="~/ValidationMessages.html"></div>
-                            </div>
-                            <span class="text-danger" ng-show="errors.formErrors.Section6Description" ng-bind="errors.formErrors.Section6Description"></span>
-                        </div>
-                        <div class="form-group" ng-class="{'has-error': ((myForm.Section7Description.$touched && myForm.Section7Description.$invalid) || (!myForm.Section7Description.$pristine && myForm.Section7Description.$invalid))}">
-                            <label>Section7 Description</label>
-                            <input type="text" class="form-control" name="Section7Description" ng-model="Services1MasterCreateOrEditViewModel.Section7Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section7 Description" tooltip-placement="top" uib-tooltip="Enter Section7 Description" />
-                            <div class="help-block" ng-messages="myForm.Section7Description.$error" ng-if="myForm.Section7Description.$touched || myForm.Section7Description.$dirty && myForm.Section7Description.$invalid">
-                                <div ng-messages-include="~/ValidationMessages.html"></div>
-                            </div>
-                            <span class="text-danger" ng-show="errors.formErrors.Section7Description" ng-bind="errors.formErrors.Section7Description"></span>
-                        </div>
-                        <div class="form-group" ng-class="{'has-error': ((myForm.Section8Description.$touched && myForm.Section8Description.$invalid) || (!myForm.Section8Description.$pristine && myForm.Section8Description.$invalid))}">
-                            <label>Section8 Description</label>
-                            <input type="text" class="form-control" name="Section8Description" ng-model="Services1MasterCreateOrEditViewModel.Section8Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section8 Description" tooltip-placement="top" uib-tooltip="Enter Section8 Description" />
-                            <div class="help-block" ng-messages="myForm.Section8Description.$error" ng-if="myForm.Section8Description.$touched || myForm.Section8Description.$dirty && myForm.Section8Description.$invalid">
-                                <div ng-messages-include="~/ValidationMessages.html"></div>
-                            </div>
-                            <span class="text-danger" ng-show="errors.formErrors.Section8Description" ng-bind="errors.formErrors.Section8Description"></span>
-                        </div>
-                        <div class="form-group" ng-class="{'has-error': ((myForm.Section96Heading.$touched && myForm.Section96Heading.$invalid) || (!myForm.Section96Heading.$pristine && myForm.Section96Heading.$invalid))}">
-                            <label>Section96 Heading</label>
-                            <input type="text" class="form-control" name="Section96Heading" ng-model="Services1MasterCreateOrEditViewModel.Section96Heading" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section96 Heading" tooltip-placement="top" uib-tooltip="Enter Section96 Heading" />
-                            <div class="help-block" ng-messages="myForm.Section96Heading.$error" ng-if="myForm.Section96Heading.$touched || myForm.Section96Heading.$dirty && myForm.Section96Heading.$invalid">
-                                <div ng-messages-include="~/ValidationMessages.html"></div>
-                            </div>
-                            <span class="text-danger" ng-show="errors.formErrors.Section96Heading" ng-bind="errors.formErrors.Section96Heading"></span>
-                        </div>
-                        <div class="form-group" ng-class="{'has-error': ((myForm.Section9Description.$touched && myForm.Section9Description.$invalid) || (!myForm.Section9Description.$pristine && myForm.Section9Description.$invalid))}">
-                            <label>Section9 Description</label>
-                            <input type="text" class="form-control" name="Section9Description" ng-model="Services1MasterCreateOrEditViewModel.Section9Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section9 Description" tooltip-placement="top" uib-tooltip="Enter Section9 Description" />
-                            <div class="help-block" ng-messages="myForm.Section9Description.$error" ng-if="myForm.Section9Description.$touched || myForm.Section9Description.$dirty && myForm.Section9Description.$invalid">
-                                <div ng-messages-include="~/ValidationMessages.html"></div>
-                            </div>
-                            <span class="text-danger" ng-show="errors.formErrors.Section9Description" ng-bind="errors.formErrors.Section9Description"></span>
-                        </div>
-                        <div class="form-group">
-                            <label>Section10 MappingBankFlag</label><br />
-                            <label>
-                                <!--https://codepen.io/mosluce/pen/yYmXGz-->
-                                <input icheck type="checkbox" class="form-control" ng-model="Services1MasterCreateOrEditViewModel.Section10MappingBankFlag" ng-checked="Services1MasterCreateOrEditViewModel.Section10MappingBankFlag"><span style="margin-left: 10px;">{{Services1MasterCreateOrEditViewModel.Section10MappingBankFlag ? 'Yes' : 'No'}} </span>
-                            </label>
-                        </div>
-                        <div class="form-group" ng-class="{'has-error': (myForm.DisplayIndex.$touched || myForm.DisplayIndex.$dirty)  && myForm.DisplayIndex.$invalid}">
-                            <label>Display Index</label>
-                            <input type="number" min="0" class="form-control" name="DisplayIndex" ng-model="Services1MasterCreateOrEditViewModel.DisplayIndex" ng-disabled="Processing" autocomplete="off" placeholder="Enter Display Index" tooltip-placement="top" uib-tooltip="Enter Display Index" required />
-                            <div class="help-block" ng-messages="myForm.DisplayIndex.$error" ng-if="myForm.DisplayIndex.$touched || myForm.Description.$dirty && myForm.DisplayIndex.$invalid">
-                                <div ng-messages-include="~/ValidationMessages.html"></div>
-                            </div>
-                            <span class="text-danger" ng-show="errors.formErrors.DisplayIndex" ng-bind="errors.formErrors.DisplayIndex"></span>
-                        </div>
-                        <div class="form-group">
-                            <label>Is Active</label><br />
-                            <label>
-                                <!--https://codepen.io/mosluce/pen/yYmXGz-->
-                                <input icheck type="checkbox" class="form-control" ng-model="Services1MasterCreateOrEditViewModel.IsActive" ng-checked="Services1MasterCreateOrEditViewModel.IsActive"><span style="margin-left: 10px;">{{Services1MasterCreateOrEditViewModel.IsActive ? 'Yes' : 'No'}} </span>
-                            </label>
-                        </div>
-                        <div class="form-group" ng-class="{'has-error': (myForm.TotalViews.$touched || myForm.TotalViews.$dirty)  && myForm.TotalViews.$invalid}">
-                            <label>Total Views</label>
-                            <input type="number" min="0" class="form-control" name="TotalViews" ng-model="Services1MasterCreateOrEditViewModel.TotalViews" ng-disabled="Processing" autocomplete="off" placeholder="Enter Total Views" tooltip-placement="top" uib-tooltip="Enter Total Views" required />
-                            <div class="help-block" ng-messages="myForm.TotalViews.$error" ng-if="myForm.TotalViews.$touched || myForm.TotalViews.$dirty && myForm.TotalViews.$invalid">
-                                <div ng-messages-include="~/ValidationMessages.html"></div>
-                            </div>
-                            <span class="text-danger" ng-show="errors.formErrors.TotalViews" ng-bind="errors.formErrors.TotalViews"></span>
-                        </div>
-                        <div class="form-group" ng-class="{'has-error': (myForm.Url.$touched || myForm.Url.$dirty)  && myForm.Url.$invalid}">
-                            <label>Url</label>
-                            <input type="text" readonly class="form-control" name="Url" ng-model="Services1MasterCreateOrEditViewModel.Url" ng-disabled="Processing" autocomplete="off" placeholder="Enter Url" tooltip-placement="top" uib-tooltip="Enter Url" required />
-                            <div class="help-block" ng-messages="myForm.Url.$error" ng-if="myForm.Url.$touched || myForm.Url.$dirty && myForm.Url.$invalid">
-                                <div ng-messages-include="~/ValidationMessages.html"></div>
-                            </div>
-                            <span class="text-danger" ng-show="errors.formErrors.Url" ng-bind="errors.formErrors.Url"></span>
-                        </div>
-                        <div class="form-group" ng-class="{'has-error': (myForm.Metadata.$touched || myForm.Metadata.$dirty)  && myForm.TotalViews.$invalid}">
-                            <label>Metadata</label>
-                            <input type="text" class="form-control" name="Metadata" ng-model="Services1MasterCreateOrEditViewModel.Metadata" ng-disabled="Processing" autocomplete="off" placeholder="Enter Metadata" tooltip-placement="top" uib-tooltip="Enter Metadata" required />
-                            <div class="help-block" ng-messages="myForm.Metadata.$error" ng-if="myForm.Metadata.$touched || myForm.Metadata.$dirty && myForm.Metadata.$invalid">
-                                <div ng-messages-include="~/ValidationMessages.html"></div>
-                            </div>
-                            <span class="text-danger" ng-show="errors.formErrors.Metadata" ng-bind="errors.formErrors.Metadata"></span>
-                        </div>
-                        <div class="form-group" ng-class="{'has-error': (myForm.MetaDescription.$touched || myForm.MetaDescription.$dirty)  && myForm.MetaDescription.$invalid}">
-                            <label>Meta Description</label>
-                            <input type="text" class="form-control" name="MetaDescription" ng-model="Services1MasterCreateOrEditViewModel.MetaDescription" ng-disabled="Processing" autocomplete="off" placeholder="Enter Meta Description" tooltip-placement="top" uib-tooltip="Enter Meta Description" required />
-                            <div class="help-block" ng-messages="myForm.MetaDescription.$error" ng-if="myForm.MetaDescription.$touched || myForm.MetaDescription.$dirty && myForm.MetaDescription.$invalid">
-                                <div ng-messages-include="~/ValidationMessages.html"></div>
-                            </div>
-                            <span class="text-danger" ng-show="errors.formErrors.MetaDescription" ng-bind="errors.formErrors.MetaDescription"></span>
-                        </div>
-                        <div class="form-group" ng-class="{'has-error': (myForm.Keyword.$touched || myForm.Keyword.$dirty)  && myForm.Keyword.$invalid}">
-                            <label>Keyword</label>
-                            <input type="text" class="form-control" name="Keyword" ng-model="Services1MasterCreateOrEditViewModel.Keyword" ng-disabled="Processing" autocomplete="off" placeholder="Enter Keyword" tooltip-placement="top" uib-tooltip="Enter Keyword" required />
-                            <div class="help-block" ng-messages="myForm.Keyword.$error" ng-if="myForm.Keyword.$touched || myForm.Keyword.$dirty && myForm.Keyword.$invalid">
-                                <div ng-messages-include="~/ValidationMessages.html"></div>
-                            </div>
-                            <span class="text-danger" ng-show="errors.formErrors.Keyword" ng-bind="errors.formErrors.Keyword"></span>
                         </div>
                     </div>
-                </div>
+                    <div class="modal-footer">
+                        <button type="submit" ng-if="!Processing" class="btn btn-sm btn-success pull-left" ng-disabled="myForm.$invalid">Save</button>
+                        <span ng-if="Processing" class="btn btn-sm btn-success pull-left">Processing...</span>
+                        <button ng-click="Clear()" class="btn btn-sm btn-default pull-left">Clear</button>
+                        <span class="btn btn-sm btn-danger" ng-click="ShowConfirm('modal-createOredit')">Close</span>
+                    </div>
+                </form>
             </div>
-            <div class="modal-footer">
-                <button type="submit" ng-if="!Processing" class="btn btn-sm btn-success pull-left" ng-disabled="myForm.$invalid">Save</button>
-                <span ng-if="Processing" class="btn btn-sm btn-success pull-left">Processing...</span>
-                <button ng-click="Clear()" class="btn btn-sm btn-default pull-left">Clear</button>
-                <span class="btn btn-sm btn-danger" ng-click="ShowConfirm('modal-createOredit')">Close</span>
-            </div>
-        </form>
-    </div>
-    <!-- /.modal-content -->
-</div>
+            <!-- /.modal-content -->
+        </div>
 
-<script src="~/bower_components/ckeditor/ckeditor.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ng-ckeditor/0.2.1/ng-ckeditor.min.js"></script>
-<script>
- CKEDITOR.replace( 'editor1' );
-</script>
+        <script src="~/bower_components/ckeditor/ckeditor.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-ckeditor/0.2.1/ng-ckeditor.min.js"></script>
+        <script>
+         CKEDITOR.replace('Section2Description');
+
+        </script>
 
