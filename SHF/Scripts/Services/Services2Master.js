@@ -97,7 +97,7 @@ angular.module(config.app).service('Services2MasterCRUD', function ($http) {
                     name: "Services2Master_tenant.Services2Master.Section1Description",
                     data: "Section1Description",
                     title: "Section1Description",
- render: function (data, type, row, meta) {
+                    render: function (data, type, row, meta) {
                        return $("<span/>").html(data).text(); 
                     },
                     //render: $.fn.dataTable.render.text(),
