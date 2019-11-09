@@ -230,7 +230,7 @@ angular.module(config.app).service('Services1Section8FAQMappingCRUD', function (
  $('#grdTable tbody').on('click', '.btn-preview', function () {
             let rowData = oTable.row($(this).parents('tr')).data();
             let scope = angular.element(document.getElementById('Services1Section8FAQMappingControllerScope')).scope();
-            scope.Preview('Views/services1.html?u='+rowData.ServiceUrl+'#divSection8FAQMapping');
+            scope.Preview('services1.html?u='+rowData.ServiceUrl+'#divSection8FAQMapping');
         });
     }
 

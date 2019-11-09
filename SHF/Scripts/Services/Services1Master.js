@@ -164,7 +164,7 @@ angular.module(config.app).service('Services1MasterCRUD', function ($http) {
                     data: "Section2Description",
                     title: "Section2Description",
                     render: function (data, type, row, meta) {
-                       return $("<div/>").html(data).text(); 
+                       return $("<span/>").html(data).text(); 
                     },
                     //render: $.fn.dataTable.render.html(),
                     width: "25%",
@@ -230,7 +230,10 @@ angular.module(config.app).service('Services1MasterCRUD', function ($http) {
                     name: "Services1Master_tenant.Services1Master.Section7Description",
                     data: "Section7Description",
                     title: "Section7Description",
-                    render: $.fn.dataTable.render.text(),
+                    render: function (data, type, row, meta) {
+                       return $("<span/>").html(data).text(); 
+                    },
+                  //  render: $.fn.dataTable.render.text(),
                     width: "25%",
                     targets: 20
                 },
@@ -254,7 +257,10 @@ angular.module(config.app).service('Services1MasterCRUD', function ($http) {
                     name: "Services1Master_tenant.Services1Master.Section9Description",
                     data: "Section9Description",
                     title: "Section9Description",
-                    render: $.fn.dataTable.render.text(),
+                   render: function (data, type, row, meta) {
+                       return $("<span/>").html(data).text(); 
+                    },
+                    //render: $.fn.dataTable.render.text(),
                     width: "25%",
                     targets: 23
                 },
@@ -430,7 +436,7 @@ angular.module(config.app).service('Services1MasterCRUD', function ($http) {
         $('#grdTable tbody').on('click', '.btn-preview', function () {
             let rowData = oTable.row($(this).parents('tr')).data();
             let scope = angular.element(document.getElementById('Services1MasterControllerScope')).scope();
-            scope.Preview('Views/services1.html?u='+rowData.Url);
+            scope.Preview('services1.html?u='+rowData.Url);
         });
     }
 

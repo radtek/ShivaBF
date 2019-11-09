@@ -269,7 +269,7 @@ angular.module(config.app).service('Services1Section6PriceMasterCRUD', function 
  $('#grdTable tbody').on('click', '.btn-preview', function () {
             let rowData = oTable.row($(this).parents('tr')).data();
             let scope = angular.element(document.getElementById('Services1Section6PriceMasterControllerScope')).scope();
-            scope.Preview('Views/services1.html?u='+rowData.ServiceUrl+'#price');
+            scope.Preview('services1.html?u='+rowData.ServiceUrl+'#price');
         });
     }
 

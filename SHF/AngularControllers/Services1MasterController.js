@@ -51,6 +51,9 @@
             $scope.errors.formErrors = null;
             $scope.Processing = false;
             $scope.Clear();
+            CKEDITOR.instances["Section2Description"].setData('');
+            CKEDITOR.instances["Section7Description"].setData('');
+            CKEDITOR.instances["Section9Description"].setData('');
             $scope.BindServiceTypeDropDownList(1020);
             if ($scope.Cookie_Tenant_ID <= 0) {
                 $scope.BindTenantDropDownList();
@@ -123,7 +126,10 @@
                             break;
                         case 'Response':
                             $scope.Services1MasterCreateOrEditViewModel = response.data.Entity;
-                            // $scope.LoadAllCategory();
+                       CKEDITOR.instances["Section2Description"].setData($scope.Services1MasterCreateOrEditViewModel.Section2Description);
+                       CKEDITOR.instances["Section7Description"].setData($scope.Services1MasterCreateOrEditViewModel.Section7Description);
+                       CKEDITOR.instances["Section9Description"].setData($scope.Services1MasterCreateOrEditViewModel.Section9Description);
+                         // $scope.LoadAllCategory();
                             $scope.LoadAllSubSubCategory();
                             //$scope.Services1MasterCreateOrEditViewModel.Category_ID=$scope.Services1MasterCreateOrEditViewModel.Category_ID;
                             $('#modal-createOredit').modal('show');
@@ -159,8 +165,14 @@
         $scope.createOreditAsyncForm = function () {
             $scope.Processing = true;
             $scope.path = "";
-var objEditor = CKEDITOR.instances["Section2Description"];
-$scope.Services1MasterCreateOrEditViewModel.Section2Description= objEditor.getData();
+
+var objEditorSection2 = CKEDITOR.instances["Section2Description"];
+$scope.Services1MasterCreateOrEditViewModel.Section2Description= objEditorSection2.getData();
+var objEditorSection7 = CKEDITOR.instances["Section7Description"];
+$scope.Services1MasterCreateOrEditViewModel.Section7Description= objEditorSection7.getData();
+var objEditorSection9 = CKEDITOR.instances["Section9Description"];
+$scope.Services1MasterCreateOrEditViewModel.Section9Description= objEditorSection9.getData();
+
  if ($scope.myForm.$valid) {
                 $scope.path = ($scope.Services1MasterCreateOrEditViewModel.ID == undefined || $scope.Services1MasterCreateOrEditViewModel.ID == null ||
           $scope.Services1MasterCreateOrEditViewModel.ID == 0) ? "/Post/Services1Master/CreateAsync" : "/Post/Services1Master/EditAsync";

@@ -254,7 +254,7 @@ angular.module(config.app).service('Services1Section1MasterCRUD', function ($htt
         $('#grdTable tbody').on('click', '.btn-preview', function () {
             let rowData = oTable.row($(this).parents('tr')).data();
             let scope = angular.element(document.getElementById('Services1Section1MasterControllerScope')).scope();
-            scope.Preview('Views/services1.html?u='+rowData.ServiceUrl+'#divService1Section1Master');
+            scope.Preview('services1.html?u='+rowData.ServiceUrl+'#divService1Section1Master');
         });
     }
 

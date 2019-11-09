@@ -237,7 +237,7 @@ angular.module(config.app).service('Services1Section10BankMappingCRUD', function
  $('#grdTable tbody').on('click', '.btn-preview', function () {
             let rowData = oTable.row($(this).parents('tr')).data();
             let scope = angular.element(document.getElementById('Services1Section10BankMappingControllerScope')).scope();
-            scope.Preview('Views/services1.html?u='+rowData.ServiceUrl+'#divService1Section10BankMapping');
+            scope.Preview('services1.html?u='+rowData.ServiceUrl+'#divService1Section10BankMapping');
         });
     }
 

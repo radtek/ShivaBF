@@ -63,7 +63,10 @@ angular.module(config.app).service('Services1Section5MasterCRUD', function ($htt
                      name: "Services1Section5Master_tenant.Services1Section5Master.ShortDescription",
                      data: "ShortDescription",
                      title: "Short&nbsp;Description",
-                     render: $.fn.dataTable.render.text(),
+                     render: function (data, type, row, meta) {
+                       return $("<span/>").html(data).text(); 
+                    },
+                     //render: $.fn.dataTable.render.text(),
                      width: "60%",
                      targets: 3
                  },
@@ -270,7 +273,7 @@ angular.module(config.app).service('Services1Section5MasterCRUD', function ($htt
       $('#grdTable tbody').on('click', '.btn-preview', function () {
             let rowData = oTable.row($(this).parents('tr')).data();
             let scope = angular.element(document.getElementById('Services1Section5MasterControllerScope')).scope();
-            scope.Preview('Views/services1.html?u='+rowData.ServiceUrl+'#divService1Section5Master');
+            scope.Preview('services1.html?u='+rowData.ServiceUrl+'#divService1Section5Master');
         });
        }
 

@@ -6,7 +6,7 @@
         return cookieToken + ":" + formToken;
     }
 }
-<script src="~/Scripts/ng-file-upload-5.0.9.js"></script>
+
 <div class="modal-dialog">
     <div class="modal-content">
         <form name="myForm" ng-submit="myForm.$valid && createOreditAsyncForm()" novalidate>
@@ -44,7 +44,8 @@
                         </div>
                         <div class="form-group" ng-class="{'has-error': ((myForm.ShortDescription.$touched && myForm.ShortDescription.$invalid) || (!myForm.ShortDescription.$pristine && myForm.ShortDescription.$invalid))}">
                             <label>Short Description</label>
-                            <input type="text" class="form-control" name="ShortDescription" ng-model="Services1Section5MasterCreateOrEditViewModel.ShortDescription" ng-disabled="Processing" autocomplete="off" placeholder="Enter Sub Sub Category Name" tooltip-placement="top" uib-tooltip="Enter Sub Sub Category Name" />
+                            <textarea id="ShortDescription" class="form-control" name="ShortDescription" ng-model="Services1Section5MasterCreateOrEditViewModel.ShortDescription" ng-disabled="Processing" autocomplete="off" placeholder="Enter Short Description" tooltip-placement="top" uib-tooltip="Enter Short Description" required></textarea>
+                            @* <input type="text" class="form-control" name="ShortDescription" ng-model="Services1Section5MasterCreateOrEditViewModel.ShortDescription" ng-disabled="Processing" autocomplete="off" placeholder="Enter Sub Sub Category Name" tooltip-placement="top" uib-tooltip="Enter Sub Sub Category Name" />*@
                             <div class="help-block" ng-messages="myForm.ShortDescription.$error" ng-if="myForm.ShortDescription.$touched || myForm.ShortDescription.$dirty && myForm.ShortDescription.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
@@ -90,7 +91,7 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.TotalViews" ng-bind="errors.formErrors.TotalViews"></span>
                         </div>
-                        <div class="form-group" ng-class="{'has-error': (myForm.Url.$touched || myForm.TotalViews.$dirty)  && myForm.TotalViews.$invalid}">
+                        <div class="form-group" ng-class="{'has-error': (myForm.Url.$touched || myForm.Url.$dirty)  && myForm.Url.$invalid}">
                             <label>Url</label>
                             <input type="text" class="form-control" name="Url" ng-model="Services1Section5MasterCreateOrEditViewModel.Url" ng-disabled="Processing" autocomplete="off" placeholder="Enter Url" tooltip-placement="top" uib-tooltip="Enter Url" required />
                             <div class="help-block" ng-messages="myForm.Url.$error" ng-if="myForm.Url.$touched || myForm.Url.$dirty && myForm.Url.$invalid">
@@ -135,3 +136,6 @@
     </div>
     <!-- /.modal-content -->
 </div>
+<script>
+     CKEDITOR.replace('ShortDescription');
+</script>
