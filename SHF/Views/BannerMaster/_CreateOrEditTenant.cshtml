@@ -6,7 +6,40 @@
         return cookieToken + ":" + formToken;
     }
 }
-<script src="~/Scripts/ng-file-upload-5.0.9.js"></script>
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    .button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    .button4 {
+        border-radius: 9px;
+    }
+</style>
 <div class="modal-dialog">
     <div class="modal-content">
         <form name="myForm" ng-submit="myForm.$valid && createOreditAsyncForm()" novalidate>
@@ -15,7 +48,7 @@
                 <button type="button" class="close" ng-click="ShowConfirm('modal-createOredit')" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Bank Master Details</h4>
+                <h4 class="modal-title">Banner Master Details</h4>
             </div>
             <div class="modal-body">
                 <!-- general form elements -->
@@ -23,37 +56,71 @@
                 <div class="box box-primary">
                     <div class="box-body">
                         <input id="antiForgeryToken" data-ng-model="antiForgeryToken" type="hidden" data-ng-init="antiForgeryToken='@AntiForgeryToken()'" />
-
-                        
-                        <div class="form-group" ng-class="{'has-error': ((myForm.IconPath.$touched && myForm.IconPath.$invalid) || (!myForm.IconPath.$pristine && myForm.IconPath.$invalid))}">
-                            <label>Icon Path</label>
-                            <input type="text" class="form-control" name="IconPath" ng-model="BankMasterCreateOrEditViewModel.IconPath" readonly autocomplete="off" placeholder="Enter Title" tooltip-placement="top" uib-tooltip="Enter Title" />
+                        <div class="form-group" ng-class="{'has-error': (myForm.TenantName.$touched || myForm.TenantName.$dirty)  && myForm.TenantName.$invalid}">
+                            <label>Tenant Name</label>
+                            <select name="TenantName" ng-model="BannerMasterCreateOrEditViewModel.Tenant_ID" class="form-control" style="width: 100%;" ng-options="x.ID as x.Name for x in AllTenants" required>
+                                <option value="" ng-selected="BannerMasterCreateOrEditViewModel.SelectedTenant_ID < 0">-- Select --</option>
+                            </select>
+                            <div class="help-block" ng-messages="myForm.TenantName.$error" ng-if="myForm.TenantName.$touched || myForm.TenantName.$dirty && myForm.TenantName.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.Tenant_ID" ng-bind="errors.formErrors.Tenant_ID"></span>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error': (myForm.AlternativeText.$touched || myForm.AlternativeText.$dirty)  && myForm.AlternativeText.$invalid}">
+                            <label>AlternativeText</label>
+                            <textarea type="text" class="form-control" name="AlternativeText" ng-model="BannerMasterCreateOrEditViewModel.AlternativeText" ng-disabled="Processing" autocomplete="off" placeholder="Enter AlternativeText" tooltip-placement="top" uib-tooltip="Enter AlternativeText" required></textarea>
+                            <div class="help-block" ng-messages="myForm.AlternativeText.$error" ng-if="myForm.AlternativeText.$touched || myForm.AlternativeText.$dirty && myForm.AlternativeText.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.Title" ng-bind="errors.formErrors.Title"></span>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error': (myForm.Title.$touched || myForm.Title.$dirty)  && myForm.Title.$invalid}">
+                            <label>Title</label>
+                            <textarea type="text" class="form-control" name="Title" ng-model="BannerMasterCreateOrEditViewModel.Title" ng-disabled="Processing" autocomplete="off" placeholder="Enter Title" tooltip-placement="top" uib-tooltip="Enter Title" required></textarea>
+                            <div class="help-block" ng-messages="myForm.Title.$error" ng-if="myForm.Title.$touched || myForm.Title.$dirty && myForm.Title.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.Title" ng-bind="errors.formErrors.Title"></span>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error': ((myForm.BannerPath.$touched && myForm.BannerPath.$invalid) || (!myForm.BannerPath.$pristine && myForm.BannerPath.$invalid))}">
+                            <label>BannerPath</label>
+                            <div class="col-md-12" style="text-align:center;margin-bottom:10px;">
+                                <input type="file" id="file" name="file" single onchange="angular.element(this).scope().setFile(this)" class="btn btn-primary" required />
+                            </div>
                             <div class="col-md-12">
-                                <button ng-click="FileUploadAsync()" class="button button4">Upload File</button>
+                                @*<button ng-click="UploadFile()" class="button button4">Upload</button>*@
+                            </div>
+                            <div class="col-md-12" style="padding-top:10px;">
+                                <div class="col-md-7">
+                                    <table align="center" border="1" cellpadding="4" cellspacing="4">
+                                        <thead>
+                                            <tr>
+                                                <th style="background-color: Yellow;color: blue">File Name</th>
+                                                <th style="background-color: Yellow;color: blue">File Type</th>
+                                                <th style="background-color: Yellow;color: blue">File Size</th>
+                                                <th style="background-color: Yellow;color: blue">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="file in fileList">
+                                                <td style="color: blue">{{file.file.name}}</td>
+                                                <td style="color: blue">{{file.file.type}}</td>
+                                                <td style="color: blue">{{file.file.size}}</td>
+                                                <td>
+                                                    <div id="{{'P'+$index}}">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
 
-                            <div class="help-block" ng-messages="myForm.IconPath.$error" ng-if="myForm.IconPath.$touched || myForm.IconPath.$dirty && myForm.IconPath.$invalid">
+                            <div class="help-block" ng-messages="myForm.BannerPath.$error" ng-if="myForm.BannerPath.$touched || myForm.BannerPath.$dirty && myForm.BannerPath.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
-                            <span class="text-danger" ng-show="errors.formErrors.IconPath" ng-bind="errors.formErrors.IconPath"></span>
+                            <span class="text-danger" ng-show="errors.formErrors.BannerPath" ng-bind="errors.formErrors.BannerPath"></span>
                         </div>
-
-                        <div class="form-group" ng-class="{'has-error': (myForm.Description.$touched || myForm.Description.$dirty)  && myForm.Description.$invalid}">
-                            <label>Description</label>
-                            <textarea type="text" class="form-control" name="Description" ng-model="BankMasterCreateOrEditViewModel.Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter Description" tooltip-placement="top" uib-tooltip="Enter Description" required></textarea>
-                            <div class="help-block" ng-messages="myForm.Description.$error" ng-if="myForm.Description.$touched || myForm.Description.$dirty && myForm.Description.$invalid">
-                                <div ng-messages-include="~/ValidationMessages.html"></div>
-                            </div>
-                            <span class="text-danger" ng-show="errors.formErrors.Description" ng-bind="errors.formErrors.Description"></span>
-                        </div>
-                        <div class="form-group">
-                            <label>Is Active</label><br />
-                            <label>
-                                <!--https://codepen.io/mosluce/pen/yYmXGz-->
-                                <input icheck type="checkbox" class="form-control" ng-model="BankMasterCreateOrEditViewModel.IsActive" ng-checked="BankMasterCreateOrEditViewModel.IsActive"><span style="margin-left: 10px;">{{BankMasterCreateOrEditViewModel.IsActive ? 'Yes' : 'No'}} </span>
-                            </label>
-                        </div>
-
                     </div>
                 </div>
             </div>

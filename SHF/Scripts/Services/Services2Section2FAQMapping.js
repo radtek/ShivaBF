@@ -231,7 +231,7 @@ angular.module(config.app).service('Services2Section2FAQMappingCRUD', function (
         $('#grdTable tbody').on('click', '.btn-preview', function () {
             let rowData = oTable.row($(this).parents('tr')).data();
             let scope = angular.element(document.getElementById('Services2Section2FAQMappingControllerScope')).scope();
-            scope.Preview('Views/services2.html?u='+rowData.ServiceUrl+'#divSection2FAQMapping');
+            scope.Preview('services2.html?u='+rowData.ServiceUrl+'#divSection2FAQMapping');
         });
     }
 
