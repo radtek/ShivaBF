@@ -92,7 +92,7 @@ namespace SHF.Controllers.Front
                 serviceType5Section2MasterViewModel.SubSubCat_Id = Convert.ToInt64(tempServices5Section2Master.SubSubCat_Id);
                 serviceType5Section2MasterViewModel.AncharTagTitle = tempServices5Section2Master.AncharTagTitle;
                 serviceType5Section2MasterViewModel.AncharTagUrl = tempServices5Section2Master.AncharTagUrl;
-                serviceType5Section2MasterViewModel.ImageFilePath = tempServices5Section2Master.ImageFilePath;
+                serviceType5Section2MasterViewModel.ImageFilePath = ConfigurationManager.AppSettings[busConstant.Settings.DataBase.SqlServer.Connections.AdminUrlString.ADMINUrl] + String.Concat(busConstant.Settings.CMSPath.TENANAT_UPLOAD_DIRECTORY, tempServices5Section2Master.Tenant_ID) + "/" + tempServices5Section2Master.ImageFilePath;
                 serviceType5Section2MasterViewModel.DisplayIndex = tempServices5Section2Master.DisplayIndex;
                 serviceType5Section2MasterViewModel.IsActive = tempServices5Section2Master.IsActive;
                 serviceType5Section2MasterViewModel.TotalViews = tempServices5Section2Master.TotalViews;

@@ -119,6 +119,8 @@
                             break;
                         case 'Response':
                             $scope.Services5Section2MasterFeaturesDetailsCreateOrEditViewModel = response.data.Entity;
+$scope.LoadAllSection2ID();
+$scope.LoadAllSubSubCategory();
                             $('#modal-createOredit').modal('show');
                             console.clear();
                             break;

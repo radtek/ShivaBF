@@ -21,7 +21,7 @@ angular.module(config.app).service('Services5Section2MasterCRUD', function ($htt
             },
             //width: "100%",
             //scrollY: 500,
-            //autoWidth: true,
+            autoWidth: true,
             scrollX: true,
             //scrollCollapse: true,
             //responsive: true,
@@ -68,13 +68,23 @@ angular.module(config.app).service('Services5Section2MasterCRUD', function ($htt
                      targets: 3
                  },
                  {
-                      name: "Services5Section2Master_tenant.Services5Section2Master.ImageFilePath",
+                     name: "Services5Section2Master_tenant.Services5Section2Master.ImageFilePath",
                      data: "ImageFilePath",
                      title: "ImageFilePath",
                      render: $.fn.dataTable.render.text(),
                      width: "25%",
                      targets: 4
                  },
+                 {
+                    name: "Services5Section2Master_tenant.Services5Section2Master.ImageFilePath",
+                     data: "ImageFilePath",
+                    title: "Image Preview",
+                   render: function (data, type, row, meta) {
+                        return '<img src="'+data+'" style="height:150px;width:200px;"/>';
+                    },
+                    width: "40%",
+                    targets: 4
+                },
                   {
                     name: "Services5Section2Master.SubSubCategoryName",
                     data: "SubSubCategoryName",

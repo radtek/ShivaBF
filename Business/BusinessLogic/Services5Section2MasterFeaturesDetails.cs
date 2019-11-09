@@ -89,6 +89,7 @@ namespace SHF.Business.BusinessLogic
                     .Skip(skip).Take(pageSize).ToList()
                     .Select(x => new ViewModel.Services5Section2MasterFeaturesDetailsIndexViewModel
                     {
+
                         ID = x.Services5Section2MasterFeaturesDetails_tenant_Services5Section2Master.Services5Section2MasterFeaturesDetails_tenant.Services5Section2MasterFeaturesDetails.ID,
                         SubSubCategory_Name = x.SubSubCategoryMaster.SubSubCategoryName,
                         Text = x.Services5Section2MasterFeaturesDetails_tenant_Services5Section2Master.Services5Section2MasterFeaturesDetails_tenant.Services5Section2MasterFeaturesDetails.Text,

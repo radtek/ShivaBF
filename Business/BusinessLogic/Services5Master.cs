@@ -100,7 +100,7 @@ namespace SHF.Business.BusinessLogic
                     .Select(x => new ViewModel.Services5MasterIndexViewModel 
                     {
                         ID = x.Services5Master_tenant.Services5Master.ID,
-                        BannerImagePath = x.Services5Master_tenant.Services5Master.BannerImagePath,
+                        BannerImagePath = String.Concat(busConstant.Settings.CMSPath.TENANAT_UPLOAD_DIRECTORY, x.Services5Master_tenant.tenant.ID) + "/" + x.Services5Master_tenant.Services5Master.BannerImagePath,
                         BannerOnHeading = x.Services5Master_tenant.Services5Master.BannerOnHeading,
                         SubSubCategoryName = x.SubSubCategoriesMaster.SubSubCategoryName,
                         BannerHeadingDescription = x.Services5Master_tenant.Services5Master.BannerHeadingDescription,

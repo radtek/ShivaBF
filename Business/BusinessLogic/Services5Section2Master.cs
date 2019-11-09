@@ -94,7 +94,7 @@ namespace SHF.Business.BusinessLogic
                         ID = x.Services5Section2Master_tenant.Services5Section2Master.ID,
                         AncharTagTitle = x.Services5Section2Master_tenant.Services5Section2Master.AncharTagTitle,
                         AncharTagUrl = x.Services5Section2Master_tenant.Services5Section2Master.AncharTagUrl,
-                        ImageFilePath = x.Services5Section2Master_tenant.Services5Section2Master.ImageFilePath,
+                        ImageFilePath = String.Concat(busConstant.Settings.CMSPath.TENANAT_UPLOAD_DIRECTORY, x.Services5Section2Master_tenant.tenant.ID) + "/" + x.Services5Section2Master_tenant.Services5Section2Master.ImageFilePath,
                         SubSubCategoryName = x.Services5Master.SubSubCategoryName,
                         DisplayIndex = x.Services5Section2Master_tenant.Services5Section2Master.DisplayIndex,
                         Url = x.Services5Section2Master_tenant.Services5Section2Master.Url,

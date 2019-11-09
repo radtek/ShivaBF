@@ -1,12 +1,13 @@
 ﻿@functions{
-    public string AntiForgeryToken()
-    {
-        string cookieToken, formToken;
-        AntiForgery.GetTokens(null, out cookieToken, out formToken);
-        return cookieToken + ":" + formToken;
-    }
-}
+            /**/
 
+            public string AntiForgeryToken()
+            {
+                string cookieToken, formToken;
+                AntiForgery.GetTokens(null, out cookieToken, out formToken);
+                return cookieToken + ":" + formToken;
+            }
+}
 <div class="modal-dialog">
     <div class="modal-content">
         <form name="myForm" ng-submit="myForm.$valid && createOreditAsyncForm()" novalidate>
@@ -75,7 +76,8 @@
                         </div>
                         <div class="form-group" ng-class="{'has-error': ((myForm.Section1Description.$touched && myForm.Section1Description.$invalid) || (!myForm.Section1Description.$pristine && myForm.Section1Description.$invalid))}">
                             <label>Section1 Description</label>
-                            <input type="text" class="form-control" name="Section1Description" ng-model="Services5MasterCreateOrEditViewModel.Section1Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section1 Description" tooltip-placement="top" uib-tooltip="Enter Section1 Description" />
+                            <textarea id="Section1Description" class="form-control" name="Section1Description" ng-model="Services5MasterCreateOrEditViewModel.Section1Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section1 Description" tooltip-placement="top" uib-tooltip="Enter Section1 Description" required></textarea>
+                            @*<input type="text" class="form-control" name="Section1Description" ng-model="Services5MasterCreateOrEditViewModel.Section1Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section1 Description" tooltip-placement="top" uib-tooltip="Enter Section1 Description" />*@
                             <div class="help-block" ng-messages="myForm.Section1Description.$error" ng-if="myForm.Section1Description.$touched || myForm.Section1Description.$dirty && myForm.Section1Description.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
@@ -97,7 +99,7 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.Section2HeadingDescription" ng-bind="errors.formErrors.Section2HeadingDescription"></span>
                         </div>
-                       
+
                         <div class="form-group" ng-class="{'has-error': (myForm.DisplayIndex.$touched || myForm.DisplayIndex.$dirty)  && myForm.DisplayIndex.$invalid}">
                             <label>Display Index</label>
                             <input type="number" min="0" class="form-control" name="DisplayIndex" ng-model="Services5MasterCreateOrEditViewModel.DisplayIndex" ng-disabled="Processing" autocomplete="off" placeholder="Enter Display Index" tooltip-placement="top" uib-tooltip="Enter Display Index" required />
@@ -106,7 +108,6 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.DisplayIndex" ng-bind="errors.formErrors.DisplayIndex"></span>
                         </div>
-
                         <div class="form-group">
                             <label>Is Active</label><br />
                             <label>
@@ -167,3 +168,7 @@
     </div>
     <!-- /.modal-content -->
 </div>
+<script>
+             CKEDITOR.replace('Section1Description');
+
+</script>
