@@ -72,12 +72,11 @@ namespace SHF.ViewModel.FrontEnd
         public System.Int64? SubSubCat_Id { get; set; }
         public System.String SubSubCategoryName { get; set; }
         public System.String HeadingText { get; set; }
+        public System.String Description { get; set; }
         public System.Int64 Price { get; set; }
         public System.String AncharTagTitle { get; set; }
         public System.String AncharTagUrl { get; set; }
         public System.Int32 DisplayIndex { get; set; }
-        public System.String StateFullName { get; set; }
-
         public System.Boolean? DisplayOnHome { get; set; }
         public System.Boolean? IsActive { get; set; }
         public System.Int32 TotalViews { get; set; }

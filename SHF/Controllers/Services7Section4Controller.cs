@@ -142,7 +142,7 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var productId = businessServices7Section4.FindBy(Services1Section4 => Services1Section4.Tenant_ID == model.Tenant_ID && Services1Section4.ID == model.ID).FirstOrDefault();
+                            var productId = this.businessServices7Section4.FindBy(x => x.Tenant_ID == model.Tenant_ID && x.ID ==model.ID).FirstOrDefault();
 
                             if (productId.IsNotNull())
                             {
@@ -162,7 +162,6 @@ namespace SHF.Controllers
                                 var entityServices = this.businessServices7Master.FindBy(Services7Master => Services7Master.SubSubCat_Id == model.SubSubCat_Id).FirstOrDefault();
                                 var entity = new EntityModel.Services7Section4();
                                 entity.Tenant = null;
-                                //entity.Services1Section1Masters = null;
                                 entity.SubSubCategoriesMaster = null;
                                 entity.Services7Master = null;
                                 entity.Service_Id = entityServices.ID;

@@ -26,7 +26,7 @@
 
                         <div class="form-group" ng-class="{'has-error': (myForm.SubSubCategoryName.$touched || myForm.SubSubCategoryName.$dirty)  && myForm.SubSubCategoryName.$invalid}">
                             <label>Sub Sub Category Name</label>
-                            <select name="SubSubCategoryName" ng-model="Services7Section6PriceMasterCreateOrEditViewModel.SubSubCat_Id" class="form-control" style="width: 100%;" ng-options="x.ID as x.SubSubCategoryName for x in AllSubSubCategories" ng-change="LoadStates()" required>
+                            <select name="SubSubCategoryName" ng-model="Services7Section6PriceMasterCreateOrEditViewModel.SubSubCat_Id" class="form-control" style="width: 100%;" ng-options="x.ID as x.SubSubCategoryName for x in AllSubSubCategories" required>
                                 <option value="" ng-selected="Services7Section6PriceMasterCreateOrEditViewModel.SelectedSubSubCat_Id < 0">-- Select --</option>
                             </select>
                             <div class="help-block" ng-messages="myForm.SubSubCategoryName.$error" ng-if="myForm.SubSubCategoryName.$touched || myForm.SubSubCategoryName.$dirty && myForm.SubSubCategoryName.$invalid">
@@ -34,16 +34,7 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.SubSubCat_Id" ng-bind="errors.formErrors.SubSubCat_Id"></span>
                         </div>
-                        <div class="form-group" ng-class="{'has-error': (myForm.StateName.$touched || myForm.StateName.$dirty)  && myForm.StateName.$invalid}">
-                            <label>State</label>
-                            <select name="StateName" ng-model="Services7Section6PriceMasterCreateOrEditViewModel.State_Id" class="form-control" style="width: 100%;" ng-options="x.ID as x.StateFullName for x in AllState" required>
-                                <option value="" ng-selected="Services7Section6PriceMasterCreateOrEditViewModel.SelectedState_Id < 0">-- Select --</option>
-                            </select>
-                            <div class="help-block" ng-messages="myForm.StateName.$error" ng-if="myForm.StateName.$touched || myForm.StateName.$dirty && myForm.StateName.$invalid">
-                                <div ng-messages-include="~/ValidationMessages.html"></div>
-                            </div>
-                            <span class="text-danger" ng-show="errors.formErrors.State_Id" ng-bind="errors.formErrors.State_Id"></span>
-                        </div>
+
                         <div class="form-group" ng-class="{'has-error': ((myForm.HeadingText.$touched && myForm.HeadingText.$invalid) || (!myForm.HeadingText.$pristine && myForm.HeadingText.$invalid))}">
                             <label>Heading Text</label>
                             <input type="text" class="form-control" name="HeadingText" ng-model="Services7Section6PriceMasterCreateOrEditViewModel.HeadingText" ng-disabled="Processing" autocomplete="off" placeholder="Enter Heading Text" tooltip-placement="top" uib-tooltip="Enter Heading Text" />
@@ -51,6 +42,14 @@
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.HeadingText" ng-bind="errors.formErrors.HeadingText"></span>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error': ((myForm.Description.$touched && myForm.Description.$invalid) || (!myForm.Description.$pristine && myForm.Description.$invalid))}">
+                            <label>Description</label>
+                            <input type="text" class="form-control" name="Description" ng-model="Services7Section6PriceMasterCreateOrEditViewModel.Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter Description Text" tooltip-placement="top" uib-tooltip="Enter Description Text" />
+                            <div class="help-block" ng-messages="myForm.Description.$error" ng-if="myForm.Description.$touched || myForm.Description.$dirty && myForm.Description.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.Description" ng-bind="errors.formErrors.Description"></span>
                         </div>
                         <div class="form-group" ng-class="{'has-error': ((myForm.Price.$touched && myForm.Price.$invalid) || (!myForm.Price.$pristine && myForm.Price.$invalid))}">
                             <label>Price</label>

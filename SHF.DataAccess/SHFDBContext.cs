@@ -103,6 +103,7 @@ namespace SHF.DataAccess
         /*service 7*/
         public DbSet<SHF.EntityModel.Services7HeadingButtons> Services7HeadingButtons { get; set; }
         public DbSet<SHF.EntityModel.Services7Master> Services7Master { get; set; }
+        public DbSet<SHF.EntityModel.Services7Section4> Services7Section4 { get; set; }
         public DbSet<SHF.EntityModel.Services7Section6PriceMaster> Services7Section6PriceMaster { get; set; }
         /*service 8*/
         public DbSet<SHF.EntityModel.Services8HeadingButtons> Services8HeadingButtons { get; set; }

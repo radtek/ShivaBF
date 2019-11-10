@@ -125,6 +125,7 @@ namespace SHF.Controllers.Front
                 ServiceType7Section6PriceMasterViewModel.ID = tempServiceType7Section6PriceMaster.ID;
                 ServiceType7Section6PriceMasterViewModel.SubSubCat_Id = Convert.ToInt64(tempServiceType7Section6PriceMaster.SubSubCat_Id);
                 ServiceType7Section6PriceMasterViewModel.HeadingText = tempServiceType7Section6PriceMaster.HeadingText;
+                ServiceType7Section6PriceMasterViewModel.Description = tempServiceType7Section6PriceMaster.Description;
                 ServiceType7Section6PriceMasterViewModel.Price = tempServiceType7Section6PriceMaster.Price;
                 ServiceType7Section6PriceMasterViewModel.AncharTagTitle = tempServiceType7Section6PriceMaster.AncharTagTitle;
                 ServiceType7Section6PriceMasterViewModel.AncharTagUrl = tempServiceType7Section6PriceMaster.AncharTagUrl;

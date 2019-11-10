@@ -162,12 +162,13 @@ namespace SHF.Controllers
                                 var entityServices = this.businessServices7Master.FindBy(Services7Master => Services7Master.SubSubCat_Id == model.SubSubCat_Id).FirstOrDefault();
                                 var entity = new EntityModel.Services7Section6PriceMaster();
                                 entity.Tenant = null;
-                                entity.StateMaster = null;
+                              
                                 entity.SubSubCategoriesMaster = null;
                                 entity.Services7Master = null;
                                 entity.Service_Id = entityServices.ID;
-                                entity.State_Id = model.State_Id;
+                               
                                 entity.SubSubCat_Id = model.SubSubCat_Id;
+                                entity.Description = model.Description;
                                 entity.HeadingText = model.HeadingText;
                                 entity.Price = model.Price;
                                 entity.AncharTagTitle = model.AncharTagTitle;
@@ -250,6 +251,7 @@ namespace SHF.Controllers
                                 model.SubSubCat_Id = Convert.ToInt64(entity.SubSubCat_Id);
                                 model.SubSubCategoryName = entityServices.SubSubCategoryName;
                                 model.HeadingText = entity.HeadingText;
+                                model.Description = entity.Description;
                                 model.Price = entity.Price;
                                 model.AncharTagTitle = entity.AncharTagTitle;
                                 model.AncharTagUrl = entity.AncharTagUrl;
@@ -349,13 +351,14 @@ namespace SHF.Controllers
                                 if (entity.IsNotNull())
                                 {
                                     entity.Tenant = null;
-                                    entity.StateMaster = null;
+                                    //entity.StateMaster = null;
                                     entity.SubSubCategoriesMaster = null;
                                     entity.Services7Master = null;
                                     entity.Service_Id = entityServices.ID;
-                                    entity.State_Id = model.State_Id;
+                                    //entity.State_Id = model.State_Id;
                                     entity.SubSubCat_Id = model.SubSubCat_Id;
                                     entity.HeadingText = model.HeadingText;
+                                    entity.Description = model.Description;
                                     entity.Price = model.Price;
                                     entity.AncharTagTitle = model.AncharTagTitle;
                                     entity.AncharTagUrl = model.AncharTagUrl;

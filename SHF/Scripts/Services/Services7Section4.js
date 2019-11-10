@@ -52,9 +52,9 @@ angular.module(config.app).service('Services7Section4CRUD', function ($http) {
                     targets: 1
                 },
                 {
-                    name: "Services7Section4_tenant.Services7Section4.HeadingText",
-                    data: "HeadingText",
-                    title: "Heading&nbsp;Text",
+                    name: "Services7Section4_tenant.Services7Section4.Heading",
+                    data: "Heading",
+                    title: "Heading",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
                     targets: 2

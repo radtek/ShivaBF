@@ -6,7 +6,6 @@
         return cookieToken + ":" + formToken;
     }
 }
-
 <div class="modal-dialog">
     <div class="modal-content">
         <form name="myForm" ng-submit="myForm.$valid && createOreditAsyncForm()" novalidate>
@@ -23,7 +22,6 @@
                 <div class="box box-primary">
                     <div class="box-body">
                         <input id="antiForgeryToken" data-ng-model="antiForgeryToken" type="hidden" data-ng-init="antiForgeryToken='@AntiForgeryToken()'" />
-
                         <div class="form-group" ng-class="{'has-error': (myForm.TenantName.$touched || myForm.TenantName.$dirty)  && myForm.TenantName.$invalid}">
                             <label>Tenant Name</label>
                             <select name="TenantName" ng-model="Services7Section6PriceMasterCreateOrEditViewModel.Tenant_ID" class="form-control" style="width: 100%;" ng-options="x.ID as x.Name for x in AllTenants" ng-change="LoadAllSubSubCategory()" required>
@@ -36,7 +34,7 @@
                         </div>
                         <div class="form-group" ng-class="{'has-error': (myForm.SubSubCategoryName.$touched || myForm.SubSubCategoryName.$dirty)  && myForm.SubSubCategoryName.$invalid}">
                             <label>Sub Sub Category Name</label>
-                            <select name="SubSubCategoryName" ng-model="Services7Section6PriceMasterCreateOrEditViewModel.SubSubCat_Id" class="form-control" style="width: 100%;" ng-options="x.ID as x.SubSubCategoryName for x in AllSubSubCategories" ng-change="LoadStates()" required>
+                            <select name="SubSubCategoryName" ng-model="Services7Section6PriceMasterCreateOrEditViewModel.SubSubCat_Id" class="form-control" style="width: 100%;" ng-options="x.ID as x.SubSubCategoryName for x in AllSubSubCategories" required>
                                 <option value="" ng-selected="Services7Section6PriceMasterCreateOrEditViewModel.SelectedSubSubCat_Id < 0">-- Select --</option>
                             </select>
                             <div class="help-block" ng-messages="myForm.SubSubCategoryName.$error" ng-if="myForm.SubSubCategoryName.$touched || myForm.SubSubCategoryName.$dirty && myForm.SubSubCategoryName.$invalid">
@@ -44,16 +42,7 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.SubSubCat_Id" ng-bind="errors.formErrors.SubSubCat_Id"></span>
                         </div>
-                        <div class="form-group" ng-class="{'has-error': (myForm.StateName.$touched || myForm.StateName.$dirty)  && myForm.StateName.$invalid}">
-                            <label>State</label>
-                            <select name="StateName" ng-model="Services7Section6PriceMasterCreateOrEditViewModel.State_Id" class="form-control" style="width: 100%;" ng-options="x.ID as x.StateFullName for x in AllState" required>
-                                <option value="" ng-selected="Services7Section6PriceMasterCreateOrEditViewModel.SelectedState_Id < 0">-- Select --</option>
-                            </select>
-                            <div class="help-block" ng-messages="myForm.StateName.$error" ng-if="myForm.StateName.$touched || myForm.StateName.$dirty && myForm.StateName.$invalid">
-                                <div ng-messages-include="~/ValidationMessages.html"></div>
-                            </div>
-                            <span class="text-danger" ng-show="errors.formErrors.State_Id" ng-bind="errors.formErrors.State_Id"></span>
-                        </div>
+
                         <div class="form-group" ng-class="{'has-error': ((myForm.HeadingText.$touched && myForm.HeadingText.$invalid) || (!myForm.HeadingText.$pristine && myForm.HeadingText.$invalid))}">
                             <label>Heading Text</label>
                             <input type="text" class="form-control" name="HeadingText" ng-model="Services7Section6PriceMasterCreateOrEditViewModel.HeadingText" ng-disabled="Processing" autocomplete="off" placeholder="Enter Heading Text" tooltip-placement="top" uib-tooltip="Enter Heading Text" />
@@ -61,6 +50,14 @@
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.HeadingText" ng-bind="errors.formErrors.HeadingText"></span>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error': ((myForm.Description.$touched && myForm.Description.$invalid) || (!myForm.Description.$pristine && myForm.Description.$invalid))}">
+                            <label>Description</label>
+                            <input type="text" class="form-control" name="Description" ng-model="Services7Section6PriceMasterCreateOrEditViewModel.Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter Description Text" tooltip-placement="top" uib-tooltip="Enter Description Text" />
+                            <div class="help-block" ng-messages="myForm.Description.$error" ng-if="myForm.Description.$touched || myForm.Description.$dirty && myForm.Description.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.Description" ng-bind="errors.formErrors.Description"></span>
                         </div>
                         <div class="form-group" ng-class="{'has-error': ((myForm.Price.$touched && myForm.Price.$invalid) || (!myForm.Price.$pristine && myForm.Price.$invalid))}">
                             <label>Price</label>
@@ -86,7 +83,6 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.AncharTagUrl" ng-bind="errors.formErrors.AncharTagUrl"></span>
                         </div>
-
                         <div class="form-group" ng-class="{'has-error': (myForm.DisplayIndex.$touched || myForm.DisplayIndex.$dirty)  && myForm.DisplayIndex.$invalid}">
                             <label>Display Index</label>
                             <input type="number" min="0" class="form-control" name="DisplayIndex" ng-model="Services7Section6PriceMasterCreateOrEditViewModel.DisplayIndex" ng-disabled="Processing" autocomplete="off" placeholder="Enter Display Index" tooltip-placement="top" uib-tooltip="Enter Display Index" required />
@@ -95,7 +91,7 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.DisplayIndex" ng-bind="errors.formErrors.DisplayIndex"></span>
                         </div>
-                       
+
                         <div class="form-group">
                             <label>Is Active</label><br />
                             <label>
@@ -103,7 +99,6 @@
                                 <input icheck type="checkbox" class="form-control" ng-model="Services7Section6PriceMasterCreateOrEditViewModel.IsActive" ng-checked="Services7Section6PriceMasterCreateOrEditViewModel.IsActive"><span style="margin-left: 10px;">{{Services7Section6PriceMasterCreateOrEditViewModel.IsActive ? 'Yes' : 'No'}} </span>
                             </label>
                         </div>
-
                         <div class="form-group" ng-class="{'has-error': (myForm.TotalViews.$touched || myForm.TotalViews.$dirty)  && myForm.TotalViews.$invalid}">
                             <label>Total Views</label>
                             <input type="number" min="0" class="form-control" name="TotalViews" ng-model="Services7Section6PriceMasterCreateOrEditViewModel.TotalViews" ng-disabled="Processing" autocomplete="off" placeholder="Enter Total Views" tooltip-placement="top" uib-tooltip="Enter Total Views" required />
@@ -144,7 +139,6 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.Keyword" ng-bind="errors.formErrors.Keyword"></span>
                         </div>
-
                     </div>
                 </div>
             </div>

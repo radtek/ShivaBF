@@ -21,11 +21,11 @@ namespace SHF.EntityModel
         [ForeignKey("SubSubCat_Id")]
         public virtual SubSubCategoriesMaster SubSubCategoriesMaster { get; set; }
         public System.Int64? SubSubCat_Id { get; set; }
-        [ForeignKey("State_Id")]
-        public virtual StateMaster StateMaster { get; set; }
-        public System.Int64? State_Id { get; set; }
+      
         [Column("HeadingText")]
         public System.String HeadingText { get; set; }
+        [Column("Description")]
+        public System.String Description { get; set; }
         [Column("Price")]
         public System.Int64 Price { get; set; }
         [Column("AncharTagTitle")]

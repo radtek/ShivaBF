@@ -488,6 +488,18 @@
     <Compile Include="Migrations\201911061858104_DBsetup.Designer.cs">
       <DependentUpon>201911061858104_DBsetup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911100349112_changes.cs" />
+    <Compile Include="Migrations\201911100349112_changes.Designer.cs">
+      <DependentUpon>201911100349112_changes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911100617411_Setup.cs" />
+    <Compile Include="Migrations\201911100617411_Setup.Designer.cs">
+      <DependentUpon>201911100617411_Setup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911100743213_Setup1.cs" />
+    <Compile Include="Migrations\201911100743213_Setup1.Designer.cs">
+      <DependentUpon>201911100743213_Setup1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Error\CustomHandleErrorInfo.cs" />
@@ -11258,6 +11270,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201911061858104_DBsetup.resx">
       <DependentUpon>201911061858104_DBsetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911100349112_changes.resx">
+      <DependentUpon>201911100349112_changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911100617411_Setup.resx">
+      <DependentUpon>201911100617411_Setup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911100743213_Setup1.resx">
+      <DependentUpon>201911100743213_Setup1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

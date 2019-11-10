@@ -44,7 +44,7 @@ angular.module(config.app).service('Services7Section6PriceMasterCRUD', function 
                     targets: 0
                 },
                 {
-                    name: "Services7Section6PriceMaster_tenant_Services7Master.Services7Section6PriceMaster_tenant.Services7Section6PriceMaster.ID",
+                    name: "Services7Section6PriceMaster_tenant.Services7Section6PriceMaster.ID",
                     data: "ID",
                     title: "ID",
                     render: $.fn.dataTable.render.text(),
@@ -52,7 +52,7 @@ angular.module(config.app).service('Services7Section6PriceMasterCRUD', function 
                     targets: 1
                 },
                 {
-                    name: "Services7Section6PriceMaster_tenant_Services7Master.Services7Section6PriceMaster_tenant.Services7Section6PriceMaster.HeadingText",
+                    name: "Services7Section6PriceMaster_tenant.Services7Section6PriceMaster.HeadingText",
                     data: "HeadingText",
                     title: "Heading&nbsp;Text",
                     render: $.fn.dataTable.render.text(),
@@ -60,7 +60,15 @@ angular.module(config.app).service('Services7Section6PriceMasterCRUD', function 
                     targets: 2
                 },
                  {
-                     name: "Services7Section6PriceMaster_tenant_Services7Master.Services7Section6PriceMaster_tenant.Services7Section6PriceMaster.Price",
+                    name: "Services7Section6PriceMaster_tenant.Services7Section6PriceMaster.Description",
+                    data: "Description",
+                    title: "Description",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 3
+                },
+                 {
+                     name: "Services7Section6PriceMaster_tenant.Services7Section6PriceMaster.Price",
                      data: "Price",
                      title: "Price",
                      render: $.fn.dataTable.render.text(),
@@ -68,7 +76,7 @@ angular.module(config.app).service('Services7Section6PriceMasterCRUD', function 
                      targets: 3
                  },
                 {
-                    name: "Services7Section6PriceMaster_tenant_Services7Master.Services7Section6PriceMaster_tenant.Services7Section6PriceMaster.AncharTagTitle",
+                    name: "Services7Section6PriceMaster_tenant.Services7Section6PriceMaster.AncharTagTitle",
                     data: "AncharTagTitle",
                     title: "Anchar&nbsp;Tag&nbsp;Title",
                     render: $.fn.dataTable.render.text(),
@@ -76,7 +84,7 @@ angular.module(config.app).service('Services7Section6PriceMasterCRUD', function 
                     targets: 4
                 },
                  {
-                     name: "Services7Section6PriceMaster_tenant_Services7Master.Services7Section6PriceMaster_tenant.Services7Section6PriceMaster.AncharTagUrl",
+                     name: "Services7Section6PriceMaster_tenant.Services7Section6PriceMaster.AncharTagUrl",
                      data: "AncharTagUrl",
                      title: "Anchar&nbsp;Tag&nbsp;Url",
                      render: $.fn.dataTable.render.text(),
@@ -92,15 +100,7 @@ angular.module(config.app).service('Services7Section6PriceMasterCRUD', function 
                       targets: 6
                   },
                   {
-                   name: "StateMaster.StateFullName",
-                   data: "StateFullName",
-                   title: "State&nbsp;Name",
-                   render: $.fn.dataTable.render.text(),
-                   width: "25%",
-                   targets: 7
-                 },
-                {
-                    name: "Services7Section6PriceMaster_tenant_Services7Master.Services7Section6PriceMaster_tenant.Services7Section6PriceMaster.DisplayIndex",
+                    name: "Services7Section6PriceMaster_tenant.Services7Section6PriceMaster.DisplayIndex",
                     data: "DisplayIndex",
                     title: "Display&nbsp;Index",
                     render: $.fn.dataTable.render.text(),
@@ -108,7 +108,7 @@ angular.module(config.app).service('Services7Section6PriceMasterCRUD', function 
                     targets: 8
                 },
  {
-                    name: "Services7Section6PriceMaster_tenant_Services7Master.Services7Section6PriceMaster_tenant.Services7Section6PriceMaster.Url",
+                    name: "Services7Section6PriceMaster_tenant.Services7Section6PriceMaster.Url",
                     data: "Url",
                     title: "Url",
                     render: $.fn.dataTable.render.text(),
@@ -116,7 +116,7 @@ angular.module(config.app).service('Services7Section6PriceMasterCRUD', function 
                     targets: 9
                 },
  {
-                    name: "Services7Section6PriceMaster_tenant_Services7Master.Services7Section6PriceMaster_tenant.Services7Section6PriceMaster.Metadata",
+                    name: "Services7Section6PriceMaster_tenant.Services7Section6PriceMaster.Metadata",
                     data: "Metadata",
                     title: "Metadata",
                     render: $.fn.dataTable.render.text(),
@@ -124,7 +124,7 @@ angular.module(config.app).service('Services7Section6PriceMasterCRUD', function 
                     targets: 10
                 },
 {
-                    name: "Services7Section6PriceMaster_tenant_Services7Master.Services7Section6PriceMaster_tenant.Services7Section6PriceMaster.MetaDescription",
+                    name: "Services7Section6PriceMaster_tenant.Services7Section6PriceMaster.MetaDescription",
                     data: "MetaDescription",
                     title: "MetaDescription",
                     render: $.fn.dataTable.render.text(),
@@ -132,7 +132,7 @@ angular.module(config.app).service('Services7Section6PriceMasterCRUD', function 
                     targets: 11
                 },
 {
-                    name: "Services7Section6PriceMaster_tenant_Services7Master.Services7Section6PriceMaster_tenant.Services7Section6PriceMaster.Keyword",
+                    name: "Services7Section6PriceMaster_tenant.Services7Section6PriceMaster.Keyword",
                     data: "Keyword",
                     title: "Keyword",
                     render: $.fn.dataTable.render.text(),
@@ -141,7 +141,7 @@ angular.module(config.app).service('Services7Section6PriceMasterCRUD', function 
                 },
 
 {
-                    name: "Services7Section6PriceMaster_tenant_Services7Master.Services7Section6PriceMaster_tenant.Services7Section6PriceMaster.TotalViews",
+                    name: "Services7Section6PriceMaster_tenant.Services7Section6PriceMaster.TotalViews",
                     data: "TotalViews",
                     title: "TotalViews",
                     render: $.fn.dataTable.render.text(),
@@ -149,7 +149,7 @@ angular.module(config.app).service('Services7Section6PriceMasterCRUD', function 
                     targets: 13
                 },
               {
-                    name: "Services7Section6PriceMaster_tenant_Services7Master.Services7Section6PriceMaster_tenant.Services7Section6PriceMaster.IsActive",
+                    name: "Services7Section6PriceMaster_tenant.Services7Section6PriceMaster.IsActive",
                     data: "IsActive",
                     title: "Is&nbsp;Active",
                     render: $.fn.dataTable.render.text(),
@@ -166,7 +166,7 @@ angular.module(config.app).service('Services7Section6PriceMasterCRUD', function 
                     targets:15
                 },
                 {
-                    name: "Services7Section6PriceMaster_tenant_Services7Master.Services7Section6PriceMaster_tenant.Services7Section6PriceMaster.CreatedBy",
+                    name: "Services7Section6PriceMaster_tenant.Services7Section6PriceMaster.CreatedBy",
                     data: "CreatedBy",
                     title: "Created&nbsp;By",
                     render: $.fn.dataTable.render.text(),
@@ -174,7 +174,7 @@ angular.module(config.app).service('Services7Section6PriceMasterCRUD', function 
                     targets: 16
                 },
                 {
-                    name: "Services7Section6PriceMaster_tenant_Services7Master.Services7Section6PriceMaster_tenant.Services7Section6PriceMaster.CreatedOn",
+                    name: "Services7Section6PriceMaster_tenant.Services7Section6PriceMaster.CreatedOn",
                     data: "CreatedOn",
                     title: "Created&nbsp;On",
                     render: function (data, type, row, meta) {
@@ -186,7 +186,7 @@ angular.module(config.app).service('Services7Section6PriceMasterCRUD', function 
                     targets: 17
                 },
                 {
-                    name: "Services7Section6PriceMaster_tenant_Services7Master.Services7Section6PriceMaster_tenant.Services7Section6PriceMaster.UpdatedBy",
+                    name: "Services7Section6PriceMaster_tenant.Services7Section6PriceMaster.UpdatedBy",
                     data: "UpdatedBy",
                     title: "Modified&nbsp;By",
                     render: $.fn.dataTable.render.text(),
@@ -194,7 +194,7 @@ angular.module(config.app).service('Services7Section6PriceMasterCRUD', function 
                     targets: 18
                 },
                 {
-                    name: "Services7Section6PriceMaster_tenant_Services7Master.Services7Section6PriceMaster_tenant.Services7Section6PriceMaster.UpdatedOn",
+                    name: "Services7Section6PriceMaster_tenant.Services7Section6PriceMaster.UpdatedOn",
                     data: "UpdatedOn",
                     title: "Modified&nbsp;On",
                     render: function (data, type, row, meta) {

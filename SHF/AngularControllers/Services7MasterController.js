@@ -52,6 +52,7 @@
             $scope.errors.formErrors = null;
             $scope.Processing = false;
             $scope.Clear();
+CKEDITOR.instances["Section1Description"].setData('');
             $scope.BindServiceTypeDropDownList(1020);
             if ($scope.Cookie_Tenant_ID <= 0) {
                 $scope.BindTenantDropDownList();
@@ -118,7 +119,7 @@
                             break;
                         case 'Response':
                             $scope.Services7MasterCreateOrEditViewModel = response.data.Entity;
-                            // $scope.LoadAllCategory();
+                            CKEDITOR.instances["Section1Description"].setData($scope.Services7MasterCreateOrEditViewModel.Section1Description);
                             $scope.LoadAllSubSubCategory();
                             //$scope.Services7MasterCreateOrEditViewModel.Category_ID=$scope.Services7MasterCreateOrEditViewModel.Category_ID;
                             $('#modal-createOredit').modal('show');
@@ -154,6 +155,8 @@
         $scope.createOreditAsyncForm = function () {
             $scope.Processing = true;
             $scope.path = "";
+var objEditorSection1 = CKEDITOR.instances["Section1Description"];
+$scope.Services7MasterCreateOrEditViewModel.Section1Description= objEditorSection1.getData();
             if ($scope.myForm.$valid) {
                 $scope.path = ($scope.Services7MasterCreateOrEditViewModel.ID == undefined || $scope.Services7MasterCreateOrEditViewModel.ID == null ||
           $scope.Services7MasterCreateOrEditViewModel.ID == 0) ? "/Post/Services7Master/CreateAsync" : "/Post/Services7Master/EditAsync";
