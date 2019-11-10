@@ -59,6 +59,17 @@ angular.module(config.app).service('Services8MasterCRUD', function ($http) {
                     width: "25%",
                     targets: 2
                 },
+               {
+                    name: "Services8Master_tenant.Services8Master.BannerImagePath",
+                    data: "BannerImagePath",
+                    title: "Image Preview",
+                   render: function (data, type, row, meta) {
+                        return '<img src="'+data+'" style="height:150px;width:200px;"/>';
+                    },
+                    width: "40%",
+                    targets: 2
+                },
+
                 {
                     name: "Services8Master_tenant.Services8Master.BannerOnHeading",
                     data: "BannerOnHeading",
@@ -91,22 +102,35 @@ angular.module(config.app).service('Services8MasterCRUD', function ($http) {
                     width: "25%",
                     targets: 6
                 },
-{
+                {
                     name: "Services8Master_tenant.Services8Master.Section1Description",
                     data: "Section1Description",
                     title: "Section1Description",
-                    render: $.fn.dataTable.render.text(),
+                    render: function (data, type, row, meta) {
+                       return $("<span/>").html(data).text(); 
+                    },
+                    //render: $.fn.dataTable.render.text(),
                     width: "25%",
                     targets: 6
-},
- {
-     name: "Services8Master_tenant.Services8Master.Section2BannerHeading",
-     data: "Section2BannerHeading",
-     title: "Section2BannerHeading",
-     render: $.fn.dataTable.render.text(),
-     width: "25%",
-     targets: 9
- },
+                 },
+                 {
+                     name: "Services8Master_tenant.Services8Master.Section2BannerPath",
+                     data: "Section2BannerPath",
+                     title: "Section2BannerPath",
+                     render: $.fn.dataTable.render.text(),
+                     width: "25%",
+                     targets: 9
+                 },
+                 {
+                    name: "Services8Master_tenant.Services8Master.Section2BannerPath",
+                    data: "Section2BannerPath",
+                    title: "Image Preview",
+                   render: function (data, type, row, meta) {
+                        return '<img src="'+data+'" style="height:150px;width:200px;"/>';
+                    },
+                    width: "40%",
+                    targets: 9
+                },
                 {
                     name: "Services8Master_tenant.Services8Master.Section2BannerHeadingDescription",
                     data: "Section2BannerHeadingDescription",

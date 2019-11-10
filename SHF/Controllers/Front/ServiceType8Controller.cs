@@ -62,7 +62,7 @@ namespace SHF.Controllers.Front
                 ServiceType8ViewModel.Section5Heading = ServiceType8.Section5Heading;
                 ServiceType8ViewModel.Section5Description = ServiceType8.Section5Description;
                 ServiceType8ViewModel.Section5TextboxMaskedText = ServiceType8.Section5TextboxMaskedText;
-                ServiceType8ViewModel.Section2BannerHeading = ServiceType8.Section2BannerHeading;
+                ServiceType8ViewModel.Section2BannerPath = ConfigurationManager.AppSettings[busConstant.Settings.DataBase.SqlServer.Connections.AdminUrlString.ADMINUrl] + String.Concat(busConstant.Settings.CMSPath.TENANAT_UPLOAD_DIRECTORY, ServiceType8.Tenant_ID) + "/" + ServiceType8.Section2BannerPath;
                 ServiceType8ViewModel.Section2BannerHeadingDescription = ServiceType8.Section2BannerHeadingDescription;
                 ServiceType8ViewModel.DisplayIndex = ServiceType8.DisplayIndex;
                 ServiceType8ViewModel.Url = ServiceType8.Url.ToString();

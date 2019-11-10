@@ -36,8 +36,8 @@ namespace SHF.EntityModel
         public System.String Section1Heading { get; set; }
         [Column("Section1Description")]
         public System.String Section1Description { get; set; }
-        [Column("Section2BannerHeading")]
-        public System.String Section2BannerHeading { get; set; }
+        [Column("Section2BannerPath")]
+        public System.String Section2BannerPath { get; set; }
         [Column("Section2BannerHeadingDescription")]
         public System.String Section2BannerHeadingDescription { get; set; }
         [Column("Section4Heading")]

@@ -11,7 +11,7 @@ angular.module(config.app).service('Services8Section6MasterCRUD', function ($htt
         let oTable = $('#grdTable').DataTable({
             serverSide: true,
             ajax: {
-                url: '/Post/Services8Section6/IndexAsync',
+                url: '/Post/Services8Section6Master/IndexAsync',
                 type: 'POST',
                 dataSrc: 'data',
                 data: { 'tenantId': tenantId },

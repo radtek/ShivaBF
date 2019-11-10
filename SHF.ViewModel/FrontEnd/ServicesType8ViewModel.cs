@@ -27,7 +27,7 @@ namespace SHF.ViewModel.FrontEnd
         public System.String BannerHeadingDescription { get; set; }
         public System.String Section1Heading { get; set; }
         public System.String Section1Description { get; set; }
-        public System.String Section2BannerHeading { get; set; }
+        public System.String Section2BannerPath { get; set; }
         public System.String Section2BannerHeadingDescription { get; set; }
         public System.String Section4Heading { get; set; }
         public System.String Section5Heading { get; set; }

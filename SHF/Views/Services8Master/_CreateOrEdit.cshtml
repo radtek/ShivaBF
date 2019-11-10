@@ -83,20 +83,28 @@
                         </div>
                         <div class="form-group" ng-class="{'has-error': ((myForm.Section1Description.$touched && myForm.Section1Description.$invalid) || (!myForm.Section1Description.$pristine && myForm.Section1Description.$invalid))}">
                             <label>Section1 Description</label>
-                            <input type="text" class="form-control" name="Section1Description" ng-model="Services8MasterCreateOrEditViewModel.Section1Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section1 Description" tooltip-placement="top" uib-tooltip="Enter Section1 Description" />
+                            <textarea id="Section1Description" class="form-control" name="Section1Description" ng-model="Services8MasterCreateOrEditViewModel.Section1Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section1 Description" tooltip-placement="top" uib-tooltip="Enter Section1 Description" required></textarea>
+                            @*<input type="text" class="form-control" name="Section1Description" ng-model="Services8MasterCreateOrEditViewModel.Section1Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section1 Description" tooltip-placement="top" uib-tooltip="Enter Section1 Description" />*@
                             <div class="help-block" ng-messages="myForm.Section1Description.$error" ng-if="myForm.Section1Description.$touched || myForm.Section1Description.$dirty && myForm.Section1Description.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.Section1Description" ng-bind="errors.formErrors.Section1Description"></span>
                         </div>
-                        <div class="form-group" ng-class="{'has-error': ((myForm.Section2BannerHeading.$touched && myForm.Section2BannerHeading.$invalid) || (!myForm.Section2BannerHeading.$pristine && myForm.Section2BannerHeading.$invalid))}">
-                            <label>Section2 Banner Heading</label>
-                            <input type="text" class="form-control" name="Section2BannerHeading" ng-model="Services8MasterCreateOrEditViewModel.Section2BannerHeading" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section2 Banner Heading" tooltip-placement="top" uib-tooltip="Enter Section2 Banner Heading" />
-                            <div class="help-block" ng-messages="myForm.Section2BannerHeading.$error" ng-if="myForm.Section2BannerHeading.$touched || myForm.Section2BannerHeading.$dirty && myForm.Section2BannerHeading.$invalid">
+                        <div class="form-group" ng-class="{'has-error': ((myForm.Section2BannerPath.$touched && myForm.Section2BannerPath.$invalid) || (!myForm.Section2BannerPath.$pristine && myForm.Section2BannerPath.$invalid))}">
+                            <label>Section2 Banner Path</label>
+                            <div class="col-md-12" style="text-align:center;margin-bottom:10px;">
+                                <input type="text" class="form-control" name="Section2BannerPath" ng-model="Services8MasterCreateOrEditViewModel.Section2BannerPath" ng-disabled="Processing" autocomplete="off" required readonly placeholder="Enter Section2BannerPath" tooltip-placement="top" uib-tooltip="Enter Section2BannerPath" />
+                            </div>
+                            <div class="col-md-12">
+                                <span ng-click="SelectBannerasync('Section2BannerPath')" class="btn btn-sm btn-success">Select</span>
+                            </div>
+
+                            <div class="help-block" ng-messages="myForm.Section2BannerPath.$error" ng-if="myForm.Section2BannerPath.$touched || myForm.Section2BannerPath.$dirty && myForm.Section2BannerPath.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
-                            <span class="text-danger" ng-show="errors.formErrors.Section2BannerHeading" ng-bind="errors.formErrors.Section2BannerHeading"></span>
+                            <span class="text-danger" ng-show="errors.formErrors.Section2BannerPath" ng-bind="errors.formErrors.Section2BannerPath"></span>
                         </div>
+                       
                         <div class="form-group" ng-class="{'has-error': ((myForm.Section2BannerHeadingDescription.$touched && myForm.Section2BannerHeadingDescription.$invalid) || (!myForm.Section2BannerHeadingDescription.$pristine && myForm.Section2BannerHeadingDescription.$invalid))}">
                             <label>Section2 Banner Heading Description</label>
                             <input type="text" class="form-control" name="Section2BannerHeadingDescription" ng-model="Services8MasterCreateOrEditViewModel.Section2BannerHeadingDescription" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section2 Banner Heading Description" tooltip-placement="top" uib-tooltip="Enter Section2 Banner Heading Description" />
@@ -137,7 +145,6 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.Section5TextboxMaskedText" ng-bind="errors.formErrors.Section5TextboxMaskedText"></span>
                         </div>
-                       
 
                         <div class="form-group" ng-class="{'has-error': (myForm.DisplayIndex.$touched || myForm.DisplayIndex.$dirty)  && myForm.DisplayIndex.$invalid}">
                             <label>Display Index</label>
@@ -147,7 +154,6 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.DisplayIndex" ng-bind="errors.formErrors.DisplayIndex"></span>
                         </div>
-
                         <div class="form-group">
                             <label>Is Active</label><br />
                             <label>
@@ -208,3 +214,7 @@
     </div>
     <!-- /.modal-content -->
 </div>
+<script>
+             CKEDITOR.replace('Section1Description');
+
+</script>

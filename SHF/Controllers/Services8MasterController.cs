@@ -180,7 +180,7 @@ namespace SHF.Controllers
                                 entity.Section5Heading = model.Section5Heading;
                                 entity.Section5Description = model.Section5Description;
                                 entity.Section5TextboxMaskedText = model.Section5TextboxMaskedText;
-                                entity.Section2BannerHeading = model.Section2BannerHeading;
+                                entity.Section2BannerPath = model.Section2BannerPath;
                                 entity.Section2BannerHeadingDescription = model.Section2BannerHeadingDescription;
                                 entity.DisplayIndex = model.DisplayIndex;
                                 entity.Url = model.Url;
@@ -279,7 +279,7 @@ namespace SHF.Controllers
                                 model.Section5Heading = entity.Section5Heading;
                                 model.Section5Description = entity.Section5Description;
                                 model.Section5TextboxMaskedText = entity.Section5TextboxMaskedText;
-                                model.Section2BannerHeading = entity.Section2BannerHeading;
+                                model.Section2BannerPath = entity.Section2BannerPath;
                                 model.Section2BannerHeadingDescription = entity.Section2BannerHeadingDescription;
                                 model.DisplayIndex = entity.DisplayIndex;
                                 model.Url = entity.Url.ToString();
@@ -392,7 +392,7 @@ namespace SHF.Controllers
                                     entity.Section5Heading = model.Section5Heading;
                                     entity.Section5Description = model.Section5Description;
                                     entity.Section5TextboxMaskedText = model.Section5TextboxMaskedText;
-                                    entity.Section2BannerHeading = model.Section2BannerHeading;
+                                    entity.Section2BannerPath = model.Section2BannerPath;
                                     entity.Section2BannerHeadingDescription = model.Section2BannerHeadingDescription;
                                     entity.DisplayIndex = model.DisplayIndex;
                                     entity.Url = model.Url;

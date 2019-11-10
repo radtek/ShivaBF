@@ -54,7 +54,7 @@ namespace SHF.Business.BusinessLogic
                         || x.Services8Master_tenant.Services8Master.BannerOnHeading.CaseInsensitiveContains(searchValue)
                         || x.Services8Master_tenant.Services8Master.Section1Description.CaseInsensitiveContains(searchValue)
                         || x.Services8Master_tenant.Services8Master.Section1Heading.CaseInsensitiveContains(searchValue)
-                        || x.Services8Master_tenant.Services8Master.Section2BannerHeading.CaseInsensitiveContains(searchValue)
+                        || x.Services8Master_tenant.Services8Master.Section2BannerPath.CaseInsensitiveContains(searchValue)
                            || x.Services8Master_tenant.Services8Master.Section2BannerHeadingDescription.CaseInsensitiveContains(searchValue)
                         || x.Services8Master_tenant.Services8Master.Section4Heading.CaseInsensitiveContains(searchValue)
                         || x.Services8Master_tenant.Services8Master.Section5Heading.CaseInsensitiveContains(searchValue)
@@ -87,7 +87,7 @@ namespace SHF.Business.BusinessLogic
                         || x.Services8Master_tenant.Services8Master.BannerOnHeading.CaseInsensitiveContains(searchValue)
                         || x.Services8Master_tenant.Services8Master.Section1Description.CaseInsensitiveContains(searchValue)
                         || x.Services8Master_tenant.Services8Master.Section1Heading.CaseInsensitiveContains(searchValue)
-                        || x.Services8Master_tenant.Services8Master.Section2BannerHeading.CaseInsensitiveContains(searchValue)
+                        || x.Services8Master_tenant.Services8Master.Section2BannerPath.CaseInsensitiveContains(searchValue)
                            || x.Services8Master_tenant.Services8Master.Section2BannerHeadingDescription.CaseInsensitiveContains(searchValue)
                         || x.Services8Master_tenant.Services8Master.Section4Heading.CaseInsensitiveContains(searchValue)
                         || x.Services8Master_tenant.Services8Master.Section5Heading.CaseInsensitiveContains(searchValue)
@@ -110,7 +110,7 @@ namespace SHF.Business.BusinessLogic
                     .Select(x => new ViewModel.Services8MasterIndexViewModel 
                     {
                         ID = x.Services8Master_tenant.Services8Master.ID,
-                        BannerImagePath = x.Services8Master_tenant.Services8Master.BannerImagePath,
+                        BannerImagePath = String.Concat(busConstant.Settings.CMSPath.TENANAT_UPLOAD_DIRECTORY, x.Services8Master_tenant.tenant.ID) + "/" + x.Services8Master_tenant.Services8Master.BannerImagePath,
                         BannerOnHeading = x.Services8Master_tenant.Services8Master.BannerOnHeading,
                         SubSubCategoryName = x.SubSubCategoriesMaster.SubSubCategoryName,
                         BannerHeadingDescription = x.Services8Master_tenant.Services8Master.BannerHeadingDescription,
@@ -119,7 +119,7 @@ namespace SHF.Business.BusinessLogic
                         SubSubCat_Id = x.Services8Master_tenant.Services8Master.SubSubCat_Id,
                         Section1Heading = x.Services8Master_tenant.Services8Master.Section1Heading,
                         Section1Description = x.Services8Master_tenant.Services8Master.Section1Description,
-                        Section2BannerHeading = x.Services8Master_tenant.Services8Master.Section2BannerHeading,
+                        Section2BannerPath = String.Concat(busConstant.Settings.CMSPath.TENANAT_UPLOAD_DIRECTORY, x.Services8Master_tenant.tenant.ID) + "/" + x.Services8Master_tenant.Services8Master.Section2BannerPath,
                         Section2BannerHeadingDescription = x.Services8Master_tenant.Services8Master.Section2BannerHeadingDescription,
                         Section4Heading = x.Services8Master_tenant.Services8Master.Section4Heading,
                         Section5Heading = x.Services8Master_tenant.Services8Master.Section5Heading,
