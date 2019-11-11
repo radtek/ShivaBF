@@ -719,8 +719,8 @@ GO
 
 
 DECLARE	@ParrentName VARCHAR(100)='Service Type 4', 
-		@Name VARCHAR(100)='S4 Section 2 Child', 
-        @Url VARCHAR(150)='/Configurations/Master/ServiceType4/Section2Child', 
+		@Name VARCHAR(100)='S4 Section 345 Master', 
+        @Url VARCHAR(150)='/Configurations/Master/ServiceType4/Section345Master', 
         @Is_Active BIT=1, 
         @Update_Seq INT=0,
         @Created_By VARCHAR(10)='dbo',
@@ -746,8 +746,8 @@ GO
 
 
 DECLARE	@ParrentName VARCHAR(100)='Service Type 4', 
-		@Name VARCHAR(100)='S4 Section 2 Master', 
-        @Url VARCHAR(150)='/Configurations/Master/ServiceType4/Section2Master', 
+		@Name VARCHAR(100)='S4 Section 345 Buttons Child', 
+        @Url VARCHAR(150)='/Configurations/Master/ServiceType4/Section345ButtonsChild', 
         @Is_Active BIT=1, 
         @Update_Seq INT=0,
         @Created_By VARCHAR(10)='dbo',
@@ -770,32 +770,8 @@ SELECT @ParrentMenu_ID=SM.ID FROM dbo.Tbl_SubMenu SM WITH(NOLOCK) WHERE SM.[Name
 GO
 
 DECLARE	@ParrentName VARCHAR(100)='Service Type 4', 
-		@Name VARCHAR(100)='S4 Section 3', 
-        @Url VARCHAR(150)='/Configurations/Master/ServiceType4/Section3', 
-        @Is_Active BIT=1, 
-        @Update_Seq INT=0,
-        @Created_By VARCHAR(10)='dbo',
-        @Created_On DATETIME=GETDATE(),
-        @Modified_By VARCHAR(10)='dbo',
-        @Modified_On DATETIME=GETDATE(),
-        @Is_Deleted BIT=0, 
-        @Icon_Class varchar(50)='"fa fa-circle-o"', 
-        @Order_By INT=8, 
-        @ParrentMenu_ID INT=NULL,
-		@UseOnlyFor VARCHAR(10)='TENANT'
-
-SELECT @ParrentMenu_ID=SM.ID FROM dbo.Tbl_SubMenu SM WITH(NOLOCK) WHERE SM.[Name]=@ParrentName 
-
-	IF NOT EXISTS(SELECT 1 FROM dbo.Tbl_SubMenu SM WITH(NOLOCK) WHERE SM.[Name]=@Name AND SM.[Url]=@Url AND SM.ParrentMenu_ID=@ParrentMenu_ID AND SM.[UseOnlyFor]=@UseOnlyFor)
-		BEGIN
-			INSERT INTO [dbo].[Tbl_SubMenu]([Name],[Url],[IsActive],[UpdateSeq],[Created_By],[Created_On],[Modified_By],[Modified_On],[Is_Deleted],[IconClass],[OrderBy],[ParrentMenu_ID],[UseOnlyFor])
-			VALUES(@Name, @Url, @Is_Active, @Update_Seq,@Created_By,@Created_On,@Modified_By,@Modified_On,@Is_Deleted, @Icon_Class, @Order_By, @ParrentMenu_ID,@UseOnlyFor)
-		END
-GO
-
-DECLARE	@ParrentName VARCHAR(100)='Service Type 4', 
-		@Name VARCHAR(100)='S4 Section 3 Master', 
-        @Url VARCHAR(150)='/Configurations/Master/ServiceType4/Section3Master', 
+		@Name VARCHAR(100)='S4 Section 345 Features Details', 
+        @Url VARCHAR(150)='/Configurations/Master/ServiceType4/Section345FeaturesDetails', 
         @Is_Active BIT=1, 
         @Update_Seq INT=0,
         @Created_By VARCHAR(10)='dbo',
@@ -819,32 +795,8 @@ GO
 
 
 DECLARE	@ParrentName VARCHAR(100)='Service Type 4', 
-		@Name VARCHAR(100)='S4 Section 3 Child', 
-        @Url VARCHAR(150)='/Configurations/Master/ServiceType4/Section3Child', 
-        @Is_Active BIT=1, 
-        @Update_Seq INT=0,
-        @Created_By VARCHAR(10)='dbo',
-        @Created_On DATETIME=GETDATE(),
-        @Modified_By VARCHAR(10)='dbo',
-        @Modified_On DATETIME=GETDATE(),
-        @Is_Deleted BIT=0, 
-        @Icon_Class varchar(50)='"fa fa-circle-o"', 
-        @Order_By INT=8, 
-        @ParrentMenu_ID INT=NULL,
-		@UseOnlyFor VARCHAR(10)='TENANT'
-
-SELECT @ParrentMenu_ID=SM.ID FROM dbo.Tbl_SubMenu SM WITH(NOLOCK) WHERE SM.[Name]=@ParrentName 
-
-	IF NOT EXISTS(SELECT 1 FROM dbo.Tbl_SubMenu SM WITH(NOLOCK) WHERE SM.[Name]=@Name AND SM.[Url]=@Url AND SM.ParrentMenu_ID=@ParrentMenu_ID AND SM.[UseOnlyFor]=@UseOnlyFor)
-		BEGIN
-			INSERT INTO [dbo].[Tbl_SubMenu]([Name],[Url],[IsActive],[UpdateSeq],[Created_By],[Created_On],[Modified_By],[Modified_On],[Is_Deleted],[IconClass],[OrderBy],[ParrentMenu_ID],[UseOnlyFor])
-			VALUES(@Name, @Url, @Is_Active, @Update_Seq,@Created_By,@Created_On,@Modified_By,@Modified_On,@Is_Deleted, @Icon_Class, @Order_By, @ParrentMenu_ID,@UseOnlyFor)
-		END
-GO
-
-DECLARE	@ParrentName VARCHAR(100)='Service Type 4', 
-		@Name VARCHAR(100)='S4 Section 3 DownloadMaster', 
-        @Url VARCHAR(150)='/Configurations/Master/ServiceType4/Section3DownloadMaster', 
+		@Name VARCHAR(100)='S4 Section678 FieldMaster', 
+        @Url VARCHAR(150)='/Configurations/Master/ServiceType4/Section678FieldMaster', 
         @Is_Active BIT=1, 
         @Update_Seq INT=0,
         @Created_By VARCHAR(10)='dbo',
@@ -868,33 +820,8 @@ GO
 
 
 DECLARE	@ParrentName VARCHAR(100)='Service Type 4', 
-		@Name VARCHAR(100)='S4 Section567 FieldMaster', 
-        @Url VARCHAR(150)='/Configurations/Master/ServiceType4/Section567FieldMaster', 
-        @Is_Active BIT=1, 
-        @Update_Seq INT=0,
-        @Created_By VARCHAR(10)='dbo',
-        @Created_On DATETIME=GETDATE(),
-        @Modified_By VARCHAR(10)='dbo',
-        @Modified_On DATETIME=GETDATE(),
-        @Is_Deleted BIT=0, 
-        @Icon_Class varchar(50)='"fa fa-circle-o"', 
-        @Order_By INT=8, 
-        @ParrentMenu_ID INT=NULL,
-		@UseOnlyFor VARCHAR(10)='TENANT'
-
-SELECT @ParrentMenu_ID=SM.ID FROM dbo.Tbl_SubMenu SM WITH(NOLOCK) WHERE SM.[Name]=@ParrentName 
-
-	IF NOT EXISTS(SELECT 1 FROM dbo.Tbl_SubMenu SM WITH(NOLOCK) WHERE SM.[Name]=@Name AND SM.[Url]=@Url AND SM.ParrentMenu_ID=@ParrentMenu_ID AND SM.[UseOnlyFor]=@UseOnlyFor)
-		BEGIN
-			INSERT INTO [dbo].[Tbl_SubMenu]([Name],[Url],[IsActive],[UpdateSeq],[Created_By],[Created_On],[Modified_By],[Modified_On],[Is_Deleted],[IconClass],[OrderBy],[ParrentMenu_ID],[UseOnlyFor])
-			VALUES(@Name, @Url, @Is_Active, @Update_Seq,@Created_By,@Created_On,@Modified_By,@Modified_On,@Is_Deleted, @Icon_Class, @Order_By, @ParrentMenu_ID,@UseOnlyFor)
-		END
-GO
-
-
-DECLARE	@ParrentName VARCHAR(100)='Service Type 4', 
-		@Name VARCHAR(100)='S4 Section567 FieldValues', 
-        @Url VARCHAR(150)='/Configurations/Master/ServiceType4/Section567FieldValues', 
+		@Name VARCHAR(100)='S4 Section678 FieldValues', 
+        @Url VARCHAR(150)='/Configurations/Master/ServiceType4/Section678FieldValues', 
         @Is_Active BIT=1, 
         @Update_Seq INT=0,
         @Created_By VARCHAR(10)='dbo',

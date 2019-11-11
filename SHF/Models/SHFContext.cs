@@ -97,14 +97,12 @@ namespace SHF.Models
         /*service 4*/
         public DbSet<SHF.EntityModel.Services4Master> Services4Master { get; set; }
         public DbSet<SHF.EntityModel.Services4Section2FAQMapping> Services4Section2FAQMapping { get; set; }
-        public DbSet<SHF.EntityModel.Services4Section2Master> Services4Section2Master { get; set; }
-        public DbSet<SHF.EntityModel.Services4Section2MasterChild> Services4Section2MasterChild { get; set; }
-        public DbSet<SHF.EntityModel.Services4Section3> Services4Section3 { get; set; }
-        public DbSet<SHF.EntityModel.Services4Section3DownloadMaster> Services4Section3DownloadMaster { get; set; }
-        public DbSet<SHF.EntityModel.Services4Section3Master> Services4Section3Master { get; set; }
-        public DbSet<SHF.EntityModel.Services4Section3MasterChild> Services4Section3MasterChild { get; set; }
-        public DbSet<SHF.EntityModel.Services4Section567FieldMaster> Services4Section567FieldMaster { get; set; }
-        public DbSet<SHF.EntityModel.Services4Section567FieldValues> Services4Section567FieldValues { get; set; }
+        public DbSet<SHF.EntityModel.Services4Section345Master> Services4Section2Master { get; set; }
+        public DbSet<SHF.EntityModel.Services4Section345MasterButtonsChild> Services4Section2MasterChild { get; set; }
+        public DbSet<SHF.EntityModel.Services4Section345MasterFeaturesDetails> Services4Section3 { get; set; }
+       
+        public DbSet<SHF.EntityModel.Services4Section678FieldMaster> Services4Section567FieldMaster { get; set; }
+        public DbSet<SHF.EntityModel.Services4Section678FieldValues> Services4Section567FieldValues { get; set; }
         /*service 5*/
         public DbSet<SHF.EntityModel.Services5Master> Services5Master { get; set; }
         public DbSet<SHF.EntityModel.Services5Section2Master> Services5Section2Master { get; set; }

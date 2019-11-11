@@ -66,8 +66,8 @@
     <Compile Include="BusinessLogic\FAQMaster.cs" />
     <Compile Include="BusinessLogic\BlogMaster.cs" />
     <Compile Include="BusinessLogic\HomePageBanner.cs" />
-    <Compile Include="BusinessLogic\Services4Section567FieldValues.cs" />
-    <Compile Include="BusinessLogic\Services4Section567FieldMaster.cs" />
+    <Compile Include="BusinessLogic\Services4Section678FieldValues.cs" />
+    <Compile Include="BusinessLogic\Services4Section678FieldMaster.cs" />
     <Compile Include="BusinessLogic\Services8Section6Master.cs" />
     <Compile Include="BusinessLogic\Services8HeadingButtons.cs" />
     <Compile Include="BusinessLogic\Services8Master.cs" />
@@ -81,10 +81,7 @@
     <Compile Include="BusinessLogic\Services5Section2MasterFeaturesDetails.cs" />
     <Compile Include="BusinessLogic\Services5Section2Master.cs" />
     <Compile Include="BusinessLogic\Services5Master.cs" />
-    <Compile Include="BusinessLogic\Services4Section3DownloadMaster.cs" />
-    <Compile Include="BusinessLogic\Services4Section3.cs" />
-    <Compile Include="BusinessLogic\Services4Section2MasterChild.cs" />
-    <Compile Include="BusinessLogic\Services4Section2Master.cs" />
+    <Compile Include="BusinessLogic\Services4Section345Master.cs" />
     <Compile Include="BusinessLogic\Services4Section2FAQMapping.cs" />
     <Compile Include="BusinessLogic\Services4Master.cs" />
     <Compile Include="BusinessLogic\Services3Section6PriceMaster.cs" />
@@ -130,8 +127,8 @@
     <Compile Include="Interface\IBlogBannerNavigationsDetails.cs" />
     <Compile Include="Interface\IBlogMaster.cs" />
     <Compile Include="Interface\IHomePageBanner.cs" />
-    <Compile Include="Interface\IServices4Section567FieldValues.cs" />
-    <Compile Include="Interface\IServices4Section567FieldMaster.cs" />
+    <Compile Include="Interface\IServices4Section678FieldValues.cs" />
+    <Compile Include="Interface\IServices4Section678FieldMaster.cs" />
     <Compile Include="Interface\IServices8Section6Master.cs" />
     <Compile Include="Interface\IServices8HeadingButtons.cs" />
     <Compile Include="Interface\IServices8Master.cs" />
@@ -145,10 +142,7 @@
     <Compile Include="Interface\IServices5Section2MasterFeaturesDetails.cs" />
     <Compile Include="Interface\IServices5Section2Master.cs" />
     <Compile Include="Interface\IServices5Master.cs" />
-    <Compile Include="Interface\IServices4Section3DownloadMaster.cs" />
-    <Compile Include="Interface\IServices4Section3.cs" />
-    <Compile Include="Interface\IServices4Section2MasterChild.cs" />
-    <Compile Include="Interface\IServices4Section2Master.cs" />
+    <Compile Include="Interface\IServices4Section345Master.cs" />
     <Compile Include="Interface\IServices4Section2FAQMapping.cs" />
     <Compile Include="Interface\IServices4Master.cs" />
     <Compile Include="Interface\IServices3Section6PriceMaster.cs" />

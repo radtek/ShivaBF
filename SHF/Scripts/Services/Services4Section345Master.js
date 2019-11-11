@@ -1,17 +1,17 @@
 ﻿//let app = angular.module('InventoryApp');
 
-angular.module(config.app).service('Services4MasterCRUD', function ($http) {
+angular.module(config.app).service('Services4Section345MasterCRUD', function ($http) {
 
     this.GetTableObject = function TableData() {
-        let scope = angular.element(document.getElementById('Services4MasterControllerScope')).scope();
-        let tenantId = scope.Services4MasterCreateOrEditViewModel.Tenant_ID == null ? 0 : scope.Services4MasterCreateOrEditViewModel.Tenant_ID;
+        let scope = angular.element(document.getElementById('Services4Section345MasterControllerScope')).scope();
+        let tenantId = scope.Services4Section345MasterCreateOrEditViewModel.Tenant_ID == null ? 0 : scope.Services4Section345MasterCreateOrEditViewModel.Tenant_ID;
         let viewBagTenantID = $('#ViewBag_TenantID').val();
         let antiForgeryToken = $('#antiForgeryToken').val();
         var src = '../../../Content/Images/';
         let oTable = $('#grdTable').DataTable({
             serverSide: true,
             ajax: {
-                url: '/Post/ServiceType4/IndexAsync',
+                url: '/Post/Services4Section345Master/IndexAsync',
                 type: 'POST',
                 dataSrc: 'data',
                 data: { 'tenantId': tenantId },
@@ -44,198 +44,94 @@ angular.module(config.app).service('Services4MasterCRUD', function ($http) {
                     targets: 0
                 },
                 {
-                    name: "Services4Master_tenant.Services4Master.ID",
+                    name: "Services4Section345Master_tenant.Services4Section345Master.ID",
                     data: "ID",
                     title: "ID",
                     render: $.fn.dataTable.render.text(),
                     width: "3%",
                     targets: 1
                 },
-                {
-                    name: "Services4Master_tenant.Services4Master.BannerImagePath",
-                    data: "BannerImagePath",
-                    title: "BannerImagePath",
-                    render: $.fn.dataTable.render.text(),
-                    width: "25%",
-                    targets: 2
-                },
-{
-                    name: "Services4Master_tenant.Services4Master.BannerImagePath",
-                    data: "BannerImagePath",
-                    title: "Image Preview",
-                   render: function (data, type, row, meta) {
-                        return '<img src="'+data+'" style="height:150px;width:200px;"/>';
-                    },
-                    width: "40%",
-                    targets: 2
-                },
-                {
-                    name: "Services4Master_tenant.Services4Master.BannerOnHeading",
-                    data: "BannerOnHeading",
-                    title: "BannerOnHeading",
-                    render: $.fn.dataTable.render.text(),
-                    width: "25%",
-                    targets: 3
-                },
-                {
-                    name: "SubSubCategoriesMaster.SubSubCategoryName",
+                 {
+                     name: "Services4Section345Master_tenant.Services4Section345Master.Heading",
+                     data: "Heading",
+                     title: "Heading",
+                     render: $.fn.dataTable.render.text(),
+                     width: "25%",
+                     targets: 2
+                 },
+                 {
+                     name: "Services4Section345Master_tenant.Services4Section345Master.SectionType",
+                     data: "SectionType",
+                     title: "SectionType",
+                     render: $.fn.dataTable.render.text(),
+                     width: "25%",
+                     targets: 2
+                 },
+               
+                 {
+                    name: "Services4Section345Master.SubSubCategoryName",
                     data: "SubSubCategoryName",
-                    title: "SubSubCategoryName",
-                    render: $.fn.dataTable.render.text(),
-                    width: "25%",
-                    targets: 4
-                },
-                {
-                    name: "Services4Master_tenant.Services4Master.BannerHeadingDescription",
-                    data: "BannerHeadingDescription",
-                    title: "BannerHeadingDescription",
+                    title: "Sub&nbsp;Sub&nbsp;CategoryName",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
                     targets: 5
                 },
-              
-               {
-                    name: "Services4Master_tenant.Services4Master.Section1Description",
-                    data: "Section1Description",
-                    title: "Section1Description",
-render: function (data, type, row, meta) {
-                       return $("<span/>").html(data).text(); 
-                    },
-                    //render: $.fn.dataTable.render.text(),
-                    width: "25%",
-                    targets: 6
-                },
-               
                 {
-                    name: "Services4Master_tenant.Services4Master.Section2PriceingHeading",
-                    data: "Section2PriceingHeading",
-                    title: "Section2PriceingHeading",
-                    render: $.fn.dataTable.render.text(),
-                    width: "25%",
-                    targets: 7
-                },
-                {
-                    name: "Services4Master_tenant.Services4Master.Section2PriceingDescription",
-                    data: "Section2PriceingDescription",
-                    title: "Section2PriceingDescription",
-                    render: $.fn.dataTable.render.text(),
-                    width: "25%",
-                    targets: 8
-                },
-                 {
-                     name: "Services4Master_tenant.Services4Master.Section3PriceingHeading",
-                     data: "Section3PriceingHeading",
-                     title: "Section3PriceingHeading",
-                    render: $.fn.dataTable.render.text(),
-                    width: "25%",
-                    targets: 8
-                },
-                 {
-                     name: "Services4Master_tenant.Services4Master.Section3PriceingDescription",
-                     data: "Section3PriceingDescription",
-                     title: "Section3PriceingDescription",
-                    render: $.fn.dataTable.render.text(),
-                    width: "25%",
-                    targets: 8
-                },
- 
-                   {
-                       name: "Services4Master_tenant.Services4Master.Section4PriceingHeading",
-                       data: "Section4PriceingHeading",
-                       title: "Section4PriceingHeading",
-                    render: $.fn.dataTable.render.text(),
-                    width: "25%",
-                    targets: 9
-                }, 
-                {
-                    name: "Services4Master_tenant.Services4Master.Section4PriceingDescription",
-                    data: "Section4PriceingDescription",
-                    title: "Section4PriceingDescription",
-                    render: $.fn.dataTable.render.text(),
-                    width: "25%",
-                    targets: 10
-                },
-                 {
-                     name: "Services4Master_tenant.Services4Master.Section5PriceingHeading",
-                     data: "Section5PriceingHeading",
-                     title: "Section5PriceingHeading",
-                     render: $.fn.dataTable.render.text(),
-                     width: "25%",
-                     targets: 10
-                 },
-                  {
-                      name: "Services4Master_tenant.Services4Master.Section6PriceingHeading",
-                      data: "Section6PriceingHeading",
-                      title: "Section6PriceingHeading",
-                      render: $.fn.dataTable.render.text(),
-                      width: "25%",
-                      targets: 10
-                  },
-                   {
-                       name: "Services4Master_tenant.Services4Master.Section7PriceingHeading",
-                       data: "Section7PriceingHeading",
-                       title: "Section7PriceingHeading",
-                       render: $.fn.dataTable.render.text(),
-                       width: "25%",
-                       targets: 10
-                   },
-               
-                 {
-                    name: "Services4Master_tenant.Services4Master.DisplayIndex",
+                    name: "Services4Section345Master_tenant.Services4Section345Master.DisplayIndex",
                     data: "DisplayIndex",
                     title: "Display&nbsp;Index",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 11
+                    targets: 6
                 },
-                {
-                    name: "Services4Master_tenant.Services4Master.Url",
+ {
+                    name: "Services4Section345Master_tenant.Services4Section345Master.Url",
                     data: "Url",
                     title: "Url",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 12
+                    targets: 7
                 },
-                {
-                    name: "Services4Master_tenant.Services4Master.Metadata",
+ {
+                    name: "Services4Section345Master_tenant.Services4Section345Master.Metadata",
                     data: "Metadata",
                     title: "Metadata",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 13
+                    targets: 8
                 },
-                {
-                    name: "Services4Master_tenant.Services4Master.MetaDescription",
+{
+                    name: "Services4Section345Master_tenant.Services4Section345Master.MetaDescription",
                     data: "MetaDescription",
                     title: "MetaDescription",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 14
+                    targets: 9
                 },
-                {
-                    name: "Services4Master_tenant.Services4Master.Keyword",
+{
+                    name: "Services4Section345Master_tenant.Services4Section345Master.Keyword",
                     data: "Keyword",
                     title: "Keyword",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 15
+                    targets: 10
                 },
 
-                {
-                    name: "Services4Master_tenant.Services4Master.TotalViews",
+{
+                    name: "Services4Section345Master_tenant.Services4Section345Master.TotalViews",
                     data: "TotalViews",
                     title: "TotalViews",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 16
+                    targets: 11
                 },
               {
-                    name: "Services4Master_tenant.Services4Master.IsActive",
+                    name: "Services4Section345Master_tenant.Services4Section345Master.IsActive",
                     data: "IsActive",
                     title: "Is&nbsp;Active",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 17
+                    targets: 12
                 },
                 {
                     name: "tenant.Name",
@@ -244,18 +140,18 @@ render: function (data, type, row, meta) {
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
                     visible: viewBagTenantID <= 0 ? true : false,
-                    targets:18
+                    targets:13
                 },
                 {
-                    name: "Services4Master_tenant.Services4Master.CreatedBy",
+                    name: "Services4Section345Master_tenant.Services4Section345Master.CreatedBy",
                     data: "CreatedBy",
                     title: "Created&nbsp;By",
                     render: $.fn.dataTable.render.text(),
                     width: "6%",
-                    targets: 19
+                    targets: 14
                 },
                 {
-                    name: "Services4Master_tenant.Services4Master.CreatedOn",
+                    name: "Services4Section345Master_tenant.Services4Section345Master.CreatedOn",
                     data: "CreatedOn",
                     title: "Created&nbsp;On",
                     render: function (data, type, row, meta) {
@@ -264,18 +160,18 @@ render: function (data, type, row, meta) {
 
                     },
                     width: "11%",
-                    targets: 20
+                    targets: 15
                 },
                 {
-                    name: "Services4Master_tenant.Services4Master.UpdatedBy",
+                    name: "Services4Section345Master_tenant.Services4Section345Master.UpdatedBy",
                     data: "UpdatedBy",
                     title: "Modified&nbsp;By",
                     render: $.fn.dataTable.render.text(),
                     width: "6%",
-                    targets: 21
+                    targets: 16
                 },
                 {
-                    name: "Services4Master_tenant.Services4Master.UpdatedOn",
+                    name: "Services4Section345Master_tenant.Services4Section345Master.UpdatedOn",
                     data: "UpdatedOn",
                     title: "Modified&nbsp;On",
                     render: function (data, type, row, meta) {
@@ -283,7 +179,7 @@ render: function (data, type, row, meta) {
                         return moment(date).format('DD-MM-YYYY hh:mm:ss a');
                     },
                     width: "11%",
-                    targets: 22
+                    targets: 17
                 },
                 {
                     name: null,
@@ -294,7 +190,7 @@ render: function (data, type, row, meta) {
                         return '<button type="button" class="btn btn-xs text-success btn-edit"><i title="Edit" class="fa fa-edit"></i></button>';
                     },
                     width: "2%",
-                    targets: 37
+                    targets: 18
                 },
                 {
                     name: null,
@@ -305,7 +201,7 @@ render: function (data, type, row, meta) {
                         return '<button type="button" class="btn btn-xs text-danger btn-delete"><i title="Delete" class="fa fa-trash"></i></button>';
                     },
                     width: "2%",
-                    targets: 38
+                    targets: 19
                 }
             ],
 
@@ -320,13 +216,13 @@ render: function (data, type, row, meta) {
         $('#grdTable tbody').off('click');
         $('#grdTable tbody').on('click', '.btn-edit', function () {
             let rowData = oTable.row($(this).parents('tr')).data();
-            let scope = angular.element(document.getElementById('Services4MasterControllerScope')).scope();
+            let scope = angular.element(document.getElementById('Services4Section345MasterControllerScope')).scope();
             scope.EditAsync(rowData.ID);
         });
 
         $('#grdTable tbody').on('click', '.btn-delete', function () {
             let rowData = oTable.row($(this).parents('tr')).data();
-            let scope = angular.element(document.getElementById('Services4MasterControllerScope')).scope();
+            let scope = angular.element(document.getElementById('Services4Section345MasterControllerScope')).scope();
             scope.DeleteAsync(rowData.ID);
         });
     }
@@ -342,13 +238,7 @@ render: function (data, type, row, meta) {
         }
     }
 
- this.LoadSubSubCategoriesDropdown = function SubSubCategoriesDropdown(tenantId) {
-        let request = $http({
-            method: "get",
-            url: "/Get/Services4Master/DropdownListbyTenantAsync?Id=" + tenantId
-        });
-        return request;
-    }
+
     this.LoadProductDropdown = function ProductDropdown(tenantId) {
         let request = $http({
             method: "get",

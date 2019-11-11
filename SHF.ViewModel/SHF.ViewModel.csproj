@@ -67,8 +67,8 @@
     <Compile Include="BlogBannerNavigationsDetailsViewModel.cs" />
     <Compile Include="BlogMasterViewModel.cs" />
     <Compile Include="HomePageBannerViewModel.cs" />
-    <Compile Include="Services4Section567FieldValuesViewModel.cs" />
-    <Compile Include="Services4Section567FieldMasterViewModel.cs" />
+    <Compile Include="Services4Section678FieldValuesViewModel.cs" />
+    <Compile Include="Services4Section678FieldMasterViewModel.cs" />
     <Compile Include="Services8Section6MasterViewModel.cs" />
     <Compile Include="Services8HeadingButtonsViewModel.cs" />
     <Compile Include="Services8MasterViewModel.cs" />
@@ -85,7 +85,7 @@
     <Compile Include="Services4Section3DownloadMasterViewModel.cs" />
     <Compile Include="Services4Section2MasterChildViewModel.cs" />
     <Compile Include="Services4Section3ViewModel.cs" />
-    <Compile Include="Services4Section2MasterViewModel.cs" />
+    <Compile Include="Services4Section345MasterViewModel.cs" />
     <Compile Include="Services4Section2FAQMappingViewModel.cs" />
     <Compile Include="Services4MasterViewModel.cs" />
     <Compile Include="Services3Section6PriceMasterViewModel.cs" />

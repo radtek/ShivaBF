@@ -53,12 +53,11 @@ namespace SHF
             container.RegisterType<Business.Interface.IServices3Section6PriceMaster, Business.BusinessLogic.Services3Section6PriceMaster>();
             container.RegisterType<Business.Interface.IServices4Master, Business.BusinessLogic.Services4Master>();
             container.RegisterType<Business.Interface.IServices4Section2FAQMapping, Business.BusinessLogic.Services4Section2FAQMapping>();
-            container.RegisterType<Business.Interface.IServices4Section2Master, Business.BusinessLogic.Services4Section2Master>();
-            container.RegisterType<Business.Interface.IServices4Section2MasterChild, Business.BusinessLogic.Services4Section2MasterChild>();
-            container.RegisterType<Business.Interface.IServices4Section3, Business.BusinessLogic.Services4Section3>();
-            container.RegisterType<Business.Interface.IServices4Section3DownloadMaster, Business.BusinessLogic.Services4Section3DownloadMaster>();
-            container.RegisterType<Business.Interface.IServices4Section567FieldMaster, Business.BusinessLogic.Services4Section567FieldMaster>();
-            container.RegisterType<Business.Interface.IServices4Section567FieldValues, Business.BusinessLogic.Services4Section567FieldValues>();
+            container.RegisterType<Business.Interface.IServices4Section345Master, Business.BusinessLogic.Services4Section345Master>();
+            //container.RegisterType<Business.Interface.IServices4Section345MasterChild, Business.BusinessLogic.Services4Section345MasterChild>();
+           
+            container.RegisterType<Business.Interface.IServices4Section678FieldMaster, Business.BusinessLogic.Services4Section678FieldMaster>();
+            container.RegisterType<Business.Interface.IServices4Section678FieldValues, Business.BusinessLogic.Services4Section678FieldValues>();
             container.RegisterType<Business.Interface.IServices5Master, Business.BusinessLogic.Services5Master>();
             container.RegisterType<Business.Interface.IServices5Section2Master, Business.BusinessLogic.Services5Section2Master>();
             container.RegisterType<Business.Interface.IServices5Section2MasterFeaturesDetails, Business.BusinessLogic.Services5Section2MasterFeaturesDetails>();

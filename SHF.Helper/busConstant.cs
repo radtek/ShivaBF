@@ -289,6 +289,7 @@ namespace SHF.Helper
             public const int BARCODE_CATEGORY = 1015;
             public const int BARCODE_SUB_CATEGORY = 1016;
             public const int SERVICE_TYPE = 1020;
+            public const int SECTION_TYPE = 1021;
 
             public abstract class CodeValue
             {
@@ -303,6 +304,13 @@ namespace SHF.Helper
                     public const string SERVICE_7 = "SER7";
                     public const string SERVICE_8 = "SER8";
 
+                }
+                public abstract class SectionType
+                {
+                    public const string SECTION_1 = "SEC1";
+                    public const string SECTION_2 = "SEC2";
+                    public const string SECTION_3 = "SEC3";
+                   
                 }
                 public abstract class BarcodeType
                 {

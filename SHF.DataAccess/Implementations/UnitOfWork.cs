@@ -56,14 +56,12 @@ namespace SHF.DataAccess.Implementations
         private GenericRepository<EntityModel.Services3Section6PriceMaster> _Services3Section6PriceMasterRepository;
         private GenericRepository<EntityModel.Services4Master> _Services4MasterRepository;
         private GenericRepository<EntityModel.Services4Section2FAQMapping> _Services4Section2FAQMappingRepository;
-        private GenericRepository<EntityModel.Services4Section2Master> _Services4Section2MasterRepository;
-        private GenericRepository<EntityModel.Services4Section2MasterChild> _Services4Section2MasterChildRepository;
-        private GenericRepository<EntityModel.Services4Section3> _Services4Section3Repository;
-        private GenericRepository<EntityModel.Services4Section3DownloadMaster> _Services4Section3DownloadMasterRepository;
-        private GenericRepository<EntityModel.Services4Section3Master> _Services4Section3MasterRepository;
-        private GenericRepository<EntityModel.Services4Section3MasterChild> _Services4Section3MasterChildRepository;
-        private GenericRepository<EntityModel.Services4Section567FieldMaster> _Services4Section567FieldMasterRepository;
-        private GenericRepository<EntityModel.Services4Section567FieldValues> _Services4Section567FieldValuesRepository;
+        private GenericRepository<EntityModel.Services4Section345Master> _Services4Section345MasterRepository;
+        private GenericRepository<EntityModel.Services4Section345MasterButtonsChild> _Services4Section345MasterButtonsChildRepository;
+        private GenericRepository<EntityModel.Services4Section345MasterFeaturesDetails> _Services4Section345MasterFeaturesDetailsRepository;
+      
+        private GenericRepository<EntityModel.Services4Section678FieldMaster> _Services4Section678FieldMasterRepository;
+        private GenericRepository<EntityModel.Services4Section678FieldValues> _Services4Section678FieldValuesRepository;
         private GenericRepository<EntityModel.Services5Master> _Services5MasterRepository;
         private GenericRepository<EntityModel.Services5Section2Master> _Services5Section2MasterRepository;
         private GenericRepository<EntityModel.Services5Section2MasterFeaturesDetails> _Services5Section2MasterFeaturesDetailsRepository;
@@ -500,92 +498,60 @@ namespace SHF.DataAccess.Implementations
                 return _Services4Section2FAQMappingRepository;
             }
         }
-        public GenericRepository<EntityModel.Services4Section2Master> Services4Section2MasterRepository
+        public GenericRepository<EntityModel.Services4Section345Master> Services4Section345MasterRepository
         {
             get
             {
-                if (this._Services4Section2MasterRepository == null)
+                if (this._Services4Section345MasterRepository == null)
                 {
-                    this._Services4Section2MasterRepository = new GenericRepository<EntityModel.Services4Section2Master>(context);
+                    this._Services4Section345MasterRepository = new GenericRepository<EntityModel.Services4Section345Master>(context);
                 }
-                return _Services4Section2MasterRepository;
+                return _Services4Section345MasterRepository;
             }
         }
-        public GenericRepository<EntityModel.Services4Section2MasterChild> Services4Section2MasterChildRepository
+        public GenericRepository<EntityModel.Services4Section345MasterButtonsChild> Services4Section345MasterButtonsChildRepository
         {
             get
             {
-                if (this._Services4Section2MasterChildRepository == null)
+                if (this._Services4Section345MasterButtonsChildRepository == null)
                 {
-                    this._Services4Section2MasterChildRepository = new GenericRepository<EntityModel.Services4Section2MasterChild>(context);
+                    this._Services4Section345MasterButtonsChildRepository = new GenericRepository<EntityModel.Services4Section345MasterButtonsChild>(context);
                 }
-                return _Services4Section2MasterChildRepository;
+                return _Services4Section345MasterButtonsChildRepository;
             }
         }
-        public GenericRepository<EntityModel.Services4Section3> Services4Section3Repository
+        public GenericRepository<EntityModel.Services4Section345MasterFeaturesDetails> Services4Section345MasterFeaturesDetailsRepository
         {
             get
             {
-                if (this._Services4Section3Repository == null)
+                if (this._Services4Section345MasterFeaturesDetailsRepository == null)
                 {
-                    this._Services4Section3Repository = new GenericRepository<EntityModel.Services4Section3>(context);
+                    this._Services4Section345MasterFeaturesDetailsRepository = new GenericRepository<EntityModel.Services4Section345MasterFeaturesDetails>(context);
                 }
-                return _Services4Section3Repository;
+                return _Services4Section345MasterFeaturesDetailsRepository;
             }
         }
-        public GenericRepository<EntityModel.Services4Section3DownloadMaster> Services4Section3DownloadMasterRepository
+      
+        public GenericRepository<EntityModel.Services4Section678FieldMaster> Services4Section678FieldMasterRepository
         {
             get
             {
-                if (this._Services4Section3DownloadMasterRepository == null)
+                if (this._Services4Section678FieldMasterRepository == null)
                 {
-                    this._Services4Section3DownloadMasterRepository = new GenericRepository<EntityModel.Services4Section3DownloadMaster>(context);
+                    this._Services4Section678FieldMasterRepository = new GenericRepository<EntityModel.Services4Section678FieldMaster>(context);
                 }
-                return _Services4Section3DownloadMasterRepository;
+                return _Services4Section678FieldMasterRepository;
             }
         }
-        public GenericRepository<EntityModel.Services4Section3Master> Services4Section3MasterRepository
+        public GenericRepository<EntityModel.Services4Section678FieldValues> Services4Section678FieldValuesRepository
         {
             get
             {
-                if (this._Services4Section3MasterRepository == null)
+                if (this._Services4Section678FieldValuesRepository == null)
                 {
-                    this._Services4Section3MasterRepository = new GenericRepository<EntityModel.Services4Section3Master>(context);
+                    this._Services4Section678FieldValuesRepository = new GenericRepository<EntityModel.Services4Section678FieldValues>(context);
                 }
-                return _Services4Section3MasterRepository;
-            }
-        }
-        public GenericRepository<EntityModel.Services4Section3MasterChild> Services4Section3MasterChildRepository
-        {
-            get
-            {
-                if (this._Services4Section3MasterChildRepository == null)
-                {
-                    this._Services4Section3MasterChildRepository = new GenericRepository<EntityModel.Services4Section3MasterChild>(context);
-                }
-                return _Services4Section3MasterChildRepository;
-            }
-        }
-        public GenericRepository<EntityModel.Services4Section567FieldMaster> Services4Section567FieldMasterRepository
-        {
-            get
-            {
-                if (this._Services4Section567FieldMasterRepository == null)
-                {
-                    this._Services4Section567FieldMasterRepository = new GenericRepository<EntityModel.Services4Section567FieldMaster>(context);
-                }
-                return _Services4Section567FieldMasterRepository;
-            }
-        }
-        public GenericRepository<EntityModel.Services4Section567FieldValues> Services4Section567FieldValuesRepository
-        {
-            get
-            {
-                if (this._Services4Section567FieldValuesRepository == null)
-                {
-                    this._Services4Section567FieldValuesRepository = new GenericRepository<EntityModel.Services4Section567FieldValues>(context);
-                }
-                return _Services4Section567FieldValuesRepository;
+                return _Services4Section678FieldValuesRepository;
             }
         }
         public GenericRepository<EntityModel.Services5Master> Services5MasterRepository

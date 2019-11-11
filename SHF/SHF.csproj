@@ -416,8 +416,8 @@
     <Compile Include="Controllers\BlogBannerNavigationsDetailsController.cs" />
     <Compile Include="Controllers\BlogMasterController.cs" />
     <Compile Include="Controllers\HomePageBannerController.cs" />
-    <Compile Include="Controllers\Services4Section567FieldValuesController.cs" />
-    <Compile Include="Controllers\Services4Section567FieldMasterController.cs" />
+    <Compile Include="Controllers\Services4Section678FieldValuesController.cs" />
+    <Compile Include="Controllers\Services4Section678FieldMasterController.cs" />
     <Compile Include="Controllers\Services8Section6MasterController.cs" />
     <Compile Include="Controllers\Services8HeadingButtonsController.cs" />
     <Compile Include="Controllers\Services8MasterController.cs" />
@@ -431,10 +431,7 @@
     <Compile Include="Controllers\Services5Section2MasterFeaturesDetailsController.cs" />
     <Compile Include="Controllers\Services5Section2MasterController.cs" />
     <Compile Include="Controllers\Services5MasterController.cs" />
-    <Compile Include="Controllers\Services4Section3DownloadMasterController.cs" />
-    <Compile Include="Controllers\Services4Section2MasterChildController.cs" />
-    <Compile Include="Controllers\Services4Section3Controller.cs" />
-    <Compile Include="Controllers\Services4Section2MasterController.cs" />
+    <Compile Include="Controllers\Services4Section345MasterController.cs" />
     <Compile Include="Controllers\Services4Section2FAQMappingController.cs" />
     <Compile Include="Controllers\Services4MasterController.cs" />
     <Compile Include="Controllers\Services3Section6PriceMasterController.cs" />
@@ -504,6 +501,10 @@
     <Compile Include="Migrations\201911101420525_chnagesn.Designer.cs">
       <DependentUpon>201911101420525_chnagesn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911110651416_cha.cs" />
+    <Compile Include="Migrations\201911110651416_cha.Designer.cs">
+      <DependentUpon>201911110651416_cha.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Error\CustomHandleErrorInfo.cs" />
@@ -561,7 +562,7 @@
     <Content Include="AngularControllers\Services4Section3DownloadMasterController.js" />
     <Content Include="AngularControllers\Services4Section2MasterChildController.js" />
     <Content Include="AngularControllers\Services4Section3Controller.js" />
-    <Content Include="AngularControllers\Services4Section2MasterController.js" />
+    <Content Include="AngularControllers\Services4Section345MasterController.js" />
     <Content Include="AngularControllers\Services4Section2FAQMappingController.js" />
     <Content Include="AngularControllers\Services4MasterController.js" />
     <Content Include="AngularControllers\Services3Section6PriceMasterController.js" />
@@ -10822,8 +10823,8 @@
     <Content Include="Scripts\Services\BannerNavigationsDetails.js" />
     <Content Include="Scripts\Services\BlogMaster.js" />
     <Content Include="Scripts\Services\HomePageBanner.js" />
-    <Content Include="Scripts\Services\Services4Section567FieldValues.js" />
-    <Content Include="Scripts\Services\Services4Section567FieldMaster.js" />
+    <Content Include="Scripts\Services\Services4Section678FieldValues.js" />
+    <Content Include="Scripts\Services\Services4Section678FieldMaster.js" />
     <Content Include="Scripts\Services\Services8Section6Master.js" />
     <Content Include="Scripts\Services\Services8HeadingButtons.js" />
     <Content Include="Scripts\Services\Services8Master.js" />
@@ -10840,7 +10841,7 @@
     <Content Include="Scripts\Services\Services4Section3DownloadMaster.js" />
     <Content Include="Scripts\Services\Services4Section3.js" />
     <Content Include="Scripts\Services\Services4Section2MasterChild.js" />
-    <Content Include="Scripts\Services\Services4Section2Master.js" />
+    <Content Include="Scripts\Services\Services4Section345Master.js" />
     <Content Include="Scripts\Services\Services4Section2FAQMapping.js" />
     <Content Include="Scripts\Services\Services4Master.js" />
     <Content Include="Scripts\Services\Services3Section6PriceMaster.js" />
@@ -11028,18 +11029,9 @@
     <Content Include="Views\Services4Section2FAQMapping\_CreateOrEdit.cshtml" />
     <Content Include="Views\Services4Section2FAQMapping\_CreateOrEditTenant.cshtml" />
     <Content Include="Views\Services4Section2FAQMapping\Index.cshtml" />
-    <Content Include="Views\Services4Section2Master\_CreateOrEdit.cshtml" />
-    <Content Include="Views\Services4Section2Master\_CreateOrEditTenant.cshtml" />
-    <Content Include="Views\Services4Section2Master\Index.cshtml" />
-    <Content Include="Views\Services4Section2MasterChild\_CreateOrEdit.cshtml" />
-    <Content Include="Views\Services4Section2MasterChild\_CreateOrEditTenant.cshtml" />
-    <Content Include="Views\Services4Section2MasterChild\Index.cshtml" />
-    <Content Include="Views\Services4Section3\_CreateOrEdit.cshtml" />
-    <Content Include="Views\Services4Section3\_CreateOrEditTenant.cshtml" />
-    <Content Include="Views\Services4Section3\Index.cshtml" />
-    <Content Include="Views\Services4Section3DownloadMaster\_CreateOrEdit.cshtml" />
-    <Content Include="Views\Services4Section3DownloadMaster\_CreateOrEditTenant.cshtml" />
-    <Content Include="Views\Services4Section3DownloadMaster\Index.cshtml" />
+    <Content Include="Views\Services4Section345Master\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Services4Section345Master\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\Services4Section345Master\Index.cshtml" />
     <Content Include="Views\Services5Master\_CreateOrEdit.cshtml" />
     <Content Include="Views\Services5Master\_CreateOrEditTenant.cshtml" />
     <Content Include="Views\Services5Master\Index.cshtml" />
@@ -11088,12 +11080,12 @@
     <Content Include="Views\RelatedBlogsMapping\_CreateOrEdit.cshtml" />
     <Content Include="Views\RelatedBlogsMapping\_CreateOrEditTenant.cshtml" />
     <Content Include="Views\RelatedBlogsMapping\Index.cshtml" />
-    <Content Include="Views\Services4Section567FieldMaster\_CreateOrEdit.cshtml" />
-    <Content Include="Views\Services4Section567FieldMaster\_CreateOrEditTenant.cshtml" />
-    <Content Include="Views\Services4Section567FieldMaster\Index.cshtml" />
-    <Content Include="Views\Services4Section567FieldValues\_CreateOrEdit.cshtml" />
-    <Content Include="Views\Services4Section567FieldValues\_CreateOrEditTenant.cshtml" />
-    <Content Include="Views\Services4Section567FieldValues\Index.cshtml" />
+    <Content Include="Views\Services4Section678FieldMaster\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Services4Section678FieldMaster\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\Services4Section678FieldMaster\Index.cshtml" />
+    <Content Include="Views\Services4Section678FieldValues\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Services4Section678FieldValues\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\Services4Section678FieldValues\Index.cshtml" />
     <Content Include="Views\Services1Master\_Guide.cshtml" />
     <Content Include="Views\Services1Section1Master\_Guide.cshtml" />
     <Content Include="Views\Services1Section4Master\_Guide.cshtml" />
@@ -11120,12 +11112,9 @@
     <Content Include="Views\Shared\_BannerMaster.cshtml" />
     <Content Include="Views\Services4Master\_Guide.cshtml" />
     <Content Include="Views\Services4Section2FAQMapping\_Guide.cshtml" />
-    <Content Include="Views\Services4Section2Master\_Guide.cshtml" />
-    <Content Include="Views\Services4Section2MasterChild\_Guide.cshtml" />
-    <Content Include="Views\Services4Section3\_Guide.cshtml" />
-    <Content Include="Views\Services4Section3DownloadMaster\_Guide.cshtml" />
-    <Content Include="Views\Services4Section567FieldMaster\_Guide.cshtml" />
-    <Content Include="Views\Services4Section567FieldValues\_Guide.cshtml" />
+    <Content Include="Views\Services4Section345Master\_Guide.cshtml" />
+    <Content Include="Views\Services4Section678FieldMaster\_Guide.cshtml" />
+    <Content Include="Views\Services4Section678FieldValues\_Guide.cshtml" />
     <Content Include="Views\Services5Master\_Guide.cshtml" />
     <Content Include="Views\Services5Section2Master\_Guide.cshtml" />
     <Content Include="Views\Services5Section2MasterFeaturesDetails\_Guide.cshtml" />
@@ -11286,6 +11275,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911101420525_chnagesn.resx">
       <DependentUpon>201911101420525_chnagesn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911110651416_cha.resx">
+      <DependentUpon>201911110651416_cha.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

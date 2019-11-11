@@ -17,7 +17,8 @@
         ContactType: 1014,
         BarcodeCategory: 1015,
         BarcodeSubCategory: 1016,
-ServiceType: 1020
+ServiceType: 1020,
+SectionType: 1021
     }
 
     this.CODE_VALUE = {
@@ -30,6 +31,11 @@ SERVICE_5:"SER5",
 SERVICE_6:"SER6",
 SERVICE_7:"SER7",
 SERVICE_8:"SER8",
+},
+SectionType: {
+SECTION_1:"SEC1",
+SECTION_2:"SEC2",
+SECTION_3:"SEC3",
 },
         BarcodeType: {
             Code128auto: "A128",
