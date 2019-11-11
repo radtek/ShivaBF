@@ -1,5 +1,5 @@
-﻿angular.module(config.app).controller('Services4Section345MasterFeaturesDetailsCtrl', ['$scope', '$http', '$window', 'Services4Section345MasterFeaturesDetailsCRUD','PriceFeaturesMasterCRUD','Services5MasterCRUD','Services4Section345MasterCRUD', 'TenantCRUD','CustomService',
-    function ($scope, $http, $window, Services4Section345MasterFeaturesDetailsCRUD,PriceFeaturesMasterCRUD,Services5MasterCRUD,Services4Section345MasterCRUD, TenantCRUD,CustomService) {      
+﻿angular.module(config.app).controller('Services4Section345MasterButtonsChildCtrl', ['$scope', '$http', '$window', 'Services4Section345MasterButtonsChildCRUD','PriceFeaturesMasterCRUD','Services5MasterCRUD','Services4Section345MasterCRUD', 'TenantCRUD','CustomService',
+    function ($scope, $http, $window, Services4Section345MasterButtonsChildCRUD,PriceFeaturesMasterCRUD,Services5MasterCRUD,Services4Section345MasterCRUD, TenantCRUD,CustomService) {      
         $scope.path = "";
         $scope.errors = {};
         $scope.errors.pageError = {};
@@ -8,27 +8,27 @@
         $scope.errors.formErrors = null;
         $scope.Processing = false;
         $scope.Entity = {};
-        $scope.Services4Section345MasterFeaturesDetailsCreateOrEditViewModel = {};
+        $scope.Services4Section345MasterButtonsChildCreateOrEditViewModel = {};
         $scope.AllTenants = [];
         $scope.AllSubSubCategories = [];
         $scope.AllSection345ID = [];
         $scope.AllPriceFeatures = [];
 
        
-        $scope.Services4Section345MasterFeaturesDetailsCreateOrEditViewModel.SelectedTenant_ID = -1;
-        $scope.Services4Section345MasterFeaturesDetailsCreateOrEditViewModel.SelectedSubSubCat_Id = -1;
-        $scope.Services4Section345MasterFeaturesDetailsCreateOrEditViewModel.SelectedS5S2M_Id = -1;
-        $scope.Services4Section345MasterFeaturesDetailsCreateOrEditViewModel.SelectedPriceFeaturesMaster_Id = -1;
+        $scope.Services4Section345MasterButtonsChildCreateOrEditViewModel.SelectedTenant_ID = -1;
+        $scope.Services4Section345MasterButtonsChildCreateOrEditViewModel.SelectedSubSubCat_Id = -1;
+        $scope.Services4Section345MasterButtonsChildCreateOrEditViewModel.SelectedS5S2M_Id = -1;
+        $scope.Services4Section345MasterButtonsChildCreateOrEditViewModel.SelectedPriceFeaturesMaster_Id = -1;
        
         $scope.Cookie_Tenant_ID = parseInt(CustomService.GetTenantID());
-        $scope.Services4Section345MasterFeaturesDetailsCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;     
+        $scope.Services4Section345MasterButtonsChildCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;     
 
         $scope.BindGrid = function () {
-            Services4Section345MasterFeaturesDetailsCRUD.LoadTable();
+            Services4Section345MasterButtonsChildCRUD.LoadTable();
         }      
 
         $scope.PageLoad = function () {
-            $scope.Services4Section345MasterFeaturesDetailsCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
+            $scope.Services4Section345MasterButtonsChildCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
             $scope.BindGrid();
         }
 
@@ -39,7 +39,7 @@
 
 
         $scope.Clear = function () {
-            $scope.Services4Section345MasterFeaturesDetailsCreateOrEditViewModel = {};
+            $scope.Services4Section345MasterButtonsChildCreateOrEditViewModel = {};
             $scope.Reset();
         }            
       
@@ -57,11 +57,11 @@
             $scope.Clear();
             if ($scope.Cookie_Tenant_ID <= 0) {
                 $scope.BindTenantDropDownList();
-                $scope.Services4Section345MasterFeaturesDetailsCreateOrEditViewModel.SelectedTenant_ID = -1;
-               // $scope.Services4Section345MasterFeaturesDetailsCreateOrEditViewModel.SelectedUnitOfMesurment = -1;
+                $scope.Services4Section345MasterButtonsChildCreateOrEditViewModel.SelectedTenant_ID = -1;
+               // $scope.Services4Section345MasterButtonsChildCreateOrEditViewModel.SelectedUnitOfMesurment = -1;
             } else {
-                $scope.Services4Section345MasterFeaturesDetailsCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
-               // $scope.BindUnitOfMeasurementDropDownList($scope.Services4Section345MasterFeaturesDetailsCreateOrEditViewModel.Tenant_ID);
+                $scope.Services4Section345MasterButtonsChildCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
+               // $scope.BindUnitOfMeasurementDropDownList($scope.Services4Section345MasterButtonsChildCreateOrEditViewModel.Tenant_ID);
             }
             $('#modal-createOredit').modal('show');
         }
@@ -109,7 +109,7 @@
             if ($scope.Cookie_Tenant_ID <= 0) {
                 $scope.BindTenantDropDownList();
             }
-            $http.get("/Get/Services4Section345MasterFeaturesDetails/EditAsync?Id=" + Id
+            $http.get("/Get/Services4Section345MasterButtonsChild/EditAsync?Id=" + Id
             ).then(
                 function success(response) {
                     switch (response.data.Type) {
@@ -118,7 +118,7 @@
                             console.log(response);
                             break;
                         case 'Response':
-                            $scope.Services4Section345MasterFeaturesDetailsCreateOrEditViewModel = response.data.Entity;
+                            $scope.Services4Section345MasterButtonsChildCreateOrEditViewModel = response.data.Entity;
 $scope.LoadAllSection345ID();
 $scope.LoadAllSubSubCategory();
                             $('#modal-createOredit').modal('show');
@@ -155,9 +155,9 @@ $scope.LoadAllSubSubCategory();
             $scope.Processing = true;
             $scope.path = "";
            if ($scope.myForm.$valid) {
-                $scope.path = ($scope.Services4Section345MasterFeaturesDetailsCreateOrEditViewModel.ID == undefined || $scope.Services4Section345MasterFeaturesDetailsCreateOrEditViewModel.ID == null || 
-          $scope.Services4Section345MasterFeaturesDetailsCreateOrEditViewModel.ID == 0) ? "/Post/Services4Section345MasterFeaturesDetails/CreateAsync" : "/Post/Services4Section345MasterFeaturesDetails/EditAsync";
-               $http.post($scope.path, $scope.Services4Section345MasterFeaturesDetailsCreateOrEditViewModel,
+                $scope.path = ($scope.Services4Section345MasterButtonsChildCreateOrEditViewModel.ID == undefined || $scope.Services4Section345MasterButtonsChildCreateOrEditViewModel.ID == null || 
+          $scope.Services4Section345MasterButtonsChildCreateOrEditViewModel.ID == 0) ? "/Post/Services4Section345MasterButtonsChild/CreateAsync" : "/Post/Services4Section345MasterButtonsChild/EditAsync";
+               $http.post($scope.path, $scope.Services4Section345MasterButtonsChildCreateOrEditViewModel,
                     {
                         headers: { 'RequestVerificationToken': $scope.antiForgeryToken }
                     }
@@ -254,7 +254,7 @@ $scope.LoadAllSubSubCategory();
                     if (willDelete) {
                         var obj = {};
                         obj.Id = Id;
-                  $http.post("/Post/Services4Section345MasterFeaturesDetails/Delete/", obj,
+                  $http.post("/Post/Services4Section345MasterButtonsChild/Delete/", obj,
                     {
                         headers: { 'RequestVerificationToken': $scope.antiForgeryToken }
                     }
@@ -288,7 +288,7 @@ $scope.LoadAllSubSubCategory();
         }
 /************load Sub Category**************************************************************************************************/
 $scope.LoadAllSubSubCategory = function () {
-            let tenantId = $scope.Services4Section345MasterFeaturesDetailsCreateOrEditViewModel.Tenant_ID;
+            let tenantId = $scope.Services4Section345MasterButtonsChildCreateOrEditViewModel.Tenant_ID;
             $scope.BindSubSubCategoryDropDownList(tenantId);
         }
 
@@ -330,8 +330,8 @@ $scope.BindSubSubCategoryDropDownList = function (tenantId) {
         }
 /************load LoadAllSection345ID Category**************************************************************************************************/
 $scope.LoadAllSection345ID = function () {
-            let tenantId = $scope.Services4Section345MasterFeaturesDetailsCreateOrEditViewModel.Tenant_ID;
-            let subsubcat_id = $scope.Services4Section345MasterFeaturesDetailsCreateOrEditViewModel.SubSubCat_Id;
+            let tenantId = $scope.Services4Section345MasterButtonsChildCreateOrEditViewModel.Tenant_ID;
+            let subsubcat_id = $scope.Services4Section345MasterButtonsChildCreateOrEditViewModel.SubSubCat_Id;
             $scope.BindSection345IDByTenantAndSubSubCatID(tenantId,subsubcat_id);
         }
 
@@ -374,7 +374,7 @@ $scope.BindSection345IDByTenantAndSubSubCatID = function (tenantId,subsubcat_id)
 /************load PriceFeaturesMasterCRUD Category**************************************************************************************************/
 $scope.LoadAllPriceFeaturesMaster = function () {
 
-            let tenantId = $scope.Services4Section345MasterFeaturesDetailsCreateOrEditViewModel.Tenant_ID;
+            let tenantId = $scope.Services4Section345MasterButtonsChildCreateOrEditViewModel.Tenant_ID;
           $scope.BindPriceFeaturesMaster(tenantId);
         }
 

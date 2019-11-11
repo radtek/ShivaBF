@@ -67,6 +67,7 @@
     <Compile Include="BlogBannerNavigationsDetailsViewModel.cs" />
     <Compile Include="BlogMasterViewModel.cs" />
     <Compile Include="HomePageBannerViewModel.cs" />
+    <Compile Include="Services4Section345MasterButtonsChildViewModel.cs" />
     <Compile Include="Services4Section678FieldValuesViewModel.cs" />
     <Compile Include="Services4Section678FieldMasterViewModel.cs" />
     <Compile Include="Services4Section345MasterFeaturesDetailsViewModel.cs" />
