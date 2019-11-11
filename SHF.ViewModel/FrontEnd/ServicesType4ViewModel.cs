@@ -47,14 +47,15 @@ namespace SHF.ViewModel.FrontEnd
         public System.Int64 Tenant_ID { get; set; }
     }
 
-    public class ServiceType4Section2MasterViewModel : BaseViewModel
+    public class ServiceType4Section345MasterViewModel : BaseViewModel
     {
 
         public System.Int64? Service_Id { get; set; }
         public System.Int64? SubSubCat_Id { get; set; }
         public System.String SubSubCategoryName { get; set; }
+        public System.String SectionTypeValue { get; set; }
+        public System.Int64 SectionType_ID { get; set; }
         public System.String Heading { get; set; }
-        public System.String Description { get; set; }
         public System.Int32 DisplayIndex { get; set; }
         public System.Boolean? DisplayOnHome { get; set; }
         public System.Boolean? IsActive { get; set; }
@@ -66,77 +67,72 @@ namespace SHF.ViewModel.FrontEnd
         public System.String TenantName { get; set; }
         public System.Int64 Tenant_ID { get; set; }
 
-        public List<ServiceType4Section2MasterChildViewModel> ServiceType4Section2MasterChildViewModel { get; set; }
+        public List<Services4Section345MasterFeaturesDetailsViewModel> Services4Section345MasterFeaturesDetailsViewModel { get; set; }
+        public List<Services4Section345MasterButtonsChildViewModel> Services4Section345MasterButtonsChildViewModel { get; set; }
+        
     }
 
-    public class ServiceType4Section2MasterChildViewModel : BaseViewModel
+    public class Services4Section345MasterFeaturesDetailsViewModel : BaseViewModel
     {
 
         public System.Int64? Service_Id { get; set; }
-        public System.Int64? SubSubCat_Id { get; set; }
-        public System.String SubSubCategoryName { get; set; }
-        public System.Int64? S4S2M_id { get; set; }
-        public System.String AncharTagTitle { get; set; }
-        public System.String AncharTagUrl { get; set; }
-        public System.String FeatureDescription { get; set; }
-        public System.Int32 Price { get; set; }
-        public System.Int32 DisplayIndex { get; set; }
-        public System.Boolean? DisplayOnHome { get; set; }
-        public System.Boolean? IsActive { get; set; }
-        public System.Int32 TotalViews { get; set; }
-        public string Url { get; set; }
-        public string Metadata { get; set; }
-        public string Keyword { get; set; }
-        public string MetaDescription { get; set; }
-        public System.String TenantName { get; set; }
-        public System.Int64 Tenant_ID { get; set; }
-    }
-
-    public class ServiceType4Section3ViewModel : BaseViewModel
-    {
-
-        public System.Int64? Service_Id { get; set; }
-        public System.Int64? SubSubCat_Id { get; set; }
-        public System.String SubSubCategoryName { get; set; }
-        public System.String Heading { get; set; }
+        public System.Int64 SubSubCat_Id { get; set; }
+        public System.String SubSubCategory_Name { get; set; }
+        public System.Int64? S4S345M_id { get; set; }
         public System.String ShortDescription { get; set; }
+
         public System.Int32 DisplayIndex { get; set; }
+
         public System.Boolean? DisplayOnHome { get; set; }
+
         public System.Boolean? IsActive { get; set; }
+
         public System.Int32 TotalViews { get; set; }
         public string Url { get; set; }
+
+
         public string Metadata { get; set; }
+
+
         public string Keyword { get; set; }
+
+
         public string MetaDescription { get; set; }
         public System.String TenantName { get; set; }
         public System.Int64 Tenant_ID { get; set; }
-
-        public List<ServiceType4Section3DownloadMasterViewModel> ServiceType4Section3DownloadMasterViewModel { get; set; }
     }
-
-    public class ServiceType4Section3DownloadMasterViewModel : BaseViewModel
+    public class Services4Section345MasterButtonsChildViewModel : BaseViewModel
     {
-
         public System.Int64? Service_Id { get; set; }
-        public System.Int64? SubSubCat_Id { get; set; }
-        public System.String SubSubCategoryName { get; set; }
+        public System.Int64 SubSubCat_Id { get; set; }
+        public System.String SubSubCategory_Name { get; set; }
+        public System.Int64? S4S345M_id { get; set; }
+        public System.String FeatureDescription { get; set; }
+        public System.Int64 Price { get; set; }
         public System.String AncharTagTitle { get; set; }
         public System.String AncharTagUrl { get; set; }
-        public System.String DownloadFilePath { get; set; }
         public System.Int32 DisplayIndex { get; set; }
+
         public System.Boolean? DisplayOnHome { get; set; }
+
         public System.Boolean? IsActive { get; set; }
+
         public System.Int32 TotalViews { get; set; }
         public string Url { get; set; }
+
+
         public string Metadata { get; set; }
+
+
         public string Keyword { get; set; }
+
+
         public string MetaDescription { get; set; }
         public System.String TenantName { get; set; }
         public System.Int64 Tenant_ID { get; set; }
     }
 
-
-    public class ServiceType4Section567FieldMasterViewModel : BaseViewModel
+    public class ServiceType4Section678FieldMasterViewModel : BaseViewModel
     {
 
         public System.Int64? Service_Id { get; set; }
@@ -155,16 +151,16 @@ namespace SHF.ViewModel.FrontEnd
         public System.String TenantName { get; set; }
         public System.Int64 Tenant_ID { get; set; }
 
-        public List<ServiceType4Section567FieldValuesViewModel> ServiceType4Section567FieldValuesViewModel { get; set; }
+        public List<ServiceType4Section678FieldValuesViewModel> ServiceType4Section678FieldValuesViewModel { get; set; }
     }
 
-    public class ServiceType4Section567FieldValuesViewModel : BaseViewModel
+    public class ServiceType4Section678FieldValuesViewModel : BaseViewModel
     {
 
         public System.Int64? Service_Id { get; set; }
         public System.Int64? SubSubCat_Id { get; set; }
         public System.String SubSubCategoryName { get; set; }
-        public System.Int64? S4S567FM_Id { get; set; }
+        public System.Int64? S4S678FM_Id { get; set; }
         public System.Int32 RowNumber { get; set; }
         public System.String DisplayText { get; set; }
         public System.String DownloadFilePath { get; set; }
@@ -179,5 +175,33 @@ namespace SHF.ViewModel.FrontEnd
         public System.String TenantName { get; set; }
         public System.Int64 Tenant_ID { get; set; }
     }
+    public class Services4Section2FAQMappingViewModel : BaseViewModel
+    {
+        public System.Int64? Service_Id { get; set; }
+        public System.Int64 SubSubCat_Id { get; set; }
+        public System.String SubSubCategory_Name { get; set; }
+        public System.Int64 FAQMaster_Id { get; set; }
+        public System.String Title { get; set; }
+        public System.String Description { get; set; }
 
+        public System.Int32 DisplayIndex { get; set; }
+
+        public System.Boolean? DisplayOnHome { get; set; }
+
+        public System.Boolean? IsActive { get; set; }
+
+        public System.Int32 TotalViews { get; set; }
+        public string Url { get; set; }
+
+
+        public string Metadata { get; set; }
+
+
+        public string Keyword { get; set; }
+
+
+        public string MetaDescription { get; set; }
+        public System.String TenantName { get; set; }
+        public System.Int64 Tenant_ID { get; set; }
+    }
 }
