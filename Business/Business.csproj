@@ -68,6 +68,7 @@
     <Compile Include="BusinessLogic\HomePageBanner.cs" />
     <Compile Include="BusinessLogic\Services4Section678FieldValues.cs" />
     <Compile Include="BusinessLogic\Services4Section678FieldMaster.cs" />
+    <Compile Include="BusinessLogic\Services4Section345MasterFeaturesDetails.cs" />
     <Compile Include="BusinessLogic\Services8Section6Master.cs" />
     <Compile Include="BusinessLogic\Services8HeadingButtons.cs" />
     <Compile Include="BusinessLogic\Services8Master.cs" />
@@ -129,6 +130,7 @@
     <Compile Include="Interface\IHomePageBanner.cs" />
     <Compile Include="Interface\IServices4Section678FieldValues.cs" />
     <Compile Include="Interface\IServices4Section678FieldMaster.cs" />
+    <Compile Include="Interface\IServices4Section345MasterFeaturesDetails.cs" />
     <Compile Include="Interface\IServices8Section6Master.cs" />
     <Compile Include="Interface\IServices8HeadingButtons.cs" />
     <Compile Include="Interface\IServices8Master.cs" />

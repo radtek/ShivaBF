@@ -54,8 +54,9 @@ namespace SHF
             container.RegisterType<Business.Interface.IServices4Master, Business.BusinessLogic.Services4Master>();
             container.RegisterType<Business.Interface.IServices4Section2FAQMapping, Business.BusinessLogic.Services4Section2FAQMapping>();
             container.RegisterType<Business.Interface.IServices4Section345Master, Business.BusinessLogic.Services4Section345Master>();
+            container.RegisterType<Business.Interface.IServices4Section345MasterFeaturesDetails, Business.BusinessLogic.Services4Section345MasterFeaturesDetails>();
             //container.RegisterType<Business.Interface.IServices4Section345MasterChild, Business.BusinessLogic.Services4Section345MasterChild>();
-           
+
             container.RegisterType<Business.Interface.IServices4Section678FieldMaster, Business.BusinessLogic.Services4Section678FieldMaster>();
             container.RegisterType<Business.Interface.IServices4Section678FieldValues, Business.BusinessLogic.Services4Section678FieldValues>();
             container.RegisterType<Business.Interface.IServices5Master, Business.BusinessLogic.Services5Master>();

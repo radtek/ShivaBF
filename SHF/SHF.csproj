@@ -418,6 +418,7 @@
     <Compile Include="Controllers\HomePageBannerController.cs" />
     <Compile Include="Controllers\Services4Section678FieldValuesController.cs" />
     <Compile Include="Controllers\Services4Section678FieldMasterController.cs" />
+    <Compile Include="Controllers\Services4Section345MasterFeaturesDetailsController.cs" />
     <Compile Include="Controllers\Services8Section6MasterController.cs" />
     <Compile Include="Controllers\Services8HeadingButtonsController.cs" />
     <Compile Include="Controllers\Services8MasterController.cs" />
@@ -543,6 +544,7 @@
     <Content Include="AngularControllers\HomePageBannerController.js" />
     <Content Include="AngularControllers\Services4Section567FieldValuesController.js" />
     <Content Include="AngularControllers\Services4Section567FieldMasterController.js" />
+    <Content Include="AngularControllers\Services4Section345MasterFeaturesDetailsController.js" />
     <Content Include="AngularControllers\Services8Section6MasterController.js" />
     <Content Include="AngularControllers\Services8HeadingButtonsController.js" />
     <Content Include="AngularControllers\Services8MasterController.js" />
@@ -10825,6 +10827,7 @@
     <Content Include="Scripts\Services\HomePageBanner.js" />
     <Content Include="Scripts\Services\Services4Section678FieldValues.js" />
     <Content Include="Scripts\Services\Services4Section678FieldMaster.js" />
+    <Content Include="Scripts\Services\Services4Section345MasterFeaturesDetails.js" />
     <Content Include="Scripts\Services\Services8Section6Master.js" />
     <Content Include="Scripts\Services\Services8HeadingButtons.js" />
     <Content Include="Scripts\Services\Services8Master.js" />
@@ -11162,6 +11165,10 @@
     <Content Include="Views\HomePageSection3Features\_CreateOrEditTenant.cshtml" />
     <Content Include="Views\HomePageSection3Features\_Guide.cshtml" />
     <Content Include="Views\HomePageSection3Features\Index.cshtml" />
+    <Content Include="Views\Services4Section345MasterFeaturesDetails\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Services4Section345MasterFeaturesDetails\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\Services4Section345MasterFeaturesDetails\_Guide.cshtml" />
+    <Content Include="Views\Services4Section345MasterFeaturesDetails\Index.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />

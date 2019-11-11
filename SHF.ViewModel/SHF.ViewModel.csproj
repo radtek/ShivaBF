@@ -69,6 +69,7 @@
     <Compile Include="HomePageBannerViewModel.cs" />
     <Compile Include="Services4Section678FieldValuesViewModel.cs" />
     <Compile Include="Services4Section678FieldMasterViewModel.cs" />
+    <Compile Include="Services4Section345MasterFeaturesDetailsViewModel.cs" />
     <Compile Include="Services8Section6MasterViewModel.cs" />
     <Compile Include="Services8HeadingButtonsViewModel.cs" />
     <Compile Include="Services8MasterViewModel.cs" />
