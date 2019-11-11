@@ -42,13 +42,15 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.FieldName" ng-bind="errors.formErrors.FieldName"></span>
                         </div>
-                        <div class="form-group" ng-class="{'has-error': ((myForm.SectionType.$touched && myForm.SectionType.$invalid) || (!myForm.SectionType.$pristine && myForm.SectionType.$invalid))}">
-                            <label>Section Type</label>
-                            <input type="text" class="form-control" name="SectionType" ng-model="Services4Section567FieldMasterCreateOrEditViewModel.SectionType" ng-disabled="Processing" autocomplete="off" placeholder="Enter Short Description" tooltip-placement="top" uib-tooltip="Enter Short Description" />
-                            <div class="help-block" ng-messages="myForm.SectionType.$error" ng-if="myForm.SectionType.$touched || myForm.SectionType.$dirty && myForm.SectionType.$invalid">
+                        <div class="form-group" ng-class="{'has-error': (myForm.SectionTypeValue.$toucherd || myForm.SectionTypeValue.$dirty)  && myForm.SectionTypeValue.$invalid}">
+                            <label>Section Page Type</label>
+                            <select name="SectionTypeValue" ng-model="Services4Section567FieldMasterCreateOrEditViewModel.SectionTypeValue" class="form-control" style="width: 100%;" ng-options="x.Value as x.Description for x in AllSectionType" required>
+                                <option value="" ng-selected="Services4Section567FieldMasterCreateOrEditViewModel.SelectedSectionType_ID < 0">-- Select --</option>
+                            </select>
+                            <div class="help-block" ng-messages="myForm.SectionTypeValue.$error" ng-if="myForm.SectionTypeValue.$touched || myForm.SectionTypeValue.$dirty && myForm.SectionTypeValue.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
-                            <span class="text-danger" ng-show="errors.formErrors.SectionType" ng-bind="errors.formErrors.SectionType"></span>
+                            <span class="text-danger" ng-show="errors.formErrors.SectionTypeValue" ng-bind="errors.formErrors.SectionTypeValue"></span>
                         </div>
 
                         <div class="form-group" ng-class="{'has-error': (myForm.DisplayIndex.$touched || myForm.DisplayIndex.$dirty)  && myForm.DisplayIndex.$invalid}">

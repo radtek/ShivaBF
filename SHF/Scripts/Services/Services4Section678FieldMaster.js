@@ -60,9 +60,9 @@ angular.module(config.app).service('Services4Section678FieldMasterCRUD', functio
                      targets: 2
                  },
                  {
-                     name: "Services4Section678FieldMaster_tenant.Services4Section678FieldMaster.SectionType",
-                     data: "SectionType",
-                     title: "SectionType",
+                     name: "Services4Section678FieldMaster_tenant.Services4Section678FieldMaster.SectionTypeValue",
+                     data: "SectionTypeValue",
+                     title: "SectionTypeValue",
                      render: $.fn.dataTable.render.text(),
                      width: "25%",
                      targets: 2

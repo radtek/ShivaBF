@@ -13,6 +13,7 @@ namespace SHF.ViewModel
         public System.Int64? Service_Id { get; set; }
         public System.Int64? SubSubCat_Id { get; set; }
         public System.String SubSubCategoryName { get; set; }
+        public System.String SectionTypeValue { get; set; }
         public System.String FieldName { get; set; }
         public System.String SectionType { get; set; }
         public System.Int32 DisplayIndex { get; set; }
@@ -33,7 +34,8 @@ namespace SHF.ViewModel
         public System.Int64? SubSubCat_Id { get; set; }
         public System.String SubSubCategoryName { get; set; }
         public System.String FieldName { get; set; }
-        public System.String SectionType { get; set; }
+        public System.String SectionTypeValue { get; set; }
+        public System.Int64 SectionType_ID { get; set; }
         public System.Int32 DisplayIndex { get; set; }
         public System.Boolean? DisplayOnHome { get; set; }
         public System.Boolean? IsActive { get; set; }

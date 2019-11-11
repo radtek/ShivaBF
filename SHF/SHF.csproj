@@ -563,9 +563,6 @@
     <Content Include="AngularControllers\FAQMasterController.js" />
     <Content Include="AngularControllers\Services5Section2MasterController.js" />
     <Content Include="AngularControllers\Services5MasterController.js" />
-    <Content Include="AngularControllers\Services4Section3DownloadMasterController.js" />
-    <Content Include="AngularControllers\Services4Section2MasterChildController.js" />
-    <Content Include="AngularControllers\Services4Section3Controller.js" />
     <Content Include="AngularControllers\Services4Section345MasterController.js" />
     <Content Include="AngularControllers\Services4Section2FAQMappingController.js" />
     <Content Include="AngularControllers\Services4MasterController.js" />
@@ -10844,9 +10841,6 @@
     <Content Include="Scripts\Services\Services5Section2MasterFeaturesDetails.js" />
     <Content Include="Scripts\Services\Services5Section2Master.js" />
     <Content Include="Scripts\Services\Services5Master.js" />
-    <Content Include="Scripts\Services\Services4Section3DownloadMaster.js" />
-    <Content Include="Scripts\Services\Services4Section3.js" />
-    <Content Include="Scripts\Services\Services4Section2MasterChild.js" />
     <Content Include="Scripts\Services\Services4Section345Master.js" />
     <Content Include="Scripts\Services\Services4Section2FAQMapping.js" />
     <Content Include="Scripts\Services\Services4Master.js" />

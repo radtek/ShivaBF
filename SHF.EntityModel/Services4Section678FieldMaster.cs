@@ -23,8 +23,12 @@ namespace SHF.EntityModel
         public System.Int64? SubSubCat_Id { get; set; }
         [Column("FieldName")]
         public System.String FieldName { get; set; }
-        [Column("SectionType")]
-        public System.String SectionType{ get; set; }
+        [ForeignKey("SectionType_ID")]
+        public virtual Code SectionType { get; set; }
+        [System.ComponentModel.DefaultValue(SHF.Helper.busConstant.Code.SECTION_TYPE)]
+        public System.Int64 SectionType_ID { get; set; }
+        [Column("SectionTypeValue")]
+        public System.String SectionTypeValue { get; set; }
         [Column("DisplayIndex")]
         public System.Int32 DisplayIndex { get; set; }
         [Column("IsActive")]

@@ -48,7 +48,7 @@ namespace SHF.Business.BusinessLogic
                     .Count(x => (tenant_Id == null || x.Services4Section678FieldMaster_tenant.Services4Section678FieldMaster.Tenant_ID == tenant_Id)
                             && (x.Services4Section678FieldMaster_tenant.Services4Section678FieldMaster.ID.ToString().Contains(searchValue)
                             || x.Services4Section678FieldMaster_tenant.Services4Section678FieldMaster.FieldName.CaseInsensitiveContains(searchValue)
-                            || x.Services4Section678FieldMaster_tenant.Services4Section678FieldMaster.SectionType.CaseInsensitiveContains(searchValue)
+                            || x.Services4Section678FieldMaster_tenant.Services4Section678FieldMaster.SectionTypeValue.CaseInsensitiveContains(searchValue)
                         || x.Services4Master.SubSubCategoryName.CaseInsensitiveContains(searchValue)
                         || x.Services4Section678FieldMaster_tenant.Services4Section678FieldMaster.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
                         ||x.Services4Section678FieldMaster_tenant.Services4Section678FieldMaster.Url.ToString().CaseInsensitiveContains(searchValue)
@@ -71,7 +71,7 @@ namespace SHF.Business.BusinessLogic
                     .Where(x => (tenant_Id == null || x.Services4Section678FieldMaster_tenant.Services4Section678FieldMaster.Tenant_ID == tenant_Id)
                             && (x.Services4Section678FieldMaster_tenant.Services4Section678FieldMaster.ID.ToString().Contains(searchValue)
                             || x.Services4Section678FieldMaster_tenant.Services4Section678FieldMaster.FieldName.CaseInsensitiveContains(searchValue)
-                            || x.Services4Section678FieldMaster_tenant.Services4Section678FieldMaster.SectionType.CaseInsensitiveContains(searchValue)
+                            || x.Services4Section678FieldMaster_tenant.Services4Section678FieldMaster.SectionTypeValue.CaseInsensitiveContains(searchValue)
                         || x.Services4Master.SubSubCategoryName.CaseInsensitiveContains(searchValue)
                         || x.Services4Section678FieldMaster_tenant.Services4Section678FieldMaster.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
                         || x.Services4Section678FieldMaster_tenant.Services4Section678FieldMaster.Url.ToString().CaseInsensitiveContains(searchValue)
@@ -91,7 +91,7 @@ namespace SHF.Business.BusinessLogic
                     {
                         ID = x.Services4Section678FieldMaster_tenant.Services4Section678FieldMaster.ID,
                         FieldName = x.Services4Section678FieldMaster_tenant.Services4Section678FieldMaster.FieldName,
-                        SectionType = x.Services4Section678FieldMaster_tenant.Services4Section678FieldMaster.SectionType,
+                        SectionTypeValue = x.Services4Section678FieldMaster_tenant.Services4Section678FieldMaster.SectionTypeValue,
                         SubSubCategoryName = x.Services4Master.SubSubCategoryName,
                         DisplayIndex = x.Services4Section678FieldMaster_tenant.Services4Section678FieldMaster.DisplayIndex,
                         Url = x.Services4Section678FieldMaster_tenant.Services4Section678FieldMaster.Url,

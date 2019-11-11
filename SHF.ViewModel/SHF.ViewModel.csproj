@@ -84,9 +84,6 @@
     <Compile Include="Services5Section2MasterFeaturesDetailsViewModel.cs" />
     <Compile Include="Services5Section2MasterViewModel.cs" />
     <Compile Include="Services5MasterViewModel.cs" />
-    <Compile Include="Services4Section3DownloadMasterViewModel.cs" />
-    <Compile Include="Services4Section2MasterChildViewModel.cs" />
-    <Compile Include="Services4Section3ViewModel.cs" />
     <Compile Include="Services4Section345MasterViewModel.cs" />
     <Compile Include="Services4Section2FAQMappingViewModel.cs" />
     <Compile Include="Services4MasterViewModel.cs" />

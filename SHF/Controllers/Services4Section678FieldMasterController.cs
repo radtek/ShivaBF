@@ -168,7 +168,8 @@ namespace SHF.Controllers
                                 entity.Service_Id = entityServices.ID;
                                 entity.SubSubCat_Id = model.SubSubCat_Id;
                                 entity.FieldName = model.FieldName;
-                                entity.SectionType = model.SectionType;
+                                entity.SectionType_ID = busConstant.Code.SECTION_TYPE;
+                                entity.SectionTypeValue = model.SectionTypeValue;
                                 entity.DisplayIndex = model.DisplayIndex;
                                 entity.IsActive = model.IsActive;
                                 entity.TotalViews = model.TotalViews;
@@ -249,8 +250,8 @@ namespace SHF.Controllers
                                 model.SubSubCat_Id = Convert.ToInt64(entity.SubSubCat_Id);
                                 model.SubSubCategoryName = entityServices.SubSubCategoryName;
                                 model.FieldName = entity.FieldName;
-                                model.SectionType = entity.SectionType;
-
+                                model.SectionType_ID = busConstant.Code.SECTION_TYPE;
+                                model.SectionTypeValue = entity.SectionTypeValue;
                                 model.DisplayIndex = entity.DisplayIndex;
                                 model.IsActive = entity.IsActive;
                                 model.TotalViews = entity.TotalViews;
@@ -349,8 +350,8 @@ namespace SHF.Controllers
                                     entity.Service_Id = entityServices.ID;
                                     entity.SubSubCat_Id = model.SubSubCat_Id;
                                     entity.FieldName = model.FieldName;
-                                    entity.SectionType = model.SectionType;
-
+                                    entity.SectionType_ID = busConstant.Code.SECTION_TYPE;
+                                    entity.SectionTypeValue = model.SectionTypeValue;
                                     entity.DisplayIndex = model.DisplayIndex;
                                     entity.IsActive = model.IsActive;
                                     entity.TotalViews = model.TotalViews;
