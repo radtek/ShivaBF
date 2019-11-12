@@ -1,5 +1,5 @@
-﻿angular.module(config.app).controller('Services4Section345MasterFeaturesDetailsCtrl', ['$scope', '$http', '$window', 'Services4Section345MasterFeaturesDetailsCRUD','PriceFeaturesMasterCRUD','Services5MasterCRUD','Services4Section345MasterCRUD', 'TenantCRUD','CustomService',
-    function ($scope, $http, $window, Services4Section345MasterFeaturesDetailsCRUD,PriceFeaturesMasterCRUD,Services5MasterCRUD,Services4Section345MasterCRUD, TenantCRUD,CustomService) {      
+﻿angular.module(config.app).controller('Services4Section345MasterFeaturesDetailsCtrl', ['$scope', '$http', '$window', 'Services4Section345MasterFeaturesDetailsCRUD','PriceFeaturesMasterCRUD','Services4MasterCRUD','Services4Section345MasterCRUD', 'TenantCRUD','CustomService',
+    function ($scope, $http, $window, Services4Section345MasterFeaturesDetailsCRUD,PriceFeaturesMasterCRUD,Services4MasterCRUD,Services4Section345MasterCRUD, TenantCRUD,CustomService) {      
         $scope.path = "";
         $scope.errors = {};
         $scope.errors.pageError = {};
@@ -293,7 +293,7 @@ $scope.LoadAllSubSubCategory = function () {
         }
 
 $scope.BindSubSubCategoryDropDownList = function (tenantId) {
-            let promise = Services5MasterCRUD.LoadSubSubCategoriesDropdown(tenantId)
+            let promise = Services4MasterCRUD.LoadSubSubCategoriesDropdown(tenantId)
             promise.then(
                 function success(response) {
                     switch (response.data.Type) {

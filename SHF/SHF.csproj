@@ -495,17 +495,9 @@
     <Compile Include="Migrations\201911100617411_Setup.Designer.cs">
       <DependentUpon>201911100617411_Setup.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201911100743213_Setup1.cs" />
-    <Compile Include="Migrations\201911100743213_Setup1.Designer.cs">
-      <DependentUpon>201911100743213_Setup1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911101420525_chnagesn.cs" />
-    <Compile Include="Migrations\201911101420525_chnagesn.Designer.cs">
-      <DependentUpon>201911101420525_chnagesn.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911110651416_cha.cs" />
-    <Compile Include="Migrations\201911110651416_cha.Designer.cs">
-      <DependentUpon>201911110651416_cha.cs</DependentUpon>
+    <Compile Include="Migrations\201911111915234_changes1.cs" />
+    <Compile Include="Migrations\201911111915234_changes1.Designer.cs">
+      <DependentUpon>201911111915234_changes1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -544,8 +536,8 @@
     <Content Include="AngularControllers\BlogMasterController.js" />
     <Content Include="AngularControllers\HomePageBannerController.js" />
     <Content Include="AngularControllers\Services4Section345MasterButtonsChildController.js" />
-    <Content Include="AngularControllers\Services4Section567FieldValuesController.js" />
-    <Content Include="AngularControllers\Services4Section567FieldMasterController.js" />
+    <Content Include="AngularControllers\Services4Section678FieldValuesController.js" />
+    <Content Include="AngularControllers\Services4Section678FieldMasterController.js" />
     <Content Include="AngularControllers\Services4Section345MasterFeaturesDetailsController.js" />
     <Content Include="AngularControllers\Services8Section6MasterController.js" />
     <Content Include="AngularControllers\Services8HeadingButtonsController.js" />
@@ -11278,14 +11270,8 @@
     <EmbeddedResource Include="Migrations\201911100617411_Setup.resx">
       <DependentUpon>201911100617411_Setup.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911100743213_Setup1.resx">
-      <DependentUpon>201911100743213_Setup1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911101420525_chnagesn.resx">
-      <DependentUpon>201911101420525_chnagesn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911110651416_cha.resx">
-      <DependentUpon>201911110651416_cha.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201911111915234_changes1.resx">
+      <DependentUpon>201911111915234_changes1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

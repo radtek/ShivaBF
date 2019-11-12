@@ -68,8 +68,7 @@ namespace SHF.ViewModel
         public System.String TenantName { get; set; }
         public System.Int64 Tenant_ID { get; set; }
     }
-
-    }
+    
     public class Services4Section345MasterButtonsChildDropdownListViewModel
     {
         public System.String S4S345M_id { get; set; }
@@ -77,3 +76,4 @@ namespace SHF.ViewModel
 
     }
 }
+

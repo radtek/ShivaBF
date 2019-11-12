@@ -35,19 +35,14 @@
                         <button type="button" data-toggle="modal" ng-click="CreateAsync()">
                             <i class="fa fa-plus"></i>
                         </button>
-
                     </div>
                 </div>
                 <!-- /.box-header -->
                 <input type="hidden" value="@ViewBag.TenantID" id="ViewBag_TenantID" />
-
                 <input id="antiForgeryToken" type="hidden" value="@IndexAntiForgeryToken()" />
-
                 <div class="box-body">
                     <table id="grdTable" class="table table-bordered table-responsive table-striped dataTable" role="grid"></table>
                 </div>
-
-
 
                 <!-- /.box-body -->
             </div>
@@ -56,7 +51,6 @@
         <!-- /.col -->
     </div>
     <!-- /.row -->
-
     <div class="modal fade" id="modal-createOredit" data-backdrop="static" tabindex="-1" data-keyboard="false" style="display:none">
         <!--modal fade-->
         <!--modal fade-->
@@ -69,7 +63,6 @@
             Html.RenderPartial("_CreateOrEditTenant");
         }
     </div>
-
     <div class="modal fade" id="modal-guide" data-backdrop="static" tabindex="-1" data-keyboard="false" style="display:none">
         <!--modal fade-->
         <!--modal fade-->
@@ -82,8 +75,18 @@
             Html.RenderPartial("_Guide");
         }
     </div>
-
-
+    <div class="modal fade" id="modal-bannermaster" data-backdrop="static" tabindex="-1" data-keyboard="false" style="display:none">
+        <!--modal fade-->
+        <!--modal fade-->
+        @if (ViewBag.TenantID <= SHF.Helper.busConstant.Numbers.Integer.ZERO)
+        {
+            Html.RenderPartial("~/Views/Shared/_BannerMaster.cshtml");
+        }
+        else
+        {
+            Html.RenderPartial("~/Views/Shared/_BannerMaster.cshtml");
+        }
+    </div>
 </section>
 <!-- /.content -->
 

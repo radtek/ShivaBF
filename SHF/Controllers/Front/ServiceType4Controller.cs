@@ -87,7 +87,7 @@ namespace SHF.Controllers.Front
         [HttpGet]
         public List<ServiceType4Section678FieldMasterViewModel> GetServiceType4Section678MasterByTenantIdAndServiceId(string tenantId, string Id, string SectionTypeValue)
         {
-            // string tenantId = "1";
+             int maxfieldvalue = 0;
             var lstServiceType4Section678FieldMasterViewModel = new List<ServiceType4Section678FieldMasterViewModel>();
             var services4Section678FieldMaster = UnitOfWork.Services4Section678FieldMasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.Service_Id == Convert.ToInt64(Id) && x.IsActive == true && x.SectionTypeValue == SectionTypeValue).OrderBy(x => x.DisplayIndex);
 
@@ -106,9 +106,12 @@ namespace SHF.Controllers.Front
                 serviceType4Section678FieldMasterViewModel.MetaDescription = tempservices4Section678FieldMaster.MetaDescription;
                 serviceType4Section678FieldMasterViewModel.Tenant_ID = Convert.ToInt64(tempservices4Section678FieldMaster.Tenant_ID);
 
-                var objServices4Section678FieldValues = UnitOfWork.Services4Section678FieldValuesRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.S4S678FM_Id == Convert.ToInt64(tempservices4Section678FieldMaster.ID) && x.IsActive == true).OrderBy(x => x.RowNumber);
+                var objServices4Section678FieldValues = UnitOfWork.Services4Section678FieldValuesRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.S4S678FM_Id == Convert.ToInt64(tempservices4Section678FieldMaster.ID) && x.IsActive == true).OrderBy(x => x.S4S678FM_Id);
                 var lstserviceType4Section678FieldValuesViewModel = new List<ServiceType4Section678FieldValuesViewModel>();
-
+                if (objServices4Section678FieldValues.ToList().Count > maxfieldvalue)
+                {
+                    maxfieldvalue = objServices4Section678FieldValues.ToList().Count;
+                }
                 foreach (var tempservices4Section678FieldValues in objServices4Section678FieldValues)
                 {
                     var serviceType4Section678FieldValuesViewModel = new ServiceType4Section678FieldValuesViewModel();
@@ -130,6 +133,7 @@ namespace SHF.Controllers.Front
                     lstserviceType4Section678FieldValuesViewModel.Add(serviceType4Section678FieldValuesViewModel);
                 }
                 serviceType4Section678FieldMasterViewModel.ServiceType4Section678FieldValuesViewModel = lstserviceType4Section678FieldValuesViewModel;
+                serviceType4Section678FieldMasterViewModel.maxfieldvalue = maxfieldvalue;
                 lstServiceType4Section678FieldMasterViewModel.Add(serviceType4Section678FieldMasterViewModel);
             }
 

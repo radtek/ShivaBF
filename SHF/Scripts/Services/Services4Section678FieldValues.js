@@ -52,9 +52,9 @@ angular.module(config.app).service('Services4Section678FieldValuesCRUD', functio
                     targets: 1
                 },
                 {
-                    name: "Services4Section678FieldValues_tenant.Services4Section678FieldValues.S4S567FM_Id",
-                    data: "S4S567FM_Id",
-                    title: "S4S567FM_Id",
+                    name: "Services4Section678FieldValues_tenant.Services4Section678FieldValues.S4S678FM_Id",
+                    data: "S4S678FM_Id",
+                    title: "S4S678FM_Id",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
                     targets: 2
@@ -84,6 +84,16 @@ angular.module(config.app).service('Services4Section678FieldValuesCRUD', functio
                      width: "25%",
                      targets: 4
                  },
+                 {
+                   name: "Services4Section678FieldValues_tenant.Services4Section678FieldValues.DownloadFilePath",
+                    data: "DownloadFilePath",
+                    title: "Image Preview",
+                   render: function (data, type, row, meta) {
+                        return '<img src="'+data+'" style="height:150px;width:200px;"/>';
+                    },
+                    width: "40%",
+                    targets: 4
+                },
                   {
                     name: "Services4Section678FieldValues.SubSubCategoryName",
                     data: "SubSubCategoryName",

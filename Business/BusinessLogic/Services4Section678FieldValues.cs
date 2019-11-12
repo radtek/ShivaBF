@@ -92,7 +92,7 @@ namespace SHF.Business.BusinessLogic
                     .Select(x => new ViewModel.Services4Section678FieldValuesIndexViewModel
                     {
                         ID = x.Services4Section678FieldValues_tenant.Services4Section678FieldValues.ID,
-                        S4S678FM_Id = x.Services4Section678FieldValues_tenant.Services4Section678FieldValues.ID,
+                        S4S678FM_Id = x.Services4Section678FieldValues_tenant.Services4Section678FieldValues.S4S678FM_Id,
                         RowNumber = x.Services4Section678FieldValues_tenant.Services4Section678FieldValues.RowNumber,
                         DisplayText = x.Services4Section678FieldValues_tenant.Services4Section678FieldValues.DisplayText,
                         DownloadFilePath = x.Services4Section678FieldValues_tenant.Services4Section678FieldValues.DownloadFilePath,

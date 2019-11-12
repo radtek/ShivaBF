@@ -150,7 +150,7 @@ namespace SHF.ViewModel.FrontEnd
         public string MetaDescription { get; set; }
         public System.String TenantName { get; set; }
         public System.Int64 Tenant_ID { get; set; }
-
+        public int maxfieldvalue { get; set; }
         public List<ServiceType4Section678FieldValuesViewModel> ServiceType4Section678FieldValuesViewModel { get; set; }
     }
 

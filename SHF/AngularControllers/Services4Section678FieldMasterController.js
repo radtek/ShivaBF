@@ -1,5 +1,5 @@
-﻿angular.module(config.app).controller('Services4Section567FieldValuesCtrl', ['$scope', '$http', '$window','CategoriesMasterCRUD','SubCategoriesMasterCRUD', 'Services4Section567FieldValuesCRUD','Services4MasterCRUD','TenantCRUD','CustomService','CodeValueCRUD',
-    function ($scope, $http, $window,CategoriesMasterCRUD,SubCategoriesMasterCRUD, Services4Section567FieldValuesCRUD,Services4MasterCRUD, TenantCRUD,CustomService,CodeValueCRUD) {      
+﻿angular.module(config.app).controller('Services4Section678FieldMasterCtrl', ['$scope', '$http', '$window','CategoriesMasterCRUD','SubCategoriesMasterCRUD', 'Services4Section678FieldMasterCRUD','Services4MasterCRUD','TenantCRUD','CustomService','CodeValueCRUD',
+    function ($scope, $http, $window,CategoriesMasterCRUD,SubCategoriesMasterCRUD, Services4Section678FieldMasterCRUD,Services4MasterCRUD, TenantCRUD,CustomService,CodeValueCRUD) {      
         $scope.path = "";
         $scope.errors = {};
         $scope.errors.pageError = {};
@@ -8,22 +8,23 @@
         $scope.errors.formErrors = null;
         $scope.Processing = false;
         $scope.Entity = {};
-        $scope.Services4Section567FieldValuesCreateOrEditViewModel = {};
+        $scope.Services4Section678FieldMasterCreateOrEditViewModel = {};
         $scope.AllTenants = [];
+ $scope.AllSectionType=[];
         $scope.AllSubSubCategories = [];
-        $scope.Services4Section567FieldValuesCreateOrEditViewModel.SelectedTenant_ID = -1;
-        $scope.Services4Section567FieldValuesCreateOrEditViewModel.SelectedSubSubCat_Id = -1;
+        $scope.Services4Section678FieldMasterCreateOrEditViewModel.SelectedTenant_ID = -1;
+        $scope.Services4Section678FieldMasterCreateOrEditViewModel.SelectedSubSubCat_Id = -1;
        
        
         $scope.Cookie_Tenant_ID = parseInt(CustomService.GetTenantID());
-        $scope.Services4Section567FieldValuesCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;     
+        $scope.Services4Section678FieldMasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;     
 
         $scope.BindGrid = function () {
-            Services4Section567FieldValuesCRUD.LoadTable();
+            Services4Section678FieldMasterCRUD.LoadTable();
         }      
 
         $scope.PageLoad = function () {
-            $scope.Services4Section567FieldValuesCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
+            $scope.Services4Section678FieldMasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
             $scope.BindGrid();
         }
 
@@ -34,7 +35,7 @@
 
 
         $scope.Clear = function () {
-            $scope.Services4Section567FieldValuesCreateOrEditViewModel = {};
+            $scope.Services4Section678FieldMasterCreateOrEditViewModel = {};
             $scope.Reset();
         }            
       
@@ -50,14 +51,14 @@
             $scope.errors.formErrors = null;
             $scope.Processing = false;
             $scope.Clear();
-            $scope.BindServiceTypeDropDownList(1020);
+             $scope.BindSectionTypeDropDownList(1021);
             if ($scope.Cookie_Tenant_ID <= 0) {
                 $scope.BindTenantDropDownList();
-                $scope.Services4Section567FieldValuesCreateOrEditViewModel.SelectedTenant_ID = -1;
-               // $scope.Services4Section567FieldValuesCreateOrEditViewModel.SelectedUnitOfMesurment = -1;
+                $scope.Services4Section678FieldMasterCreateOrEditViewModel.SelectedTenant_ID = -1;
+               // $scope.Services4Section678FieldMasterCreateOrEditViewModel.SelectedUnitOfMesurment = -1;
             } else {
-                $scope.Services4Section567FieldValuesCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
-               // $scope.BindUnitOfMeasurementDropDownList($scope.Services4Section567FieldValuesCreateOrEditViewModel.Tenant_ID);
+                $scope.Services4Section678FieldMasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
+               // $scope.BindUnitOfMeasurementDropDownList($scope.Services4Section678FieldMasterCreateOrEditViewModel.Tenant_ID);
             }
             $('#modal-createOredit').modal('show');
         }
@@ -106,7 +107,7 @@
             if ($scope.Cookie_Tenant_ID <= 0) {
                 $scope.BindTenantDropDownList();
            }
-            $http.get("/Get/Services4Section567FieldValues/EditAsync?Id=" + Id
+            $http.get("/Get/Services4Section678FieldMaster/EditAsync?Id=" + Id
             ).then(
                 function success(response) {
                     switch (response.data.Type) {
@@ -115,10 +116,10 @@
                             console.log(response);
                             break;
                         case 'Response':
-                            $scope.Services4Section567FieldValuesCreateOrEditViewModel = response.data.Entity;
+                            $scope.Services4Section678FieldMasterCreateOrEditViewModel = response.data.Entity;
                            // $scope.LoadAllCategory();
                             $scope.LoadAllSubSubCategory();
-                            //$scope.Services4Section567FieldValuesCreateOrEditViewModel.Category_ID=$scope.Services4Section567FieldValuesCreateOrEditViewModel.Category_ID;
+                            //$scope.Services4Section678FieldMasterCreateOrEditViewModel.Category_ID=$scope.Services4Section678FieldMasterCreateOrEditViewModel.Category_ID;
                             $('#modal-createOredit').modal('show');
                             console.clear();
                             break;
@@ -153,9 +154,9 @@
             $scope.Processing = true;
             $scope.path = "";
            if ($scope.myForm.$valid) {
-                $scope.path = ($scope.Services4Section567FieldValuesCreateOrEditViewModel.ID == undefined || $scope.Services4Section567FieldValuesCreateOrEditViewModel.ID == null || 
-          $scope.Services4Section567FieldValuesCreateOrEditViewModel.ID == 0) ? "/Post/Services4Section567FieldValues/CreateAsync" : "/Post/Services4Section567FieldValues/EditAsync";
-               $http.post($scope.path, $scope.Services4Section567FieldValuesCreateOrEditViewModel,
+                $scope.path = ($scope.Services4Section678FieldMasterCreateOrEditViewModel.ID == undefined || $scope.Services4Section678FieldMasterCreateOrEditViewModel.ID == null || 
+          $scope.Services4Section678FieldMasterCreateOrEditViewModel.ID == 0) ? "/Post/Services4Section678FieldMaster/CreateAsync" : "/Post/Services4Section678FieldMaster/EditAsync";
+               $http.post($scope.path, $scope.Services4Section678FieldMasterCreateOrEditViewModel,
                     {
                         headers: { 'RequestVerificationToken': $scope.antiForgeryToken }
                     }
@@ -252,7 +253,7 @@
                     if (willDelete) {
                         var obj = {};
                         obj.Id = Id;
-                  $http.post("/Post/Services4Section567FieldValues/Delete/", obj,
+                  $http.post("/Post/Services4Section678FieldMaster/Delete/", obj,
                     {
                         headers: { 'RequestVerificationToken': $scope.antiForgeryToken }
                     }
@@ -286,7 +287,7 @@
         }
 /************load Sub Category**************************************************************************************************/
 $scope.LoadAllSubSubCategory = function () {
-            let tenantId = $scope.Services4Section567FieldValuesCreateOrEditViewModel.Tenant_ID;
+            let tenantId = $scope.Services4Section678FieldMasterCreateOrEditViewModel.Tenant_ID;
             $scope.BindSubSubCategoryDropDownList(tenantId);
         }
 
@@ -326,10 +327,11 @@ $scope.BindSubSubCategoryDropDownList = function (tenantId) {
 
                 });
         }  
- $scope.BindServiceTypeDropDownList = function (Id) {
-            $scope.AllServiceType = [];
-            $scope.AllServiceType = CodeValueCRUD.LoadCodeValueByCodeId(Id);
-        }         
+ $scope.BindSectionTypeDropDownList = function (Id) {
+            $scope.AllSectionType = [];
+            $scope.AllSectionType = CodeValueCRUD.LoadCodeValueByCodeId(Id);
+        }   
+        
     }]);
 
 

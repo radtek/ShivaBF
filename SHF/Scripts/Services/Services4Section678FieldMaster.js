@@ -238,11 +238,10 @@ angular.module(config.app).service('Services4Section678FieldMasterCRUD', functio
         }
     }
 
-
-    this.LoadProductDropdown = function ProductDropdown(tenantId) {
+ this.LoadSection678IDByTenantAndSubSubCatID = function Section678IDByTenantAndSubSubCatID(tenantId, subsubcat_id) {
         let request = $http({
             method: "get",
-            url: "/Get/Product/DropdownListbyTenantAsync?Id=" + tenantId
+            url: "/Get/Services4Section678FieldMaster/DropdownListbyTenantAsync?Id=" + tenantId + "&subsubcat_id=" + subsubcat_id
         });
         return request;
     }
