@@ -392,6 +392,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CommentsReplyController.cs" />
     <Compile Include="Controllers\FooterBlockMasterController.cs" />
     <Compile Include="Controllers\BannerMasterController.cs" />
     <Compile Include="Controllers\Front\CommonController.cs" />
@@ -523,6 +524,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AngularControllers\AspNetUserController.js" />
+    <Content Include="AngularControllers\CommentsReplyController.js" />
     <Content Include="AngularControllers\FooterBlockMasterController.js" />
     <Content Include="AngularControllers\BannerMasterController.js" />
     <Content Include="AngularControllers\HomePageSection3FeaturesController.js" />
@@ -10806,6 +10808,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Services\AspNetRole.js" />
     <Content Include="Scripts\Services\AspNetUser.js" />
+    <Content Include="Scripts\Services\CommentsReply.js" />
     <Content Include="Scripts\Services\FooterBlockMaster.js" />
     <Content Include="Scripts\Services\BannerMaster.js" />
     <Content Include="Scripts\Services\HomePageSection3Features.js" />
@@ -11169,6 +11172,10 @@
     <Content Include="Views\BlogCommentsDetails\_CreateOrEditTenant.cshtml" />
     <Content Include="Views\BlogCommentsDetails\_Guide.cshtml" />
     <Content Include="Views\BlogCommentsDetails\Index.cshtml" />
+    <Content Include="Views\CommentsReply\_CreateOrEdit.cshtml" />
+    <Content Include="Views\CommentsReply\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\CommentsReply\_Guide.cshtml" />
+    <Content Include="Views\CommentsReply\Index.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />

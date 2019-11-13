@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="BaseBusiness.cs" />
     <Compile Include="busCache.cs" />
+    <Compile Include="BusinessLogic\CommentsReply.cs" />
     <Compile Include="BusinessLogic\FooterBlockMaster.cs" />
     <Compile Include="BusinessLogic\BannerMaster.cs" />
     <Compile Include="BusinessLogic\HomePageSection3Features.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="BusinessLogic\BankMaster.cs" />
     <Compile Include="BusinessLogic\SubMenu.cs" />
     <Compile Include="BusinessLogic\Tenant.cs" />
+    <Compile Include="Interface\ICommentsReply.cs" />
     <Compile Include="Interface\IFooterBlockMaster.cs" />
     <Compile Include="Interface\IBannerMaster.cs" />
     <Compile Include="Interface\IHomePageSection3Features.cs" />

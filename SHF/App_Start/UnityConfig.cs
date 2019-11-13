@@ -74,6 +74,7 @@ namespace SHF
             container.RegisterType<Business.Interface.IServices8Section6Master, Business.BusinessLogic.Services8Section6Master>();
             container.RegisterType<Business.Interface.IBlogMaster, Business.BusinessLogic.BlogMaster>();
             container.RegisterType<Business.Interface.IBlogCommentsDetails, Business.BusinessLogic.BlogCommentsDetails>();
+            container.RegisterType<Business.Interface.ICommentsReply, Business.BusinessLogic.CommentsReply>();
             container.RegisterType<Business.Interface.IBannerMaster, Business.BusinessLogic.BannerMaster>();
             container.RegisterType<Business.Interface.IBlogBannerNavigationsDetails, Business.BusinessLogic.BlogBannerNavigationsDetails>();
             container.RegisterType<Business.Interface.IRelatedBlogsMapping, Business.BusinessLogic.RelatedBlogsMapping>();

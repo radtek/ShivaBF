@@ -255,6 +255,14 @@ angular.module(config.app).service('BlogCommentsDetailsCRUD', function ($http) {
         return request;
     }
 
+    this.LoadBlogCommentsDropdown = function BlogCommentsDropdown(tenantId, blogId) {
+        let request = $http({
+            method: "get",
+            url: "/Get/BlogCommentsDetails/GetBlogComments?Id=" + tenantId+"&Blog_Id="+blogId
+        });
+        return request;
+    }
+
     this.LoadProductDropdown = function ProductDropdown(tenantId) {
         let request = $http({
             method: "get",
