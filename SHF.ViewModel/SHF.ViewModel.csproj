@@ -63,6 +63,7 @@
     <Compile Include="HomePageSection3ViewModel.cs" />
     <Compile Include="HomePageSection2ViewModel.cs" />
     <Compile Include="HomePageSection1ViewModel.cs" />
+    <Compile Include="BlogCommentsDetailsViewModel.cs" />
     <Compile Include="RelatedBlogsMappingViewModel.cs" />
     <Compile Include="BlogBannerNavigationsDetailsViewModel.cs" />
     <Compile Include="BlogMasterViewModel.cs" />

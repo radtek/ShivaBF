@@ -61,6 +61,7 @@
     <Compile Include="BusinessLogic\HomePageSection3.cs" />
     <Compile Include="BusinessLogic\HomePageSection2.cs" />
     <Compile Include="BusinessLogic\HomePageSection1.cs" />
+    <Compile Include="BusinessLogic\BlogCommentsDetails.cs" />
     <Compile Include="BusinessLogic\RelatedBlogsMapping.cs" />
     <Compile Include="BusinessLogic\BlogBannerNavigationsDetails.cs" />
     <Compile Include="BusinessLogic\FAQMaster.cs" />
@@ -125,6 +126,7 @@
     <Compile Include="Interface\IHomePageSection3.cs" />
     <Compile Include="Interface\IHomePageSection2.cs" />
     <Compile Include="Interface\IHomePageSection1.cs" />
+    <Compile Include="Interface\IBlogCommentsDetails.cs" />
     <Compile Include="Interface\IRelatedBlogsMapping.cs" />
     <Compile Include="Interface\IBlogBannerNavigationsDetails.cs" />
     <Compile Include="Interface\IBlogMaster.cs" />
