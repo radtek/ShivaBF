@@ -45,13 +45,21 @@
                         </div>
                         <div class="form-group" ng-class="{'has-error': (myForm.RelatedBlogTitle.$touched || myForm.RelatedBlogTitle.$dirty)  && myForm.RelatedBlogTitle.$invalid}">
                             <label>Related Blog Id</label>
-                            <select name="RelatedBlogTitle" ng-model="RelatedBlogsMappingCreateOrEditViewModel.RelatedBlog_Id" class="form-control" style="width: 100%;" ng-options="x.ID as x.BlogTitle for x in AllRelatedBlogTitle" required>
+                            <select name="RelatedBlogTitle" ng-model="RelatedBlogsMappingCreateOrEditViewModel.Related_Blog_Id" class="form-control" style="width: 100%;" ng-options="x.ID as x.BlogTitle for x in AllRelatedBlogTitle" ng-change="LoadBlogUrl(RelatedBlogsMappingCreateOrEditViewModel.Related_Blog_Id)" required>
                                 <option value="" ng-selected="RelatedBlogsMappingCreateOrEditViewModel.SelectedRelatedBlog_Id < 0">-- Select --</option>
                             </select>
                             <div class="help-block" ng-messages="myForm.RelatedBlogTitle.$error" ng-if="myForm.RelatedBlogTitle.$touched || myForm.RelatedBlogTitle.$dirty && myForm.RelatedBlogTitle.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.SubSubCat_Id" ng-bind="errors.formErrors.SubSubCat_Id"></span>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error': (myForm.DisplayIndex.$touched || myForm.DisplayIndex.$dirty)  && myForm.DisplayIndex.$invalid}">
+                            <label>Display Index</label>
+                            <input type="number" min="0" class="form-control" name="DisplayIndex" ng-model="RelatedBlogsMappingCreateOrEditViewModel.DisplayIndex" ng-disabled="Processing" autocomplete="off" placeholder="Enter Display Index" tooltip-placement="top" uib-tooltip="Enter Display Index" required />
+                            <div class="help-block" ng-messages="myForm.DisplayIndex.$error" ng-if="myForm.DisplayIndex.$touched || myForm.Description.$dirty && myForm.DisplayIndex.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.DisplayIndex" ng-bind="errors.formErrors.DisplayIndex"></span>
                         </div>
                         <div class="form-group">
                             <label>Is Active</label><br />
@@ -70,7 +78,7 @@
                         </div>
                         <div class="form-group" ng-class="{'has-error': (myForm.Url.$touched || myForm.Url.$dirty)  && myForm.Url.$invalid}">
                             <label>Url</label>
-                            <input type="text" class="form-control" name="Url" ng-model="RelatedBlogsMappingCreateOrEditViewModel.Url" ng-disabled="Processing" autocomplete="off" placeholder="Enter Url" tooltip-placement="top" uib-tooltip="Enter Url" required />
+                            <input type="text" class="form-control" name="Url" ng-model="RelatedBlogsMappingCreateOrEditViewModel.Url" ng-disabled="Processing" autocomplete="off" placeholder="Enter Url" tooltip-placement="top" disabled uib-tooltip="Enter Url" required />
                             <div class="help-block" ng-messages="myForm.Url.$error" ng-if="myForm.Url.$touched || myForm.Url.$dirty && myForm.Url.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>

@@ -60,6 +60,16 @@ angular.module(config.app).service('BlogMasterCRUD', function ($http) {
                     targets: 2
                 },
                 {
+                    name: "BlogMaster.BannerImagePath",
+                    data: "BannerImagePath",
+                    title: "Image Preview",
+                   render: function (data, type, row, meta) {
+                        return '<img src="'+data+'" style="height:150px;width:200px;"/>';
+                    },
+                    width: "40%",
+                    targets: 2
+                },
+                {
                     name: "BlogMaster.BannerDescription1",
                     data: "BannerDescription1",
                     title: "BannerDescription1",
@@ -92,6 +102,16 @@ angular.module(config.app).service('BlogMasterCRUD', function ($http) {
                     width: "25%",
                     targets: 6
                 },
+ {
+                    name: "BlogMaster.Section1ImagePath",
+                    data: "Section1ImagePath",
+                    title: "Image Preview",
+                   render: function (data, type, row, meta) {
+                        return '<img src="'+data+'" style="height:150px;width:200px;"/>';
+                    },
+                    width: "40%",
+                    targets: 6
+                },
                 {
                     name: "BlogMaster.Section2Heading",
                     data: "Section2Heading",
@@ -104,7 +124,10 @@ angular.module(config.app).service('BlogMasterCRUD', function ($http) {
                     name: "BlogMaster.Section2Description",
                     data: "Section2Description",
                     title: "Section2Description",
-                    render: $.fn.dataTable.render.text(),
+ render: function (data, type, row, meta) {
+                       return $("<span/>").html(data).text(); 
+                    },
+                    //render: $.fn.dataTable.render.text(),
                     width: "25%",
                     targets: 8
                 },
@@ -120,7 +143,10 @@ angular.module(config.app).service('BlogMasterCRUD', function ($http) {
                     name: "BlogMaster.Section3Description",
                     data: "Section3Description",
                     title: "Section3Description",
-                    render: $.fn.dataTable.render.text(),
+ render: function (data, type, row, meta) {
+                       return $("<span/>").html(data).text(); 
+                    },
+                   // render: $.fn.dataTable.render.text(),
                     width: "25%",
                     targets: 10
                 },
@@ -283,6 +309,13 @@ angular.module(config.app).service('BlogMasterCRUD', function ($http) {
         let request = $http({
             method: "get",
             url: "/Get/BlogMaster/DropdownListbyTenantAsync?Id=" + tenantId
+        });
+        return request;
+    }
+this.GetBlogsUrl = function blogsUrl(Id) {
+        let request = $http({
+            method: "get",
+            url: "/Get/BlogMaster/GetBlogsUrl?Id=" + Id
         });
         return request;
     }

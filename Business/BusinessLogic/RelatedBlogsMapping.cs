@@ -88,6 +88,7 @@ namespace SHF.Business.BusinessLogic
                         ID = x.RelatedBlogsMapping_tenant_Blog.RelatedBlogsMapping_tenant.RelatedBlogsMapping.ID,
                         BlogTitle = x.RelatedBlogsMapping_tenant_Blog.Blog.BlogTitle,
                         Related_Blog_Id = x.RelatedBlogsMapping_tenant_Blog.RelatedBlogsMapping_tenant.RelatedBlogsMapping.Related_Blog_Id,
+                        RelatedBlogTitle=x.RelatedBlog.BlogTitle,
                         Url = x.RelatedBlogsMapping_tenant_Blog.RelatedBlogsMapping_tenant.RelatedBlogsMapping.Url.ToString(),
                         Metadata= x.RelatedBlogsMapping_tenant_Blog.RelatedBlogsMapping_tenant.RelatedBlogsMapping.Metadata.ToString(),
                         MetaDescription= x.RelatedBlogsMapping_tenant_Blog.RelatedBlogsMapping_tenant.RelatedBlogsMapping.MetaDescription.ToString(),

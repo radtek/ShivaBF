@@ -98,11 +98,11 @@ namespace SHF.Business.BusinessLogic
                     .Select(x => new ViewModel.BlogMasterIndexViewModel 
                     {
                         ID = x.BlogMaster.ID,
-                        BannerImagePath = x.BlogMaster.BannerImagePath,
+                        BannerImagePath = String.Concat(busConstant.Settings.CMSPath.TENANAT_UPLOAD_DIRECTORY, x.BlogMaster.Tenant_ID) + "/" + x.BlogMaster.BannerImagePath,
                         BannerDescription1 = x.BlogMaster.BannerDescription1,
                         BannerDescription2 = x.BlogMaster.BannerDescription2,
                         BlogTitle = x.BlogMaster.BlogTitle,
-                        Section1ImagePath = x.BlogMaster.Section1ImagePath,
+                        Section1ImagePath = String.Concat(busConstant.Settings.CMSPath.TENANAT_UPLOAD_DIRECTORY, x.BlogMaster.Tenant_ID) + "/" + x.BlogMaster.Section1ImagePath,
                         Section2Heading = x.BlogMaster.Section2Heading,
                         Section2Description = x.BlogMaster.Section2Description,
                         Section3Heading = x.BlogMaster.Section3Heading,

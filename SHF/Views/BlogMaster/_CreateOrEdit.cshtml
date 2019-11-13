@@ -96,7 +96,8 @@
                         </div>
                         <div class="form-group" ng-class="{'has-error': ((myForm.Section2Description.$touched && myForm.Section2Description.$invalid) || (!myForm.Section2Description.$pristine && myForm.Section2Description.$invalid))}">
                             <label>Section2 Description</label>
-                            <input type="text" class="form-control" name="Section2Description" ng-model="BlogMasterCreateOrEditViewModel.Section2Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section2 Description" tooltip-placement="top" uib-tooltip="Enter Section2 Description" />
+                            <textarea id="Section2Description" class="form-control" name="Section2Description" ng-model="BlogMasterCreateOrEditViewModel.Section2Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section2 Description" tooltip-placement="top" uib-tooltip="Enter Section2 Description" required></textarea>
+                            @*<input type="text" class="form-control" name="Section2Description" ng-model="BlogMasterCreateOrEditViewModel.Section2Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section2 Description" tooltip-placement="top" uib-tooltip="Enter Section2 Description" />*@
                             <div class="help-block" ng-messages="myForm.Section2Description.$error" ng-if="myForm.Section2Description.$touched || myForm.Section2Description.$dirty && myForm.Section2Description.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
@@ -112,7 +113,8 @@
                         </div>
                         <div class="form-group" ng-class="{'has-error': ((myForm.Section3Description.$touched && myForm.Section3Description.$invalid) || (!myForm.Section3Description.$pristine && myForm.Section3Description.$invalid))}">
                             <label>Section3 Description</label>
-                            <input type="text" class="form-control" name="Section3Description" ng-model="BlogMasterCreateOrEditViewModel.Section3Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section3 Description" tooltip-placement="top" uib-tooltip="Enter Section3 Description" />
+                            <textarea id="Section3Description" class="form-control" name="Section3Description" ng-model="BlogMasterCreateOrEditViewModel.Section3Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section3 Description" tooltip-placement="top" uib-tooltip="Enter Section3 Description" required></textarea>
+                            @*<input type="text" class="form-control" name="Section3Description" ng-model="BlogMasterCreateOrEditViewModel.Section3Description" ng-disabled="Processing" autocomplete="off" placeholder="Enter Section3 Description" tooltip-placement="top" uib-tooltip="Enter Section3 Description" />*@
                             <div class="help-block" ng-messages="myForm.Section3Description.$error" ng-if="myForm.Section3Description.$touched || myForm.Section3Description.$dirty && myForm.Section3Description.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
@@ -179,3 +181,7 @@
     </div>
     <!-- /.modal-content -->
 </div>
+<script>
+    CKEDITOR.replace('Section2Description');
+    CKEDITOR.replace('Section3Description');
+</script>

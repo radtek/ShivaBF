@@ -60,6 +60,22 @@ angular.module(config.app).service('RelatedBlogsMappingCRUD', function ($http) {
                     width: "25%",
                     targets: 5
                 },
+                {
+                    name: "RelatedBlogsMapping_tenant_Blog.RelatedBlogsMapping_tenant.RelatedBlogsMapping.Related_Blog_Id",
+                    data: "Related_Blog_Id",
+                    title: "Related_Blog_Id",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 6
+                },
+                {
+                    name: "RelatedBlog.BlogTitle",
+                    data: "RelatedBlogTitle",
+                    title: "RelatedBlogTitle",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 7
+                },
                
                 {
                     name: "RelatedBlogsMapping_tenant_Blog.RelatedBlogsMapping_tenant.RelatedBlogsMapping.Url",
@@ -222,6 +238,7 @@ angular.module(config.app).service('RelatedBlogsMappingCRUD', function ($http) {
         });
         return request;
     }
+
     this.LoadProductDropdown = function ProductDropdown(tenantId) {
         let request = $http({
             method: "get",

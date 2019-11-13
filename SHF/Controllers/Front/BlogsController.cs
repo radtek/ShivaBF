@@ -52,7 +52,7 @@ namespace SHF.Controllers.Front
                 blogMasterViewModel.BannerDescription1 = Blogs.BannerDescription1;
                 blogMasterViewModel.BannerDescription2 = Blogs.BannerDescription2;
                 blogMasterViewModel.BlogTitle = Blogs.BlogTitle;
-                blogMasterViewModel.Section1ImagePath = Blogs.Section1ImagePath;
+                blogMasterViewModel.Section1ImagePath = ConfigurationManager.AppSettings[busConstant.Settings.DataBase.SqlServer.Connections.AdminUrlString.ADMINUrl] + String.Concat(busConstant.Settings.CMSPath.TENANAT_UPLOAD_DIRECTORY, Blogs.Tenant_ID) + "/" + Blogs.Section1ImagePath;
                 blogMasterViewModel.Section2Heading = Blogs.Section2Heading;
                 blogMasterViewModel.Section2Description = Blogs.Section2Description;
                 blogMasterViewModel.Section3Heading = Blogs.Section3Heading;
@@ -88,22 +88,25 @@ namespace SHF.Controllers.Front
             var RelatedBlogsMapping = UnitOfWork.RelatedBlogsMappingRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.Blog_Id == Convert.ToInt64(Id) && x.IsActive == true).OrderBy(x => x.DisplayIndex);
             foreach (var tempRelatedBlogsMapping in RelatedBlogsMapping)
             {
-                var relatedBlogsMappingViewModel = new RelatedBlogsMappingViewModel();
-                relatedBlogsMappingViewModel.ID = tempRelatedBlogsMapping.ID;
-                relatedBlogsMappingViewModel.Related_Blog_Id = tempRelatedBlogsMapping.Related_Blog_Id;
-                relatedBlogsMappingViewModel.Blog_Id = tempRelatedBlogsMapping.Blog_Id;
-                relatedBlogsMappingViewModel.Url = tempRelatedBlogsMapping.Url.ToString();
-                relatedBlogsMappingViewModel.Metadata = tempRelatedBlogsMapping.Metadata.ToString();
-                relatedBlogsMappingViewModel.MetaDescription = tempRelatedBlogsMapping.MetaDescription.ToString();
-                relatedBlogsMappingViewModel.Keyword = tempRelatedBlogsMapping.Keyword.ToString();
-                relatedBlogsMappingViewModel.TotalViews = tempRelatedBlogsMapping.TotalViews;
-                relatedBlogsMappingViewModel.IsActive = tempRelatedBlogsMapping.IsActive;
-                relatedBlogsMappingViewModel.Url = tempRelatedBlogsMapping.Url;
-                relatedBlogsMappingViewModel.Metadata = tempRelatedBlogsMapping.Metadata;
-                relatedBlogsMappingViewModel.Keyword = tempRelatedBlogsMapping.Keyword;
-                relatedBlogsMappingViewModel.MetaDescription = tempRelatedBlogsMapping.MetaDescription;
-                relatedBlogsMappingViewModel.Tenant_ID = Convert.ToInt64(tempRelatedBlogsMapping.Tenant_ID);
-                lstRelatedBlogsMappingViewModel.Add(relatedBlogsMappingViewModel);
+                if (tempRelatedBlogsMapping.Related_Blog_Id != null)
+                {
+                    var relatedBlogsMappingViewModel = new RelatedBlogsMappingViewModel();
+                    relatedBlogsMappingViewModel.ID = tempRelatedBlogsMapping.ID;
+                    relatedBlogsMappingViewModel.Related_Blog_Id = tempRelatedBlogsMapping.Related_Blog_Id;
+                    relatedBlogsMappingViewModel.Blog_Id = tempRelatedBlogsMapping.Blog_Id;
+                    relatedBlogsMappingViewModel.RelatedBlogTitle = UnitOfWork.BlogMasterRepository.GetByID(tempRelatedBlogsMapping.Related_Blog_Id).BlogTitle;
+                    relatedBlogsMappingViewModel.Url = tempRelatedBlogsMapping.Url.ToString();
+                    relatedBlogsMappingViewModel.Metadata = tempRelatedBlogsMapping.Metadata.ToString();
+                    relatedBlogsMappingViewModel.MetaDescription = tempRelatedBlogsMapping.MetaDescription.ToString();
+                    relatedBlogsMappingViewModel.Keyword = tempRelatedBlogsMapping.Keyword.ToString();
+                    relatedBlogsMappingViewModel.TotalViews = tempRelatedBlogsMapping.TotalViews;
+                    relatedBlogsMappingViewModel.IsActive = tempRelatedBlogsMapping.IsActive;
+                    relatedBlogsMappingViewModel.Metadata = tempRelatedBlogsMapping.Metadata;
+                    relatedBlogsMappingViewModel.Keyword = tempRelatedBlogsMapping.Keyword;
+                    relatedBlogsMappingViewModel.MetaDescription = tempRelatedBlogsMapping.MetaDescription;
+                    relatedBlogsMappingViewModel.Tenant_ID = Convert.ToInt64(tempRelatedBlogsMapping.Tenant_ID);
+                    lstRelatedBlogsMappingViewModel.Add(relatedBlogsMappingViewModel);
+                }
             }
             /*some db operation*/
             // return Json("ajs");
@@ -166,6 +169,7 @@ namespace SHF.Controllers.Front
                 blogCommentsDetailsViewModel.Keyword = tempBlogCommentsDetails.Keyword;
                 blogCommentsDetailsViewModel.MetaDescription = tempBlogCommentsDetails.MetaDescription;
                 blogCommentsDetailsViewModel.Tenant_ID = Convert.ToInt64(tempBlogCommentsDetails.Tenant_ID);
+                blogCommentsDetailsViewModel.CreatedOn = tempBlogCommentsDetails.CreatedOn;
 
                 var objCommentsReply = UnitOfWork.CommentsReplyRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.BCD_Id == Convert.ToInt64(tempBlogCommentsDetails.ID) && x.IsActive == true).OrderBy(x => x.DisplayIndex).Take(10);
                 var lstcommentsReplyViewModel = new List<CommentsReplyViewModel>();
@@ -186,6 +190,7 @@ namespace SHF.Controllers.Front
                     commentsReplyViewModel.Keyword = tempobjCommentsReply.Keyword;
                     commentsReplyViewModel.MetaDescription = tempobjCommentsReply.MetaDescription;
                     commentsReplyViewModel.Tenant_ID = Convert.ToInt64(tempobjCommentsReply.Tenant_ID);
+                    commentsReplyViewModel.CreatedOn = tempobjCommentsReply.CreatedOn;
                     lstcommentsReplyViewModel.Add(commentsReplyViewModel);
                 }
                 blogCommentsDetailsViewModel.CommentsReplyViewModel = lstcommentsReplyViewModel;
@@ -196,7 +201,7 @@ namespace SHF.Controllers.Front
             // return Json("ajs");
             return lstBlogCommentsDetailsViewModel;
         }
-        
+
         [Route("api/Blogs/AddBlogCommentsDetails/{tenantId}/{BlogId}/{Name}/{EmailId}/{Comment}")]
         [HttpPost]
         public string AddBlogCommentsDetails(string tenantId, string BlogId, string Name, string EmailId, string Comment)
@@ -222,7 +227,7 @@ namespace SHF.Controllers.Front
 
         [Route("api/Blogs/AddCommentsReply/{tenantId}/{BlogId}/{BCD_Id}/{Name}/{EmailId}/{Comment}")]
         [HttpPost]
-        public string AddCommentsReply(string tenantId, string BlogId,string BCD_Id, string Name, string EmailId, string Comment)
+        public string AddCommentsReply(string tenantId, string BlogId, string BCD_Id, string Name, string EmailId, string Comment)
         {
             // string tenantId = "1";
             var response = "error";
@@ -243,7 +248,7 @@ namespace SHF.Controllers.Front
             // return Json("ajs");
             return response;
         }
-        
+
         #endregion
     }
 

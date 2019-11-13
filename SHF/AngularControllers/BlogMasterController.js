@@ -52,6 +52,8 @@
             $scope.errors.formErrors = null;
             $scope.Processing = false;
             $scope.Clear();
+ CKEDITOR.instances["Section2Description"].setData('');
+ CKEDITOR.instances["Section3Description"].setData('');
             $scope.BindServiceTypeDropDownList(1020);
             if ($scope.Cookie_Tenant_ID <= 0) {
                 $scope.BindTenantDropDownList();
@@ -118,7 +120,8 @@
                             break;
                         case 'Response':
                             $scope.BlogMasterCreateOrEditViewModel = response.data.Entity;
-                            // $scope.LoadAllCategory();
+                            CKEDITOR.instances["Section2Description"].setData($scope.BlogMasterCreateOrEditViewModel.Section2Description);
+ CKEDITOR.instances["Section3Description"].setData($scope.BlogMasterCreateOrEditViewModel.Section3Description);
                             // $scope.LoadAllSubSubCategory();
                             //$scope.BlogMasterCreateOrEditViewModel.Category_ID=$scope.BlogMasterCreateOrEditViewModel.Category_ID;
                             $('#modal-createOredit').modal('show');
@@ -154,6 +157,10 @@
         $scope.createOreditAsyncForm = function () {
             $scope.Processing = true;
             $scope.path = "";
+var objEditorSection2 = CKEDITOR.instances["Section2Description"];
+$scope.BlogMasterCreateOrEditViewModel.Section2Description= objEditorSection2.getData();
+var objEditorSection3 = CKEDITOR.instances["Section3Description"];
+$scope.BlogMasterCreateOrEditViewModel.Section3Description= objEditorSection3.getData();
             if ($scope.myForm.$valid) {
                 $scope.path = ($scope.BlogMasterCreateOrEditViewModel.ID == undefined || $scope.BlogMasterCreateOrEditViewModel.ID == null ||
           $scope.BlogMasterCreateOrEditViewModel.ID == 0) ? "/Post/BlogMaster/CreateAsync" : "/Post/BlogMaster/EditAsync";
