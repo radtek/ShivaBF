@@ -13,8 +13,6 @@
         $scope.AllBlogTitle = [];
         $scope.BlogCommentsDetailsCreateOrEditViewModel.SelectedTenant_ID = -1;
         $scope.BlogCommentsDetailsCreateOrEditViewModel.SelectedBlog_Id = -1;
-        $scope.BlogCommentsDetailsCreateOrEditViewModel.SelectedRelatedBlog_Id = -1;
-
        
        
         $scope.Cookie_Tenant_ID = parseInt(CustomService.GetTenantID());
