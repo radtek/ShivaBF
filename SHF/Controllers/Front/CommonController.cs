@@ -60,6 +60,57 @@ namespace SHF.Controllers.Front
             return lststateMasterViewModel;
         }
 
+        [Route("api/Common/GetFooterDetailsByTenantId/{tenantId}")]
+        [HttpGet]
+        public List<FooterBlockMasterViewModel> GetFooterDetailsByTenantId(string tenantId)
+        {
+            // string tenantId = "1";
+            var lstFooterBlockMasterViewModel = new List<FooterBlockMasterViewModel>();
+            var footerBlockMaster = UnitOfWork.FooterBlockMasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.IsActive == true).OrderBy(x => x.DisplayIndex);
+
+            foreach (var tempfooterBlockMaster in footerBlockMaster)
+            {
+                var footerBlockMasterViewModel = new FooterBlockMasterViewModel();
+                footerBlockMasterViewModel.ID = Convert.ToInt64(tempfooterBlockMaster.ID);
+                footerBlockMasterViewModel.Heading = tempfooterBlockMaster.Heading;
+                footerBlockMasterViewModel.DisplayIndex = tempfooterBlockMaster.DisplayIndex;
+                footerBlockMasterViewModel.Url = tempfooterBlockMaster.Url;
+                footerBlockMasterViewModel.Metadata = tempfooterBlockMaster.Metadata;
+                footerBlockMasterViewModel.MetaDescription = tempfooterBlockMaster.MetaDescription;
+                footerBlockMasterViewModel.Keyword = tempfooterBlockMaster.Keyword;
+                footerBlockMasterViewModel.TotalViews = tempfooterBlockMaster.TotalViews;
+                footerBlockMasterViewModel.IsActive = tempfooterBlockMaster.IsActive;
+                footerBlockMasterViewModel.Tenant_ID = Convert.ToInt64(tempfooterBlockMaster.Tenant_ID);
+               
+                var objFooterLinks = UnitOfWork.FooterLinksRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.FooterBlockMaster_Id == Convert.ToInt64(tempfooterBlockMaster.ID) && x.IsActive == true).OrderBy(x => x.DisplayIndex);
+                var lstFooterLinksViewModel = new List<FooterLinksViewModel>();
+
+                foreach (var tempFooterLinks in objFooterLinks)
+                {
+                    var footerLinksViewModel = new FooterLinksViewModel();
+                    footerLinksViewModel.FooterBlockMaster_Id = tempFooterLinks.FooterBlockMaster_Id;
+                    footerLinksViewModel.AncharTagTitle = tempFooterLinks.AncharTagTitle;
+                    footerLinksViewModel.AncharTagUrl = tempFooterLinks.AncharTagUrl;
+                    footerLinksViewModel.DisplayIndex = tempFooterLinks.DisplayIndex;
+                    footerLinksViewModel.Url = tempFooterLinks.Url;
+                    footerLinksViewModel.Metadata = tempFooterLinks.Metadata;
+                    footerLinksViewModel.MetaDescription = tempFooterLinks.MetaDescription;
+                    footerLinksViewModel.Keyword = tempFooterLinks.Keyword;
+                    footerLinksViewModel.TotalViews = tempFooterLinks.TotalViews;
+                    footerLinksViewModel.IsActive = tempFooterLinks.IsActive;
+                    footerLinksViewModel.Tenant_ID = Convert.ToInt64(tempFooterLinks.Tenant_ID);
+                   
+                    lstFooterLinksViewModel.Add(footerLinksViewModel);
+                }
+                footerBlockMasterViewModel.FooterLinksViewModel = lstFooterLinksViewModel;
+                lstFooterBlockMasterViewModel.Add(footerBlockMasterViewModel);
+            }
+
+            /*some db operation*/
+            // return Json("ajs");
+            return lstFooterBlockMasterViewModel;
+        }
+
         #endregion
     }
 

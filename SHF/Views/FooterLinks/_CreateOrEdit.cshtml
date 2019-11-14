@@ -24,7 +24,7 @@
                         <input id="antiForgeryToken" data-ng-model="antiForgeryToken" type="hidden" data-ng-init="antiForgeryToken='@AntiForgeryToken()'" />
                         <div class="form-group" ng-class="{'has-error': (myForm.TenantName.$touched || myForm.TenantName.$dirty)  && myForm.TenantName.$invalid}">
                             <label>Tenant Name</label>
-                            <select name="TenantName" ng-model="FooterLinksCreateOrEditViewModel.Tenant_ID" class="form-control" style="width: 100%;" ng-options="x.ID as x.Name for x in AllTenants" ng-change="LoadAllHeading()" required>
+                            <select name="TenantName" ng-model="FooterLinksCreateOrEditViewModel.Tenant_ID" class="form-control" style="width: 100%;" ng-options="x.ID as x.Name for x in AllTenants" ng-change="LoadAllHeading(FooterLinksCreateOrEditViewModel.Tenant_ID)" required>
                                 <option value="" ng-selected="FooterLinksCreateOrEditViewModel.SelectedTenant_ID < 0">-- Select --</option>
                             </select>
                             <div class="help-block" ng-messages="myForm.TenantName.$error" ng-if="myForm.TenantName.$touched || myForm.TenantName.$dirty && myForm.TenantName.$invalid">

@@ -151,6 +151,7 @@
                             break;
                         case 'Response':
                             $scope.FooterLinksCreateOrEditViewModel = response.data.Entity;
+$scope.LoadAllHeading($scope.FooterLinksCreateOrEditViewModel.Tenant_ID);
                             $('#modal-createOredit').modal('show');
                             console.clear();
                             break;

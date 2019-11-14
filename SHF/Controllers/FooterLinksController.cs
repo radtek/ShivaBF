@@ -68,8 +68,8 @@ namespace SHF.Controllers
         [HttpGet]
         [Access]
         [OutputCache(Duration = busConstant.Settings.Cache.OutputCache.TimeOut.S300)]
-        [Route("Configurations/Master/Footer/FooterLinks")]
-        [Route("Settings/Master/Footer/FooterLinks")]
+        [Route("Configurations/Master/Footer/FooterLinksDetails")]
+        [Route("Settings/Master/Footer/FooterLinksDetails")]
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId<long>();
@@ -324,36 +324,40 @@ namespace SHF.Controllers
                             }
                             else
                             {
-                                var entity = new EntityModel.FooterLinks();
-                                entity.ID = Convert.ToInt64(model.ID);
-                                entity.FooterBlockMaster_Id = model.FooterBlockMaster_Id;
-                                entity.AncharTagTitle = model.AncharTagTitle;
-                                entity.AncharTagUrl = model.AncharTagUrl;
-                                entity.DisplayIndex = model.DisplayIndex;
-                                entity.Url = model.Url;
-                                entity.Metadata = model.Metadata;
-                                entity.MetaDescription = model.MetaDescription;
-                                entity.Keyword = model.Keyword;
-                                entity.TotalViews = model.TotalViews;
-                                entity.IsActive = model.IsActive;
-                                entity.Tenant_ID = model.Tenant_ID;
-
-                                entity.Tenant = null;
-                                entity.FooterBlockMaster = null;
-
-                                this.businessFooterLinks.Update(entity);
-
-                                transaction.Complete();
-
-                                var response = new JsonResponse<dynamic>()
+                                var entity = this.businessFooterLinks.GetById(Convert.ToInt64(model.ID));
+                                if (entity.IsNotNull())
                                 {
-                                    Type = busConstant.Messages.Type.RESPONSE,
-                                    Title = busConstant.Messages.Title.SUCCESS,
-                                    Icon = busConstant.Messages.Icon.SUCCESS,
-                                    Message = busConstant.Messages.Type.Responses.SAVE,
-                                    MessageCode = busConstant.Messages.MessageCode.SAVE
-                                };
-                                return Json(response);
+                                    // entity.ID = Convert.ToInt64(model.ID);
+                                    entity.FooterBlockMaster_Id = model.FooterBlockMaster_Id;
+                                    entity.AncharTagTitle = model.AncharTagTitle;
+                                    entity.AncharTagUrl = model.AncharTagUrl;
+                                    entity.DisplayIndex = model.DisplayIndex;
+                                    entity.Url = model.Url;
+                                    entity.Metadata = model.Metadata;
+                                    entity.MetaDescription = model.MetaDescription;
+                                    entity.Keyword = model.Keyword;
+                                    entity.TotalViews = model.TotalViews;
+                                    entity.IsActive = model.IsActive;
+                                    entity.Tenant_ID = model.Tenant_ID;
+
+                                    entity.Tenant = null;
+                                    entity.FooterBlockMaster = null;
+
+                                    this.businessFooterLinks.Update(entity);
+
+                                    transaction.Complete();
+                                }
+
+                                    var response = new JsonResponse<dynamic>()
+                                    {
+                                        Type = busConstant.Messages.Type.RESPONSE,
+                                        Title = busConstant.Messages.Title.SUCCESS,
+                                        Icon = busConstant.Messages.Icon.SUCCESS,
+                                        Message = busConstant.Messages.Type.Responses.SAVE,
+                                        MessageCode = busConstant.Messages.MessageCode.SAVE
+                                    };
+                                    return Json(response);
+                                
                             }
 
                         }

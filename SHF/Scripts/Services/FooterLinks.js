@@ -155,7 +155,7 @@ angular.module(config.app).service('FooterLinksCRUD', function ($http) {
                     targets: 13
                 },
                 {
-                    name: FooterLinks_tenant."FooterLinks.UpdatedBy",
+                    name: "FooterLinks_tenant.FooterLinks.UpdatedBy",
                     data: "UpdatedBy",
                     title: "Modified&nbsp;By",
                     render: $.fn.dataTable.render.text(),
