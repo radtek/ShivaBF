@@ -499,7 +499,75 @@ namespace SHF.Controllers
                             var entities = this.businessBlogCommentsDetails.FindBy(product => product.Tenant_ID == Id).Select(x => new ViewModel.BlogCommentsDetailsDropdownListViewModel
                             {
                                 ID = x.ID,
-                                RelatedBlogTitle = x.Blog_Id.ToString()
+                                BlogComment = x.Comment.ToString()
+                            });
+
+                            if (entities.IsNotNull())
+                            {
+                                var response = new JsonResponse<IEnumerable<ViewModel.BlogCommentsDetailsDropdownListViewModel>>()
+                                {
+                                    Type = busConstant.Messages.Type.RESPONSE,
+                                    Entity = entities
+                                };
+
+                                transaction.Complete();
+                                return Json(response, JsonRequestBehavior.AllowGet);
+                            }
+                            else
+                            {
+                                var response = new JsonResponse<dynamic>()
+                                {
+                                    Type = busConstant.Messages.Type.EXCEPTION,
+                                    Message = busConstant.Messages.Type.Exceptions.NOT_FOUND,
+                                    StatusCode = Convert.ToInt32(HttpStatusCode.NotFound)
+                                };
+                                transaction.Complete();
+
+                                return Json(response, JsonRequestBehavior.AllowGet);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Dispose();
+                        throw;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return ExceptionResponse(ex);
+            }
+        }
+
+        [HttpGet]
+        [Route("Get/BlogCommentsDetails/GetBlogComments")]
+        public async Task<ActionResult> GetBlogComments(long Id, long Blog_Id)
+        {
+            try
+            {
+                using (var transaction = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadUncommitted }))
+                {
+                    try
+                    {
+                        if (Id == default(long))
+                        {
+                            transaction.Complete();
+                            var response = new JsonResponse<dynamic>()
+                            {
+                                Type = busConstant.Messages.Type.EXCEPTION,
+                                Message = busConstant.Messages.Type.Exceptions.BAD_REQUEST,
+                                StatusCode = Convert.ToInt32(HttpStatusCode.BadRequest)
+                            };
+
+                            return Json(response, JsonRequestBehavior.AllowGet);
+                        }
+                        else
+                        {
+                            var entities = this.businessBlogCommentsDetails.FindBy(BC => BC.Tenant_ID == Id && BC.Blog_Id== Blog_Id).Select(x => new ViewModel.BlogCommentsDetailsDropdownListViewModel
+                            {
+                                ID = x.ID,
+                                BlogComment = x.Comment.ToString()
                             });
 
                             if (entities.IsNotNull())

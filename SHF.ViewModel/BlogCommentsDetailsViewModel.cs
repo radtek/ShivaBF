@@ -49,7 +49,7 @@ namespace SHF.ViewModel
 
     public class BlogCommentsDetailsDropdownListViewModel
     {
-        public System.String Blog_Id { get; set; }
+        public System.String BlogComment { get; set; }
         public System.Int64 ID { get; set; }
 
     }

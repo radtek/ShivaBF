@@ -10,6 +10,7 @@
         $scope.Entity = {};
         $scope.CommentsReplyCreateOrEditViewModel = {};
         $scope.AllTenants = [];
+
         $scope.AllBlogTitle = [];
         $scope.AllBlogComment = [];
         $scope.CommentsReplyCreateOrEditViewModel.SelectedTenant_ID = -1;
@@ -329,13 +330,13 @@ $scope.BindAllBlogTitleDropDownList = function (tenantId) {
                 });
         }  
 
-$scope.LoadAllComment = function () {
+$scope.LoadAllBlogComment = function () {
     let tenantId = $scope.CommentsReplyCreateOrEditViewModel.Tenant_ID;
     let blogId = $scope.CommentsReplyCreateOrEditViewModel.Blog_Id;
     $scope.BindAllCommentDropDownList(tenantId, blogId);
         }
 
-$scope.BindAllCommentDropDownList = function (tenantId) {
+$scope.BindAllCommentDropDownList = function (tenantId,blogId) {
     let promise = BlogCommentsDetailsCRUD.LoadBlogCommentsDropdown(tenantId, blogId)
             promise.then(
                 function success(response) {
