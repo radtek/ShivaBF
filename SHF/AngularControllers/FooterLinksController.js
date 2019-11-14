@@ -1,5 +1,5 @@
-﻿angular.module(config.app).controller('FooterBlockMasterCtrl', ['$scope', '$http', '$window', 'FooterBlockMasterCRUD', 'TenantCRUD','CustomService',
-    function ($scope, $http, $window, FooterBlockMasterCRUD, TenantCRUD,CustomService) {      
+﻿angular.module(config.app).controller('FooterLinksCtrl', ['$scope', '$http', '$window', 'FooterLinksCRUD', 'TenantCRUD','CustomService','FooterBlockMasterCRUD',
+    function ($scope, $http, $window, FooterLinksCRUD, TenantCRUD,CustomService,FooterBlockMasterCRUD) {      
         $scope.path = "";
         $scope.errors = {};
         $scope.errors.pageError = {};
@@ -8,26 +8,21 @@
         $scope.errors.formErrors = null;
         $scope.Processing = false;
         $scope.Entity = {};
-        $scope.FooterBlockMasterCreateOrEditViewModel = {};
+        $scope.FooterLinksCreateOrEditViewModel = {};
         $scope.AllTenants = [];
+ $scope.AllHeading = [];
        
-        $scope.FooterBlockMasterCreateOrEditViewModel.SelectedTenant_ID = -1;
-        $scope.FooterBlockMasterCreateOrEditViewModel.SelectedUnitOfMesurment = -1;
+        $scope.FooterLinksCreateOrEditViewModel.SelectedTenant_ID = -1;
+        $scope.FooterLinksCreateOrEditViewModel.SelectedFooterBlockMaster_Id = -1;
         $scope.Cookie_Tenant_ID = parseInt(CustomService.GetTenantID());
-        $scope.FooterBlockMasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
-
-        $scope.fileList = [];
-        $scope.curFile;
-        $scope.ImageProperty = {
-            file: ''
-        }
+        $scope.FooterLinksCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
 
         $scope.BindGrid = function () {
-            FooterBlockMasterCRUD.LoadTable();
+            FooterLinksCRUD.LoadTable();
         }      
 
         $scope.PageLoad = function () {
-            $scope.FooterBlockMasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
+            $scope.FooterLinksCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
             $scope.BindGrid();
         }
 
@@ -38,7 +33,7 @@
 
 
         $scope.Clear = function () {
-            $scope.FooterBlockMasterCreateOrEditViewModel = {};
+            $scope.FooterLinksCreateOrEditViewModel = {};
             $scope.Reset();
         }            
       
@@ -56,11 +51,11 @@
             $scope.Clear();
             if ($scope.Cookie_Tenant_ID <= 0) {
                 $scope.BindTenantDropDownList();
-                $scope.FooterBlockMasterCreateOrEditViewModel.SelectedTenant_ID = -1;
-                $scope.FooterBlockMasterCreateOrEditViewModel.SelectedUnitOfMesurment = -1;
+                $scope.FooterLinksCreateOrEditViewModel.SelectedTenant_ID = -1;
+                $scope.FooterLinksCreateOrEditViewModel.SelectedUnitOfMesurment = -1;
             } else {
-                $scope.FooterBlockMasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
-                $scope.BindUnitOfMeasurementDropDownList($scope.FooterBlockMasterCreateOrEditViewModel.Tenant_ID);
+                $scope.FooterLinksCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
+                $scope.BindUnitOfMeasurementDropDownList($scope.FooterLinksCreateOrEditViewModel.Tenant_ID);
             }
             $('#modal-createOredit').modal('show');
         }
@@ -146,7 +141,7 @@
             if ($scope.Cookie_Tenant_ID <= 0) {
                 $scope.BindTenantDropDownList();
             }
-            $http.get("/Get/FooterBlockMaster/EditAsync?Id=" + Id
+            $http.get("/Get/FooterLinks/EditAsync?Id=" + Id
             ).then(
                 function success(response) {
                     switch (response.data.Type) {
@@ -155,7 +150,7 @@
                             console.log(response);
                             break;
                         case 'Response':
-                            $scope.FooterBlockMasterCreateOrEditViewModel = response.data.Entity;
+                            $scope.FooterLinksCreateOrEditViewModel = response.data.Entity;
                             $('#modal-createOredit').modal('show');
                             console.clear();
                             break;
@@ -190,8 +185,8 @@
             $scope.Processing = true;
             $scope.path = "";
             if ($scope.myForm.$valid) {
-                $scope.path = ($scope.FooterBlockMasterCreateOrEditViewModel.ID == undefined || $scope.FooterBlockMasterCreateOrEditViewModel.ID == null || $scope.FooterBlockMasterCreateOrEditViewModel.ID == 0) ? "/Post/FooterBlockMaster/CreateAsync" : "/Post/FooterBlockMaster/EditAsync";
-                $http.post($scope.path, $scope.FooterBlockMasterCreateOrEditViewModel,
+                $scope.path = ($scope.FooterLinksCreateOrEditViewModel.ID == undefined || $scope.FooterLinksCreateOrEditViewModel.ID == null || $scope.FooterLinksCreateOrEditViewModel.ID == 0) ? "/Post/FooterLinks/CreateAsync" : "/Post/FooterLinks/EditAsync";
+                $http.post($scope.path, $scope.FooterLinksCreateOrEditViewModel,
                     {
                         headers: { 'RequestVerificationToken': $scope.antiForgeryToken }
                     }
@@ -270,56 +265,46 @@
         $scope.ShowConfirm = function (modelId) {
             CustomService.OnClose(modelId);
         }
-        $scope.FileUploadAsync = function () {
-            $scope.fileList = [];
-            $scope.curFile;
-            $scope.ImageProperty = {
-                file: ''
-            }
-            $('#modal-fileupload').modal('show');
-        }
+        
 
-        $scope.FileUploadAsyncPost = function ()
-        {
-debugger;
-            var val = $scope.FileUpload($scope.fileList, "/Post/TenantCommonUploadFile/FileUpload", $scope.FooterBlockMasterCreateOrEditViewModel.Tenant_ID);
-            if (val !== "Error" && val !== "") {
-                $scope.FooterBlockMasterCreateOrEditViewModel.IconPath = val;
-                $('#modal-fileupload').modal('hide');
-            }
-            else {
-                $scope.FooterBlockMasterCreateOrEditViewModel.IconPath ="";
-            }
-            $scope.fileList = [];
-            $scope.curFile;
-            $scope.ImageProperty = {
-                file: ''
-            }
-            
-        }
 
-        /***************************************for file Upload****************************/
+$scope.LoadAllHeading = function (tenantId) {
+            let promise = FooterBlockMasterCRUD.LoadHeadingDropdown(tenantId)
+            promise.then(
+                function success(response) {
+                    switch (response.data.Type) {
+                        case 'Exception':
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                        case 'Response':
+                            $scope.AllHeading = response.data.Entity;
+                            console.clear();
+                            break;
+                        default:
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                    }
+                }, function errors(response) {
+                    switch (response.data.Type) {
+                        case 'Exception':
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                        case 'Validation':
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                        default:
+                            CustomService.Notify(response.data.Message);
+                            console.log(response);
+                            break;
+                    }
 
+                });
+        }  
        
-        $scope.setFile = function (element) {
-            $scope.fileList = [];
-
-            var files = element.files;
-            for (var i = 0; i < files.length; i++) {
-                $scope.ImageProperty.file = files[i];
-                $scope.fileList.push($scope.ImageProperty);
-                $scope.ImageProperty = {};
-            }
-        }
-
-       $scope.FileUpload = function (fileList, url, tenantId) {
-             CustomService.FnUploadFile(fileList, url, tenantId).then(function (value) {
-           alert(value);
-        });
-        }
-
-        /**************************end File Upload************************/
-
         $scope.PageLoad();
               
 

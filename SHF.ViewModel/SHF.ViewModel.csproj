@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="ActiveMenuViewModel.cs" />
     <Compile Include="CommentsReplyViewModel.cs" />
+    <Compile Include="FooterLinksViewModel.cs" />
     <Compile Include="FooterBlockMasterViewModel.cs" />
     <Compile Include="BannerMasterViewModel.cs" />
     <Compile Include="FrontEnd\CommonMasterViewModel.cs" />

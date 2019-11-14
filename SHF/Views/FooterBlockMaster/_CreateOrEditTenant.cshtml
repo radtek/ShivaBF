@@ -23,8 +23,7 @@
                 <div class="box box-primary">
                     <div class="box-body">
                         <input id="antiForgeryToken" data-ng-model="antiForgeryToken" type="hidden" data-ng-init="antiForgeryToken='@AntiForgeryToken()'" />
-
-                       
+                      
                         <div class="form-group" ng-class="{'has-error': ((myForm.Heading.$touched && myForm.Heading.$invalid) || (!myForm.Heading.$pristine && myForm.Heading.$invalid))}">
                             <label>Heading</label>
                             <input type="text" class="form-control" name="Heading" ng-model="FooterBlockMasterCreateOrEditViewModel.Heading" ng-disabled="Processing" autocomplete="off" placeholder="Enter Heading" tooltip-placement="top" uib-tooltip="Enter Heading" />
@@ -89,7 +88,6 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.Keyword" ng-bind="errors.formErrors.Keyword"></span>
                         </div>
-
 
                     </div>
                 </div>

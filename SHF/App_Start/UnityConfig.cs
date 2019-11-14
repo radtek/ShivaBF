@@ -79,6 +79,7 @@ namespace SHF
             container.RegisterType<Business.Interface.IBlogBannerNavigationsDetails, Business.BusinessLogic.BlogBannerNavigationsDetails>();
             container.RegisterType<Business.Interface.IRelatedBlogsMapping, Business.BusinessLogic.RelatedBlogsMapping>();
             container.RegisterType<Business.Interface.IFooterBlockMaster, Business.BusinessLogic.FooterBlockMaster>();
+            container.RegisterType<Business.Interface.IFooterLinks, Business.BusinessLogic.FooterLinks>();
             container.RegisterType<Business.Interface.IHomePageBanner, Business.BusinessLogic.HomePageBanner>();
             container.RegisterType<Business.Interface.IHomePageSection1, Business.BusinessLogic.HomePageSection1>();
             container.RegisterType<Business.Interface.IHomePageSection2, Business.BusinessLogic.HomePageSection2>();

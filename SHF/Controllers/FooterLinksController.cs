@@ -23,19 +23,19 @@ using SHF.Helpers;
 namespace SHF.Controllers
 {
     [AllowAnonymous]
-    public class FooterBlockMasterController : BaseController
+    public class FooterLinksController : BaseController
     {
         #region [Field & Contructor]
 
         private Business.Interface.IMessage businessMessage;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private Business.Interface.IFooterBlockMaster businessFooterBlockMaster;
+        private Business.Interface.IFooterLinks businessFooterLinks;
 
-        public FooterBlockMasterController(Business.Interface.IMessage Imessage, Business.Interface.IFooterBlockMaster IFooterBlockMaster)
+        public FooterLinksController(Business.Interface.IMessage Imessage, Business.Interface.IFooterLinks IFooterLinks)
         {
             this.businessMessage = Imessage;
-            this.businessFooterBlockMaster = IFooterBlockMaster;
+            this.businessFooterLinks = IFooterLinks;
 
         }
         public ApplicationSignInManager SignInManager
@@ -64,12 +64,12 @@ namespace SHF.Controllers
         #endregion
 
         #region [ActionMethod]
-        // GET: FooterBlockMaster Master
+        // GET: FooterLinks Master
         [HttpGet]
         [Access]
         [OutputCache(Duration = busConstant.Settings.Cache.OutputCache.TimeOut.S300)]
-        [Route("Configurations/Master/Footer/FooterBlockMaster")]
-        [Route("Settings/Master/Footer/FooterBlockMaster")]
+        [Route("Configurations/Master/Footer/FooterLinks")]
+        [Route("Settings/Master/Footer/FooterLinks")]
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId<long>();
@@ -77,11 +77,11 @@ namespace SHF.Controllers
             return View();
         }
         [HttpPost]
-        [Route("Post/FooterBlockMaster/IndexAsync")]
+        [Route("Post/FooterLinks/IndexAsync")]
         [ValidateAntiForgeryTokens]
         public async Task<ActionResult> IndexAsync()
         {
-            BusinessResultViewModel<ViewModel.FooterBlockMasterIndexViewModel> businessResult;
+            BusinessResultViewModel<ViewModel.FooterLinksIndexViewModel> businessResult;
             try
             {
                 using (var transaction = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadUncommitted }))
@@ -91,7 +91,7 @@ namespace SHF.Controllers
                         long? tenantId = Request.Form.AllKeys.Contains("tenantId") ? Convert.ToInt64(Request.Form.GetValues("tenantId").FirstOrDefault()) : busConstant.Numbers.Integer.ZERO;
                         tenantId = tenantId > busConstant.Numbers.Integer.ZERO ? tenantId : null;
 
-                        businessResult = this.businessFooterBlockMaster.Index(Request, tenantId);
+                        businessResult = this.businessFooterLinks.Index(Request, tenantId);
                         transaction.Complete();
                     }
                     catch
@@ -124,8 +124,8 @@ namespace SHF.Controllers
         [HttpPost]
         [Audit]
         [ValidateAntiForgeryTokens]
-        [Route("Post/FooterBlockMaster/CreateAsync")]
-        public async Task<ActionResult> CreateAsync(ViewModel.FooterBlockMasterCreateOrEditViewModel model)
+        [Route("Post/FooterLinks/CreateAsync")]
+        public async Task<ActionResult> CreateAsync(ViewModel.FooterLinksCreateOrEditViewModel model)
         {
             try
             {
@@ -139,7 +139,7 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var productId = businessFooterBlockMaster.FindBy(FooterBlockMaster => FooterBlockMaster.Tenant_ID == model.Tenant_ID && FooterBlockMaster.ID==model.ID).FirstOrDefault();
+                            var productId = businessFooterLinks.FindBy(FooterLinks => FooterLinks.Tenant_ID == model.Tenant_ID && FooterLinks.ID==model.ID).FirstOrDefault();
 
                             if (productId.IsNotNull())
                             {
@@ -156,8 +156,10 @@ namespace SHF.Controllers
                             }
                             else
                             {
-                                var entity = new EntityModel.FooterBlockMaster();
-                                entity.Heading = model.Heading;
+                                var entity = new EntityModel.FooterLinks();
+                                entity.FooterBlockMaster_Id = model.FooterBlockMaster_Id;
+                                entity.AncharTagTitle = model.AncharTagTitle;
+                                entity.AncharTagUrl = model.AncharTagUrl;
                                 entity.DisplayIndex = model.DisplayIndex;
                                 entity.Url = model.Url;
                                 entity.Metadata = model.Metadata;
@@ -168,7 +170,8 @@ namespace SHF.Controllers
                                 entity.Tenant_ID = model.Tenant_ID;
                               
                                 entity.Tenant = null;
-                                this.businessFooterBlockMaster.Create(entity);
+                                entity.FooterBlockMaster = null;
+                                this.businessFooterLinks.Create(entity);
                                 transaction.Complete();
 
                                 var response = new JsonResponse<dynamic>()
@@ -203,7 +206,7 @@ namespace SHF.Controllers
 
 
         [HttpGet]
-        [Route("Get/FooterBlockMaster/EditAsync")]
+        [Route("Get/FooterLinks/EditAsync")]
         public async Task<ActionResult> EditAsync(long Id)
         {
             try
@@ -226,13 +229,15 @@ namespace SHF.Controllers
                         }
                         else
                         {
-                            var entity = this.businessFooterBlockMaster.GetById(Id);
+                            var entity = this.businessFooterLinks.GetById(Id);
 
                             if (entity.IsNotNull())
                             {
-                                var model = new ViewModel.FooterBlockMasterCreateOrEditViewModel();
+                                var model = new ViewModel.FooterLinksCreateOrEditViewModel();
                                 model.ID = entity.ID;
-                                model.Heading = entity.Heading;
+                                model.FooterBlockMaster_Id = entity.FooterBlockMaster_Id;
+                                model.AncharTagTitle = entity.AncharTagTitle;
+                                model.AncharTagUrl = entity.AncharTagUrl;
                                 model.DisplayIndex = entity.DisplayIndex;
                                 model.Url = entity.Url;
                                 model.Metadata = entity.Metadata;
@@ -242,7 +247,7 @@ namespace SHF.Controllers
                                 model.IsActive = entity.IsActive;
                                 model.Tenant_ID = Convert.ToInt64(entity.Tenant_ID);
 
-                                var response = new JsonResponse<FooterBlockMasterCreateOrEditViewModel>()
+                                var response = new JsonResponse<FooterLinksCreateOrEditViewModel>()
                                 {
                                     Type = busConstant.Messages.Type.RESPONSE,
                                     Entity = model
@@ -285,8 +290,8 @@ namespace SHF.Controllers
         [HttpPost]
         [Audit]
         [ValidateAntiForgeryTokens]
-        [Route("Post/FooterBlockMaster/EditAsync")]
-        public async Task<ActionResult> EditAsync(ViewModel.FooterBlockMasterCreateOrEditViewModel model)
+        [Route("Post/FooterLinks/EditAsync")]
+        public async Task<ActionResult> EditAsync(ViewModel.FooterLinksCreateOrEditViewModel model)
         {
             try
             {
@@ -302,9 +307,9 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var FooterBlockMasterData = businessFooterBlockMaster.FindBy(FooterBlockMaster => FooterBlockMaster.Tenant_ID == model.Tenant_ID && FooterBlockMaster.ID == model.ID).FirstOrDefault();
+                            var FooterLinksData = businessFooterLinks.FindBy(FooterLinks => FooterLinks.Tenant_ID == model.Tenant_ID && FooterLinks.ID == model.ID).FirstOrDefault();
 
-                            if (FooterBlockMasterData.IsNull())
+                            if (FooterLinksData.IsNull())
                             {
                                 transaction.Complete();
                                 var response = new JsonResponse<dynamic>()
@@ -319,9 +324,11 @@ namespace SHF.Controllers
                             }
                             else
                             {
-                                var entity = new EntityModel.FooterBlockMaster();
+                                var entity = new EntityModel.FooterLinks();
                                 entity.ID = Convert.ToInt64(model.ID);
-                                entity.Heading = model.Heading;
+                                entity.FooterBlockMaster_Id = model.FooterBlockMaster_Id;
+                                entity.AncharTagTitle = model.AncharTagTitle;
+                                entity.AncharTagUrl = model.AncharTagUrl;
                                 entity.DisplayIndex = model.DisplayIndex;
                                 entity.Url = model.Url;
                                 entity.Metadata = model.Metadata;
@@ -330,9 +337,11 @@ namespace SHF.Controllers
                                 entity.TotalViews = model.TotalViews;
                                 entity.IsActive = model.IsActive;
                                 entity.Tenant_ID = model.Tenant_ID;
-                                entity.Tenant = null;
 
-                                this.businessFooterBlockMaster.Update(entity);
+                                entity.Tenant = null;
+                                entity.FooterBlockMaster = null;
+
+                                this.businessFooterLinks.Update(entity);
 
                                 transaction.Complete();
 
@@ -366,8 +375,8 @@ namespace SHF.Controllers
             }
         }
         [HttpGet]
-        [Route("Get/FooterBlockMaster/DropdownListbyTenantAsync")]
-        public async Task<ActionResult> GetFooterBlockMasterByTenantIdAsync(long Id)
+        [Route("Get/FooterLinks/DropdownListbyTenantAsync")]
+        public async Task<ActionResult> GetFooterLinksByTenantIdAsync(long Id)
         {
             try
             {
@@ -389,15 +398,15 @@ namespace SHF.Controllers
                         }
                         else
                         {
-                            var entities = this.businessFooterBlockMaster.GetAll().Where(FooterBlockMaster => FooterBlockMaster.Tenant_ID == Id).Select(x => new ViewModel.FooterBlockMasterDropdownListViewModel
+                            var entities = this.businessFooterLinks.GetAll().Where(FooterLinks => FooterLinks.Tenant_ID == Id).Select(x => new ViewModel.FooterLinksDropdownListViewModel
                             {
                                 ID = x.ID,
-                                Heading = x.Heading
+                                AncharTagTitle = x.AncharTagTitle
                             });
 
                             if (entities.IsNotNull())
                             {
-                                var response = new JsonResponse<IEnumerable<ViewModel.FooterBlockMasterDropdownListViewModel>>()
+                                var response = new JsonResponse<IEnumerable<ViewModel.FooterLinksDropdownListViewModel>>()
                                 {
                                     Type = busConstant.Messages.Type.RESPONSE,
                                     Entity = entities

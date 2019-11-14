@@ -215,7 +215,7 @@ angular.module(config.app).service('FooterBlockMasterCRUD', function ($http) {
     }
 
 
-    this.LoadBankDropdown = function BankDropdown(tenantId) {
+    this.LoadHeadingDropdown = function HeadingDropdown(tenantId) {
         let request = $http({
             method: "get",
             url: "/Get/FooterBlockMaster/DropdownListbyTenantAsync?Id=" + tenantId
