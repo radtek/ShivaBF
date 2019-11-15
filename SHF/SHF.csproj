@@ -10814,6 +10814,7 @@
     <Content Include="Scripts\Services\FooterLinks.js" />
     <Content Include="Scripts\Services\FooterBlockMaster.js" />
     <Content Include="Scripts\Services\BannerMaster.js" />
+    <Content Include="Scripts\Services\HomePageSection5.js" />
     <Content Include="Scripts\Services\HomePageSection3Features.js" />
     <Content Include="Scripts\Services\HomePageSection4Testimonails.js" />
     <Content Include="Scripts\Services\HomePageSection4.js" />

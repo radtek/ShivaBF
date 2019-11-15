@@ -130,7 +130,7 @@
                         case 'Response':
                             $scope.HomePageSection4TestimonailsCreateOrEditViewModel = response.data.Entity;
                            // $scope.LoadAllCategory();
-                            $scope.LoadAllSubSubCategory();
+                           // $scope.LoadAllSubSubCategory();
                             //$scope.HomePageSection4TestimonailsCreateOrEditViewModel.Category_ID=$scope.HomePageSection4TestimonailsCreateOrEditViewModel.Category_ID;
                             $('#modal-createOredit').modal('show');
                             console.clear();

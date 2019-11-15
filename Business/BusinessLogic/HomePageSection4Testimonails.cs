@@ -50,10 +50,10 @@ namespace SHF.Business.BusinessLogic
                         || x.HomePageSection4Testimonails.Name.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection4Testimonails.Designation.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection4Testimonails.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
-                        || x.HomePageSection4Testimonails.Url.ToString().CaseInsensitiveContains(searchValue)
-                        || x.HomePageSection4Testimonails.Metadata.ToString().CaseInsensitiveContains(searchValue)
-                        || x.HomePageSection4Testimonails.MetaDescription.ToString().CaseInsensitiveContains(searchValue)
-                        || x.HomePageSection4Testimonails.Keyword.ToString().CaseInsensitiveContains(searchValue)
+                        || x.HomePageSection4Testimonails.Url.CaseInsensitiveContains(searchValue)
+                        || x.HomePageSection4Testimonails.Metadata.CaseInsensitiveContains(searchValue)
+                        || x.HomePageSection4Testimonails.MetaDescription.CaseInsensitiveContains(searchValue)
+                        || x.HomePageSection4Testimonails.Keyword.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection4Testimonails.TotalViews.ToString().CaseInsensitiveContains(searchValue)
                         || x.HomePageSection4Testimonails.Tenant.Name.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection4Testimonails.CreatedBy.CaseInsensitiveContains(searchValue)
@@ -72,10 +72,10 @@ namespace SHF.Business.BusinessLogic
                         || x.HomePageSection4Testimonails.Name.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection4Testimonails.Designation.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection4Testimonails.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
-                        || x.HomePageSection4Testimonails.Url.ToString().CaseInsensitiveContains(searchValue)
-                        || x.HomePageSection4Testimonails.Metadata.ToString().CaseInsensitiveContains(searchValue)
-                        || x.HomePageSection4Testimonails.MetaDescription.ToString().CaseInsensitiveContains(searchValue)
-                        || x.HomePageSection4Testimonails.Keyword.ToString().CaseInsensitiveContains(searchValue)
+                        || x.HomePageSection4Testimonails.Url.CaseInsensitiveContains(searchValue)
+                        || x.HomePageSection4Testimonails.Metadata.CaseInsensitiveContains(searchValue)
+                        || x.HomePageSection4Testimonails.MetaDescription.CaseInsensitiveContains(searchValue)
+                        || x.HomePageSection4Testimonails.Keyword.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection4Testimonails.TotalViews.ToString().CaseInsensitiveContains(searchValue)
                         || x.HomePageSection4Testimonails.Tenant.Name.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection4Testimonails.CreatedBy.CaseInsensitiveContains(searchValue)
@@ -92,10 +92,10 @@ namespace SHF.Business.BusinessLogic
                         Name = x.HomePageSection4Testimonails.Name,
                         Designation = x.HomePageSection4Testimonails.Designation,
                         DisplayIndex = x.HomePageSection4Testimonails.DisplayIndex,
-                        Url= x.HomePageSection4Testimonails.Url.ToString(),
-                        Metadata= x.HomePageSection4Testimonails.Metadata.ToString(),
-                        MetaDescription= x.HomePageSection4Testimonails.MetaDescription.ToString(),
-                        Keyword= x.HomePageSection4Testimonails.Keyword.ToString(),
+                        Url= x.HomePageSection4Testimonails.Url,
+                        Metadata= x.HomePageSection4Testimonails.Metadata,
+                        MetaDescription= x.HomePageSection4Testimonails.MetaDescription,
+                        Keyword= x.HomePageSection4Testimonails.Keyword,
                         TotalViews= x.HomePageSection4Testimonails.TotalViews,
                         IsActive = x.HomePageSection4Testimonails.IsActive,
                         TenantName = x.HomePageSection4Testimonails.Tenant.Name,
