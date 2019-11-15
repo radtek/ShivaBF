@@ -18,13 +18,6 @@
        
         $scope.Cookie_Tenant_ID = parseInt(CustomService.GetTenantID());
         $scope.HomePageSection2CreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;     
-
-       $scope.fileList = [];
-        $scope.curFile;
-        $scope.ImageProperty = {
-            file: ''
-        }
-
         $scope.Preview = function (url) {
           CustomService.PreviewOpen(url);
             }
@@ -130,7 +123,7 @@
                         case 'Response':
                             $scope.HomePageSection2CreateOrEditViewModel = response.data.Entity;
                            // $scope.LoadAllCategory();
-                            $scope.LoadAllSubSubCategory();
+                           // $scope.LoadAllSubSubCategory();
                             //$scope.HomePageSection2CreateOrEditViewModel.Category_ID=$scope.HomePageSection2CreateOrEditViewModel.Category_ID;
                             $('#modal-createOredit').modal('show');
                             console.clear();

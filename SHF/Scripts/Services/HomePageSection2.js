@@ -112,6 +112,14 @@ angular.module(config.app).service('HomePageSection2CRUD', function ($http) {
                      width: "25%",
                      targets: 7
                  },
+ {
+                     name: "HomePageSection2.DisplayOnHome",
+                     data: "DisplayOnHome",
+                     title: "DisplayOnHome",
+                     render: $.fn.dataTable.render.text(),
+                     width: "25%",
+                     targets: 11
+                 },
                  {
                      name: "HomePageSection2.DisplayIndex",
                      data: "DisplayIndex",
