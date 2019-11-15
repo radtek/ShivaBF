@@ -25,7 +25,7 @@
                         <input id="antiForgeryToken" data-ng-model="antiForgeryToken" type="hidden" data-ng-init="antiForgeryToken='@AntiForgeryToken()'" />
                         <div class="form-group" ng-class="{'has-error': (myForm.TenantName.$touched || myForm.TenantName.$dirty)  && myForm.TenantName.$invalid}">
                             <label>Tenant Name</label>
-                            <select name="TenantName" ng-model="HomePageSection3CreateOrEditViewModel.Tenant_ID" class="form-control" style="width: 100%;" ng-options="x.ID as x.Name for x in AllTenants" ng-change="LoadAllSubSubCategory()" required>
+                            <select name="TenantName" ng-model="HomePageSection3CreateOrEditViewModel.Tenant_ID" class="form-control" style="width: 100%;" ng-options="x.ID as x.Name for x in AllTenants"  required>
                                 <option value="" ng-selected="HomePageSection3CreateOrEditViewModel.SelectedTenant_ID < 0">-- Select --</option>
                             </select>
                             <div class="help-block" ng-messages="myForm.TenantName.$error" ng-if="myForm.TenantName.$touched || myForm.TenantName.$dirty && myForm.TenantName.$invalid">
@@ -33,7 +33,7 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.Tenant_ID" ng-bind="errors.formErrors.Tenant_ID"></span>
                         </div>
-                       
+
                         <div class="form-group" ng-class="{'has-error': ((myForm.BannerImagePath.$touched && myForm.BannerImagePath.$invalid) || (!myForm.BannerImagePath.$pristine && myForm.BannerImagePath.$invalid))}">
                             <label>Banner Image Path</label>
                             <div class="col-md-12" style="text-align:center;margin-bottom:10px;">
@@ -48,7 +48,7 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.BannerImagePath" ng-bind="errors.formErrors.BannerImagePath"></span>
                         </div>
-                       
+
                         <div class="form-group" ng-class="{'has-error': ((myForm.Heading1.$touched && myForm.Heading1.$invalid) || (!myForm.Heading1.$pristine && myForm.Heading1.$invalid))}">
                             <label>Heading1</label>
                             <input type="text" class="form-control" name="Heading1" ng-model="HomePageSection3CreateOrEditViewModel.Heading1" ng-disabled="Processing" autocomplete="off" placeholder="Enter Heading1" tooltip-placement="top" uib-tooltip="Enter Heading1" />
@@ -65,8 +65,8 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.Heading2" ng-bind="errors.formErrors.Heading2"></span>
                         </div>
-                        
-                        
+
+
                         <div class="form-group" ng-class="{'has-error': ((myForm.Heading3.$touched && myForm.Heading3.$invalid) || (!myForm.Heading3.$pristine && myForm.Heading3.$invalid))}">
                             <label>Heading3</label>
                             <input type="text" class="form-control" name="Heading3" ng-model="HomePageSection3CreateOrEditViewModel.Heading3" ng-disabled="Processing" autocomplete="off" placeholder="Enter Heading3" tooltip-placement="top" uib-tooltip="Enter Heading3" />
@@ -75,7 +75,13 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.Heading3" ng-bind="errors.formErrors.Heading3"></span>
                         </div>
-                        
+                        <div class="form-group">
+                            <label>Is Display On Home</label><br />
+                            <label>
+                                <!--https://codepen.io/mosluce/pen/yYmXGz-->
+                                <input icheck type="checkbox" class="form-control" ng-model="HomePageSection3CreateOrEditViewModel.DisplayOnHome" ng-checked="HomePageSection3CreateOrEditViewModel.DisplayOnHome"><span style="margin-left: 10px;">{{HomePageSection3CreateOrEditViewModel.DisplayOnHome ? 'Yes' : 'No'}} </span>
+                            </label>
+                        </div>
                         <div class="form-group" ng-class="{'has-error': (myForm.DisplayIndex.$touched || myForm.DisplayIndex.$dirty)  && myForm.DisplayIndex.$invalid}">
                             <label>Display Index</label>
                             <input type="number" min="0" class="form-control" name="DisplayIndex" ng-model="HomePageSection3CreateOrEditViewModel.DisplayIndex" ng-disabled="Processing" autocomplete="off" placeholder="Enter Display Index" tooltip-placement="top" uib-tooltip="Enter Display Index" required />
@@ -84,7 +90,6 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.DisplayIndex" ng-bind="errors.formErrors.DisplayIndex"></span>
                         </div>
-
                         <div class="form-group">
                             <label>Is Active</label><br />
                             <label>
@@ -102,7 +107,7 @@
                         </div>
                         <div class="form-group" ng-class="{'has-error': (myForm.Url.$touched || myForm.Url.$dirty)  && myForm.Url.$invalid}">
                             <label>Url</label>
-                            <input type="text" class="form-control" name="Url" ng-model="HomePageSection3CreateOrEditViewModel.Url" readonly ng-disabled="Processing" autocomplete="off" placeholder="Enter Url" tooltip-placement="top" uib-tooltip="Enter Url" required />
+                            <input type="text" class="form-control" name="Url" ng-model="HomePageSection3CreateOrEditViewModel.Url" ng-disabled="Processing" autocomplete="off" placeholder="Enter Url" tooltip-placement="top" uib-tooltip="Enter Url" required />
                             <div class="help-block" ng-messages="myForm.Url.$error" ng-if="myForm.Url.$touched || myForm.Url.$dirty && myForm.Url.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>

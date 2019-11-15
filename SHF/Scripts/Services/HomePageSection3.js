@@ -103,6 +103,14 @@ angular.module(config.app).service('HomePageSection3CRUD', function ($http) {
                     width: "25%",
                     targets: 7
                 },
+               {
+                     name: "HomePageSection3.DisplayOnHome",
+                     data: "DisplayOnHome",
+                     title: "DisplayOnHome",
+                     render: $.fn.dataTable.render.text(),
+                     width: "25%",
+                     targets: 11
+                 },
                  {
                      name: "HomePageSection3.DisplayIndex",
                      data: "DisplayIndex",
