@@ -52,10 +52,10 @@ namespace SHF.Business.BusinessLogic
                         || x.HomePageSection1.AncharTagTitle.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection1.AncharTagUrl.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection1.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
-                        || x.HomePageSection1.Url.ToString().CaseInsensitiveContains(searchValue)
-                        || x.HomePageSection1.Metadata.ToString().CaseInsensitiveContains(searchValue)
-                        || x.HomePageSection1.MetaDescription.ToString().CaseInsensitiveContains(searchValue)
-                        || x.HomePageSection1.Keyword.ToString().CaseInsensitiveContains(searchValue)
+                        || x.HomePageSection1.Url.CaseInsensitiveContains(searchValue)
+                        || x.HomePageSection1.Metadata.CaseInsensitiveContains(searchValue)
+                        || x.HomePageSection1.MetaDescription.CaseInsensitiveContains(searchValue)
+                        || x.HomePageSection1.Keyword.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection1.TotalViews.ToString().CaseInsensitiveContains(searchValue)
                         || x.HomePageSection1.Tenant.Name.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection1.CreatedBy.CaseInsensitiveContains(searchValue)
@@ -76,10 +76,10 @@ namespace SHF.Business.BusinessLogic
                         || x.HomePageSection1.AncharTagTitle.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection1.AncharTagUrl.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection1.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
-                        || x.HomePageSection1.Url.ToString().CaseInsensitiveContains(searchValue)
-                        || x.HomePageSection1.Metadata.ToString().CaseInsensitiveContains(searchValue)
-                        || x.HomePageSection1.MetaDescription.ToString().CaseInsensitiveContains(searchValue)
-                        || x.HomePageSection1.Keyword.ToString().CaseInsensitiveContains(searchValue)
+                        || x.HomePageSection1.Url.CaseInsensitiveContains(searchValue)
+                        || x.HomePageSection1.Metadata.CaseInsensitiveContains(searchValue)
+                        || x.HomePageSection1.MetaDescription.CaseInsensitiveContains(searchValue)
+                        || x.HomePageSection1.Keyword.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection1.TotalViews.ToString().CaseInsensitiveContains(searchValue)
                         || x.HomePageSection1.Tenant.Name.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection1.CreatedBy.CaseInsensitiveContains(searchValue)
@@ -92,15 +92,15 @@ namespace SHF.Business.BusinessLogic
                     .Select(x => new ViewModel.HomePageSection1IndexViewModel 
                     {
                         ID = x.HomePageSection1.ID,
-                        BannerImagePath = String.Concat(busConstant.Settings.CMSPath.TENANAT_UPLOAD_DIRECTORY, x.tenant.ID) + "/" + x.HomePageSection1.BannerImagePath,
+                        BannerImagePath = String.Concat(busConstant.Settings.CMSPath.TENANAT_UPLOAD_DIRECTORY, x.HomePageSection1.Tenant_ID) + "/" + x.HomePageSection1.BannerImagePath,
                         ShortDescription = x.HomePageSection1.ShortDescription,
                         LongtDescription = x.HomePageSection1.LongtDescription,
                         AncharTagTitle = x.HomePageSection1.AncharTagTitle,
                         AncharTagUrl = x.HomePageSection1.AncharTagUrl,
                         DisplayIndex = x.HomePageSection1.DisplayIndex,
-                        Url= x.HomePageSection1.Url.ToString(),
-                        Metadata= x.HomePageSection1.Metadata.ToString(),
-                        MetaDescription= x.HomePageSection1.MetaDescription.ToString(),
+                        Url= x.HomePageSection1.Url,
+                        Metadata= x.HomePageSection1.Metadata,
+                        MetaDescription= x.HomePageSection1.MetaDescription,
                         Keyword= x.HomePageSection1.Keyword.ToString(),
                         TotalViews= x.HomePageSection1.TotalViews,
                         IsActive = x.HomePageSection1.IsActive,

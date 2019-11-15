@@ -162,7 +162,7 @@ angular.module(config.app).service('HomePageSection1CRUD', function ($http) {
                   targets: 17
               },
                 {
-                    name: "tenant.Name",
+                    name: "HomePageSection1.Tenant.Name",
                     data: "TenantName",
                     title: "Tenant&nbsp;Name",
                     render: $.fn.dataTable.render.text(),

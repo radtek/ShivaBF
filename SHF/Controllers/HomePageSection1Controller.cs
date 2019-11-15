@@ -75,8 +75,8 @@ namespace SHF.Controllers
         [HttpGet]
         [Access]
         [OutputCache(Duration = busConstant.Settings.Cache.OutputCache.TimeOut.S300)]
-        [Route("Configurations/Master/HomePage/HomePageSection1")]
-        [Route("Settings/Master/HomePage/HomePageSection1")]
+        [Route("Configurations/Master/HomePage/Section1")]
+        [Route("Settings/Master/HomePage/Section1")]
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId<long>();
@@ -84,7 +84,7 @@ namespace SHF.Controllers
             return View();
         }
         [HttpPost]
-        [Route("Post/HomePage/IndexAsync")]
+        [Route("Post/HomePageSection1/IndexAsync")]
         [ValidateAntiForgeryTokens]
         public async Task<ActionResult> IndexAsync()
         {
@@ -169,10 +169,11 @@ namespace SHF.Controllers
                                 entity.BannerImagePath = model.BannerImagePath;
                                 entity.ShortDescription = model.ShortDescription;
                                 entity.LongtDescription = model.LongtDescription;
-                                
                                 entity.AncharTagTitle = model.AncharTagTitle;
                                 entity.AncharTagUrl = model.AncharTagUrl;
                                 entity.DisplayIndex = model.DisplayIndex;
+                                entity.DisplayOnHome = model.DisplayOnHome;
+                                
                                 entity.Url= model.Url;
                                 entity.Metadata= model.Metadata;
                                 entity.MetaDescription= model.MetaDescription;
@@ -251,7 +252,7 @@ namespace SHF.Controllers
                                 model.BannerImagePath = entity.BannerImagePath;
                                 model.ShortDescription = entity.ShortDescription;
                                 model.LongtDescription = entity.LongtDescription;
-                               
+                                model.DisplayOnHome = entity.DisplayOnHome;
                                 model.AncharTagTitle = entity.AncharTagTitle;
                                 model.AncharTagUrl = entity.AncharTagUrl;
                                 model.DisplayIndex = entity.DisplayIndex;
@@ -349,7 +350,7 @@ namespace SHF.Controllers
                                     entity.BannerImagePath = model.BannerImagePath;
                                     entity.ShortDescription = model.ShortDescription;
                                     entity.LongtDescription = model.LongtDescription;
-                                    
+                                    entity.DisplayOnHome = model.DisplayOnHome;
                                     entity.AncharTagTitle = model.AncharTagTitle;
                                     entity.AncharTagUrl = model.AncharTagUrl;
                                     entity.DisplayIndex = model.DisplayIndex;

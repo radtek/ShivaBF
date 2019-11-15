@@ -75,8 +75,8 @@ namespace SHF.Controllers
         [HttpGet]
         [Access]
         [OutputCache(Duration = busConstant.Settings.Cache.OutputCache.TimeOut.S300)]
-        [Route("Configurations/Master/HomePage/HomePageSection3Features")]
-        [Route("Settings/Master/HomePage/HomePageSection3Features")]
+        [Route("Configurations/Master/HomePage/Section3Features")]
+        [Route("Settings/Master/HomePage/Section3Features")]
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId<long>();
@@ -84,7 +84,7 @@ namespace SHF.Controllers
             return View();
         }
         [HttpPost]
-        [Route("Post/HomePage/IndexAsync")]
+        [Route("Post/Section3Features/IndexAsync")]
         [ValidateAntiForgeryTokens]
         public async Task<ActionResult> IndexAsync()
         {
