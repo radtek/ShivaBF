@@ -75,8 +75,8 @@ namespace SHF.Controllers
         [HttpGet]
         [Access]
         [OutputCache(Duration = busConstant.Settings.Cache.OutputCache.TimeOut.S300)]
-        [Route("Configurations/Master/HomePage/Section4Testimonails")]
-        [Route("Settings/Master/HomePage/Section4Testimonails")]
+        [Route("Configurations/Master/HomePage/Section4Testimonials")]
+        [Route("Settings/Master/HomePage/Section4Testimonials")]
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId<long>();

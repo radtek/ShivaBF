@@ -52,10 +52,10 @@ namespace SHF.Business.BusinessLogic
                         || x.HomePageSection3Features.AncharTagTitle.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection3Features.AncharTagUrl.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection3Features.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
-                        || x.HomePageSection3Features.Url.ToString().CaseInsensitiveContains(searchValue)
-                        || x.HomePageSection3Features.Metadata.ToString().CaseInsensitiveContains(searchValue)
-                        || x.HomePageSection3Features.MetaDescription.ToString().CaseInsensitiveContains(searchValue)
-                        || x.HomePageSection3Features.Keyword.ToString().CaseInsensitiveContains(searchValue)
+                        || x.HomePageSection3Features.Url.CaseInsensitiveContains(searchValue)
+                        || x.HomePageSection3Features.Metadata.CaseInsensitiveContains(searchValue)
+                        || x.HomePageSection3Features.MetaDescription.CaseInsensitiveContains(searchValue)
+                        || x.HomePageSection3Features.Keyword.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection3Features.TotalViews.ToString().CaseInsensitiveContains(searchValue)
                         || x.HomePageSection3Features.Tenant.Name.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection3Features.CreatedBy.CaseInsensitiveContains(searchValue)
@@ -76,10 +76,10 @@ namespace SHF.Business.BusinessLogic
                         || x.HomePageSection3Features.AncharTagTitle.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection3Features.AncharTagUrl.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection3Features.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
-                        || x.HomePageSection3Features.Url.ToString().CaseInsensitiveContains(searchValue)
-                        || x.HomePageSection3Features.Metadata.ToString().CaseInsensitiveContains(searchValue)
-                        || x.HomePageSection3Features.MetaDescription.ToString().CaseInsensitiveContains(searchValue)
-                        || x.HomePageSection3Features.Keyword.ToString().CaseInsensitiveContains(searchValue)
+                        || x.HomePageSection3Features.Url.CaseInsensitiveContains(searchValue)
+                        || x.HomePageSection3Features.Metadata.CaseInsensitiveContains(searchValue)
+                        || x.HomePageSection3Features.MetaDescription.CaseInsensitiveContains(searchValue)
+                        || x.HomePageSection3Features.Keyword.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection3Features.TotalViews.ToString().CaseInsensitiveContains(searchValue)
                         || x.HomePageSection3Features.Tenant.Name.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection3Features.CreatedBy.CaseInsensitiveContains(searchValue)
@@ -98,10 +98,10 @@ namespace SHF.Business.BusinessLogic
                         AncharTagTitle = x.HomePageSection3Features.AncharTagTitle,
                         AncharTagUrl = x.HomePageSection3Features.AncharTagUrl,
                         DisplayIndex = x.HomePageSection3Features.DisplayIndex,
-                        Url= x.HomePageSection3Features.Url.ToString(),
-                        Metadata= x.HomePageSection3Features.Metadata.ToString(),
-                        MetaDescription= x.HomePageSection3Features.MetaDescription.ToString(),
-                        Keyword= x.HomePageSection3Features.Keyword.ToString(),
+                        Url= x.HomePageSection3Features.Url,
+                        Metadata= x.HomePageSection3Features.Metadata,
+                        MetaDescription= x.HomePageSection3Features.MetaDescription,
+                        Keyword= x.HomePageSection3Features.Keyword,
                         TotalViews= x.HomePageSection3Features.TotalViews,
                         IsActive = x.HomePageSection3Features.IsActive,
                         TenantName = x.HomePageSection3Features.Tenant.Name,
