@@ -53,10 +53,10 @@ namespace SHF.Business.BusinessLogic
                         || x.HomePageBanner.AncharTagTitle.CaseInsensitiveContains(searchValue)
                         || x.HomePageBanner.AncharTagUrl.CaseInsensitiveContains(searchValue)
                         || x.HomePageBanner.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
-                        || x.HomePageBanner.Url.ToString().CaseInsensitiveContains(searchValue)
-                        || x.HomePageBanner.Metadata.ToString().CaseInsensitiveContains(searchValue)
-                        || x.HomePageBanner.MetaDescription.ToString().CaseInsensitiveContains(searchValue)
-                        || x.HomePageBanner.Keyword.ToString().CaseInsensitiveContains(searchValue)
+                        || x.HomePageBanner.Url.CaseInsensitiveContains(searchValue)
+                        || x.HomePageBanner.Metadata.CaseInsensitiveContains(searchValue)
+                        || x.HomePageBanner.MetaDescription.CaseInsensitiveContains(searchValue)
+                        || x.HomePageBanner.Keyword.CaseInsensitiveContains(searchValue)
                         || x.HomePageBanner.TotalViews.ToString().CaseInsensitiveContains(searchValue)
                         || x.HomePageBanner.Tenant.Name.CaseInsensitiveContains(searchValue)
                         || x.HomePageBanner.CreatedBy.CaseInsensitiveContains(searchValue)
@@ -78,10 +78,10 @@ namespace SHF.Business.BusinessLogic
                         || x.HomePageBanner.AncharTagTitle.CaseInsensitiveContains(searchValue)
                         || x.HomePageBanner.AncharTagUrl.CaseInsensitiveContains(searchValue)
                         || x.HomePageBanner.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
-                        || x.HomePageBanner.Url.ToString().CaseInsensitiveContains(searchValue)
-                        || x.HomePageBanner.Metadata.ToString().CaseInsensitiveContains(searchValue)
-                        || x.HomePageBanner.MetaDescription.ToString().CaseInsensitiveContains(searchValue)
-                        || x.HomePageBanner.Keyword.ToString().CaseInsensitiveContains(searchValue)
+                        || x.HomePageBanner.Url.CaseInsensitiveContains(searchValue)
+                        || x.HomePageBanner.Metadata.CaseInsensitiveContains(searchValue)
+                        || x.HomePageBanner.MetaDescription.CaseInsensitiveContains(searchValue)
+                        || x.HomePageBanner.Keyword.CaseInsensitiveContains(searchValue)
                         || x.HomePageBanner.TotalViews.ToString().CaseInsensitiveContains(searchValue)
                         || x.HomePageBanner.Tenant.Name.CaseInsensitiveContains(searchValue)
                         || x.HomePageBanner.CreatedBy.CaseInsensitiveContains(searchValue)
@@ -101,10 +101,10 @@ namespace SHF.Business.BusinessLogic
                         AncharTagTitle = x.HomePageBanner.AncharTagTitle,
                         AncharTagUrl = x.HomePageBanner.AncharTagUrl,
                         DisplayIndex = x.HomePageBanner.DisplayIndex,
-                        Url= x.HomePageBanner.Url.ToString(),
-                        Metadata= x.HomePageBanner.Metadata.ToString(),
-                        MetaDescription= x.HomePageBanner.MetaDescription.ToString(),
-                        Keyword= x.HomePageBanner.Keyword.ToString(),
+                        Url= x.HomePageBanner.Url,
+                        Metadata= x.HomePageBanner.Metadata,
+                        MetaDescription= x.HomePageBanner.MetaDescription,
+                        Keyword= x.HomePageBanner.Keyword,
                         TotalViews= x.HomePageBanner.TotalViews,
                         IsActive = x.HomePageBanner.IsActive,
                         TenantName = x.HomePageBanner.Tenant.Name,

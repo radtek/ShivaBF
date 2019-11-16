@@ -84,7 +84,7 @@ namespace SHF.Controllers
             return View();
         }
         [HttpPost]
-        [Route("Post/HomePage/IndexAsync")]
+        [Route("Post/HomePageBanner/IndexAsync")]
         [ValidateAntiForgeryTokens]
         public async Task<ActionResult> IndexAsync()
         {
@@ -146,7 +146,7 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var catId = businessHomePageBanner.FindBy(Categories => Categories.Tenant_ID == model.Tenant_ID ).FirstOrDefault();
+                            var catId = businessHomePageBanner.FindBy(Categories => Categories.Tenant_ID == model.Tenant_ID && Categories.ID == model.ID).FirstOrDefault();
 
                             if (catId.IsNotNull())
                             {

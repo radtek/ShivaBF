@@ -15,7 +15,7 @@
                 <button type="button" class="close" ng-click="ShowConfirm('modal-createOredit')" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Services2  Master Details</h4>
+                <h4 class="modal-title">Home Page Banner Details</h4>
             </div>
             <div class="modal-body">
                 <!-- general form elements -->
@@ -23,7 +23,7 @@
                 <div class="box box-primary">
                     <div class="box-body">
                         <input id="antiForgeryToken" data-ng-model="antiForgeryToken" type="hidden" data-ng-init="antiForgeryToken='@AntiForgeryToken()'" />
-                        
+                     
                         <div class="form-group" ng-class="{'has-error': ((myForm.BannerImagePath.$touched && myForm.BannerImagePath.$invalid) || (!myForm.BannerImagePath.$pristine && myForm.BannerImagePath.$invalid))}">
                             <label>Banner Image Path</label>
                             <div class="col-md-12" style="text-align:center;margin-bottom:10px;">
@@ -106,7 +106,7 @@
                         </div>
                         <div class="form-group" ng-class="{'has-error': (myForm.Url.$touched || myForm.Url.$dirty)  && myForm.Url.$invalid}">
                             <label>Url</label>
-                            <input type="text" class="form-control" name="Url" ng-model="HomePageBannerCreateOrEditViewModel.Url" readonly ng-disabled="Processing" autocomplete="off" placeholder="Enter Url" tooltip-placement="top" uib-tooltip="Enter Url" required />
+                            <input type="text" class="form-control" name="Url" ng-model="HomePageBannerCreateOrEditViewModel.Url" ng-disabled="Processing" autocomplete="off" placeholder="Enter Url" tooltip-placement="top" uib-tooltip="Enter Url" required />
                             <div class="help-block" ng-messages="myForm.Url.$error" ng-if="myForm.Url.$touched || myForm.Url.$dirty && myForm.Url.$invalid">
                                 <div ng-messages-include="~/ValidationMessages.html"></div>
                             </div>
