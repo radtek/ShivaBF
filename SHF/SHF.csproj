@@ -396,6 +396,7 @@
     <Compile Include="Controllers\FooterLinksController.cs" />
     <Compile Include="Controllers\FooterBlockMasterController.cs" />
     <Compile Include="Controllers\BannerMasterController.cs" />
+    <Compile Include="Controllers\Front\HomePageController.cs" />
     <Compile Include="Controllers\Front\CommonController.cs" />
     <Compile Include="Controllers\Front\BlogsController.cs" />
     <Compile Include="Controllers\Front\ServiceType7Controller.cs" />

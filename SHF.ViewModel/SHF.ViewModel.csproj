@@ -47,6 +47,7 @@
     <Compile Include="FooterLinksViewModel.cs" />
     <Compile Include="FooterBlockMasterViewModel.cs" />
     <Compile Include="BannerMasterViewModel.cs" />
+    <Compile Include="FrontEnd\HomePageViewModel.cs" />
     <Compile Include="FrontEnd\CommonMasterViewModel.cs" />
     <Compile Include="FrontEnd\BlogsMasterViewModel.cs" />
     <Compile Include="FrontEnd\MenusMasterViewModel.cs" />
