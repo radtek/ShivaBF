@@ -13,7 +13,12 @@
         $scope.AllSubSubCategories = [];
         $scope.AllSection2ID = [];
         $scope.AllPriceFeatures = [];
-
+        $scope.Preview = function (url) {
+            CustomService.PreviewOpen(url);
+        }
+        $scope.Guide = function () {
+        $('#modal-guide').modal('show');
+        } 
        
         $scope.Services5Section2MasterFeaturesDetailsCreateOrEditViewModel.SelectedTenant_ID = -1;
         $scope.Services5Section2MasterFeaturesDetailsCreateOrEditViewModel.SelectedSubSubCat_Id = -1;

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{984DF8E6-44C6-48D6-B48E-3A3B0750503D}"
 EndProject
@@ -33,6 +33,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Image Guide", "Image Guide"
 		SHF\Media\Uploads\Tenants\1\Service1Master.png = SHF\Media\Uploads\Tenants\1\Service1Master.png
 		..\..\Users\Developer\Downloads\Service2Master.png = ..\..\Users\Developer\Downloads\Service2Master.png
 		..\..\Users\MTDEV16\Downloads\Service3Master.png = ..\..\Users\MTDEV16\Downloads\Service3Master.png
+		C:\Users\Developer\Downloads\Service5Master.png = C:\Users\Developer\Downloads\Service5Master.png
 	EndProjectSection
 EndProject
 Global

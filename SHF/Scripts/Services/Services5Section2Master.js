@@ -198,6 +198,17 @@ angular.module(config.app).service('Services5Section2MasterCRUD', function ($htt
                     width: "11%",
                     targets: 17
                 },
+{
+                    name: null,
+                    data: "Preview",
+                    title: "&nbsp;Preview&nbsp;&nbsp;",
+                    orderable: false,
+                    render: function (data, type, row, meta) {
+                        return '<button type="button" class="btn btn-xs text-success btn-preview"><i title="Preview" class="fa fa-eye"></i></button>';
+                    },
+                    width: "2%",
+                    targets: 37
+                },
                 {
                     name: null,
                     data: "ID",
@@ -241,6 +252,11 @@ angular.module(config.app).service('Services5Section2MasterCRUD', function ($htt
             let rowData = oTable.row($(this).parents('tr')).data();
             let scope = angular.element(document.getElementById('Services5Section2MasterControllerScope')).scope();
             scope.DeleteAsync(rowData.ID);
+        });
+$('#grdTable tbody').on('click', '.btn-preview', function () {
+            let rowData = oTable.row($(this).parents('tr')).data();
+            let scope = angular.element(document.getElementById('Services5Section2MasterControllerScope')).scope();
+             scope.Preview('services5.html?u='+rowData.ServiceUrl+'#divOurProducts');
         });
     }
 

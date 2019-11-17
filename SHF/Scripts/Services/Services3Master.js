@@ -268,6 +268,17 @@ angular.module(config.app).service('Services3MasterCRUD', function ($http) {
                     width: "11%",
                     targets: 22
                 },
+               {
+                    name: null,
+                    data: "Preview",
+                    title: "&nbsp;Preview&nbsp;&nbsp;",
+                    orderable: false,
+                    render: function (data, type, row, meta) {
+                        return '<button type="button" class="btn btn-xs text-success btn-preview"><i title="Preview" class="fa fa-eye"></i></button>';
+                    },
+                    width: "2%",
+                    targets: 37
+                },
                 {
                     name: null,
                     data: "ID",
@@ -311,6 +322,11 @@ angular.module(config.app).service('Services3MasterCRUD', function ($http) {
             let rowData = oTable.row($(this).parents('tr')).data();
             let scope = angular.element(document.getElementById('Services3MasterControllerScope')).scope();
             scope.DeleteAsync(rowData.ID);
+        });
+$('#grdTable tbody').on('click', '.btn-preview', function () {
+            let rowData = oTable.row($(this).parents('tr')).data();
+            let scope = angular.element(document.getElementById('Services3MasterControllerScope')).scope();
+            scope.Preview('services3.html?u='+rowData.Url);
         });
     }
 
