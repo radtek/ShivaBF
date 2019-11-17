@@ -43,7 +43,7 @@ angular.module(config.app).service('Services4Section345MasterButtonsChildCRUD', 
                     targets: 0
                 },
                 {
-                    name: "Services4Section345MasterButtonsChild_tenant_Services4Section345Master.Services4Section345MasterButtonsChild_tenant.Services4Section345MasterButtonsChild.ID",
+                    name: "Services4Section345MasterButtonsChild_tenant_Services4Section345Master_SubSubCategoryMaster.Services4Section345MasterButtonsChild_tenant_Services4Section345Master.Services4Section345MasterButtonsChild_tenant.Services4Section345MasterButtonsChild.ID",
                     data: "ID",
                     title: "ID",
                     render: $.fn.dataTable.render.text(),
@@ -51,7 +51,7 @@ angular.module(config.app).service('Services4Section345MasterButtonsChildCRUD', 
                     targets: 1
                 },
 {
-    name: "SubSubCategoryMaster.SubSubCategoryName",
+    name: "Services4Section345MasterButtonsChild_tenant_Services4Section345Master_SubSubCategoryMaster.SubSubCategoryMaster.SubSubCategoryName",
     data: "SubSubCategory_Name",
     title: "Sub&nbsp;Sub&nbsp;Category",
     render: $.fn.dataTable.render.text(),
@@ -59,7 +59,7 @@ angular.module(config.app).service('Services4Section345MasterButtonsChildCRUD', 
     targets: 2
 },
                 {
-                    name: "Services4Section345MasterButtonsChild_tenant_Services4Section345Master.Services4Section345MasterButtonsChild_tenant.Services4Section345MasterButtonsChild.FeatureDescription",
+                    name: "Services4Section345MasterButtonsChild_tenant_Services4Section345Master_SubSubCategoryMaster.Services4Section345MasterButtonsChild_tenant_Services4Section345Master.Services4Section345MasterButtonsChild_tenant.Services4Section345MasterButtonsChild.FeatureDescription",
                     data: "FeatureDescription",
                     title: "FeatureDescription",
                     render: $.fn.dataTable.render.text(),
@@ -67,7 +67,7 @@ angular.module(config.app).service('Services4Section345MasterButtonsChildCRUD', 
                     targets: 2
                 },
 {
-    name: "Services4Section345MasterButtonsChild_tenant_Services4Section345Master.Services4Section345MasterButtonsChild_tenant.Services4Section345MasterButtonsChild.S4S345M_id",
+    name: "Services4Section345MasterButtonsChild_tenant_Services4Section345Master_SubSubCategoryMaster.Services4Section345MasterButtonsChild_tenant_Services4Section345Master.Services4Section345MasterButtonsChild_tenant.Services4Section345MasterButtonsChild.S4S345M_id",
     data: "S4S345M_id",
     title: "Section345&nbsp;ID",
     render: $.fn.dataTable.render.text(),
@@ -75,7 +75,7 @@ angular.module(config.app).service('Services4Section345MasterButtonsChildCRUD', 
     targets: 4
 },
 {
-    name: "Services4Section345MasterButtonsChild_tenant_Services4Section345Master.Services4Section345MasterButtonsChild_tenant.Services4Section345MasterButtonsChild.Price",
+    name: "Services4Section345MasterButtonsChild_tenant_Services4Section345Master_SubSubCategoryMaster.Services4Section345MasterButtonsChild_tenant_Services4Section345Master.Services4Section345MasterButtonsChild_tenant.Services4Section345MasterButtonsChild.Price",
     data: "Price",
     title: "Price",
     render: $.fn.dataTable.render.text(),
@@ -83,7 +83,7 @@ angular.module(config.app).service('Services4Section345MasterButtonsChildCRUD', 
     targets: 5
 },
 {
-    name: "Services4Section345MasterButtonsChild_tenant_Services4Section345Master.Services4Section345MasterButtonsChild_tenant.Services4Section345MasterButtonsChild.AncharTagTitle",
+    name: "Services4Section345MasterButtonsChild_tenant_Services4Section345Master_SubSubCategoryMaster.Services4Section345MasterButtonsChild_tenant_Services4Section345Master.Services4Section345MasterButtonsChild_tenant.Services4Section345MasterButtonsChild.AncharTagTitle",
     data: "AncharTagTitle",
     title: "AncharTagTitle",
     render: $.fn.dataTable.render.text(),
@@ -91,7 +91,7 @@ angular.module(config.app).service('Services4Section345MasterButtonsChildCRUD', 
     targets: 6
 },
 {
-    name: "Services4Section345MasterButtonsChild_tenant_Services4Section345Master.Services4Section345MasterButtonsChild_tenant.Services4Section345MasterButtonsChild.AncharTagUrl",
+    name: "Services4Section345MasterButtonsChild_tenant_Services4Section345Master_SubSubCategoryMaster.Services4Section345MasterButtonsChild_tenant_Services4Section345Master.Services4Section345MasterButtonsChild_tenant.Services4Section345MasterButtonsChild.AncharTagUrl",
     data: "AncharTagUrl",
     title: "AncharTagUrl",
     render: $.fn.dataTable.render.text(),
@@ -101,7 +101,7 @@ angular.module(config.app).service('Services4Section345MasterButtonsChildCRUD', 
 
 
  {
-     name: "Services4Section345MasterButtonsChild_tenant_Services4Section345Master.Services4Section345MasterButtonsChild_tenant.Services4Section345MasterButtonsChild.Url",
+     name: "Services4Section345MasterButtonsChild_tenant_Services4Section345Master_SubSubCategoryMaster.Services4Section345MasterButtonsChild_tenant_Services4Section345Master.Services4Section345MasterButtonsChild_tenant.Services4Section345MasterButtonsChild.Url",
      data: "Url",
      title: "Url",
      render: $.fn.dataTable.render.text(),
@@ -109,7 +109,7 @@ angular.module(config.app).service('Services4Section345MasterButtonsChildCRUD', 
      targets: 5
  },
  {
-     name: "Services4Section345MasterButtonsChild_tenant_Services4Section345Master.Services4Section345MasterButtonsChild_tenant.Services4Section345MasterButtonsChild.Metadata",
+     name: "Services4Section345MasterButtonsChild_tenant_Services4Section345Master_SubSubCategoryMaster.Services4Section345MasterButtonsChild_tenant_Services4Section345Master.Services4Section345MasterButtonsChild_tenant.Services4Section345MasterButtonsChild.Metadata",
      data: "Metadata",
      title: "Metadata",
      render: $.fn.dataTable.render.text(),
@@ -117,7 +117,7 @@ angular.module(config.app).service('Services4Section345MasterButtonsChildCRUD', 
      targets: 6
  },
 {
-    name: "Services4Section345MasterButtonsChild_tenant_Services4Section345Master.Services4Section345MasterButtonsChild_tenant.Services4Section345MasterButtonsChild.MetaDescription",
+    name: "Services4Section345MasterButtonsChild_tenant_Services4Section345Master_SubSubCategoryMaster.Services4Section345MasterButtonsChild_tenant_Services4Section345Master.Services4Section345MasterButtonsChild_tenant.Services4Section345MasterButtonsChild.MetaDescription",
     data: "MetaDescription",
     title: "MetaDescription",
     render: $.fn.dataTable.render.text(),
@@ -125,7 +125,7 @@ angular.module(config.app).service('Services4Section345MasterButtonsChildCRUD', 
     targets: 7
 },
 {
-    name: "Services4Section345MasterButtonsChild_tenant_Services4Section345Master.Services4Section345MasterButtonsChild_tenant.Services4Section345MasterButtonsChild.Keyword",
+    name: "Services4Section345MasterButtonsChild_tenant_Services4Section345Master_SubSubCategoryMaster.Services4Section345MasterButtonsChild_tenant_Services4Section345Master.Services4Section345MasterButtonsChild_tenant.Services4Section345MasterButtonsChild.Keyword",
     data: "Keyword",
     title: "Keyword",
     render: $.fn.dataTable.render.text(),
@@ -134,7 +134,7 @@ angular.module(config.app).service('Services4Section345MasterButtonsChildCRUD', 
 },
 
               {
-                  name: "Services4Section345MasterButtonsChild_tenant_Services4Section345Master.Services4Section345MasterButtonsChild_tenant.Services4Section345MasterButtonsChild.IsActive",
+                  name: "Services4Section345MasterButtonsChild_tenant_Services4Section345Master_SubSubCategoryMaster.Services4Section345MasterButtonsChild_tenant_Services4Section345Master.Services4Section345MasterButtonsChild_tenant.Services4Section345MasterButtonsChild.IsActive",
                   data: "IsActive",
                   title: "IsActive",
                   render: $.fn.dataTable.render.text(),
@@ -151,7 +151,7 @@ angular.module(config.app).service('Services4Section345MasterButtonsChildCRUD', 
                     targets: 11
                 },
                 {
-                    name: "Services4Section345MasterButtonsChild_tenant_Services4Section345Master.Services4Section345MasterButtonsChild_tenant.Services4Section345MasterButtonsChild.CreatedBy",
+                    name: "Services4Section345MasterButtonsChild_tenant_Services4Section345Master_SubSubCategoryMaster.Services4Section345MasterButtonsChild_tenant_Services4Section345Master.Services4Section345MasterButtonsChild_tenant.Services4Section345MasterButtonsChild.CreatedBy",
                     data: "CreatedBy",
                     title: "Created&nbsp;By",
                     render: $.fn.dataTable.render.text(),
@@ -159,7 +159,7 @@ angular.module(config.app).service('Services4Section345MasterButtonsChildCRUD', 
                     targets: 12
                 },
                 {
-                    name: "Services4Section345MasterButtonsChild_tenant_Services4Section345Master.Services4Section345MasterButtonsChild_tenant.Services4Section345MasterButtonsChild.CreatedOn",
+                    name: "Services4Section345MasterButtonsChild_tenant_Services4Section345Master_SubSubCategoryMaster.Services4Section345MasterButtonsChild_tenant_Services4Section345Master.Services4Section345MasterButtonsChild_tenant.Services4Section345MasterButtonsChild.CreatedOn",
                     data: "CreatedOn",
                     title: "Created&nbsp;On",
                     render: function (data, type, row, meta) {
@@ -171,7 +171,7 @@ angular.module(config.app).service('Services4Section345MasterButtonsChildCRUD', 
                     targets: 13
                 },
                 {
-                    name: "Services4Section345MasterButtonsChild_tenant_Services4Section345Master.Services4Section345MasterButtonsChild_tenant.Services4Section345MasterButtonsChild.UpdatedBy",
+                    name: "Services4Section345MasterButtonsChild_tenant_Services4Section345Master_SubSubCategoryMaster.Services4Section345MasterButtonsChild_tenant_Services4Section345Master.Services4Section345MasterButtonsChild_tenant.Services4Section345MasterButtonsChild.UpdatedBy",
                     data: "UpdatedBy",
                     title: "Modified&nbsp;By",
                     render: $.fn.dataTable.render.text(),
@@ -179,7 +179,7 @@ angular.module(config.app).service('Services4Section345MasterButtonsChildCRUD', 
                     targets: 14
                 },
                 {
-                    name: "Services4Section345MasterButtonsChild_tenant_Services4Section345Master.Services4Section345MasterButtonsChild_tenant.Services4Section345MasterButtonsChild.UpdatedOn",
+                    name: "Services4Section345MasterButtonsChild_tenant_Services4Section345Master_SubSubCategoryMaster.Services4Section345MasterButtonsChild_tenant_Services4Section345Master.Services4Section345MasterButtonsChild_tenant.Services4Section345MasterButtonsChild.UpdatedOn",
                     data: "UpdatedOn",
                     title: "Modified&nbsp;On",
                     render: function (data, type, row, meta) {
@@ -188,6 +188,17 @@ angular.module(config.app).service('Services4Section345MasterButtonsChildCRUD', 
                     },
                     width: "11%",
                     targets: 15
+                },
+{
+                    name: null,
+                    data: "Preview",
+                    title: "&nbsp;Preview&nbsp;&nbsp;",
+                    orderable: false,
+                    render: function (data, type, row, meta) {
+                        return '<button type="button" class="btn btn-xs text-success btn-preview"><i title="Preview" class="fa fa-eye"></i></button>';
+                    },
+                    width: "2%",
+                    targets: 37
                 },
                 {
                     name: null,
@@ -232,6 +243,11 @@ angular.module(config.app).service('Services4Section345MasterButtonsChildCRUD', 
             let rowData = oTable.row($(this).parents('tr')).data();
             let scope = angular.element(document.getElementById('Services4Section345MasterButtonsChildControllerScope')).scope();
             scope.DeleteAsync(rowData.ID);
+        });
+$('#grdTable tbody').on('click', '.btn-preview', function () {
+            let rowData = oTable.row($(this).parents('tr')).data();
+            let scope = angular.element(document.getElementById('Services4Section345MasterButtonsChildControllerScope')).scope();
+            scope.Preview('services4.html?u='+rowData.ServiceUrl+'#divPriceMasterSection3');
         });
     }
 

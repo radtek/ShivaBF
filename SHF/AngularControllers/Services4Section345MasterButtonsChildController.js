@@ -14,7 +14,12 @@
         $scope.AllSection345ID = [];
         $scope.AllPriceFeatures = [];
 
-       
+        $scope.Preview = function (url) {
+          CustomService.PreviewOpen(url);
+            }
+       $scope.Guide = function () {
+            $('#modal-guide').modal('show');
+        }
         $scope.Services4Section345MasterButtonsChildCreateOrEditViewModel.SelectedTenant_ID = -1;
         $scope.Services4Section345MasterButtonsChildCreateOrEditViewModel.SelectedSubSubCat_Id = -1;
         $scope.Services4Section345MasterButtonsChildCreateOrEditViewModel.SelectedS5S2M_Id = -1;

@@ -43,7 +43,7 @@ angular.module(config.app).service('Services4Section345MasterFeaturesDetailsCRUD
                     targets: 0
                 },
                 {
-                    name: "Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master.Services4Section345MasterFeaturesDetails_tenant.Services4Section345MasterFeaturesDetails.ID",
+                    name: "Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master_SubSubCategoryMaster.Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master.Services4Section345MasterFeaturesDetails_tenant.Services4Section345MasterFeaturesDetails.ID",
                     data: "ID",
                     title: "ID",
                     render: $.fn.dataTable.render.text(),
@@ -51,7 +51,7 @@ angular.module(config.app).service('Services4Section345MasterFeaturesDetailsCRUD
                     targets: 1
                 },
 {
-                    name: "SubSubCategoryMaster.SubSubCategoryName",
+                    name: "Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master_SubSubCategoryMaster.SubSubCategoryMaster.SubSubCategoryName",
                     data: "SubSubCategory_Name",
                     title: "Sub&nbsp;Sub&nbsp;Category",
                     render: $.fn.dataTable.render.text(),
@@ -59,7 +59,7 @@ angular.module(config.app).service('Services4Section345MasterFeaturesDetailsCRUD
                     targets: 2
                 },
                 {
-                    name: "Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master.Services4Section345MasterFeaturesDetails_tenant.Services4Section345MasterFeaturesDetails.ShortDescription",
+                    name: "Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master_SubSubCategoryMaster.Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master.Services4Section345MasterFeaturesDetails_tenant.Services4Section345MasterFeaturesDetails.ShortDescription",
                     data: "ShortDescription",
                     title: "Text",
                     render: $.fn.dataTable.render.text(),
@@ -67,7 +67,7 @@ angular.module(config.app).service('Services4Section345MasterFeaturesDetailsCRUD
                     targets: 2
                 },
 {
-                    name: "Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master.Services4Section345MasterFeaturesDetails_tenant.Services4Section345MasterFeaturesDetails.S4S345M_id",
+                    name: "Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master_SubSubCategoryMaster.Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master.Services4Section345MasterFeaturesDetails_tenant.Services4Section345MasterFeaturesDetails.S4S345M_id",
                     data: "S4S345M_id",
                     title: "Section345&nbsp;ID",
                     render: $.fn.dataTable.render.text(),
@@ -77,7 +77,7 @@ angular.module(config.app).service('Services4Section345MasterFeaturesDetailsCRUD
 
                
  {
-                    name: "Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master.Services4Section345MasterFeaturesDetails_tenant.Services4Section345MasterFeaturesDetails.Url",
+                    name: "Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master_SubSubCategoryMaster.Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master.Services4Section345MasterFeaturesDetails_tenant.Services4Section345MasterFeaturesDetails.Url",
                     data: "Url",
                     title: "Url",
                     render: $.fn.dataTable.render.text(),
@@ -85,7 +85,7 @@ angular.module(config.app).service('Services4Section345MasterFeaturesDetailsCRUD
                     targets: 5
                 },
  {
-                    name: "Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master.Services4Section345MasterFeaturesDetails_tenant.Services4Section345MasterFeaturesDetails.Metadata",
+                    name: "Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master_SubSubCategoryMaster.Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master.Services4Section345MasterFeaturesDetails_tenant.Services4Section345MasterFeaturesDetails.Metadata",
                     data: "Metadata",
                     title: "Metadata",
                     render: $.fn.dataTable.render.text(),
@@ -93,7 +93,7 @@ angular.module(config.app).service('Services4Section345MasterFeaturesDetailsCRUD
                     targets: 6
                 },
 {
-                    name: "Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master.Services4Section345MasterFeaturesDetails_tenant.Services4Section345MasterFeaturesDetails.MetaDescription",
+                    name: "Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master_SubSubCategoryMaster.Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master.Services4Section345MasterFeaturesDetails_tenant.Services4Section345MasterFeaturesDetails.MetaDescription",
                     data: "MetaDescription",
                     title: "MetaDescription",
                     render: $.fn.dataTable.render.text(),
@@ -101,7 +101,7 @@ angular.module(config.app).service('Services4Section345MasterFeaturesDetailsCRUD
                     targets: 7
                 },
 {
-                    name: "Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master.Services4Section345MasterFeaturesDetails_tenant.Services4Section345MasterFeaturesDetails.Keyword",
+                    name: "Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master_SubSubCategoryMaster.Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master.Services4Section345MasterFeaturesDetails_tenant.Services4Section345MasterFeaturesDetails.Keyword",
                     data: "Keyword",
                     title: "Keyword",
                     render: $.fn.dataTable.render.text(),
@@ -110,7 +110,7 @@ angular.module(config.app).service('Services4Section345MasterFeaturesDetailsCRUD
                 },
 
               {
-                    name: "Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master.Services4Section345MasterFeaturesDetails_tenant.Services4Section345MasterFeaturesDetails.IsActive",
+                    name: "Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master_SubSubCategoryMaster.Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master.Services4Section345MasterFeaturesDetails_tenant.Services4Section345MasterFeaturesDetails.IsActive",
                     data: "IsActive",
                     title: "IsActive",
                     render: $.fn.dataTable.render.text(),
@@ -127,7 +127,7 @@ angular.module(config.app).service('Services4Section345MasterFeaturesDetailsCRUD
                     targets:11
                 },
                 {
-                    name: "Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master.Services4Section345MasterFeaturesDetails_tenant.Services4Section345MasterFeaturesDetails.CreatedBy",
+                    name: "Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master_SubSubCategoryMaster.Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master.Services4Section345MasterFeaturesDetails_tenant.Services4Section345MasterFeaturesDetails.CreatedBy",
                     data: "CreatedBy",
                     title: "Created&nbsp;By",
                     render: $.fn.dataTable.render.text(),
@@ -135,7 +135,7 @@ angular.module(config.app).service('Services4Section345MasterFeaturesDetailsCRUD
                     targets: 12
                 },
                 {
-                    name: "Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master.Services4Section345MasterFeaturesDetails_tenant.Services4Section345MasterFeaturesDetails.CreatedOn",
+                    name: "Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master_SubSubCategoryMaster.Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master.Services4Section345MasterFeaturesDetails_tenant.Services4Section345MasterFeaturesDetails.CreatedOn",
                     data: "CreatedOn",
                     title: "Created&nbsp;On",
                     render: function (data, type, row, meta) {
@@ -147,7 +147,7 @@ angular.module(config.app).service('Services4Section345MasterFeaturesDetailsCRUD
                     targets: 13
                 },
                 {
-                    name: "Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master.Services4Section345MasterFeaturesDetails_tenant.Services4Section345MasterFeaturesDetails.UpdatedBy",
+                    name: "Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master_SubSubCategoryMaster.Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master.Services4Section345MasterFeaturesDetails_tenant.Services4Section345MasterFeaturesDetails.UpdatedBy",
                     data: "UpdatedBy",
                     title: "Modified&nbsp;By",
                     render: $.fn.dataTable.render.text(),
@@ -155,7 +155,7 @@ angular.module(config.app).service('Services4Section345MasterFeaturesDetailsCRUD
                     targets: 14
                 },
                 {
-                    name: "Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master.Services4Section345MasterFeaturesDetails_tenant.Services4Section345MasterFeaturesDetails.UpdatedOn",
+                    name: "Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master_SubSubCategoryMaster.Services4Section345MasterFeaturesDetails_tenant_Services4Section345Master.Services4Section345MasterFeaturesDetails_tenant.Services4Section345MasterFeaturesDetails.UpdatedOn",
                     data: "UpdatedOn",
                     title: "Modified&nbsp;On",
                     render: function (data, type, row, meta) {
@@ -164,6 +164,17 @@ angular.module(config.app).service('Services4Section345MasterFeaturesDetailsCRUD
                     },
                     width: "11%",
                     targets: 15
+                },
+{
+                    name: null,
+                    data: "Preview",
+                    title: "&nbsp;Preview&nbsp;&nbsp;",
+                    orderable: false,
+                    render: function (data, type, row, meta) {
+                        return '<button type="button" class="btn btn-xs text-success btn-preview"><i title="Preview" class="fa fa-eye"></i></button>';
+                    },
+                    width: "2%",
+                    targets: 37
                 },
                 {
                     name: null,
@@ -208,6 +219,11 @@ angular.module(config.app).service('Services4Section345MasterFeaturesDetailsCRUD
             let rowData = oTable.row($(this).parents('tr')).data();
             let scope = angular.element(document.getElementById('Services4Section345MasterFeaturesDetailsControllerScope')).scope();
             scope.DeleteAsync(rowData.ID);
+        });
+$('#grdTable tbody').on('click', '.btn-preview', function () {
+            let rowData = oTable.row($(this).parents('tr')).data();
+            let scope = angular.element(document.getElementById('Services4Section345MasterFeaturesDetailsControllerScope')).scope();
+            scope.Preview('services4.html?u='+rowData.ServiceUrl+'#divPriceMasterSection3');
         });
     }
 

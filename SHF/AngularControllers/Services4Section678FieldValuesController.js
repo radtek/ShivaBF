@@ -15,7 +15,12 @@
         $scope.Services4Section678FieldValuesCreateOrEditViewModel.SelectedSubSubCat_Id = -1;
         $scope.Services4Section678FieldValuesCreateOrEditViewModel.SelectedS4S678FM_Id=-1;
          $scope.AllSection678ID = [];
-       
+        $scope.Preview = function (url) {
+          CustomService.PreviewOpen(url);
+            }
+       $scope.Guide = function () {
+            $('#modal-guide').modal('show');
+        }
         $scope.Cookie_Tenant_ID = parseInt(CustomService.GetTenantID());
         $scope.Services4Section678FieldValuesCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;     
 
