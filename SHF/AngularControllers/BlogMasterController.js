@@ -19,7 +19,12 @@
 
         $scope.Cookie_Tenant_ID = parseInt(CustomService.GetTenantID());
         $scope.BlogMasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
-
+$scope.Preview = function (url) {
+          CustomService.PreviewOpen(url);
+            }
+       $scope.Guide = function () {
+            $('#modal-guide').modal('show');
+        }
         $scope.BindGrid = function () {
             BlogMasterCRUD.LoadTable();
         }

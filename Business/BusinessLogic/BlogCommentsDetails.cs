@@ -104,7 +104,8 @@ namespace SHF.Business.BusinessLogic
                         CreatedBy = x.BlogCommentsDetails_tenant.BlogCommentsDetails.CreatedBy,
                         UpdatedBy = x.BlogCommentsDetails_tenant.BlogCommentsDetails.UpdatedBy,
                         CreatedOn= x.BlogCommentsDetails_tenant.BlogCommentsDetails.CreatedOn,
-                        UpdatedOn= x.BlogCommentsDetails_tenant.BlogCommentsDetails.UpdatedOn
+                        UpdatedOn= x.BlogCommentsDetails_tenant.BlogCommentsDetails.UpdatedOn,
+                        ServiceUrl = x.Blog.Url
                     }).ToList();
 
 

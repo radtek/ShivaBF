@@ -174,6 +174,17 @@ angular.module(config.app).service('BannerNavigationsDetailsCRUD', function ($ht
                     width: "11%",
                     targets: 36
                 },
+{
+                    name: null,
+                    data: "Preview",
+                    title: "&nbsp;Preview&nbsp;&nbsp;",
+                    orderable: false,
+                    render: function (data, type, row, meta) {
+                        return '<button type="button" class="btn btn-xs text-success btn-preview"><i title="Preview" class="fa fa-eye"></i></button>';
+                    },
+                    width: "2%",
+                    targets: 37
+                },
                 {
                     name: null,
                     data: "ID",
@@ -217,6 +228,12 @@ angular.module(config.app).service('BannerNavigationsDetailsCRUD', function ($ht
             let rowData = oTable.row($(this).parents('tr')).data();
             let scope = angular.element(document.getElementById('BannerNavigationsDetailsControllerScope')).scope();
             scope.DeleteAsync(rowData.ID);
+        });
+
+        $('#grdTable tbody').on('click', '.btn-preview', function () {
+            let rowData = oTable.row($(this).parents('tr')).data();
+            let scope = angular.element(document.getElementById('BannerNavigationsDetailsControllerScope')).scope();
+            scope.Preview('blog-details.html?u=' + rowData.ServiceUrl + '#ulBannerNavigationsDetails');
         });
     }
 

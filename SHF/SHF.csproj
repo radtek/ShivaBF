@@ -7455,6 +7455,8 @@
     <Content Include="fonts\new-aakash-logo.png" />
     <Content Include="Global.asax" />
     <Content Include="Content\site.css" />
+    <Content Include="Media\Guide\blog-details.png" />
+    <Content Include="Media\Guide\Footer.png" />
     <Content Include="Media\Guide\Service1Master.png" />
     <Content Include="Media\Guide\Service2Master.png" />
     <Content Include="Media\Guide\Service3Master.png" />
@@ -11191,6 +11193,7 @@
     <Content Include="Views\FooterLinks\_CreateOrEditTenant.cshtml" />
     <Content Include="Views\FooterLinks\_Guide.cshtml" />
     <Content Include="Views\FooterLinks\Index.cshtml" />
+    <Content Include="Views\BlogBannerNavigationsDetails\_Guide.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />

@@ -16,12 +16,12 @@
         $scope.Cookie_Tenant_ID = parseInt(CustomService.GetTenantID());
         $scope.FooterBlockMasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
 
-        $scope.fileList = [];
-        $scope.curFile;
-        $scope.ImageProperty = {
-            file: ''
+       $scope.Preview = function (url) {
+          CustomService.PreviewOpen(url);
+            }
+       $scope.Guide = function () {
+            $('#modal-guide').modal('show');
         }
-
         $scope.BindGrid = function () {
             FooterBlockMasterCRUD.LoadTable();
         }      

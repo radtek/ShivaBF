@@ -101,7 +101,8 @@ namespace SHF.Business.BusinessLogic
                         CreatedBy = x.BannerNavigationsDetails_tenant.BannerNavigationsDetails.CreatedBy,
                         UpdatedBy = x.BannerNavigationsDetails_tenant.BannerNavigationsDetails.UpdatedBy,
                         CreatedOn= x.BannerNavigationsDetails_tenant.BannerNavigationsDetails.CreatedOn,
-                        UpdatedOn= x.BannerNavigationsDetails_tenant.BannerNavigationsDetails.UpdatedOn
+                        UpdatedOn= x.BannerNavigationsDetails_tenant.BannerNavigationsDetails.UpdatedOn,
+                        ServiceUrl = x.Blog.Url
                     }).ToList();
 
 

@@ -99,7 +99,8 @@ namespace SHF.Business.BusinessLogic
                         CreatedBy = x.RelatedBlogsMapping_tenant_Blog.RelatedBlogsMapping_tenant.RelatedBlogsMapping.CreatedBy,
                         UpdatedBy = x.RelatedBlogsMapping_tenant_Blog.RelatedBlogsMapping_tenant.RelatedBlogsMapping.UpdatedBy,
                         CreatedOn= x.RelatedBlogsMapping_tenant_Blog.RelatedBlogsMapping_tenant.RelatedBlogsMapping.CreatedOn,
-                        UpdatedOn= x.RelatedBlogsMapping_tenant_Blog.RelatedBlogsMapping_tenant.RelatedBlogsMapping.UpdatedOn
+                        UpdatedOn= x.RelatedBlogsMapping_tenant_Blog.RelatedBlogsMapping_tenant.RelatedBlogsMapping.UpdatedOn,
+                        ServiceUrl = x.RelatedBlogsMapping_tenant_Blog.Blog.Url
                     }).ToList();
 
 

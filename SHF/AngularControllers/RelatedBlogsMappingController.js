@@ -15,7 +15,12 @@
         $scope.RelatedBlogsMappingCreateOrEditViewModel.SelectedBlog_Id = -1;
         $scope.RelatedBlogsMappingCreateOrEditViewModel.SelectedRelatedBlog_Id = -1;
 
-       
+       $scope.Preview = function (url) {
+          CustomService.PreviewOpen(url);
+            }
+       $scope.Guide = function () {
+            $('#modal-guide').modal('show');
+        }
        
         $scope.Cookie_Tenant_ID = parseInt(CustomService.GetTenantID());
         $scope.RelatedBlogsMappingCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;     
