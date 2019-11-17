@@ -15,13 +15,8 @@
         $scope.BankMasterCreateOrEditViewModel.SelectedUnitOfMesurment = -1;
         $scope.Cookie_Tenant_ID = parseInt(CustomService.GetTenantID());
         $scope.BankMasterCreateOrEditViewModel.Tenant_ID = $scope.Cookie_Tenant_ID;
-
-        $scope.fileList = [];
-        $scope.curFile;
-        $scope.ImageProperty = {
-            file: ''
-        }
-
+        $scope.AllBannerMaster = [];
+        $scope.SelectFor="";
         $scope.BindGrid = function () {
             BankMasterCRUD.LoadTable();
         }      
@@ -270,55 +265,59 @@
         $scope.ShowConfirm = function (modelId) {
             CustomService.OnClose(modelId);
         }
-        $scope.FileUploadAsync = function () {
-            $scope.fileList = [];
-            $scope.curFile;
-            $scope.ImageProperty = {
-                file: ''
-            }
-            $('#modal-fileupload').modal('show');
+      /**********************************PopUp Image Handling *********************************/
+        $scope.SelectBannerAsync = function (ID, BannerName) {
+            $scope.BankMasterCreateOrEditViewModel[$scope.SelectFor] = BannerName;
+            $('#modal-bannermaster').modal('hide');
         }
 
-        $scope.FileUploadAsyncPost = function ()
-        {
-debugger;
-            var val = $scope.FileUpload($scope.fileList, "/Post/TenantCommonUploadFile/FileUpload", $scope.BankMasterCreateOrEditViewModel.Tenant_ID);
-            if (val !== "Error" && val !== "") {
-                $scope.BankMasterCreateOrEditViewModel.IconPath = val;
-                $('#modal-fileupload').modal('hide');
+
+            $scope.SelectBannerasync = function (inputname) {
+               $scope.SelectFor=inputname;
+               $scope.AllBannerMaster = [];
+                if ($scope.BankMasterCreateOrEditViewModel.Tenant_ID == undefined || $scope.BankMasterCreateOrEditViewModel.Tenant_ID <= 0 || $scope.BankMasterCreateOrEditViewModel.Tenant_ID == null) {
+                    swal("Please select Tenant", "", "error");
+                    return;
+                }
+                var result = BannerMasterCRUD.LoadAllBannerMasterByTenantIdAsync($scope.BankMasterCreateOrEditViewModel.Tenant_ID);
+                result.then(
+                    function success(response) {
+                        switch (response.data.Type) {
+
+                            case 'Exception':
+                                swal('Error', response.data.Message, 'error');
+                                break;
+
+                            case 'Response':
+                                $scope.AllBannerMaster = response.data.Entity;
+                           
+                                break;
+
+                            default:
+                                swal('Error', 'Internal server error', 'error');
+                                break;
+                        }
+                    }, function errors(response) {
+                        switch (response.data.Type) {
+
+                            case 'Exception':
+                                swal('Error', response.data.Message, 'error');
+                                break;
+
+                            case 'Validation':
+                                swal('Error', response.data.Message, 'error');
+                                break;
+
+                            default:
+                                swal('Error', 'Internal server error', 'error');
+                                break;
+                        }
+                        //console.clear();
+                    });
+
+                $('#modal-bannermaster').modal('show');
             }
-            else {
-                $scope.BankMasterCreateOrEditViewModel.IconPath ="";
-            }
-            $scope.fileList = [];
-            $scope.curFile;
-            $scope.ImageProperty = {
-                file: ''
-            }
-            
-        }
 
-        /***************************************for file Upload****************************/
-
-       
-        $scope.setFile = function (element) {
-            $scope.fileList = [];
-
-            var files = element.files;
-            for (var i = 0; i < files.length; i++) {
-                $scope.ImageProperty.file = files[i];
-                $scope.fileList.push($scope.ImageProperty);
-                $scope.ImageProperty = {};
-            }
-        }
-
-       $scope.FileUpload = function (fileList, url, tenantId) {
-             CustomService.FnUploadFile(fileList, url, tenantId).then(function (value) {
-           alert(value);
-        });
-        }
-
-        /**************************end File Upload************************/
 
         $scope.PageLoad();
               

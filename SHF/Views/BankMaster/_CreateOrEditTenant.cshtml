@@ -6,7 +6,41 @@
         return cookieToken + ":" + formToken;
     }
 }
-<script src="~/Scripts/ng-file-upload-5.0.9.js"></script>
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    .button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    .button4 {
+        border-radius: 9px;
+    }
+</style>
+
 <div class="modal-dialog">
     <div class="modal-content">
         <form name="myForm" ng-submit="myForm.$valid && createOreditAsyncForm()" novalidate>
@@ -23,13 +57,14 @@
                 <div class="box box-primary">
                     <div class="box-body">
                         <input id="antiForgeryToken" data-ng-model="antiForgeryToken" type="hidden" data-ng-init="antiForgeryToken='@AntiForgeryToken()'" />
-
                         
                         <div class="form-group" ng-class="{'has-error': ((myForm.IconPath.$touched && myForm.IconPath.$invalid) || (!myForm.IconPath.$pristine && myForm.IconPath.$invalid))}">
                             <label>Icon Path</label>
-                            <input type="text" class="form-control" name="IconPath" ng-model="BankMasterCreateOrEditViewModel.IconPath" readonly autocomplete="off" placeholder="Enter Title" tooltip-placement="top" uib-tooltip="Enter Title" />
+                            <div class="col-md-12" style="text-align:center;margin-bottom:10px;">
+                                <input type="text" class="form-control" name="IconPath" ng-model="HomePageBannerCreateOrEditViewModel.IconPath" ng-disabled="Processing" autocomplete="off" required readonly placeholder="Enter IconPath" tooltip-placement="top" uib-tooltip="Enter IconPath" />
+                            </div>
                             <div class="col-md-12">
-                                <button ng-click="FileUploadAsync()" class="button button4">Upload File</button>
+                                <span ng-click="SelectBannerasync('IconPath')" class="btn btn-sm btn-success">Select</span>
                             </div>
 
                             <div class="help-block" ng-messages="myForm.IconPath.$error" ng-if="myForm.IconPath.$touched || myForm.IconPath.$dirty && myForm.IconPath.$invalid">
@@ -37,6 +72,7 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.IconPath" ng-bind="errors.formErrors.IconPath"></span>
                         </div>
+
 
                         <div class="form-group" ng-class="{'has-error': (myForm.Description.$touched || myForm.Description.$dirty)  && myForm.Description.$invalid}">
                             <label>Description</label>
@@ -53,7 +89,6 @@
                                 <input icheck type="checkbox" class="form-control" ng-model="BankMasterCreateOrEditViewModel.IsActive" ng-checked="BankMasterCreateOrEditViewModel.IsActive"><span style="margin-left: 10px;">{{BankMasterCreateOrEditViewModel.IsActive ? 'Yes' : 'No'}} </span>
                             </label>
                         </div>
-
                     </div>
                 </div>
             </div>
