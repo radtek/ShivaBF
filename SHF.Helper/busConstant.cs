@@ -35,7 +35,7 @@ namespace SHF.Helper
                             //public const string DEFAULT = DEVELOPMENT_HOME;
                             public const string DEFAULT = DEVELOPMENT;
                             //public const string DEFAULT = DEVELOPMENT_L;
-                          //  public const string DEFAULT = TESTING;
+                          // public const string DEFAULT = TESTING;
                           //public const string DEFAULT = PRODUCTION;
                         }
                         private const string DEVELOPMENT_HOME = "DevelopmentHome";
@@ -45,8 +45,8 @@ namespace SHF.Helper
                         private const string PRODUCTION = "ProductionMSSQL";
                         public abstract class PreviewUrlString
                         {
-                             public const string PREVIEWUrl = LOCAL_URL;
-                            //public const string PREVIEWUrl = TEST_URL;
+                             //public const string PREVIEWUrl = LOCAL_URL;
+                            public const string PREVIEWUrl = TEST_URL;
                             //public const string PREVIEWUrl = PROD_URL;
                         }
                         private const string LOCAL_URL = "LocalURL";

@@ -340,6 +340,64 @@ namespace SHF.Controllers
                 // unitOfWork.Dispose();
             }
         }
+        [HttpPost]
+        [AuditAttribute]
+        [ValidateAntiForgeryTokens]
+        [Route("Post/Bank/Delete")]
+        public async Task<ActionResult> DeleteAsync(string Id)
+        {
+            try
+            {
+                using (var transaction = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadUncommitted }))
+                {
+                    try
+                    {
+                        if (Convert.ToInt64(Id) == 0)
+                        {
+                            transaction.Complete();
+                            var response = new JsonResponse<dynamic>()
+                            {
+                                Type = busConstant.Messages.Type.EXCEPTION,
+                                Message = busConstant.Messages.Type.Exceptions.BAD_REQUEST,
+                            };
+
+                            Response.StatusCode = Convert.ToInt32(HttpStatusCode.BadRequest);
+                            return Json(response, JsonRequestBehavior.AllowGet);
+                        }
+                        else
+                        {
+                            this.businessBankMaster.Delete(Convert.ToInt64(Id));
+
+
+                            var response = new JsonResponse<dynamic>()
+                            {
+                                Type = busConstant.Messages.Type.RESPONSE,
+                                Message = busConstant.Messages.Icon.SUCCESS,
+                            };
+
+                            transaction.Complete();
+                            return Json(response, JsonRequestBehavior.AllowGet);
+
+                        }
+                    }
+                    catch
+                    {
+                        transaction.Dispose();
+                        throw;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return ExceptionResponse(ex);
+            }
+            finally
+            {
+                //unitOfWork.Dispose();
+            }
+        }
+
         [HttpGet]
         [Route("Get/BankMaster/DropdownListbyTenantAsync")]
         public async Task<ActionResult> GetBankMasterByTenantIdAsync(long Id)

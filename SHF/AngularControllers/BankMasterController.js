@@ -1,5 +1,5 @@
-﻿angular.module(config.app).controller('BankMasterCtrl', ['$scope', '$http', '$window', 'BankMasterCRUD', 'TenantCRUD','CustomService',
-    function ($scope, $http, $window, BankMasterCRUD, TenantCRUD,CustomService) {      
+﻿angular.module(config.app).controller('BankMasterCtrl', ['$scope', '$http', '$window', 'BankMasterCRUD', 'TenantCRUD','CustomService','BannerMasterCRUD',
+    function ($scope, $http, $window, BankMasterCRUD, TenantCRUD,CustomService,BannerMasterCRUD) {      
         $scope.path = "";
         $scope.errors = {};
         $scope.errors.pageError = {};
@@ -253,7 +253,51 @@
             }
 
         }
+ $scope.DeleteAsync = function (Id) {
 
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this record!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        var obj = {};
+                        obj.Id = Id;
+                        $http.post("/Post/Bank/Delete/", obj,
+                          {
+                              headers: { 'RequestVerificationToken': $scope.antiForgeryToken }
+                          }
+                      ).then(function (response) {
+                          switch (response.data.Type) {
+                              case 'Response':
+                                  $('#modal-createOredit').modal('hide');
+                                  CustomService.Alert(response);
+                                  $scope.PageLoad();
+                                  console.clear();
+                                  break;
+                              case 'Exception':
+                                  CustomService.Notify(response.data.Message);
+                                  console.log(response);
+                                  break;
+                              case 'Validation':
+                                  CustomService.Notify(response.data.Message);
+                                  console.log(response);
+                                  break;
+                              default:
+                                  CustomService.Notify(response.data.Message);
+                                  console.log(response);
+                                  break;
+                          }
+                      })
+                    }
+                    else {
+                        CustomService.Notify("Your record is safe!");
+                    }
+                });
+        }
 
         $('#modal-createOredit').keyup(function (e) {
             if (e.key === "Escape") {
