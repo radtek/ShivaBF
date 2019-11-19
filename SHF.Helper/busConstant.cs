@@ -33,10 +33,10 @@ namespace SHF.Helper
                         public abstract class ConnectionString
                         {
                             //public const string DEFAULT = DEVELOPMENT_HOME;
-                            public const string DEFAULT = DEVELOPMENT;
+                           // public const string DEFAULT = DEVELOPMENT;
                             //public const string DEFAULT = DEVELOPMENT_L;
                           // public const string DEFAULT = TESTING;
-                          //public const string DEFAULT = PRODUCTION;
+                         public const string DEFAULT = PRODUCTION;
                         }
                         private const string DEVELOPMENT_HOME = "DevelopmentHome";
                         private const string DEVELOPMENT = "DevelopmentMSSQL";
@@ -45,7 +45,7 @@ namespace SHF.Helper
                         private const string PRODUCTION = "ProductionMSSQL";
                         public abstract class PreviewUrlString
                         {
-                             //public const string PREVIEWUrl = LOCAL_URL;
+                             //public const string PREVIEWUrl = LOCAL_URL
                             public const string PREVIEWUrl = TEST_URL;
                             //public const string PREVIEWUrl = PROD_URL;
                         }
@@ -55,8 +55,8 @@ namespace SHF.Helper
 
                         public abstract class AdminUrlString
                         {
-                            public const string ADMINUrl = LOCAL_ADMIN_URL;
-                           // public const string ADMINUrl = TEST_ADMIN_URL;
+                           // public const string ADMINUrl = LOCAL_ADMIN_URL;
+                            public const string ADMINUrl = TEST_ADMIN_URL;
                             //public const string ADMINUrl = PROD_ADMIN_URL;
                         }
                         private const string LOCAL_ADMIN_URL = "LocalAdminURL";

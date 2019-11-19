@@ -22,7 +22,7 @@ namespace SHF.Models
             //Database.SetInitializer<SHFContexts>(new DropCreateDatabaseAlways<SHFContexts>());
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<SHFContext, Migrations.Configuration>());
 
-            this.Configuration.AutoDetectChangesEnabled = busConstant.Misc.TRUE;
+            this.Configuration.AutoDetectChangesEnabled = busConstant.Misc.FALSE;
             this.Configuration.EnsureTransactionsForFunctionsAndCommands = busConstant.Misc.TRUE;
             this.Configuration.ValidateOnSaveEnabled = busConstant.Misc.TRUE;
             this.Configuration.ProxyCreationEnabled = busConstant.Misc.FALSE;        
