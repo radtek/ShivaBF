@@ -273,7 +273,7 @@
             reqObj.addEventListener("load", uploadComplete, false)
             reqObj.addEventListener("error", uploadFailed, false)
             reqObj.addEventListener("abort", uploadCanceled, false)
-            reqObj.open("PUT", "/PUT/BannerMaster/FileUpload", true);
+            reqObj.open("POST", "/POST/BannerMaster/FileUpload", true);
             reqObj.setRequestHeader("Content-Type", "multipart/form-data");
             reqObj.setRequestHeader('X-File-Name', name);
             reqObj.setRequestHeader('X-File-Type', type);

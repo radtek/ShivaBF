@@ -495,7 +495,7 @@ namespace SHF.Controllers
                             var entities = this.businessServices4Section345Master.FindBy(product => product.Tenant_ID == Id).Select(x => new ViewModel.Services4Section345MasterDropdownListViewModel
                             {
                                 ID = x.ID,
-                                Heading = x.Heading
+                                Heading = x.ID.ToString()
                             });
 
                             if (entities.IsNotNull())

@@ -488,8 +488,8 @@ namespace SHF.Controllers
             }
         }
 
-        [HttpPut]
-        [Route("PUT/BannerMaster/FileUpload")]
+        [HttpPost]
+        [Route("POST/BannerMaster/FileUpload")]
         public virtual string UploadFiles(object obj)
         {
             //  var tenantId = ViewBag.TenantID;
@@ -508,7 +508,7 @@ namespace SHF.Controllers
             {
                 Directory.CreateDirectory(path);
             }
-            if (fileType == "image")
+            if (fileType.Contains("image"))
             {
                 var saveToFileLoc = temppath + "/" + fileName;
                 // var destToFileLoc = path + "/" + fileName;
