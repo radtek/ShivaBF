@@ -26,14 +26,14 @@ namespace SHF.Controllers
         #region [Field & Contructor]        
 
         private Business.Interface.ISubMenu businessSubMenu;
-     
+
 
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
 
         public HomeController(Business.Interface.ISubMenu IsubMenu)
-        {           
+        {
             this.businessSubMenu = IsubMenu;
         }
 
@@ -114,14 +114,14 @@ namespace SHF.Controllers
 
 
         [HttpGet]
-        [AllowAnonymous]   
+        [AllowAnonymous]
         [Route("Security/Account/Home/LoggedOut")]
         public ActionResult LoggedOut()
         {
             Response.Cache.SetCacheability(HttpCacheability.NoCache);
             Response.Cache.SetExpires(DateTime.UtcNow.AddDays(-1));
             Response.Cache.SetNoStore();
-            Thread.Sleep(10);           
+            Thread.Sleep(10);
             return View();
         }
 
@@ -134,14 +134,14 @@ namespace SHF.Controllers
             Response.Cache.SetCacheability(HttpCacheability.NoCache);
             Response.Cache.SetExpires(DateTime.UtcNow.AddDays(-1));
             Response.Cache.SetNoStore();
-            Thread.Sleep(1000);           
+            Thread.Sleep(1000);
             return View("Close");
         }
 
 
         public async Task<ActionResult> Sidebar()
         {
-           var businessResult = new JsonResponse<IEnumerable<EntityModel.SubMenu>>();
+            var businessResult = new JsonResponse<IEnumerable<EntityModel.SubMenu>>();
             try
             {
                 using (var transaction = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadUncommitted }))
@@ -168,10 +168,18 @@ namespace SHF.Controllers
             {
                 businessResult = null;
             }
-            
+
         }
 
-       
+        public async Task<ActionResult> Dashboard()
+        {
+
+            return PartialView("_Dashboard");
+
+
+        }
+
+
 
         public async Task<ActionResult> GetActiveMenuCollectionByUrl(string url)
         {
@@ -213,6 +221,6 @@ namespace SHF.Controllers
         }
 
         #endregion
-        
+
     }
 }
