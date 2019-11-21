@@ -23,7 +23,7 @@ namespace SHF.DataAccess.Implementations
         private GenericRepository<EntityModel.CodeValue> _CodeValueRepository;
         private GenericRepository<EntityModel.Tenant> _TenantRepository;
         //private GenericRepository<EntityModel.Customer> _CustomerRepository;
-        private GenericRepository<EntityModel.ExceptionLog> exceptionLogRepository;      
+        private GenericRepository<EntityModel.ExceptionLog> exceptionLogRepository;
         //private GenericRepository<EntityModel.Branch> branchRepository;
         private GenericRepository<EntityModel.AspNetRole> _AspNetRoleRepository;
         private GenericRepository<EntityModel.AspNetUser> _AspNetUserRepository;
@@ -59,7 +59,7 @@ namespace SHF.DataAccess.Implementations
         private GenericRepository<EntityModel.Services4Section345Master> _Services4Section345MasterRepository;
         private GenericRepository<EntityModel.Services4Section345MasterButtonsChild> _Services4Section345MasterButtonsChildRepository;
         private GenericRepository<EntityModel.Services4Section345MasterFeaturesDetails> _Services4Section345MasterFeaturesDetailsRepository;
-      
+
         private GenericRepository<EntityModel.Services4Section678FieldMaster> _Services4Section678FieldMasterRepository;
         private GenericRepository<EntityModel.Services4Section678FieldValues> _Services4Section678FieldValuesRepository;
         private GenericRepository<EntityModel.Services5Master> _Services5MasterRepository;
@@ -81,6 +81,12 @@ namespace SHF.DataAccess.Implementations
         private GenericRepository<EntityModel.RelatedBlogsMapping> _RelatedBlogsMappingRepository;
         private GenericRepository<EntityModel.CommentsReply> _CommentsReplyRepository;
         private GenericRepository<EntityModel.IPInfo> _IPInfoRepository;
+        private GenericRepository<EntityModel.Asn> _AsnsRepository;
+        private GenericRepository<EntityModel.Carrier> _CarriersRepository;
+        private GenericRepository<EntityModel.Currency> _CurrenciesRepository;
+        private GenericRepository<EntityModel.Language> _LanguagesRepository;
+        private GenericRepository<EntityModel.Threat> _ThreatsRepository;
+        private GenericRepository<EntityModel.TimeZone> _TimeZonesRepository;
         private GenericRepository<EntityModel.HomePageBanner> _HomePageBannerRepository;
         private GenericRepository<EntityModel.HomePageSection1> _HomePageSection1Repository;
         private GenericRepository<EntityModel.HomePageSection2> _HomePageSection2Repository;
@@ -149,7 +155,7 @@ namespace SHF.DataAccess.Implementations
 
 
 
-       
+
 
         public GenericRepository<EntityModel.SubMenu> SubMenuRepository
         {
@@ -215,7 +221,7 @@ namespace SHF.DataAccess.Implementations
         {
             get
             {
-                if(this._MessageRepository == null)
+                if (this._MessageRepository == null)
                 {
                     this._MessageRepository = new GenericRepository<EntityModel.Message>(context);
                 }
@@ -531,7 +537,7 @@ namespace SHF.DataAccess.Implementations
                 return _Services4Section345MasterFeaturesDetailsRepository;
             }
         }
-      
+
         public GenericRepository<EntityModel.Services4Section678FieldMaster> Services4Section678FieldMasterRepository
         {
             get
@@ -687,7 +693,7 @@ namespace SHF.DataAccess.Implementations
                 return _Services8HeadingButtonsRepository;
             }
         }
-        
+
         public GenericRepository<EntityModel.Services8Section6Master> Services8Section6MasterRepository
         {
             get
@@ -765,6 +771,73 @@ namespace SHF.DataAccess.Implementations
                 return _IPInfoRepository;
             }
         }
+        public GenericRepository<EntityModel.Asn> AsnsRepository
+        {
+            get
+            {
+                if (this._AsnsRepository == null)
+                {
+                    this._AsnsRepository = new GenericRepository<EntityModel.Asn>(context);
+                }
+                return _AsnsRepository;
+            }
+        }
+        public GenericRepository<EntityModel.Carrier> CarriersRepository
+        {
+            get
+            {
+                if (this._CarriersRepository == null)
+                {
+                    this._CarriersRepository = new GenericRepository<EntityModel.Carrier>(context);
+                }
+                return _CarriersRepository;
+            }
+        }
+        public GenericRepository<EntityModel.Currency> CurrenciesRepository
+        {
+            get
+            {
+                if (this._CurrenciesRepository == null)
+                {
+                    this._CurrenciesRepository = new GenericRepository<EntityModel.Currency>(context);
+                }
+                return _CurrenciesRepository;
+            }
+        }
+        public GenericRepository<EntityModel.Language> LanguagesRepository
+        {
+            get
+            {
+                if (this._LanguagesRepository == null)
+                {
+                    this._LanguagesRepository = new GenericRepository<EntityModel.Language>(context);
+                }
+                return _LanguagesRepository;
+            }
+        }
+        public GenericRepository<EntityModel.Threat> ThreatsRepository
+        {
+            get
+            {
+                if (this._ThreatsRepository == null)
+                {
+                    this._ThreatsRepository = new GenericRepository<EntityModel.Threat>(context);
+                }
+                return _ThreatsRepository;
+            }
+        }
+        public GenericRepository<EntityModel.TimeZone> TimeZonesRepository
+        {
+            get
+            {
+                if (this._TimeZonesRepository == null)
+                {
+                    this._TimeZonesRepository = new GenericRepository<EntityModel.TimeZone>(context);
+                }
+                return _TimeZonesRepository;
+            }
+        }
+       
         public GenericRepository<EntityModel.HomePageBanner> HomePageBannerRepository
         {
             get
@@ -842,7 +915,7 @@ namespace SHF.DataAccess.Implementations
                 return _HomePageSection4TestimonailsRepository;
             }
         }
-      
+
         public GenericRepository<EntityModel.HomePageSection5> HomePageSection5Repository
         {
             get

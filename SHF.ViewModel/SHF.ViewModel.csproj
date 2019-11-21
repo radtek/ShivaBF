@@ -67,10 +67,17 @@
     <Compile Include="HomePageSection2ViewModel.cs" />
     <Compile Include="HomePageSection1ViewModel.cs" />
     <Compile Include="BlogCommentsDetailsViewModel.cs" />
+    <Compile Include="IPThreatViewModel.cs" />
+    <Compile Include="IPTimeZoneViewModel.cs" />
+    <Compile Include="IPLanguageViewModel.cs" />
+    <Compile Include="IPCurrencyViewModel.cs" />
+    <Compile Include="IPCarrierViewModel.cs" />
+    <Compile Include="IPAsnViewModel.cs" />
     <Compile Include="RelatedBlogsMappingViewModel.cs" />
     <Compile Include="BlogBannerNavigationsDetailsViewModel.cs" />
     <Compile Include="BlogMasterViewModel.cs" />
     <Compile Include="HomePageBannerViewModel.cs" />
+    <Compile Include="IPInfoViewModel.cs" />
     <Compile Include="Services4Section345MasterButtonsChildViewModel.cs" />
     <Compile Include="Services4Section678FieldValuesViewModel.cs" />
     <Compile Include="Services4Section678FieldMasterViewModel.cs" />

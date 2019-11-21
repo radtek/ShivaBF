@@ -52,6 +52,12 @@
     <Compile Include="AspNetRoleSubMenu.cs" />
     <Compile Include="AspNetUser.cs" />
     <Compile Include="AspNetUserRole.cs" />
+    <Compile Include="IP_Threat.cs" />
+    <Compile Include="IP_TimeZone.cs" />
+    <Compile Include="IP_Currency.cs" />
+    <Compile Include="IP_Language.cs" />
+    <Compile Include="IP_Carrier.cs" />
+    <Compile Include="IP_Asn.cs" />
     <Compile Include="FooterLinks.cs" />
     <Compile Include="FooterBlockMaster.cs" />
     <Compile Include="BannerMaster.cs" />
