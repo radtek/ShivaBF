@@ -44,7 +44,7 @@
                         </div>
                         <div class="form-group" ng-class="{'has-error': (myForm.BlogComment.$touched || myForm.BlogComment.$dirty)  && myForm.BlogComment.$invalid}">
                             <label>Blog Comment</label>
-                            <select name="BlogComment" ng-model="CommentsReplyCreateOrEditViewModel.BCD_Id" class="form-control" style="width: 100%;" ng-options="x.ID as x.BlogComment for x in AllBlogComment"  required>
+                            <select name="BlogComment" ng-model="CommentsReplyCreateOrEditViewModel.BCD_Id" class="form-control" style="width: 100%;" ng-options="x.ID as x.BlogComment for x in AllBlogComment" required>
                                 <option value="" ng-selected="CommentsReplyCreateOrEditViewModel.SelectedBCD_Id < 0">-- Select --</option>
                             </select>
                             <div class="help-block" ng-messages="myForm.BlogComment.$error" ng-if="myForm.BlogComment.$touched || myForm.BlogComment.$dirty && myForm.BlogComment.$invalid">
@@ -89,6 +89,13 @@
                             <label>
                                 <!--https://codepen.io/mosluce/pen/yYmXGz-->
                                 <input icheck type="checkbox" class="form-control" ng-model="CommentsReplyCreateOrEditViewModel.IsActive" ng-checked="CommentsReplyCreateOrEditViewModel.IsActive"><span style="margin-left: 10px;">{{CommentsReplyCreateOrEditViewModel.IsActive ? 'Yes' : 'No'}} </span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label>Is Admin Approved</label><br />
+                            <label>
+                                <!--https://codepen.io/mosluce/pen/yYmXGz-->
+                                <input icheck type="checkbox" class="form-control" ng-model="CommentsReplyCreateOrEditViewModel.IsAdminApproved" ng-checked="CommentsReplyCreateOrEditViewModel.IsAdminApproved"><span style="margin-left: 10px;">{{CommentsReplyCreateOrEditViewModel.IsAdminApproved ? 'Yes' : 'No'}} </span>
                             </label>
                         </div>
                         <div class="form-group" ng-class="{'has-error': (myForm.TotalViews.$touched || myForm.TotalViews.$dirty)  && myForm.TotalViews.$invalid}">

@@ -150,6 +150,14 @@ angular.module(config.app).service('CommentsReplyCRUD', function ($http) {
                   width: "25%",
                   targets: 31
               },
+{
+                    name: "CommentsReply_tenant_BlogCommentsDetails.CommentsReply_tenant.CommentsReply.IsActive",
+                    data: "IsAdminApproved",
+                    title: "IsAdminApproved",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 32
+                },
                 {
                     name: "tenant.Name",
                     data: "TenantName",

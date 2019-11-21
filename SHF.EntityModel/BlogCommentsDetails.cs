@@ -28,6 +28,8 @@ namespace SHF.EntityModel
         public System.Int32 DisplayIndex { get; set; }
         [Column("IsActive")]
         public System.Boolean? IsActive { get; set; }
+        [Column("IsAdminApproved")]
+        public System.Boolean? IsAdminApproved { get; set; }
         [Column("TotalViews")]
         public System.Int32 TotalViews { get; set; }
         [Column("Url")]

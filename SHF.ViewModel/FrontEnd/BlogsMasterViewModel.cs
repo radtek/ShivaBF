@@ -87,7 +87,8 @@ namespace SHF.ViewModel.FrontEnd
         public System.Int32 DisplayIndex { get; set; }
       
         public System.Boolean? IsActive { get; set; }
-       
+        public System.Boolean? IsAdminApproved { get; set; }
+
         public System.Int32 TotalViews { get; set; }
         
         public string Url { get; set; }
@@ -121,7 +122,8 @@ namespace SHF.ViewModel.FrontEnd
         public System.Int32 DisplayIndex { get; set; }
         
         public System.Boolean? IsActive { get; set; }
-      
+        public System.Boolean? IsAdminApproved { get; set; }
+
         public System.Int32 TotalViews { get; set; }
         
         public string Url { get; set; }

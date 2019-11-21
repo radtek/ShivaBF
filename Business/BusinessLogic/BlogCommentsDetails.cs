@@ -100,6 +100,7 @@ namespace SHF.Business.BusinessLogic
                         Keyword= x.BlogCommentsDetails_tenant.BlogCommentsDetails.Keyword.ToString(),
                         TotalViews= x.BlogCommentsDetails_tenant.BlogCommentsDetails.TotalViews,
                         IsActive = x.BlogCommentsDetails_tenant.BlogCommentsDetails.IsActive,
+                        IsAdminApproved = x.BlogCommentsDetails_tenant.BlogCommentsDetails.IsAdminApproved,
                         TenantName = x.BlogCommentsDetails_tenant.BlogCommentsDetails.Tenant.Name,
                         CreatedBy = x.BlogCommentsDetails_tenant.BlogCommentsDetails.CreatedBy,
                         UpdatedBy = x.BlogCommentsDetails_tenant.BlogCommentsDetails.UpdatedBy,

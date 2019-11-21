@@ -19,6 +19,7 @@ namespace SHF.ViewModel
         public System.String Comment { get; set; }
         public System.Int32 DisplayIndex { get; set; }
         public System.Boolean? IsActive { get; set; }
+        public System.Boolean? IsAdminApproved { get; set; }
         public System.Int32 TotalViews { get; set; }
         public string Url { get; set; }
         public string Metadata { get; set; }
@@ -40,6 +41,7 @@ namespace SHF.ViewModel
         public System.String Comment { get; set; }
         public System.Int32 DisplayIndex { get; set; }
         public System.Boolean? IsActive { get; set; }
+        public System.Boolean? IsAdminApproved { get; set; }
         public System.Int32 TotalViews { get; set; }
         public string Url { get; set; }
         public string Metadata { get; set; }

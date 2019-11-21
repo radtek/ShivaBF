@@ -103,6 +103,7 @@ namespace SHF.Business.BusinessLogic
                         Keyword= x.CommentsReply_tenant_BlogCommentsDetails.CommentsReply_tenant.CommentsReply.Keyword.ToString(),
                         TotalViews= x.CommentsReply_tenant_BlogCommentsDetails.CommentsReply_tenant.CommentsReply.TotalViews,
                         IsActive = x.CommentsReply_tenant_BlogCommentsDetails.CommentsReply_tenant.CommentsReply.IsActive,
+                        IsAdminApproved = x.CommentsReply_tenant_BlogCommentsDetails.CommentsReply_tenant.CommentsReply.IsAdminApproved,
                         TenantName = x.CommentsReply_tenant_BlogCommentsDetails.CommentsReply_tenant.CommentsReply.Tenant.Name,
                         CreatedBy = x.CommentsReply_tenant_BlogCommentsDetails.CommentsReply_tenant.CommentsReply.CreatedBy,
                         UpdatedBy = x.CommentsReply_tenant_BlogCommentsDetails.CommentsReply_tenant.CommentsReply.UpdatedBy,

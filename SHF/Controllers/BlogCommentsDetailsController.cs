@@ -24,7 +24,7 @@ using System.ComponentModel;
 namespace SHF.Controllers
 {
     [AllowAnonymous]
-    public class BlogCommentsDetailsController : BaseController
+    public class AddDataController : BaseController
     {
         #region [Field & Contructor]
 
@@ -34,7 +34,7 @@ namespace SHF.Controllers
         private Business.Interface.IBlogCommentsDetails businessBlogCommentsDetails;
         private Business.Interface.IBlogMaster businessBlogMaster;
 
-        public BlogCommentsDetailsController(Business.Interface.IMessage Imessage, Business.Interface.IBlogCommentsDetails IBlogCommentsDetails, Business.Interface.IBlogMaster IBlogMaster)
+        public AddDataController(Business.Interface.IMessage Imessage, Business.Interface.IBlogCommentsDetails IBlogCommentsDetails, Business.Interface.IBlogMaster IBlogMaster)
         {
             this.businessMessage = Imessage;
             this.businessBlogCommentsDetails = IBlogCommentsDetails;
@@ -173,6 +173,7 @@ namespace SHF.Controllers
                                 entity.Keyword = model.Keyword.ToString();
                                 entity.TotalViews = model.TotalViews;
                                 entity.IsActive = model.IsActive;
+                                entity.IsAdminApproved = model.IsAdminApproved;
                                 entity.Url = model.Url;
                                 entity.Metadata = model.Metadata;
                                 entity.Keyword = model.Keyword;
@@ -256,6 +257,7 @@ namespace SHF.Controllers
                                 model.Keyword = entity.Keyword.ToString();
                                 model.TotalViews = entity.TotalViews;
                                 model.IsActive = entity.IsActive;
+                                model.IsAdminApproved = entity.IsAdminApproved;
                                 model.Url = entity.Url;
                                 model.Metadata = entity.Metadata;
                                 model.Keyword = entity.Keyword;
@@ -361,6 +363,7 @@ namespace SHF.Controllers
                                     entity.Keyword = model.Keyword.ToString();
                                     entity.TotalViews = model.TotalViews;
                                     entity.IsActive = model.IsActive;
+                                    entity.IsAdminApproved = model.IsAdminApproved;
                                     entity.Url = model.Url;
                                     entity.Metadata = model.Metadata;
                                     entity.Keyword = model.Keyword;
@@ -564,7 +567,7 @@ namespace SHF.Controllers
                         }
                         else
                         {
-                            var entities = this.businessBlogCommentsDetails.FindBy(BC => BC.Tenant_ID == Id && BC.Blog_Id== Blog_Id).Select(x => new ViewModel.BlogCommentsDetailsDropdownListViewModel
+                            var entities = this.businessBlogCommentsDetails.FindBy(BC => BC.Tenant_ID == Id && BC.Blog_Id == Blog_Id).Select(x => new ViewModel.BlogCommentsDetailsDropdownListViewModel
                             {
                                 ID = x.ID,
                                 BlogComment = x.Comment.ToString()
@@ -608,7 +611,64 @@ namespace SHF.Controllers
             }
         }
 
+        public async Task<ActionResult> InsertCommentDetails(ViewModel.BlogCommentsDetailsCreateOrEditViewModel model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return ValidationResponse();
+                }
+                else
+                {
+                    using (var transaction = new TransactionScope())
+                    {
+                        try
+                        {
 
+                            var entity = new EntityModel.BlogCommentsDetails();
+                            entity.Tenant = null;
+                            entity.BlogMaster = null;
+                            entity.Name = model.Name;
+                            entity.EmailId = model.EmailId;
+                            entity.Comment = model.Comment;
+                            entity.Blog_Id = model.Blog_Id;
+
+                            entity.IsActive = model.IsActive;
+
+                            entity.Tenant_ID = model.Tenant_ID;
+                            this.businessBlogCommentsDetails.Create(entity);
+                            transaction.Complete();
+
+                            var response = new JsonResponse<dynamic>()
+                            {
+                                Type = busConstant.Messages.Type.RESPONSE,
+                                Title = busConstant.Messages.Title.SUCCESS,
+                                Icon = busConstant.Messages.Icon.SUCCESS,
+                                MessageCode = busConstant.Messages.MessageCode.SAVE,
+                                Message = busConstant.Messages.Type.Responses.SAVE
+                            };
+
+                            return Json(response, JsonRequestBehavior.AllowGet);
+
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Dispose();
+                            throw;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return ExceptionResponse(ex);
+            }
+            finally
+            {
+                // unitOfWork.Dispose();
+            }
+        }
 
         #endregion
 

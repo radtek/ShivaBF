@@ -176,6 +176,7 @@ namespace SHF.Controllers
                                 entity.Keyword = model.Keyword.ToString();
                                 entity.TotalViews = model.TotalViews;
                                 entity.IsActive = model.IsActive;
+                                entity.IsAdminApproved = model.IsAdminApproved;
                                 entity.Url = model.Url;
                                 entity.Metadata = model.Metadata;
                                 entity.Keyword = model.Keyword;
@@ -261,6 +262,7 @@ namespace SHF.Controllers
                                 model.Keyword = entity.Keyword.ToString();
                                 model.TotalViews = entity.TotalViews;
                                 model.IsActive = entity.IsActive;
+                                model.IsAdminApproved = entity.IsAdminApproved;
                                 model.Url = entity.Url;
                                 model.Metadata = entity.Metadata;
                                 model.Keyword = entity.Keyword;
@@ -369,6 +371,7 @@ namespace SHF.Controllers
                                     entity.Keyword = model.Keyword.ToString();
                                     entity.TotalViews = model.TotalViews;
                                     entity.IsActive = model.IsActive;
+                                    entity.IsAdminApproved = model.IsAdminApproved;
                                     entity.Url = model.Url;
                                     entity.Metadata = model.Metadata;
                                     entity.Keyword = model.Keyword;

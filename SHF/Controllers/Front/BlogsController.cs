@@ -22,6 +22,8 @@ namespace SHF.Controllers.Front
         private Business.Interface.ISubCategoriesMaster businessSubCategoriesMaster;
         private Business.Interface.ISubSubCategoriesMaster businessSubSubCategoriesMaster;
         protected SHF.DataAccess.Implementations.UnitOfWork UnitOfWork;
+     
+     
         public BlogsController()
         {
             this.UnitOfWork = new SHF.DataAccess.Implementations.UnitOfWork();
@@ -151,7 +153,7 @@ namespace SHF.Controllers.Front
         {
             // string tenantId = "1";
             var lstBlogCommentsDetailsViewModel = new List<BlogCommentsDetailsViewModel>();
-            var BlogCommentsDetails = UnitOfWork.BlogCommentsDetailsRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.Blog_Id == Convert.ToInt64(Id) && x.IsActive == true).OrderBy(x => x.DisplayIndex).Take(10);
+            var BlogCommentsDetails = UnitOfWork.BlogCommentsDetailsRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.Blog_Id == Convert.ToInt64(Id) && x.IsActive == true && x.IsAdminApproved==true).OrderBy(x => x.DisplayIndex).Take(10);
 
             foreach (var tempBlogCommentsDetails in BlogCommentsDetails)
             {
@@ -171,7 +173,7 @@ namespace SHF.Controllers.Front
                 blogCommentsDetailsViewModel.Tenant_ID = Convert.ToInt64(tempBlogCommentsDetails.Tenant_ID);
                 blogCommentsDetailsViewModel.CreatedOn = tempBlogCommentsDetails.CreatedOn;
 
-                var objCommentsReply = UnitOfWork.CommentsReplyRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.BCD_Id == Convert.ToInt64(tempBlogCommentsDetails.ID) && x.IsActive == true).OrderBy(x => x.DisplayIndex).Take(10);
+                var objCommentsReply = UnitOfWork.CommentsReplyRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.BCD_Id == Convert.ToInt64(tempBlogCommentsDetails.ID) && x.IsActive == true && x.IsAdminApproved == true).OrderBy(x => x.DisplayIndex).Take(10);
                 var lstcommentsReplyViewModel = new List<CommentsReplyViewModel>();
 
                 foreach (var tempobjCommentsReply in objCommentsReply)
@@ -202,29 +204,30 @@ namespace SHF.Controllers.Front
             return lstBlogCommentsDetailsViewModel;
         }
 
-        [Route("api/Blogs/AddBlogCommentsDetails/{tenantId}/{BlogId}/{Name}/{EmailId}/{Comment}")]
-        [HttpGet, HttpPost]
-        public string AddBlogCommentsDetails(string tenantId, string BlogId, string Name, string EmailId, string Comment)
-        {
+        //[Route("api/Blogs/AddBlogCommentsDetails/{tenantId}/{BlogId}/{Name}/{EmailId}/{Comment}")]
+        //[HttpGet, HttpPost]
+        //public async Task<string> AddBlogCommentsDetailsAsync(string tenantId, string BlogId, string Name, string EmailId, string Comment)
+        //{
 
-            // string tenantId = "1";
-            var response = "error";
-            var model = new EntityModel.BlogCommentsDetails();
-            model.Blog_Id = Convert.ToInt64(BlogId);
-            model.Name = Name;
-            model.EmailId = EmailId;
-            model.Comment = Comment;
-            model.DisplayIndex = 0;
-            model.IsActive = false;
-            model.TotalViews = 1;
-            model.Tenant_ID = Convert.ToInt64(tenantId);
-            model.Tenant = null;
-            UnitOfWork.BlogCommentsDetailsRepository.Insert(model);
-            response = "success";
-            /*some db operation*/
-            // return Json("ajs");
-            return response;
-        }
+        //    // string tenantId = "1";
+        //    var response = "error";
+        //    var model = new SHF.ViewModel.BlogCommentsDetailsCreateOrEditViewModel();
+        //    model.Blog_Id = Convert.ToInt64(BlogId);
+        //    model.Name = Name;
+        //    model.EmailId = EmailId;
+        //    model.Comment = Comment;
+        //    model.DisplayIndex = 0;
+        //    model.IsActive = false;
+        //    model.TotalViews = 1;
+        //    model.Tenant_ID = Convert.ToInt64(tenantId);
+        //    model.ID =0;
+        //    AddDataController obj = new AddDataController(businessMessage,businessBlogCommentsDetails,businessBlogMaster);
+        //    await obj.InsertCommentDetails(model);
+        //    response = "success";
+        //    /*some db operation*/
+        //    // return Json("ajs");
+        //    return response;
+        //}
 
         [Route("api/Blogs/AddCommentsReply/{tenantId}/{BlogId}/{BCD_Id}/{Name}/{EmailId}/{Comment}")]
         [HttpPost]
@@ -244,6 +247,7 @@ namespace SHF.Controllers.Front
             entity.Tenant_ID = Convert.ToInt64(tenantId);
             entity.Tenant = null;
             UnitOfWork.CommentsReplyRepository.Add(entity);
+            UnitOfWork.CommentsReplyRepository.SaveChanges();
             response = "success";
             /*some db operation*/
             // return Json("ajs");

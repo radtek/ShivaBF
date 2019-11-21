@@ -142,6 +142,14 @@ angular.module(config.app).service('BlogCommentsDetailsCRUD', function ($http) {
                     width: "25%",
                     targets: 31
                 },
+ {
+                    name: "BlogCommentsDetails_tenant.BlogCommentsDetails.IsAdminApproved",
+                    data: "IsAdminApproved",
+                    title: "IsAdminApproved",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 32
+                },
                 {
                     name: "tenant.Name",
                     data: "TenantName",
