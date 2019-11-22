@@ -88,6 +88,13 @@ namespace SHF
             container.RegisterType<Business.Interface.IHomePageSection4, Business.BusinessLogic.HomePageSection4>();
             container.RegisterType<Business.Interface.IHomePageSection4Testimonails, Business.BusinessLogic.HomePageSection4Testimonails>();
             container.RegisterType<Business.Interface.IHomePageSection5, Business.BusinessLogic.HomePageSection5>();
+            container.RegisterType<Business.Interface.IAsn, Business.BusinessLogic.Asn>();
+            container.RegisterType<Business.Interface.ICarrier, Business.BusinessLogic.Carrier>();
+            container.RegisterType<Business.Interface.ICurrency, Business.BusinessLogic.Currency>();
+            container.RegisterType<Business.Interface.ILanguage, Business.BusinessLogic.Language>();
+            container.RegisterType<Business.Interface.IThreat, Business.BusinessLogic.Threat>();
+            container.RegisterType<Business.Interface.ITimeZone, Business.BusinessLogic.TimeZone>();
+            container.RegisterType<Business.Interface.IIPInfo, Business.BusinessLogic.IPInfo>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

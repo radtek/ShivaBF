@@ -52,6 +52,13 @@
   <ItemGroup>
     <Compile Include="BaseBusiness.cs" />
     <Compile Include="busCache.cs" />
+    <Compile Include="BusinessLogic\IPInfo.cs" />
+    <Compile Include="BusinessLogic\IP_TimeZone.cs" />
+    <Compile Include="BusinessLogic\IP_Threat.cs" />
+    <Compile Include="BusinessLogic\IP_Language.cs" />
+    <Compile Include="BusinessLogic\IP_Currency.cs" />
+    <Compile Include="BusinessLogic\IP_Carrier.cs" />
+    <Compile Include="BusinessLogic\IP_Asn.cs" />
     <Compile Include="BusinessLogic\CommentsReply.cs" />
     <Compile Include="BusinessLogic\FooterLinks.cs" />
     <Compile Include="BusinessLogic\FooterBlockMaster.cs" />
@@ -119,6 +126,13 @@
     <Compile Include="BusinessLogic\BankMaster.cs" />
     <Compile Include="BusinessLogic\SubMenu.cs" />
     <Compile Include="BusinessLogic\Tenant.cs" />
+    <Compile Include="Interface\IIPInfo.cs" />
+    <Compile Include="Interface\IIP_TimeZone.cs" />
+    <Compile Include="Interface\IIP_Threat.cs" />
+    <Compile Include="Interface\IIP_Language.cs" />
+    <Compile Include="Interface\IIP_Currency.cs" />
+    <Compile Include="Interface\IIP_Carrier.cs" />
+    <Compile Include="Interface\IIP_Asn.cs" />
     <Compile Include="Interface\ICommentsReply.cs" />
     <Compile Include="Interface\IFooterLinks.cs" />
     <Compile Include="Interface\IFooterBlockMaster.cs" />
