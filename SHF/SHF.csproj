@@ -489,13 +489,9 @@
     <Compile Include="Helpers\CompressImage.cs" />
     <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Helpers\RequiredField.cs" />
-    <Compile Include="Migrations\201911211905551_changes.cs" />
-    <Compile Include="Migrations\201911211905551_changes.Designer.cs">
-      <DependentUpon>201911211905551_changes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911212029008_changes1.cs" />
-    <Compile Include="Migrations\201911212029008_changes1.Designer.cs">
-      <DependentUpon>201911212029008_changes1.cs</DependentUpon>
+    <Compile Include="Migrations\201911221928097_Changes.cs" />
+    <Compile Include="Migrations\201911221928097_Changes.Designer.cs">
+      <DependentUpon>201911221928097_Changes.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -13007,11 +13003,8 @@
     <TypeScriptCompile Include="plugins\fullcalendar\main.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201911211905551_changes.resx">
-      <DependentUpon>201911211905551_changes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911212029008_changes1.resx">
-      <DependentUpon>201911212029008_changes1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201911221928097_Changes.resx">
+      <DependentUpon>201911221928097_Changes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

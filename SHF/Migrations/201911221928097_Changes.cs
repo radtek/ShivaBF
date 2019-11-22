@@ -3,7 +3,7 @@ namespace SHF.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class changes1 : DbMigration
+    public partial class Changes : DbMigration
     {
         public override void Up()
         {
@@ -130,6 +130,8 @@ namespace SHF.Migrations
                 .ForeignKey("dbo.Tbl_Tenant", t => t.Tenant_ID)
                 .Index(t => t.Tenant_ID);
             
+            AddColumn("dbo.Tbl_BlogCommentsDetails", "IsAdminApproved", c => c.Boolean());
+            AddColumn("dbo.Tbl_CommentsReply", "IsAdminApproved", c => c.Boolean());
             AddColumn("dbo.Tbl_IPInfo", "ip", c => c.String());
             AddColumn("dbo.Tbl_IPInfo", "is_eu", c => c.Boolean(nullable: false));
             AddColumn("dbo.Tbl_IPInfo", "region_code", c => c.String());
@@ -236,6 +238,8 @@ namespace SHF.Migrations
             DropColumn("dbo.Tbl_IPInfo", "region_code");
             DropColumn("dbo.Tbl_IPInfo", "is_eu");
             DropColumn("dbo.Tbl_IPInfo", "ip");
+            DropColumn("dbo.Tbl_CommentsReply", "IsAdminApproved");
+            DropColumn("dbo.Tbl_BlogCommentsDetails", "IsAdminApproved");
             DropTable("dbo.Tbl_IP_TimeZone");
             DropTable("dbo.Tbl_IP_Threat");
             DropTable("dbo.Tbl_IP_Language");
