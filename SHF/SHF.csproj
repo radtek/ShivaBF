@@ -392,6 +392,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\IPInfoController.cs" />
     <Compile Include="Controllers\CommentsReplyController.cs" />
     <Compile Include="Controllers\FooterLinksController.cs" />
     <Compile Include="Controllers\FooterBlockMasterController.cs" />
@@ -519,6 +520,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AngularControllers\AspNetUserController.js" />
+    <Content Include="AngularControllers\IPInfoController.js" />
     <Content Include="AngularControllers\CommentsReplyController.js" />
     <Content Include="AngularControllers\FooterLinksController.js" />
     <Content Include="AngularControllers\FooterBlockMasterController.js" />
@@ -12514,6 +12516,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Services\AspNetRole.js" />
     <Content Include="Scripts\Services\AspNetUser.js" />
+    <Content Include="Scripts\Services\IPInfo.js" />
     <Content Include="Scripts\Services\CommentsReply.js" />
     <Content Include="Scripts\Services\FooterLinks.js" />
     <Content Include="Scripts\Services\FooterBlockMaster.js" />
@@ -12891,6 +12894,9 @@
     <Content Include="Views\FooterLinks\Index.cshtml" />
     <Content Include="Views\BlogBannerNavigationsDetails\_Guide.cshtml" />
     <Content Include="Views\Home\_Dashboard.cshtml" />
+    <Content Include="Views\IPInfo\_CreateOrEdit.cshtml" />
+    <Content Include="Views\IPInfo\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\IPInfo\Index.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />

@@ -167,6 +167,7 @@ namespace SHF.Business.BusinessLogic
                     .Skip(skip).Take(pageSize).ToList()
                     .Select(x => new ViewModel.IPInfoIndexViewModel
                     {
+                        ID = x.IPInfo_tenant_Asns_Carriers_Language_Currencies_TimeZone.IPInfo_tenant_Asns_Carriers_Language_Currencies.IPInfo_tenant_Asns_Carriers_Language.IPInfo_tenant_Asns_Carriers.IPInfo_tenant_Asns.IPInfo_tenant.IPInfo.ID,
                         ip = x.IPInfo_tenant_Asns_Carriers_Language_Currencies_TimeZone.IPInfo_tenant_Asns_Carriers_Language_Currencies.IPInfo_tenant_Asns_Carriers_Language.IPInfo_tenant_Asns_Carriers.IPInfo_tenant_Asns.IPInfo_tenant.IPInfo.ip.ToString(),
                         is_eu = x.IPInfo_tenant_Asns_Carriers_Language_Currencies_TimeZone.IPInfo_tenant_Asns_Carriers_Language_Currencies.IPInfo_tenant_Asns_Carriers_Language.IPInfo_tenant_Asns_Carriers.IPInfo_tenant_Asns.IPInfo_tenant.IPInfo.is_eu,
                         city = x.IPInfo_tenant_Asns_Carriers_Language_Currencies_TimeZone.IPInfo_tenant_Asns_Carriers_Language_Currencies.IPInfo_tenant_Asns_Carriers_Language.IPInfo_tenant_Asns_Carriers.IPInfo_tenant_Asns.IPInfo_tenant.IPInfo.city,
