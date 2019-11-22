@@ -306,9 +306,9 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var PriceFeaturesMasterData = businessPriceFeaturesMaster.FindBy(PriceFeaturesMaster => PriceFeaturesMaster.Tenant_ID == model.Tenant_ID && PriceFeaturesMaster.ID != model.ID).FirstOrDefault();
+                            var PriceFeaturesMasterData = businessPriceFeaturesMaster.FindBy(PriceFeaturesMaster => PriceFeaturesMaster.Tenant_ID == model.Tenant_ID && PriceFeaturesMaster.ID == model.ID).FirstOrDefault();
 
-                            if (PriceFeaturesMasterData.IsNotNull())
+                            if (PriceFeaturesMasterData.IsNull())
                             {
                                 transaction.Complete();
                                 var response = new JsonResponse<dynamic>()

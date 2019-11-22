@@ -167,7 +167,9 @@ angular.module(config.app).service('IPInfoCRUD', function ($http) {
                     name: "IPInfo_tenant_Asns_Carriers_Language_Currencies_TimeZone.IPInfo_tenant_Asns_Carriers_Language_Currencies.IPInfo_tenant_Asns_Carriers_Language.IPInfo_tenant_Asns_Carriers.IPInfo_tenant_Asns.IPInfo_tenant.IPInfo.flag",
                     data: "flag",
                     title: "Flag",
-                    render: $.fn.dataTable.render.text(),
+                    render: function (data, type, row, meta) {
+                        return '<img src="'+data+'" />';
+                    },
                     width: "25%",
                     targets: 16
                 },
@@ -343,7 +345,11 @@ angular.module(config.app).service('IPInfoCRUD', function ($http) {
                     name: "IPInfo_tenant_Asns_Carriers_Language_Currencies_TimeZone.TimeZone.current_time",
                     data: "TimeZone_current_time",
                     title: "TimeZone_current_time",
-                    render: $.fn.dataTable.render.text(),
+                   render: function (data, type, row, meta) {
+                        let date = new Date(parseInt(data.replace('/Date(', '')));
+                        return moment(date).format('DD-MM-YYYY hh:mm:ss a');
+
+                    },
                     width: "25%",
                     targets: 37
                 },

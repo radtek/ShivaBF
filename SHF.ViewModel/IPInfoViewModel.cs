@@ -87,20 +87,20 @@ namespace SHF.ViewModel
         public string emoji_unicode { get; set; }
 
         public System.Int64? Asn_ID { get; set; }
-
+        public IP_AsnCreateOrEditViewModel Asn { get; set; }
         public System.Int64? Carrier_ID { get; set; }
-
+        public IP_CarrierCreateOrEditViewModel carrier { get; set; }
         public System.Int64? Language_ID { get; set; }
-
+        public List<IP_LanguageCreateOrEditViewModel> languages { get; set; }
         public System.Int64? Currency_ID { get; set; }
-
+        public IP_CurrencyCreateOrEditViewModel currency { get; set; }
         public System.Int64? TimeZone_ID { get; set; }
-
+        public IP_TimeZoneCreateOrEditViewModel time_zone { get; set; }
         public System.Int64? Threat_ID { get; set; }
+        public IP_ThreatCreateOrEditViewModel threat { get; set; }
         public string count { get; set; }
         public System.String TenantName { get; set; }
         public System.Int64 Tenant_ID { get; set; }
-
     }
    
     public class IPInfoDropdownListViewModel

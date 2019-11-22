@@ -139,7 +139,7 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var BannerMasterId = businessBannerMaster.FindBy(Banner => Banner.Tenant_ID == model.Tenant_ID && Banner.ID==model.ID).FirstOrDefault();
+                            var BannerMasterId = businessBannerMaster.FindBy(Banner => Banner.Tenant_ID == model.Tenant_ID && Banner.ID == model.ID).FirstOrDefault();
 
                             if (BannerMasterId.IsNotNull())
                             {
@@ -157,7 +157,7 @@ namespace SHF.Controllers
                             else
                             {
                                 var entity = new EntityModel.BannerMaster();
-                               
+
                                 entity.BannerPath = model.BannerPath;
                                 entity.AlternativeText = model.AlternativeText;
                                 entity.Title = model.Title;
@@ -292,9 +292,9 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var BannerData = businessBannerMaster.FindBy(Banner => Banner.Tenant_ID == model.Tenant_ID && Banner.ID != model.ID).FirstOrDefault();
+                            var BannerData = businessBannerMaster.FindBy(Banner => Banner.Tenant_ID == model.Tenant_ID && Banner.ID == model.ID).FirstOrDefault();
 
-                            if (BannerData.IsNotNull())
+                            if (BannerData.IsNull())
                             {
                                 transaction.Complete();
                                 var response = new JsonResponse<dynamic>()
@@ -309,19 +309,21 @@ namespace SHF.Controllers
                             }
                             else
                             {
-                                var entity = new EntityModel.BannerMaster();
-                                entity.ID = Convert.ToInt64(model.ID);
-                                entity.BannerPath = model.BannerPath;
-                                entity.AlternativeText = model.AlternativeText;
-                                entity.Title = model.Title;
-                                entity.Tenant_ID = model.Tenant_ID;
-                                entity.Tenant = null;
-                                entity.Tenant = null;
+                                var entity = this.businessBannerMaster.GetById(Convert.ToInt64(model.ID));
+                                if (entity.IsNotNull())
+                                {
 
-                                this.businessBannerMaster.Update(entity);
+                                    entity.ID = Convert.ToInt64(model.ID);
+                                    entity.BannerPath = model.BannerPath;
+                                    entity.AlternativeText = model.AlternativeText;
+                                    entity.Title = model.Title;
+                                    entity.Tenant_ID = model.Tenant_ID;
+                                    entity.Tenant = null;
 
-                                transaction.Complete();
+                                    this.businessBannerMaster.Update(entity);
 
+                                    transaction.Complete();
+                                }
                                 var response = new JsonResponse<dynamic>()
                                 {
                                     Type = busConstant.Messages.Type.RESPONSE,
@@ -443,7 +445,7 @@ namespace SHF.Controllers
                         }
                         else
                         {
-                            var entities = this.businessBannerMaster.GetAll().Where(Banner => Banner.Tenant_ID == Id ).Select(x => new ViewModel.BannerMasterIndexViewModel
+                            var entities = this.businessBannerMaster.GetAll().Where(Banner => Banner.Tenant_ID == Id).Select(x => new ViewModel.BannerMasterIndexViewModel
                             {
                                 ID = x.ID,
                                 BannerPath = String.Concat(busConstant.Settings.CMSPath.TENANAT_UPLOAD_DIRECTORY, x.Tenant_ID) + "/" + x.BannerPath,
@@ -527,7 +529,7 @@ namespace SHF.Controllers
                 fileStream.Write(bytes, 0, length);
                 fileStream.Close();
             }
-            
+
             return string.Format("{0} bytes uploaded", bytes.Length);
         }
 

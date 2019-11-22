@@ -349,9 +349,9 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var CategoriesData = businessServices2Master.FindBy(Categories => Categories.Tenant_ID == model.Tenant_ID && Categories.ID != model.ID).FirstOrDefault();
+                            var CategoriesData = businessServices2Master.FindBy(Categories => Categories.Tenant_ID == model.Tenant_ID && Categories.ID == model.ID).FirstOrDefault();
 
-                            if (CategoriesData.IsNotNull())
+                            if (CategoriesData.IsNull())
                             {
                                 transaction.Complete();
                                 var response = new JsonResponse<dynamic>()

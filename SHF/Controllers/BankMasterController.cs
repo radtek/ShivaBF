@@ -285,9 +285,9 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var bankData = businessBankMaster.FindBy(bank => bank.Tenant_ID == model.Tenant_ID && bank.ID != model.ID).FirstOrDefault();
+                            var bankData = businessBankMaster.FindBy(bank => bank.Tenant_ID == model.Tenant_ID && bank.ID == model.ID).FirstOrDefault();
 
-                            if (bankData.IsNotNull())
+                            if (bankData.IsNull())
                             {
                                 transaction.Complete();
                                 var response = new JsonResponse<dynamic>()

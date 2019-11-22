@@ -140,7 +140,7 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var catId = businessFAQMaster.FindBy(FAQ => FAQ.Title == model.Title && FAQ.Tenant_ID==model.Tenant_ID).FirstOrDefault();
+                            var catId = businessFAQMaster.FindBy(FAQ => FAQ.Title == model.Title && FAQ.Tenant_ID == model.Tenant_ID).FirstOrDefault();
 
                             if (catId.IsNotNull())
                             {
@@ -303,15 +303,25 @@ namespace SHF.Controllers
                             }
                             else
                             {
-                                var entity = new EntityModel.FAQMaster();
+                                var entity = this.businessFAQMaster.GetById(Convert.ToInt64(model.ID));
+                                if (entity.IsNotNull())
+                                {
+                                    entity.Title = model.Title;
+                                    entity.Description = model.Description;
+                                    entity.Title = model.Title;
+                                    entity.Url = model.Url;
+                                    entity.Metadata = model.Metadata;
+                                    entity.MetaDescription = model.MetaDescription;
+                                    entity.Keyword = model.Keyword;
+                                    entity.TotalViews = model.TotalViews;
+                                    entity.IsActive = model.IsActive;
+                                    entity.Tenant_ID = model.Tenant_ID;
+                                    entity.Tenant = null;
 
-                                Mapper.Map(model, entity);
-                                entity.Tenant = null;
+                                    this.businessFAQMaster.Update(entity);
 
-                                this.businessFAQMaster.Update(entity);
-
-                                transaction.Complete();
-
+                                    transaction.Complete();
+                                }
                                 var response = new JsonResponse<dynamic>()
                                 {
                                     Type = busConstant.Messages.Type.RESPONSE,
@@ -321,6 +331,7 @@ namespace SHF.Controllers
                                     MessageCode = busConstant.Messages.MessageCode.SAVE
                                 };
                                 return Json(response);
+
                             }
 
                         }
@@ -350,45 +361,45 @@ namespace SHF.Controllers
         {
             try
             {
-                    using (var transaction = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadUncommitted }))
+                using (var transaction = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadUncommitted }))
+                {
+                    try
                     {
-                        try
+                        if (Convert.ToInt64(Id) == 0)
                         {
-                            if (Convert.ToInt64(Id) == 0)
+                            transaction.Complete();
+                            var response = new JsonResponse<dynamic>()
                             {
-                                transaction.Complete();
-                                var response = new JsonResponse<dynamic>()
-                                {
-                                    Type = busConstant.Messages.Type.EXCEPTION,
-                                    Message = busConstant.Messages.Type.Exceptions.BAD_REQUEST,
-                                };
+                                Type = busConstant.Messages.Type.EXCEPTION,
+                                Message = busConstant.Messages.Type.Exceptions.BAD_REQUEST,
+                            };
 
-                                Response.StatusCode = Convert.ToInt32(HttpStatusCode.BadRequest);
-                                return Json(response, JsonRequestBehavior.AllowGet);
-                            }
-                            else
-                            {
-                                this.businessFAQMaster.Delete(Convert.ToInt64(Id));
-
-
-                                var response = new JsonResponse<dynamic>()
-                                {
-                                    Type = busConstant.Messages.Type.RESPONSE,
-                                    Message = busConstant.Messages.Icon.SUCCESS,
-                                };
-
-                                transaction.Complete();
-                                return Json(response, JsonRequestBehavior.AllowGet);
-
-                            }
+                            Response.StatusCode = Convert.ToInt32(HttpStatusCode.BadRequest);
+                            return Json(response, JsonRequestBehavior.AllowGet);
                         }
-                        catch
+                        else
                         {
-                            transaction.Dispose();
-                            throw;
+                            this.businessFAQMaster.Delete(Convert.ToInt64(Id));
+
+
+                            var response = new JsonResponse<dynamic>()
+                            {
+                                Type = busConstant.Messages.Type.RESPONSE,
+                                Message = busConstant.Messages.Icon.SUCCESS,
+                            };
+
+                            transaction.Complete();
+                            return Json(response, JsonRequestBehavior.AllowGet);
+
                         }
                     }
-               
+                    catch
+                    {
+                        transaction.Dispose();
+                        throw;
+                    }
+                }
+
             }
             catch (Exception ex)
             {
