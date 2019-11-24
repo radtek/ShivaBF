@@ -281,6 +281,14 @@ angular.module(config.app).service('Services1MasterCRUD', function ($http) {
                     targets: 25
                 },
                 {
+                    name: "Services1Master_tenant.Services1Master.PageTitle",
+                    data: "PageTitle",
+                    title: "PageTitle",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 26
+                },
+                {
                     name: "Services1Master_tenant.Services1Master.Url",
                     data: "Url",
                     title: "Url",

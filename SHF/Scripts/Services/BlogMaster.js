@@ -150,14 +150,21 @@ angular.module(config.app).service('BlogMasterCRUD', function ($http) {
                     width: "25%",
                     targets: 10
                 },
-               
+                {
+                    name: "BlogMaster.PageTitle",
+                    data: "PageTitle",
+                    title: "PageTitle",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 11
+                },
                 {
                     name: "BlogMaster.Url",
                     data: "Url",
                     title: "Url",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 26
+                    targets: 12
                 },
                 {
                     name: "BlogMaster.Metadata",

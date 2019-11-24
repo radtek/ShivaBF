@@ -63,6 +63,7 @@ namespace SHF.Business.BusinessLogic
                         || x.Services4Master_tenant.Services4Master.Section6PriceingHeading.CaseInsensitiveContains(searchValue)
                         || x.Services4Master_tenant.Services4Master.Section7PriceingHeading.CaseInsensitiveContains(searchValue)
                         || x.Services4Master_tenant.Services4Master.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
+                        || x.Services4Master_tenant.Services4Master.PageTitle.CaseInsensitiveContains(searchValue)
                         || x.Services4Master_tenant.Services4Master.Url.ToString().CaseInsensitiveContains(searchValue)
                         || x.Services4Master_tenant.Services4Master.Metadata.ToString().CaseInsensitiveContains(searchValue)
                         || x.Services4Master_tenant.Services4Master.MetaDescription.ToString().CaseInsensitiveContains(searchValue)
@@ -98,6 +99,7 @@ namespace SHF.Business.BusinessLogic
                         || x.Services4Master_tenant.Services4Master.Section6PriceingHeading.CaseInsensitiveContains(searchValue)
                         || x.Services4Master_tenant.Services4Master.Section7PriceingHeading.CaseInsensitiveContains(searchValue)
                         || x.Services4Master_tenant.Services4Master.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
+                        || x.Services4Master_tenant.Services4Master.PageTitle.CaseInsensitiveContains(searchValue)
                         || x.Services4Master_tenant.Services4Master.Url.ToString().CaseInsensitiveContains(searchValue)
                         || x.Services4Master_tenant.Services4Master.Metadata.ToString().CaseInsensitiveContains(searchValue)
                         || x.Services4Master_tenant.Services4Master.MetaDescription.ToString().CaseInsensitiveContains(searchValue)
@@ -132,7 +134,8 @@ namespace SHF.Business.BusinessLogic
                         Section6PriceingHeading = x.Services4Master_tenant.Services4Master.Section6PriceingHeading,
                         Section7PriceingHeading = x.Services4Master_tenant.Services4Master.Section7PriceingHeading,
                         DisplayIndex = x.Services4Master_tenant.Services4Master.DisplayIndex,
-                        Url= x.Services4Master_tenant.Services4Master.Url.ToString(),
+                        PageTitle = x.Services4Master_tenant.Services4Master.PageTitle,
+                        Url = x.Services4Master_tenant.Services4Master.Url.ToString(),
                         Metadata= x.Services4Master_tenant.Services4Master.Metadata.ToString(),
                         MetaDescription= x.Services4Master_tenant.Services4Master.MetaDescription.ToString(),
                         Keyword= x.Services4Master_tenant.Services4Master.Keyword.ToString(),

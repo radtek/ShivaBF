@@ -171,6 +171,7 @@ namespace SHF.Controllers
                                 entity.Section2Description = model.Section2Description;
                                 entity.Section3Heading = model.Section3Heading;
                                 entity.Section3Description = model.Section3Description;
+                                entity.PageTitle = model.PageTitle;
                                 entity.Url = model.Url.ToString();
                                 entity.Metadata = model.Metadata.ToString();
                                 entity.MetaDescription = model.MetaDescription.ToString();
@@ -259,6 +260,7 @@ namespace SHF.Controllers
                                 model.Section2Description = entity.Section2Description;
                                 model.Section3Heading = entity.Section3Heading;
                                 model.Section3Description = entity.Section3Description;
+                                model.PageTitle = entity.PageTitle;
                                 model.Url = entity.Url.ToString();
                                 model.Metadata = entity.Metadata.ToString();
                                 model.MetaDescription = entity.MetaDescription.ToString();
@@ -368,6 +370,7 @@ namespace SHF.Controllers
                                     entity.Section2Description = model.Section2Description;
                                     entity.Section3Heading = model.Section3Heading;
                                     entity.Section3Description = model.Section3Description;
+                                    entity.PageTitle = model.PageTitle;
                                     entity.Url = model.Url.ToString();
                                     entity.Metadata = model.Metadata.ToString();
                                     entity.MetaDescription = model.MetaDescription.ToString();

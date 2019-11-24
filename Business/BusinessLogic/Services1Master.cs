@@ -72,6 +72,7 @@ namespace SHF.Business.BusinessLogic
                                  || x.Services1Master_tenant.Services1Master.Section9Description.CaseInsensitiveContains(searchValue)
                                   || x.Services1Master_tenant.Services1Master.Section10MappingBankFlag.ToString().CaseInsensitiveContains(searchValue)
                         || x.Services1Master_tenant.Services1Master.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
+                        || x.Services1Master_tenant.Services1Master.PageTitle.CaseInsensitiveContains(searchValue)
                         || x.Services1Master_tenant.Services1Master.Url.ToString().CaseInsensitiveContains(searchValue)
                         || x.Services1Master_tenant.Services1Master.Metadata.ToString().CaseInsensitiveContains(searchValue)
                         || x.Services1Master_tenant.Services1Master.MetaDescription.ToString().CaseInsensitiveContains(searchValue)
@@ -116,6 +117,7 @@ namespace SHF.Business.BusinessLogic
                                  || x.Services1Master_tenant.Services1Master.Section9Description.CaseInsensitiveContains(searchValue)
                                   || x.Services1Master_tenant.Services1Master.Section10MappingBankFlag.ToString().CaseInsensitiveContains(searchValue)
                         || x.Services1Master_tenant.Services1Master.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
+                        || x.Services1Master_tenant.Services1Master.PageTitle.CaseInsensitiveContains(searchValue)
                         || x.Services1Master_tenant.Services1Master.Url.ToString().CaseInsensitiveContains(searchValue)
                         || x.Services1Master_tenant.Services1Master.Metadata.ToString().CaseInsensitiveContains(searchValue)
                         || x.Services1Master_tenant.Services1Master.MetaDescription.ToString().CaseInsensitiveContains(searchValue)
@@ -157,7 +159,8 @@ namespace SHF.Business.BusinessLogic
                         Section9Description = x.Services1Master_tenant.Services1Master.Section9Description,
                         Section10MappingBankFlag= x.Services1Master_tenant.Services1Master.Section10MappingBankFlag,
                         DisplayIndex= x.Services1Master_tenant.Services1Master.DisplayIndex,
-                        Url= x.Services1Master_tenant.Services1Master.Url.ToString(),
+                        PageTitle = x.Services1Master_tenant.Services1Master.PageTitle,
+                        Url = x.Services1Master_tenant.Services1Master.Url.ToString(),
                         Metadata= x.Services1Master_tenant.Services1Master.Metadata.ToString(),
                         MetaDescription= x.Services1Master_tenant.Services1Master.MetaDescription.ToString(),
                         Keyword= x.Services1Master_tenant.Services1Master.Keyword.ToString(),

@@ -46,6 +46,8 @@ namespace SHF.EntityModel
         public System.Boolean? IsActive { get; set; }
         [Column("TotalViews")]
         public System.Int32 TotalViews { get; set; }
+        [Column("PageTitle")]
+        public string PageTitle { get; set; }
         [Column("Url")]
         public string Url { get; set; }
 

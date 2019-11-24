@@ -132,12 +132,20 @@ angular.module(config.app).service('Services5MasterCRUD', function ($http) {
                     targets: 11
                 },
                 {
+                    name: "Services5Master_tenant.Services5Master.PageTitle",
+                    data: "PageTitle",
+                    title: "PageTitle",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 12
+                },
+                {
                     name: "Services5Master_tenant.Services5Master.Url",
                     data: "Url",
                     title: "Url",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 12
+                    targets: 13
                 },
                 {
                     name: "Services5Master_tenant.Services5Master.Metadata",

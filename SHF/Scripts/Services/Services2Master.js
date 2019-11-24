@@ -147,12 +147,20 @@ angular.module(config.app).service('Services2MasterCRUD', function ($http) {
                     targets: 11
                 },
                 {
+                    name: "Services2Master_tenant.Services2Master.PageTitle",
+                    data: "PageTitle",
+                    title: "PageTitle",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 12
+                },
+                {
                     name: "Services2Master_tenant.Services2Master.Url",
                     data: "Url",
                     title: "Url",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 12
+                    targets: 13
                 },
                 {
                     name: "Services2Master_tenant.Services2Master.Metadata",

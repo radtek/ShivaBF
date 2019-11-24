@@ -183,6 +183,7 @@ namespace SHF.Controllers
                                 entity.Section2BannerPath = model.Section2BannerPath;
                                 entity.Section2BannerHeadingDescription = model.Section2BannerHeadingDescription;
                                 entity.DisplayIndex = model.DisplayIndex;
+                                entity.PageTitle = model.PageTitle;
                                 entity.Url = model.Url;
                                 entity.Metadata = model.Metadata;
                                 entity.MetaDescription = model.MetaDescription;
@@ -282,6 +283,7 @@ namespace SHF.Controllers
                                 model.Section2BannerPath = entity.Section2BannerPath;
                                 model.Section2BannerHeadingDescription = entity.Section2BannerHeadingDescription;
                                 model.DisplayIndex = entity.DisplayIndex;
+                                model.PageTitle = entity.PageTitle;
                                 model.Url = entity.Url.ToString();
                                 model.Metadata = entity.Metadata.ToString();
                                 model.MetaDescription = entity.MetaDescription.ToString();
@@ -395,6 +397,7 @@ namespace SHF.Controllers
                                     entity.Section2BannerPath = model.Section2BannerPath;
                                     entity.Section2BannerHeadingDescription = model.Section2BannerHeadingDescription;
                                     entity.DisplayIndex = model.DisplayIndex;
+                                    entity.PageTitle = model.PageTitle;
                                     entity.Url = model.Url;
                                     entity.Metadata = model.Metadata;
                                     entity.MetaDescription = model.MetaDescription;

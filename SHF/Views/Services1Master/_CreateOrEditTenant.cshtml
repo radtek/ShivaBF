@@ -15,7 +15,7 @@
                 <button type="button" class="close" ng-click="ShowConfirm('modal-createOredit')" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Services1 Master Details</h4>
+                <h4 class="modal-title">Services1  Master Details</h4>
             </div>
             <div class="modal-body">
                 <!-- general form elements -->
@@ -23,7 +23,7 @@
                 <div class="box box-primary">
                     <div class="box-body">
                         <input id="antiForgeryToken" data-ng-model="antiForgeryToken" type="hidden" data-ng-init="antiForgeryToken='@AntiForgeryToken()'" />
-
+                      
                         <div class="form-group" ng-class="{'has-error': (myForm.SubSubCategoryName.$touched || myForm.SubSubCategoryName.$dirty)  && myForm.SubSubCategoryName.$invalid}">
                             <label>Sub Sub Category Name</label>
                             <select name="SubSubCategoryName" ng-model="Services1MasterCreateOrEditViewModel.SubSubCat_Id" class="form-control" style="width: 100%;" ng-options="x.ID as x.SubSubCategoryName for x in AllSubSubCategories" ng-change="LoadSubSubCateUrl(Services1MasterCreateOrEditViewModel.SubSubCat_Id)" required>
@@ -255,6 +255,14 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.TotalViews" ng-bind="errors.formErrors.TotalViews"></span>
                         </div>
+                        <div class="form-group" ng-class="{'has-error': (myForm.PageTitle.$touched || myForm.PageTitle.$dirty)  && myForm.PageTitle.$invalid}">
+                            <label>Page Title</label>
+                            <input type="text" class="form-control" name="PageTitle" ng-model="Services1MasterCreateOrEditViewModel.PageTitle" ng-disabled="Processing" autocomplete="off" placeholder="Enter Page Title" tooltip-placement="top" uib-tooltip="Enter Page Title" required />
+                            <div class="help-block" ng-messages="myForm.PageTitle.$error" ng-if="myForm.PageTitle.$touched || myForm.PageTitle.$dirty && myForm.PageTitle.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.PageTitle" ng-bind="errors.formErrors.PageTitle"></span>
+                        </div>
                         <div class="form-group" ng-class="{'has-error': (myForm.Url.$touched || myForm.Url.$dirty)  && myForm.Url.$invalid}">
                             <label>Url</label>
                             <input type="text" readonly class="form-control" name="Url" ng-model="Services1MasterCreateOrEditViewModel.Url" ng-disabled="Processing" autocomplete="off" placeholder="Enter Url" tooltip-placement="top" uib-tooltip="Enter Url" required />
@@ -263,7 +271,7 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.Url" ng-bind="errors.formErrors.Url"></span>
                         </div>
-                        <div class="form-group" ng-class="{'has-error': (myForm.Metadata.$touched || myForm.Metadata.$dirty)  && myForm.TotalViews.$invalid}">
+                        <div class="form-group" ng-class="{'has-error': (myForm.Metadata.$touched || myForm.Metadata.$dirty)  && myForm.Metadata.$invalid}">
                             <label>Metadata</label>
                             <input type="text" class="form-control" name="Metadata" ng-model="Services1MasterCreateOrEditViewModel.Metadata" ng-disabled="Processing" autocomplete="off" placeholder="Enter Metadata" tooltip-placement="top" uib-tooltip="Enter Metadata" required />
                             <div class="help-block" ng-messages="myForm.Metadata.$error" ng-if="myForm.Metadata.$touched || myForm.Metadata.$dirty && myForm.Metadata.$invalid">
@@ -300,8 +308,12 @@
     </div>
     <!-- /.modal-content -->
 </div>
+
+@*<script src="~/bower_components/ckeditor/ckeditor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-ckeditor/0.2.1/ng-ckeditor.min.js"></script>*@
 <script>
-             CKEDITOR.replace('Section2Description');
-             CKEDITOR.replace('Section7Description');
-             CKEDITOR.replace('Section9Description');
+    CKEDITOR.replace('Section2Description');
+    CKEDITOR.replace('Section7Description');
+    CKEDITOR.replace('Section9Description');
 </script>
+

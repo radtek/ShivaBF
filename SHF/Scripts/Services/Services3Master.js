@@ -171,13 +171,21 @@ angular.module(config.app).service('Services3MasterCRUD', function ($http) {
                     width: "25%",
                     targets: 11
                 },
+                 {
+                    name: "Services3Master_tenant.Services3Master.PageTitle",
+                    data: "PageTitle",
+                    title: "PageTitle",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 12
+                },
                 {
                     name: "Services3Master_tenant.Services3Master.Url",
                     data: "Url",
                     title: "Url",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 12
+                    targets: 13
                 },
                 {
                     name: "Services3Master_tenant.Services3Master.Metadata",

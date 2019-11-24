@@ -69,6 +69,7 @@ namespace SHF.ViewModel
         public System.Boolean? DisplayOnHome { get; set; }
         public System.Boolean? IsActive { get; set; }
         public System.Int32 TotalViews { get; set; }
+        public string PageTitle { get; set; }
         public string Url { get; set; }
         public string Metadata { get; set; }
         public string Keyword { get; set; }
@@ -137,6 +138,7 @@ namespace SHF.ViewModel
         public System.Boolean? DisplayOnHome { get; set; }
         public System.Boolean? IsActive { get; set; }
         public System.Int32 TotalViews { get; set; }
+        public string PageTitle { get; set; }
         public string Url { get; set; }
         public string Metadata { get; set; }
         public string Keyword { get; set; }

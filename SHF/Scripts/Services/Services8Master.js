@@ -183,13 +183,21 @@ angular.module(config.app).service('Services8MasterCRUD', function ($http) {
                     width: "25%",
                     targets: 11
                 },
+               {
+                    name: "Services8Master_tenant.Services8Master.PageTitle",
+                    data: "PageTitle",
+                    title: "PageTitle",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 12
+                },
                 {
                     name: "Services8Master_tenant.Services8Master.Url",
                     data: "Url",
                     title: "Url",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 12
+                    targets: 13
                 },
                 {
                     name: "Services8Master_tenant.Services8Master.Metadata",

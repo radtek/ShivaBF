@@ -193,6 +193,7 @@ namespace SHF.Controllers
                                 entity.Section9Description = model.Section9Description;
                                 entity.Section10MappingBankFlag = model.Section10MappingBankFlag;
                                 entity.DisplayIndex = model.DisplayIndex;
+                                entity.PageTitle = model.PageTitle;
                                 entity.Url= model.Url;
                                 entity.Metadata= model.Metadata;
                                 entity.MetaDescription= model.MetaDescription;
@@ -304,6 +305,7 @@ namespace SHF.Controllers
                                 model.Section9Description = entity.Section9Description;
                                 model.Section10MappingBankFlag = entity.Section10MappingBankFlag;
                                 model.DisplayIndex = entity.DisplayIndex;
+                                model.PageTitle = entity.PageTitle;
                                 model.Url = entity.Url.ToString();
                                 model.Metadata = entity.Metadata.ToString();
                                 model.MetaDescription = entity.MetaDescription.ToString();
@@ -426,6 +428,7 @@ namespace SHF.Controllers
                                 entity.Section9Description = model.Section9Description;
                                 entity.Section10MappingBankFlag = model.Section10MappingBankFlag;
                                 entity.DisplayIndex = model.DisplayIndex;
+                                entity.PageTitle = model.PageTitle;
                                 entity.Url = model.Url;
                                 entity.Metadata = model.Metadata;
                                 entity.MetaDescription = model.MetaDescription;

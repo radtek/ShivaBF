@@ -55,6 +55,7 @@ namespace SHF.Business.BusinessLogic
                         || x.BlogMaster.Section2Description.CaseInsensitiveContains(searchValue)
                         || x.BlogMaster.Section3Heading.CaseInsensitiveContains(searchValue)
                         || x.BlogMaster.Section3Description.CaseInsensitiveContains(searchValue)
+                        || x.BlogMaster.PageTitle.ToString().CaseInsensitiveContains(searchValue)
                         || x.BlogMaster.Url.ToString().CaseInsensitiveContains(searchValue)
                         || x.BlogMaster.Metadata.ToString().CaseInsensitiveContains(searchValue)
                         || x.BlogMaster.MetaDescription.ToString().CaseInsensitiveContains(searchValue)
@@ -82,6 +83,7 @@ namespace SHF.Business.BusinessLogic
                         || x.BlogMaster.Section2Description.CaseInsensitiveContains(searchValue)
                         || x.BlogMaster.Section3Heading.CaseInsensitiveContains(searchValue)
                         || x.BlogMaster.Section3Description.CaseInsensitiveContains(searchValue)
+                        || x.BlogMaster.PageTitle.ToString().CaseInsensitiveContains(searchValue)
                         || x.BlogMaster.Url.ToString().CaseInsensitiveContains(searchValue)
                         || x.BlogMaster.Metadata.ToString().CaseInsensitiveContains(searchValue)
                         || x.BlogMaster.MetaDescription.ToString().CaseInsensitiveContains(searchValue)
@@ -107,7 +109,8 @@ namespace SHF.Business.BusinessLogic
                         Section2Description = x.BlogMaster.Section2Description,
                         Section3Heading = x.BlogMaster.Section3Heading,
                         Section3Description = x.BlogMaster.Section3Description,
-                        Url= x.BlogMaster.Url.ToString(),
+                        PageTitle = x.BlogMaster.PageTitle,
+                        Url = x.BlogMaster.Url.ToString(),
                         Metadata= x.BlogMaster.Metadata.ToString(),
                         MetaDescription= x.BlogMaster.MetaDescription.ToString(),
                         Keyword= x.BlogMaster.Keyword.ToString(),

@@ -189,12 +189,20 @@ render: function (data, type, row, meta) {
                     targets: 11
                 },
                 {
+                    name: "Services4Master_tenant.Services4Master.PageTitle",
+                    data: "PageTitle",
+                    title: "PageTitle",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 12
+                },
+                {
                     name: "Services4Master_tenant.Services4Master.Url",
                     data: "Url",
                     title: "Url",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 12
+                    targets: 13
                 },
                 {
                     name: "Services4Master_tenant.Services4Master.Metadata",

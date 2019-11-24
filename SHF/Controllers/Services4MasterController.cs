@@ -185,6 +185,7 @@ namespace SHF.Controllers
                                 entity.Section6PriceingHeading = model.Section6PriceingHeading;
                                 entity.Section7PriceingHeading = model.Section7PriceingHeading;
                                 entity.DisplayIndex = model.DisplayIndex;
+                                entity.PageTitle = model.PageTitle;
                                 entity.Url = model.Url;
                                 entity.Metadata = model.Metadata;
                                 entity.MetaDescription = model.MetaDescription;
@@ -286,6 +287,7 @@ namespace SHF.Controllers
                                 model.Section6PriceingHeading = entity.Section6PriceingHeading;
                                 model.Section7PriceingHeading = entity.Section7PriceingHeading;
                                 model.DisplayIndex = entity.DisplayIndex;
+                                model.PageTitle = entity.PageTitle;
                                 model.Url = entity.Url.ToString();
                                 model.Metadata = entity.Metadata.ToString();
                                 model.MetaDescription = entity.MetaDescription.ToString();
@@ -402,6 +404,7 @@ namespace SHF.Controllers
                                     entity.Section6PriceingHeading = model.Section6PriceingHeading;
                                     entity.Section7PriceingHeading = model.Section7PriceingHeading;
                                     entity.DisplayIndex = model.DisplayIndex;
+                                    entity.PageTitle = model.PageTitle;
                                     entity.Url = model.Url;
                                     entity.Metadata = model.Metadata;
                                     entity.MetaDescription = model.MetaDescription;

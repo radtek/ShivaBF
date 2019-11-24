@@ -61,6 +61,7 @@ namespace SHF.Business.BusinessLogic
                           || x.Services3Master_tenant.Services3Master.Section6PriceingHeading.CaseInsensitiveContains(searchValue)
                            || x.Services3Master_tenant.Services3Master.Section6PriceingDescription.CaseInsensitiveContains(searchValue)
                         || x.Services3Master_tenant.Services3Master.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
+                        || x.Services3Master_tenant.Services3Master.PageTitle.CaseInsensitiveContains(searchValue)
                         || x.Services3Master_tenant.Services3Master.Url.ToString().CaseInsensitiveContains(searchValue)
                         || x.Services3Master_tenant.Services3Master.Metadata.ToString().CaseInsensitiveContains(searchValue)
                         || x.Services3Master_tenant.Services3Master.MetaDescription.ToString().CaseInsensitiveContains(searchValue)
@@ -94,6 +95,7 @@ namespace SHF.Business.BusinessLogic
                           || x.Services3Master_tenant.Services3Master.Section6PriceingHeading.CaseInsensitiveContains(searchValue)
                            || x.Services3Master_tenant.Services3Master.Section6PriceingDescription.CaseInsensitiveContains(searchValue)
                         || x.Services3Master_tenant.Services3Master.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
+                        || x.Services3Master_tenant.Services3Master.PageTitle.CaseInsensitiveContains(searchValue)
                         || x.Services3Master_tenant.Services3Master.Url.ToString().CaseInsensitiveContains(searchValue)
                         || x.Services3Master_tenant.Services3Master.Metadata.ToString().CaseInsensitiveContains(searchValue)
                         || x.Services3Master_tenant.Services3Master.MetaDescription.ToString().CaseInsensitiveContains(searchValue)
@@ -126,7 +128,8 @@ namespace SHF.Business.BusinessLogic
                         Section6PriceingHeading = x.Services3Master_tenant.Services3Master.Section6PriceingHeading,
                         Section6PriceingDescription = x.Services3Master_tenant.Services3Master.Section6PriceingDescription,
                         DisplayIndex = x.Services3Master_tenant.Services3Master.DisplayIndex,
-                        Url= x.Services3Master_tenant.Services3Master.Url.ToString(),
+                        PageTitle = x.Services3Master_tenant.Services3Master.PageTitle,
+                        Url = x.Services3Master_tenant.Services3Master.Url.ToString(),
                         Metadata= x.Services3Master_tenant.Services3Master.Metadata.ToString(),
                         MetaDescription= x.Services3Master_tenant.Services3Master.MetaDescription.ToString(),
                         Keyword= x.Services3Master_tenant.Services3Master.Keyword.ToString(),

@@ -55,12 +55,13 @@ namespace SHF.Business.BusinessLogic
                         || x.Services8Master_tenant.Services8Master.Section1Description.CaseInsensitiveContains(searchValue)
                         || x.Services8Master_tenant.Services8Master.Section1Heading.CaseInsensitiveContains(searchValue)
                         || x.Services8Master_tenant.Services8Master.Section2BannerPath.CaseInsensitiveContains(searchValue)
-                           || x.Services8Master_tenant.Services8Master.Section2BannerHeadingDescription.CaseInsensitiveContains(searchValue)
+                        || x.Services8Master_tenant.Services8Master.Section2BannerHeadingDescription.CaseInsensitiveContains(searchValue)
                         || x.Services8Master_tenant.Services8Master.Section4Heading.CaseInsensitiveContains(searchValue)
                         || x.Services8Master_tenant.Services8Master.Section5Heading.CaseInsensitiveContains(searchValue)
                         || x.Services8Master_tenant.Services8Master.Section5Description.CaseInsensitiveContains(searchValue)
-                         || x.Services8Master_tenant.Services8Master.Section5TextboxMaskedText.CaseInsensitiveContains(searchValue)
-                           || x.Services8Master_tenant.Services8Master.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
+                        || x.Services8Master_tenant.Services8Master.Section5TextboxMaskedText.CaseInsensitiveContains(searchValue)
+                        || x.Services8Master_tenant.Services8Master.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
+                        || x.Services8Master_tenant.Services8Master.PageTitle.CaseInsensitiveContains(searchValue)
                         || x.Services8Master_tenant.Services8Master.Url.ToString().CaseInsensitiveContains(searchValue)
                         || x.Services8Master_tenant.Services8Master.Metadata.ToString().CaseInsensitiveContains(searchValue)
                         || x.Services8Master_tenant.Services8Master.MetaDescription.ToString().CaseInsensitiveContains(searchValue)
@@ -88,12 +89,13 @@ namespace SHF.Business.BusinessLogic
                         || x.Services8Master_tenant.Services8Master.Section1Description.CaseInsensitiveContains(searchValue)
                         || x.Services8Master_tenant.Services8Master.Section1Heading.CaseInsensitiveContains(searchValue)
                         || x.Services8Master_tenant.Services8Master.Section2BannerPath.CaseInsensitiveContains(searchValue)
-                           || x.Services8Master_tenant.Services8Master.Section2BannerHeadingDescription.CaseInsensitiveContains(searchValue)
+                        || x.Services8Master_tenant.Services8Master.Section2BannerHeadingDescription.CaseInsensitiveContains(searchValue)
                         || x.Services8Master_tenant.Services8Master.Section4Heading.CaseInsensitiveContains(searchValue)
                         || x.Services8Master_tenant.Services8Master.Section5Heading.CaseInsensitiveContains(searchValue)
                         || x.Services8Master_tenant.Services8Master.Section5Description.CaseInsensitiveContains(searchValue)
-                         || x.Services8Master_tenant.Services8Master.Section5TextboxMaskedText.CaseInsensitiveContains(searchValue)
-                           || x.Services8Master_tenant.Services8Master.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
+                        || x.Services8Master_tenant.Services8Master.Section5TextboxMaskedText.CaseInsensitiveContains(searchValue)
+                        || x.Services8Master_tenant.Services8Master.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
+                        || x.Services8Master_tenant.Services8Master.PageTitle.CaseInsensitiveContains(searchValue)
                         || x.Services8Master_tenant.Services8Master.Url.ToString().CaseInsensitiveContains(searchValue)
                         || x.Services8Master_tenant.Services8Master.Metadata.ToString().CaseInsensitiveContains(searchValue)
                         || x.Services8Master_tenant.Services8Master.MetaDescription.ToString().CaseInsensitiveContains(searchValue)
@@ -126,7 +128,8 @@ namespace SHF.Business.BusinessLogic
                         Section5Description = x.Services8Master_tenant.Services8Master.Section5Description,
                         Section5TextboxMaskedText = x.Services8Master_tenant.Services8Master.Section5TextboxMaskedText,
                         DisplayIndex = x.Services8Master_tenant.Services8Master.DisplayIndex,
-                        Url= x.Services8Master_tenant.Services8Master.Url.ToString(),
+                        PageTitle = x.Services8Master_tenant.Services8Master.PageTitle,
+                        Url = x.Services8Master_tenant.Services8Master.Url.ToString(),
                         Metadata= x.Services8Master_tenant.Services8Master.Metadata.ToString(),
                         MetaDescription= x.Services8Master_tenant.Services8Master.MetaDescription.ToString(),
                         Keyword= x.Services8Master_tenant.Services8Master.Keyword.ToString(),

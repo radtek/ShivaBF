@@ -123,6 +123,14 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.TotalViews" ng-bind="errors.formErrors.TotalViews"></span>
                         </div>
+                        <div class="form-group" ng-class="{'has-error': (myForm.PageTitle.$touched || myForm.PageTitle.$dirty)  && myForm.PageTitle.$invalid}">
+                            <label>Page Title</label>
+                            <input type="text" class="form-control" name="PageTitle" ng-model="Services5MasterCreateOrEditViewModel.PageTitle" ng-disabled="Processing" autocomplete="off" placeholder="Enter Page Title" tooltip-placement="top" uib-tooltip="Enter Page Title" required />
+                            <div class="help-block" ng-messages="myForm.PageTitle.$error" ng-if="myForm.PageTitle.$touched || myForm.PageTitle.$dirty && myForm.PageTitle.$invalid">
+                                <div ng-messages-include="~/ValidationMessages.html"></div>
+                            </div>
+                            <span class="text-danger" ng-show="errors.formErrors.PageTitle" ng-bind="errors.formErrors.PageTitle"></span>
+                        </div>
                         <div class="form-group" ng-class="{'has-error': (myForm.Url.$touched || myForm.Url.$dirty)  && myForm.Url.$invalid}">
                             <label>Url</label>
                             <input type="text" class="form-control" name="Url" ng-model="Services5MasterCreateOrEditViewModel.Url" readonly ng-disabled="Processing" autocomplete="off" placeholder="Enter Url" tooltip-placement="top" uib-tooltip="Enter Url" required />
@@ -131,7 +139,7 @@
                             </div>
                             <span class="text-danger" ng-show="errors.formErrors.Url" ng-bind="errors.formErrors.Url"></span>
                         </div>
-                        <div class="form-group" ng-class="{'has-error': (myForm.Metadata.$touched || myForm.Metadata.$dirty)  && myForm.TotalViews.$invalid}">
+                        <div class="form-group" ng-class="{'has-error': (myForm.Metadata.$touched || myForm.Metadata.$dirty)  && myForm.Metadata.$invalid}">
                             <label>Metadata</label>
                             <input type="text" class="form-control" name="Metadata" ng-model="Services5MasterCreateOrEditViewModel.Metadata" ng-disabled="Processing" autocomplete="off" placeholder="Enter Metadata" tooltip-placement="top" uib-tooltip="Enter Metadata" required />
                             <div class="help-block" ng-messages="myForm.Metadata.$error" ng-if="myForm.Metadata.$touched || myForm.Metadata.$dirty && myForm.Metadata.$invalid">
