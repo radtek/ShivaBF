@@ -129,12 +129,20 @@ angular.module(config.app).service('HomePageSection2CRUD', function ($http) {
                      targets: 11
                  },
                 {
+                    name: "HomePageSection2.PageTitle",
+                    data: "PageTitle",
+                    title: "PageTitle",
+                    render: $.fn.dataTable.render.text(),
+                    width: "25%",
+                    targets: 12
+                },
+                {
                     name: "HomePageSection2.Url",
                     data: "Url",
                     title: "Url",
                     render: $.fn.dataTable.render.text(),
                     width: "25%",
-                    targets: 12
+                    targets: 13
                 },
                 {
                     name: "HomePageSection2.Metadata",

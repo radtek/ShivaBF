@@ -53,6 +53,7 @@ namespace SHF.Business.BusinessLogic
                         || x.HomePageSection2.Description1.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection2.Description2.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection2.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
+                        || x.HomePageSection2.PageTitle.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection2.Url.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection2.Metadata.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection2.MetaDescription.CaseInsensitiveContains(searchValue)
@@ -78,6 +79,7 @@ namespace SHF.Business.BusinessLogic
                         || x.HomePageSection2.Description1.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection2.Description2.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection2.DisplayIndex.ToString().CaseInsensitiveContains(searchValue)
+                        || x.HomePageSection2.PageTitle.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection2.Url.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection2.Metadata.CaseInsensitiveContains(searchValue)
                         || x.HomePageSection2.MetaDescription.CaseInsensitiveContains(searchValue)
@@ -102,7 +104,8 @@ namespace SHF.Business.BusinessLogic
                         Description2 = x.HomePageSection2.Description2,
                         DisplayOnHome = x.HomePageSection2.DisplayOnHome,
                         DisplayIndex = x.HomePageSection2.DisplayIndex,
-                        Url= x.HomePageSection2.Url,
+                        PageTitle = x.HomePageSection2.PageTitle,
+                        Url = x.HomePageSection2.Url,
                         Metadata= x.HomePageSection2.Metadata,
                         MetaDescription= x.HomePageSection2.MetaDescription,
                         Keyword= x.HomePageSection2.Keyword,

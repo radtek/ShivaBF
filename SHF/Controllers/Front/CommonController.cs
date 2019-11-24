@@ -10,7 +10,7 @@ using SHF.Web.Filters;
 
 namespace SHF.Controllers.Front
 {
-   
+
     public class CommonController : ApiController
     {
 
@@ -25,7 +25,7 @@ namespace SHF.Controllers.Front
         {
             this.UnitOfWork = new SHF.DataAccess.Implementations.UnitOfWork();
         }
-        public CommonController(SHF.DataAccess.Implementations.UnitOfWork unitOfWork,Business.Interface.IMessage Imessage, Business.Interface.ICategoriesMaster ICategoriesMaster, Business.Interface.ISubCategoriesMaster ISubCategoriesMaster, Business.Interface.ISubSubCategoriesMaster ISubSubCategoriesMaster)
+        public CommonController(SHF.DataAccess.Implementations.UnitOfWork unitOfWork, Business.Interface.IMessage Imessage, Business.Interface.ICategoriesMaster ICategoriesMaster, Business.Interface.ISubCategoriesMaster ISubCategoriesMaster, Business.Interface.ISubSubCategoriesMaster ISubSubCategoriesMaster)
         {
             this.UnitOfWork = unitOfWork;
             this.businessMessage = Imessage;
@@ -34,16 +34,16 @@ namespace SHF.Controllers.Front
             this.businessSubSubCategoriesMaster = ISubSubCategoriesMaster;
 
         }
-        
+
         //GET: api/GetAllActiveCommonByTenantId? tenantId = 1
-       // [EnableCors]
+        // [EnableCors]
         [Route("api/Common/GetAllActiveStatesByTenantId/{tenantId}")]
         [HttpGet]
         public List<StateMasterViewModel> GetAllActiveStatesByTenantId(string tenantId)
         {
-          // string tenantId = "1";
+            // string tenantId = "1";
             var lststateMasterViewModel = new List<StateMasterViewModel>();
-             var statemaster = UnitOfWork.StateMasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) || x.Tenant_ID==null && x.IsActive == true);
+            var statemaster = UnitOfWork.StateMasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) || x.Tenant_ID == null && x.IsActive == true);
             foreach (var tempstate in statemaster)
             {
                 var stateMasterViewModel = new StateMasterViewModel();
@@ -54,7 +54,7 @@ namespace SHF.Controllers.Front
                 stateMasterViewModel.Tenant_ID = Convert.ToInt64(tempstate.Tenant_ID);
                 lststateMasterViewModel.Add(stateMasterViewModel);
             }
-           
+
             /*some db operation*/
             // return Json("ajs");
             return lststateMasterViewModel;
@@ -81,7 +81,7 @@ namespace SHF.Controllers.Front
                 footerBlockMasterViewModel.TotalViews = tempfooterBlockMaster.TotalViews;
                 footerBlockMasterViewModel.IsActive = tempfooterBlockMaster.IsActive;
                 footerBlockMasterViewModel.Tenant_ID = Convert.ToInt64(tempfooterBlockMaster.Tenant_ID);
-               
+
                 var objFooterLinks = UnitOfWork.FooterLinksRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.FooterBlockMaster_Id == Convert.ToInt64(tempfooterBlockMaster.ID) && x.IsActive == true).OrderBy(x => x.DisplayIndex);
                 var lstFooterLinksViewModel = new List<FooterLinksViewModel>();
 
@@ -99,7 +99,7 @@ namespace SHF.Controllers.Front
                     footerLinksViewModel.TotalViews = tempFooterLinks.TotalViews;
                     footerLinksViewModel.IsActive = tempFooterLinks.IsActive;
                     footerLinksViewModel.Tenant_ID = Convert.ToInt64(tempFooterLinks.Tenant_ID);
-                   
+
                     lstFooterLinksViewModel.Add(footerLinksViewModel);
                 }
                 footerBlockMasterViewModel.FooterLinksViewModel = lstFooterLinksViewModel;
@@ -110,6 +110,150 @@ namespace SHF.Controllers.Front
             // return Json("ajs");
             return lstFooterBlockMasterViewModel;
         }
+
+        //GET: api/GetSEODataByTenantIdAndUrl? tenantId = 1
+        // [EnableCors]
+        [Route("api/Common/GetSEODataByTenantIdAndUrl/{tenantId}/{url}/{page_type}")]
+        [HttpGet]
+        public CommonSEOViewModel GetSEODataByTenantIdAndUrl(string tenantId, string url, string page_type)
+        {
+            // string tenantId = "1";
+            var commonSEOViewModel = new CommonSEOViewModel();
+            //  var dataset;
+            switch (page_type)
+            {
+
+                case "page1":
+                    var dataset1 = UnitOfWork.Services1MasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.Url == url && x.IsActive == true).FirstOrDefault();
+                    if (dataset1 != null)
+                    {
+                        commonSEOViewModel.ID = dataset1.ID;
+                        commonSEOViewModel.PageTitle = dataset1.PageTitle;
+                        commonSEOViewModel.Url = dataset1.Url;
+                        commonSEOViewModel.Metadata = dataset1.Metadata;
+                        commonSEOViewModel.MetaDescription = dataset1.MetaDescription;
+                        commonSEOViewModel.Keyword = dataset1.Keyword;
+
+                    }
+                    break;
+                case "page2":
+                    var dataset2 = UnitOfWork.Services2MasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.Url == url && x.IsActive == true).FirstOrDefault();
+                    if (dataset2 != null)
+                    {
+                        commonSEOViewModel.ID = dataset2.ID;
+                        commonSEOViewModel.PageTitle = dataset2.PageTitle;
+                        commonSEOViewModel.Url = dataset2.Url;
+                        commonSEOViewModel.Metadata = dataset2.Metadata;
+                        commonSEOViewModel.MetaDescription = dataset2.MetaDescription;
+                        commonSEOViewModel.Keyword = dataset2.Keyword;
+                    }
+                    break;
+                case "page3":
+                    var dataset3 = UnitOfWork.Services3MasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.Url == url && x.IsActive == true).FirstOrDefault();
+                    if (dataset3 != null)
+                    {
+                        commonSEOViewModel.ID = dataset3.ID;
+                        commonSEOViewModel.PageTitle = dataset3.PageTitle;
+                        commonSEOViewModel.Url = dataset3.Url;
+                        commonSEOViewModel.Metadata = dataset3.Metadata;
+                        commonSEOViewModel.MetaDescription = dataset3.MetaDescription;
+                        commonSEOViewModel.Keyword = dataset3.Keyword;
+                    }
+                    break;
+                case "page4":
+                    var dataset4 = UnitOfWork.Services4MasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.Url == url && x.IsActive == true).FirstOrDefault();
+                    if (dataset4 != null)
+                    {
+                        commonSEOViewModel.ID = dataset4.ID;
+                        commonSEOViewModel.PageTitle = dataset4.PageTitle;
+                        commonSEOViewModel.Url = dataset4.Url;
+                        commonSEOViewModel.Metadata = dataset4.Metadata;
+                        commonSEOViewModel.MetaDescription = dataset4.MetaDescription;
+                        commonSEOViewModel.Keyword = dataset4.Keyword;
+                    }
+                    break;
+                case "page5":
+                    var dataset5 = UnitOfWork.Services5MasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.Url == url && x.IsActive == true).FirstOrDefault();
+                    if (dataset5 != null)
+                    {
+                        commonSEOViewModel.ID = dataset5.ID;
+                        commonSEOViewModel.PageTitle = dataset5.PageTitle;
+                        commonSEOViewModel.Url = dataset5.Url;
+                        commonSEOViewModel.Metadata = dataset5.Metadata;
+                        commonSEOViewModel.MetaDescription = dataset5.MetaDescription;
+                        commonSEOViewModel.Keyword = dataset5.Keyword;
+                    }
+                    break;
+                case "page6":
+                    var dataset6 = UnitOfWork.Services6MasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.Url == url && x.IsActive == true).FirstOrDefault();
+                    if (dataset6 != null)
+                    {
+                        commonSEOViewModel.ID = dataset6.ID;
+                        commonSEOViewModel.PageTitle = dataset6.PageTitle;
+                        commonSEOViewModel.Url = dataset6.Url;
+                        commonSEOViewModel.Metadata = dataset6.Metadata;
+                        commonSEOViewModel.MetaDescription = dataset6.MetaDescription;
+                        commonSEOViewModel.Keyword = dataset6.Keyword;
+                    }
+                    break;
+                case "page7":
+                    var dataset7 = UnitOfWork.Services7MasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.Url == url && x.IsActive == true).FirstOrDefault();
+                    if (dataset7 != null)
+                    {
+                        commonSEOViewModel.ID = dataset7.ID;
+                        commonSEOViewModel.PageTitle = dataset7.PageTitle;
+                        commonSEOViewModel.Url = dataset7.Url;
+                        commonSEOViewModel.Metadata = dataset7.Metadata;
+                        commonSEOViewModel.MetaDescription = dataset7.MetaDescription;
+                        commonSEOViewModel.Keyword = dataset7.Keyword;
+                    }
+                    break;
+                case "page8":
+                    var dataset8 = UnitOfWork.Services8MasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.Url == url && x.IsActive == true).FirstOrDefault();
+                    if (dataset8 != null)
+                    {
+                        commonSEOViewModel.ID = dataset8.ID;
+                        commonSEOViewModel.PageTitle = dataset8.PageTitle;
+                        commonSEOViewModel.Url = dataset8.Url;
+                        commonSEOViewModel.Metadata = dataset8.Metadata;
+                        commonSEOViewModel.MetaDescription = dataset8.MetaDescription;
+                        commonSEOViewModel.Keyword = dataset8.Keyword;
+                    }
+                    break;
+                case "blog":
+                    var datasetBlog = UnitOfWork.BlogMasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.Url == url && x.IsActive == true).FirstOrDefault();
+                    if (datasetBlog != null)
+                    {
+                        commonSEOViewModel.ID = datasetBlog.ID;
+                        commonSEOViewModel.PageTitle = datasetBlog.PageTitle;
+                        commonSEOViewModel.Url = datasetBlog.Url;
+                        commonSEOViewModel.Metadata = datasetBlog.Metadata;
+                        commonSEOViewModel.MetaDescription = datasetBlog.MetaDescription;
+                        commonSEOViewModel.Keyword = datasetBlog.Keyword;
+                    }
+                    break;
+                case "home":
+                    var datasetHome = UnitOfWork.HomePageSection2Repository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.IsActive == true).FirstOrDefault();
+                    if (datasetHome != null)
+                    {
+                        commonSEOViewModel.ID = datasetHome.ID;
+                        commonSEOViewModel.PageTitle = datasetHome.PageTitle;
+                        commonSEOViewModel.Url = datasetHome.Url;
+                        commonSEOViewModel.Metadata = datasetHome.Metadata;
+                        commonSEOViewModel.MetaDescription = datasetHome.MetaDescription;
+                        commonSEOViewModel.Keyword = datasetHome.Keyword;
+                    }
+                    break;
+            }
+
+
+            /*some db operation*/
+
+            return commonSEOViewModel;
+        }
+
+
+
 
         #endregion
     }

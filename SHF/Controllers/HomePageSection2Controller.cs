@@ -175,6 +175,7 @@ namespace SHF.Controllers
                                 entity.Description2 = model.Description2;
                                 entity.DisplayIndex = model.DisplayIndex;
                                 entity.DisplayOnHome = model.DisplayOnHome;
+                                entity.PageTitle = model.PageTitle;
                                 entity.Url= model.Url;
                                 entity.Metadata= model.Metadata;
                                 entity.MetaDescription= model.MetaDescription;
@@ -258,6 +259,7 @@ namespace SHF.Controllers
                                 model.Description2 = entity.Description2;
                                 model.DisplayOnHome = entity.DisplayOnHome;
                                 model.DisplayIndex = entity.DisplayIndex;
+                                model.PageTitle = entity.PageTitle;
                                 model.Url = entity.Url;
                                 model.Metadata = entity.Metadata;
                                 model.MetaDescription = entity.MetaDescription;
@@ -358,6 +360,7 @@ namespace SHF.Controllers
                                     entity.Description2 = model.Description2;
                                     entity.DisplayOnHome = model.DisplayOnHome;
                                     entity.DisplayIndex = model.DisplayIndex;
+                                    entity.PageTitle = model.PageTitle;
                                     entity.Url = model.Url;
                                     entity.Metadata = model.Metadata;
                                     entity.MetaDescription = model.MetaDescription;

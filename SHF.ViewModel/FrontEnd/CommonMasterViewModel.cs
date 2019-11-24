@@ -9,6 +9,17 @@ using System.Threading.Tasks;
 namespace SHF.ViewModel.FrontEnd
 {
 
+    public class CommonSEOViewModel : BaseViewModel
+    {
+        public System.String PageTitle { get; set; }
+        public string Url { get; set; }
+        public string Metadata { get; set; }
+        public string Keyword { get; set; }
+        public string MetaDescription { get; set; }
+        public System.String TenantName { get; set; }
+        public System.Int64 Tenant_ID { get; set; }
+    }
+
     public class StateMasterViewModel : BaseViewModel
     {
         public System.String StateFullName { get; set; }
