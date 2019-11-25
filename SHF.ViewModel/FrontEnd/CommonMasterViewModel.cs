@@ -8,6 +8,13 @@ using System.Threading.Tasks;
 
 namespace SHF.ViewModel.FrontEnd
 {
+    public class ServiceInfoViewModel : BaseViewModel
+    {
+        public System.String tenantId { get; set; }
+        public string url { get; set; }
+        public string page_type { get; set; }
+    }
+
 
     public class CommonSEOViewModel : BaseViewModel
     {
