@@ -37,11 +37,11 @@ namespace SHF.Controllers.Front
         private Business.Interface.IServices7Master businessServices7Master;
         private Business.Interface.IServices8Master businessServices8Master;
         private Business.Interface.IBlogMaster businessBlogMaster;
-        private Business.Interface.IHomePageBanner businessHomePageBanner;
+        private Business.Interface.IHomePageSection2 businessHomePageSection2;
 
 
         public AddServiceRelatedInfoController(Business.Interface.IServices1Master IServices1Master, Business.Interface.IServices2Master IServices2Master, Business.Interface.IServices3Master IServices3Master, Business.Interface.IServices4Master IServices4Master, Business.Interface.IServices5Master IServices5Master
-            , Business.Interface.IServices6Master IServices6Master, Business.Interface.IServices7Master IServices7Master, Business.Interface.IServices8Master IServices8Master, Business.Interface.IBlogMaster IBlogMaster, Business.Interface.IHomePageBanner IHomePageBanner)
+            , Business.Interface.IServices6Master IServices6Master, Business.Interface.IServices7Master IServices7Master, Business.Interface.IServices8Master IServices8Master, Business.Interface.IBlogMaster IBlogMaster, Business.Interface.IHomePageSection2 IHomePageSection2)
         {
             this.businessServices1Master = IServices1Master;
             this.businessServices2Master = IServices2Master;
@@ -52,7 +52,7 @@ namespace SHF.Controllers.Front
             this.businessServices7Master = IServices7Master;
             this.businessServices8Master = IServices8Master;
             this.businessBlogMaster = IBlogMaster;
-            this.businessHomePageBanner = IHomePageBanner;
+            this.businessHomePageSection2 = IHomePageSection2;
         }
 
         #endregion
@@ -86,114 +86,78 @@ namespace SHF.Controllers.Front
                                         this.businessServices1Master.Update(servicetype1);
                                     }
                                         break;
-                                //case "page2":
-                                //    var dataset2 = UnitOfWork.Services2MasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.Url == url && x.IsActive == true).FirstOrDefault();
-                                //    if (dataset2 != null)
-                                //    {
-                                //        commonSEOViewModel.ID = dataset2.ID;
-                                //        commonSEOViewModel.PageTitle = dataset2.PageTitle;
-                                //        commonSEOViewModel.Url = dataset2.Url;
-                                //        commonSEOViewModel.Metadata = dataset2.Metadata;
-                                //        commonSEOViewModel.MetaDescription = dataset2.MetaDescription;
-                                //        commonSEOViewModel.Keyword = dataset2.Keyword;
-                                //    }
-                                //    break;
-                                //case "page3":
-                                //    var dataset3 = UnitOfWork.Services3MasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.Url == url && x.IsActive == true).FirstOrDefault();
-                                //    if (dataset3 != null)
-                                //    {
-                                //        commonSEOViewModel.ID = dataset3.ID;
-                                //        commonSEOViewModel.PageTitle = dataset3.PageTitle;
-                                //        commonSEOViewModel.Url = dataset3.Url;
-                                //        commonSEOViewModel.Metadata = dataset3.Metadata;
-                                //        commonSEOViewModel.MetaDescription = dataset3.MetaDescription;
-                                //        commonSEOViewModel.Keyword = dataset3.Keyword;
-                                //    }
-                                //    break;
-                                //case "page4":
-                                //    var dataset4 = UnitOfWork.Services4MasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.Url == url && x.IsActive == true).FirstOrDefault();
-                                //    if (dataset4 != null)
-                                //    {
-                                //        commonSEOViewModel.ID = dataset4.ID;
-                                //        commonSEOViewModel.PageTitle = dataset4.PageTitle;
-                                //        commonSEOViewModel.Url = dataset4.Url;
-                                //        commonSEOViewModel.Metadata = dataset4.Metadata;
-                                //        commonSEOViewModel.MetaDescription = dataset4.MetaDescription;
-                                //        commonSEOViewModel.Keyword = dataset4.Keyword;
-                                //    }
-                                //    break;
-                                //case "page5":
-                                //    var dataset5 = UnitOfWork.Services5MasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.Url == url && x.IsActive == true).FirstOrDefault();
-                                //    if (dataset5 != null)
-                                //    {
-                                //        commonSEOViewModel.ID = dataset5.ID;
-                                //        commonSEOViewModel.PageTitle = dataset5.PageTitle;
-                                //        commonSEOViewModel.Url = dataset5.Url;
-                                //        commonSEOViewModel.Metadata = dataset5.Metadata;
-                                //        commonSEOViewModel.MetaDescription = dataset5.MetaDescription;
-                                //        commonSEOViewModel.Keyword = dataset5.Keyword;
-                                //    }
-                                //    break;
-                                //case "page6":
-                                //    var dataset6 = UnitOfWork.Services6MasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.Url == url && x.IsActive == true).FirstOrDefault();
-                                //    if (dataset6 != null)
-                                //    {
-                                //        commonSEOViewModel.ID = dataset6.ID;
-                                //        commonSEOViewModel.PageTitle = dataset6.PageTitle;
-                                //        commonSEOViewModel.Url = dataset6.Url;
-                                //        commonSEOViewModel.Metadata = dataset6.Metadata;
-                                //        commonSEOViewModel.MetaDescription = dataset6.MetaDescription;
-                                //        commonSEOViewModel.Keyword = dataset6.Keyword;
-                                //    }
-                                //    break;
-                                //case "page7":
-                                //    var dataset7 = UnitOfWork.Services7MasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.Url == url && x.IsActive == true).FirstOrDefault();
-                                //    if (dataset7 != null)
-                                //    {
-                                //        commonSEOViewModel.ID = dataset7.ID;
-                                //        commonSEOViewModel.PageTitle = dataset7.PageTitle;
-                                //        commonSEOViewModel.Url = dataset7.Url;
-                                //        commonSEOViewModel.Metadata = dataset7.Metadata;
-                                //        commonSEOViewModel.MetaDescription = dataset7.MetaDescription;
-                                //        commonSEOViewModel.Keyword = dataset7.Keyword;
-                                //    }
-                                //    break;
-                                //case "page8":
-                                //    var dataset8 = UnitOfWork.Services8MasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.Url == url && x.IsActive == true).FirstOrDefault();
-                                //    if (dataset8 != null)
-                                //    {
-                                //        commonSEOViewModel.ID = dataset8.ID;
-                                //        commonSEOViewModel.PageTitle = dataset8.PageTitle;
-                                //        commonSEOViewModel.Url = dataset8.Url;
-                                //        commonSEOViewModel.Metadata = dataset8.Metadata;
-                                //        commonSEOViewModel.MetaDescription = dataset8.MetaDescription;
-                                //        commonSEOViewModel.Keyword = dataset8.Keyword;
-                                //    }
-                                //    break;
-                                //case "blog":
-                                //    var datasetBlog = UnitOfWork.BlogMasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.Url == url && x.IsActive == true).FirstOrDefault();
-                                //    if (datasetBlog != null)
-                                //    {
-                                //        commonSEOViewModel.ID = datasetBlog.ID;
-                                //        commonSEOViewModel.PageTitle = datasetBlog.PageTitle;
-                                //        commonSEOViewModel.Url = datasetBlog.Url;
-                                //        commonSEOViewModel.Metadata = datasetBlog.Metadata;
-                                //        commonSEOViewModel.MetaDescription = datasetBlog.MetaDescription;
-                                //        commonSEOViewModel.Keyword = datasetBlog.Keyword;
-                                //    }
-                                //    break;
-                                //case "home":
-                                //    var datasetHome = UnitOfWork.HomePageSection2Repository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(tenantId) && x.IsActive == true).FirstOrDefault();
-                                //    if (datasetHome != null)
-                                //    {
-                                //        commonSEOViewModel.ID = datasetHome.ID;
-                                //        commonSEOViewModel.PageTitle = datasetHome.PageTitle;
-                                //        commonSEOViewModel.Url = datasetHome.Url;
-                                //        commonSEOViewModel.Metadata = datasetHome.Metadata;
-                                //        commonSEOViewModel.MetaDescription = datasetHome.MetaDescription;
-                                //        commonSEOViewModel.Keyword = datasetHome.Keyword;
-                                //    }
-                                //    break;
+                                case "page2":
+                                    var servicetype2 = UnitOfWork.Services2MasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(model.tenantId) && x.Url == model.url).FirstOrDefault();
+                                    if (servicetype2 != null)
+                                    {
+                                        servicetype2.TotalViews = servicetype2.TotalViews + 1;
+                                        this.businessServices2Master.Update(servicetype2);
+                                    }
+                                    break;
+                                case "page3":
+                                    var servicetype3 = UnitOfWork.Services3MasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(model.tenantId) && x.Url == model.url).FirstOrDefault();
+                                    if (servicetype3 != null)
+                                    {
+                                        servicetype3.TotalViews = servicetype3.TotalViews + 1;
+                                        this.businessServices3Master.Update(servicetype3);
+                                    }
+                                    break;
+                                case "page4":
+                                    var servicetype4 = UnitOfWork.Services4MasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(model.tenantId) && x.Url == model.url).FirstOrDefault();
+                                    if (servicetype4 != null)
+                                    {
+                                        servicetype4.TotalViews = servicetype4.TotalViews + 1;
+                                        this.businessServices4Master.Update(servicetype4);
+                                    }
+                                    break;
+                                case "page5":
+                                    var servicetype5 = UnitOfWork.Services5MasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(model.tenantId) && x.Url == model.url).FirstOrDefault();
+                                    if (servicetype5 != null)
+                                    {
+                                        servicetype5.TotalViews = servicetype5.TotalViews + 1;
+                                        this.businessServices5Master.Update(servicetype5);
+                                    }
+                                    break;
+                                case "page6":
+                                    var servicetype6 = UnitOfWork.Services6MasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(model.tenantId) && x.Url == model.url).FirstOrDefault();
+                                    if (servicetype6 != null)
+                                    {
+                                        servicetype6.TotalViews = servicetype6.TotalViews + 1;
+                                        this.businessServices6Master.Update(servicetype6);
+                                    }
+                                    break;
+                                case "page7":
+                                    var servicetype7 = UnitOfWork.Services7MasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(model.tenantId) && x.Url == model.url).FirstOrDefault();
+                                    if (servicetype7 != null)
+                                    {
+                                        servicetype7.TotalViews = servicetype7.TotalViews + 1;
+                                        this.businessServices7Master.Update(servicetype7);
+                                    }
+                                    break;
+                                case "page8":
+                                    var servicetype8 = UnitOfWork.Services8MasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(model.tenantId) && x.Url == model.url).FirstOrDefault();
+                                    if (servicetype8 != null)
+                                    {
+                                        servicetype8.TotalViews = servicetype8.TotalViews + 1;
+                                        this.businessServices8Master.Update(servicetype8);
+                                    }
+                                    break;
+                                case "blog":
+                                    var servicetypeBlog = UnitOfWork.BlogMasterRepository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(model.tenantId) && x.Url == model.url).FirstOrDefault();
+                                    if (servicetypeBlog != null)
+                                    {
+                                        servicetypeBlog.TotalViews = servicetypeBlog.TotalViews + 1;
+                                        this.businessBlogMaster.Update(servicetypeBlog);
+                                    }
+                                    break;
+                                case "home":
+                                    var servicetypehome = UnitOfWork.HomePageSection2Repository.Get().Where(x => x.Tenant_ID == Convert.ToInt64(model.tenantId)).FirstOrDefault();
+                                    if (servicetypehome != null)
+                                    {
+                                        servicetypehome.TotalViews = servicetypehome.TotalViews + 1;
+                                        this.businessHomePageSection2.Update(servicetypehome);
+                                    }
+                                    break;
                             }
 
                             transaction.Complete();
