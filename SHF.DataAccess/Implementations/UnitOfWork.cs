@@ -80,6 +80,7 @@ namespace SHF.DataAccess.Implementations
         private GenericRepository<EntityModel.BlogCommentsDetails> _BlogCommentsDetailsRepository;
         private GenericRepository<EntityModel.RelatedBlogsMapping> _RelatedBlogsMappingRepository;
         private GenericRepository<EntityModel.CommentsReply> _CommentsReplyRepository;
+        private GenericRepository<EntityModel.PageViewsReport> _PageViewsReportRepository;
         private GenericRepository<EntityModel.IPInfo> _IPInfoRepository;
         private GenericRepository<EntityModel.Asn> _AsnsRepository;
         private GenericRepository<EntityModel.Carrier> _CarriersRepository;
@@ -758,6 +759,18 @@ namespace SHF.DataAccess.Implementations
                     this._CommentsReplyRepository = new GenericRepository<EntityModel.CommentsReply>(context);
                 }
                 return _CommentsReplyRepository;
+            }
+        }
+       
+        public GenericRepository<EntityModel.PageViewsReport> PageViewsReportRepository
+        {
+            get
+            {
+                if (this._PageViewsReportRepository == null)
+                {
+                    this._PageViewsReportRepository = new GenericRepository<EntityModel.PageViewsReport>(context);
+                }
+                return _PageViewsReportRepository;
             }
         }
         public GenericRepository<EntityModel.IPInfo> IPInfoRepository

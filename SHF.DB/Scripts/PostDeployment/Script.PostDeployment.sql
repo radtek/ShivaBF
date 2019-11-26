@@ -69,3 +69,9 @@ go
 
 :r .\SP\usp_GetUpLineMenu.sql
 go
+
+:r .\SP\usp_DeleteService1.sql
+go
+
+:r .\SP\usp_UpdatePageViewsReport.sql
+go

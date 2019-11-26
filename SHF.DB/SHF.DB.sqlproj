@@ -103,5 +103,6 @@
   <ItemGroup>
     <Build Include="Scripts\PostDeployment\Function\udf_TitleCase.sql" />
     <None Include="Scripts\PostDeployment\SP\usp_DeleteService1.sql" />
+    <None Include="Scripts\PostDeployment\SP\usp_UpdatePageViewsReport.sql" />
   </ItemGroup>
 </Project>

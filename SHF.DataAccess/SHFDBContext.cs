@@ -113,6 +113,7 @@ namespace SHF.DataAccess
         public DbSet<SHF.EntityModel.RelatedBlogsMapping> RelatedBlogsMapping { get; set; }
         public DbSet<SHF.EntityModel.CommentsReply> CommentsReply { get; set; }
         public DbSet<SHF.EntityModel.BlogBannerNavigationsDetails> BannerNavigationsDetails { get; set; }
+        public DbSet<SHF.EntityModel.PageViewsReport> PageViewsReport { get; set; }
         public DbSet<SHF.EntityModel.IPInfo> IPInfo { get; set; }
 
         public DbSet<SHF.EntityModel.Asn> Asns { get; set; }
