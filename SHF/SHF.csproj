@@ -490,14 +490,6 @@
     <Compile Include="Helpers\CompressImage.cs" />
     <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Helpers\RequiredField.cs" />
-    <Compile Include="Migrations\201911240756090_changes.cs" />
-    <Compile Include="Migrations\201911240756090_changes.Designer.cs">
-      <DependentUpon>201911240756090_changes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911241652335_changes1.cs" />
-    <Compile Include="Migrations\201911241652335_changes1.Designer.cs">
-      <DependentUpon>201911241652335_changes1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Error\CustomHandleErrorInfo.cs" />
@@ -13006,14 +12998,6 @@
     <TypeScriptCompile Include="plugins\fullcalendar-interaction\main.d.ts" />
     <TypeScriptCompile Include="plugins\fullcalendar-timegrid\main.d.ts" />
     <TypeScriptCompile Include="plugins\fullcalendar\main.d.ts" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201911240756090_changes.resx">
-      <DependentUpon>201911240756090_changes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911241652335_changes1.resx">
-      <DependentUpon>201911241652335_changes1.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
