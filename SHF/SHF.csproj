@@ -419,6 +419,7 @@
     <Compile Include="Controllers\HomePageSection2Controller.cs" />
     <Compile Include="Controllers\HomePageSection1Controller.cs" />
     <Compile Include="Controllers\BlogCommentsDetailsController.cs" />
+    <Compile Include="Controllers\PageViewsReportController.cs" />
     <Compile Include="Controllers\RelatedBlogsMappingController.cs" />
     <Compile Include="Controllers\BlogBannerNavigationsDetailsController.cs" />
     <Compile Include="Controllers\BlogMasterController.cs" />

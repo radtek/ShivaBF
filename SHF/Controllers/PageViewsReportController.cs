@@ -64,12 +64,12 @@ namespace SHF.Controllers
         #endregion
 
         #region [ActionMethod]
-        // GET: Banner Master
+        // GET: PageViewsReport Master
         [HttpGet]
         [Access]
         [OutputCache(Duration = busConstant.Settings.Cache.OutputCache.TimeOut.S300)]
-        [Route("Configurations/Master/Banner/Index")]
-        [Route("Settings/Master/Banner/Index")]
+        [Route("Configurations/Master/PageViewsReport/Index")]
+        [Route("Settings/Master/PageViewsReport/Index")]
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId<long>();
@@ -77,7 +77,7 @@ namespace SHF.Controllers
             return View();
         }
         [HttpPost]
-        [Route("Post/Banner/IndexAsync")]
+        [Route("Post/PageViewsReport/IndexAsync")]
         [ValidateAntiForgeryTokens]
         public async Task<ActionResult> IndexAsync()
         {
@@ -124,7 +124,7 @@ namespace SHF.Controllers
         [HttpPost]
         [Audit]
         [ValidateAntiForgeryTokens]
-        [Route("Post/Banner/CreateAsync")]
+        [Route("Post/PageViewsReport/CreateAsync")]
         public async Task<ActionResult> CreateAsync(ViewModel.PageViewsReportCreateOrEditViewModel model)
         {
             try
@@ -139,7 +139,7 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var PageViewsReportId = businessPageViewsReport.FindBy(Banner => Banner.Tenant_ID == model.Tenant_ID && Banner.ID == model.ID).FirstOrDefault();
+                            var PageViewsReportId = businessPageViewsReport.FindBy(PageViewsReport => PageViewsReport.Tenant_ID == model.Tenant_ID && PageViewsReport.ID == model.ID).FirstOrDefault();
 
                             if (PageViewsReportId.IsNotNull())
                             {
@@ -198,7 +198,7 @@ namespace SHF.Controllers
 
 
         [HttpGet]
-        [Route("Get/Banner/EditAsync")]
+        [Route("Get/PageViewsReport/EditAsync")]
         public async Task<ActionResult> EditAsync(long Id)
         {
             try
@@ -274,7 +274,7 @@ namespace SHF.Controllers
         [HttpPost]
         [Audit]
         [ValidateAntiForgeryTokens]
-        [Route("Post/Banner/EditAsync")]
+        [Route("Post/PageViewsReport/EditAsync")]
         public async Task<ActionResult> EditAsync(ViewModel.PageViewsReportCreateOrEditViewModel model)
         {
             try
@@ -291,9 +291,9 @@ namespace SHF.Controllers
                     {
                         try
                         {
-                            var BannerData = businessPageViewsReport.FindBy(Banner => Banner.Tenant_ID == model.Tenant_ID && Banner.ID == model.ID).FirstOrDefault();
+                            var PageViewsReportData = businessPageViewsReport.FindBy(PageViewsReport => PageViewsReport.Tenant_ID == model.Tenant_ID && PageViewsReport.ID == model.ID).FirstOrDefault();
 
-                            if (BannerData.IsNull())
+                            if (PageViewsReportData.IsNull())
                             {
                                 transaction.Complete();
                                 var response = new JsonResponse<dynamic>()
@@ -376,7 +376,7 @@ namespace SHF.Controllers
                         }
                         else
                         {
-                            var entities = this.businessPageViewsReport.GetAll().Where(Banner => Banner.Tenant_ID == Id).Select(x => new ViewModel.PageViewsReportDropdownListViewModel
+                            var entities = this.businessPageViewsReport.GetAll().Where(PageViewsReport => PageViewsReport.Tenant_ID == Id).Select(x => new ViewModel.PageViewsReportDropdownListViewModel
                             {
                                 ID = x.ID,
                                 Url = x.Url
@@ -420,75 +420,7 @@ namespace SHF.Controllers
             }
         }
 
-        [HttpGet]
-        [Route("Get/PageViewsReport/GetAllPageViewsReportByTenantIdAsync")]
-        public async Task<ActionResult> GetAllPageViewsReportByTenantIdAsync(long Id)
-        {
-            try
-            {
-                using (var transaction = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadUncommitted }))
-                {
-                    try
-                    {
-                        if (Id == 0)
-                        {
-                            transaction.Complete();
-                            var response = new JsonResponse<dynamic>()
-                            {
-                                Type = busConstant.Messages.Type.EXCEPTION,
-                                Message = busConstant.Messages.Type.Exceptions.BAD_REQUEST,
-                                StatusCode = Convert.ToInt32(HttpStatusCode.BadRequest)
-                            };
-
-                            return Json(response, JsonRequestBehavior.AllowGet);
-                        }
-                        else
-                        {
-                            var entities = this.businessPageViewsReport.GetAll().Where(Banner => Banner.Tenant_ID == Id).Select(x => new ViewModel.PageViewsReportIndexViewModel
-                            {
-                                ID = x.ID,
-                                Url = String.Concat(busConstant.Settings.CMSPath.TENANAT_UPLOAD_DIRECTORY, x.Tenant_ID) + "/" + x.Url,
-                                BannerName = x.Url
-                            });
-
-                            if (entities.IsNotNull())
-                            {
-                                var response = new JsonResponse<IEnumerable<ViewModel.PageViewsReportIndexViewModel>>()
-                                {
-                                    Type = busConstant.Messages.Type.RESPONSE,
-                                    Entity = entities
-                                };
-
-                                transaction.Complete();
-                                return Json(response, JsonRequestBehavior.AllowGet);
-                            }
-                            else
-                            {
-                                var response = new JsonResponse<dynamic>()
-                                {
-                                    Type = busConstant.Messages.Type.EXCEPTION,
-                                    Message = busConstant.Messages.Type.Exceptions.NOT_FOUND,
-                                    StatusCode = Convert.ToInt32(HttpStatusCode.NotFound)
-                                };
-                                transaction.Complete();
-
-                                return Json(response, JsonRequestBehavior.AllowGet);
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        transaction.Dispose();
-                        throw;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                return ExceptionResponse(ex);
-            }
-        }
-
+      
         [HttpPost]
         [Route("POST/PageViewsReport/FileUpload")]
         public virtual string UploadFiles(object obj)
