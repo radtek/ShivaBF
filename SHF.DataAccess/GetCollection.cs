@@ -41,5 +41,25 @@ namespace SHF.DataAccess
                 return result;
             }
         }
+
+        public static void ExecuteNonQuery(string commandText,SqlParameter[] parameters = null)
+        {
+            using (var con = DBUtility.GetNewOpenConnection())
+            {
+                var command = con.CreateCommand();
+                command.CommandText = commandText;
+                command.CommandType =CommandType.StoredProcedure;
+
+                if (parameters != null)
+                {
+                    foreach (var parameter in parameters)
+                    {
+                        command.Parameters.Add(parameter);
+                    }
+                }
+
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }

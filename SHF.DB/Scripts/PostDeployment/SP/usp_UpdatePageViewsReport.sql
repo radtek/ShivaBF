@@ -30,16 +30,17 @@ BEGIN
 	select [Url],TotalViews,Tenant_ID from Tbl_HomePageSection2 h
 	) a
 
-	update pv set [Url]=tr.[Url],TotalViews=tr.TotalViews,Tenant_ID=tr.Tenant_ID
-	select [Url],TotalViews,Tenant_ID from #tempresult tr inner join Tbl_PageViewsReport pv 
+	update Tbl_PageViewsReport set [Url]=tr.[Url],[Count]=tr.TotalViews,Tenant_ID=tr.Tenant_ID
+	from #tempresult tr inner join Tbl_PageViewsReport pv 
 	on tr.[Url]=pv.[Url];
 
 
 	insert into Tbl_PageViewsReport
-	select [Url],TotalViews,Tenant_ID from #tempresult tr left join Tbl_PageViewsReport pv 
+	select tr.[Url],tr.TotalViews,tr.Tenant_ID,'System',getdate(),'System',getdate(),1 from #tempresult tr left join Tbl_PageViewsReport pv 
 	on tr.[Url]=pv.[Url]
 	Where pv.[Url] is null;
 
+	drop table #tempresult;
 
 END
 GO
