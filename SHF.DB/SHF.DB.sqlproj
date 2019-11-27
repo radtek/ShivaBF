@@ -104,5 +104,11 @@
     <Build Include="Scripts\PostDeployment\Function\udf_TitleCase.sql" />
     <None Include="Scripts\PostDeployment\SP\usp_DeleteService1.sql" />
     <None Include="Scripts\PostDeployment\SP\usp_UpdatePageViewsReport.sql" />
+    <None Include="Scripts\PostDeployment\SP\usp_DeleteServices1Section10BankMapping.sql" />
+    <None Include="Scripts\PostDeployment\SP\usp_DeleteServices1Section1Master.sql" />
+    <None Include="Scripts\PostDeployment\SP\usp_DeleteServices1Section4Master.sql" />
+    <None Include="Scripts\PostDeployment\SP\usp_DeleteServices1Section5Master.sql" />
+    <None Include="Scripts\PostDeployment\SP\usp_DeleteServices1Section6PriceMaster.sql" />
+    <None Include="Scripts\PostDeployment\SP\usp_DeleteServices1Section8FAQMapping.sql" />
   </ItemGroup>
 </Project>

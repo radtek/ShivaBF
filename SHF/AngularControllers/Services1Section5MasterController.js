@@ -269,7 +269,7 @@
                             switch (response.data.Type) {
                             case 'Response':
                                 $('#modal-createOredit').modal('hide');
-                                CustomService.Alert(response);
+                                //CustomService.Alert(response);
                                 $scope.PageLoad();
                                 console.clear();
                                 break;
