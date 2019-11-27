@@ -73,6 +73,7 @@
     <Compile Include="IPCurrencyViewModel.cs" />
     <Compile Include="IPCarrierViewModel.cs" />
     <Compile Include="IPAsnViewModel.cs" />
+    <Compile Include="PageViewsReportViewModel.cs" />
     <Compile Include="RelatedBlogsMappingViewModel.cs" />
     <Compile Include="BlogBannerNavigationsDetailsViewModel.cs" />
     <Compile Include="BlogMasterViewModel.cs" />
