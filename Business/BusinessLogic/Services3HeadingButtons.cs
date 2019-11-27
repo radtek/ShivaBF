@@ -191,7 +191,9 @@ namespace SHF.Business.BusinessLogic
         {
             try
             {
-                unitOfWork.Services3HeadingButtonsRepository.Delete(Id);
+                var param = new DynamicParameters();
+                param.Add("@serviceId", Id);
+                var x = DataAccess.GetScalar.ByStoredProcedure("[dbo].[usp_DeleteServices3HeadingButtons]", param);
             }
             catch (Exception ex)
             {

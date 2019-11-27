@@ -114,5 +114,9 @@
     <None Include="Scripts\PostDeployment\SP\usp_DeleteServices2Section2FAQMapping.sql" />
     <None Include="Scripts\PostDeployment\SP\usp_DeleteServices2Section3DownloadMaster.sql" />
     <None Include="Scripts\PostDeployment\SP\usp_DeleteServices2Section4Master.sql" />
+    <None Include="Scripts\PostDeployment\SP\usp_DeleteService3.sql" />
+    <None Include="Scripts\PostDeployment\SP\usp_DeleteServices3HeadingButtons.sql" />
+    <None Include="Scripts\PostDeployment\SP\usp_DeleteServices3Section4.sql" />
+    <None Include="Scripts\PostDeployment\SP\usp_DeleteServices3Section6PriceMaster.sql" />
   </ItemGroup>
 </Project>
