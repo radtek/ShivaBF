@@ -73,5 +73,36 @@ go
 :r .\SP\usp_DeleteService1.sql
 go
 
+:r .\SP\usp_DeleteService2.sql
+go
+:r .\SP\usp_DeleteService3.sql
+go
+:r .\SP\usp_DeleteServices1Section10BankMapping.sql
+go
+:r .\SP\usp_DeleteServices1Section1Master.sql
+go
+:r .\SP\usp_DeleteServices1Section4Master.sql
+go
+:r .\SP\usp_DeleteServices1Section5Master.sql
+go
+:r .\SP\usp_DeleteServices1Section6PriceMaster.sql
+go
+:r .\SP\usp_DeleteServices1Section8FAQMapping.sql
+go
+:r .\SP\usp_DeleteServices2Section2FAQMapping.sql
+go
+:r .\SP\usp_DeleteServices2Section3DownloadMaster.sql
+go
+:r .\SP\usp_DeleteServices2Section4Master.sql
+go
+:r .\SP\usp_DeleteServices3HeadingButtons.sql
+go
+:r .\SP\usp_DeleteServices3Section4.sql
+go
+:r .\SP\usp_DeleteServices3Section6PriceMaster.sql
+go
+:r .\SP\usp_DeleteService1.sql
+go
+
 :r .\SP\usp_UpdatePageViewsReport.sql
 go

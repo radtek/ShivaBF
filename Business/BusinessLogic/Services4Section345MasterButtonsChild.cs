@@ -204,7 +204,9 @@ namespace SHF.Business.BusinessLogic
         {
             try
             {
-                unitOfWork.Services4Section345MasterButtonsChildRepository.Delete(Id);
+                var param = new DynamicParameters();
+                param.Add("@serviceId", Id);
+                var x = DataAccess.GetScalar.ByStoredProcedure("[dbo].[usp_DeleteServices4Section345MasterButtonsChild]", param);
             }
             catch (Exception ex)
             {

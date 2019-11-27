@@ -118,5 +118,12 @@
     <None Include="Scripts\PostDeployment\SP\usp_DeleteServices3HeadingButtons.sql" />
     <None Include="Scripts\PostDeployment\SP\usp_DeleteServices3Section4.sql" />
     <None Include="Scripts\PostDeployment\SP\usp_DeleteServices3Section6PriceMaster.sql" />
+    <None Include="Scripts\PostDeployment\SP\usp_DeleteService4.sql" />
+    <None Include="Scripts\PostDeployment\SP\usp_DeleteServices4Section2FAQMapping.sql" />
+    <None Include="Scripts\PostDeployment\SP\usp_DeleteServices4Section345MasterButtonsChild.sql" />
+    <None Include="Scripts\PostDeployment\SP\usp_DeleteServices4Section345Master.sql" />
+    <None Include="Scripts\PostDeployment\SP\usp_DeleteServices4Section678FieldValues.sql" />
+    <None Include="Scripts\PostDeployment\SP\usp_DeleteServices4Section678FieldMaster.sql" />
+    <None Include="Scripts\PostDeployment\SP\usp_DeleteServices4Section345MasterFeaturesDetails.sql" />
   </ItemGroup>
 </Project>

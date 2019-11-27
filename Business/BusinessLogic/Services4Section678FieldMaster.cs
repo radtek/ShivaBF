@@ -188,7 +188,9 @@ namespace SHF.Business.BusinessLogic
         {
             try
             {
-                unitOfWork.Services4Section678FieldMasterRepository.Delete(Id);
+                var param = new DynamicParameters();
+                param.Add("@serviceId", Id);
+                var x = DataAccess.GetScalar.ByStoredProcedure("[dbo].[usp_DeleteServices4Section678FieldMaster]", param);
             }
             catch (Exception ex)
             {
