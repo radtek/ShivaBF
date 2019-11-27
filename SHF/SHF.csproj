@@ -526,6 +526,7 @@
     <Content Include="AngularControllers\HomePageSection2Controller.js" />
     <Content Include="AngularControllers\HomePageSection1Controller.js" />
     <Content Include="AngularControllers\BlogCommentsDetailsController.js" />
+    <Content Include="AngularControllers\PageViewsReportController.js" />
     <Content Include="AngularControllers\RelatedBlogsMappingController.js" />
     <Content Include="AngularControllers\BannerNavigationsDetailsController.js" />
     <Content Include="AngularControllers\BlogMasterController.js" />
@@ -12522,6 +12523,7 @@
     <Content Include="Scripts\Services\HomePageSection2.js" />
     <Content Include="Scripts\Services\HomePageSection1.js" />
     <Content Include="Scripts\Services\BlogCommentsDetails.js" />
+    <Content Include="Scripts\Services\PageViewsReport.js" />
     <Content Include="Scripts\Services\RelatedBlogsMapping.js" />
     <Content Include="Scripts\Services\BannerNavigationsDetails.js" />
     <Content Include="Scripts\Services\BlogMaster.js" />
