@@ -353,8 +353,8 @@ namespace SHF.Controllers
             }
         }
         [HttpGet]
-        [Route("Get/PageViewsReport/DropdownListbyTenantAsync")]
-        public async Task<ActionResult> GetPageViewsReportByTenantIdAsync(long Id)
+        [Route("Get/PageViewsReport/GetAllPageViewsReportByTenantIdAsync")]
+        public async Task<ActionResult> GetAllPageViewsReportByTenantIdAsync()
         {
             try
             {
@@ -362,50 +362,57 @@ namespace SHF.Controllers
                 {
                     try
                     {
+                        var userId = User.Identity.GetUserId<long>();
+                        var Id = UserManager.FindById(userId).Tenant_ID.GetValueOrDefault();
+                        IEnumerable<ViewModel.PageViewsReportIndexViewModel> entities;
                         if (Id == 0)
                         {
-                            transaction.Complete();
-                            var response = new JsonResponse<dynamic>()
+                            var total = this.businessPageViewsReport.GetAll().Select(x => x.Count).Sum();
+                            entities = this.businessPageViewsReport.GetAll().Select(x => new ViewModel.PageViewsReportIndexViewModel
                             {
-                                Type = busConstant.Messages.Type.EXCEPTION,
-                                Message = busConstant.Messages.Type.Exceptions.BAD_REQUEST,
-                                StatusCode = Convert.ToInt32(HttpStatusCode.BadRequest)
+                                ID = x.ID,
+                                Url = x.Url,
+                                Count = x.Count,
+                                TotalCount = total
+                            });
+
+                        }
+                        else
+                        {
+                            var total = this.businessPageViewsReport.GetAll().Where(PageViewsReport => PageViewsReport.Tenant_ID == Id).Select(x => x.Count).Sum();
+                            entities = this.businessPageViewsReport.GetAll().Where(PageViewsReport => PageViewsReport.Tenant_ID == Id).Select(x => new ViewModel.PageViewsReportIndexViewModel
+                            {
+                                ID = x.ID,
+                                Url = x.Url,
+                                Count = x.Count,
+                                TotalCount = total
+                            });
+                        }
+
+                        if (entities.IsNotNull())
+                        {
+                            var response = new JsonResponse<IEnumerable<ViewModel.PageViewsReportIndexViewModel>>()
+                            {
+                                Type = busConstant.Messages.Type.RESPONSE,
+                                Entity = entities
                             };
 
+                            transaction.Complete();
                             return Json(response, JsonRequestBehavior.AllowGet);
                         }
                         else
                         {
-                            var entities = this.businessPageViewsReport.GetAll().Where(PageViewsReport => PageViewsReport.Tenant_ID == Id).Select(x => new ViewModel.PageViewsReportDropdownListViewModel
+                            var response = new JsonResponse<dynamic>()
                             {
-                                ID = x.ID,
-                                Url = x.Url
-                            });
+                                Type = busConstant.Messages.Type.EXCEPTION,
+                                Message = busConstant.Messages.Type.Exceptions.NOT_FOUND,
+                                StatusCode = Convert.ToInt32(HttpStatusCode.NotFound)
+                            };
+                            transaction.Complete();
 
-                            if (entities.IsNotNull())
-                            {
-                                var response = new JsonResponse<IEnumerable<ViewModel.PageViewsReportDropdownListViewModel>>()
-                                {
-                                    Type = busConstant.Messages.Type.RESPONSE,
-                                    Entity = entities
-                                };
-
-                                transaction.Complete();
-                                return Json(response, JsonRequestBehavior.AllowGet);
-                            }
-                            else
-                            {
-                                var response = new JsonResponse<dynamic>()
-                                {
-                                    Type = busConstant.Messages.Type.EXCEPTION,
-                                    Message = busConstant.Messages.Type.Exceptions.NOT_FOUND,
-                                    StatusCode = Convert.ToInt32(HttpStatusCode.NotFound)
-                                };
-                                transaction.Complete();
-
-                                return Json(response, JsonRequestBehavior.AllowGet);
-                            }
+                            return Json(response, JsonRequestBehavior.AllowGet);
                         }
+
                     }
                     catch (Exception ex)
                     {
@@ -420,7 +427,7 @@ namespace SHF.Controllers
             }
         }
 
-      
+
         [HttpPost]
         [Route("POST/PageViewsReport/FileUpload")]
         public virtual string UploadFiles(object obj)

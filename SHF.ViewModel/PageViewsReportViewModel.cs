@@ -11,6 +11,7 @@ namespace SHF.ViewModel
         public System.Int64 Count { get; set; }
         public System.String TenantName { get; set; }
         public System.Int64 Tenant_ID { get; set; }
+        public System.Int64 TotalCount { get; set; }
     }
     public sealed class PageViewsReportCreateOrEditViewModel : BaseViewModel
     {
