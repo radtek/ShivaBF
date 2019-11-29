@@ -53,6 +53,7 @@
     <Compile Include="AspNetUser.cs" />
     <Compile Include="AspNetUserRole.cs" />
     <Compile Include="CustomerIPInfoMapping.cs" />
+    <Compile Include="CustomerServiceOrder.cs" />
     <Compile Include="CustomerSurfing.cs" />
     <Compile Include="CustomerMasterInfo.cs" />
     <Compile Include="CustomerMaster.cs" />
