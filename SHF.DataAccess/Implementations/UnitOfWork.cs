@@ -99,6 +99,10 @@ namespace SHF.DataAccess.Implementations
         private GenericRepository<EntityModel.BannerMaster> _BannerMasterRepository;
         private GenericRepository<EntityModel.FooterBlockMaster> _FooterBlockMasterRepository;
         private GenericRepository<EntityModel.FooterLinks> _FooterLinksRepository;
+        private GenericRepository<EntityModel.CustomerIPInfoMapping> _CustomerIPInfoMappingRepository { get; set; }
+        private GenericRepository<EntityModel.CustomerMaster> _CustomerMasterRepository { get; set; }
+        private GenericRepository<EntityModel.CustomerMasterInfo> _CustomerMasterInfoRepository { get; set; }
+        private GenericRepository<EntityModel.CustomerSurfing> _CustomerSurfingRepository { get; set; }
         #endregion
 
 
@@ -761,7 +765,7 @@ namespace SHF.DataAccess.Implementations
                 return _CommentsReplyRepository;
             }
         }
-       
+
         public GenericRepository<EntityModel.PageViewsReport> PageViewsReportRepository
         {
             get
@@ -850,7 +854,7 @@ namespace SHF.DataAccess.Implementations
                 return _TimeZonesRepository;
             }
         }
-       
+
         public GenericRepository<EntityModel.HomePageBanner> HomePageBannerRepository
         {
             get
@@ -976,6 +980,51 @@ namespace SHF.DataAccess.Implementations
                 return _FooterLinksRepository;
             }
         }
+        public GenericRepository<EntityModel.CustomerIPInfoMapping> CustomerIPInfoMappingRepository
+        {
+            get
+            {
+                if (this._CustomerIPInfoMappingRepository == null)
+                {
+                    this._CustomerIPInfoMappingRepository = new GenericRepository<EntityModel.CustomerIPInfoMapping>(context);
+                }
+                return _CustomerIPInfoMappingRepository;
+            }
+        }
+        public GenericRepository<EntityModel.CustomerMaster> CustomerMasterRepository
+        {
+            get
+            {
+                if (this._CustomerMasterRepository == null)
+                {
+                    this._CustomerMasterRepository = new GenericRepository<EntityModel.CustomerMaster>(context);
+                }
+                return _CustomerMasterRepository;
+            }
+        }
+        public GenericRepository<EntityModel.CustomerMasterInfo> CustomerMasterInfoRepository
+        {
+            get
+            {
+                if (this._CustomerMasterInfoRepository == null)
+                {
+                    this._CustomerMasterInfoRepository = new GenericRepository<EntityModel.CustomerMasterInfo>(context);
+                }
+                return _CustomerMasterInfoRepository;
+            }
+        }
+        public GenericRepository<EntityModel.CustomerSurfing> CustomerSurfingRepository
+        {
+            get
+            {
+                if (this._CustomerSurfingRepository == null)
+                {
+                    this._CustomerSurfingRepository = new GenericRepository<EntityModel.CustomerSurfing>(context);
+                }
+                return _CustomerSurfingRepository;
+            }
+        }
+       
 
 
         #endregion
