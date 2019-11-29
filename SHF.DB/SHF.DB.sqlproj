@@ -125,5 +125,18 @@
     <None Include="Scripts\PostDeployment\SP\usp_DeleteServices4Section678FieldValues.sql" />
     <None Include="Scripts\PostDeployment\SP\usp_DeleteServices4Section678FieldMaster.sql" />
     <None Include="Scripts\PostDeployment\SP\usp_DeleteServices4Section345MasterFeaturesDetails.sql" />
+    <None Include="Scripts\PostDeployment\SP\usp_DeleteService5.sql" />
+    <None Include="Scripts\PostDeployment\SP\usp_DeleteServices5Section2Master.sql" />
+    <None Include="Scripts\PostDeployment\SP\usp_DeleteServices5Section2MasterFeaturesDetails.sql" />
+    <None Include="Scripts\PostDeployment\SP\usp_DeleteService6.sql" />
+    <None Include="Scripts\PostDeployment\SP\usp_DeleteServices6Section2Master.sql" />
+    <None Include="Scripts\PostDeployment\SP\usp_DeleteServices6Section2MasterFeaturesDetails.sql" />
+    <None Include="Scripts\PostDeployment\SP\usp_DeleteService7.sql" />
+    <None Include="Scripts\PostDeployment\SP\usp_DeleteServices7Section4.sql" />
+    <None Include="Scripts\PostDeployment\SP\usp_DeleteServices7HeadingButtons.sql" />
+    <None Include="Scripts\PostDeployment\SP\usp_DeleteServices7Section6PriceMaster.sql" />
+    <None Include="Scripts\PostDeployment\SP\usp_DeleteService8.sql" />
+    <None Include="Scripts\PostDeployment\SP\usp_DeleteServices8HeadingButtons.sql" />
+    <None Include="Scripts\PostDeployment\SP\usp_DeleteServices8Section6Master.sql" />
   </ItemGroup>
 </Project>

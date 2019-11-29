@@ -77,6 +77,16 @@ go
 go
 :r .\SP\usp_DeleteService3.sql
 go
+:r .\SP\usp_DeleteService4.sql
+go
+:r .\SP\usp_DeleteService5.sql
+go
+:r .\SP\usp_DeleteService6.sql
+go
+:r .\SP\usp_DeleteService7.sql
+go
+:r .\SP\usp_DeleteService8.sql
+go
 :r .\SP\usp_DeleteServices1Section10BankMapping.sql
 go
 :r .\SP\usp_DeleteServices1Section1Master.sql
@@ -101,8 +111,35 @@ go
 go
 :r .\SP\usp_DeleteServices3Section6PriceMaster.sql
 go
-:r .\SP\usp_DeleteService1.sql
+:r .\SP\usp_DeleteServices4Section2FAQMapping.sql
 go
-
+:r .\SP\usp_DeleteServices4Section345Master.sql
+go
+:r .\SP\usp_DeleteServices4Section345MasterButtonsChild.sql
+go
+:r .\SP\usp_DeleteServices4Section345MasterFeaturesDetails.sql
+go
+:r .\SP\usp_DeleteServices4Section678FieldMaster.sql
+go
+:r .\SP\usp_DeleteServices4Section678FieldValues.sql
+go
+:r .\SP\usp_DeleteServices5Section2Master.sql
+go
+:r .\SP\usp_DeleteServices5Section2MasterFeaturesDetails.sql
+go
+:r .\SP\usp_DeleteServices6Section2Master.sql
+go
+:r .\SP\usp_DeleteServices6Section2MasterFeaturesDetails.sql
+go
+:r .\SP\usp_DeleteServices7HeadingButtons.sql
+go
+:r .\SP\usp_DeleteServices7Section4.sql
+go
+:r .\SP\usp_DeleteServices7Section6PriceMaster.sql
+go
+:r .\SP\usp_DeleteServices8HeadingButtons.sql
+go
+:r .\SP\usp_DeleteServices8Section6Master.sql
+go
 :r .\SP\usp_UpdatePageViewsReport.sql
 go
