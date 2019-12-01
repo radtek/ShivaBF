@@ -392,6 +392,9 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomerIPInfoMappingController.cs" />
+    <Compile Include="Controllers\CustomerMasterInfoController.cs" />
+    <Compile Include="Controllers\CustomerMasterController.cs" />
     <Compile Include="Controllers\Front\AddServiceRelatedInfoController.cs" />
     <Compile Include="Controllers\IPInfoController.cs" />
     <Compile Include="Controllers\CommentsReplyController.cs" />
@@ -514,6 +517,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AngularControllers\AspNetUserController.js" />
+    <Content Include="AngularControllers\CustomerIPInfoMappingController.js" />
+    <Content Include="AngularControllers\CustomerMasterInfoController.js" />
+    <Content Include="AngularControllers\CustomerMasterController.js" />
     <Content Include="AngularControllers\IPInfoController.js" />
     <Content Include="AngularControllers\CommentsReplyController.js" />
     <Content Include="AngularControllers\FooterLinksController.js" />
@@ -12511,6 +12517,9 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Services\AspNetRole.js" />
     <Content Include="Scripts\Services\AspNetUser.js" />
+    <Content Include="Scripts\Services\CustomerIPInfoMapping.js" />
+    <Content Include="Scripts\Services\CustomerMasterInfo.js" />
+    <Content Include="Scripts\Services\CustomerMaster.js" />
     <Content Include="Scripts\Services\IPInfo.js" />
     <Content Include="Scripts\Services\CommentsReply.js" />
     <Content Include="Scripts\Services\FooterLinks.js" />
@@ -12893,6 +12902,15 @@
     <Content Include="Views\IPInfo\_CreateOrEdit.cshtml" />
     <Content Include="Views\IPInfo\_CreateOrEditTenant.cshtml" />
     <Content Include="Views\IPInfo\Index.cshtml" />
+    <Content Include="Views\CustomerMaster\_CreateOrEdit.cshtml" />
+    <Content Include="Views\CustomerMaster\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\CustomerMaster\Index.cshtml" />
+    <Content Include="Views\CustomerMasterInfo\_CreateOrEdit.cshtml" />
+    <Content Include="Views\CustomerMasterInfo\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\CustomerMasterInfo\Index.cshtml" />
+    <Content Include="Views\CustomerIPInfoMapping\_CreateOrEdit.cshtml" />
+    <Content Include="Views\CustomerIPInfoMapping\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\CustomerIPInfoMapping\Index.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />

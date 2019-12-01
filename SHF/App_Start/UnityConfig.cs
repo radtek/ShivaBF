@@ -96,6 +96,9 @@ namespace SHF
             container.RegisterType<Business.Interface.ITimeZone, Business.BusinessLogic.TimeZone>();
             container.RegisterType<Business.Interface.IIPInfo, Business.BusinessLogic.IPInfo>();
             container.RegisterType<Business.Interface.IPageViewsReport, Business.BusinessLogic.PageViewsReport>();
+            container.RegisterType<Business.Interface.ICustomerMaster, Business.BusinessLogic.CustomerMaster>();
+            container.RegisterType<Business.Interface.ICustomerMasterInfo, Business.BusinessLogic.CustomerMasterInfo>();
+            container.RegisterType<Business.Interface.ICustomerIPInfoMapping, Business.BusinessLogic.CustomerIPInfoMapping>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

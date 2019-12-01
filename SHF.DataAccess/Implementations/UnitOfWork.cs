@@ -103,6 +103,7 @@ namespace SHF.DataAccess.Implementations
         private GenericRepository<EntityModel.CustomerMaster> _CustomerMasterRepository { get; set; }
         private GenericRepository<EntityModel.CustomerMasterInfo> _CustomerMasterInfoRepository { get; set; }
         private GenericRepository<EntityModel.CustomerSurfing> _CustomerSurfingRepository { get; set; }
+        private GenericRepository<EntityModel.CustomerServiceOrder> _CustomerServiceOrderRepository { get; set; }
         #endregion
 
 
@@ -1024,8 +1025,18 @@ namespace SHF.DataAccess.Implementations
                 return _CustomerSurfingRepository;
             }
         }
-       
-
+        public GenericRepository<EntityModel.CustomerServiceOrder> CustomerServiceOrderRepository
+        {
+            get
+            {
+                if (this._CustomerServiceOrderRepository == null)
+                {
+                    this._CustomerServiceOrderRepository = new GenericRepository<EntityModel.CustomerServiceOrder>(context);
+                }
+                return _CustomerServiceOrderRepository;
+            }
+        }
+    
 
         #endregion
 

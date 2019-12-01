@@ -27,8 +27,8 @@ namespace SHF.EntityModel
         public System.DateTime DOB { get; set; }
         [Column("EmailID")]
         public System.String EmailID { get; set; }
-        [Column("DefaultAddressID")]
-        public System.Int32 DefaultAddressID { get; set; }
+        [Column("FullStreetAddress")]
+        public System.String FullStreetAddress { get; set; }
         [Column("Telephone")]
         public System.String Telephone { get; set; }
         [Column("Fax")]

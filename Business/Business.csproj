@@ -52,6 +52,9 @@
   <ItemGroup>
     <Compile Include="BaseBusiness.cs" />
     <Compile Include="busCache.cs" />
+    <Compile Include="BusinessLogic\CustomerIPInfoMapping.cs" />
+    <Compile Include="BusinessLogic\CustomerMasterInfo.cs" />
+    <Compile Include="BusinessLogic\CustomerMaster.cs" />
     <Compile Include="BusinessLogic\IPInfo.cs" />
     <Compile Include="BusinessLogic\IP_TimeZone.cs" />
     <Compile Include="BusinessLogic\IP_Threat.cs" />
@@ -127,6 +130,9 @@
     <Compile Include="BusinessLogic\BankMaster.cs" />
     <Compile Include="BusinessLogic\SubMenu.cs" />
     <Compile Include="BusinessLogic\Tenant.cs" />
+    <Compile Include="Interface\ICustomerIPInfoMapping.cs" />
+    <Compile Include="Interface\ICustomerMasterInfo.cs" />
+    <Compile Include="Interface\ICustomerMaster.cs" />
     <Compile Include="Interface\IIPInfo.cs" />
     <Compile Include="Interface\IIP_TimeZone.cs" />
     <Compile Include="Interface\IIP_Threat.cs" />

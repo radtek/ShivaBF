@@ -130,6 +130,7 @@ namespace SHF.DataAccess
         public DbSet<SHF.EntityModel.CustomerMaster> CustomerMaster { get; set; }
         public DbSet<SHF.EntityModel.CustomerMasterInfo> CustomerMasterInfo { get; set; }
         public DbSet<SHF.EntityModel.CustomerSurfing> CustomerSurfing { get; set; }
+        public DbSet<SHF.EntityModel.CustomerServiceOrder> CustomerServiceOrder { get; set; }
 
     }
 }

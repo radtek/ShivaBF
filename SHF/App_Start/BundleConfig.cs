@@ -194,6 +194,9 @@ namespace SHF
                                        "~/Scripts/Services/HomePageSection5.js",
                                        "~/Scripts/Services/IPInfo.js",
                                         "~/Scripts/Services/PageViewsReport.js",
+                                        "~/Scripts/Services/CustomerMaster.js",
+                                        "~/Scripts/Services/CustomerMasterInfo.js",
+                                       "~/Scripts/Services/CustomerIPInfoMapping.js",
                  "~/AngularControllers/AspNetUserController.js",
                  "~/AngularControllers/RoleController.js",
                  "~/AngularControllers/TenantController.js",
@@ -259,7 +262,10 @@ namespace SHF
                                  "~/AngularControllers/HomePageSection4TestimonailsController.js",
                                   "~/AngularControllers/HomePageSection5Controller.js",
                                    "~/AngularControllers/IPInfoController.js",
-                                   "~/AngularControllers/PageViewsReportController.js"
+                                   "~/AngularControllers/PageViewsReportController.js",
+                                    "~/AngularControllers/CustomerMasterController.js",
+                                    "~/AngularControllers/CustomerMasterInfoController.js",
+                                     "~/AngularControllers/CustomerIPInfoMappingController.js"
 
                 ));
 

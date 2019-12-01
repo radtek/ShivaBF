@@ -43,6 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActiveMenuViewModel.cs" />
+    <Compile Include="CustomerIPInfoMappingViewModel.cs" />
+    <Compile Include="CustomerMasterInfoViewModel.cs" />
+    <Compile Include="CustomerMasterViewModel.cs" />
     <Compile Include="CommentsReplyViewModel.cs" />
     <Compile Include="FooterLinksViewModel.cs" />
     <Compile Include="FooterBlockMasterViewModel.cs" />

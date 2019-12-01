@@ -1,4 +1,51 @@
-﻿
+﻿/*Insert Default Customer */
+SET IDENTITY_INSERT [dbo].[Tbl_CustomerMaster] ON
+INSERT INTO [dbo].[Tbl_CustomerMaster]
+           ([ID]
+		   ,[Gender]
+           ,[FirstName]
+           ,[LastName]
+           ,[DOB]
+           ,[EmailID]
+           ,[FullStreetAddress]
+           ,[Telephone]
+           ,[Fax]
+           ,[Password]
+           ,[Newsletter]
+           ,[IsActive]
+           ,[Tenant_ID]
+           ,[Created_By]
+           ,[Created_On]
+           ,[Modified_By]
+           ,[Modified_On]
+           ,[Is_Deleted])
+     VALUES
+           (
+		   -1
+		   ,'Unknown'
+           ,'Unknown'
+           ,'Unknown'
+           ,getdate()
+           ,'Unknown'
+           ,'Unknown'
+           ,'Unknown'
+           ,'Unknown'
+           ,'Unknown'
+           ,'Unknown'
+           ,1
+           ,1
+           ,'SYSTEM'
+           ,getdate()
+           ,'SYSTEM'
+           ,getdate()
+           ,1)
+GO
+SET IDENTITY_INSERT [dbo].[Tbl_CustomerMaster] OFF
+GO
+
+
+
+
 DECLARE @RoleID BIGINT=NULL , 
 		@SubMenuID BIGINT=NULL, 
 		@SubMenuName VARCHAR(100)='Vendors',			
