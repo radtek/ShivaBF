@@ -2137,11 +2137,9 @@ SELECT @ParrentMenu_ID=SM.ID FROM dbo.Tbl_SubMenu SM WITH(NOLOCK) WHERE SM.[Name
 		END
 GO
 
-/**************************************************Dashboard End*******************************************************/
-
-DECLARE	@ParrentName VARCHAR(100)='Masters', 
-		@Name VARCHAR(100)='Contacts', 
-        @Url VARCHAR(150)='/Configurations/Master/Contact/Index', 
+DECLARE	@ParrentName VARCHAR(100)='Dashboard', 
+		@Name VARCHAR(100)='Customer Surfing', 
+        @Url VARCHAR(150)='/Configurations/Master/CustomerSurfing/Index', 
         @Is_Active BIT=1, 
         @Update_Seq INT=0,
         @Created_By VARCHAR(10)='dbo',
@@ -2163,4 +2161,5 @@ SELECT @ParrentMenu_ID=SM.ID FROM dbo.Tbl_SubMenu SM WITH(NOLOCK) WHERE SM.[Name
 		END
 GO
 
+/**************************************************Dashboard End*******************************************************/
 

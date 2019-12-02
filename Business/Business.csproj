@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="BaseBusiness.cs" />
     <Compile Include="busCache.cs" />
+    <Compile Include="BusinessLogic\CustomerSurfing.cs" />
     <Compile Include="BusinessLogic\CustomerIPInfoMapping.cs" />
     <Compile Include="BusinessLogic\CustomerMasterInfo.cs" />
     <Compile Include="BusinessLogic\CustomerMaster.cs" />
@@ -130,6 +131,7 @@
     <Compile Include="BusinessLogic\BankMaster.cs" />
     <Compile Include="BusinessLogic\SubMenu.cs" />
     <Compile Include="BusinessLogic\Tenant.cs" />
+    <Compile Include="Interface\ICustomerSurfing.cs" />
     <Compile Include="Interface\ICustomerIPInfoMapping.cs" />
     <Compile Include="Interface\ICustomerMasterInfo.cs" />
     <Compile Include="Interface\ICustomerMaster.cs" />

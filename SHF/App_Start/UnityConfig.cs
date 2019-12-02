@@ -99,6 +99,7 @@ namespace SHF
             container.RegisterType<Business.Interface.ICustomerMaster, Business.BusinessLogic.CustomerMaster>();
             container.RegisterType<Business.Interface.ICustomerMasterInfo, Business.BusinessLogic.CustomerMasterInfo>();
             container.RegisterType<Business.Interface.ICustomerIPInfoMapping, Business.BusinessLogic.CustomerIPInfoMapping>();
+            container.RegisterType<Business.Interface.ICustomerSurfing, Business.BusinessLogic.CustomerSurfing>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

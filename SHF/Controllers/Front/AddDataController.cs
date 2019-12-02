@@ -364,7 +364,7 @@ namespace SHF.Controllers.Front
                             var response = new JsonResponse<dynamic>()
                             {
                                 Type = busConstant.Messages.Type.RESPONSE,
-                                Title = busConstant.Messages.Title.SUCCESS,
+                                Title = entityIP.ID.ToString(),
                                 Icon = busConstant.Messages.Icon.SUCCESS,
                                 MessageCode = busConstant.Messages.MessageCode.SAVE,
                                 Message = busConstant.Messages.Type.Responses.SAVE

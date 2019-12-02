@@ -8,6 +8,20 @@ using System.Threading.Tasks;
 
 namespace SHF.ViewModel.FrontEnd
 {
+    public class CustomerIPInfoMapping : BaseViewModel
+    {
+        public System.String tenantId { get; set; }
+        public string CustomerMaster_ID { get; set; }
+        public string Session_ID { get; set; }
+        public string IPInfo_ID { get; set; }
+    }
+    public class CustomerSurfingViewModel : BaseViewModel
+    {
+        public System.String tenantId { get; set; }
+        public string CustomerMaster_ID { get; set; }
+        public string Session_ID { get; set; }
+        public string PageUrl { get; set; }
+    }
     public class ServiceInfoViewModel : BaseViewModel
     {
         public System.String tenantId { get; set; }

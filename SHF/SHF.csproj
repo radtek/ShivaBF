@@ -392,9 +392,11 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomerSurfingController.cs" />
     <Compile Include="Controllers\CustomerIPInfoMappingController.cs" />
     <Compile Include="Controllers\CustomerMasterInfoController.cs" />
     <Compile Include="Controllers\CustomerMasterController.cs" />
+    <Compile Include="Controllers\Front\AddCustomerRelatedController.cs" />
     <Compile Include="Controllers\Front\AddServiceRelatedInfoController.cs" />
     <Compile Include="Controllers\IPInfoController.cs" />
     <Compile Include="Controllers\CommentsReplyController.cs" />
@@ -517,6 +519,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AngularControllers\AspNetUserController.js" />
+    <Content Include="AngularControllers\CustomerSurfingController.js" />
     <Content Include="AngularControllers\CustomerIPInfoMappingController.js" />
     <Content Include="AngularControllers\CustomerMasterInfoController.js" />
     <Content Include="AngularControllers\CustomerMasterController.js" />
@@ -12517,6 +12520,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Services\AspNetRole.js" />
     <Content Include="Scripts\Services\AspNetUser.js" />
+    <Content Include="Scripts\Services\CustomerSurfing.js" />
     <Content Include="Scripts\Services\CustomerIPInfoMapping.js" />
     <Content Include="Scripts\Services\CustomerMasterInfo.js" />
     <Content Include="Scripts\Services\CustomerMaster.js" />
@@ -12911,6 +12915,9 @@
     <Content Include="Views\CustomerIPInfoMapping\_CreateOrEdit.cshtml" />
     <Content Include="Views\CustomerIPInfoMapping\_CreateOrEditTenant.cshtml" />
     <Content Include="Views\CustomerIPInfoMapping\Index.cshtml" />
+    <Content Include="Views\CustomerSurfing\_CreateOrEdit.cshtml" />
+    <Content Include="Views\CustomerSurfing\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\CustomerSurfing\Index.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
