@@ -13,7 +13,7 @@ DECLARE @NumDeleted AS int;
 	 BEGIN TRANSACTION ucDelCand
 	delete from Tbl_Services5Section2MasterFeaturesDetails where Service_Id=@serviceId;
 	delete from Tbl_Services5Section2Master where Service_Id=@serviceId;
-	delete from Tbl_Services5Master where Service_Id=@serviceId;
+	delete from Tbl_Services5Master where ID=@serviceId;
 	SET @NumDeleted = @@ROWCOUNT;
 
     COMMIT TRANSACTION ucDelCand

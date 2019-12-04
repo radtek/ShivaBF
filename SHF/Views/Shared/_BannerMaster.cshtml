@@ -21,12 +21,12 @@
                     <input id="antiForgeryToken" data-ng-model="antiForgeryToken" type="hidden" data-ng-init="antiForgeryToken='@AntiForgeryToken()'" />
 
                     <div class="row">
-                        <div class="col-sm-4" ng-repeat="banner in AllBannerMaster">
+                        <div class="col-sm-2" ng-repeat="banner in AllBannerMaster">
                             <div class="card" style="border: 1px solid #ccc;padding: 6px;">
                                 <div class="card-body">
                                     <p class="card-text">{{banner.BannerName}}</p>
                                     <p class="card-text">
-                                        <img src="{{banner.BannerPath}}" alt="" style="height:100px;width:148px;" />
+                                        <img src="{{banner.BannerPath}}" alt="" style="height:100px;width:100%;" />
                                     </p>
                                     <button type="button" class="btn btn-sm btn-success" ng-click="SelectBannerAsync(banner.ID,banner.BannerName)">Select</button>
                                 </div>

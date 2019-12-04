@@ -30,11 +30,13 @@ namespace SHF.Controllers.Front
 
         private Business.Interface.ICustomerSurfing businessCustomerSurfing;
         private Business.Interface.ICustomerIPInfoMapping businessCustomerIPInfoMapping;
+        private Business.Interface.ICustomerMaster businessCustomerMaster;
 
-        public AddCustomerRelatedController(Business.Interface.ICustomerSurfing ICustomerSurfing, Business.Interface.ICustomerIPInfoMapping ICustomerIPInfoMapping)
+        public AddCustomerRelatedController(Business.Interface.ICustomerSurfing ICustomerSurfing, Business.Interface.ICustomerIPInfoMapping ICustomerIPInfoMapping, Business.Interface.ICustomerMaster ICustomerMaster)
         {
             this.businessCustomerSurfing = ICustomerSurfing;
             this.businessCustomerIPInfoMapping = ICustomerIPInfoMapping;
+            this.businessCustomerMaster = ICustomerMaster;
         }
 
         #endregion
@@ -153,7 +155,62 @@ namespace SHF.Controllers.Front
                 // unitOfWork.Dispose();
             }
         }
+        [HttpPost]
+        [Route("Post/AddData/CustomerSurfing/RegisterCustomer")]
+        public async Task<ActionResult> RegisterCustomer(SHF.ViewModel.FrontEnd.CustomerMaster model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return ValidationResponse();
+                }
+                else
+                {
+                    using (var transaction = new TransactionScope())
+                    {
+                        try
+                        {
+                            var entity = new EntityModel.CustomerMaster();
+                            entity.Tenant = null;
+                            entity.FirstName = model.FirstName;
+                            entity.LastName = model.LastName;
+                            entity.EmailID = model.EmailID;
+                            entity.Password = model.Password;
+                            entity.DOB = DateTime.Now;
+                            entity.Tenant_ID = Convert.ToInt64(model.tenantId);
+                            this.businessCustomerMaster.Create(entity);
+                            transaction.Complete();
 
+                            var response = new JsonResponse<dynamic>()
+                            {
+                                Type = busConstant.Messages.Type.RESPONSE,
+                                Title = busConstant.Messages.Title.SUCCESS,
+                                Icon = busConstant.Messages.Icon.SUCCESS,
+                                MessageCode = busConstant.Messages.MessageCode.SAVE,
+                                Message = busConstant.Messages.Type.Responses.SAVE
+                            };
+
+                            return Json(response, JsonRequestBehavior.AllowGet);
+
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Dispose();
+                            throw;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return ExceptionResponse(ex);
+            }
+            finally
+            {
+                // unitOfWork.Dispose();
+            }
+        }
         #endregion
 
     }

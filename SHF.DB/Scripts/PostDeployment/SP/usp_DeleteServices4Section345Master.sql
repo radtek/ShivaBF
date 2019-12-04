@@ -11,9 +11,8 @@ DECLARE @NumDeleted AS int;
     SET @NumDeleted = 0;
 	SET NOCOUNT ON;
 	 BEGIN TRANSACTION ucDelCand
-	
-	delete from Tbl_Services4Section345MasterButtonsChild where Service_Id=@serviceId;
-	delete from Tbl_Services4Section345MasterFeaturesDetails where Service_Id=@serviceId;
+	delete from Tbl_Services4Section345MasterButtonsChild where S4S345M_id in (select Id as S4S345M_id from Tbl_Services4Section345Master where Service_Id=@serviceId );
+	delete from Tbl_Services4Section345MasterFeaturesDetails where S4S345M_id in (select Id as S4S345M_id from Tbl_Services4Section345Master where Service_Id=@serviceId );
 	delete from Tbl_Services4Section345Master where Service_Id=@serviceId;
 		SET @NumDeleted = @@ROWCOUNT;
 
