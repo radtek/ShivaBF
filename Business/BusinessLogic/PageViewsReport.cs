@@ -180,6 +180,7 @@ namespace SHF.Business.BusinessLogic
         {
             try
             {
+                var x = DataAccess.GetScalar.ByStoredProcedure("[dbo].[usp_UpdatePageViewsReport]", null);
                 return unitOfWork.PageViewsReportRepository.Get();
             }
             catch (Exception ex)

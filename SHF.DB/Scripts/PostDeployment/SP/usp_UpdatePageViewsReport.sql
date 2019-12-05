@@ -44,3 +44,5 @@ BEGIN
 
 END
 GO
+
+exec [dbo].[usp_UpdatePageViewsReport];
