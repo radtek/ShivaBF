@@ -235,7 +235,7 @@ namespace SHF.Controllers.Front
                             var asnId = businessAsn.FindBy(asn => asn.Tenant_ID == model.Tenant_ID && asn.asn == model.Asn.asn && asn.domain == model.Asn.domain
                             && asn.route == model.Asn.route && asn.type == model.Asn.type).FirstOrDefault();
 
-                            if (asnId.IsNull())
+                            if (asnId.IsNull() && model.Asn.IsNotNull())
                             {
                                 var entity = new EntityModel.Asn();
                                 entity.Tenant = null;
@@ -253,7 +253,7 @@ namespace SHF.Controllers.Front
                             var CarrierId = businessCarrier.FindBy(Carrier => Carrier.Tenant_ID == model.Tenant_ID && Carrier.mcc == model.carrier.mcc && Carrier.mnc == model.carrier.mnc
                             && Carrier.name == model.carrier.name).FirstOrDefault();
 
-                            if (CarrierId.IsNull())
+                            if (CarrierId.IsNull() && model.carrier.IsNotNull())
                             {
                                 var entity = new EntityModel.Carrier();
                                 entity.Tenant = null;
@@ -269,7 +269,7 @@ namespace SHF.Controllers.Front
                             var CurrencyId = businessCurrency.FindBy(Currency => Currency.Tenant_ID == model.Tenant_ID && Currency.code == model.currency.code && Currency.name == model.currency.name
                             && Currency.native == model.currency.native && Currency.plural == model.currency.plural && Currency.symbol == model.currency.symbol).FirstOrDefault();
 
-                            if (CurrencyId.IsNull())
+                            if (CurrencyId.IsNull() && model.currency.IsNotNull())
                             {
                                 var entity = new EntityModel.Currency();
                                 entity.Tenant = null;
@@ -285,7 +285,7 @@ namespace SHF.Controllers.Front
                             var language = model.languages.FirstOrDefault();
                             var LanguageId = businessLanguage.FindBy(Language => Language.Tenant_ID == model.Tenant_ID && Language.name == language.name && Language.native == language.native).FirstOrDefault();
 
-                            if (LanguageId.IsNull())
+                            if (LanguageId.IsNull() && language.IsNotNull())
                             {
                                 var entity = new EntityModel.Language();
                                 entity.Tenant = null;
@@ -299,7 +299,7 @@ namespace SHF.Controllers.Front
                             var TimeZoneId = businessTimeZone.FindBy(TimeZone => TimeZone.Tenant_ID == model.Tenant_ID && TimeZone.name == model.time_zone.name && TimeZone.abbr == model.time_zone.abbr
                             && TimeZone.offset == model.time_zone.offset && TimeZone.is_dst == model.time_zone.is_dst && TimeZone.current_time == model.time_zone.current_time).FirstOrDefault();
 
-                            if (TimeZoneId.IsNull())
+                            if (TimeZoneId.IsNull() && model.time_zone.IsNotNull())
                             {
                                 var entity = new EntityModel.TimeZone();
                                 entity.Tenant = null;
@@ -316,7 +316,7 @@ namespace SHF.Controllers.Front
                            && Threat.is_anonymous == model.threat.is_anonymous && Threat.is_known_attacker == model.threat.is_known_attacker && Threat.is_known_abuser == model.threat.is_known_abuser
                            && Threat.is_threat == model.threat.is_threat && Threat.is_bogon == model.threat.is_bogon).FirstOrDefault();
 
-                            if (ThreatId.IsNull())
+                            if (ThreatId.IsNull() && model.threat.IsNotNull())
                             {
                                 var entity = new EntityModel.Threat();
                                 entity.Tenant = null;
