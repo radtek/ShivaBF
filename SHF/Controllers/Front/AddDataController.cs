@@ -349,12 +349,55 @@ namespace SHF.Controllers.Front
                             entityIP.flag = model.flag;
                             entityIP.emoji_flag = model.emoji_flag;
                             entityIP.emoji_unicode = model.emoji_unicode;
-                            entityIP.Asn_ID = asnId.ID;
-                            entityIP.Carrier_ID = CarrierId.ID;
-                            entityIP.Currency_ID = CurrencyId.ID;
-                            entityIP.Language_ID = LanguageId.ID;
-                            entityIP.TimeZone_ID = TimeZoneId.ID;
-                            entityIP.Threat_ID = ThreatId.ID;
+                            if (asnId.IsNotNull())
+                            {
+                                entityIP.Asn_ID = asnId.ID;
+                            }
+                            else
+                            {
+                                entityIP.Asn_ID = -1;
+                            }
+                            if (CarrierId.IsNotNull())
+                            {
+                                entityIP.Carrier_ID = CarrierId.ID;
+                            }
+                            else
+                            {
+                                entityIP.Carrier_ID = -1;
+                            }
+                            if (CurrencyId.IsNotNull())
+                            {
+                                entityIP.Currency_ID = CurrencyId.ID;
+                            }
+                            else
+                            {
+                                entityIP.Currency_ID = -1;
+                            }
+                            if (LanguageId.IsNotNull())
+                            {
+                                entityIP.Language_ID = LanguageId.ID;
+                            }
+                            else
+                            {
+                                entityIP.Language_ID = -1;
+                            }
+                            if (TimeZoneId.IsNotNull())
+                            {
+                                entityIP.TimeZone_ID = TimeZoneId.ID;
+                            }
+                            else
+                            {
+                                entityIP.TimeZone_ID = -1;
+                            }
+                            if (ThreatId.IsNotNull())
+                            {
+                                entityIP.Threat_ID = ThreatId.ID;
+                            }
+                            else
+                            {
+                                entityIP.Threat_ID = -1;
+                            }
+
                             entityIP.Tenant_ID = model.Tenant_ID;
 
                             this.businessIPInfo.Create(entityIP);
