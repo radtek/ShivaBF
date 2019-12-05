@@ -392,6 +392,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomerServiceOrderController.cs" />
     <Compile Include="Controllers\CustomerSurfingController.cs" />
     <Compile Include="Controllers\CustomerIPInfoMappingController.cs" />
     <Compile Include="Controllers\CustomerMasterInfoController.cs" />
@@ -519,6 +520,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AngularControllers\AspNetUserController.js" />
+    <Content Include="AngularControllers\CustomerServiceOrderController.js" />
     <Content Include="AngularControllers\CustomerSurfingController.js" />
     <Content Include="AngularControllers\CustomerIPInfoMappingController.js" />
     <Content Include="AngularControllers\CustomerMasterInfoController.js" />
@@ -12520,6 +12522,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Services\AspNetRole.js" />
     <Content Include="Scripts\Services\AspNetUser.js" />
+    <Content Include="Scripts\Services\CustomerServiceOrder.js" />
     <Content Include="Scripts\Services\CustomerSurfing.js" />
     <Content Include="Scripts\Services\CustomerIPInfoMapping.js" />
     <Content Include="Scripts\Services\CustomerMasterInfo.js" />
@@ -12918,6 +12921,9 @@
     <Content Include="Views\CustomerSurfing\_CreateOrEdit.cshtml" />
     <Content Include="Views\CustomerSurfing\_CreateOrEditTenant.cshtml" />
     <Content Include="Views\CustomerSurfing\Index.cshtml" />
+    <Content Include="Views\CustomerServiceOrder\_CreateOrEdit.cshtml" />
+    <Content Include="Views\CustomerServiceOrder\_CreateOrEditTenant.cshtml" />
+    <Content Include="Views\CustomerServiceOrder\Index.cshtml" />
     <None Include="Views\Shared\_LayoutBAK.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />

@@ -198,6 +198,7 @@ namespace SHF
                                         "~/Scripts/Services/CustomerMasterInfo.js",
                                        "~/Scripts/Services/CustomerIPInfoMapping.js",
                                         "~/Scripts/Services/CustomerSurfing.js",
+                                        "~/Scripts/Services/CustomerServiceOrder.js",
                  "~/AngularControllers/AspNetUserController.js",
                  "~/AngularControllers/RoleController.js",
                  "~/AngularControllers/TenantController.js",
@@ -267,7 +268,8 @@ namespace SHF
                                     "~/AngularControllers/CustomerMasterController.js",
                                     "~/AngularControllers/CustomerMasterInfoController.js",
                                      "~/AngularControllers/CustomerIPInfoMappingController.js",
-                                      "~/AngularControllers/CustomerSurfingController.js"
+                                      "~/AngularControllers/CustomerSurfingController.js",
+                                       "~/AngularControllers/CustomerServiceOrderController.js"
 
                 ));
 
