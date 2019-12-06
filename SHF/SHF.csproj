@@ -497,6 +497,10 @@
     <Compile Include="Helpers\CompressImage.cs" />
     <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Helpers\RequiredField.cs" />
+    <Compile Include="Migrations\201912060633336_changes2.cs" />
+    <Compile Include="Migrations\201912060633336_changes2.Designer.cs">
+      <DependentUpon>201912060633336_changes2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Error\CustomHandleErrorInfo.cs" />
@@ -13032,6 +13036,11 @@
     <TypeScriptCompile Include="plugins\fullcalendar-interaction\main.d.ts" />
     <TypeScriptCompile Include="plugins\fullcalendar-timegrid\main.d.ts" />
     <TypeScriptCompile Include="plugins\fullcalendar\main.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201912060633336_changes2.resx">
+      <DependentUpon>201912060633336_changes2.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

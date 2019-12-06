@@ -68,8 +68,8 @@ namespace SHF.Controllers
         [HttpGet]
         [Access]
         [OutputCache(Duration = busConstant.Settings.Cache.OutputCache.TimeOut.S300)]
-        [Route("Configurations/Master/Customer/Index")]
-        [Route("Settings/Master/Customer/Index")]
+        [Route("Configurations/Master/CustomerOrders/Index")]
+        [Route("Settings/Master/CustomerOrders/Index")]
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId<long>();
@@ -77,7 +77,7 @@ namespace SHF.Controllers
             return View();
         }
         [HttpPost]
-        [Route("Post/Customer/IndexAsync")]
+        [Route("Post/CustomerServiceOrder/IndexAsync")]
         [ValidateAntiForgeryTokens]
         public async Task<ActionResult> IndexAsync()
         {
@@ -124,7 +124,7 @@ namespace SHF.Controllers
         [HttpPost]
         [Audit]
         [ValidateAntiForgeryTokens]
-        [Route("Post/Customer/CreateAsync")]
+        [Route("Post/CustomerOrders/CreateAsync")]
         public async Task<ActionResult> CreateAsync(ViewModel.CustomerServiceOrderCreateOrEditViewModel model)
         {
             try
@@ -205,7 +205,7 @@ namespace SHF.Controllers
 
 
         [HttpGet]
-        [Route("Get/Customer/EditAsync")]
+        [Route("Get/CustomerOrders/EditAsync")]
         public async Task<ActionResult> EditAsync(long Id)
         {
             try
@@ -290,7 +290,7 @@ namespace SHF.Controllers
         [HttpPost]
         [Audit]
         [ValidateAntiForgeryTokens]
-        [Route("Post/Customer/EditAsync")]
+        [Route("Post/CustomerOrders/EditAsync")]
         public async Task<ActionResult> EditAsync(ViewModel.CustomerServiceOrderCreateOrEditViewModel model)
         {
             try
@@ -380,7 +380,7 @@ namespace SHF.Controllers
         [HttpPost]
         [AuditAttribute]
         [ValidateAntiForgeryTokens]
-        [Route("Post/Customer/Delete")]
+        [Route("Post/CustomerOrders/Delete")]
         public async Task<ActionResult> DeleteAsync(string Id)
         {
             try
