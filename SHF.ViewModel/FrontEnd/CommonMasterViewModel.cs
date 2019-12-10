@@ -14,6 +14,20 @@ namespace SHF.ViewModel.FrontEnd
         public System.String UserName { get; set; }
         public string Password { get; set; }
     }
+    public class CustomerMasterInfo : BaseViewModel
+    {
+        public System.String tenantId { get; set; }
+
+        public System.Int64 CustomerMaster_ID { get; set; }
+     
+        public System.DateTime InfoDateOfLastLogon { get; set; }
+       
+        public System.Int64 InfoNumberOfLogons { get; set; }
+       
+        public System.DateTime InfoDateAccountCreated { get; set; }
+      
+        public System.DateTime InfoDateAccountLastModified { get; set; }
+    }
     public class CustomerMaster : BaseViewModel
     {
         public System.String tenantId { get; set; }

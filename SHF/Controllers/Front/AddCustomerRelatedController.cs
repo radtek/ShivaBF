@@ -31,12 +31,14 @@ namespace SHF.Controllers.Front
         private Business.Interface.ICustomerSurfing businessCustomerSurfing;
         private Business.Interface.ICustomerIPInfoMapping businessCustomerIPInfoMapping;
         private Business.Interface.ICustomerMaster businessCustomerMaster;
+        private Business.Interface.ICustomerMasterInfo businessCustomerMasterInfo;
 
-        public AddCustomerRelatedController(Business.Interface.ICustomerSurfing ICustomerSurfing, Business.Interface.ICustomerIPInfoMapping ICustomerIPInfoMapping, Business.Interface.ICustomerMaster ICustomerMaster)
+        public AddCustomerRelatedController(Business.Interface.ICustomerSurfing ICustomerSurfing, Business.Interface.ICustomerIPInfoMapping ICustomerIPInfoMapping, Business.Interface.ICustomerMaster ICustomerMaster, Business.Interface.ICustomerMasterInfo ICustomerMasterInfo)
         {
             this.businessCustomerSurfing = ICustomerSurfing;
             this.businessCustomerIPInfoMapping = ICustomerIPInfoMapping;
             this.businessCustomerMaster = ICustomerMaster;
+            this.businessCustomerMasterInfo = ICustomerMasterInfo;
         }
 
         #endregion
@@ -59,7 +61,7 @@ namespace SHF.Controllers.Front
                     {
                         try
                         {
-                            var entity =new EntityModel.CustomerSurfing();
+                            var entity = new EntityModel.CustomerSurfing();
                             entity.Tenant = null;
                             entity.CustomerMaster = null;
                             entity.CustomerMaster_ID = Convert.ToInt64(model.CustomerMaster_ID);
@@ -194,6 +196,66 @@ namespace SHF.Controllers.Front
                             return Json(response, JsonRequestBehavior.AllowGet);
 
                         }
+                        catch (Exception ex)
+                        {
+                            transaction.Dispose();
+                            throw;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return ExceptionResponse(ex);
+            }
+            finally
+            {
+                // unitOfWork.Dispose();
+            }
+        }
+
+        [HttpPost]
+        [Route("Post/AddData/CustomerSurfing/UpdateCustomerLogon")]
+        public async Task<ActionResult> UpdateCustomerLogon(SHF.ViewModel.FrontEnd.CustomerMasterInfo model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return ValidationResponse();
+                }
+                else
+                {
+                    using (var transaction = new TransactionScope())
+                    {
+                        try
+                        {
+                            if (model.CustomerMaster_ID.IsNotNull())
+                            {
+                                var entity = this.businessCustomerMasterInfo.GetAll().Where(cust => cust.CustomerMaster_ID == model.CustomerMaster_ID).FirstOrDefault();
+                                if (entity.IsNotNull())
+                                {
+
+                                    entity.Tenant = null;
+                                    entity.InfoDateOfLastLogon = DateTime.Now;
+                                    entity.InfoNumberOfLogons = entity.InfoNumberOfLogons + 1;
+                                    this.businessCustomerMasterInfo.Update(entity);
+                                    transaction.Complete();
+                                }
+                            }
+                            var response = new JsonResponse<dynamic>()
+                            {
+                                Type = busConstant.Messages.Type.RESPONSE,
+                                Title = busConstant.Messages.Title.SUCCESS,
+                                Icon = busConstant.Messages.Icon.SUCCESS,
+                                MessageCode = busConstant.Messages.MessageCode.SAVE,
+                                Message = busConstant.Messages.Type.Responses.SAVE
+                            };
+
+                            return Json(response, JsonRequestBehavior.AllowGet);
+
+
+
                         catch (Exception ex)
                         {
                             transaction.Dispose();
