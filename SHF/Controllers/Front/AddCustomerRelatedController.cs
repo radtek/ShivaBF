@@ -273,6 +273,78 @@ namespace SHF.Controllers.Front
                 // unitOfWork.Dispose();
             }
         }
+
+        [HttpPost]
+        [Route("Post/AddData/CustomerSurfing/LoginCheck")]
+        public async Task<ActionResult> LoginCheck(SHF.ViewModel.FrontEnd.LoginCustomerMaster model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return ValidationResponse();
+                }
+                else
+                {
+                    using (var transaction = new TransactionScope())
+                    {
+                        try
+                        {
+                            if (model.UserName.IsNotNull() && model.Password.IsNotNull())
+                            {
+                                var entity = this.businessCustomerMaster.GetAll().Where(cust => cust.EmailID == model.UserName && cust.Password == model.Password).FirstOrDefault();
+                                if (entity.IsNotNull())
+                                {
+                                    var response = new JsonResponse<EntityModel.CustomerMaster>()
+                                    {
+                                        Type = busConstant.Messages.Type.RESPONSE,
+                                        Entity = entity
+                                    };
+
+                                    transaction.Complete();
+                                    return Json(response, JsonRequestBehavior.AllowGet);
+                                }
+                                else
+                                {
+                                    var response = new JsonResponse<dynamic>()
+                                    {
+                                        Type = busConstant.Messages.Type.EXCEPTION,
+                                        Message = busConstant.Messages.Type.Exceptions.NOT_FOUND,
+                                    };
+
+                                    transaction.Complete();
+                                    return Json(response, JsonRequestBehavior.AllowGet);
+                                }
+                            }
+                            else
+                            {
+                                var response = new JsonResponse<dynamic>()
+                                {
+                                    Type = busConstant.Messages.Type.EXCEPTION,
+                                    Message = busConstant.Messages.Type.Exceptions.NOT_FOUND,
+                                };
+
+                                transaction.Complete();
+                                return Json(response, JsonRequestBehavior.AllowGet);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Dispose();
+                            throw;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return ExceptionResponse(ex);
+            }
+            finally
+            {
+                // unitOfWork.Dispose();
+            }
+        }
         #endregion
 
     }
