@@ -253,6 +253,7 @@ namespace SHF.Controllers.Front
                             };
 
                             return Json(response, JsonRequestBehavior.AllowGet);
+                        }
 
 
 
