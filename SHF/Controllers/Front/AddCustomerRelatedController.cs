@@ -19,7 +19,10 @@ using SHF.Models;
 using SHF.ViewModel;
 using System.Reflection;
 using System.ComponentModel;
-
+using System.Collections.Specialized;
+using SHF.Helpers;
+using System.Configuration;
+using System.Net.Mail;
 
 namespace SHF.Controllers.Front
 {
@@ -368,147 +371,38 @@ namespace SHF.Controllers.Front
                                 var entity = this.businessCustomerMaster.GetAll().Where(cust => cust.EmailID == model.UserName && cust.Password == model.Password).FirstOrDefault();
                                 if (entity.IsNotNull())
                                 {
-                                    string mailcontent = "<div style='margin:0'><table width = '750' align = 'center' border = '0' cellspacing = '0' cellpadding = '0'>";
-                                    mailcontent += "<tbody><tr>";
-                                    mailcontent += "<td align= 'left' valign='middle' style='padding:10px 0px'>";
-                                    mailcontent += "<a href='https://www.shivafilings.com' rel = 'noreferrer' target= '_blank'>";
-                                    mailcontent += "<img alt='LOGO' src='logo.png' border='0' style='width: 120px;'>";
-                                    mailcontent += "</a></td></tr>";
-                                    mailcontent += "<tr><td align='left' valign='top' style='font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#373737;background-color:#fff;padding:20px;border:solid 1px #bcc2cf'>";
-                                    mailcontent += "Dear <strong> Mukund Jha </strong>,<br><br> Thank you for your order from";
-                                    mailcontent += "<a style='font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#e85f04;text-decoration:underline' href='' target='_blank'> https://www.shivafilings.com</a>";
-                                    mailcontent += "<br><br> For your convenience, we have included a copy of your order below.The charge will appear on your credit card / Account Statement as<strong><a href ='http://www.ccavenue.com' rel='noreferrer' target ='_blank'> www.ccavenue.com </a></strong>";
-                                    mailcontent += "<br><br><br>";
-                                    mailcontent += "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tbody>";
-                                    mailcontent += "<tr><td align='left' valign='top' style='background-color:#fff;padding:15px 20px;border:solid 1px #dbdfe6'>";
-                                    mailcontent += "<table width='100%' style='border:solid 1px #e4e6eb' border='0' cellspacing='0' cellpadding='6'>";
-                                    mailcontent += "<tbody>";
-                                    mailcontent += "<tr><td width= '47%' height='18' align= 'left' valign='middle' style='font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#373737;background-color:#f7f7f7'>";
-                                    mailcontent += "<strong>Order#</strong></td>";
-                                    mailcontent += "<td width= '35%' height= '18' align='left' valign='middle' style='font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#373737;background-color:#f7f7f7;border-left:solid 1px #e4e6eb'>";
-                                    mailcontent += "<strong>CCAvenue Reference #</strong></td>";
-                                    mailcontent += "<td width='18%' height='18' align='left' valign='middle' style='font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#373737;background-color:#f7f7f7;border-left:solid 1px #e4e6eb'>";
-                                    mailcontent += "<strong> Order Date </strong>";
-                                    mailcontent += "</td></tr>";
-                                    mailcontent += "<tr><td height= '1' align='left' valign='middle' style='background-color:#e4e6eb;padding:0px' colspan='3'>";
-                                    mailcontent += "<img width= '1' height= '1' src = 'https://ci3.googleusercontent.com/proxy/Y4bHfZQ8yJgrMK4PsT2FtjaGTnURMS7uNGSZN_opsDUkHHyUYh8L_8Uvhop4n47Qxw2KpLyy1P1CpiYO_LbE4F91lh_P1A=s0-d-e1-ft#https://secure.ccavenue.com/images/blank_spacer.gif' class='CToWUd'></td></tr>";
-                                    mailcontent += "<tr>";
-                                    mailcontent += "<td width= '47%' height= '18' align = 'left' valign = 'middle' style = 'font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#373737' > 1554366133928508682962 </td>";
-                                    mailcontent += "<td width = '35%' height = '18' align = 'left' valign = 'middle' style = 'font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#373737;border-left:solid 1px #e4e6eb'> 108551039644 </td>";
-                                    mailcontent += "<td width = '18%' height = '18' align = 'left' valign = 'middle' style = 'font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#373737;border-left:solid 1px #e4e6eb'> 04 / 04 / 2019 13:56:15 </td>";
-                                    mailcontent += "</tr>";
-                                    mailcontent += "</tbody></table><br><br>";
-                                    mailcontent += "<table width='100%' border='0' cellspacing='0' cellpadding='0'>";
-                                    mailcontent += "<tbody>";
-                                    mailcontent += "<tr>";
-                                    mailcontent += "<td height = '25' align = 'left' valign = 'top' style = 'font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#0072c6;border-bottom:solid 1px #dbdfe6' colspan = '3' > Billing Details </td>";
-                                    mailcontent += "</tr><tr><td align = 'left' valign = 'top' colspan = '3' > &nbsp;</td>";
-                                    mailcontent += "</tr><tr>";
-                                    mailcontent += "<td width = '412' align = 'left' valign = 'top' >< table width = '100%' border = '0' cellspacing = '0' cellpadding = '4'>";
-                                    mailcontent += "<tbody>";
-                                    mailcontent += "<tr><td width = '23%' align = 'right' valign = 'top' style = 'font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#373737'>";
-                                    mailcontent += "<strong>Customer:</strong>";
-                                    mailcontent += "</td>";
-                                    mailcontent += "<td width = '77%' align = 'left' valign = 'top' style = 'font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#373737'>";
-                                    mailcontent += "Mukund Jha & nbsp; &nbsp;| &nbsp; &nbsp;";
-                                    mailcontent += "<a style = 'font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#373737' href = 'mailto:' rel = 'noreferrer' target = '_blank' > mukund.jha@< wbr > mukundjhaco.com </a>";
-                                    mailcontent += "& nbsp; &nbsp;| &nbsp; &nbsp; 8369907541</td>";
-                                    mailcontent += "</tr>";
-                                    mailcontent += "<tr><td align = 'right' valign = 'top' style = 'font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#373737'>";
-                                    mailcontent += "<strong> Address:</strong></td>";
-                                    mailcontent += "<td align = 'left' valign = 'top' style = 'font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#373737'>";
-                                    mailcontent += "Flat No.B - 1106,  Amar Harmony, Plot No. 22, Sector - 4,  Taloja Panchnand, Taloja Phase 1, Raigad,  Maharashtra ,Maharashtra ,Raigad 410208.India</td>";
-                                    mailcontent += "</tr><tr>";
-                                    mailcontent += "<td align = 'right' valign = 'top' style = 'font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#373737'>";
-                                    mailcontent += "<strong>Customer IP:</strong>";
-                                     
-                                                                                                     </ td >
-                                     
-                                                                                                     < td align = 'left' valign = 'top' style = 'font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#373737' > 49.33.243.250 </ td >
-                                              
-                                                                                                          </ tr >
-                                              
-                                                                                                          < tr >
-                                              
-                                                                                                              < td align = 'right' valign = 'top' style = 'font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#373737' >< strong > Pay Mode:</ strong ></ td >
-                                                         
-                                                                                                                         < td align = 'left' valign = 'top' style = 'font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#373737' > Net Banking - RBL Bank </ td >
-                                                                  
-                                                                                                                              </ tr >
-                                                                  
-                                                                                                                              < tr >
-                                                                  
-                                                                                                                                  < td align = 'right' valign = 'top' style = 'font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#373737' >
-                                                                       
-                                                                                                                                           < strong > Bank Ref #:</strong>
-                                                                </ td >
-                                                                          
-                                                                                                                                          < td align = 'left' valign = 'top' style = 'font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#373737' > 10322823 </ td >
-                                                                               
-                                                                                                                                           </ tr >
-                                                                               
-                                                                                                                                           < tr >
-                                                                               
-                                                                                                                                               < td align = 'right' valign = 'top' style = 'font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#373737' >
-                                                                                    
-                                                                                                                                                        < strong > Instructions:</ strong >
-                                                                                       
-                                                                                                                                                       </ td >
-                                                                                       
-                                                                                                                                                       < td align = 'left' valign = 'top' style = 'font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#373737' ></ td >
-                                                                                            
+                                    // Fetch file name from AppConstants class file
+                                    string strAdminEmailFileName = AppConstants.strUserAccFundParentEmailFileName;
 
-                                                                                                                                                        </ tr >
-                                                                                            
-                                                                                                                                                    </ tbody >
-                                                                                            
-                                                                                                                                                </ table >
-                                                                                            
+                                    //object created for NameValueCollection
+                                    NameValueCollection emailVariable = new NameValueCollection();
 
-                                                                                                                                                </ td >
-                                                                                            
-                                                                                                                                                < td width = '20' align = 'left' valign = 'top' >
-                                                                                                 
-                                                                                                                                                         < img width = '20' height = '1' src = 'https://ci3.googleusercontent.com/proxy/Y4bHfZQ8yJgrMK4PsT2FtjaGTnURMS7uNGSZN_opsDUkHHyUYh8L_8Uvhop4n47Qxw2KpLyy1P1CpiYO_LbE4F91lh_P1A=s0-d-e1-ft#https://secure.ccavenue.com/images/blank_spacer.gif' class='CToWUd'>
-                                                    </td>	        
-                                                    <td width = '244' align='right' valign='top'><table width = '244' border='0' cellspacing='0' cellpadding='10'>	          
-                                                        <tbody>
-                                                            <tr>		            
-                                                            <td align = 'left' valign='top' style='background-color:#f7f7f7;border:solid 1px #e4e6eb'>		            
-                                                                <table width = '244' border='0' cellspacing='0' cellpadding='0'>		                
-                                                                    <tbody>
-                                                                        <tr>		                  
-                                                                            <td width = '51%' height='19' align='right' valign='top' style='font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#373737'>Order Amount:&nbsp;</td>		                  
-                                                                            <td width = '16%' height='19' align='center' valign='top' style='font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#373737'>INR</td>	                  
-                                                                            <td width = '33%' height='19' align='right' valign='top' style='font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#373737'>45899.00</td>		                
-                                                                        </tr>		                
-                                                                        <tr>	                  
-                                                                            <td colspan = '3' >
-                                                                                < img width='1' height='1' src='https://ci3.googleusercontent.com/proxy/Y4bHfZQ8yJgrMK4PsT2FtjaGTnURMS7uNGSZN_opsDUkHHyUYh8L_8Uvhop4n47Qxw2KpLyy1P1CpiYO_LbE4F91lh_P1A=s0-d-e1-ft#https://secure.ccavenue.com/images/blank_spacer.gif' class='CToWUd'>
-                                                                            </td>		                
-                                                                        </tr>	                
-                                                                        <tr>	                  
-                                                                            <td height = '22' align='right' valign='bottom' style='font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#373737'>
-                                                                                <strong>Net Payable:&nbsp;</strong>
-                                                                            </td>		                  
-                                                                            <td height = '20' align='center' valign='bottom' style='font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#373737'>
-                                                                                <strong>INR</strong>
-                                                                            </td>		                  
-                                                                            <td height = '20' align='right' valign='bottom' style='font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#373737'><strong>45899.00</strong>
+                                    //Store values in NameValueCollection from database, for now it is fetch from datatable 
+                                    //which is hardcoded.
 
-                                                                            </td>	
-                                                                        </tr>	 
-                                                                    </tbody>
-                                                                </table>
-                                                            </td>	  
-                                                            </tr>	
-                                                        </tbody>
-                                                       </table>
-                                                    </td>	 
-                                                </tr>		
-                                            </tbody>
-                                        </table>		";
+                                    string strParentNm = txtFName.Text + " " + txtLName.Text;
+                                    emailVariable["$parentName$"] = strParentNm;
+                                    emailVariable["$webSiteLongUrl$"] = Convert.ToString(ViewState["WebSiteLongUrl"]);
+                                    emailVariable["$companyName$"] = strCompanyName;
 
+                                    //object created for EmailGenerator class file 
+
+                                    EmailGenerator getEmailContent = new EmailGenerator();
+                                    string strChkEmailFromDatabaseorFile = string.Empty;
+                                    strChkEmailFromDatabaseorFile = ConfigurationSettings.AppSettings["mailtoread"];
+                                    if (strChkEmailFromDatabaseorFile == "fromtextfile")
+                                    {
+                                        strEmailContent = getEmailContent.SendEmailFromFile(strAdminEmailFileName, emailVariable);
+                                    }
+
+                                    string strsubject = strParentNm + " " + AppConstants.strAccountFundParentMailSubject + " " + strCompanyName + AppConstants.strAccountFundParentMailSubject1;
+                                    emailToUser.Subject = strsubject;
+                                    emailToUser.Body = strEmailContent;
+                                    emailToUser.IsBodyHtml = true;
+
+                                    SmtpClient smtpServer = new SmtpClient();
+
+                                    smtpServer.Send(emailToUser);
                                     transaction.Complete();
                                     //return Json(response, JsonRequestBehavior.AllowGet);
                                 }
